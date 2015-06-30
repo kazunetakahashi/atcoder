@@ -1,3 +1,7 @@
+// https://twitter.com/cielavenir/status/615433797132095488
+// https://twitter.com/cielavenir/status/615433835640033280
+// を参考に書きなおした。
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
