@@ -1,0 +1,467 @@
+2 255 984 796
+4 506 984 796 669 676
+6 733 984 796 669 676 133 198
+j = 3 : failed
+j = 4 : failed
+j = 5 : failed
+8 934 984 796 669 676 133 198 450 951
+10 1133 984 796 669 676 133 198 450 951 100 778
+j = 8 : failed
+j = 9 : failed
+12 1319 984 796 669 676 133 198 450 951 100 778 310 519
+j = 11 : failed
+j = 12 : failed
+j = 13 : failed
+14 1496 984 796 669 676 133 198 450 951 100 778 310 519 383 634
+16 1672 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961
+j = 16 : failed
+j = 17 : failed
+j = 18 : failed
+j = 19 : failed
+j = 20 : same
+j = 21 : failed
+j = 22 : failed
+j = 23 : failed
+j = 24 : failed
+18 1833 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638
+j = 26 : failed
+j = 27 : failed
+j = 28 : failed
+j = 29 : failed
+20 1992 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848
+j = 31 : same
+j = 32 : failed
+22 2150 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387
+j = 34 : failed
+24 2304 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578
+j = 36 : same
+j = 37 : failed
+j = 38 : failed
+j = 39 : failed
+j = 40 : failed
+j = 41 : failed
+j = 42 : failed
+26 2448 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739
+j = 44 : failed
+j = 45 : failed
+j = 46 : failed
+j = 47 : failed
+j = 48 : failed
+j = 49 : failed
+j = 50 : failed
+j = 51 : failed
+j = 52 : failed
+j = 53 : failed
+j = 54 : failed
+28 2589 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761
+j = 56 : failed
+j = 57 : failed
+j = 58 : failed
+j = 59 : same
+j = 60 : failed
+j = 61 : failed
+j = 62 : failed
+j = 63 : failed
+j = 64 : failed
+j = 65 : failed
+j = 66 : failed
+30 2720 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932
+j = 68 : failed
+j = 69 : failed
+j = 70 : failed
+j = 71 : same
+j = 72 : failed
+j = 73 : failed
+j = 74 : failed
+j = 75 : same
+j = 76 : failed
+j = 77 : failed
+j = 78 : failed
+32 2842 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92
+j = 80 : failed
+j = 81 : failed
+j = 82 : failed
+j = 83 : failed
+j = 84 : failed
+j = 85 : failed
+j = 86 : failed
+j = 87 : failed
+j = 88 : failed
+j = 89 : failed
+j = 90 : failed
+j = 91 : failed
+j = 92 : failed
+j = 93 : failed
+j = 94 : failed
+34 2957 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614
+j = 96 : failed
+j = 97 : failed
+j = 98 : failed
+j = 99 : failed
+j = 100 : failed
+36 3067 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52
+j = 102 : failed
+j = 103 : failed
+j = 104 : failed
+j = 105 : failed
+j = 106 : failed
+j = 107 : failed
+j = 108 : same
+j = 109 : failed
+j = 110 : failed
+j = 111 : failed
+j = 112 : failed
+j = 113 : failed
+j = 114 : same
+j = 115 : failed
+38 3169 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52 224 120
+40 3271 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52 224 120 299 756
+j = 118 : failed
+j = 119 : failed
+j = 120 : failed
+j = 121 : failed
+j = 122 : failed
+j = 123 : failed
+j = 124 : failed
+j = 125 : failed
+j = 126 : failed
+j = 127 : failed
+j = 128 : failed
+j = 129 : failed
+j = 130 : failed
+j = 131 : failed
+j = 132 : same
+j = 133 : failed
+j = 134 : failed
+j = 135 : failed
+j = 136 : same
+j = 137 : failed
+j = 138 : same
+j = 139 : same
+j = 140 : failed
+j = 141 : failed
+j = 142 : failed
+42 3374 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52 224 120 299 756 62 477
+j = 144 : failed
+j = 145 : failed
+j = 146 : failed
+j = 147 : same
+j = 148 : failed
+j = 149 : failed
+j = 150 : failed
+j = 151 : same
+j = 152 : failed
+j = 153 : failed
+j = 154 : failed
+j = 155 : failed
+j = 156 : failed
+j = 157 : failed
+j = 158 : failed
+j = 159 : failed
+j = 160 : failed
+j = 161 : same
+44 3485 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52 224 120 299 756 62 477 746 846
+j = 163 : failed
+j = 164 : failed
+j = 165 : failed
+j = 166 : failed
+j = 167 : failed
+j = 168 : failed
+j = 169 : same
+j = 170 : failed
+j = 171 : failed
+j = 172 : failed
+j = 173 : failed
+j = 174 : failed
+j = 175 : failed
+j = 176 : failed
+j = 177 : failed
+j = 178 : failed
+j = 179 : failed
+j = 180 : failed
+j = 181 : failed
+j = 182 : failed
+j = 183 : failed
+j = 184 : same
+j = 185 : failed
+j = 186 : failed
+j = 187 : failed
+j = 188 : failed
+j = 189 : same
+j = 190 : failed
+j = 191 : same
+j = 192 : failed
+j = 193 : failed
+j = 194 : failed
+j = 195 : failed
+j = 196 : failed
+j = 197 : failed
+j = 198 : failed
+j = 199 : failed
+46 3619 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52 224 120 299 756 62 477 746 846 337 570
+j = 201 : failed
+j = 202 : failed
+j = 203 : failed
+j = 204 : failed
+j = 205 : failed
+j = 206 : failed
+j = 207 : failed
+j = 208 : failed
+j = 209 : failed
+j = 210 : failed
+j = 211 : failed
+j = 212 : failed
+j = 213 : failed
+j = 214 : failed
+j = 215 : failed
+j = 216 : failed
+j = 217 : failed
+j = 218 : failed
+j = 219 : failed
+j = 220 : failed
+j = 221 : failed
+j = 222 : failed
+j = 223 : failed
+j = 224 : failed
+j = 225 : failed
+j = 226 : failed
+j = 227 : same
+j = 228 : failed
+j = 229 : failed
+j = 230 : failed
+j = 231 : failed
+j = 232 : failed
+j = 233 : failed
+j = 234 : failed
+j = 235 : failed
+j = 236 : failed
+j = 237 : failed
+j = 238 : failed
+j = 239 : failed
+j = 240 : failed
+j = 241 : same
+j = 242 : failed
+j = 243 : failed
+j = 244 : failed
+j = 245 : failed
+j = 246 : failed
+j = 247 : failed
+j = 248 : failed
+j = 249 : failed
+j = 250 : failed
+j = 251 : same
+j = 252 : failed
+j = 253 : failed
+j = 254 : failed
+j = 255 : failed
+j = 256 : failed
+j = 257 : failed
+j = 258 : failed
+j = 259 : failed
+j = 260 : failed
+j = 261 : failed
+j = 262 : same
+j = 263 : failed
+j = 264 : failed
+j = 265 : same
+j = 266 : failed
+j = 267 : failed
+j = 268 : failed
+j = 269 : failed
+j = 270 : failed
+j = 271 : failed
+j = 272 : failed
+j = 273 : failed
+j = 274 : failed
+j = 275 : failed
+j = 276 : failed
+j = 277 : failed
+j = 278 : failed
+j = 279 : failed
+j = 280 : failed
+j = 281 : failed
+j = 282 : failed
+j = 283 : failed
+48 3735 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52 224 120 299 756 62 477 746 846 337 570 509 102
+j = 285 : failed
+j = 286 : failed
+j = 287 : failed
+j = 288 : failed
+j = 289 : failed
+j = 290 : failed
+j = 291 : failed
+j = 292 : failed
+j = 293 : failed
+j = 294 : failed
+50 3871 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52 224 120 299 756 62 477 746 846 337 570 509 102 814 121
+j = 296 : failed
+j = 297 : failed
+j = 298 : failed
+j = 299 : failed
+j = 300 : failed
+j = 301 : failed
+j = 302 : failed
+j = 303 : same
+j = 304 : failed
+j = 305 : failed
+j = 306 : failed
+j = 307 : failed
+j = 308 : failed
+j = 309 : failed
+j = 310 : failed
+j = 311 : failed
+j = 312 : same
+j = 313 : failed
+52 3981 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52 224 120 299 756 62 477 746 846 337 570 509 102 814 121 456 675
+j = 315 : same
+j = 316 : failed
+j = 317 : failed
+54 4082 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52 224 120 299 756 62 477 746 846 337 570 509 102 814 121 456 675 55 201
+j = 319 : failed
+j = 320 : failed
+j = 321 : failed
+j = 322 : failed
+j = 323 : failed
+j = 324 : failed
+j = 325 : failed
+j = 326 : failed
+j = 327 : same
+j = 328 : failed
+j = 329 : failed
+j = 330 : failed
+j = 331 : same
+56 4189 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52 224 120 299 756 62 477 746 846 337 570 509 102 814 121 456 675 55 201 182 161
+j = 333 : failed
+58 4298 984 796 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52 224 120 299 756 62 477 746 846 337 570 509 102 814 121 456 675 55 201 182 161 772 314
+j = 335 : failed
+j = 336 : failed
+j = 337 : failed
+j = 338 : failed
+j = 339 : failed
+j = 340 : failed
+j = 341 : same
+j = 342 : failed
+j = 343 : failed
+j = 344 : failed
+j = 345 : failed
+j = 346 : failed
+j = 347 : failed
+j = 348 : failed
+j = 349 : failed
+j = 350 : failed
+2 251 669 676
+4 478 669 676 133 198
+j = 3 : failed
+j = 4 : failed
+j = 5 : failed
+6 679 669 676 133 198 450 951
+8 878 669 676 133 198 450 951 100 778
+j = 8 : failed
+j = 9 : failed
+10 1064 669 676 133 198 450 951 100 778 310 519
+j = 11 : failed
+j = 12 : failed
+j = 13 : failed
+12 1241 669 676 133 198 450 951 100 778 310 519 383 634
+14 1417 669 676 133 198 450 951 100 778 310 519 383 634 558 961
+j = 16 : failed
+j = 17 : failed
+j = 18 : failed
+j = 19 : failed
+j = 20 : same
+j = 21 : failed
+j = 22 : failed
+j = 23 : failed
+j = 24 : failed
+16 1578 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638
+j = 26 : failed
+j = 27 : failed
+j = 28 : failed
+j = 29 : failed
+18 1737 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848
+j = 31 : same
+j = 32 : failed
+20 1895 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387
+j = 34 : failed
+22 2049 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578
+j = 36 : same
+j = 37 : failed
+j = 38 : failed
+j = 39 : failed
+j = 40 : failed
+j = 41 : failed
+j = 42 : failed
+24 2193 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739
+j = 44 : failed
+j = 45 : failed
+j = 46 : failed
+j = 47 : failed
+j = 48 : failed
+j = 49 : failed
+j = 50 : failed
+j = 51 : failed
+j = 52 : failed
+j = 53 : failed
+j = 54 : failed
+26 2334 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761
+j = 56 : failed
+j = 57 : failed
+j = 58 : failed
+j = 59 : same
+j = 60 : failed
+j = 61 : failed
+j = 62 : failed
+j = 63 : failed
+j = 64 : failed
+j = 65 : failed
+j = 66 : failed
+28 2465 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932
+j = 68 : failed
+j = 69 : failed
+j = 70 : failed
+j = 71 : same
+j = 72 : failed
+j = 73 : failed
+j = 74 : failed
+j = 75 : same
+j = 76 : failed
+j = 77 : failed
+j = 78 : failed
+30 2587 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92
+j = 80 : failed
+j = 81 : failed
+j = 82 : failed
+j = 83 : failed
+j = 84 : failed
+j = 85 : failed
+j = 86 : failed
+j = 87 : failed
+j = 88 : failed
+j = 89 : failed
+j = 90 : failed
+j = 91 : failed
+j = 92 : failed
+j = 93 : failed
+j = 94 : failed
+32 2702 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614
+j = 96 : failed
+j = 97 : failed
+j = 98 : failed
+j = 99 : failed
+j = 100 : failed
+34 2812 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52
+j = 102 : failed
+j = 103 : failed
+j = 104 : failed
+j = 105 : failed
+j = 106 : failed
+j = 107 : failed
+j = 108 : same
+j = 109 : failed
+j = 110 : failed
+j = 111 : failed
+j = 112 : failed
+j = 113 : failed
+j = 114 : same
+j = 115 : failed
+36 2914 669 676 133 198 450 951 100 778 310 519 383 634 558 961 188 638 785 848 752 387 375 578 680 739 653 761 635 932 396 92 882 614 406 52 224 120
