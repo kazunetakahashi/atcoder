@@ -2,9 +2,10 @@
 #include <vector>
 #include <algorithm>
 #include <random>
+#include <cmath>
 using namespace std;
 
-const int DEPTH = 5;
+const int DEPTH = 4;
 const int TIMES = 10000;
 
 struct point {
@@ -22,14 +23,15 @@ struct pass {
   vector<point> V;
   int reduce;
   int turn;
+  double hikaku;
   pass(vector<point> tV, int treduce, int tturn) {
     V = tV;
     reduce = treduce;
     turn = tturn;
+    hikaku = (reduce - turn)/sqrt((int)V.size()); 
   }
   bool operator<(const pass& right) const {
-    return ((reduce - turn)/(int)V.size() )
-      < ((right.reduce - right.turn)/(int)right.V.size() );
+    return hikaku < right.hikaku;
   }
 };
 
