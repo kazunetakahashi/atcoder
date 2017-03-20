@@ -470,7 +470,7 @@ void score() {
     pd += Y[i].dist(now[L][i]);
   }
   double pt = 10 + 0.01 * L;
-  memo[L] = 1e7/(pd * pt);
+  memo[L] = (1e7)/(pd * pt);
 }
 
 void solve() {
@@ -478,7 +478,7 @@ void solve() {
   for (auto i = 0; i < CARS; ++i) {
     moves.insert(i);
   }
-  for (L = 0; L < T; ++L) {
+  for (L = 0; L < 2000; ++L) {
     if (!time_ok()) {
       return;
     }
@@ -529,7 +529,35 @@ void solve() {
   int t = 0;
   for (auto i = 0; i < T; ++i) {
     if (maxi < memo[i]) {
+      cerr << memo[i] << endl;
       t = i;
+    }
+  }
+  L = t;
+  for (; L < T; ++L) {
+    if (!time_ok()) {
+      return;
+    }
+    for (auto i = 0; i < K; ++i) {
+      S[L+1].insert(now[L][i]);
+    }
+    int move_cars = 0;
+    for (auto i = 0; i < K; ++i) {
+      const Point& p = now[L][i];
+      int d = p.dist(Y[i]);
+      for (auto j = 0; j < 5; ++j) {
+        Point q = p + DX[j];
+        if (j == 4 || (valid(q, L+1) && q.dist(Y[i]) < d)) {
+          now[L+1][i] = q;
+          S[L+1].insert(q);
+          if (j < 4) ++move_cars;
+          break;
+        }
+      } 
+    }
+    make_ans(L);
+    if (move_cars < K * MIN_P) {
+      return;
     }
   }
 }
