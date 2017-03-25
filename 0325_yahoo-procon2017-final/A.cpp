@@ -37,7 +37,7 @@ string S;
 int dp[5][100010];
 
 void f5(int i, int j, int ii, int jj, int val) {
-  dp[i%5][j] = min(dp[i%5][j], dp[ii%5][jj%5] + val);
+  dp[i%5][j] = min(dp[i%5][j], dp[ii%5][jj] + val);
 }
 
 int main() {
