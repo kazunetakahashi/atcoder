@@ -101,7 +101,10 @@ int count_kukan(int x, int y) { // [x, y) で M の倍数探す。
   }
   while (left < right) {
     int col = left/C;
-    ans += cnt[col][(M - added[col])%M];
+    int t = (M - added[col])%M;
+    if (cnt[col].find(t) != cnt[col].end()) {
+      ans += cnt[col][t];
+    }
     left += C;
   }
   return ans;
