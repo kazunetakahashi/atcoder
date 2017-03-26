@@ -85,6 +85,7 @@ void add_kukan(int x, int y, ll k) { // [x, y) に k を足す
   while (left < right) {
     int col = left/C;
     added[col] += k;
+    added[col] %= M;
     left += C;
   }
 }
