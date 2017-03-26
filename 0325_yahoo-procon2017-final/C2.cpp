@@ -32,55 +32,58 @@ const int C = 350;
 // const ll M = 1000000007;
 
 int N, Q;
-ll M;
-ll A[100010];
+int M;
+int A[100010];
 int l[100010];
 int r[100010];
-ll d[100010];
+int d[100010];
 
-ll sq[C][C];
-map<ll, int> cnt[C];
-ll added[C];
+int sq[C][C];
+map<int, int> cnt[C];
+int added[C];
+
+int val(int i) {
+  return (sq[i/C][i%C] + added[i/C])%M;
+}
 
 void make_cnt(int col) {
   cnt[col].clear();
-  for (auto i = col*C; i < col*(C+1); ++i) {
-    if (cnt[col].find(A[i]) == cnt[col].end()) {
-      cnt[col][A[i]] = 1;
+  for (auto i = col*C; i < (col+1)*C; ++i) {
+    if (cnt[col].find(sq[col][i%C]) == cnt[col].end()) {
+      cnt[col][sq[col][i%C]] = 1;
     } else {
-      cnt[col][A[i]]++;
+      cnt[col][sq[col][i%C]]++;
     }
+    //cerr << "cnt[" << col << "][" << sq[col][i%C] << "] = "
+    //     << cnt[col][sq[col][i%C]] << endl;
   }
 }
 
-void add(int i, ll a) {
+void add(int i, int a) {
   sq[i/C][i%C] += a;
   sq[i/C][i%C] %= M;
   // cerr << "A[" << i << "] = " << sq[i/C][i%C] << endl;
 }
 
-ll val(int i) {
-  return (sq[i/C][i%C] + added[i/C])%M;
-}
-
-void add_kukan(int x, int y, ll k) { // [x, y) に k を足す
+void add_kukan(int x, int y, int k) { // [x, y) に k を足す
   // cerr << x << " " << y << endl;
   int left = x;
   int right = y;
-  bool done = false;
+  int col = -1;
   while (left < right && left%C != 0) {
+    col = left/C;
     add(left++, k);
-    done = true;
   }
-  if (done) {
-    make_cnt(left/C - 1);
+  if (col != -1) {
+    make_cnt(col);
   }
-  done = false;
+  col = -1;
   while (left < right && right%C != 0) {
     add(--right, k);
+    col = right/C;
   }
-  if (done) {
-    make_cnt(right/C);
+  if (col != -1) {
+    make_cnt(col);
   }
   while (left < right) {
     int col = left/C;
@@ -103,6 +106,13 @@ int count_kukan(int x, int y) { // [x, y) で M の倍数探す。
   while (left < right) {
     int col = left/C;
     int t = (M - added[col])%M;
+    /*
+    cerr << "t = " << t << endl;
+    cerr << "cnt[" << col << "]" << endl;
+    for (auto e : cnt[col]) {
+      cerr << e.first << " " << e.second << endl;
+    }
+    */
     if (cnt[col].find(t) != cnt[col].end()) {
       ans += cnt[col][t];
     }
@@ -132,6 +142,11 @@ int main () {
   }
   for (auto i = 0; i < Q; ++i) {
     add_kukan(l[i], r[i]+1, d[i]);
+    /*
+    for (auto j = 0; j < N; ++j) {
+      cerr << "val(" << j << ") = " << val(j) << endl;
+    }
+    */
     cout << count_kukan(l[i], r[i]+1) << endl;
   }
 }
