@@ -39,7 +39,7 @@ int r[100010];
 int d[100010];
 
 int sq[C][C];
-map<int, int> cnt[C];
+int cnt[C][100010];
 int added[C];
 
 int val(int i) {
@@ -47,13 +47,11 @@ int val(int i) {
 }
 
 void make_cnt(int col) {
-  cnt[col].clear();
+  for (auto i = 0; i < 100010; ++i) {
+    cnt[col][i] = 0;
+  }
   for (auto i = col*C; i < (col+1)*C; ++i) {
-    if (cnt[col].find(sq[col][i%C]) == cnt[col].end()) {
-      cnt[col][sq[col][i%C]] = 1;
-    } else {
-      cnt[col][sq[col][i%C]]++;
-    }
+    cnt[col][sq[col][i%C]]++;
     //cerr << "cnt[" << col << "][" << sq[col][i%C] << "] = "
     //     << cnt[col][sq[col][i%C]] << endl;
   }
@@ -113,9 +111,7 @@ int count_kukan(int x, int y) { // [x, y) で M の倍数探す。
       cerr << e.first << " " << e.second << endl;
     }
     */
-    if (cnt[col].find(t) != cnt[col].end()) {
-      ans += cnt[col][t];
-    }
+    ans += cnt[col][t];
     left += C;
   }
   return ans;
