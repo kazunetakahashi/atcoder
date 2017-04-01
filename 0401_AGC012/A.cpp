@@ -32,7 +32,7 @@ typedef long long ll;
 // const ll M = 1000000007;
 
 int N;
-ll a[100010];
+ll a[300010];
 
 int main () {
   cin >> N;
