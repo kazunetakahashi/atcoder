@@ -59,6 +59,6 @@ int main () {
     V[v].push_back(u);
   }
   for (auto i = 0; i < N; ++i) {
-    cout << fixed << setprecision(10) << solve(i, -1) << endl;
+    cout << fixed << setprecision(12) << solve(i, -1) << endl;
   }
 }
