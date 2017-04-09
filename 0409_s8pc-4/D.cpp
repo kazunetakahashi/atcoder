@@ -33,7 +33,6 @@ typedef long long ll;
 
 int N;
 vector<int> V[150010];
-double ans[150010];
 
 double solve(int root, int from) {
   int cnt = 0;
