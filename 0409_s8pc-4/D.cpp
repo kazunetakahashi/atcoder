@@ -51,7 +51,7 @@ double solve(int root, int from) {
 
 int main () {
   cin >> N;
-  for (auto i = 0; i < N; ++i) {
+  for (auto i = 0; i < N-1; ++i) {
     int u, v;
     cin >> u >> v;
     --u, --v;
