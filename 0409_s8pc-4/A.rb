@@ -1,6 +1,6 @@
 def f_or_l(str, text)
-  a = str.gsub(/?/, 'a')
-  z = str.gsub(/?/, 'z')
+  a = str.gsub(/\?/, 'a')
+  z = str.gsub(/\?/, 'z')
   if z < text
     return 2
   elsif a > text
