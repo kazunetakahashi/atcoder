@@ -12,7 +12,7 @@ end
 
 n = gets.to_i
 s = []
-for i in 0..n
+for i in 0...n
   s << gets.chomp
 end
 t = gets.chomp
@@ -30,7 +30,7 @@ s.each{|str|
 }
 
 ans = []
-for i in f..(n - l)
+for i in f...(n - l)
   ans << i
 end
 puts ans.join(" ")
