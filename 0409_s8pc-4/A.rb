@@ -31,6 +31,6 @@ s.each{|str|
 
 ans = []
 for i in f..(n - l)
-  ans << i+1
+  ans << i
 end
 puts ans.join(" ")
