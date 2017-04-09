@@ -23,9 +23,9 @@ l = 0
 s.each{|str|
   res = f_or_l(str, t)
   if res == 1
-    f += 1
-  elsif res == 2
     l += 1
+  elsif res == 2
+    f += 1
   end
 }
 
