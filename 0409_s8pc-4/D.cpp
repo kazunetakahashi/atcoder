@@ -48,7 +48,7 @@ double solve(int root, int from) {
     if (get<1>(x) < 0) {
       get<1>(x) = solve(get<0>(x), root) + 1;
     }
-    ans += get<1>(x) + 1;
+    ans += get<1>(x);
   }
   ans /= cnt;
   return ans;
