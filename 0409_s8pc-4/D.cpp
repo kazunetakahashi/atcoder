@@ -31,19 +31,24 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
+typedef tuple<int, double> pass;
+
 int N;
-vector<int> V[150010];
+vector<pass> V[150010];
 
 double solve(int root, int from) {
   int cnt = 0;
   for (auto x : V[root]) {
-    if (x != from) ++cnt;
+    if (get<0>(x) != from) ++cnt;
   }
   if (cnt == 0) return 0;
   double ans = 0;
   for (auto x : V[root]) {
-    if (x == from) continue;
-    ans += solve(x, root) + 1;
+    if (get<0>(x) == from) continue;
+    if (get<1>(x) < 0) {
+      get<1>(x) = solve(get<0>(x), root) + 1;
+    }
+    ans += get<1>(x) + 1;
   }
   ans /= cnt;
   return ans;
@@ -55,8 +60,8 @@ int main () {
     int u, v;
     cin >> u >> v;
     --u, --v;
-    V[u].push_back(v);
-    V[v].push_back(u);
+    V[u].push_back(pass(v, -1));
+    V[v].push_back(pass(u, -1));
   }
   for (auto i = 0; i < N; ++i) {
     cout << fixed << setprecision(12) << solve(i, -1) << endl;
