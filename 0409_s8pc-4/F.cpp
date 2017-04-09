@@ -50,7 +50,7 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     cin >> a[i] >> b[i] >> c[i] >> d[i] >> e[i];
     a[i]--; b[i]--;
-    if (c[i] == 'W') d[i] = -1 * d[i];
+    if (c[i] == 'E') d[i] = -1 * d[i];
   }
   assert(H == 1);
   for (auto i = 0; i < W-1; ++i) {
