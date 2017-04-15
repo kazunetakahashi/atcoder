@@ -86,9 +86,13 @@ int main () {
   x.a = {1, 0, 0};
   int cnt = 0;
   for (auto i = 0; i < M; ++i) {
-    x = mod_multiply(mod_pow(A, X[i] - 1 - cnt), x);
+    ll n = X[i] - 1 - cnt;
+    if (n > 0) {
+      x = mod_multiply(mod_pow(A, n), x);
+    }
     x = mod_multiply(B, x);
     cnt = X[i];
+    cerr << x.a[0] << endl;
   }
   x = mod_multiply(mod_pow(A, N - cnt), x);
   cout << x.a[0] << endl;
