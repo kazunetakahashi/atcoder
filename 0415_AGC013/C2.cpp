@@ -60,22 +60,30 @@ int main () {
   int branch = 0;
   if (W[0] == 0) {
     int counter = V[1].size();
-    branch += (T/L) * counter;
+    branch += (T/L) * 2 * counter;
     branch %= N;
     int nokori = T%L;
     for (auto x : V[1]) {
-      if (x - X[0] <= 2 * nokori) {
+      int kyori = (x + L - X[0])%L;
+      if (kyori <= 2 * nokori) {
+        branch++;
+      }
+      if (kyori + L <= 2 * nokori) {
         branch++;
       }
     }
     branch %= N;
   } else {
     int counter = V[0].size();
-    branch += N - (T/L) * counter;
+    branch += N - ((T/L) * 2 * counter)%N;
     branch %= N;
     int nokori = T%L;
     for (auto x : V[0]) {
-      if (L - (x - X[0]) <= 2 * nokori) {
+      int kyori = (X[0] + L - x)%L;
+      if (kyori <= 2 * nokori) {
+        branch += (N-1);
+      }
+      if (kyori + L <= 2 * nokori) {
         branch += (N-1);
       }
     }
