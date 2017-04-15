@@ -36,7 +36,7 @@ ll dp[3010][3010][2];
 
 int main () {
   cin >> N >> M;
-  for (auto i = 0; i < M; ++i) {
+  for (auto i = 0; i <= M; ++i) {
     for (auto j = 0; j <= N; ++j) {
       for (auto k = 0; k < 2; ++k) {
         dp[i][j][k] = 0;
@@ -54,6 +54,7 @@ int main () {
   }
   for (auto i = 0; i < M; ++i) {
     for (auto j = 0; j <= N; ++j) {
+      // dp[i][j][0]
       if (j == 1) {
         dp[i+1][j-1][1] += dp[i][j][0];
         dp[i+1][j-1][1] %= C;        
@@ -76,6 +77,7 @@ int main () {
         dp[i+1][j][0] += dp[i][j][0];
         dp[i+1][j][0] %= C;
       }
+      // dp[i][j][1]
       if (j > 0) {
         dp[i+1][j-1][1] += dp[i][j][1];
         dp[i+1][j-1][1] %= C;        
@@ -95,9 +97,19 @@ int main () {
     }
   }
   ll ans = 0;
+#if DEBUG == 1
+  for (auto i = 0; i <= M; ++i) {
+    for (auto j = 0; j <= N; ++j) {
+      for (auto k = 0; k < 2; ++k) {
+        cerr << "dp[" << i << "][" << j << "][" << k << "] = "
+             << dp[i][j][k] << endl; 
+      }
+    }
+  }  
+#endif
   for (auto j = 0; j <= N; ++j) {
     ans += dp[M][j][1];
-    ans %= M;
+    ans %= C;
   }
   cout << ans << endl;
 }
