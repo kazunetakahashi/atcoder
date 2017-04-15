@@ -64,7 +64,7 @@ int main () {
     branch %= N;
     int nokori = T%L;
     for (auto x : V[1]) {
-      if (x - X[0] < 2 * nokori) {
+      if (x - X[0] <= 2 * nokori) {
         branch++;
       }
     }
@@ -75,7 +75,7 @@ int main () {
     branch %= N;
     int nokori = T%L;
     for (auto x : V[0]) {
-      if (L - (x - X[0]) < 2 * nokori) {
+      if (L - (x - X[0]) <= 2 * nokori) {
         branch += (N-1);
       }
     }
@@ -87,14 +87,14 @@ int main () {
   sort(ans, ans+N);
   int zahyo = 0;
   if (W[0] == 0) {
-    for (auto i = 0; i < N; ++i) {
+    for (auto i = N-1; i >= 0; --i) {
       if (memo == ans[i]) {
         zahyo = (i + N - branch)%N;
         break;
       }
     }    
   } else {
-    for (auto i = N-1; i >= 0; --i) {
+    for (auto i = 0; i < N; ++i) {
       if (memo == ans[i]) {
         zahyo = (i + N - branch)%N;
         break;
