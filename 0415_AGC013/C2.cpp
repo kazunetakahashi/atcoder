@@ -56,7 +56,6 @@ int main () {
       ans[i] = X[i] + L - T%L;
       ans[i] %= L;  
     }
-    cerr << "ans[" << i << "] = " << ans[i] << endl;
   }
   int branch = 0;
   if (W[0] == 0) {
@@ -82,12 +81,9 @@ int main () {
     }
     branch %= N;
   }
-  for (auto i = 0; i < N; ++i) {
-    cerr << "ans[" << i << "] = " << ans[i] << endl;
-  }
   cerr << "branch = " << branch << endl;
   int memo = ans[0];
-  cerr << "memo = " << branch << endl;
+  cerr << "memo = " << memo << endl;
   sort(ans, ans+N);
   int zahyo = 0;
   if (W[0] == 0) {
@@ -99,6 +95,7 @@ int main () {
     }    
   } else {
     for (auto i = N-1; i >= N; --i) {
+      cerr << "ans[" << i << "] = " << ans[i] << endl;
       if (memo == ans[i]) {
         zahyo = (i + N - branch)%N;
         break;
