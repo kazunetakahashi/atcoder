@@ -56,6 +56,7 @@ int main () {
       ans[i] = X[i] + L - T%L;
       ans[i] %= L;  
     }
+    cerr << "ans[" << i << "] = " << ans[i] << endl;
   }
   int branch = 0;
   if (W[0] == 0) {
