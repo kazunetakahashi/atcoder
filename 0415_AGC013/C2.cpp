@@ -82,7 +82,25 @@ int main () {
     branch %= N;
   }
   cerr << "branch = " << branch << endl;
+  int memo = ans[0];
+  sort(ans, ans+N);
+  int zahyo = 0;
+  if (W[0] == 0) {
+    for (auto i = 0; i < N; ++i) {
+      if (memo == ans[i]) {
+        zahyo = (i + N - branch)%N;
+        break;
+      }
+    }    
+  } else {
+    for (auto i = N-1; i >= N; --i) {
+      if (memo == ans[i]) {
+        zahyo = (i + N - branch)%N;
+        break;
+      }
+    }    
+  }
   for (auto i = 0; i < N; ++i) {
-    cout << ans[(i + N - branch)%N] << endl;
+    cout << ans[(zahyo + i)%N] << endl;
   }
 }
