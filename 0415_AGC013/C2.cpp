@@ -94,8 +94,7 @@ int main () {
       }
     }    
   } else {
-    for (auto i = N-1; i >= N; --i) {
-      cerr << "ans[" << i << "] = " << ans[i] << endl;
+    for (auto i = N-1; i >= 0; --i) {
       if (memo == ans[i]) {
         zahyo = (i + N - branch)%N;
         break;
