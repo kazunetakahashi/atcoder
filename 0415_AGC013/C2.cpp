@@ -83,6 +83,7 @@ int main () {
   }
   cerr << "branch = " << branch << endl;
   int memo = ans[0];
+  cerr << "memo = " << branch << endl;
   sort(ans, ans+N);
   int zahyo = 0;
   if (W[0] == 0) {
