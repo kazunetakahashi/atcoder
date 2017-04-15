@@ -43,15 +43,13 @@ int main () {
       }
     }
   }
-  for (auto i = 0; i < M; ++i) {
-    for (auto j = 0; j <= N; ++j) {
-      if (j == 0) {
-        dp[i][j][0] = 0;
-        dp[i][j][1] = 1;        
-      } else {
-        dp[i][j][0] = 1;
-        dp[i][j][1] = 0;
-      }
+  for (auto j = 0; j <= N; ++j) {
+    if (j == 0) {
+      dp[0][j][0] = 0;
+      dp[0][j][1] = 1;        
+    } else {
+      dp[0][j][0] = 1;
+      dp[0][j][1] = 0;
     }
   }
   for (auto i = 0; i < M; ++i) {
