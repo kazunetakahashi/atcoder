@@ -92,7 +92,7 @@ int main () {
     }
     x = mod_multiply(B, x);
     cnt = X[i];
-    cerr << x.a[0] << endl;
+    // cerr << x.a[0] << endl;
   }
   x = mod_multiply(mod_pow(A, N - cnt), x);
   cout << x.a[0] << endl;
