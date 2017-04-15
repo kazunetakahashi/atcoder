@@ -82,9 +82,11 @@ int main () {
       int kyori = (X[0] + L - x)%L;
       if (kyori <= 2 * nokori) {
         branch += (N-1);
+        branch %= N;
       }
       if (kyori + L <= 2 * nokori) {
         branch += (N-1);
+        branch %= N;
       }
     }
     branch %= N;
