@@ -82,6 +82,9 @@ int main () {
     }
     branch %= N;
   }
+  for (auto i = 0; i < N; ++i) {
+    cerr << "ans[" << i << "] = " << ans[i] << endl;
+  }
   cerr << "branch = " << branch << endl;
   int memo = ans[0];
   cerr << "memo = " << branch << endl;
