@@ -100,6 +100,7 @@ int main () {
       }
     }    
   }
+  cerr << "zahyo = " << zahyo << endl;
   for (auto i = 0; i < N; ++i) {
     cout << ans[(zahyo + i)%N] << endl;
   }
