@@ -64,7 +64,7 @@ int main () {
     branch %= N;
     int nokori = T%L;
     for (auto x : V[1]) {
-      if (x - X[0] <= 2 * nokori) {
+      if (x - X[0] < 2 * nokori) {
         branch++;
       }
     }
@@ -75,7 +75,7 @@ int main () {
     branch %= N;
     int nokori = T%L;
     for (auto x : V[0]) {
-      if (L - (x - X[0]) <= 2 * nokori) {
+      if (L - (x - X[0]) < 2 * nokori) {
         branch += (N-1);
       }
     }
