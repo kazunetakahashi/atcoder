@@ -43,7 +43,22 @@ struct matrix {
     row = N;
     col = M;
   }
+  string to_s() const {
+    string res = "";
+    for (auto i=0; i<row; i++) {
+      for (auto j=0; j<col; j++) {
+        res += to_string(a[i*col+j]);
+        if (j != col-1) res += " ";
+      }
+      if (i != row-1) res += "\n";
+    }
+    return res;
+  }
 };
+
+ostream& operator<<(ostream& s, const matrix A) { // cout << A << endl; で苦もなく表示。
+  return s << A.to_s();
+}
 
 mattype MOD = 1000000007; 
 
@@ -79,9 +94,11 @@ int main () {
     cin >> X[i];
   }
   matrix A(3, 3);
-  A.a = {1, 1, 1, 2, 1, 0, 1, 1, 1};
+  A.a = {2, 1, 1, 2, 1, 0, 1, 1, 1};
   matrix B(3, 3);
   B.a = {1, 0, 0, 2, 1, 0, 1, 1, 1};
+  matrix C(3, 3);
+  C.a = {1, 1, 1, 0, 0, 0, 0, 0, 0};
   matrix x(3, 1);
   x.a = {1, 0, 0};
   int cnt = 0;
@@ -89,11 +106,17 @@ int main () {
     ll n = X[i] - 1 - cnt;
     if (n > 0) {
       x = mod_multiply(mod_pow(A, n), x);
+      // cerr << "x = " << x << endl;
     }
     x = mod_multiply(B, x);
+    // cerr << "x = " << x << endl;
     cnt = X[i];
-    // cerr << x.a[0] << endl;
   }
-  x = mod_multiply(mod_pow(A, N - cnt), x);
+  int n = N - cnt - 1;
+  if (n > 0) {
+    x = mod_multiply(mod_pow(A, n), x);
+  }
+  x = mod_multiply(C, x);
+  // cerr << "x = " << x << endl;
   cout << x.a[0] << endl;
 }
