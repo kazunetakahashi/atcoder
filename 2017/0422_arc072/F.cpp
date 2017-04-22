@@ -39,7 +39,7 @@ ll C;
 ll V;
 
 typedef tuple<ll, ll> info;
-priority_queue<info> Q;
+priority_queue<info, vector<info>, greater<info> > Q;
 
 int main () {
   cin >> N >> L;
