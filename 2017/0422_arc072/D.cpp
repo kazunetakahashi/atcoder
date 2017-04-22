@@ -41,6 +41,9 @@ bool ok() {
   if (Y == 0) {
     return true;
   }
+  if (X == 2 && Y == 1) {
+    return false;
+  }
   if (X == Y) {
     return false;
   }
@@ -49,5 +52,5 @@ bool ok() {
 
 int main () {
   cin >> X >> Y;
-  cout << (ok() ? "Alice" : "Bob") << endl;
+  cout << (ok() ? "Alice" : "Brown") << endl;
 }
