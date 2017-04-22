@@ -49,5 +49,5 @@ bool ok() {
 
 int main () {
   cin >> X >> Y;
-  cout << (ok ? "Alice" : "Bob") << endl;
+  cout << (ok() ? "Alice" : "Bob") << endl;
 }
