@@ -60,7 +60,7 @@ int main () {
     }
     positive = !positive;
   }
-  ans = min(ans, sum);
+  ans = min(ans, cost);
   
   sum = 0;
   cost = 0;
@@ -82,6 +82,6 @@ int main () {
     }
     positive = !positive;
   }
-  ans = min(ans, sum);
+  ans = min(ans, cost);
   cout << ans << endl;
 }
