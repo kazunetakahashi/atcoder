@@ -32,12 +32,12 @@ typedef long long ll;
 // const ll M = 1000000007;
 
 int N;
-vector<int> V[4];
-vector<int> S[4];
-int W;
-int w[110];
-int v[110];
-int K;
+vector<ll> V[4];
+vector<ll> S[4];
+ll W;
+ll w[110];
+ll v[110];
+ll K;
 
 int main () {
   cin >> N >> W;
@@ -58,11 +58,11 @@ int main () {
       S[i].push_back(sum);
     }
   }
-  int ans = 0;
-  for (auto i = 0; i < (int)S[0].size(); ++i) {
-    for (auto j = 0; j < (int)S[1].size(); ++j) {
-      for (auto k = 0; k < (int)S[2].size(); ++k) {
-        int weight = (i+j+k) * K + j + 2 * k;
+  ll ans = 0;
+  for (ll i = 0; i < (ll)S[0].size(); ++i) {
+    for (ll j = 0; j < (ll)S[1].size(); ++j) {
+      for (ll k = 0; k < (ll)S[2].size(); ++k) {
+        ll weight = (i+j+k) * K + j + 2 * k;
         if (W < weight) continue;
         int l = (W - weight)/(K+3);
         ans = max(ans, S[0][i] + S[1][j] + S[2][k] + S[3][l]);
