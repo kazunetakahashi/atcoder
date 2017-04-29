@@ -55,7 +55,7 @@ int main () {
     S[i].push_back(0);
     for (auto x : V[i]) {
       sum += x;
-      S[i].push_back(x);
+      S[i].push_back(sum);
     }
   }
   int ans = 0;
