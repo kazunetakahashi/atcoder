@@ -95,6 +95,7 @@ int main () {
         break;
       }
     }
+    ans = min(ans, under * (maxi - mini));
   }
   cout << ans << endl;
 }
