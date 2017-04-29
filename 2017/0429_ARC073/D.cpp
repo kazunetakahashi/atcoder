@@ -66,7 +66,7 @@ int main () {
         if (W < weight) continue;
         ll l = (W - weight)/(K+3);
         // cerr << i << " " << j << " " << k << " " << l << endl;
-        if (l > (ll)S[3].size()) l = (ll)S[3].size() - 1;
+        if (l >= (ll)S[3].size()) l = (ll)S[3].size() - 1;
         ans = max(ans, S[0][i] + S[1][j] + S[2][k] + S[3][l]);
       }
     }
