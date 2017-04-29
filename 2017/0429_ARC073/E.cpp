@@ -95,7 +95,13 @@ int main () {
         if (S.find((*upper_it).second) != S.end()) break;
         lower_it++;
       }
-      under = min(under, (*upper_it).first - (*lower_it).first);
+      ll lo;
+      if (lower_it == lower.end()) {
+        lo = lb;
+      } else {
+        lo = (*lower_it).first;
+      }
+      under = min(under, (*upper_it).first - lo);
       upper_it++;
     }
     ans = min(ans, under * (maxi - mini));
