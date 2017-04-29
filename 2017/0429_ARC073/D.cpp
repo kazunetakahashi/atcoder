@@ -64,8 +64,10 @@ int main () {
       for (ll k = 0; k < (ll)S[2].size(); ++k) {
         ll weight = (i+j+k) * K + j + 2 * k;
         if (W < weight) continue;
-        int l = (W - weight)/(K+3);
-        ans = max(ans, S[0][i] + S[1][j] + S[2][k] + S[3][l]);
+        ll l = (W - weight)/(K+3);
+        if (l < (ll)S[3].size()) {
+          ans = max(ans, S[0][i] + S[1][j] + S[2][k] + S[3][l]);
+        }
       }
     }
   }
