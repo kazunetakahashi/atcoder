@@ -81,30 +81,35 @@ int main () {
         lower.push_back(state(y[i], i));      
       }
     }
-    sort(upper.begin(), upper.end());
-    reverse(upper.begin(), upper.end());
-    sort(lower.begin(), lower.end());
-    auto upper_it = upper.begin();
-    auto lower_it = lower.begin();
-    ll under = min(ub - (*lower_it).first, (*upper_it).first - lb);
-    set<int> S;
-    while (upper_it < upper.end()) {
-      while (S.find((*upper_it).second) == S.end()) {
-        assert(lower_it < lower.end());
-        S.insert((*lower_it).second);
-        if (S.find((*upper_it).second) != S.end()) break;
-        lower_it++;
+    if (!upper.empty()) {
+      assert(!lower.empty());
+      sort(upper.begin(), upper.end());
+      reverse(upper.begin(), upper.end());
+      sort(lower.begin(), lower.end());
+      auto upper_it = upper.begin();
+      auto lower_it = lower.begin();
+      ll under = min(ub - (*lower_it).first, (*upper_it).first - lb);
+      set<int> S;
+      while (upper_it < upper.end()) {
+        while (S.find((*upper_it).second) == S.end()) {
+          assert(lower_it < lower.end());
+          S.insert((*lower_it).second);
+          if (S.find((*upper_it).second) != S.end()) break;
+          lower_it++;
+        }
+        ll lo;
+        if (lower_it == lower.end()) {
+          lo = lb;
+        } else {
+          lo = (*lower_it).first;
+        }
+        under = min(under, (*upper_it).first - lo);
+        upper_it++;
       }
-      ll lo;
-      if (lower_it == lower.end()) {
-        lo = lb;
-      } else {
-        lo = (*lower_it).first;
-      }
-      under = min(under, (*upper_it).first - lo);
-      upper_it++;
+      ans = min(ans, under * (maxi - mini));
+    } else {
+      ans = min(ans, (maxi - mini) * (ub - lb));
     }
-    ans = min(ans, under * (maxi - mini));
   }
   cout << ans << endl;
 }
