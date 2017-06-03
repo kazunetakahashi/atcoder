@@ -43,6 +43,12 @@ ll rev(ll n) {
   return stoll(s);
 }
 
+ll rev2(ll n) {
+  string s = to_string(n);
+  reverse(s.begin(), s.end());
+  return stoll(s); 
+}
+
 int main () {
   ll D;
   cin >> D;
@@ -67,7 +73,7 @@ int main () {
     for (auto i = 0; i < M; ++i) {
       ll add = i + rev(i);
       ll t = base + add;
-      if (t + D == rev(t)) {
+      if (t + D == rev2(t)) {
         ++ans;
       }
     }
