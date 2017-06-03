@@ -49,6 +49,7 @@ int main () {
   bool ok = false;
   int base;
   for (auto i = 1; i < 10000; ++i) {
+    cerr << "i = " << i << ", rev(" << i << ") = " << rev(i) << endl;
     if (i + D == rev(i)) {
       base = i;
       ok = true;
