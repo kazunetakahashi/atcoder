@@ -70,7 +70,7 @@ int main () {
   // cerr << "base = " << base << endl;
   if (ok) {
     ll ans = 0;
-    for (auto i = 0; i < M; ++i) {
+    for (auto i = 0; i < M * 10; ++i) {
       ll add = i + rev(i);
       ll t = base + add;
       if (t + D == rev2(t)) {
