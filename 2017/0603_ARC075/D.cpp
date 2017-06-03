@@ -61,5 +61,5 @@ int main () {
       lb = t;
     }
   }
-  cout << lb << endl;
+  cout << ub << endl;
 }
