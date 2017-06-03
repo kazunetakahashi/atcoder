@@ -31,12 +31,12 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
-int S;
-int M;
+ll S;
+ll M;
 
-int rev(int n) {
+ll rev(ll n) {
   string s = to_string(n);
-  while ((int)s.size() < S) {
+  while ((ll)s.size() < S) {
     s = '0' + s;
   }
   reverse(s.begin(), s.end());
@@ -44,7 +44,7 @@ int rev(int n) {
 }
 
 int main () {
-  int D;
+  ll D;
   cin >> D;
   S = to_string(D).size();
   M = 1;
@@ -52,7 +52,7 @@ int main () {
     M *= 10;
   }
   bool ok = false;
-  int base;
+  ll base;
   for (auto i = 1; i < M; ++i) {
     // cerr << "i = " << i << ", rev(" << i << ") = " << rev(i) << endl;
     if (i + D == rev(i)) {
@@ -63,10 +63,10 @@ int main () {
   }
   // cerr << "base = " << base << endl;
   if (ok) {
-    int ans = 0;
+    ll ans = 0;
     for (auto i = 1; i < M; ++i) {
-      int add = i + rev(i);
-      int t = base + add;
+      ll add = i + rev(i);
+      ll t = base + add;
       if (t + D == rev(t)) {
         ++ans;
       }
