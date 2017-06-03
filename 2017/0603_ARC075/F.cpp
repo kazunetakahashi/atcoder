@@ -67,9 +67,6 @@ int main () {
     for (auto i = 0; i < M; ++i) {
       ll add = i + rev(i);
       ll t = base + add;
-      if ((ll)to_string(t).size() < S) {
-        continue;
-      }
       if (t + D == rev(t)) {
         ++ans;
       }
