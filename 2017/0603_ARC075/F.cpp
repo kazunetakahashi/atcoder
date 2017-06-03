@@ -32,6 +32,7 @@ typedef long long ll;
 // const ll M = 1000000007;
 
 int S;
+int M;
 
 int rev(int n) {
   string s = to_string(n);
@@ -46,18 +47,24 @@ int main () {
   int D;
   cin >> D;
   S = to_string(D).size();
+  M = 1;
+  for (auto i = 0; i < (S+1)/2; ++i) {
+    M *= 10;
+  }
   bool ok = false;
   int base;
-  for (auto i = 1; i < 10000; ++i) {
-    cerr << "i = " << i << ", rev(" << i << ") = " << rev(i) << endl;
+  for (auto i = 1; i < M; ++i) {
+    // cerr << "i = " << i << ", rev(" << i << ") = " << rev(i) << endl;
     if (i + D == rev(i)) {
       base = i;
       ok = true;
+      break;
     }
   }
+  // cerr << "base = " << base << endl;
   if (ok) {
     int ans = 0;
-    for (auto i = 1; i < 10000; ++i) {
+    for (auto i = 1; i < M; ++i) {
       int add = i + rev(i);
       int t = base + add;
       if (t + D == rev(t)) {
