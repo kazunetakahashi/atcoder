@@ -68,13 +68,17 @@ int main () {
     }
   }
   // cerr << "base = " << base << endl;
+  set<ll> S;
   if (ok) {
     ll ans = 0;
     for (auto i = 0; i < M * 10; ++i) {
       ll add = i + rev(i);
-      ll t = base + add;
-      if (t + D == rev2(t)) {
-        ++ans;
+      if (S.find(add) == S.end()) {
+        S.insert(add);
+        ll t = base + add;
+        if (t + D == rev2(t)) {
+          ++ans;
+        }
       }
     }
     cout << ans << endl;
