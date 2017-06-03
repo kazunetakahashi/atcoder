@@ -64,9 +64,12 @@ int main () {
   // cerr << "base = " << base << endl;
   if (ok) {
     ll ans = 0;
-    for (auto i = 1; i < M; ++i) {
+    for (auto i = 0; i < M; ++i) {
       ll add = i + rev(i);
       ll t = base + add;
+      if ((ll)to_string(t).size() < S) {
+        continue;
+      }
       if (t + D == rev(t)) {
         ++ans;
       }
