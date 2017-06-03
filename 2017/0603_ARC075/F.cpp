@@ -40,7 +40,7 @@ ll rev(ll n) {
     s = '0' + s;
   }
   reverse(s.begin(), s.end());
-  return stoi(s);
+  return stoll(s);
 }
 
 int main () {
