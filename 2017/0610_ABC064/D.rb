@@ -2,7 +2,7 @@ n = gets.to_i
 s = gets.chomp
 need = 0
 right = 0
-s.each{|c|
+s.chars{|c|
   if c == '('
     right -= 1
   else
@@ -15,7 +15,7 @@ need.times {
 }
 left = 0
 right = 0
-s.each{|c|
+s.chars{|c|
   if c == '('
     left += 1
   else
