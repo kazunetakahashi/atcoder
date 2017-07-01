@@ -43,7 +43,11 @@ int main () {
   }
   ll sum = 0;
   for (auto i = 0; i < n-1; ++i) {
-    sum += abs(a[i+1] - a[i]);
+    if (a[i+1] > a[i]) {
+      sum += a[i+1] - a[i];
+    } else {
+      sum += m - a[i] + a[i+1];
+    }
   }
   cerr << "sum = " << sum << endl;
   fill(&imos[0][0], &imos[0][0]+3*100010, 0);
