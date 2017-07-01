@@ -56,22 +56,21 @@ int main () {
       imos[0][1] += 1;
       imos[0][a[i+1]+1] -= 1;
       imos[0][a[i]+2] += 1;
-      imos[0][m+1] -= 1;
       imos[2][1] += m - (a[i] + 1);
-      imos[2][a[i+1] + 1] -= m - (a[i] + 1) + (a[i+1] + 1);
+      imos[2][a[i+1]+1] -= m - (a[i] + 1) + (a[i+1] + 1);
     }
   }
   for (auto k = 0; k < 3; ++k) {
-    for (auto i = 1; i < m+2; ++i) {
+    for (auto i = 1; i < m+10; ++i) {
       cerr << "imos[" << k << "][" << i << "] = " << imos[k][i] << endl;
     }
   }
   for (auto k = 0; k < 3; ++k) {
-    for (auto i = 0; i < m+2; ++i) {
+    for (auto i = 0; i < m+10; ++i) {
       imos[k][i+1] += imos[k][i];
     }
     if (k < 2) {
-      for (auto i = 0; i <= m+2; ++i) {
+      for (auto i = 0; i <= m+10; ++i) {
         imos[k+1][i] += imos[k][i];
       }
     }
