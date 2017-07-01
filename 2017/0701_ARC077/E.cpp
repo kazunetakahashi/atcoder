@@ -79,6 +79,9 @@ int main () {
       }
     }
   }
+  for (auto i = 1; i < m+10; ++i) {
+    cerr << "imos[" << 2 << "][" << i << "] = " << imos[2][i] << endl;
+  }
   ll ans = 0;
   for (auto i = 1; i <= m; ++i) {
     ans = max(ans, imos[2][i]);
