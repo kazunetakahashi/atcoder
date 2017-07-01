@@ -65,21 +65,21 @@ int main () {
     }
   }
   for (auto k = 0; k < 3; ++k) {
-    for (auto i = 1; i < m+10; ++i) {
+    for (auto i = 1; i < m+2; ++i) {
       cerr << "imos[" << k << "][" << i << "] = " << imos[k][i] << endl;
     }
   }
   for (auto k = 0; k < 3; ++k) {
-    for (auto i = 0; i < m+10; ++i) {
+    for (auto i = 0; i < m+2; ++i) {
       imos[k][i+1] += imos[k][i];
     }
     if (k < 2) {
-      for (auto i = 0; i <= m+10; ++i) {
+      for (auto i = 0; i <= m+2; ++i) {
         imos[k+1][i] += imos[k][i];
       }
     }
   }
-  for (auto i = 1; i < m+10; ++i) {
+  for (auto i = 1; i < m+2; ++i) {
     cerr << "imos[" << 2 << "][" << i << "] = " << imos[2][i] << endl;
   }
   ll ans = 0;
