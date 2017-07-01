@@ -45,6 +45,7 @@ int main () {
   for (auto i = 0; i < n-1; ++i) {
     sum += abs(a[i+1] - a[i]);
   }
+  cerr << "sum = " << sum << endl;
   fill(&imos[0][0], &imos[0][0]+3*100010, 0);
   for (auto i = 0; i < n-1; ++i) {
     if (a[i] < a[i+1]) {
@@ -61,13 +62,18 @@ int main () {
     }
   }
   for (auto k = 0; k < 3; ++k) {
+    for (auto i = 1; i < m+2; ++i) {
+      cerr << "imos[" << k << "][" << i << "] = " << imos[k][i] << endl;
+    }
+  }
+  for (auto k = 0; k < 3; ++k) {
     for (auto i = 0; i < m+2; ++i) {
       imos[k][i+1] += imos[k][i];
     }
     if (k < 2) {
       for (auto i = 0; i <= m+2; ++i) {
         imos[k+1][i] += imos[k][i];
-      }      
+      }
     }
   }
   ll ans = 0;
