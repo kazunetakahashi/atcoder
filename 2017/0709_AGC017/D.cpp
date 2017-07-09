@@ -62,11 +62,11 @@ int grundy(int v) {
     ans = 0;
     for (auto x : V[v]) {
       if (x != parent[v]) {
-        ans ^= grundy(x);
+        ans ^= (grundy(x) + 1);
       }
     }
   }
-  cerr << "grundy(" << v << ") = " << ans << endl;
+  // cerr << "grundy(" << v << ") = " << ans << endl;
   return ans;
 }
 
