@@ -38,12 +38,14 @@ int main () {
   ll T = B + D * N - A;
   ll delta = D - C;
   ll wari = 2 * D - delta;
-  cerr << T << " " << delta << " " << wari << endl;
+  // cerr << T << " " << delta << " " << wari << endl;
   assert(wari >= 0);
   ll sup = T / wari;
+  sup = max(sup, N);
   ll inf = (T - N * delta + wari - 1) / wari;
+  inf = min(inf, (ll)0);
   for (auto i = inf; i <= sup; ++i) {
-    cerr << i << endl;
+    // cerr << i << endl;
     cout << "YES" << endl;
     return 0;
   }
