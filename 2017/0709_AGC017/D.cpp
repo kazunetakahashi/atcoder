@@ -66,7 +66,7 @@ int grundy(int v) {
       }
     }
   }
-  // cerr << "grundy(" << v << ") = " << ans << endl;
+  cerr << "grundy(" << v << ") = " << ans << endl;
   return ans;
 }
 
