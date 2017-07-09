@@ -49,23 +49,25 @@ void make_parent(int v, int p) {
 int grundy(int v) {
   int s = V[v].size();
   if (v == 0) ++s;
+  int ans;
   if (s == 1) {
-    return 0;
+    ans = 0;
   } else if (s == 2) {
     for (auto x : V[v]) {
       if (x != parent[v]) {
-        return grundy(x) + 1;
+        ans = grundy(x) + 1;
       }
     }
   } else {
-    int ans = 0;
+    ans = 0;
     for (auto x : V[v]) {
       if (x != parent[v]) {
-        return ans ^= grundy(x);
+        ans ^= grundy(x);
       }
     }
-    return ans;
   }
+  // cerr << "grundy(" << v << ") = " << ans << endl;
+  return ans;
 }
 
 int main () {
