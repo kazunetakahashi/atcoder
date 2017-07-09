@@ -57,6 +57,9 @@ int main () {
     C[A[i]]++;
   }
   for (auto i = 0; i < N; ++i) {
+    cerr << C[i] << " ";
+  }
+  for (auto i = 0; i < N; ++i) {
     for (auto j = max(0, i-C[A[i]]+1); j <= i; ++j) {
       S[j]++;
     }
