@@ -61,6 +61,10 @@ int main () {
       S[j]++;
     }
   }
+  for (auto i = 0; i < N; ++i) {
+    cerr << S[i] << " ";
+  }
+  cerr << endl;
   int ans = 0;
   for (auto i = 0; i < N; ++i) {
     if (S[i] == 0) ++ans;
@@ -68,7 +72,6 @@ int main () {
   for (auto k = 0; k < M; ++k) {
     int before = A[X[k]];
     int after = Y[k];
-    A[X[k]] = after;
     S[before - C[before] + 1]--;
     if (S[before - C[before] + 1] == 0) {
       ans++;
@@ -79,6 +82,7 @@ int main () {
     }    
     C[before]--;
     C[after]++;
+    A[X[k]] = after;
     cout << ans << endl;
   }
 }
