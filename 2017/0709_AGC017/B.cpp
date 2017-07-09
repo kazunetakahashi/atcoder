@@ -34,7 +34,7 @@ typedef long long ll;
 int main () {
   ll N, A, B, C, D;
   cin >> N >> A >> B >> C >> D;
-  ll T = B + 2 * D * N - A;
+  ll T = B + D * N - A;
   ll delta = D - C;
   ll wari = 2 * D - delta;
   cerr << T << " " << delta << " " << wari << endl;
