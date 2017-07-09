@@ -68,7 +68,7 @@ void visit(int i, int p) {
     int now = p;
     bool ok = false;
     while (now != i) {
-      if (output[now] == input[now]) {
+      if (output[now] == 1 && input[now] == 1) {
         now = from[now];
       } else {
         ok = true;
