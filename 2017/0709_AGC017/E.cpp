@@ -64,11 +64,12 @@ void add_edge(int i) {
 
 void visit(int i, int p) {
   if (visited[i] == -1) {
+    from[i] = p;
     int now = p;
     bool ok = false;
-    while (now != -1) {
+    while (now != i) {
       if (output[now] == input[now]) {
-        now = visited[now];
+        now = from[now];
       } else {
         ok = true;
         break;
@@ -78,11 +79,12 @@ void visit(int i, int p) {
       ret = false;
     }
   } else if (visited[i] == -2) {
+    from[i] = p;
     visited[i] = -1;
     for (auto x : V[i]) {
       visit(x, i);
     }
-    visited[i] = p;
+    visited[i] = 0;
   }
 }
 
@@ -107,9 +109,10 @@ int main () {
     }
   }
   fill(visited, visited+420, -2);
+  fill(from, from+420, -1);
   for (auto i = 1; i <= H; ++i) {
-    visit(i + M, -3);
-    visit(-i + M, -3);
+    visit(i + M, -1);
+    visit(-i + M, -1);
   }
   cout << (ret ? "YES" : "NO") << endl;
 }
