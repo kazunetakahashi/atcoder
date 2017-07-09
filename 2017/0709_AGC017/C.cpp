@@ -92,12 +92,10 @@ int main () {
     C[before]--;
     C[after]++;
     A[X[k]] = after;
-    /*
     for (auto i = 0; i < N; ++i) {
       cerr << S[i] << " ";
     }
     cerr << endl;
-    */
     cout << ans << endl;
   }
 }
