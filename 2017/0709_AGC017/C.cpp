@@ -74,28 +74,37 @@ int main () {
   for (auto k = 0; k < M; ++k) {
     int before = A[X[k]];
     int after = Y[k];
-    assert(C[before] > 0);
-    int kezuru = before - C[before] + 1;
-    int fuyasu = after - C[after];
-    if (kezuru >= 0) {
-      S[kezuru]--;
-      if (S[kezuru] == 0) {
-        ans++;
+    if (before != after) {
+      int kezuru = before - C[before] + 1;
+      int fuyasu = after - C[after];
+      if (kezuru >= 0) {
+        S[kezuru]--;
+        if (S[kezuru] == 0) {
+          ans++;
+        }
       }
+      if (fuyasu >= 0) {
+        if (S[fuyasu] == 0) {
+          ans--;
+        }    
+        S[fuyasu]++;      
+      }
+      C[before]--;
+      C[after]++;
+      A[X[k]] = after;
+      /*
+      cerr << "A: ";
+      for (auto i = 0; i < N; ++i) {
+        cerr << A[i] << " ";
+      }
+      cerr << endl;
+      cerr << "S: ";
+      for (auto i = 0; i < N; ++i) {
+        cerr << S[i] << " ";
+      }
+      cerr << endl;
+      */
     }
-    if (fuyasu >= 0) {
-      if (S[fuyasu] == 0) {
-        ans--;
-      }    
-      S[fuyasu]++;      
-    }
-    C[before]--;
-    C[after]++;
-    A[X[k]] = after;
-    for (auto i = 0; i < N; ++i) {
-      cerr << S[i] << " ";
-    }
-    cerr << endl;
     cout << ans << endl;
   }
 }
