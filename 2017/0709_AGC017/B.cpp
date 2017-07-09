@@ -41,6 +41,7 @@ int main () {
   ll sup = T / wari;
   ll inf = (T - N * delta + wari - 1) / wari;
   for (auto i = inf; i <= sup; ++i) {
+    cerr << i << endl;
     cout << "YES" << endl;
     return 0;
   }
