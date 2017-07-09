@@ -59,15 +59,12 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     cerr << C[i] << " ";
   }
+  cerr << endl;
   for (auto i = 0; i < N; ++i) {
-    for (auto j = max(0, i-C[A[i]]+1); j <= i; ++j) {
+    for (auto j = max(0, i-C[i]+1); j <= i; ++j) {
       S[j]++;
     }
   }
-  for (auto i = 0; i < N; ++i) {
-    cerr << S[i] << " ";
-  }
-  cerr << endl;
   int ans = 0;
   for (auto i = 0; i < N; ++i) {
     if (S[i] == 0) ++ans;
@@ -79,13 +76,17 @@ int main () {
     if (S[before - C[before] + 1] == 0) {
       ans++;
     }
-    S[after - C[after]]++;
-    if (S[after - C[after]] > 0) {
+    if (S[after - C[after]] == 0) {
       ans--;
     }    
+    S[after - C[after]]++;
     C[before]--;
     C[after]++;
     A[X[k]] = after;
+    for (auto i = 0; i < N; ++i) {
+      cerr << S[i] << " ";
+    }
+    cerr << endl;
     cout << ans << endl;
   }
 }
