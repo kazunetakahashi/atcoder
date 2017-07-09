@@ -56,10 +56,12 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     C[A[i]]++;
   }
+  /*
   for (auto i = 0; i < N; ++i) {
     cerr << C[i] << " ";
   }
   cerr << endl;
+  */
   for (auto i = 0; i < N; ++i) {
     for (auto j = max(0, i-C[i]+1); j <= i; ++j) {
       S[j]++;
@@ -72,21 +74,29 @@ int main () {
   for (auto k = 0; k < M; ++k) {
     int before = A[X[k]];
     int after = Y[k];
-    S[before - C[before] + 1]--;
-    if (S[before - C[before] + 1] == 0) {
-      ans++;
+    int kezuru = before - C[before] + 1;
+    int fuyasu = after - C[after];
+    if (kezuru >= 0) {
+      S[kezuru]--;
+      if (S[kezuru] == 0) {
+        ans++;
+      }
     }
-    if (S[after - C[after]] == 0) {
-      ans--;
-    }    
-    S[after - C[after]]++;
+    if (fuyasu >= 0) {
+      if (S[fuyasu] == 0) {
+        ans--;
+      }    
+      S[fuyasu]++;      
+    }
     C[before]--;
     C[after]++;
     A[X[k]] = after;
+    /*
     for (auto i = 0; i < N; ++i) {
       cerr << S[i] << " ";
     }
     cerr << endl;
+    */
     cout << ans << endl;
   }
 }
