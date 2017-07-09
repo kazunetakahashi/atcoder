@@ -74,6 +74,7 @@ int main () {
   for (auto k = 0; k < M; ++k) {
     int before = A[X[k]];
     int after = Y[k];
+    assert(C[before] > 0);
     int kezuru = before - C[before] + 1;
     int fuyasu = after - C[after];
     if (kezuru >= 0) {
