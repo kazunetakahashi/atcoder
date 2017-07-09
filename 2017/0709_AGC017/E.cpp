@@ -41,9 +41,34 @@ vector<int> V[420];
 int M = 210;
 int input[420];
 int output[420];
-int from[420];
-int visited[420];
-bool ret = true;
+
+const int UFSIZE = 420;
+int union_find[UFSIZE];
+
+vector<int> S[420];
+
+void init() {
+  for (auto i=0; i<UFSIZE; i++) {
+    union_find[i] = i;
+  }
+}
+
+int root(int a) {
+  if (a == union_find[a]) return a;
+  return (union_find[a] = root(union_find[a]));
+}
+
+bool issame(int a, int b) {
+  return root(a) == root(b);
+}
+
+void unite(int a, int b) {
+  union_find[root(a)] = root(b);
+}
+
+bool isroot(int a) {
+  return root(a) == a;
+}
 
 void add_edge(int i) {
   int from, to;
@@ -62,33 +87,8 @@ void add_edge(int i) {
   input[to + M]++;
 }
 
-void visit(int i, int p) {
-  if (visited[i] == -1) {
-    from[i] = p;
-    int now = p;
-    bool ok = false;
-    while (now != i) {
-      if (output[now] == 1 && input[now] == 1) {
-        now = from[now];
-      } else {
-        ok = true;
-        break;
-      }
-    }
-    if (!ok) {
-      ret = false;
-    }
-  } else if (visited[i] == -2) {
-    from[i] = p;
-    visited[i] = -1;
-    for (auto x : V[i]) {
-      visit(x, i);
-    }
-    visited[i] = 0;
-  }
-}
-
 int main () {
+  init();
   cin >> N >> H;
   fill(input, input+420, 0);
   fill(output, output+420, 0);
@@ -108,11 +108,30 @@ int main () {
       return 0;
     }
   }
-  fill(visited, visited+420, -2);
-  fill(from, from+420, -1);
-  for (auto i = 1; i <= H; ++i) {
-    visit(i + M, -1);
-    visit(-i + M, -1);
+  for (auto i = 0; i < 420; ++i) {
+    for (auto x : V[i]) {
+      unite(i, x);
+    }
   }
-  cout << (ret ? "YES" : "NO") << endl;
+  for (auto i = 0; i < 420; ++i) {
+    S[root(i)].push_back(i);
+  }
+  for (auto i = 0; i < 420; ++i) {
+    if (!(S[i].empty())) {
+      bool ok = false;
+      for (auto x : S[i]) {
+        if (input[x] > 0 && input[x] == output[x]) {
+          
+        } else {
+          ok = true;
+          break;
+        }
+      }
+      if (!ok) {
+        cout << "NO" << endl;
+        return 0;
+      }
+    }
+  }
+  cout << "YES" << endl;
 }
