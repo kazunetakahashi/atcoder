@@ -22,7 +22,7 @@ a.each{|it|
 
 ans = 0
 
-for i in 0...odd
+for i in 0..odd
   if (i%2 == p)
     ans += (2 ** even) * choose(odd, i)
   end
