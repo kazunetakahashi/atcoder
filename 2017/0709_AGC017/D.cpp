@@ -79,8 +79,8 @@ int main () {
   }
   make_parent(0, -1);
   if (grundy(0) == 0) {
-    cout << "Alice" << endl;
+    cout << "Bob" << endl;
   } else {
-    cout << "Bob" << endl;    
+    cout << "Alice" << endl;    
   }
 }
