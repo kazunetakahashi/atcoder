@@ -37,6 +37,7 @@ int main () {
   ll T = B + 2 * D * N - A;
   ll delta = D - C;
   ll wari = 2 * D - delta;
+  cerr << T << " " << delta << " " << wari << endl;
   assert(wari >= 0);
   ll sup = T / wari;
   ll inf = (T - N * delta + wari - 1) / wari;
