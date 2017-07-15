@@ -34,44 +34,46 @@ typedef long long ll;
 vector<int> V[100010];
 bool visited[100010];
 
-typedef tuple<int, int> state;
+typedef tuple<int, int, int> state; // now, d, from
 
 int main () {
   int N;
   cin >> N;
   for (auto i = 0; i < N-1; ++i) {
     int a, b;
+    cin >> a >> b;
     a--;
     b--;
-    cin >> a >> b;
     V[a].push_back(b);
     V[b].push_back(a);
   }
   stack<state> S;
-  S.push(state(N-1, 0));
+  S.push(state(N-1, 0, -1));
   int parent;
   int D;
   fill(visited, visited+N, false);
   while (!S.empty()) {
     int now = get<0>(S.top());
     int d = get<1>(S.top());
+    int from = get<2>(S.top());
     S.pop();
     if (!visited[now]) {
+      // cerr << "now = " << now << ", d = " << d << endl;
       visited[now] = true;
       if (now == 0) {
         D = d;
-        parent = now;
+        parent = from;
         break;
       }
       for (auto x : V[now]) {
         if (!visited[x]) {
-          S.push(state(x, d+1));
+          S.push(state(x, d+1, now));
         }
       }
     }
   }
   stack<state> SS;
-  SS.push(state(0, 0));
+  SS.push(state(0, 0, parent));
   int cnt = 0;
   fill(visited, visited+N, false);
   while (!SS.empty()) {
@@ -83,13 +85,16 @@ int main () {
       cnt++;
       for (auto x : V[now]) {
         if (!visited[x] && x != parent) {
-          SS.push(state(x, d+1));
+          SS.push(state(x, d+1, now));
         }
       }
     }    
   }
   int su = (D-1)/2 + cnt - 1;
   int fa = N - 2 - su;
+  // cerr << "D = " << D << endl;
+  // cerr << "cnt = " << cnt << endl;
+  // cerr << "su = " << su << ", fa = " << fa << endl;
   if (fa > su) {
     cout << "Fennec" << endl;
   } else {
