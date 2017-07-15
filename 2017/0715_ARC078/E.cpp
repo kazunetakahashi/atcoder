@@ -32,6 +32,7 @@ typedef long long ll;
 // const ll M = 1000000007;
 
 bool flush(ll n) {
+  assert(1 <= n && n <= 1000000000000000000);
   cout << "? " << n << endl;
   char c;
   cin >> c;
@@ -39,6 +40,7 @@ bool flush(ll n) {
 }
 
 void answer(ll n) {
+  assert(1 <= n && n <= 1000000000);
   cout << "! " << n << endl;
 }
 
@@ -49,7 +51,10 @@ int main () {
     int lb = ((N == 0) ? 0 : -1);
     while (ub - lb > 1) {
       int t = (ub + lb)/2;
-      string str = to_string(N) + to_string(t) + "99999999";
+      string str = to_string(N) + to_string(t);
+      while (stoll(str) <= 1000000000) {
+        str = str + "9";
+      }
       ll now = stoll(str);
       if (flush(now)) {
         ub = t;
