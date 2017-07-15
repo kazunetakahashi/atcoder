@@ -43,6 +43,7 @@ int main () {
     int a, b;
     a--;
     b--;
+    cin >> a >> b;
     V[a].push_back(b);
     V[b].push_back(a);
   }
@@ -51,7 +52,6 @@ int main () {
   int parent;
   int D;
   fill(visited, visited+N, false);
-  cerr << "aaa" << endl;
   while (!S.empty()) {
     int now = get<0>(S.top());
     int d = get<1>(S.top());
@@ -74,11 +74,10 @@ int main () {
   SS.push(state(N-1, 0));
   int cnt = 0;
   fill(visited, visited+N, false);
-  cerr << "aaa" << endl;
   while (!SS.empty()) {
     int now = get<0>(SS.top());
     int d = get<1>(SS.top());
-    S.pop();
+    SS.pop();
     if (!visited[now]) {
       visited[now] = true;
       cnt++;
