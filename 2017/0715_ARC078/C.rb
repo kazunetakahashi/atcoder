@@ -1,5 +1,5 @@
 n = gets.to_i
-a = gets.chomp.split(" ")
+a = gets.chomp.split(" ").map{|i| i.to_i}
 sum = a.inject(:+)
 now = 0
 ans = sum
