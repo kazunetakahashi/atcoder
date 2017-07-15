@@ -49,9 +49,9 @@ int main () {
     int lb = ((N == 0) ? 0 : -1);
     while (ub - lb > 1) {
       int t = (ub + lb)/2;
-      string str = to_string(N) + to_string(t) + "000000000";
+      string str = to_string(N) + to_string(t) + "99999999";
       ll now = stoll(str);
-      if (!flush(now)) {
+      if (flush(now)) {
         ub = t;
       } else {
         lb = t;
