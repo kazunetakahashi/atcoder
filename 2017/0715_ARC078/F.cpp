@@ -47,6 +47,7 @@ int main() {
     edge[a][b] = c;
     edge[b][a] = c;
   }
+  fill(setcost, setcost+(1 << 15), 0);
   for (auto i = 0; i < (1 << N); ++i) {
     for (auto j = 0; j < N; ++j) {
       if (((i >> j) & 1) == 0) continue;
@@ -58,8 +59,9 @@ int main() {
   }
   fill(&dp[0][0], &dp[0][0]+(1 << 15)*15, infty);
   dp[1][0] = 0;
-  for (auto x = 0; x < (1 << N); ++x) {
+  for (auto x = 1; x < (1 << N); ++x) {
     for (auto i = 0; i < N; ++i) {
+      if (((x >> i) & 1) == 0) continue;
       if (dp[x][i] >= infty) continue;
       for (auto j = 0; j < N; ++j) {
         if (((x >> j) & 1) == 1 ||
