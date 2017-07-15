@@ -48,7 +48,7 @@ int main () {
     V[b].push_back(a);
   }
   stack<state> S;
-  S.push(state(N-1, 0, -1));
+  S.push(state(0, 0, -1));
   int parent;
   int D;
   fill(visited, visited+N, false);
@@ -60,7 +60,7 @@ int main () {
     if (!visited[now]) {
       // cerr << "now = " << now << ", d = " << d << endl;
       visited[now] = true;
-      if (now == 0) {
+      if (now == N-1) {
         D = d;
         parent = from;
         break;
@@ -73,7 +73,7 @@ int main () {
     }
   }
   stack<state> SS;
-  SS.push(state(0, 0, parent));
+  SS.push(state(N-1, 0, parent));
   int cnt = 0;
   fill(visited, visited+N, false);
   while (!SS.empty()) {
@@ -90,8 +90,8 @@ int main () {
       }
     }    
   }
-  int fa = (D-1)/2 + cnt - 1;
-  int su = N - 2 - su;
+  int su = (D-1)/2 + cnt - 1;
+  int fa = N - 2 - su;
   // cerr << "D = " << D << endl;
   // cerr << "cnt = " << cnt << endl;
   // cerr << "su = " << su << ", fa = " << fa << endl;
