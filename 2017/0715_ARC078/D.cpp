@@ -90,8 +90,8 @@ int main () {
       }
     }    
   }
-  int su = (D-1)/2 + cnt - 1;
-  int fa = N - 2 - su;
+  int fa = (D-1)/2 + cnt - 1;
+  int su = N - 2 - su;
   // cerr << "D = " << D << endl;
   // cerr << "cnt = " << cnt << endl;
   // cerr << "su = " << su << ", fa = " << fa << endl;
