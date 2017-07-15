@@ -95,11 +95,12 @@ int main () {
       }
     }    
   }
-  int su = (D-1)/2 + cnt - 1;
+  int su = cnt - 1;
   int fa = N - 2 - su;
-  // cerr << "D = " << D << endl;
-  // cerr << "cnt = " << cnt << endl;
-  // cerr << "su = " << su << ", fa = " << fa << endl;
+  cerr << "D = " << D << endl;
+  cerr << "cut = " << cut << endl;
+  cerr << "cnt = " << cnt << endl;
+  cerr << "su = " << su << ", fa = " << fa << endl;
   if (fa > su) {
     cout << "Fennec" << endl;
   } else {
