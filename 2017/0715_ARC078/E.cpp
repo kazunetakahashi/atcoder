@@ -65,10 +65,23 @@ int main () {
     N = stoll(to_string(N) + to_string(ub));
   }
   while (N % 10 == 0) {
-    if (flush(N/10 + 1)) {
-      N = N/10;
+    ll temp = N/10 + 1;
+    ll temp2 = temp;
+    while (temp2 % 10 == 0) {
+      temp2 /= 10;
+    }
+    if (temp2 != 1) {
+      if (flush(temp)) {
+        N = N/10;
+      } else {
+        break;
+      }        
     } else {
-      break;
+      if (!flush(temp)) {
+        N = N/10;
+      } else {
+        break;
+      }        
     }
   }
   answer(N);
