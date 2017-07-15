@@ -4,7 +4,7 @@ sum = a.inject(:+)
 now = a[0]
 ans = (sum-now-now).abs
 for i in 1...(n-1)
-  puts i
+  # puts i
   now += a[i]
   ans = [ans, (sum-now - now).abs].min
 end
