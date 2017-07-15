@@ -73,12 +73,13 @@ int main() {
                        dp[x][i] + setcost[z] - setcost[x] - edge[i][j]);
       }
       int z = (((1 << N)-1)^x) & ((1 << N)-1); // all \setminus x
-      int w = x - (1 << i); // x \setminus \{ i \} 
-      for (auto y = z; y >= 0; --y) {
-        y &= z;
+      int w = x - (1 << i); // x \setminus \{ i \}
+      int y = z;
+      do {
         dp[x | y][i] = min(dp[x | y][i],
                            dp[x][i] + setcost[w | y] - setcost[w] - setcost[y]);
-      }
+        y = (y - 1) & z;
+      } while (y != z);
     }
   }
   cout << dp[(1 << N)][N-1] << endl;
