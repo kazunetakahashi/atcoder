@@ -89,7 +89,7 @@ int main () {
     }    
   }
   int su = (D-1)/2 + cnt - 1;
-  int fa = N - 2 - fa;
+  int fa = N - 2 - su;
   if (fa > su) {
     cout << "Fennec" << endl;
   } else {
