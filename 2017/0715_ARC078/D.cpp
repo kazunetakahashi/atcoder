@@ -33,6 +33,7 @@ typedef long long ll;
 
 vector<int> V[100010];
 bool visited[100010];
+int parents[100010];
 
 typedef tuple<int, int, int> state; // now, d, from
 
@@ -49,7 +50,7 @@ int main () {
   }
   stack<state> S;
   S.push(state(0, 0, -1));
-  int parent;
+  int cut;
   int D;
   fill(visited, visited+N, false);
   while (!S.empty()) {
@@ -60,9 +61,9 @@ int main () {
     if (!visited[now]) {
       // cerr << "now = " << now << ", d = " << d << endl;
       visited[now] = true;
+      parents[now] = from;
       if (now == N-1) {
         D = d;
-        parent = from;
         break;
       }
       for (auto x : V[now]) {
@@ -73,8 +74,12 @@ int main () {
     }
   }
   stack<state> SS;
-  SS.push(state(N-1, 0, parent));
+  SS.push(state(N-1, 0, parents[N-1]));
   int cnt = 0;
+  cut = N-1;
+  for (auto i = 0; i < (D-1)/2; ++i) {
+    cut = parents[cut];
+  }
   fill(visited, visited+N, false);
   while (!SS.empty()) {
     int now = get<0>(SS.top());
@@ -84,7 +89,7 @@ int main () {
       visited[now] = true;
       cnt++;
       for (auto x : V[now]) {
-        if (!visited[x] && x != parent) {
+        if (!visited[x] && x != parents[cut]) {
           SS.push(state(x, d+1, now));
         }
       }
