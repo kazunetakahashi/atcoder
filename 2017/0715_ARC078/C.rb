@@ -5,6 +5,6 @@ now = 0
 ans = sum
 for i in 1..n-1
   now += a[i]
+  ans = [ans, (sum-now - now).abs].min
 end
-ans = [ans, (sum-now - now).abs].min
 puts ans
