@@ -18,6 +18,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib> // atoi(xxx)
+#include <bitset>
 using namespace std;
 
 #define DEBUG 0 // change 0 -> 1 if we need debug.
@@ -36,6 +37,10 @@ int edge[15][15];
 int setcost[1 << 15];
 int dp[1 << 15][15];
 
+auto two(int x) {
+  return static_cast<std::bitset<4> >(x);
+}
+
 int main() {
   cin >> N >> M;
   fill(&edge[0][0], &edge[0][0]+15*15, infty);
@@ -51,8 +56,9 @@ int main() {
   for (auto i = 0; i < (1 << N); ++i) {
     for (auto j = 0; j < N; ++j) {
       if (((i >> j) & 1) == 0) continue;
-      for (auto k = 0; k < N; ++k) {
+      for (auto k = j+1; k < N; ++k) {
         if (((i >> k) & 1) == 0) continue;
+        if (edge[j][k] == infty) continue;
         setcost[i] += edge[j][k];
       }
     }
@@ -63,6 +69,8 @@ int main() {
     for (auto i = 0; i < N; ++i) {
       if (((x >> i) & 1) == 0) continue;
       if (dp[x][i] >= infty) continue;
+      // cerr << "x = " << two(x) << ", i = " << i << endl;
+      // cerr << "nobashi" << endl;
       for (auto j = 0; j < N; ++j) {
         if (((x >> j) & 1) == 1 ||
             edge[i][j] == infty) {
@@ -71,16 +79,22 @@ int main() {
         int z = x | (1 << j);
         dp[z][j] = min(dp[z][j],
                        dp[x][i] + setcost[z] - setcost[x] - edge[i][j]);
+        // cerr << "setcost[" << two(z) << "] = " << setcost[z] << endl;
+        // cerr << "setcost[" << two(x) << "] = " << setcost[x] << endl;
+        // cerr << "edge[" << i << "][" << j << "] = " << edge[i][j] << endl;
+        // cerr << "dp[" << two(z) << "][" << j << "] = " << dp[z][j] << endl;
       }
+      // cerr << "tsuke" << endl;
       int z = (((1 << N)-1)^x) & ((1 << N)-1); // all \setminus x
       int w = x - (1 << i); // x \setminus \{ i \}
       int y = z;
       do {
         dp[x | y][i] = min(dp[x | y][i],
                            dp[x][i] + setcost[w | y] - setcost[w] - setcost[y]);
+        // cerr << "dp[" << two(x | y) << "][" << i << "] = " << dp[x | y][i] << endl;
         y = (y - 1) & z;
       } while (y != z);
     }
   }
-  cout << dp[(1 << N)][N-1] << endl;
+  cout << dp[(1 << N)-1][N-1] << endl;
 }
