@@ -65,8 +65,8 @@ void solve2() {
       ask /= 10;
     }
   }
-  ll lb = ask + 1;
-  ll ub = ask * 10;
+  ll lb = ask;
+  ll ub = ask * 10 - 1;
   while (ub - lb > 1) {
     ll t = (ub + lb) / 2;
     if (flush(t * 10)) {
@@ -75,7 +75,7 @@ void solve2() {
       lb = t;
     }
   }
-  answer(lb);
+  answer(ub);
 }
 
 int main () {
