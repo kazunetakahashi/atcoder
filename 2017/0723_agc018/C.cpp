@@ -87,7 +87,7 @@ int main () {
     // cerr << "gold[" << i << "] = " << gold[i] << endl;
   }
   ll maxi = -1000000000000000000;
-  for (auto i = Y; i <= Y+Z; ++i) {
+  for (auto i = Y-1; i <= Y+Z-1; ++i) {
     // cerr << "sliver[" << i << "] = " << silver[i]
     //      << ", gold[" << i+1 << "] = " << gold[i+1] << endl;
     maxi = max(maxi, gold[i+1]+silver[i]);
