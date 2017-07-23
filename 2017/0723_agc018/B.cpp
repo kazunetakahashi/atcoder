@@ -78,7 +78,7 @@ int main () {
     ans = min(ans, t);
     S.insert(max_ind);
     for (auto i = 0; i < N; ++i) {
-      if (S.find(Q[i].front()) != S.end()) {
+      while (!Q[i].empty() && S.find(Q[i].front()) != S.end()) {
         Q[i].pop();
       }
     }
