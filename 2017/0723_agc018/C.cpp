@@ -60,36 +60,37 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     A[i] = get<1>(T[i]);
     B[i] = get<2>(T[i]);
+    // cerr << "i = " << i << ", (" << A[i] << ", " << B[i] << ")" << endl;
   }
   ll sum = 0;
   priority_queue<ll, vector<ll>, greater<ll> > Q;
-  for (auto i = 0; i < X; ++i) {
+  for (auto i = 0; i < N; ++i) {
     sum += B[i];
     Q.push(B[i]);
-  }
-  for (auto i = X; i <= X+Z; ++i) {
+    while ((int)Q.size() > Y) {
+      sum -= Q.top();
+      Q.pop();
+    }
     silver[i] = sum;
-    Q.push(B[i]);
-    sum += B[i];
-    sum -= Q.top();
-    Q.pop();
+    // cerr << "silver[" << i << "] = " << silver[i] << endl;
   }
   sum = 0;
   priority_queue<ll, vector<ll>, greater<ll> > QQ;
-  for (auto i = N-1; i > X+Z; --i) {
+  for (auto i = N-1; i >= 0; --i) {
     sum += A[i];
     QQ.push(A[i]);
-  }
-  for (auto i = X+Z; i >= X; --i) {
-    QQ.push(A[i]);
-    sum += A[i];
+    while ((int)QQ.size() > X) {
+      sum -= QQ.top();
+      QQ.pop();
+    }
     gold[i] = sum;
-    sum -= QQ.top();
-    QQ.pop();
+    // cerr << "gold[" << i << "] = " << gold[i] << endl;
   }
   ll maxi = -10000000000000000;
-  for (auto i = X; i <= X+Z; ++i) {
-    maxi = max(maxi, gold[i]+silver[i]);
+  for (auto i = Y; i <= Y+Z; ++i) {
+    // cerr << "sliver[" << i << "] = " << silver[i]
+    //      << ", gold[" << i+1 << "] = " << gold[i+1] << endl;
+    maxi = max(maxi, gold[i+1]+silver[i]);
   }
   cout << ans + maxi << endl;
 }
