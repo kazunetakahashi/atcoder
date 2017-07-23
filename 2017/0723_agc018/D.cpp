@@ -41,6 +41,7 @@ int c_size[100010];
 ll dist[100010];
 
 void dfs(int v, int p, ll d) {
+  // cerr << v << " " << p << " " << d << endl;
   parent[v] = p;
   dist[v] = d;
   for (auto x : V[v]) {
@@ -51,10 +52,12 @@ void dfs(int v, int p, ll d) {
 }
 
 int child_size(int v) {
+  // cerr << "v = " << v << endl;
   if (c_size[v] != -1) return c_size[v];
-  int ans = 0;
+  int ans = 1;
   for (auto x : V[v]) {
     if (get<0>(x) != parent[v]) {
+      // cerr << v << " " << get<0>(x) << endl;
       ans += child_size(get<0>(x));
     }
   }
@@ -65,7 +68,7 @@ int centroid = 0;
 
 int main () {
   cin >> N;
-  for (auto i = 0; i < N; ++i) {
+  for (auto i = 0; i < N-1; ++i) {
     int a, b;
     ll c;
     cin >> a >> b >> c;
