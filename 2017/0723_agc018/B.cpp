@@ -46,29 +46,38 @@ int main () {
   }
   int ans = N;
   while (true) {
+    bool cont = true;
     for (auto i = 0; i < N; ++i) {
       if (Q[i].empty()) {
+        cont = false;
         break;
       }
-      int cnt[310];
-      fill(cnt, cnt+M, 0);
-      for (auto i = 0; i < N; ++i) {
-        cnt[Q[i].front()]++;
+    }
+    if (!cont) break;
+    int cnt[310];
+    fill(cnt, cnt+M, 0);
+    for (auto i = 0; i < N; ++i) {
+      cnt[Q[i].front()]++;
+    }
+    /*
+    for (auto i = 0; i < M; ++i) {
+      cerr << cnt[i] << " ";
+    }
+    cerr << endl;
+    */
+    int t = 0;
+    int max_ind = 100000;
+    for (auto i = 0; i < M; ++i) {
+      if (t < cnt[i]) {
+        t = cnt[i];
+        max_ind = i;
       }
-      int t = 0;
-      int max_ind = 100000;
-      for (auto i = 0; i < M; ++i) {
-        if (t < cnt[i]) {
-          t = cnt[i];
-          max_ind = i;
-        }
-      }
-      assert(max_ind < 100000);
-      ans = min(ans, t);
-      for (auto i = 0; i < N; ++i) {
-        if (Q[i].front() == max_ind) {
-          Q[i].pop();
-        }
+    }
+    assert(max_ind < 100000);
+    ans = min(ans, t);
+    for (auto i = 0; i < N; ++i) {
+      if (Q[i].front() == max_ind) {
+        Q[i].pop();
       }
     }
   }
