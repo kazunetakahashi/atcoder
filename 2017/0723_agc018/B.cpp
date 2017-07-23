@@ -34,6 +34,7 @@ typedef long long ll;
 int N, M;
 int A[310][310];
 queue<int> Q[310];
+set<int> S;
 
 int main () {
   cin >> N >> M;
@@ -75,8 +76,9 @@ int main () {
     }
     assert(max_ind < 100000);
     ans = min(ans, t);
+    S.insert(max_ind);
     for (auto i = 0; i < N; ++i) {
-      if (Q[i].front() == max_ind) {
+      if (S.find(Q[i].front()) != S.end()) {
         Q[i].pop();
       }
     }
