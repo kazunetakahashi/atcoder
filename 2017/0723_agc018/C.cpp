@@ -57,6 +57,10 @@ int main () {
     T[i] = unit(A[i]-B[i], A[i], B[i]);
   }
   sort(T, T+N);
+  for (auto i = 0; i < N; ++i) {
+    A[i] = get<1>(T[i]);
+    B[i] = get<2>(T[i]);
+  }
   ll sum = 0;
   priority_queue<ll, vector<ll>, greater<ll> > Q;
   for (auto i = 0; i < X; ++i) {
