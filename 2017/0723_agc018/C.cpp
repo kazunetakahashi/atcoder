@@ -67,7 +67,7 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     sum += B[i];
     Q.push(B[i]);
-    while ((int)Q.size() > Y) {
+    while ((ll)Q.size() > Y) {
       sum -= Q.top();
       Q.pop();
     }
@@ -79,7 +79,7 @@ int main () {
   for (auto i = N-1; i >= 0; --i) {
     sum += A[i];
     QQ.push(A[i]);
-    while ((int)QQ.size() > X) {
+    while ((ll)QQ.size() > X) {
       sum -= QQ.top();
       QQ.pop();
     }
