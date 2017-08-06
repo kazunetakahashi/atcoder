@@ -51,6 +51,7 @@ int main () {
       one++;
     }
   }
+  cerr << one << " " << two << " " << four << endl;
   if (two > 0) one++;
   if (one > four+1) {
     cout << "No" << endl;
