@@ -45,13 +45,13 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     if (a[i] % 4 == 0) {
       four++;
-    } else if (a[i] % 4 == 0) {
+    } else if (a[i] % 2 == 0) {
       two++;
     } else {
       one++;
     }
   }
-  cerr << one << " " << two << " " << four << endl;
+  // cerr << one << " " << two << " " << four << endl;
   if (two > 0) one++;
   if (one > four+1) {
     cout << "No" << endl;
