@@ -116,6 +116,7 @@ int main () {
       st[i%2].update(i/2, p[i]);
     }
   }
+  cerr << "aaa" << endl;
   solve(0, N);
   sort(ans.begin(), ans.end());
   for (auto it = ans.begin(); it != ans.end(); ++it) {
