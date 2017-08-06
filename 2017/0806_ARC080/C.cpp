@@ -52,7 +52,7 @@ int main () {
     }
   }
   if (two > 0) one++;
-  if (one > two+1) {
+  if (one > four+1) {
     cout << "No" << endl;
   } else {
     cout << "Yes" << endl;
