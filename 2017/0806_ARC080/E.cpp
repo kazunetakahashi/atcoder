@@ -96,6 +96,7 @@ void solve(int l, int r) {
   pair<int, int> q = st[take].find((indf+1)/2, r/2);
   int s = q.first;
   int inds = q.second * 2 + take;
+  cerr << f << " " << indf << " " << s << " " << inds << endl;
   ans.push_back(unit(f, s));
   solve(l, indf);
   solve(indf+1, inds);
@@ -116,7 +117,6 @@ int main () {
       st[i%2].update(i/2, p[i]);
     }
   }
-  cerr << "aaa" << endl;
   solve(0, N);
   sort(ans.begin(), ans.end());
   for (auto it = ans.begin(); it != ans.end(); ++it) {
