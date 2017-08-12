@@ -65,6 +65,7 @@ int main () {
     x[i]--;
     y[i]--;
   }
+  fill(memo, memo+100010, -1);
   stack<int> S;
   S.push(K);
   parent[K] = path(-1, 0);
