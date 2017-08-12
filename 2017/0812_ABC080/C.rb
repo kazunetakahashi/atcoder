@@ -5,6 +5,6 @@ for i in 0...n
 end
 ans = 1
 for i in 0...n
-  ans.lcm(t[i])
+  ans = ans.lcm(t[i])
 end
 puts ans
