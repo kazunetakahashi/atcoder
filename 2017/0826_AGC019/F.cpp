@@ -89,12 +89,13 @@ ll bunshi[500010];
 int main() {
   init();
   cin >> N >> M;
+  if (N > M) swap(N, M);
   for (ll j = 0; j <= N+M; ++j) {
     R[j] = min(j, N);
     L[j] = max((ll)0, j-M);
   }
-  S[1] = 1;
-  T[1] = 1;
+  S[1] = 2;
+  T[1] = 2;
   for (auto j = 1; j < N+M; ++j) {
     S[j+1] = 2 * S[j] + C(j, R[j]+1) + MOD - C(j+1, L[j]-1);
     S[j+1] %= MOD;
