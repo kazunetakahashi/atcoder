@@ -97,7 +97,13 @@ int main() {
   S[1] = 2;
   T[1] = 2;
   for (auto j = 1; j < N+M; ++j) {
-    S[j+1] = 2 * S[j] + C(j, R[j]+1) + MOD - C(j+1, L[j]-1);
+    S[j+1] = 2 * S[j];
+    if (R[j] == j-M) {
+      S[j+1] += C(j, R[j]+1);
+    }
+    if (L[j] == j-M) {
+      S[j+1] += MOD - C(j+1, L[j]-1);
+    }
     S[j+1] %= MOD;
     K[j] = T[j];
     if (R[j] == N) {
