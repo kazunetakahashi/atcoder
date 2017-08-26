@@ -39,9 +39,9 @@ int main () {
   cin >> N;
   N *= 4;
   ll one = Q;
-  ll two = min(H, Q * 2);
-  ll four = min(S, two);
-  ll eight = min(D, four);
+  ll two = min(H, one * 2);
+  ll four = min(S, two * 2);
+  ll eight = min(D, four * 2);
   ll ans = 0;
   ans += N/8 * eight;
   N %= 8;
