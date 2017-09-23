@@ -36,6 +36,7 @@ string a[110];
 int cnt[26];
 int amari = 0;
 int yoyu = 0;
+int one = 0;
 
 int main () {
   cin >> H >> W;
@@ -53,6 +54,7 @@ int main () {
   }
   if (H%2 != 0 && W%2 != 0) {
     yoyu = H + W - 1;
+    one = 1;
   } else if (H%2 == 0 && W%2 != 0) {
     yoyu = H;
   } else if (H%2 != 0 && W%2 == 0) {
@@ -60,9 +62,18 @@ int main () {
   } else {
     yoyu = 0;
   }
-  if (amari <= yoyu) {
-    cout << "Yes" << endl;
-  } else {
+  if (amari > yoyu) {
     cout << "No" << endl;
+    return 0;
+  } else {
+    int kisu = 0;
+    for (auto i = 0; i < 26; ++i) {
+      if (cnt[i]%2 == 1) kisu++;
+    }
+    if (kisu > one) {
+      cout << "No" << endl;
+      return 0;      
+    }
   }
+  cout << "Yes" << endl;
 }
