@@ -57,6 +57,8 @@ int main () {
   for (auto i = 0; i < H; ++i) {
     for (auto j = 0; j < W; ++j) {
       ans[i][j] = area(i, j) * 2 + which(i, j);
+      cerr << "ans[" << i << "][" << j << "] = " << area(i, j) << " * 2 + "
+           << which(i, j) << endl;
     }
   }
   for (auto i = 0; i < H; ++i) {
