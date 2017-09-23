@@ -31,34 +31,29 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
-int H, W, D, d;
+int H, W, d;
 
 char c[4] = {'R', 'Y', 'G', 'B'};
 
-int area(int x, int y) {
-  int cnt = x/(d+1) + y/d;
-  return cnt%2;
-}
-
-int which(int x, int y) {
-  int nx = x % (d+1);
-  int ny = y % d;
-  if (nx + ny < d) {
-    return 0;
-  } else {
-    return 1;
+int color(int x, int y) {
+  int nx = x+y;
+  int ny = x-y + 500 * d;
+  int ans = 0;
+  if ((nx/d)%2 == 0) {
+    ans += 2;
   }
+  if ((ny/d)%2 == 0) {
+    ans += 1;
+  }
+  return ans;
 }
 
 int main () {
-  cin >> H >> W >> D;
-  d = (D+1)/2;
+  cin >> H >> W >> d;
   int ans[510][510];
   for (auto i = 0; i < H; ++i) {
     for (auto j = 0; j < W; ++j) {
-      ans[i][j] = area(i, j) * 2 + which(i, j);
-      cerr << "ans[" << i << "][" << j << "] = " << area(i, j) << " * 2 + "
-           << which(i, j) << endl;
+      ans[i][j] = color(i, j);
     }
   }
   for (auto i = 0; i < H; ++i) {
