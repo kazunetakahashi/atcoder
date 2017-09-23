@@ -31,7 +31,7 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
-int H, W, d;
+int H, W, D, d;
 
 char c[4] = {'R', 'Y', 'G', 'B'};
 
@@ -51,7 +51,8 @@ int which(int x, int y) {
 }
 
 int main () {
-  cin >> H >> W >> d;
+  cin >> H >> W >> D;
+  d = (D+1)/2;
   int ans[510][510];
   for (auto i = 0; i < H; ++i) {
     for (auto j = 0; j < W; ++j) {
