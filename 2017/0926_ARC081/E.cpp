@@ -96,7 +96,8 @@ int main () {
   }
   string ret = "";
   for (auto x : ans) {
-    ret = ret + to_string('a' + x);
+    string t{(char)('a' + x)};
+    ret = ret + t;
   }
   cout << ret << endl;
 }
