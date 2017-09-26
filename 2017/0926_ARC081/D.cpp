@@ -45,7 +45,12 @@ int main () {
       i++;
     }
   }
-  ll ans = 1;
+  ll ans;
+  if (V[0]) {
+    ans = 3;
+  } else {
+    ans = 6;
+  }
   for (auto i = 0; i < (int)V.size()-1; ++i) {
     if (V[i]) {
       ans *= 2;
