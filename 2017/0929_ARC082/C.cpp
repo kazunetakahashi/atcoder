@@ -46,7 +46,7 @@ int main () {
   }
   int ans = 0;
   for (auto i = 1; i < 100004; ++i) {
-    ans = max(ans, cnt[i-1] + cnt[i] + cnt[i-1]);
+    ans = max(ans, cnt[i-1] + cnt[i] + cnt[i+1]);
   }
   cout << ans << endl;
 }
