@@ -61,6 +61,7 @@ int main () {
   ll sup = ((ll)1 << mb) - 1;
   for (auto i = 0; i < N; ++i) {
     if (A[i] <= sup) t += B[i];
+    cerr << "t = " << t << endl;
   }
   ans = max(ans, t);
   t = 0;
