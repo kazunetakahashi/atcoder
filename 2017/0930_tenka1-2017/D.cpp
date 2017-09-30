@@ -72,6 +72,7 @@ int main () {
     sup = (K & sup);
     if (sup == 0) continue;
     sup -= 1;
+    cerr << "sup = " << sup << endl;
     t = 0;
     for (auto i = 0; i < N; ++i) {
       bool ok = true;
