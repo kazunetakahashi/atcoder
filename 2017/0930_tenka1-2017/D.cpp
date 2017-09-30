@@ -61,21 +61,21 @@ int main () {
   ll sup = ((ll)1 << mb) - 1;
   for (auto i = 0; i < N; ++i) {
     if (A[i] <= sup) t += B[i];
-    cerr << "t = " << t << endl;
+    // cerr << "t = " << t << endl;
   }
   ans = max(ans, t);
   t = 0;
   for (auto i = 0; i < N; ++i) {
+    bool ok = true;
     for (auto j = 0; j < 40; ++j) {
-      bool ok = true;
       if ((((K >> j) & 1) == 0)
           && (((A[i] >> j) & 1) == 1)) {
         ok = false;
         break;
       }
-      if (ok) {
-        t += B[i];
-      }
+    }
+    if (ok) {
+      t += B[i];
     }
   }
   ans = max(ans, t);
