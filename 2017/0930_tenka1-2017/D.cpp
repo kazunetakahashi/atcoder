@@ -64,18 +64,27 @@ int main () {
     // cerr << "t = " << t << endl;
   }
   ans = max(ans, t);
-  t = 0;
-  for (auto i = 0; i < N; ++i) {
-    bool ok = true;
-    for (auto j = 0; j < 40; ++j) {
-      if ((((K >> j) & 1) == 0)
-          && (((A[i] >> j) & 1) == 1)) {
-        ok = false;
-        break;
-      }
+  for (auto k = 0; k < 40; ++k) {
+    sup = 0;
+    for (auto j = k; j < 40; ++j) {
+      sup += ((ll)1 << j);
     }
-    if (ok) {
-      t += B[i];
+    sup = (K & sup);
+    if (sup == 0) continue;
+    sup -= 1;
+    t = 0;
+    for (auto i = 0; i < N; ++i) {
+      bool ok = true;
+      for (auto j = 0; j < 40; ++j) {
+        if ((((sup >> j) & 1) == 0)
+            && (((A[i] >> j) & 1) == 1)) {
+          ok = false;
+          break;
+        }
+      }
+      if (ok) {
+        t += B[i];
+      }
     }
   }
   ans = max(ans, t);
