@@ -87,6 +87,23 @@ int main () {
         t += B[i];
       }
     }
+    ans = max(ans, t);
+  }
+  sup = K;
+  cerr << "sup = " << sup << endl;
+  t = 0;
+  for (auto i = 0; i < N; ++i) {
+    bool ok = true;
+    for (auto j = 0; j < 40; ++j) {
+      if ((((sup >> j) & 1) == 0)
+          && (((A[i] >> j) & 1) == 1)) {
+        ok = false;
+        break;
+      }
+    }
+    if (ok) {
+      t += B[i];
+    }
   }
   ans = max(ans, t);
   cout << ans << endl;
