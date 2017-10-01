@@ -53,8 +53,8 @@ string maximal(int h) {
     for (auto i = 26; i >= 1; ++i) {
       if (h - i < 0) continue;
       if ((h - i) % A == 0) {
-        string t{(char)(i - 1 + 'a')};
-        ans += t;
+        string t{(char)('a' + i - 1)};
+        ans = ans + t;
         h = (h - i)/A;
         break;
       }
