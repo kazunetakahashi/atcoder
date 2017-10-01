@@ -39,14 +39,14 @@ int main () {
     cout << -1 << endl;
     return 0;
   }
-  int s = S;
+  int t = T;
   int cnt = 0;
-  while (s <= T) {
-    if (s == T || s+1 == T) {
+  while (S <= t) {
+    if (S == t) {
       cout << cnt << endl;
       return 0;
     }
-    s = (s << 1);
+    t = (t >> 1);
     cnt++;
   }
   cout << -1 << endl;
