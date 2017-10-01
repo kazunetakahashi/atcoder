@@ -43,6 +43,7 @@ int calc(string str) {
     ans += tmp * (str[i] - 'a' + 1);
     tmp *= A;
   }
+  cerr << ans << endl;
   return ans;
 }
 
