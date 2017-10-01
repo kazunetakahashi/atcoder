@@ -75,6 +75,7 @@ int main () {
   assert(S == T + U);
   string ans = 0;
   int kari = 0;
+  cerr << "xxx" << endl;
   for (auto j = 0; j < (int)T.size(); ++j) {
     char x = T[j];
     int now = x - 'a' + 1;
