@@ -59,6 +59,7 @@ string maximal(int h) {
         break;
       }
     }
+    cerr << ans << " " << h << endl;
   }
   return ans;
 }
