@@ -77,6 +77,7 @@ int main () {
   int kari = 0;
   for (auto i = 0; i < (int)T.size(); ++i) {
     char x = T[i];
+    cerr << x << endl;
     int now = x - 'a' + 1;
     now -= kari;
     for (auto i = 26; i >= 1; --i) {
