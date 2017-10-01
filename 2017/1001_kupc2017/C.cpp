@@ -71,7 +71,9 @@ int main () {
     return 0;
   }
   string T = S.substr(0, S.size()-7);
+  cerr << T << endl;
   string U = S.substr(S.size()-7, 7);
+  cerr << U << endl;
   assert(S == T + U);
   string ans = 0;
   int kari = 0;
