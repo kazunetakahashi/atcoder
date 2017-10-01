@@ -50,7 +50,7 @@ int calc(string str) {
 string maximal(int h) {
   string ans = "";
   while (h > 0) {
-    for (auto i = 26; i >= 1; ++i) {
+    for (auto i = 26; i >= 1; --i) {
       if (h - i < 0) continue;
       if ((h - i) % A == 0) {
         string t{(char)('a' + i - 1)};
