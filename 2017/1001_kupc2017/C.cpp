@@ -87,8 +87,8 @@ int main () {
         break;
       }
     }
-    cerr << ans << endl;
+    // cerr << ans << endl;
   }
-  ans += maximal(calc(U) + kari);
+  ans += maximal(calc(U) - kari);
   cout << ans << endl;
 }
