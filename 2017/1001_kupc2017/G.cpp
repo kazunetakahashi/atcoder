@@ -76,24 +76,40 @@ void encode() {
   random_device rd; mt19937 mt(rd());
   vector<path> ans;
   bool visited[110];
+  int forbid = 0;
+  int mini = 1000;
+  for (auto i = 0; i < N; ++i) {
+    if ((int)V[i].size() < mini) {
+      forbid = i;
+      mini = V[i].size();
+    }
+  }
   while (true) {
+    bool failed = false;
     ans.clear();
     fill(visited, visited+110, false);
+    visited[forbid] = true;
     int root = mt()%N;
+    if (visited[root]) continue;
     visited[root] = true;
     if (V[root].size() < 5) continue;
     random_shuffle(V[root].begin(), V[root].end());
     int num = (isone ? 3 : 4);
     for (auto i = 0; i < num; ++i) {
       ans.push_back(path(root, V[root][i]));
+      if (visited[V[root][i]]) {
+        failed = true;
+        break;
+      }
       visited[V[root][i]] = true;
     }
+    if (failed) continue;
     ans.push_back(path(root, V[root][num]));
     int now = V[root][num];
+    if (visited[now]) continue;
     visited[now] = true;
-    bool failed = false;
     for (auto i = 0; i < 62; ++i) {
-      if ((bit[i] && isone) || (!bit[i] && !isone)) {
+      if (bit[i]) {
         num = 2;
       } else {
         num = 1;
@@ -147,14 +163,22 @@ void decode() {
   for (auto i = 0; i < N; ++i) {
     if ((int)V[i].size() >= 4) {
       root = i;
-      if ((int)V[root].size() == 4) {
-        isone = true;
-      } else {
-        isone = false;
-      }
       break;
     }
   }
+  // cerr << "V[" << root << "].size() = " << V[root].size() << endl;
+  /*
+  for (auto x : V[root]) {
+    cerr << x << " ";
+  }
+  cerr << endl;
+  */
+  if ((int)V[root].size() == 4) {
+    isone = true;
+  } else {
+    isone = false;
+  }
+  // cerr << "isone = " << isone << endl;
   assert(root >= 0);
   int now = 0;
   for (auto x : V[root]) {
