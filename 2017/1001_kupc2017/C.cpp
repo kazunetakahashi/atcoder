@@ -73,11 +73,10 @@ int main () {
   string T = S.substr(0, S.size()-7);
   string U = S.substr(S.size()-7, 7);
   assert(S == T + U);
-  cerr << "OK" << endl;
-  
   string ans = 0;
   int kari = 0;
-  for (auto x : T) {
+  for (auto i = 0; i < (int)T.size(); ++i) {
+    char x = T[i];
     int now = x - 'a' + 1;
     now -= kari;
     for (auto i = 26; i >= 1; --i) {
@@ -88,6 +87,7 @@ int main () {
         break;
       }
     }
+    cerr << ans << endl;
   }
   ans += maximal(calc(U) + kari);
   cout << ans << endl;
