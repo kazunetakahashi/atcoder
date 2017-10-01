@@ -42,7 +42,7 @@ int main () {
   int s = S;
   int cnt = 0;
   while (s <= T) {
-    if (s == T) {
+    if (s == T || s+1 == T) {
       cout << cnt << endl;
       return 0;
     }
