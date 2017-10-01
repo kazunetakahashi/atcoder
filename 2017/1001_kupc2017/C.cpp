@@ -73,8 +73,7 @@ int main () {
   string T = S.substr(0, S.size()-7);
   string U = S.substr(S.size()-7, 7);
   assert(S == T + U);
-  cerr << "OK" << endl;
-  string ans = 0;
+  string ans = "";
   int kari = 0;
   for (auto j = 0; j < (int)T.size(); ++j) {
     char x = T[j];
