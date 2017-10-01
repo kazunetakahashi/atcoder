@@ -47,6 +47,7 @@ int main () {
       return 0;
     }
     s = (s << 1);
+    cnt++;
   }
   cout << -1 << endl;
 }
