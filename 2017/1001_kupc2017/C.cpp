@@ -43,7 +43,7 @@ int calc(string str) {
     ans += tmp * (str[i] - 'a' + 1);
     tmp *= A;
   }
-  cerr << ans << endl;
+  //cerr << ans << endl;
   return ans;
 }
 
@@ -59,12 +59,34 @@ string maximal(int h) {
         break;
       }
     }
-    cerr << ans << " " << h << endl;
+    //cerr << ans << " " << h << endl;
   }
   return ans;
 }
 
 int main () {
   cin >> A >> S;
-  cout << maximal(calc(S)) << endl;
+  if (S.size() <= 7) {
+    cout << maximal(calc(S)) << endl;
+    return 0;
+  }
+  string T = S.substr(0, S.size()-7);
+  string U = S.substr(S.size()-7, 7);
+  assert(S == T + U);
+  string ans = 0;
+  int kari = 0;
+  for (auto x : T) {
+    int now = x - 'a' + 1;
+    now -= kari;
+    for (auto i = 26; i >= 1; --i) {
+      if ((i - now) % A == 0) {
+        string t{(char)('a' + i - 1)};
+        ans = ans + t;
+        kari = (i - now)/A;
+        break;
+      }
+    }
+  }
+  ans += maximal(calc(U) + kari);
+  cout << ans << endl;
 }
