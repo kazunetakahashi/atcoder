@@ -80,7 +80,7 @@ ll solve() {
       }
     }
   }
-  return ryoho * (A + B + max(A, B)) + tate * A + yoko * B;
+  return ryoho * (A + B + max(A, B)) + tate * A + yoko * B + A + B;
 }
 
 int main () {
