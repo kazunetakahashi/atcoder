@@ -65,21 +65,21 @@ ll solve() {
       for (auto k = 0; k < 4; ++k) {
         if (x[i][j][k]) cnt++;
       }
-      if (cnt == 4) {
+      if (cnt == 4 || cnt == 3) {
         dp[i][j] += A + B + max(A, B);
-      } else if (cnt == 3) {
-        dp[i][j] += max(A, B);
+      } else if (cnt == 1) {
+        dp[i][j] += A + B;
       } else if (cnt == 2) {
         if (x[i][j][0] == x[i][j][1] && x[i][j][2] == x[i][j][3]) {
           dp[i][j] += A;          
         } else if (x[i][j][0] == x[i][j][2] && x[i][j][1] == x[i][j][3]) {
           dp[i][j] += B;          
         }
+        dp[i][j] += A + B;
       }
       // cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
     }
   }
-  /*
   ll amari = 0;
   bool taisho[2] = {true, true};
   for (auto i = 0; i < H/2; ++i) {
@@ -98,8 +98,7 @@ ll solve() {
   }
   if (taisho[0]) amari += A;
   if (taisho[1]) amari += B;
-  */
-  return dp[H/2][W/2] + A + B;
+  return dp[H/2][W/2] + A + B - amari;
 }
 
 int main () {
