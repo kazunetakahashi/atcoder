@@ -45,17 +45,14 @@ ll solve() {
       x[i][j][3] = f[H-1-i+1][W-1-j+1];
     }
   }
-  /*
   for (auto k = 0; k < 4; ++k) {
-    // cerr << "k = " << k << endl;
+    cerr << "k = " << k << endl;
     for (auto i = 1; i < H/2+1; ++i) {
       for (auto j = 1; j < W/2+1; ++j) {
-        // cerr << (x[i][j][k] ? 'S' : '.');
-      }
-      // cerr << endl;
+        cerr << (x[i][j][k] ? 'S' : '.');
+      }cerr << endl;
     }
   }
-  */
   ll dp[110][110];
   fill(&dp[0][0], &dp[0][0]+110*110, 0);
   for (auto i = 1; i < H/2+1; ++i) {
@@ -77,7 +74,7 @@ ll solve() {
         }
         dp[i][j] += A + B;
       }
-      // cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
+      cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
     }
   }
   ll amari = 0;
