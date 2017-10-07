@@ -65,6 +65,7 @@ ll solve() {
           dp[i][j] += B;          
         }
       }
+      cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
     }
   }
   ll amari = 0;
