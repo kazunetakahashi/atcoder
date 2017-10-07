@@ -54,8 +54,9 @@ int main () {
     ans++;
     ll yoyu = C - size - 1;
     cerr << "yoyu = " << yoyu << endl;
-    if (!S.empty()) {
+    if (yoyu > 0 && !S.empty()) {
       auto itt = S.lower_bound(yoyu);
+      cerr << "itt = " << *itt << endl;
       if (itt == S.begin()) {
         //
       } else {
