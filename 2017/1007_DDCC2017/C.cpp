@@ -48,13 +48,13 @@ int main () {
   while (!S.empty()) {
     auto it = S.lower_bound(infty);
     ll size = *it;
-    cerr << size << endl;
+    cerr << "size = " << size << endl;
     S.erase(it);
     ans++;
     ll yoyu = C - size - 1;
     if (!S.empty()) {
       auto itt = S.lower_bound(yoyu);
-      cerr << *itt << endl;
+      cerr << "itt = " << *itt << endl;
       if (itt == S.end()) {
         //
       } else {
