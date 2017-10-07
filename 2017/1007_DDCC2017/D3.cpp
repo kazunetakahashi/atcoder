@@ -151,6 +151,8 @@ ll solve() {
   state T;
   T = S;
   T.tate_ni_soroeru = false;
+  S.soroeru();
+  T.soroeru();
   return max(S.ans(), T.ans());
 }
 
