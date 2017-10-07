@@ -35,6 +35,67 @@ int H, W;
 ll A, B;
 bool f[210][210];
 
+class state {
+public:
+  ll ryoho, yobi, tate, yoko, zero;
+  bool tate_ni_soroeru;
+  void soroeru() {
+    if (tate_ni_soroeru) {
+      tate = yobi + tate;
+      yobi = 0;      
+    } else {
+      yoko = yobi + yoko;
+      yobi = 0;      
+    }
+  }
+  bool tate_taisho() {
+    return (zero == 0 && yoko == 0 && yobi == 0);
+  }
+  bool yoko_taisho() {
+    return (zero == 0 && tate == 0 && yobi == 0);
+  }
+  bool ryoho_taisho() {
+    return tate_taisho() && yoko_taisho();
+  }
+  ll sum() {
+    return ryoho + yobi + tate + yoko + zero;
+  }
+  int next_delete() {
+    if (zero > 0) return 4;
+    if (tate_ni_soroeru) {
+      if (yoko > 0) return 3;
+      if (tate > 0) return 2;
+      if (ryoho > 0) return 0;
+    } else {
+      if (tate > 0) return 2;
+      if (yoko > 0) return 3;
+      if (ryoho > 0) return 0;     
+    }
+  }
+  ll tokuten() {
+    int x = next_delete();
+    if (x == 0) ryoho--;
+    else if (x == 2) tate--;
+    else if (x == 3) yoko--;
+    else if (x == 4) zero--;
+    if (ryoho_taisho()) {
+      return A + B;
+    } else if (tate_taisho()) {
+      return A;
+    } else if (yoko_taisho()) {
+      return B;
+    }
+    return 0;
+  }
+  ll ans() {
+    ll ret = 0;
+    while (sum() > 0) {
+      ret += tokuten();
+    }
+    return ret;
+  }
+};
+
 ll solve() {
   bool x[110][110][4];
   for (auto i = 1; i < H/2+1; ++i) {
@@ -80,77 +141,17 @@ ll solve() {
       }
     }
   }
-  ll ans = 0;
-  ll tnokori = tryoho + tyobi + ttate + tyoko + tzero;
-  ll temp = 0;
-  // yoko ni soroeru
-  ll ryoho = tryoho;
-  ll yobi = tyobi;
-  ll tate = ttate;
-  ll yoko = tyoko;
-  ll zero = tzero;
-  ll nokori = tnokori;
-  while (zero > 0) {
-    zero--;
-    nokori--;
-    if (nokori == 0) temp += A+B;
-  }
-  while (tate > 0) {
-    tate--;
-    nokori--;
-    if (nokori == 0) temp += A+B;    
-  }
-  while (yobi > 0) {
-    yobi--;
-    yoko++;    
-  }
-  while (yoko > 0) {
-    yoko--;
-    nokori--;
-    temp += B;
-    if (nokori == 0) temp += A;
-  }
-  while (ryoho > 0) {
-    ryoho--;
-    nokori--;
-    temp += A + B + B;    
-  }
-  ans = max(ans, temp);
-  // tate ni soroeru
-  ryoho = tryoho;
-  yobi = tyobi;
-  tate = ttate;
-  yoko = tyoko;
-  zero = tzero;
-  nokori = tnokori;
-  temp = 0;
-  while (zero > 0) {
-    zero--;
-    nokori--;
-    if (nokori == 0) temp += A+B;
-  }
-  while (yoko > 0) {
-    yoko--;
-    nokori--;
-    if (nokori == 0) temp += A+B;    
-  }
-  while (yobi > 0) {
-    yobi--;
-    tate++;    
-  }
-  while (tate > 0) {
-    tate--;
-    nokori--;
-    temp += A;
-    if (nokori == 0) temp += B;
-  }
-  while (ryoho > 0) {
-    ryoho--;
-    nokori--;
-    temp += A + B + A;    
-  }
-  ans = max(ans, temp);
-  return ans;
+  state S;
+  S.ryoho = tryoho;
+  S.yobi = tyobi;
+  S.tate = ttate;
+  S.yoko = tyoko;
+  S.zero = tzero;
+  S.tate_ni_soroeru = true;
+  state T;
+  T = S;
+  T.tate_ni_soroeru = false;
+  return max(S.ans(), T.ans());
 }
 
 int main () {
