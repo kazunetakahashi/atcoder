@@ -55,6 +55,7 @@ ll solve() {
     }
   }
   ll ryoho = 0;
+  ll yobi = 0;
   ll tate = 0;
   ll yoko = 0;
   for (auto i = 1; i < H/2+1; ++i) {
@@ -64,13 +65,7 @@ ll solve() {
         if (x[i][j][k]) cnt++;
       }
       if (cnt == 4) ryoho++;
-      if (cnt == 3) {
-        if (A < B) {
-          yoko++;
-        } else {
-          tate++;
-        }
-      }
+      if (cnt == 3) yobi++;
       if (cnt == 2) {
         if (x[i][j][0] == x[i][j][1] && x[i][j][2] == x[i][j][3]) {
           tate++;
@@ -80,7 +75,10 @@ ll solve() {
       }
     }
   }
-  return ryoho * (A + B + max(A, B)) + tate * A + yoko * B + A + B;
+  ll ans = 0;
+  ans = max(ans, ryoho * (A + B + A) + (yobi + tate) * A);
+  ans = max(ans, ryoho * (A + B + B) + (yobi + yoko) * B);
+  return ans;
 }
 
 int main () {
