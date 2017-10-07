@@ -58,7 +58,7 @@ ll solve() {
   fill(&dp[0][0], &dp[0][0]+110*110, 0);
   for (auto i = 1; i < H/2+1; ++i) {
     for (auto j = 1; j < W/2+1; ++j) {
-      dp[i][j] = dp[i-1][j] + dp[i][j-1] + dp[i-1][j-1];
+      dp[i][j] = dp[i-1][j] + dp[i][j-1] - dp[i-1][j-1];
       int cnt = 0;
       for (auto k = 0; k < 4; ++k) {
         if (x[i][j][k]) cnt++;
