@@ -108,5 +108,5 @@ int main () {
   ll ans = solve();
   rev();
   ans = max(ans, solve());
-  // cout << ans << endl;
+  cout << ans << endl;
 }
