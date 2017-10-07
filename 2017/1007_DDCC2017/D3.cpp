@@ -123,6 +123,7 @@ ll solve() {
   yoko = tyoko;
   zero = tzero;
   nokori = tnokori;
+  temp = 0;
   while (zero > 0) {
     zero--;
     nokori--;
