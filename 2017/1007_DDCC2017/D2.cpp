@@ -67,11 +67,6 @@ ll solve() {
       } else if (cnt == 1) {
         dp[i][j] += A + B;
       } else if (cnt == 2) {
-        if (x[i][j][0] == x[i][j][1] && x[i][j][2] == x[i][j][3]) {
-          dp[i][j] += A;          
-        } else if (x[i][j][0] == x[i][j][2] && x[i][j][1] == x[i][j][3]) {
-          dp[i][j] += B;          
-        }
         dp[i][j] += A + B;
       }
       cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
