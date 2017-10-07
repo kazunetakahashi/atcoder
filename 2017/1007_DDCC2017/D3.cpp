@@ -78,7 +78,7 @@ ll solve() {
   ll ans = 0;
   ans = max(ans, ryoho * (A + B + A) + (yobi + tate) * A);
   ans = max(ans, ryoho * (A + B + B) + (yobi + yoko) * B);
-  return ans;
+  return ans + A + B;
 }
 
 int main () {
