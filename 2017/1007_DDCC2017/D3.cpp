@@ -54,36 +54,42 @@ ll solve() {
       cerr << endl;
     }
   }
-  ll ryoho = 0;
-  ll yobi = 0;
-  ll tate = 0;
-  ll yoko = 0;
-  ll zero = 0;
+  ll tryoho = 0;
+  ll tyobi = 0;
+  ll ttate = 0;
+  ll tyoko = 0;
+  ll tzero = 0;
   for (auto i = 1; i < H/2+1; ++i) {
     for (auto j = 1; j < W/2+1; ++j) {
       int cnt = 0;
       for (auto k = 0; k < 4; ++k) {
         if (x[i][j][k]) cnt++;
       }
-      if (cnt == 4) ryoho++;
-      else if (cnt == 3) yobi++;
+      if (cnt == 4) tryoho++;
+      else if (cnt == 3) tyobi++;
       else if (cnt == 2) {
         if (x[i][j][0] == x[i][j][1] && x[i][j][2] == x[i][j][3]) {
-          tate++;
+          ttate++;
         } else if (x[i][j][0] == x[i][j][2] && x[i][j][1] == x[i][j][3]) {
-          yoko++;
+          tyoko++;
         } else {
-          zero++;
+          tzero++;
         }
       } else {
-        zero++;
+        tzero++;
       }
     }
   }
   ll ans = 0;
-  ll nokori = ryoho + yobi + tate + yoko + zero;
+  ll tnokori = tryoho + tyobi + ttate + tyoko + tzero;
   ll temp = 0;
   // yoko ni soroeru
+  ll ryoho = tryoho;
+  ll yobi = tyobi;
+  ll tate = ttate;
+  ll yoko = tyoko;
+  ll zero = tzero;
+  ll nokori = tnokori;
   while (zero > 0) {
     zero--;
     nokori--;
@@ -111,6 +117,12 @@ ll solve() {
   }
   ans = max(ans, temp);
   // tate ni soroeru
+  ryoho = tryoho;
+  yobi = tyobi;
+  tate = ttate;
+  yoko = tyoko;
+  zero = tzero;
+  nokori = tnokori;
   while (zero > 0) {
     zero--;
     nokori--;
