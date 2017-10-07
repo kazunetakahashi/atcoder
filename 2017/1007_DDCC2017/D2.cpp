@@ -45,15 +45,17 @@ ll solve() {
       x[i][j][3] = f[H-1-i+1][W-1-j+1];
     }
   }
+  /*
   for (auto k = 0; k < 4; ++k) {
-    cerr << "k = " << k << endl;
+    // cerr << "k = " << k << endl;
     for (auto i = 1; i < H/2+1; ++i) {
       for (auto j = 1; j < W/2+1; ++j) {
-        cerr << (x[i][j][k] ? 'S' : '.');
+        // cerr << (x[i][j][k] ? 'S' : '.');
       }
-      cerr << endl;
+      // cerr << endl;
     }
   }
+  */
   ll dp[110][110];
   fill(&dp[0][0], &dp[0][0]+110*110, 0);
   for (auto i = 1; i < H/2+1; ++i) {
@@ -74,9 +76,10 @@ ll solve() {
           dp[i][j] += B;          
         }
       }
-      cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
+      // cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
     }
   }
+  /*
   ll amari = 0;
   bool taisho[2] = {true, true};
   for (auto i = 0; i < H/2; ++i) {
@@ -95,7 +98,8 @@ ll solve() {
   }
   if (taisho[0]) amari += A;
   if (taisho[1]) amari += B;
-  return dp[H/2][W/2] - amari + A + B;
+  */
+  return dp[H/2][W/2] + A + B;
 }
 
 int main () {
