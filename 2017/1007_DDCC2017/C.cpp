@@ -49,18 +49,18 @@ int main () {
     auto it = S.end();
     it--;
     ll size = *it;
-    cerr << "size = " << size << endl;
+    // cerr << "size = " << size << endl;
     S.erase(it);
     ans++;
     ll yoyu = C - size - 1;
-    cerr << "yoyu = " << yoyu << endl;
+    // cerr << "yoyu = " << yoyu << endl;
     if (yoyu > 0 && !S.empty()) {
-      auto itt = S.lower_bound(yoyu);
-      cerr << "itt = " << *itt << endl;
+      auto itt = S.upper_bound(yoyu);
       if (itt == S.begin()) {
         //
       } else {
         itt--;
+        // cerr << "itt = " << *itt << endl;
         S.erase(itt);
       }      
     }
