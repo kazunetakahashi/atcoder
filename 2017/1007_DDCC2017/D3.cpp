@@ -76,9 +76,17 @@ ll solve() {
     }
   }
   ll ans = 0;
-  ans = max(ans, ryoho * (A + B + A) + (yobi + tate) * A);
-  ans = max(ans, ryoho * (A + B + B) + (yobi + yoko) * B);
-  return ans + A + B;
+  if (yobi + tate > 0) {
+    ans = max(ans, ryoho * (A + B + A) + (yobi + tate - 1) * A + A + B);
+  } else {
+    ans = max(ans, ryoho * (A + B + A));
+  }
+  if (yobi + yoko > 0) {
+    ans = max(ans, ryoho * (A + B + B) + (yobi + yoko - 1) * B + A + B);
+  } else {
+    ans = max(ans, ryoho * (A + B + B));
+  }
+  return ans;
 }
 
 int main () {
