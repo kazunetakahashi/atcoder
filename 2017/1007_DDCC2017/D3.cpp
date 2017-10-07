@@ -78,11 +78,15 @@ public:
     else if (x == 2) tate--;
     else if (x == 3) yoko--;
     else if (x == 4) zero--;
+    cerr << "x = " << x << endl;
     if (ryoho_taisho()) {
+      cerr << "ryoho" << endl;
       return A + B;
     } else if (tate_taisho()) {
+      cerr << "tate" << endl;
       return A;
     } else if (yoko_taisho()) {
+      cerr << "yoko" << endl;
       return B;
     }
     return 0;
