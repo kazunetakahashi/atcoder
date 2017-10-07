@@ -58,6 +58,7 @@ ll solve() {
   ll yobi = 0;
   ll tate = 0;
   ll yoko = 0;
+  ll zero = 0;
   for (auto i = 1; i < H/2+1; ++i) {
     for (auto j = 1; j < W/2+1; ++j) {
       int cnt = 0;
@@ -65,27 +66,77 @@ ll solve() {
         if (x[i][j][k]) cnt++;
       }
       if (cnt == 4) ryoho++;
-      if (cnt == 3) yobi++;
-      if (cnt == 2) {
+      else if (cnt == 3) yobi++;
+      else if (cnt == 2) {
         if (x[i][j][0] == x[i][j][1] && x[i][j][2] == x[i][j][3]) {
           tate++;
         } else if (x[i][j][0] == x[i][j][2] && x[i][j][1] == x[i][j][3]) {
           yoko++;
+        } else {
+          zero++;
         }
+      } else {
+        zero++;
       }
     }
   }
   ll ans = 0;
-  if (yobi + tate > 0) {
-    ans = max(ans, ryoho * (A + B + A) + (yobi + tate - 1) * A + A + B);
-  } else {
-    ans = max(ans, ryoho * (A + B + A));
+  ll nokori = ryoho + yobi + tate + yoko + zero;
+  ll temp = 0;
+  // yoko ni soroeru
+  while (zero > 0) {
+    zero--;
+    nokori--;
+    if (nokori == 0) temp += A+B;
   }
-  if (yobi + yoko > 0) {
-    ans = max(ans, ryoho * (A + B + B) + (yobi + yoko - 1) * B + A + B);
-  } else {
-    ans = max(ans, ryoho * (A + B + B));
+  while (tate > 0) {
+    tate--;
+    nokori--;
+    if (nokori == 0) temp += A+B;    
   }
+  while (yobi > 0) {
+    yobi--;
+    yoko++;    
+  }
+  while (yoko > 0) {
+    yoko--;
+    nokori--;
+    temp += B;
+    if (nokori == 0) temp += A;
+  }
+  while (ryoho > 0) {
+    ryoho--;
+    nokori--;
+    temp += A + B + B;    
+  }
+  ans = max(ans, temp);
+  // tate ni soroeru
+  while (zero > 0) {
+    zero--;
+    nokori--;
+    if (nokori == 0) temp += A+B;
+  }
+  while (yoko > 0) {
+    yoko--;
+    nokori--;
+    if (nokori == 0) temp += A+B;    
+  }
+  while (yobi > 0) {
+    yobi--;
+    tate++;    
+  }
+  while (tate > 0) {
+    tate--;
+    nokori--;
+    temp += A;
+    if (nokori == 0) temp += B;
+  }
+  while (ryoho > 0) {
+    ryoho--;
+    nokori--;
+    temp += A + B + A;    
+  }
+  ans = max(ans, temp);
   return ans;
 }
 
