@@ -51,11 +51,13 @@ int main () {
     S.erase(it);
     ans++;
     ll yoyu = C - size - 1;
-    auto itt = S.lower_bound(yoyu);
-    if (itt == S.end()) {
-      //
-    } else {
-      S.erase(itt);
+    if (!S.empty()) {
+      auto itt = S.lower_bound(yoyu);
+      if (itt == S.end()) {
+        //
+      } else {
+        S.erase(itt);
+      }      
     }
   }
   cout << ans << endl;
