@@ -39,15 +39,6 @@ class state {
 public:
   ll ryoho, yobi, tate, yoko, zero;
   bool tate_ni_soroeru;
-  void soroeru() {
-    if (tate_ni_soroeru) {
-      tate = yobi + tate;
-      yobi = 0;      
-    } else {
-      yoko = yobi + yoko;
-      yobi = 0;      
-    }
-  }
   bool tate_taisho() {
     return (zero == 0 && yoko == 0 && yobi == 0);
   }
@@ -64,10 +55,12 @@ public:
     if (zero > 0) return 4;
     if (tate_ni_soroeru) {
       if (yoko > 0) return 3;
+      if (yobi > 0) return 1;
       if (tate > 0) return 2;
       if (ryoho > 0) return 0;
     } else {
       if (tate > 0) return 2;
+      if (yobi > 0) return 1;
       if (yoko > 0) return 3;
       if (ryoho > 0) return 0;     
     }
@@ -75,6 +68,14 @@ public:
   ll tokuten() {
     int x = next_delete();
     if (x == 0) ryoho--;
+    else if (x == 1) {
+      yobi--;
+      if (tate_ni_soroeru) {
+        tate++;
+      } else {
+        yoko++;
+      }
+    }
     else if (x == 2) tate--;
     else if (x == 3) yoko--;
     else if (x == 4) zero--;
