@@ -67,7 +67,10 @@ public:
   }
   ll tokuten() {
     int x = next_delete();
-    if (x == 0) ryoho--;
+    if (x == 0) {
+      ryoho--;
+      yobi++;
+    }
     else if (x == 1) {
       yobi--;
       if (tate_ni_soroeru) {
@@ -76,9 +79,17 @@ public:
         yoko++;
       }
     }
-    else if (x == 2) tate--;
-    else if (x == 3) yoko--;
-    else if (x == 4) zero--;
+    else if (x == 2) {
+      tate--;
+      zero++;
+    }
+    else if (x == 3) {
+      yoko--;
+      zero++;
+    }
+    else if (x == 4) {
+      zero--;
+    }
     cerr << "x = " << x << endl;
     if (ryoho_taisho()) {
       cerr << "ryoho" << endl;
