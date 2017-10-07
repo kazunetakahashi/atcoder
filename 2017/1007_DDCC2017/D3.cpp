@@ -140,7 +140,7 @@ ll solve() {
         } else {
           tzero++;
         }
-      } else {
+      } else if (cnt == 1) {
         tzero++;
       }
     }
