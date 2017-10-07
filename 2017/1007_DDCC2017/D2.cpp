@@ -95,7 +95,7 @@ ll solve() {
   }
   if (taisho[0]) amari += A;
   if (taisho[1]) amari += B;
-  return dp[H/2][W/2] - amari;
+  return dp[H/2][W/2] - amari + A + B;
 }
 
 int main () {
