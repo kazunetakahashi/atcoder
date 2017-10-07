@@ -49,11 +49,11 @@ int main () {
     auto it = S.end();
     it--;
     ll size = *it;
-    // cerr << "size = " << size << endl;
+    cerr << "size = " << size << endl;
     S.erase(it);
     ans++;
     ll yoyu = C - size - 1;
-    // cerr << "yoyu = " << yoyu << endl;
+    cerr << "yoyu = " << yoyu << endl;
     if (!S.empty()) {
       auto itt = S.lower_bound(yoyu);
       if (itt == S.begin()) {
