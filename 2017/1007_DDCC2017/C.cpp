@@ -46,7 +46,8 @@ int main () {
   infty = C + 10;
   int ans = 0;
   while (!S.empty()) {
-    auto it = S.lower_bound(infty);
+    auto it = S.end();
+    it--;
     ll size = *it;
     cerr << "size = " << size << endl;
     S.erase(it);
