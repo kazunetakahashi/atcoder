@@ -60,6 +60,7 @@ int main () {
   while (!S.empty()) {
     int now = get<0>(S.top());
     int from = get<1>(S.top());
+    cerr << "now = " << now << ", from = " << from << endl;
     S.pop();
     if (!visited[now]) {
       visited[now] = true;
@@ -77,6 +78,7 @@ int main () {
         is_loop[back] = true;
         back = parent[back];
         cerr << "back = " << back << endl;
+        if (back == -1) assert(false);
         if (back == now) break;
       }
     }
