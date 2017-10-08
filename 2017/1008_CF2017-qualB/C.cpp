@@ -104,6 +104,7 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     if (is_loop[i]) L++;
   }
+  cerr << "L = " << L << endl;
   ans += L * (L-1) / 2 + L * (N-L) - M;
   cout << ans << endl;
 }
