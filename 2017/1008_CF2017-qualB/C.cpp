@@ -50,8 +50,8 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     random_shuffle(V[i].begin(), V[i].end());
   }
-  bool visited[100010];
-  fill(visited, visited+100010, false);
+  int visited[100010];
+  fill(visited, visited+100010, 0);
   bool is_loop[100010];
   fill(is_loop, is_loop+100010, false);
   int parent[100010];
@@ -60,27 +60,32 @@ int main () {
   while (!S.empty()) {
     int now = get<0>(S.top());
     int from = get<1>(S.top());
-    cerr << "now = " << now << ", from = " << from << endl;
+    // cerr << "now = " << now << ", from = " << from << endl;
     S.pop();
-    if (!visited[now]) {
+    if (visited[now] == 0) {
       visited[now] = true;
       parent[now] = from;
-      cerr << "parent[" << now << "] = " << from << endl;
+      // cerr << "parent[" << now << "] = " << from << endl;
+      S.push(state(now, now));
       for (auto x : V[now]) {
         if (x != parent[now]) {
           S.push(state(x, now));
         }
       }
-    } else {
-      is_loop[from] = true;
-      is_loop[now] = true;
-      int back = parent[from];
-      while (true) {
-        is_loop[back] = true;
-        back = parent[back];
-        cerr << "back = " << back << endl;
-        if (back == -1) assert(false);
-        if (back == now) break;
+    } else if (visited[now] == 1) {
+      if (from != now) {
+        is_loop[from] = true;
+        is_loop[now] = true;
+        int back = parent[from];
+        while (true) {
+          is_loop[back] = true;
+          back = parent[back];
+          // cerr << "back = " << back << endl;
+          if (back == -1) assert(false);
+          if (back == now) break;
+        }        
+      } else {
+        visited[now] = 2;
       }
     }
   }
