@@ -92,6 +92,10 @@ int main () {
   for (auto i = 0; i < 100010; ++i) {
     visited[i] = (color[i] == 3);
   }
+  ll L = 0;
+  for (auto i = 0; i < N; ++i) {
+    if (color[i] == 3) L++;
+  }
   ll ans = 0;
   for (auto i = 0; i < N; ++i) {
     if (visited[i]) continue;
@@ -113,12 +117,10 @@ int main () {
       }
     }
     ans += cnt[0] * cnt[1];
-  }
-  ll L = 0;
-  for (auto i = 0; i < N; ++i) {
-    if (color[i] == 3) L++;
+    ll wa = cnt[0] + cnt[1];
+    ans += (N - wa) * wa;
   }
   cerr << "L = " << L << endl;
-  ans += L * (L-1) / 2 + L * (N-L) - M;
+  ans += L * (L-1) / 2 - M;
   cout << ans << endl;
 }
