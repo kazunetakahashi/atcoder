@@ -57,6 +57,7 @@ int main () {
   while (!S.empty()) {
     int now = get<0>(S.top());
     int from = get<1>(S.top());
+    S.pop();
     if (!visited[now]) {
       visited[now] = true;
       parent[now] = from;
@@ -86,6 +87,7 @@ int main () {
     while (!SS.empty()) {
       int now = get<0>(SS.top());
       int depth = get<1>(SS.top());
+      SS.pop();
       if (!visited[now]) {
         visited[now] = true;
         cnt[depth%2]++;
