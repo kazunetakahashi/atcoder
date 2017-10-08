@@ -35,7 +35,7 @@ typedef tuple<int, int, int> state; // now, from, clr
 typedef tuple<int, int> cond; // now, depth
 
 ll N;
-int M;
+ll M;
 vector<int> V[100010];
 
 int main () {
