@@ -121,6 +121,6 @@ int main () {
     ans += (N - L - wa) * wa;
   }
   cerr << "L = " << L << endl;
-  ans += L * (L-1)/2 - M;
+  ans += L * (L-1)/2 + L * (N - L) - M;
   cout << ans << endl;
 }
