@@ -31,7 +31,7 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
-typedef tuple<int, int> state; // now, from
+typedef tuple<int, int, int> state; // now, from, clr
 typedef tuple<int, int> cond; // now, depth
 
 int N;
@@ -52,45 +52,45 @@ int main () {
   }
   int visited[100010];
   fill(visited, visited+100010, 0);
-  bool is_loop[100010];
-  fill(is_loop, is_loop+100010, false);
+  int color[100010];
+  fill(color, color+100010, 0);
   int parent[100010];
   stack<state> S;
-  S.push(state(0, -1));
+  S.push(state(0, -1, 1));
   while (!S.empty()) {
     int now = get<0>(S.top());
     int from = get<1>(S.top());
+    int clr = get<2>(S.top());
     // cerr << "now = " << now << ", from = " << from << endl;
     S.pop();
     if (visited[now] == 0) {
       visited[now] = true;
       parent[now] = from;
+      color[now] = clr;
       // cerr << "parent[" << now << "] = " << from << endl;
       S.push(state(now, now));
       for (auto x : V[now]) {
         if (x != parent[now]) {
-          S.push(state(x, now));
+          S.push(state(x, now, 3-clr));
         }
       }
     } else if (visited[now] == 1) {
       if (from != now) {
-        is_loop[from] = true;
-        is_loop[now] = true;
-        int back = parent[from];
-        while (true) {
-          is_loop[back] = true;
-          back = parent[back];
-          // cerr << "back = " << back << endl;
-          if (back == -1) assert(false);
-          if (back == now) break;
-        }        
+        if (color[now] == 3) continue;
+        if (color[now] == clr) continue;
+        color[now] = 3;
+        for (auto x : V[now]) {
+          if (x != parent[now]) {
+            S.push(state(x, now, 3-clr));
+          }          
+        }
       } else {
         visited[now] = 2;
       }
     }
   }
   for (auto i = 0; i < 100010; ++i) {
-    visited[i] = is_loop[i];
+    visited[i] = (color[i] == 3);
   }
   ll ans = 0;
   for (auto i = 0; i < N; ++i) {
@@ -116,7 +116,7 @@ int main () {
   }
   ll L = 0;
   for (auto i = 0; i < N; ++i) {
-    if (is_loop[i]) L++;
+    if (color[i] == 3) L++;
   }
   cerr << "L = " << L << endl;
   ans += L * (L-1) / 2 + L * (N-L) - M;
