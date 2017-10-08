@@ -116,11 +116,11 @@ int main () {
         }
       }
     }
-    ans += cnt[0] * cnt[1];
+    ans += 2 * cnt[0] * cnt[1];
     ll wa = cnt[0] + cnt[1];
     ans += (N - wa) * wa;
   }
   cerr << "L = " << L << endl;
-  ans += L * (L-1) / 2 - M;
-  cout << ans << endl;
+  ans += L * (L-1) - 2 * M;
+  cout << ans/2 << endl;
 }
