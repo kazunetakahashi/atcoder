@@ -79,10 +79,11 @@ int main () {
         if (color[now] == 3) continue;
         if (color[now] == clr) continue;
         color[now] = 3;
-        for (auto x : V[now]) {
-          if (x != parent[now]) {
-            S.push(state(x, now, 3-clr));
-          }          
+        color[from] = 3;
+        int back = parent[from];
+        while (back != now) {
+          color[back] = 3;
+          back = parent[back];
         }
       } else {
         visited[now] = 2;
