@@ -118,7 +118,7 @@ int main () {
     }
     ans += 2 * cnt[0] * cnt[1];
     ll wa = cnt[0] + cnt[1];
-    ans += (N - wa) * wa;
+    ans += (N - L - wa) * wa;
   }
   cerr << "L = " << L << endl;
   ans += L * (L-1) - 2 * M;
