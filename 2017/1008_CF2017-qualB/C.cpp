@@ -65,6 +65,7 @@ int main () {
     if (!visited[now]) {
       visited[now] = true;
       parent[now] = from;
+      cerr << "parent[" << now << "] = " << from << endl;
       for (auto x : V[now]) {
         if (x != parent[now]) {
           S.push(state(x, now));
