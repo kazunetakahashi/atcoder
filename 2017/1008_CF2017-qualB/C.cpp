@@ -47,6 +47,9 @@ int main () {
     V[a].push_back(b);
     V[b].push_back(a);
   }
+  for (auto i = 0; i < N; ++i) {
+    random_shuffle(V[i].begin(), V[i].end());
+  }
   bool visited[100010];
   fill(visited, visited+100010, false);
   bool is_loop[100010];
@@ -70,9 +73,10 @@ int main () {
       is_loop[from] = true;
       is_loop[now] = true;
       int back = parent[from];
-      while (!is_loop[back]) {
+      while (true) {
         is_loop[back] = true;
         back = parent[back];
+        if (back == now) break;
       }
     }
   }
