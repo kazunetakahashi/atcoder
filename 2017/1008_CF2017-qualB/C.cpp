@@ -68,7 +68,7 @@ int main () {
       parent[now] = from;
       color[now] = clr;
       // cerr << "parent[" << now << "] = " << from << endl;
-      S.push(state(now, now));
+      S.push(state(now, now, 3-clr));
       for (auto x : V[now]) {
         if (x != parent[now]) {
           S.push(state(x, now, 3-clr));
