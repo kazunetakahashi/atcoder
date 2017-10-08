@@ -54,6 +54,8 @@ int main () {
     if (it == S.end()) {
       cout << "NO" << endl;
       return 0;
+    } else {
+      S.erase(it);
     }
   }
   cout << "YES" << endl;
