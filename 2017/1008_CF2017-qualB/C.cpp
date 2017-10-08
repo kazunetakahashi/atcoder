@@ -68,8 +68,9 @@ int main () {
       }
     } else {
       is_loop[from] = true;
+      is_loop[now] = true;
       int back = parent[from];
-      while (is_loop[back] || back == now) {
+      while (!is_loop[back]) {
         is_loop[back] = true;
         back = parent[back];
       }
