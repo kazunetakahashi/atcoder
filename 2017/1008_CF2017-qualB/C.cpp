@@ -76,6 +76,7 @@ int main () {
       while (true) {
         is_loop[back] = true;
         back = parent[back];
+        cerr << "back = " << back << endl;
         if (back == now) break;
       }
     }
