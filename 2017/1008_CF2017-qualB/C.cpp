@@ -76,7 +76,6 @@ int main () {
       }
     } else if (visited[now] == 1) {
       if (from != now) {
-        if (color[now] == 3) continue;
         if (color[now] == clr) continue;
         color[now] = 3;
         color[from] = 3;
