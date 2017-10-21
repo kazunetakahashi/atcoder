@@ -71,7 +71,7 @@ fruit calc(int v) {
       S[i+1].insert(x + calc(v).second);
     }
   }
-  auto it = S[s+1].upper_bound(X[v]);
+  auto it = S[s].upper_bound(X[v]);
   it--;
   F[v] = fruit(*it, allsum-*it);
   if (F[v].first < F[v].second) swap(F[v].first, F[v].second);
@@ -87,12 +87,18 @@ int main () {
     children[P[i]].push_back(i+1);
   }
   for (auto i = 0; i < N; ++i) {
+    cerr << "children[" << i << "] : ";
+    for (auto x : children[i]) {
+      cerr << x << " ";
+    }
+  }
+  for (auto i = 0; i < N; ++i) {
     cin >> X[i];
   }
   for (auto i = 0; i < N; ++i) {
     F[i] = empty;
   }
-  calc(0);
+  // calc(0);
   if (judged) {
     cerr << "IMPOSSIBLE" << endl;
   } else {
