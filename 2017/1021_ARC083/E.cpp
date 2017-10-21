@@ -49,6 +49,7 @@ fruit calc(int v) {
     cerr << "F[" << v << "] = " << F[v].first << " " << F[v].second << endl;
     return F[v];
   }
+  cerr << "now = " << v << endl;
   int sum = 0;
   int allsum = 0;
   for (auto x : children[v]) {
