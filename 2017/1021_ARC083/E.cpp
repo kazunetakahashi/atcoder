@@ -65,10 +65,12 @@ fruit calc(int v) {
   vector< set<int> > S(s+1);
   S[0].insert(0);
   for (auto i = 0; i < s; ++i) {
+    int fir = calc(children[v][i]).first;
+    int sec = calc(children[v][i]).second;
     for (auto x : S[i]) {
       if (x > X[v]) break;
-      S[i+1].insert(x + calc(v).first);
-      S[i+1].insert(x + calc(v).second);
+      S[i+1].insert(x + fir);
+      S[i+1].insert(x + sec);
     }
   }
   auto it = S[s].upper_bound(X[v]);
@@ -86,6 +88,7 @@ int main () {
     P[i]--;
     children[P[i]].push_back(i+1);
   }
+  /*
   for (auto i = 0; i < N; ++i) {
     cerr << "children[" << i << "] : ";
     for (auto x : children[i]) {
@@ -93,13 +96,14 @@ int main () {
     }
     cerr << endl;
   }
+  */
   for (auto i = 0; i < N; ++i) {
     cin >> X[i];
   }
   for (auto i = 0; i < N; ++i) {
     F[i] = empty;
   }
-  // calc(0);
+  calc(0);
   if (judged) {
     cerr << "IMPOSSIBLE" << endl;
   } else {
