@@ -73,6 +73,9 @@ fruit calc(int v) {
       S[i+1].insert(x + sec);
     }
   }
+  for (auto x : S[s]) {
+    cerr << x << " ";
+  }
   auto it = S[s].lower_bound(X[v]);
   it--;
   F[v] = fruit(*it, allsum-*it);
