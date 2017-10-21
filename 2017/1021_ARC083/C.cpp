@@ -43,11 +43,10 @@ int main () {
       if (mizu > F) continue;
       int sato = F - mizu;
       sato = min(sato, mizu / 100 * E);
-      for (auto k = 0; k * C > sato; ++k) {
+      for (auto k = 0; k * C <= sato; ++k) {
         int nokori = sato - k * C;
         int realsato = k * C + (nokori/D) * D;
         double nownodo = ((double)realsato) / (realsato + mizu);
-        cerr << "nownodo = " << nownodo << endl;
         if (nodo < nownodo) {
           nodo = nownodo;
           sitsuryo = realsato + mizu;
