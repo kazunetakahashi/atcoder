@@ -84,7 +84,7 @@ int main () {
   for (auto i = 0; i < N-1; ++i) {
     cin >> P[i];
     P[i]--;
-    children[P[i]].push_back(i);
+    children[P[i]].push_back(i+1);
   }
   for (auto i = 0; i < N; ++i) {
     cin >> X[i];
