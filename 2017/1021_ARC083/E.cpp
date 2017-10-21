@@ -73,7 +73,7 @@ fruit calc(int v) {
       S[i+1].insert(x + sec);
     }
   }
-  auto it = S[s].upper_bound(X[v]);
+  auto it = S[s].lower_bound(X[v]);
   it--;
   F[v] = fruit(*it, allsum-*it);
   if (F[v].first < F[v].second) swap(F[v].first, F[v].second);
