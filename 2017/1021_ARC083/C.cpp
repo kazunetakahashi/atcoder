@@ -47,7 +47,7 @@ int main () {
         int nokori = sato - k * C;
         int realsato = k * C + (nokori/D) * D;
         double nownodo = ((double)realsato) / (realsato + mizu);
-        if (nodo < nownodo) {
+        if (nodo <= nownodo) {
           nodo = nownodo;
           sitsuryo = realsato + mizu;
           anssato = realsato;
