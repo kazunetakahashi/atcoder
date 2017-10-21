@@ -110,8 +110,8 @@ int main () {
   }
   calc(0);
   if (judged) {
-    cerr << "IMPOSSIBLE" << endl;
+    cout << "IMPOSSIBLE" << endl;
   } else {
-    cerr << "POSSIBLE" << endl;
+    cout << "POSSIBLE" << endl;
   }
 }
