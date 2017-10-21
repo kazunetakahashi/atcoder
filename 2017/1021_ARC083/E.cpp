@@ -91,6 +91,7 @@ int main () {
     for (auto x : children[i]) {
       cerr << x << " ";
     }
+    cerr << endl;
   }
   for (auto i = 0; i < N; ++i) {
     cin >> X[i];
