@@ -46,10 +46,10 @@ fruit calc(int v) {
   if (F[v] != empty) return F[v];
   if (children[v].empty()) {
     F[v] = fruit(X[v], 0);
-    cerr << "F[" << v << "] = " << F[v].first << " " << F[v].second << endl;
+    // cerr << "F[" << v << "] = " << F[v].first << " " << F[v].second << endl;
     return F[v];
   }
-  cerr << "now = " << v << endl;
+  // cerr << "now = " << v << endl;
   int sum = 0;
   int allsum = 0;
   for (auto x : children[v]) {
@@ -73,14 +73,16 @@ fruit calc(int v) {
       S[i+1].insert(x + sec);
     }
   }
+  /*
   for (auto x : S[s]) {
     cerr << x << " ";
   }
+  */
   auto it = S[s].upper_bound(X[v]);
   it--;
   F[v] = fruit(X[v], allsum-*it);
   if (F[v].first < F[v].second) swap(F[v].first, F[v].second);
-  cerr << "F[" << v << "] = " << F[v].first << " " << F[v].second << endl;
+  // cerr << "F[" << v << "] = " << F[v].first << " " << F[v].second << endl;
   return F[v];
 }
 
