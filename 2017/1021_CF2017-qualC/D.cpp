@@ -35,6 +35,7 @@ string S;
 
 int main () {
   cin >> S;
+  int N = S.size();
   int cnt[26];
   fill(cnt, cnt+26, 0);
   for (auto x : S) {
@@ -50,8 +51,16 @@ int main () {
   if (cnt[S[0] - 'a'] % 2 == 1) {
     has_edge = true;
   }
-  if (cnt[S[S.size()-1] - 'a'] % 2 == 1) {
+  if (cnt[S[N-1] - 'a'] % 2 == 1) {
     has_edge = true;
+  }
+  for (auto i = 0; i < N-1; ++i) {
+    if (S[i] != S[i+1]
+        && cnt[S[i] - 'a'] % 2 == 1
+        && cnt[S[i+1] - 'a'] % 2 == 1) {
+      has_edge = true;
+      break;
+    }
   }
   if (has_edge) {
     cout << ans << endl;
