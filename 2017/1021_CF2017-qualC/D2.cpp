@@ -65,12 +65,15 @@ int main () {
     if (SS.find(now) == SS.end()) {
       SS[now] = i;
       dp[i] = dp[i-1] + 1;
+      for (auto j = 0; j < 26; ++j) {
+        int twd = now ^ (1 << j);
+        if (SS.find(twd) != SS.end()) {
+          dp[i] = min(dp[i], dp[SS[twd]] + 1);
+        }
+      }
     } else {
       dp[i] = dp[SS[now]];
     }
-  }
-  while(true){
-    
   }
   for (auto i = 0; i <= N; ++i) {
     cerr << "dp[" << i << "] = " << dp[i] << endl;
