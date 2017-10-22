@@ -57,7 +57,7 @@ int main () {
     return 0;
   }
   int dp[200010];
-  dp[0] = 1;
+  dp[0] = 0;
   dp[1] = 1;
   int now = 0;
   SS[now] = 0;
@@ -72,8 +72,10 @@ int main () {
       dp[i] = dp[SS[now]];
     }
   }
+  /*
   for (auto i = 0; i <= N; ++i) {
     cerr << "dp[" << i << "] = " << dp[i] << endl;
   }
+  */
   cout << dp[N] << endl;
 }
