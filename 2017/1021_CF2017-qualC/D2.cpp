@@ -70,5 +70,5 @@ int main () {
       dp[i] = dp[SS[now]];
     }
   }
-  cout << dp[i] << endl;
+  cout << dp[N] << endl;
 }
