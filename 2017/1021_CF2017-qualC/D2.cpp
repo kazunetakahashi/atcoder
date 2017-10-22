@@ -72,5 +72,8 @@ int main () {
       dp[i] = dp[SS[now]];
     }
   }
+  for (auto i = 0; i <= N; ++i) {
+    cerr << "dp[" << i << "] = " << dp[i] << endl;
+  }
   cout << dp[N] << endl;
 }
