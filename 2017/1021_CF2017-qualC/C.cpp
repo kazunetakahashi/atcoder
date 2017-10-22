@@ -50,6 +50,9 @@ int main () {
     }
   }
   C.push_back('X');
+  if ((int)C.size() - 1 > (int) V.size()) {
+    V.push_back(cnt);
+  }
   for (auto x : V) {
     cerr << x << " ";
   }
