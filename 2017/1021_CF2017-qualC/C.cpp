@@ -50,6 +50,14 @@ int main () {
     }
   }
   C.push_back('X');
+  for (auto x : V) {
+    cerr << x << " ";
+  }
+  cerr << endl;
+  for (auto x : C) {
+    cerr << x << " ";
+  }
+  cerr << endl;
   int left = 0;
   int right = C.size() - 1;
   int ans = 0;
