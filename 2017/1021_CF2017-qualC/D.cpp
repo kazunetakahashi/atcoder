@@ -52,8 +52,10 @@ int main () {
     char c = (char)('a' + i);
     int l = 0;
     for (auto j = 0; j < N; ++j) {
-      if (S[j] == c) num[j] = l;
-      l++;
+      if (S[j] == c) {
+        num[j] = l;
+        l++; 
+      }
     }
   }
   bool has_edge = false;
@@ -71,7 +73,7 @@ int main () {
         && cnt[S[i+1] - 'a'] % 2 == 1) {
       has_edge = true;
       break;
-    }
+    }E
   }
   if (has_edge) {
     cout << ans << endl;
