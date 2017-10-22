@@ -58,12 +58,9 @@ int main () {
   }
   int dp[200010];
   dp[0] = 0;
-  dp[1] = 1;
   int now = 0;
   SS[now] = 0;
-  now = now ^ ctoi(S[0]);
-  SS[now] = 1;
-  for (auto i = 2; i <= N; ++i) {
+  for (auto i = 1; i <= N; ++i) {
     now = now ^ ctoi(S[i-1]);
     if (SS.find(now) == SS.end()) {
       SS[now] = i;
@@ -72,10 +69,8 @@ int main () {
       dp[i] = dp[SS[now]];
     }
   }
-  /*
   for (auto i = 0; i <= N; ++i) {
     cerr << "dp[" << i << "] = " << dp[i] << endl;
   }
-  */
-  cout << dp[N] << endl;
+  //cout << dp[N] << endl;
 }
