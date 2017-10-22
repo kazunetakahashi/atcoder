@@ -32,6 +32,7 @@ typedef long long ll;
 // const ll M = 1000000007;
 
 string S;
+int num[200010];
 
 int main () {
   cin >> S;
@@ -47,6 +48,14 @@ int main () {
       ans++;
     }
   }
+  for (auto i = 0; i < 26; ++i) {
+    char c = (char)('a' + i);
+    int l = 0;
+    for (auto j = 0; j < N; ++j) {
+      if (S[j] == c) num[j] = l;
+      l++;
+    }
+  }
   bool has_edge = false;
   if (cnt[S[0] - 'a'] % 2 == 1) {
     has_edge = true;
@@ -56,6 +65,8 @@ int main () {
   }
   for (auto i = 0; i < N-1; ++i) {
     if (S[i] != S[i+1]
+        && num[i] % 2 == 0
+        && num[i+1] % 2 == 0
         && cnt[S[i] - 'a'] % 2 == 1
         && cnt[S[i+1] - 'a'] % 2 == 1) {
       has_edge = true;
