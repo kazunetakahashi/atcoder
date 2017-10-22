@@ -62,17 +62,17 @@ int main () {
   SS[now] = 0;
   for (auto i = 1; i <= N; ++i) {
     now = now ^ ctoi(S[i-1]);
-    if (SS.find(now) == SS.end()) {
-      dp[i] = dp[i-1] + 1;
-      for (auto j = 0; j < 26; ++j) {
-        int twd = now ^ (1 << j);
-        if (SS.find(twd) != SS.end()) {
-          dp[i] = min(dp[i], dp[SS[twd]] + 1);
-        }
-      }
-      SS[now] = i;
+    dp[i] = dp[i-1] + 1;
+    if (SS.find(now) != SS.end()) {
+      dp[i] = min(dp[i], dp[SS[now]] + 1);
     } else {
-      dp[i] = dp[SS[now]];
+      SS[now] = i;
+    }
+    for (auto j = 0; j < 26; ++j) {
+      int twd = now ^ (1 << j);
+      if (SS.find(twd) != SS.end()) {
+        dp[i] = min(dp[i], dp[SS[twd]] + 1);
+      }
     }
   }
   /*
