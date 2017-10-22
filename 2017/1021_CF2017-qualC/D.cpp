@@ -73,7 +73,7 @@ int main () {
         && cnt[S[i+1] - 'a'] % 2 == 1) {
       has_edge = true;
       break;
-    }E
+    }
   }
   if (has_edge) {
     cout << ans << endl;
