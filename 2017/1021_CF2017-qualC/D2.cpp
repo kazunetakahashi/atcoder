@@ -64,12 +64,12 @@ int main () {
     now = now ^ ctoi(S[i-1]);
     dp[i] = dp[i-1] + 1;
     if (SS.find(now) != SS.end()) {
-      dp[i] = min(dp[i], dp[now] + 1);
+      dp[i] = min(dp[i], SS[now] + 1);
     }
     for (auto j = 0; j < 26; ++j) {
       int twd = now ^ (1 << j);
       if (SS.find(twd) != SS.end()) {
-        dp[i] = min(dp[i], dp[twd] + 1);
+        dp[i] = min(dp[i], SS[twd] + 1);
       }
     }
     if (SS.find(now) != SS.end()) {
