@@ -67,6 +67,7 @@ int main () {
       dp[i] = dp[i-1] + 1;
       for (auto j = 0; j < 26; ++j) {
         int twd = now ^ (1 << j);
+        if (j == (S[i-1] - 'a')) continue;
         if (SS.find(twd) != SS.end()) {
           dp[i] = min(dp[i], dp[SS[twd]] + 1);
         }
