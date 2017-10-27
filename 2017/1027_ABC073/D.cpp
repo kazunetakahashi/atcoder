@@ -42,6 +42,7 @@ int main () {
   cin >> N >> M >> R;
   for (auto i = 0; i < R; ++i) {
     cin >> r[i];
+    r[i]--;
   }
   for (auto i = 0; i < M; ++i) {
     cin >> A[i] >> B[i] >> C[i];
@@ -74,7 +75,6 @@ int main () {
     for (auto i = 0; i < R-1; ++i) {
       res += dist[r[i]][r[i+1]];
     }
-    cerr << res << endl;
     ans = min(ans, res);
   } while (next_permutation(r, r+R));
   cout << ans << endl;
