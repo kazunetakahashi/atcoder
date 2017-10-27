@@ -47,11 +47,11 @@ int main () {
     imos[l[i]]++;
     imos[r[i]]--;
   }
-  for (auto i = 1; i < N; ++i) {
+  for (auto i = 1; i < 100000; ++i) {
     imos[i] += imos[i-1];
   }
   int ans = 0;
-  for (auto i = 0; i < N; ++i) {
+  for (auto i = 0; i < 100000; ++i) {
     if (imos[i] > 0) ++ans;
   }
   cout << ans << endl;
