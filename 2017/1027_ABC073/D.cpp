@@ -63,6 +63,7 @@ int main () {
         if (i == j) continue;
         if (k == j) continue;
         dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
+        cerr << "dist[" << i << "][" << j << "] = " << dist[i][j] << endl;
       }
     }
   }
