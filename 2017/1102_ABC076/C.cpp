@@ -48,7 +48,7 @@ int main () {
     for (auto i = 0; i < N; ++i) {
       if (X[i] == '?') X[i] = 'a';
     }
-    // cerr << X << endl;
+    cerr << X << endl;
     V.push_back(X);
   }
   sort(V.begin(), V.end());
