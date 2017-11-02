@@ -40,7 +40,7 @@ int main () {
   int N = S.size();
   int M = T.size();
   vector<string> V;
-  for (auto i = 0; i < N - M; ++i) {
+  for (auto i = 0; i <= N - M; ++i) {
     string X = S;
     for (auto j = 0; j < M; ++j) {
       X[i + j] = T[j];
@@ -48,7 +48,7 @@ int main () {
     for (auto i = 0; i < N; ++i) {
       if (X[i] == '?') X[i] = 'a';
     }
-    cerr << X << endl;
+    // cerr << X << endl;
     V.push_back(X);
   }
   sort(V.begin(), V.end());
