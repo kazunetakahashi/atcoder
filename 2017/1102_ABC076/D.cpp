@@ -35,7 +35,7 @@ int N;
 int T;
 int t[110];
 int v[110];
-int w[110];
+int w[50000];
 
 int main () {
   cin >> N;
@@ -75,5 +75,5 @@ int main () {
   for (auto i = 0; i < T; ++i) {
     ans += ((double)w[i] + (double)w[i+1])/2;
   }
-  cout << ans/4 << endl;
+  cout << fixed << setprecision(10) << ans/4 << endl;
 }
