@@ -49,16 +49,12 @@ int main () {
     cin >> v[i];
     v[i] *= 2;
   }
-  w[0] = 0;
-  w[T] = 0;
   for (auto i = 0; i <= T; ++i) {
-    w[i] = i;
-  }
-  for (auto i = 0; i <= T; ++i) {
-    w[i] = min(w[i], T - i);
+    w[i] = min(i, T - i);
   }
   int sum = 0;
   for (auto i = 0; i < N; ++i) {
+    cerr << "i = " << i << endl;
     int all = sum + t[i];
     for (auto j = 0; sum-j >= 0; --j) {
       w[sum-j] = min(w[sum-j], v[i]+j);      
