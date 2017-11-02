@@ -54,9 +54,8 @@ int main () {
   }
   int sum = 0;
   for (auto i = 0; i < N; ++i) {
-    cerr << "i = " << i << endl;
     int all = sum + t[i];
-    for (auto j = 0; sum-j >= 0; --j) {
+    for (auto j = 0; sum-j >= 0; ++j) {
       w[sum-j] = min(w[sum-j], v[i]+j);      
     }
     for (auto j = sum; j <= all; ++j) {
