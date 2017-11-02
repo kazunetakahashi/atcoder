@@ -42,13 +42,13 @@ int main () {
   vector<string> V;
   for (auto i = 0; i < N - M; ++i) {
     string X = S;
-    for (auto j = i; j < M; ++j) {
-      X[j] = T[j-i];
+    for (auto j = 0; j < M; ++j) {
+      X[i + j] = T[j];
     }
     for (auto i = 0; i < N; ++i) {
       if (X[i] == '?') X[i] = 'a';
     }
-    cerr << X << endl;
+    // cerr << X << endl;
     V.push_back(X);
   }
   sort(V.begin(), V.end());
