@@ -96,9 +96,9 @@ inline int cnt_one(ll bit) {
 ll value(key k) {
   ll bit = get<0>(k);
   int c = cnt_one(bit);
-  if (c == 2) return 1;
   // if (c == 1) return 1;
   if (!valid(k)) return 0;
+  if (c == 2) return 1;
   auto it = dp.find(k);
   if (it != dp.end()) return (*it).second;
   ll ans = 0;
