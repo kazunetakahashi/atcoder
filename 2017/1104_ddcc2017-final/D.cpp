@@ -55,7 +55,7 @@ void make_connected(int x, int y) {
       S.pop();
       if (!visited[now]) {
         visited[now] = true;
-        ans += 1ll << now;
+        ans += (1ll << now);
         for (auto e : V[now]) {
           if (!visited[e]) {
             S.push(e);
@@ -70,10 +70,10 @@ void make_connected(int x, int y) {
 
 inline bool all_or_nothing(const ll& bit, const ll& con) {
   ll hanten = ((1ll << N) - 1) ^ bit;
-  cerr << "bit = " << bit << ", con = " << con
-       << ", hanten = " << hanten
-       << ": " << ((bit & con) == con) << ", "
-       << ((hanten & con) == con) << endl;
+  //cerr << "bit = " << bit << ", con = " << con
+  //     << ", hanten = " << hanten
+  //     << ": " << ((bit & con) == con) << ", "
+  //     << ((hanten & con) == con) << endl;
   if ((bit & con) == con) {
     return true; 
   }
@@ -128,6 +128,8 @@ int main () {
     cin >> a >> b;
     --a;
     --b;
+    V[a].push_back(b);
+    V[b].push_back(a);
   }
   if (N == 1) {
     cout << 1 << endl;
@@ -151,8 +153,8 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     for (auto j = 0; j < N; ++j) {
       if (i == j) continue;
-      cerr << "i = " << i << ", j = " << j << ", val = "
-           << value(key(((1ll << N) - 1), i, j)) << endl;
+      //cerr << "i = " << i << ", j = " << j << ", val = "
+      //     << value(key(((1ll << N) - 1), i, j)) << endl;
       ans += value(key(((1ll << N) - 1), i, j));
       ans %= M;
     }
