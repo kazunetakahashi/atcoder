@@ -69,9 +69,13 @@ void make_connected(int x, int y) {
 }
 
 inline bool all_or_nothing(const ll& bit, const ll& con) {
-  if ((bit & con) == con) return true;
-  // ll hanten = ((1ll << 55) - 1) ^ bit;
-  return (((((1ll << 55) - 1) ^ bit) & con) == con);
+  ll hanten = ((1ll << N) - 1) ^ bit;
+  cerr << "bit = " << bit << ", con = " << con
+       << ", hanten = " << hanten << endl;
+  if ((bit & con) == con) {
+    return true; 
+  }
+  return (((((1ll << N) - 1) ^ bit) & con) == con);
 }
 
 inline bool valid(key k) {
