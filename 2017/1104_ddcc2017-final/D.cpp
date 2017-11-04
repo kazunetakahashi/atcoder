@@ -84,12 +84,24 @@ inline bool valid(key k) {
   return true;
 }
 
+inline int cnt_one(ll bit) {
+  int cnt = 0;
+  while (bit > 0) {
+    if ((bit & 1ll) == 1) ++cnt;
+    bit = (bit >> 1);
+  }
+  return cnt;
+}
+
 ll value(key k) {
+  ll bit = get<0>(k);
+  int c = cnt_one(bit);
+  if (c == 2) return 1;
+  // if (c == 1) return 1;
   if (!valid(k)) return 0;
   auto it = dp.find(k);
   if (it != dp.end()) return (*it).second;
   ll ans = 0;
-  ll bit = get<0>(k);
   const int& a = get<1>(k);
   const int& b = get<2>(k);
   bit -= (1ll << b);
@@ -111,6 +123,13 @@ int main () {
     --a;
     --b;
   }
+  if (N == 1) {
+    cout << 1 << endl;
+    return 0;
+  } else if (N == 2) {
+    cout << 2 << endl;
+    return 0;    
+  }
   for (auto i = 0; i < N; ++i) {
     if (V[i].size() > 4) {
       cout << 0 << endl;
@@ -122,7 +141,6 @@ int main () {
       make_connected(i, j);
     }
   }
-  dp[key(0, -1, -1)] = 1;
   ll ans = 0;
   for (auto i = 0; i < N; ++i) {
     for (auto j = 0; j < N; ++j) {
