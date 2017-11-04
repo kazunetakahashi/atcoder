@@ -39,9 +39,9 @@ vector<edge> V[310];
 
 bool subroutine(uvc e) {
   int u0 = get<0>(e);
-  edge edge0 = edge(get<1>(e), get<2>(e));
+  edge edge0 = edge(get<1>(e), -get<2>(e));
   int u1 = get<1>(e);
-  edge edge1 = edge(get<0>(e), -get<2>(e));
+  edge edge1 = edge(get<0>(e), get<2>(e));
   cerr << u0 << " " << u1 << " is not used." << endl;
   // Make an dfs tree without (u0, edge0) and (u1, edge1).
   stack<edge> S;
