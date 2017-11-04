@@ -42,7 +42,7 @@ bool subroutine(uvc e) {
   edge edge0 = edge(get<1>(e), get<2>(e));
   int u1 = get<1>(e);
   edge edge1 = edge(get<0>(e), -get<2>(e));
-  cerr << u0 << " " << u1 << " is not used." << endl;
+  // cerr << u0 << " " << u1 << " is not used." << endl;
   // Make an dfs tree without (u0, edge0) and (u1, edge1).
   stack<edge> S;
   S.push(edge(0, 0));
@@ -53,7 +53,7 @@ bool subroutine(uvc e) {
     int h = get<1>(S.top());
     S.pop();
     if (height[now] == -1) {
-      cerr << now << " " << h << endl;
+      // cerr << now << " " << h << endl;
       height[now] = h;
       for (auto x : V[now]) {
         if ((now == u0 && x == edge0) || (now == u1 && x == edge1)) {
@@ -76,9 +76,9 @@ bool subroutine(uvc e) {
       int j = get<0>(x);
       int cost = get<1>(x);
       if (height[j] - height[i] != cost) {
-        cerr << "height[" << j << "] - height[" << i << "] = "
-             << height[j] << " - " << height[i]
-             << " != " << cost << endl;
+        // cerr << "height[" << j << "] - height[" << i << "] = "
+        //     << height[j] << " - " << height[i]
+        //     << " != " << cost << endl;
         return false;
       }
     }
@@ -108,7 +108,7 @@ int main () {
     int h = get<1>(S.top());
     S.pop();
     if (height[now] == -1) {
-      cerr << now << " " << h << endl;
+      // cerr << now << " " << h << endl;
       height[now] = h;
       for (auto x : V[now]) {
         int dst = get<0>(x);
@@ -127,9 +127,9 @@ int main () {
       int j = get<0>(x);
       int cost = get<1>(x);
       if (height[j] - height[i] != cost) {
-        cerr << "height[" << j << "] - height[" << i << "] = "
-             << height[j] << " - " << height[i]
-             << " != " << cost << endl;
+        // cerr << "height[" << j << "] - height[" << i << "] = "
+        //     << height[j] << " - " << height[i]
+        //     << " != " << cost << endl;
         initial_ok = false;
         int now = i;
         while (now != 0) {
@@ -141,6 +141,7 @@ int main () {
           forbid.push_back(parent[now]);
           now = get<0>(parent[now]);
         }
+        forbid.push_back(uvc(i, j, cost));
         break;
       }
     }
