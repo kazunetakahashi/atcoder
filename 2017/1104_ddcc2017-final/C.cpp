@@ -114,7 +114,7 @@ int main () {
         int dst = get<0>(x);
         int cost = h + get<1>(x);
         if (height[dst] == -1) {
-          parent[dst] = uvc(now, dst, cost);
+          parent[dst] = uvc(now, dst, get<1>(x));
           S.push(edge(dst, cost));
         }
       }
