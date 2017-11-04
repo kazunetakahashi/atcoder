@@ -106,8 +106,8 @@ ll value(key k) {
   const int& b = get<2>(k);
   bit -= (1ll << b);
   for (auto i = 0; i < N; ++i) {
+    if (i == a) continue;
     if ((bit & (1ll << i)) == 0) continue;
-    if (i == a || i == b) continue;
     ans += value(key(bit, i, a));
     ans %= M;    
   }
@@ -145,6 +145,8 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     for (auto j = 0; j < N; ++j) {
       if (i == j) continue;
+      cerr << "i = " << i << ", j = " << j << ", val = "
+           << value(key(((1ll << N) - 1), i, j)) << endl;
       ans += value(key(((1ll << N) - 1), i, j));
       ans %= M;
     }
