@@ -102,7 +102,7 @@ int main () {
     int h = get<1>(S.top());
     S.pop();
     if (height[now] == -1) {
-      cerr << now << " " << h << endl;
+      // cerr << now << " " << h << endl;
       height[now] = h;
       for (auto x : V[now]) {
         int dst = get<0>(x);
@@ -121,6 +121,9 @@ int main () {
       int j = get<0>(x);
       int cost = get<1>(x);
       if (height[j] - height[i] != cost) {
+        cerr << "height[" << j << "] - height[" << i << "] = "
+             << height[j] << " - " << height[i]
+             << " != " << cost << endl;
         initial_ok = false;
         int now = i;
         while (now != -1) {
