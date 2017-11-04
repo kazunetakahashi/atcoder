@@ -108,7 +108,7 @@ int main () {
     int h = get<1>(S.top());
     S.pop();
     if (height[now] == -1) {
-      // cerr << now << " " << h << endl;
+      cerr << now << " " << h << endl;
       height[now] = h;
       for (auto x : V[now]) {
         int dst = get<0>(x);
