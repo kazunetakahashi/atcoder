@@ -55,6 +55,7 @@ bool subroutine(uvc e) {
     int h = get<1>(S.top());
     S.pop();
     if (height[now] == -1) {
+      cerr << now << " " << h << endl;
       height[now] = h;
       for (auto x : V[now]) {
         if ((now == u0 && x == edge0) || (now == u1 && x == edge1)) {
