@@ -48,8 +48,6 @@ bool subroutine(uvc e) {
   S.push(edge(0, 0));
   int height[310];
   fill(height, height+310, -1);
-  uvc parent[310];
-  parent[0] = uvc(-1, 0, -1);
   while (!S.empty()) {
     int now = get<0>(S.top());
     int h = get<1>(S.top());
@@ -59,13 +57,12 @@ bool subroutine(uvc e) {
       height[now] = h;
       for (auto x : V[now]) {
         if ((now == u0 && x == edge0) || (now == u1 && x == edge1)) {
-          cerr << "continue" << endl;
+          // cerr << "continue" << endl;
           continue;
         }
         int dst = get<0>(x);
         int cost = h + get<1>(x);
         if (height[dst] == -1) {
-          parent[dst] = uvc(now, dst, cost);
           S.push(edge(dst, cost));
         }
       }
@@ -73,6 +70,9 @@ bool subroutine(uvc e) {
   }
   for (auto i = 0; i < N; ++i) {
     for (auto x : V[i]) {
+      if ((i == u0 && x == edge0) || (i == u1 && x == edge1)) {
+        continue;
+      }
       int j = get<0>(x);
       int cost = get<1>(x);
       if (height[j] - height[i] != cost) {
