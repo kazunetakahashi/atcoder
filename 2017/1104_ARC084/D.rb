@@ -10,7 +10,7 @@ def sum(k)
   return ans
 end
 
-for i in 1...20000
+for i in 1...10000
   str = ""
   i.times{
     str += "1"    
