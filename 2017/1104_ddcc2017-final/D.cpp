@@ -116,12 +116,12 @@ int main () {
       return 0;
     }
   }
-  cerr << "aaa" << endl;
   for (auto i = 0; i < N; ++i) {
     for (auto j = i+1; j < N; ++j) {
       make_connected(i, j);
     }
   }
+  cerr << "aaa" << endl;
   dp[key(0, -1, -1)] = 1;
   ll ans = 0;
   for (auto i = 0; i < N; ++i) {
