@@ -94,6 +94,7 @@ ll value(key k) {
   const int& b = get<2>(k);
   bit -= (1ll << b);
   for (auto i = 0; i < N; ++i) {
+    if ((bit & (1ll << i)) == 0) continue;
     if (i == a || i == b) continue;
     ans += value(key(bit, i, a));
     ans %= M;    
@@ -121,13 +122,12 @@ int main () {
       make_connected(i, j);
     }
   }
-  cerr << "aaa" << endl;
   dp[key(0, -1, -1)] = 1;
   ll ans = 0;
   for (auto i = 0; i < N; ++i) {
     for (auto j = 0; j < N; ++j) {
       if (i == j) continue;
-      ans += value(key(((1 << N) - 1), i, j));
+      ans += value(key(((1ll << N) - 1), i, j));
       ans %= M;
     }
   }
