@@ -126,12 +126,12 @@ int main () {
              << " != " << cost << endl;
         initial_ok = false;
         int now = i;
-        while (now != -1) {
+        while (now != 0) {
           forbid.push_back(parent[now]);
           now = get<0>(parent[now]);
         }
         now = j;
-        while (now != -1) {
+        while (now != 0) {
           forbid.push_back(parent[now]);
           now = get<0>(parent[now]);
         }
