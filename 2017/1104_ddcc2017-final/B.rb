@@ -4,7 +4,7 @@ a = gets.chomp.split(" ").map{|i| i.to_i}
 ans = 1
 
 a.each{|it|
-  ans = ans.lcm(it.gcm(z))
+  ans = ans.lcm(it.gcd(z))
 }
 
 puts ans
