@@ -39,7 +39,7 @@ int main () {
     cout << (K+2)/2 << " " << (K+2)/2 << endl;
     return 0;
   } else {
-    K++;
+    K--;
     ll a = (K+2)/2 + 2;
     ll b = (K+2)/2 - 1;
     cout << 2 << endl;
