@@ -58,8 +58,8 @@ int main () {
       for (auto i = 0; i < N; ++i) {
         a[i] = a[i] - N * (a[i]/N) + S - a[i]/N;
       }
+      ans += S;
     }
-    ans += S;
   }
   cout << ans << endl;
 }
