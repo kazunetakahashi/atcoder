@@ -103,19 +103,21 @@ int main () {
   */
   for (auto z : kouho) {
     for (auto i = 0; i < N; ++i) {
-      if (isloop[i]) memo[now] = -1;
+      if (isloop[i]) memo[i] = -1;
     }
     memo[now] = z;
     for (auto x : V[now]) {
       if (isloop[x]) calc(x);
     }
+    /*
     for (auto i = 0; i < N; ++i) {
       if (isloop[i]) {
         cerr << "calc(" << i << ") = " << calc(i) << endl;
       }
     }
+    */
     memo[now] = -1;
-    cerr << calc(now) << " " << z << endl;
+    // cerr << calc(now) << " " << z << endl;
     if (calc(now) == z) {
       cout << "POSSIBLE" << endl;
       return 0;
