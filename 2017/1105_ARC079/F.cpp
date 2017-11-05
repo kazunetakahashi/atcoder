@@ -71,9 +71,11 @@ int main () {
     isloop[now] = true;
     now = p[now];
   }
+  cerr << "now = " << now << endl;
   fill(memo, memo+200010, -1);
   for (auto i = 0; i < N; ++i) {
     if (!isloop[i]) calc(i);
+    cerr << "calc(" << i << ") = " << calc(i) << endl;
   }
   vector<int> kouho;
   set<int> S;
@@ -88,6 +90,11 @@ int main () {
       if (kouho.size() == 2) break;
     }
   }
+  cerr << "kouho: ";
+  for (auto x : kouho) {
+    cerr << x << " ";
+  }
+  cerr << endl;
   for (auto z : kouho) {
     for (auto i = 0; i < N; ++i) {
       if (isloop[i]) memo[now] = -1;
