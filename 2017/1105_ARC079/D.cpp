@@ -39,8 +39,8 @@ int main () {
   ll a = 0 + K/2;
   ll b = 1 + K/2;
   if (K%2 == 1) {
-    a += 2;
-    b -= 1;
+    b += 2;
+    a -= 1;
   }
   cout << a << " " << b << endl;
 }
