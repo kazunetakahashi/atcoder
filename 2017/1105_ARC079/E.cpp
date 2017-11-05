@@ -47,21 +47,16 @@ int main () {
         continue;
       } else {
         ok = false;
-        ll kaisu = a[i]/N;
-        a[i] %= N;
-        for (auto j = 0; j < N; ++j) {
-          if (i != j) {
-            a[j] += kaisu;
-          }
-        }
-        /*
-        for (auto i = 0; i < N; ++i) {
-          cerr << a[i] << " ";
-        }
-        cerr << endl;
-        */
-        ans += kaisu;
         break;
+      }
+    }
+    if (!ok) {
+      ll S = 0;
+      for (auto i = 0; i < N; ++i) {
+        S += a[i]/N;
+      }
+      for (auto i = 0; i < N; ++i) {
+        a[i] = a[i] - N * (a[i]/N) + S - a[i]/N;
       }
     }
   }
