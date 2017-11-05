@@ -39,7 +39,6 @@ bool isloop[200010];
 int memo[200010];
 
 int calc(int v) {
-  cerr << "v = " << v << endl;
   if (memo[v] != -1) return memo[v];
   set<int> S;
   for (auto x : V[v]) {
