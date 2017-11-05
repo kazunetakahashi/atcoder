@@ -112,6 +112,8 @@ int main () {
         cerr << "calc(" << i << ") = " << calc(i) << endl;
       }
     }
+    memo[now] = -1;
+    cerr << calc(now) << endl;
   }
   cout << "IMPOSSIBLE" << endl;
 }
