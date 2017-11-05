@@ -40,7 +40,8 @@ int main () {
       for (auto j = 0; j < i-1; ++j) {
         cout << (K+i)/i << " ";
       }
-      cout << (K+i) - (K+i)/i * (i-1) << endl;    
+      cout << (K+i) - (K+i)/i * (i-1) << endl;
+      return 0;
     }
   }
   assert(false);
