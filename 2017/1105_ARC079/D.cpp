@@ -34,6 +34,7 @@ typedef long long ll;
 int main () {
   ll K;
   cin >> K;
+  K++;
   cout << 2 << endl;
   ll a = 0 + K/2;
   ll b = 1 + K/2;
