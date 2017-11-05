@@ -31,16 +31,25 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
+const int N = 50;
+
 int main () {
   ll K;
   cin >> K;
-  K++;
-  cout << 2 << endl;
-  ll a = 0 + K/2;
-  ll b = 1 + K/2;
-  if (K%2 == 1) {
-    a += 2;
-    b -= 1;
+  ll ans[N];
+  for (auto i = 0; i < N; ++i) {
+    ans[i] = i + (K-1)/N;
   }
-  cout << a << " " << b << endl;
+  for (auto i = N-(K-1)%N - 1; i < N; ++i) {
+    ans[i]++;
+  }
+  cout << N << endl;
+  for (auto i = 0; i < N; ++i) {
+    cout << ans[i];
+    if (i < N-1) {
+      cout << " ";
+    } else {
+      cout << endl;
+    }
+  }
 }
