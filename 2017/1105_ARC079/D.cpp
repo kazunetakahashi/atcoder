@@ -34,15 +34,17 @@ typedef long long ll;
 int main () {
   ll K;
   cin >> K;
-  for (auto i = 2; ; ++i) {
-    if (K%i == 0) {
-      cout << i << endl;
-      for (auto j = 0; j < i-1; ++j) {
-        cout << (K+i)/i << " ";
-      }
-      cout << (K+i) - (K+i)/i * (i-1) << endl;
-      return 0;
-    }
+  if (K%2 == 0) {
+    cout << 2 << endl;
+    cout << (K+2)/2 << " " << (K+2)/2 << endl;
+    return 0;
+  } else {
+    K++;
+    ll a = (K+2)/2 + 2;
+    ll b = (K+2)/2 - 1;
+    cout << 2 << endl;
+    cout << a << " " << b << endl;
+    return 0;
   }
   assert(false);
 }
