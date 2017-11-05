@@ -59,6 +59,7 @@ int main () {
         a[i] = a[i] - N * (a[i]/N) + S - a[i]/N;
       }
     }
+    ans += S;
   }
   cout << ans << endl;
 }
