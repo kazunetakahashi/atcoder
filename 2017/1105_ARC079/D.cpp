@@ -35,7 +35,7 @@ int main () {
   ll K;
   cin >> K;
   for (auto i = 2; ; ++i) {
-    if (K%i != 0) {
+    if (K%i == 0) {
       cout << i << endl;
       for (auto j = 0; j < i-1; ++j) {
         cout << (K+i)/i << " ";
