@@ -51,13 +51,15 @@ int main () {
         a[i] %= N;
         for (auto j = 0; j < N; ++j) {
           if (i != j) {
-            a[j] -= kaisu;
+            a[j] += kaisu;
           }
         }
+        /*
         for (auto i = 0; i < N; ++i) {
           cerr << a[i] << " ";
         }
         cerr << endl;
+        */
         ans += kaisu;
         break;
       }
