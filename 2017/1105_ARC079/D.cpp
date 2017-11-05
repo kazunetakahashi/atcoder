@@ -38,5 +38,5 @@ int main () {
     cout << 2 << endl;
     cout << (K+2)/2 << " " << (K+2) - (K+2)/2 << endl;    
   }
-  return 1;
+  assert(false);
 }
