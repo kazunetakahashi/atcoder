@@ -80,11 +80,11 @@ int main () {
   vector<int> kouho;
   set<int> S;
   for (auto x : V[now]) {
+    cerr << "x = " << x << endl;
     if (!isloop[x]) {
-      S.insert(calc(x));      
+      S.insert(calc(x));
     }
-  }
-  cerr << "aaa" << endl;
+  }  
   for (auto i = 0; ; ++i) {
     if (S.find(i) == S.end()) {
       kouho.push_back(i);
