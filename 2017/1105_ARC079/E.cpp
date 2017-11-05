@@ -54,6 +54,10 @@ int main () {
             a[j] -= kaisu;
           }
         }
+        for (auto i = 0; i < N; ++i) {
+          cerr << a[i] << " ";
+        }
+        cerr << endl;
         ans += kaisu;
         break;
       }
