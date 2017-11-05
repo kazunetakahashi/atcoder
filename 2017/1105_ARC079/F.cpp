@@ -68,23 +68,23 @@ int main () {
   }
   fill(isloop, isloop+200010, false);
   while (!isloop[now]) {
-    cerr << "loop: " << now << endl;
+    // cerr << "loop: " << now << endl;
     isloop[now] = true;
     now = p[now];
   }
-  cerr << "now = " << now << endl;
+  // cerr << "now = " << now << endl;
   fill(memo, memo+200010, -1);
   for (auto i = 0; i < N; ++i) {
     if (!isloop[i]) {
       calc(i);
-      cerr << "calc(" << i << ") = " << calc(i) << endl;
+      // cerr << "calc(" << i << ") = " << calc(i) << endl;
     }
   }
   vector<int> kouho;
   set<int> S;
   for (auto x : V[now]) {
     if (!isloop[x]) {
-      cerr << "x = " << x << endl;
+      // cerr << "x = " << x << endl;
       S.insert(calc(x));
     }
   }  
@@ -107,10 +107,10 @@ int main () {
     for (auto i = 0; i < N; ++i) {
       if (isloop[i] && i != now) calc(i);
     }
-    memo[now] = -1;
-    if (calc(now) == z) {
-      cout << "POSSIBLE" << endl;
-      return 0;
+    for (auto i = 0; i < N; ++i) {
+      if (isloop[i]) {
+        cerr << "calc(" << i << ") = " << calc(i) << endl;
+      }
     }
   }
   cout << "IMPOSSIBLE" << endl;
