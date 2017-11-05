@@ -68,6 +68,7 @@ int main () {
   }
   fill(isloop, isloop+200010, false);
   while (!isloop[now]) {
+    cerr << "loop: " << now << endl;
     isloop[now] = true;
     now = p[now];
   }
