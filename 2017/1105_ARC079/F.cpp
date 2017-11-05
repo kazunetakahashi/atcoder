@@ -109,14 +109,13 @@ int main () {
     for (auto i = 0; i < N; ++i) {
       if (isloop[i] && i != now) calc(i);
     }
-    /*
     for (auto i = 0; i < N; ++i) {
       if (isloop[i]) {
         cerr << "calc(" << i << ") = " << calc(i) << endl;
       }
     }
-    */
     memo[now] = -1;
+    cerr << calc(now) << " " << z << endl;
     if (calc(now) == z) {
       cout << "POSSIBLE" << endl;
       return 0;
