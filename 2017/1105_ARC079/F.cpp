@@ -84,6 +84,7 @@ int main () {
       S.insert(calc(x));      
     }
   }
+  cerr << "aaa" << endl;
   for (auto i = 0; ; ++i) {
     if (S.find(i) == S.end()) {
       kouho.push_back(i);
