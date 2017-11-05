@@ -75,8 +75,10 @@ int main () {
   cerr << "now = " << now << endl;
   fill(memo, memo+200010, -1);
   for (auto i = 0; i < N; ++i) {
-    if (!isloop[i]) calc(i);
-    cerr << "calc(" << i << ") = " << calc(i) << endl;
+    if (!isloop[i]) {
+      calc(i);
+      cerr << "calc(" << i << ") = " << calc(i) << endl;
+    }
   }
   vector<int> kouho;
   set<int> S;
