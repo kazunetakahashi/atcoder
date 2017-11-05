@@ -34,17 +34,12 @@ typedef long long ll;
 int main () {
   ll K;
   cin >> K;
-  if (K%2 == 0) {
-    cout << 2 << endl;
-    cout << (K+2)/2 << " " << (K+2)/2 << endl;
-    return 0;
-  } else {
-    K--;
-    ll a = (K+2)/2 + 2;
-    ll b = (K+2)/2 - 1;
-    cout << 2 << endl;
-    cout << a << " " << b << endl;
-    return 0;
+  cout << 2 << endl;
+  ll a = 0 + K/2;
+  ll b = 1 + K/2;
+  if (K%2 == 1) {
+    a += 2;
+    b -= 1;
   }
-  assert(false);
+  cout << a << " " << b << endl;
 }
