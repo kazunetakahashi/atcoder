@@ -82,6 +82,7 @@ int main () {
   set<int> S;
   for (auto x : V[now]) {
     if (!isloop[x]) {
+      cerr << "x = " << x << endl;
       S.insert(calc(x));
     }
   }  
