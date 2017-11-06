@@ -34,7 +34,7 @@ typedef long long ll;
 int main () {
   int N, L;
   cin >> N >> L;
-  string S[i];
+  string S[220];
   for (auto i = 0; i < N; ++i) {
     cin >> S[i];
   }
