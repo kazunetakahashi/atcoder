@@ -36,7 +36,34 @@ ll x[2][100010];
 typedef tuple<int, int> point;
 typedef tuple<ll, int, int> edge;
 
+const int UFSIZE = 100010;
+int union_find[UFSIZE];
+
+void init() {
+  for (auto i=0; i<UFSIZE; i++) {
+    union_find[i] = i;
+  }
+}
+
+int root(int a) {
+  if (a == union_find[a]) return a;
+  return (union_find[a] = root(union_find[a]));
+}
+
+bool issame(int a, int b) {
+  return root(a) == root(b);
+}
+
+void unite(int a, int b) {
+  union_find[root(a)] = root(b);
+}
+
+bool isroot(int a) {
+  return root(a) == a;
+}
+
 int main () {
+  init();
   cin >> N;
   for (auto i = 0; i < N; ++i) {
     cin >> x[0][i] >> x[1][i];
@@ -59,25 +86,17 @@ int main () {
   sort(V.begin(), V.end());
   int used = 0;
   ll ans = 0;
-  bool visited[100010];
-  fill(visited, visited+100010, false);
   auto it = V.begin();
-  while (used < N) {
+  while (used < N-1) {
     ll cost = get<0>(*it);
     int p0 = get<1>(*it);
     int p1 = get<2>(*it);
-    // cerr << "cost = " << cost << ", p0 = " << p0 << ", p1 = " << p1 << endl;
     ++it;
-    if (visited[p0] && visited[p1]) continue;
-    if (!visited[p0]) {
-      visited[p0] = true;
+    if (!issame(p0, p1)) {
       ++used;
+      unite(p0, p1);
+      ans += cost;
     }
-    if (!visited[p1]) {
-      visited[p1] = true;
-      ++used;
-    }
-    ans += cost;
   }
   cout << ans << endl;
 }
