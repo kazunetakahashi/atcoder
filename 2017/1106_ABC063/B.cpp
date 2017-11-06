@@ -33,6 +33,7 @@ typedef long long ll;
 
 int main () {
   string S;
+  cin >> S;
   bool visited[26];
   fill(visited, visited+26, false);
   for (auto x : S) {
