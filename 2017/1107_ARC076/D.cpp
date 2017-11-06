@@ -50,8 +50,8 @@ int main () {
     sort(W.begin(), W.end());
     for (auto i = 0; i < N-1; ++i) {
       int d0 = get<0>(W[i]);
-      int p0 = get<1>(W[i+1]);
-      int d1 = get<0>(W[i]);
+      int p0 = get<1>(W[i]);
+      int d1 = get<0>(W[i+1]);
       int p1 = get<1>(W[i+1]);
       V.push_back(edge(abs(d0 - d1), p0, p1));
     }
@@ -66,7 +66,7 @@ int main () {
     ll cost = get<0>(*it);
     int p0 = get<1>(*it);
     int p1 = get<2>(*it);
-    cerr << "cost = " << cost << ", p0 = " << p0 << ", p1 = " << p1 << endl;
+    // cerr << "cost = " << cost << ", p0 = " << p0 << ", p1 = " << p1 << endl;
     ++it;
     if (visited[p0] && visited[p1]) continue;
     if (!visited[p0]) {
