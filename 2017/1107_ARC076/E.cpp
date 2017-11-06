@@ -36,7 +36,7 @@ typedef tuple<int, int> point; // score, num
 int R, C, N;
 
 bool onedge(int x, int y) {
-  return (x == 0 || x == R-1 || y == 0 || y == C-1);
+  return (x == 0 || x == R || y == 0 || y == C);
 }
 
 int score(int x, int y) {
@@ -44,14 +44,14 @@ int score(int x, int y) {
   if (y == 0) {
     return x;
   }
-  if (x == R-1) {
-    return R-1 + y;
+  if (x == R) {
+    return R + y;
   }
-  if (y == C-1) {
-    return R-1 + C-1 + (R-1 - x);
+  if (y == C) {
+    return R + C + (R - x);
   }
   // x == 0
-  return R-1 + C-1 + R-1 + (C-1 - y);
+  return R + C + R + (C - y);
 }
 
 int main () {
@@ -60,10 +60,6 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     int X0, Y0, X1, Y1;
     cin >> X0 >> Y0 >> X1 >> Y1;
-    X0--;
-    Y0--;
-    X1--;
-    Y1--;
     if (onedge(X0, Y0) && onedge(X1, Y1)) {
       V.push_back(point(score(X0, Y0), i));
       V.push_back(point(score(X1, Y1), i));      
@@ -75,7 +71,7 @@ int main () {
   stack<int> S;
   for (auto it = V.begin(); it != V.end(); ++it) {
     int num = get<1>(*it);
-    cerr << "score = " << get<0>(*it) << ", num = " << get<1>(*it) << endl;
+    // cerr << "score = " << get<0>(*it) << ", num = " << get<1>(*it) << endl;
     if (visited[num] == 0) {
       visited[num]++;
       S.push(num);
