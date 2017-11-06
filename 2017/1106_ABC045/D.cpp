@@ -61,7 +61,7 @@ int main () {
         int kb = b - j;
         int cnt = 0;
         bool ok = true;
-        for (auto k = 0; i < 3; ++i) {
+        for (auto k = 0; k < 3; ++k) {
           for (auto l = 0; l < 3; ++l) {
             int na = ka + k;
             int nb = kb + l;
