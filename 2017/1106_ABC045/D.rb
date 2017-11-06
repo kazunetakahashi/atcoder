@@ -36,7 +36,7 @@ end
         end
       end
       if !out
-        @ans[out] += 1
+        @ans[cnt] += 1
       end
     end
   end
