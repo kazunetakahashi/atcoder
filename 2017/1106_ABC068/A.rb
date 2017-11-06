@@ -1,0 +1,1 @@
+puts "ABC" + gets.chomp
