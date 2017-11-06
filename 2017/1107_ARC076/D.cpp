@@ -66,6 +66,7 @@ int main () {
     ll cost = get<0>(*it);
     int p0 = get<1>(*it);
     int p1 = get<2>(*it);
+    cerr << "cost = " << cost << ", p0 = " << p0 << ", p1 = " << p1 << endl;
     ++it;
     if (visited[p0] && visited[p1]) continue;
     if (!visited[p0]) {
