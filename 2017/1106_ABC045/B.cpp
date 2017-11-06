@@ -37,11 +37,11 @@ int main () {
     cin >> S[i];
   }
   int now = 0;
-  while (S[now].size() == 0) {
+  while (S[now].size() > 0) {
     int nnow = S[now][0] - 'a';
     S[now].erase(0, 1);
     now = nnow;
-    cerr << "now = " << (char)('A' + now) << endl;
+    // cerr << "now = " << (char)('A' + now) << endl;
   }
   cout << (char)('A' + now) << endl;
 }
