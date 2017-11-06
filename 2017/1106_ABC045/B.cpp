@@ -39,7 +39,7 @@ int main () {
   int now = 0;
   while (S[now].size() == 0) {
     int nnow = S[now][0] - 'a';
-    S[now].erase(0);
+    S[now].erase(S[now].begin());
     now = nnow;
   }
   cout << (char)('A' + now) << endl;
