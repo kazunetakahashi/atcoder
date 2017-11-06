@@ -72,10 +72,10 @@ int main () {
                 cnt++;
               }
             }
-            if (ok) {
-              ans[cnt]++;
-            }
           }
+        }
+        if (ok) {
+          ans[cnt]++;
         }
       }
     }
