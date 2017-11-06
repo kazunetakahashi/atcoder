@@ -33,7 +33,7 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
-int H, W, N;
+ll H, W, N;
 typedef tuple<int, int> point;
 set<point> S;
 
