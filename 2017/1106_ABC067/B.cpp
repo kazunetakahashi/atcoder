@@ -38,8 +38,8 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     cin >> l[i];
   }
-  sort(l, l+50);
-  reverse(l, l+50);
+  sort(l, l+N);
+  reverse(l, l+N);
   int ans = 0;
   for (auto i = 0; i < K; ++i) {
     ans += l[i];
