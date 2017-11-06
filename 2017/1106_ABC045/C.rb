@@ -2,7 +2,7 @@
 @sum = 0
 
 def dfs(s, pos)
-  if s.size() == pos
+  if s.size() >= pos
     # puts s
     @sum += eval(s)
   else
