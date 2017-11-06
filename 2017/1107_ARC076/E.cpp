@@ -60,6 +60,10 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     int X0, Y0, X1, Y1;
     cin >> X0 >> Y0 >> X1 >> Y1;
+    X0--;
+    Y0--;
+    X1--;
+    Y1--;
     if (onedge(X0, Y0) && onedge(X1, Y1)) {
       V.push_back(point(score(X0, Y0), i));
       V.push_back(point(score(X1, Y1), i));      
