@@ -6,8 +6,8 @@ def dfs(s, pos)
     puts s
     @sum += eval(s)
   else
-    dfs(s[0...pos+1] + '+' + s[pos+1...s.size()], pos+2)
-    dfs(s[0...pos+1] + s[pos+1...s.size()], pos+1)
+    dfs(s[0...pos] + '+' + s[pos...s.size()], pos+2)
+    dfs(s[0...pos] + s[pos...s.size()], pos+1)
   end
 end
 
