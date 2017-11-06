@@ -3,7 +3,7 @@
 
 def dfs(s, pos)
   if s.size() == pos
-    puts s
+    # puts s
     @sum += eval(s)
   else
     dfs(s[0...pos] + '+' + s[pos...s.size()], pos+2)
@@ -13,4 +13,4 @@ end
 
 dfs(gets.chomp, 0)
 
-puts @sum
+puts @sum/2
