@@ -71,6 +71,7 @@ int main () {
   stack<int> S;
   for (auto it = V.begin(); it != V.end(); ++it) {
     int num = get<1>(*it);
+    cerr << "score = " << get<0>(*it) << ", num = " << get<1>(*it) << endl;
     if (visited[num] == 0) {
       visited[num]++;
       S.push(num);
