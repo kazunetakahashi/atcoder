@@ -88,7 +88,7 @@ int main() {
   cin >> H >> W >> A >> B;
   ll ans = 0;
   for (auto i = 0; i < H-A; ++i) {
-    ans += (calc(0, 0, i, B) * calc(i, B, H-1, W-1))%MOD;
+    ans += (calc(0, 0, i, B-1) * calc(i, B, H-1, W-1))%MOD;
     ans %= MOD;
   }
   cout << ans << endl;
