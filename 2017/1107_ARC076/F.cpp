@@ -51,7 +51,7 @@ int main () {
     if (ind <= get<0>(x)) {
       ++ind;
     } else {
-      // cerr << Q.top() << endl;
+      cerr << Q.top() << endl;
       W.push_back(Q.top());
       Q.pop();
     }
@@ -60,12 +60,10 @@ int main () {
     *it = M+1 - *it;
   }
   sort(W.begin(), W.end());
-  /*
   for (auto x : W) {
     cerr << x << " ";
   }
   cerr << endl;
-  */
   ind = 1;
   int ans = 0;
   for (auto x : W) {
