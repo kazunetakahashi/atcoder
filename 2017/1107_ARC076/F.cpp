@@ -43,7 +43,7 @@ int main () {
     V.push_back(takahashi(L, R));
   }
   sort(V.begin(), V.end());
-  priority_queue<int, vector<int>, greater<int> > Q;
+  priority_queue<int, vector<int>, less<int> > Q;
   vector<int> W;
   int ind = 1;
   for (auto x : V) {
@@ -51,7 +51,7 @@ int main () {
       ++ind;
     } else {
       Q.push(get<1>(x));
-      cerr << Q.top() << endl;
+      // cerr << Q.top() << endl;
       W.push_back(Q.top());
       Q.pop();
     }
@@ -60,10 +60,12 @@ int main () {
     *it = M+1 - *it;
   }
   sort(W.begin(), W.end());
+  /*
   for (auto x : W) {
     cerr << x << " ";
   }
   cerr << endl;
+  */
   ind = 1;
   int ans = 0;
   for (auto x : W) {
