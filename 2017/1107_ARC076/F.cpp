@@ -40,14 +40,14 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     int L, R;
     cin >> L >> R;
-    V.push_back(takahashi(L, R));
+    V.push_back(takahashi(L, -R));
   }
   sort(V.begin(), V.end());
   priority_queue<int, vector<int>, greater<int> > Q;
   vector<int> W;
   int ind = 1;
   for (auto x : V) {
-    Q.push(get<1>(x));
+    Q.push(-get<1>(x));
     if (ind <= get<0>(x)) {
       ++ind;
     } else {
