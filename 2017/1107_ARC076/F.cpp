@@ -58,6 +58,7 @@ int main () {
   for (auto it = W.begin(); it != W.end(); ++it) {
     *it = M+1 - *it;
   }
+  sort(W.begin(), W.end());
   ind = 1;
   int ans = 0;
   for (auto x : W) {
