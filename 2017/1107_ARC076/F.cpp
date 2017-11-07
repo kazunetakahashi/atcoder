@@ -51,6 +51,7 @@ int main () {
       ++ind;
     } else {
       Q.push(get<1>(x));
+      cerr << Q.top() << endl;
       W.push_back(Q.top());
       Q.pop();
     }
