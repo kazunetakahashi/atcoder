@@ -88,7 +88,7 @@ int main () {
     }
     auto end = std::chrono::system_clock::now();
     double timer = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
-    if (timer > 1900) break;
+    if (timer > 1800) break;
   }
   cout << ans << endl;
 }
