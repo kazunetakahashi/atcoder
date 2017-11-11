@@ -49,13 +49,15 @@ int main () {
       }      
     }
   }
+  /*
   cerr << "a : ";
   for (auto x : a) {
     cerr << x << " ";
   }
   cerr << endl;
+  */
   int M = N/6 + 1;
-  cerr << "M = " << M << endl;
+  //cerr << "M = " << M << endl;
   ll ans = 0;
   for (auto i = 0; i < (1 << M); ++i) {
     vector<ll> x = a;
@@ -67,11 +69,13 @@ int main () {
         }      
       }
     }
+    /*
     cerr << "i = " << i << ", x : ";
     for (auto y : x) {
       cerr << y << " ";
     }
     cerr << endl;
+    */
     for (auto j = M+1; j <= N/3; ++j) {
       ll val = 0;
       for (auto l = 1; l*j <= N; ++l) {
@@ -89,5 +93,5 @@ int main () {
     }
     ans = max(ans, ret);
   }
-  cerr << ans << endl;
+  cout << ans << endl;
 }
