@@ -50,6 +50,7 @@ int main () {
     }
   }
   int M = N/6 + 1;
+  cerr << "M = " << M << endl;
   ll ans = 0;
   for (auto i = 0; i < (1 << M); ++i) {
     vector<ll> x = a;
