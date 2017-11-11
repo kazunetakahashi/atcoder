@@ -63,7 +63,6 @@ int main () {
   ll M = (1 << N/3);
   uniform_int_distribution<> rand(0, (1 << M) - 1);
   ll ans = 0;
-  vector<vector<ll> > V;
   while (true) {
     ll i = rand(mt);
     vector<ll> x = a;
@@ -80,11 +79,7 @@ int main () {
       ret += x[j];
     }
     if (ans < ret) {
-      V = {};
-      V.push_back(x);
       ans = ret;
-    } else if (ans == ret) {
-      V.push_back(x);
     }
     auto end = std::chrono::system_clock::now();
     double timer = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
