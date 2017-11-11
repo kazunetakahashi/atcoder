@@ -59,31 +59,14 @@ int main () {
   int M = N/6 + 1;
   //cerr << "M = " << M << endl;
   ll ans = 0;
+  vector<vector<ll> > V;
   for (auto i = 0; i < (1 << M); ++i) {
     vector<ll> x = a;
     for (auto j = 0; j < M; ++j) {
       if (((i >> j) & 1) == 1) {
-        int k = j+1;
+        int k = j+M+1;
         for (auto l = 1; k*l <= N; ++l) {
           x[k*l] = 0;
-        }      
-      }
-    }
-    /*
-    cerr << "i = " << i << ", x : ";
-    for (auto y : x) {
-      cerr << y << " ";
-    }
-    cerr << endl;
-    */
-    for (auto j = M+1; j <= N/3; ++j) {
-      ll val = 0;
-      for (auto l = 1; l*j <= N; ++l) {
-        val += x[l*j];
-      }
-      if (val < 0) {
-        for (auto l = 1; l*j <= N; ++l) {
-          x[l*j] = 0;
         }      
       }
     }
@@ -91,7 +74,33 @@ int main () {
     for (auto j = 1; j <= N; ++j) {
       ret += x[j];
     }
-    ans = max(ans, ret);
+    if (ans < ret) {
+      V = {};
+      V.push_back(x);
+      ans = ret;
+    } else if (ans == ret) {
+      V.push_back(x);
+    }
+  }
+  for (auto y : V) {
+    for (auto i = 0; i < (1 << M); ++i) {
+      vector<ll> x = a;
+      for (auto j = 0; j < M; ++j) {
+        if (((i >> j) & 1) == 1) {
+          int k = j+1;
+          for (auto l = 1; k*l <= N; ++l) {
+            x[k*l] = 0;
+          }      
+        }
+      }
+      ll ret = 0;
+      for (auto j = 1; j <= N; ++j) {
+        ret += x[j];
+      }
+      if (ans < ret) {
+        ans = ret;
+      }
+    }
   }
   cout << ans << endl;
 }
