@@ -76,6 +76,7 @@ int main () {
     for (auto j = 1; j <= N; ++j) {
       ret += a[i];
     }
+    ans = max(ans, ret);
   }
   cout << ans << endl;
 }
