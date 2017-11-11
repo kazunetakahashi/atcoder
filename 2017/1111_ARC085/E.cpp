@@ -34,11 +34,11 @@ typedef long long ll;
 int main () {
   int N;
   cin >> N;
-  ll a[110];
+  vector<ll> a(N+1, 0);
   for (auto i = 1; i <= N; ++i) {
     cin >> a[i];
   }
-  for (auto i = N; i >= 1; --i) {
+  for (auto i = N; i > N/3; --i) {
     ll val = 0;
     for (auto j = 1; i*j <= N; ++j) {
       val += a[i*j];
@@ -49,9 +49,33 @@ int main () {
       }      
     }
   }
+  int M = N/6 + 1;
   ll ans = 0;
-  for (auto i = 1; i <= N; ++i) {
-    ans += a[i];
+  for (auto i = 0; i < (1 << M); ++i) {
+    vector<ll> x = a;
+    for (auto j = 0; j < M; ++j) {
+      if (((i >> j) & 1) == 1) {
+        int k = j+1;
+        for (auto l = 1; k*l <= N; ++l) {
+          a[k*l] = 0;
+        }      
+      }
+    }
+    for (auto j = M; j <= N/3; ++j) {
+      ll val = 0;
+      for (auto l = 1; l*j <= N; ++l) {
+        val += a[l*j];
+      }
+      if (val < 0) {
+        for (auto l = 1; l*j <= N; ++l) {
+          a[l*j] = 0;
+        }      
+      }
+    }
+    ll ret = 0;
+    for (auto j = 1; j <= N; ++j) {
+      ret += a[i];
+    }
   }
   cout << ans << endl;
 }
