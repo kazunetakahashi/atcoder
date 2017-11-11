@@ -57,24 +57,24 @@ int main () {
       if (((i >> j) & 1) == 1) {
         int k = j+1;
         for (auto l = 1; k*l <= N; ++l) {
-          a[k*l] = 0;
+          x[k*l] = 0;
         }      
       }
     }
     for (auto j = M; j <= N/3; ++j) {
       ll val = 0;
       for (auto l = 1; l*j <= N; ++l) {
-        val += a[l*j];
+        val += x[l*j];
       }
       if (val < 0) {
         for (auto l = 1; l*j <= N; ++l) {
-          a[l*j] = 0;
+          x[l*j] = 0;
         }      
       }
     }
     ll ret = 0;
     for (auto j = 1; j <= N; ++j) {
-      ret += a[i];
+      ret += x[i];
     }
     ans = max(ans, ret);
   }
