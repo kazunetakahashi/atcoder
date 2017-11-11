@@ -72,7 +72,7 @@ int main () {
       cerr << y << " ";
     }
     cerr << endl;
-    for (auto j = M; j <= N/3; ++j) {
+    for (auto j = M+1; j <= N/3; ++j) {
       ll val = 0;
       for (auto l = 1; l*j <= N; ++l) {
         val += x[l*j];
@@ -85,9 +85,9 @@ int main () {
     }
     ll ret = 0;
     for (auto j = 1; j <= N; ++j) {
-      ret += x[i];
+      ret += x[j];
     }
     ans = max(ans, ret);
   }
-  cout << ans << endl;
+  // cout << ans << endl;
 }
