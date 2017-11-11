@@ -67,6 +67,11 @@ int main () {
         }      
       }
     }
+    cerr << "i = " << i << ", x : ";
+    for (auto y : x) {
+      cerr << y << " ";
+    }
+    cerr << endl;
     for (auto j = M; j <= N/3; ++j) {
       ll val = 0;
       for (auto l = 1; l*j <= N; ++l) {
