@@ -49,6 +49,11 @@ int main () {
       }      
     }
   }
+  cerr << "a : ";
+  for (auto x : a) {
+    cerr << x << " ";
+  }
+  cerr << endl;
   int M = N/6 + 1;
   cerr << "M = " << M << endl;
   ll ans = 0;
