@@ -18,6 +18,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib> // atoi(xxx)
+#include <chrono>
 using namespace std;
 
 #define DEBUG 0 // change 0 -> 1 if we need debug.
@@ -32,6 +33,9 @@ typedef long long ll;
 // const ll M = 1000000007;
 
 int main () {
+  auto start = std::chrono::system_clock::now();
+  random_device rd;
+  mt19937 mt(rd());
   int N;
   cin >> N;
   vector<ll> a(N+1, 0);
@@ -56,15 +60,16 @@ int main () {
   }
   cerr << endl;
   */
-  int M = N/6 + 1;
-  //cerr << "M = " << M << endl;
+  ll M = (1 << N/3);
+  uniform_int_distribution<> rand(0, (1 << M) - 1);
   ll ans = 0;
   vector<vector<ll> > V;
-  for (auto i = 0; i < (1 << M); ++i) {
+  while (true) {
+    ll i = rand(mt);
     vector<ll> x = a;
     for (auto j = 0; j < M; ++j) {
       if (((i >> j) & 1) == 1) {
-        int k = j+M+1;
+        int k = j+1;
         for (auto l = 1; k*l <= N; ++l) {
           x[k*l] = 0;
         }      
@@ -81,26 +86,9 @@ int main () {
     } else if (ans == ret) {
       V.push_back(x);
     }
-  }
-  for (auto y : V) {
-    for (auto i = 0; i < (1 << M); ++i) {
-      vector<ll> x = a;
-      for (auto j = 0; j < M; ++j) {
-        if (((i >> j) & 1) == 1) {
-          int k = j+1;
-          for (auto l = 1; k*l <= N; ++l) {
-            x[k*l] = 0;
-          }      
-        }
-      }
-      ll ret = 0;
-      for (auto j = 1; j <= N; ++j) {
-        ret += x[j];
-      }
-      if (ans < ret) {
-        ans = ret;
-      }
-    }
+    auto end = std::chrono::system_clock::now();
+    double timer = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
+    if (timer > 1.9) break;
   }
   cout << ans << endl;
 }
