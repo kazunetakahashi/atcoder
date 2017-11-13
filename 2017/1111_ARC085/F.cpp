@@ -109,7 +109,7 @@ int main () {
   S.update(0, zeros);
   for (auto i = 0; i < N; ++i) {
     for (auto x : V[i]) {
-      S.update(x, S.find(i, x+1));
+      S.update(x+1, S.find(i, x+2));
     }
     S.update(i+1, min(S.find(i, i+1) + score(i), S.find(i+1, i+2)));
     cerr << "DP[" << i+1 << "] = " << S.find(i+1, i+2) << endl;
