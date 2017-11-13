@@ -112,6 +112,7 @@ int main () {
       S.update(x, S.find(i, x+1));
     }
     S.update(i+1, min(S.find(i, i+1) + score(i), S.find(i+1, i+2)));
+    cerr << "DP[" << i+1 << "] = " << S.find(i+1, i+2) << endl;
   }
   cout << S.find(N, N+1) << endl;
 }
