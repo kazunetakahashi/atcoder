@@ -33,19 +33,22 @@ typedef long long ll;
 
 ll H, W;
 
-ll two(int h, int w) {
-  return max(h/2 * w, w/2 * h);
+ll two(int h, int w, int c) {
+  if (c == 0) return h/2 * w;
+  return w/2 * h;
 }
 
 ll solve() {
   ll ans = H * W;
   for (auto i = 1; i < H; ++i) {
-    ll X[3];
-    X[0] = i * W;
-    X[1] = two(H-i, W);
-    X[2] = (H-i) * W - X[1];
-    sort(X, X+3);
-    ans = min(ans, X[2]-X[0]);
+    for (auto c = 0; c < 2; ++c) {
+      ll X[3];
+      X[0] = i * W;
+      X[1] = two(H-i, W, c);
+      X[2] = (H-i) * W - X[1];
+      sort(X, X+3);
+      ans = min(ans, X[2]-X[0]);      
+    }
   }
   return ans;
 }
