@@ -59,12 +59,11 @@ int main () {
   for (auto i = 3*N-1; i >= N; --i) {
     QQ.push(a[i]);
     sum += a[i];
-    cerr << "sum = " << sum << endl;
+    cerr << "a[" << i << "] = " << a[i] << endl;
     while ((int)QQ.size() > N) {
       sum -= QQ.top();
       QQ.pop();
     }
-    cerr << "sum = " << sum << endl;
     minusscore[i] = sum;
   }
   ll ans = -infty * 3;
