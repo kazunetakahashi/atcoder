@@ -41,7 +41,7 @@ int main () {
   }
   int now = 0;
   int ans = 0;
-  while (ans < 200010) {
+  while (now != 1 || ans < 200010) {
     now = a[now];
     ans++;
   }
