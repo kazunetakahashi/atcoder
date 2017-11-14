@@ -33,7 +33,7 @@ typedef long long ll;
 
 ll H, W;
 
-ll two(int h, int w, int c) {
+ll two(ll h, ll w, int c) {
   if (c == 0) return h/2 * w;
   return w/2 * h;
 }
@@ -47,7 +47,7 @@ ll solve() {
       X[1] = two(H-i, W, c);
       X[2] = (H-i) * W - X[1];
       sort(X, X+3);
-      cerr << X[0] << " " << X[1] << " " << X[2] << endl;
+      // cerr << X[0] << " " << X[1] << " " << X[2] << endl;
       ans = min(ans, X[2]-X[0]);      
     }
   }
