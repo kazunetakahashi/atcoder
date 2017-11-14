@@ -75,8 +75,8 @@ int main () {
     cerr << "minusscore[" << i << "] = " << minusscore[i] << endl;
   }
   */
-  for (auto i = N; i < 2*N; ++i) {
-    ans = max(ans, plusscore[i] - minusscore[i]);
+  for (auto i = N-1; i < 2*N; ++i) {
+    ans = max(ans, plusscore[i] - minusscore[i+1]);
   }
   cout << ans << endl;
 }
