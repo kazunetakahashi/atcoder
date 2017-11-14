@@ -67,7 +67,7 @@ int main () {
   }
   ll ans = -infty * 3;
   for (auto i = N; i < 2*N; ++i) {
-    ans = min(ans, plusscore[i] - minusscore[i+1]);
+    ans = max(ans, plusscore[i] - minusscore[i+1]);
   }
   cout << ans << endl;
 }
