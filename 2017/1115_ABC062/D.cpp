@@ -61,7 +61,7 @@ int main () {
     sum += a[i];
     while ((int)QQ.size() > N) {
       sum -= QQ.top();
-      Q.pop();      
+      QQ.pop();      
     }
     minusscore[i] = sum;
   }
