@@ -38,7 +38,7 @@ ll minusscore[300010];
 
 int main () {
   cin >> N;
-  for (auto i = 0; i < N; ++i) {
+  for (auto i = 0; i < 3*N; ++i) {
     cin >> a[i];
   }
   fill(plusscore, plusscore+300010, -infty);
@@ -59,7 +59,7 @@ int main () {
   for (auto i = 3*N-1; i >= N; --i) {
     QQ.push(a[i]);
     sum += a[i];
-    cerr << "a[" << i << "] = " << a[i] << endl;
+    // cerr << "a[" << i << "] = " << a[i] << endl;
     while ((int)QQ.size() > N) {
       sum -= QQ.top();
       QQ.pop();
@@ -67,12 +67,14 @@ int main () {
     minusscore[i] = sum;
   }
   ll ans = -infty * 3;
+  /*
   for (auto i = 0; i < 3*N; ++i) {
     cerr << "plusscore[" << i << "] = " << plusscore[i] << endl;
   }
   for (auto i = 0; i < 3*N; ++i) {
     cerr << "minusscore[" << i << "] = " << minusscore[i] << endl;
   }
+  */
   for (auto i = N; i < 2*N; ++i) {
     ans = max(ans, plusscore[i] - minusscore[i+1]);
   }
