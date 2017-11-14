@@ -67,16 +67,14 @@ int main () {
     minusscore[i] = sum;
   }
   ll ans = -infty * 3;
-  /*
   for (auto i = 0; i < 3*N; ++i) {
     cerr << "plusscore[" << i << "] = " << plusscore[i] << endl;
   }
   for (auto i = 0; i < 3*N; ++i) {
     cerr << "minusscore[" << i << "] = " << minusscore[i] << endl;
   }
-  */
   for (auto i = N; i < 2*N; ++i) {
     ans = max(ans, plusscore[i] - minusscore[i+1]);
   }
-  cout << ans << endl;
+  // cout << ans << endl;
 }
