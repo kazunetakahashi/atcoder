@@ -69,6 +69,8 @@ int main () {
         for (auto j = 1; j <= i; ++j) {
           for (auto k = l; k < j; ++k) {
             DP[i][j][k] = 0;
+            cerr << "make DP[" << i << "][" << j << "][" << k << "] = "
+                 << DP[i][j][k] << endl;
           }
         }        
       }
@@ -94,8 +96,6 @@ int main () {
   ll sum = 0;
   for (auto j = 1; j <= N; ++j) {
     for (auto k = 0; k < j; ++k) {
-      cerr << "DP[" << N << "][" << j << "][" << k << "] = "
-           << DP[N][j][k] << endl;
       sum += DP[N][j][k];
       sum %= MOD;
     }
