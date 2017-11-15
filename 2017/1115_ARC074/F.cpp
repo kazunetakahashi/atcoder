@@ -83,20 +83,22 @@ int main () {
   for (auto i = 0; i < H; ++i) {
     cin >> a[i];
   }
-  int S, T;
+  int S = 300, T = 301;
   int si, sj, ti, tj;
   for (auto i = 0; i < H; ++i) {
     for (auto j = 0; j < W; ++j) {
       if (a[i][j] == 'S') {
         si = i;
         sj = j;
-        S = num(i, j);
         a[i][j] = 'o';
+        add_edge(S, i, infty);
+        add_edge(S, j+H, infty);
       } else if (a[i][j] == 'T') {
         ti = i;
         tj = j;       
-        T = num(i, j);
         a[i][j] = 'o';
+        add_edge(i, T, infty);
+        add_edge(j+H, T, infty);
       }
     }
   }
@@ -105,31 +107,11 @@ int main () {
     return 0;
   }
   for (auto i = 0; i < H; ++i) {
-    vector<int> X;
     for (auto j = 0; j < W; ++j) {
       if (a[i][j] == 'o') {
-        X.push_back(num(i, j));
+        add_edge(i, j+H, 1);
+        add_edge(j+H, i, 1);
       }
-    }
-    if (X.size() >= 2) {
-      for (auto it = X.begin(); it+1 != X.end(); ++it) {
-        add_edge(*it, *(it+1), 1);
-        add_edge(*(it+1), *it, 1);
-      }      
-    }
-  }
-  for (auto j = 0; j < W; ++j) {
-    vector<int> X;
-    for (auto i = 0; i < H; ++i) {
-      if (a[i][j] == 'o') {
-        X.push_back(num(i, j));
-      }
-    }
-    if (X.size() >= 2) {
-      for (auto it = X.begin(); it+1 != X.end(); ++it) {
-        add_edge(*it, *(it+1), 1);
-        add_edge(*(it+1), *it, 1);
-      }      
     }
   }
   cout << max_flow(S, T) << endl;
