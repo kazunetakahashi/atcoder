@@ -73,12 +73,14 @@ int main () {
         }        
       }
     }
+    /*
     for (auto j = 1; j <= i; ++j) {
       for (auto k = 0; k < j; ++k) {
         cerr << "DP[" << i << "][" << j << "][" << k << "] = "
              << DP[i][j][k] << endl;
       }
     }
+    */
     if (i == N) break;
     for (auto j = 1; j <= i; ++j) {
       for (auto k = 0; k < j; ++k) {
@@ -98,5 +100,5 @@ int main () {
       sum %= MOD;
     }
   }
-  cerr << sum << endl;
+  cout << sum << endl;
 }
