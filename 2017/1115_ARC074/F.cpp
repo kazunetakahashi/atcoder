@@ -123,16 +123,12 @@ int main () {
         X.push_back(num(i, j));
       }
     }
-    cerr << "j = " << j << endl;
-    for (auto e : X) {
-      cerr << e << " ";
-    }
-    cerr << endl;
-    for (auto it = X.begin(); it+1 != X.end(); ++it) {
+    for (auto it = X.begin(); it != X.end(); ++it) {
+      if (it+1 != X.end()) break;
       // cerr << *it << " " << *(it+1) << endl;
       add_edge(*it, *(it+1), 1);
       add_edge(*(it+1), *it, 1);
     }
   }
-  cout << max_flow(S, T) << endl;
+  // cout << max_flow(S, T) << endl;
 }
