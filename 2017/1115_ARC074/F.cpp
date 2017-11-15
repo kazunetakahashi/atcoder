@@ -48,7 +48,6 @@ void add_edge(int from, int to, ll cap) {
 ll dfs(int src, int dst, ll f) {
   if (src == dst) return f;
   visited[src] = true;
-  cerr << "visited[" << src << "]" << endl;
   for (auto &x : V[src]) {
     if (!visited[x.to] && x.cap > 0) {
       ll d = dfs(x.to, dst, min(f, x.cap));
@@ -65,7 +64,9 @@ ll dfs(int src, int dst, ll f) {
 ll max_flow(int src, int dst) {
   ll flow = 0;
   while (true) {
+    cerr << "aaaaa" << endl;
     fill(visited, visited+10010, false);
+    cerr << "bbb" << endl;
     ll f = dfs(src, dst, infty);
     if (f == 0) return flow;
     flow += f;
