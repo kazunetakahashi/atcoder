@@ -67,10 +67,8 @@ int main () {
         }        
       } else {
         for (auto j = 1; j <= i; ++j) {
-          for (auto k = l; k < j; ++k) {
+          for (auto k = 0; k <= l; ++k) {
             DP[i][j][k] = 0;
-            cerr << "make DP[" << i << "][" << j << "][" << k << "] = "
-                 << DP[i][j][k] << endl;
           }
         }        
       }
@@ -100,5 +98,5 @@ int main () {
       sum %= MOD;
     }
   }
-  cout << sum << endl;
+  cerr << sum << endl;
 }
