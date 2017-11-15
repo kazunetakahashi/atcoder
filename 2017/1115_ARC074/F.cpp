@@ -91,10 +91,12 @@ int main () {
         si = i;
         sj = j;
         S = num(i, j);
+        a[i][j] = 'o';
       } else if (a[i][j] == 'T') {
         ti = i;
         tj = j;       
         T = num(i, j);
+        a[i][j] = 'o';
       }
     }
   }
