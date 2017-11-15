@@ -111,9 +111,11 @@ int main () {
         X.push_back(num(i, j));
       }
     }
-    for (auto it = X.begin(); it+1 != X.end(); ++it) {
-      add_edge(*it, *(it+1), 1);
-      add_edge(*(it+1), *it, 1);
+    if (X.size() >= 2) {
+      for (auto it = X.begin(); it+1 != X.end(); ++it) {
+        add_edge(*it, *(it+1), 1);
+        add_edge(*(it+1), *it, 1);
+      }      
     }
   }
   for (auto j = 0; j < W; ++j) {
@@ -123,11 +125,11 @@ int main () {
         X.push_back(num(i, j));
       }
     }
-    for (auto it = X.begin(); it != X.end(); ++it) {
-      if (it+1 != X.end()) break;
-      // cerr << *it << " " << *(it+1) << endl;
-      add_edge(*it, *(it+1), 1);
-      add_edge(*(it+1), *it, 1);
+    if (X.size() >= 2) {
+      for (auto it = X.begin(); it+1 != X.end(); ++it) {
+        add_edge(*it, *(it+1), 1);
+        add_edge(*(it+1), *it, 1);
+      }      
     }
   }
   // cout << max_flow(S, T) << endl;
