@@ -132,5 +132,5 @@ int main () {
       }      
     }
   }
-  // cout << max_flow(S, T) << endl;
+  cout << max_flow(S, T) << endl;
 }
