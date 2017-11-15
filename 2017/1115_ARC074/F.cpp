@@ -37,8 +37,8 @@ struct edge {
   int rev;
 };
 
-bool visited[110];
-vector<edge> V[110];
+bool visited[10010];
+vector<edge> V[10010];
 
 void add_edge(int from, int to, ll cap) {
   V[from].push_back(edge{to, cap, (int)V[to].size()});
@@ -64,7 +64,7 @@ ll dfs(int src, int dst, ll f) {
 ll max_flow(int src, int dst) {
   ll flow = 0;
   while (true) {
-    fill(visited, visited+110, false);
+    fill(visited, visited+10010, false);
     ll f = dfs(src, dst, infty);
     if (f == 0) return flow;
     flow += f;
