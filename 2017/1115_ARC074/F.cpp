@@ -123,7 +123,11 @@ int main () {
         X.push_back(num(i, j));
       }
     }
-    cerr << "j = " << j << endl;    
+    cerr << "j = " << j << endl;
+    for (auto e : X) {
+      cerr << e << " ";
+    }
+    cerr << endl;
     for (auto it = X.begin(); it+1 != X.end(); ++it) {
       // cerr << *it << " " << *(it+1) << endl;
       add_edge(*it, *(it+1), 1);
