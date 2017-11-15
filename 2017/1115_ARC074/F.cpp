@@ -125,7 +125,7 @@ int main () {
       }
     }
     for (auto it = X.begin(); it+1 != X.end(); ++it) {
-      cerr << *it << " " << *(it+1) << endl;
+      // cerr << *it << " " << *(it+1) << endl;
       add_edge(*it, *(it+1), 1);
       add_edge(*(it+1), *it, 1);
     }
