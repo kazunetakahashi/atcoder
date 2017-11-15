@@ -66,6 +66,7 @@ ll max_flow(int src, int dst) {
   while (true) {
     fill(visited, visited+10010, false);
     ll f = dfs(src, dst, infty);
+    cerr << f << endl;
     if (f == 0) return flow;
     flow += f;
   }
@@ -112,7 +113,6 @@ int main () {
       }
     }
     for (auto it = X.begin(); it+1 != X.end(); ++it) {
-      cerr << *it << " " << *(it+1) << endl;
       add_edge(*it, *(it+1), 1);
       add_edge(*(it+1), *it, 1);
     }
