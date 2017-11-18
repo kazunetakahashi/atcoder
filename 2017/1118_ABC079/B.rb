@@ -1,4 +1,4 @@
-n = gets.chomp
+n = gets.to_i
 l = Array.new(100)
 l[0] = 2
 l[1] = 1
