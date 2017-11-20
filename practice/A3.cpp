@@ -36,6 +36,7 @@ int main () {
   string s;
   cin >> a >> b >> c >> s;
   while (true) {
+    cerr << "aaa" << endl;
     // nothing
   }
 }
