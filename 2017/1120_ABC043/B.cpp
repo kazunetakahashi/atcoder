@@ -46,7 +46,8 @@ int main () {
   }
   string ans = "";
   while (!X.empty()) {
-    ans += to_string(X.top());
+    string t{X.top()};
+    ans += t;
     X.pop();
   }
   reverse(ans.begin(), ans.end());
