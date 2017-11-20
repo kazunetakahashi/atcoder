@@ -44,9 +44,11 @@ int main () {
       X.push(x);
     }
   }
+  string ans = "";
   while (!X.empty()) {
-    cout << X.top();
+    ans += to_string(X.top());
     X.pop();
   }
-  cout << endl;
+  reverse(ans.begin(), ans.end());
+  cout << ans << endl;
 }
