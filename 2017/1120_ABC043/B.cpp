@@ -46,6 +46,7 @@ int main () {
   }
   while (!X.empty()) {
     cout << X.top();
+    X.pop();
   }
   cout << endl;
 }
