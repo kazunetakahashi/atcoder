@@ -37,5 +37,6 @@ int main () {
   string s;
   cin >> a >> b >> c;
   cin >> s;
+  cerr << "a = " << a << endl;
   cout << a + b + c << " " << s << endl;
 }
