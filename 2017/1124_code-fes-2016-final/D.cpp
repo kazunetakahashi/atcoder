@@ -62,6 +62,16 @@ int odd(int x) {
   }
 }
 
+int res(int x) {
+  if (M%2 == 0 && x == M/2) {
+    return same(x);
+  } else if (x == 0) {
+    return same(x);
+  } else {
+    return odd(x);
+  }
+}
+
 int main () {
   cin >> N >> M;
   for (auto i = 0; i < N; ++i) {
@@ -77,14 +87,8 @@ int main () {
     mod[i%M][1] += cnt[i]/2;
   }
   int ans = 0;
-  ans += same(0);
-  for (auto i = 1; i < M/2; ++i) {
-    ans += odd(i);
-  }
-  if (M%2 == 0) {
-    ans += same(M/2);
-  } else {
-    ans += odd(M/2);
+  for (auto i = 0; i <= M/2; ++i) {
+    ans += res(i);
   }
   cout << ans << endl;
 }
