@@ -51,12 +51,22 @@ int main () {
   ll ans = N;
   for (auto i = 2; i < 1000; ++i) {
     if (power(2, i) > N) break;
-    while (ub - lb > 1) {
-      ll t = (ub + lb)/2;
-      if (power(t, i) > N) {
-        ub = t;
-      } else {
-        lb = t;
+    if (i == 2) {
+      while (ub - lb > 1) {
+        ll t = (ub + lb)/2;
+        if (power(t, i) > N) {
+          ub = t;
+        } else {
+          lb = t;
+        }
+      }      
+    } else {
+      for (auto j = 1; j < 12000; ++j) {
+        if (power(j, i) < N) {
+          lb = j;
+        } else {
+          break;
+        }
       }
     }
     // cerr << "i = " << i << ", lb = " << lb << endl;
