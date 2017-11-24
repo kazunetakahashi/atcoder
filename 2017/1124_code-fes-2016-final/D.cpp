@@ -78,12 +78,13 @@ int main () {
   }
   int ans = 0;
   ans += same(0);
+  for (auto i = 1; i < M/2; ++i) {
+    ans += odd(i);
+  }
   if (M%2 == 0) {
     ans += same(M/2);
-  }
-  for (auto i = 1; i < M/2; ++i) {
-    cerr << "odd(" << i << ") = " << odd(i) << endl;
-    ans += odd(i);
+  } else {
+    ans += odd(M/2);
   }
   cout << ans << endl;
 }
