@@ -46,10 +46,10 @@ ll N, A;
 
 int main () {
   cin >> N >> A;
-  ll ub = N;
+  ll ub = sqrt(N)+1;
   ll lb = 2;
   ll ans = N;
-  for (auto i = 1; i < 1000; ++i) {
+  for (auto i = 2; i < 1000; ++i) {
     if (power(2, i) > N) break;
     while (ub - lb > 1) {
       ll t = (ub + lb)/2;
