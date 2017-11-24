@@ -85,5 +85,5 @@ int main () {
   for (auto i = 1; i < M/2; ++i) {
     ans += odd(i);
   }
-  return ans;
+  cout << ans << endl;
 }
