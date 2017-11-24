@@ -43,8 +43,8 @@ int main () {
   for (auto i = 0; i < H; ++i) {
     for (auto j = 0; j < W; ++j) {
       if (S[i][j] == "snuke") {
-        cout << (char)('A' + i);
-        cout << j+1 << endl;
+        cout << (char)('A' + j);
+        cout << i+1 << endl;
       }
     }
   }
