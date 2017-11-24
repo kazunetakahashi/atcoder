@@ -34,7 +34,7 @@ typedef long long ll;
 int main () {
   int N;
   cin >> N;
-  for (auto i = 0; i < N; ++i) {
+  for (auto i = 0; i <= N; ++i) {
     int sum = i * (i+1) / 2;
     if (sum >= N) {
       int n = sum - N;
