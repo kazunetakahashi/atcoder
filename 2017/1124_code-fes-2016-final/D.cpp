@@ -53,12 +53,11 @@ int odd(int x) {
     x = M - x;
   }
   int ans = d;
-  int sa = c - d;
-  if (sa <= mod[x][0]) {
+  if (d <= mod[x][0]) {
     ans += mod[x][1];
     return ans;
   } else {
-    ans += (mod[x][1] * 2 - sa)/2;
+    ans += (mod[x][1] * 2 - (d - mod[x][0]))/2;
     return ans;
   }
 }
