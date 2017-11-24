@@ -81,7 +81,7 @@ int main () {
     X[(i+1)%N] = min(X[i%N]+2, X[(i+1)%N]);
   }
   for (auto i = 0; i < N; ++i) {
-    V.push_back(edge(X[i], i, i+1));
+    V.push_back(edge(X[i], i, (i+1)%N));
   }
   sort(V.begin(), V.end());
   init();
@@ -90,8 +90,8 @@ int main () {
   auto it = V.begin();
   while (used < N-1) {
     ll c = get<0>(*it);
-    ll a = get<1>(*it);
-    ll b = get<2>(*it);
+    int a = get<1>(*it);
+    int b = get<2>(*it);
     if (!issame(a, b)) {
       used++;
       ans += c;
