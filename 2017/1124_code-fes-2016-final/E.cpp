@@ -59,6 +59,7 @@ int main () {
         lb = t;
       }
     }
+    cerr << "i = " << i << ", lb = " << lb << endl;
     for (auto j = 0; j <= i; ++j) {
       if (power(lb, i-j) * power(lb+1, j) >= N) {
         ans = min(ans, lb * (i-j) + (lb+1) * j + A * i);
