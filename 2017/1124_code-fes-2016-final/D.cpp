@@ -74,8 +74,8 @@ int main () {
   }
   fill(&mod[0][0], &mod[0][0]+100010*2, 0);
   for (auto i = 0; i < 100010; ++i) {
-    mod[i%M][0] = cnt[i]%2;
-    mod[i%M][1] = cnt[i]/2;
+    mod[i%M][0] += cnt[i]%2;
+    mod[i%M][1] += cnt[i]/2;
   }
   int ans = 0;
   ans += same(0);
