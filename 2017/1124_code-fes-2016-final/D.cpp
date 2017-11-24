@@ -82,6 +82,7 @@ int main () {
     ans += same(M/2);
   }
   for (auto i = 1; i < M/2; ++i) {
+    cerr << "odd(" << i << ") = " << odd(i) << endl;
     ans += odd(i);
   }
   cout << ans << endl;
