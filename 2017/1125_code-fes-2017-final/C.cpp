@@ -59,7 +59,7 @@ int main () {
   for (auto x = 0; x < (1 << 13); ++x) {
     set<int> S;
     for (auto i = 0; i <= 12; ++i) {
-      if (cnt[i] >= 2) {
+      if (cnt[i] == 2) {
         S.insert(i);
         S.insert((24-i)%24);
       } else if (cnt[i] == 1) {
@@ -68,13 +68,17 @@ int main () {
         } else {
           S.insert((24-i)%24);
         }
+      } else {
+        assert(cnt[i] == 0);
       }
     }
     int ans = 100;
     for (auto e : S) {
       for (auto f : S) {
         if (e != f) {
-          ans = min(ans, abs(e-f));
+          int sa = abs(e-f);
+          sa = min(sa, 24-sa);
+          ans = min(ans, sa);
         }
       }
     }
