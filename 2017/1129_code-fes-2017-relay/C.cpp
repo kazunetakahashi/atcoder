@@ -37,6 +37,7 @@ ll w[100010];
 ll d[100010];
 
 ll count(int ind, ll x) {
+  if (x < w[ind]) return 0;
   return (x - w[ind])/d[ind] + 1;
 }
 
