@@ -52,8 +52,10 @@ ll solve(ll x, ll y) {
   while (ind < (int)V.size() && ind < (int)W.size()) {
     if (V[ind] == W[ind]) {
       ans = V[ind];
+      ind++;
+    } else {
+      break;
     }
-    ind++;
   }
   return ans;
 }
