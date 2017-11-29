@@ -56,6 +56,7 @@ int main () {
   int zero = 0;
   while (!S.empty()) {
     int src = S.top();
+    S.pop();
     if (!visited[src]) {
       visited[src] = true;
       zero++;
