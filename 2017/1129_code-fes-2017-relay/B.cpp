@@ -36,7 +36,7 @@ ll N, Q;
 vector<ll> waru(ll x) {
   vector<ll> ans;
   ans.push_back(x);
-  while (x >= 0) {
+  while (x > 0) {
     x = (x-1)/N;
     ans.push_back(x);
   }
