@@ -46,6 +46,9 @@ bool ok(int k) {
   for (auto i = k; i < N; ++i) {
     blue += get<2>(V[i]);
   }
+  cerr << "k = " << k
+       << ", persent = " << fixed << setprecision(7)
+       << (double)white/(white+blue) << endl;
   return (white * 100 >= P * (white + blue));
 }
 
