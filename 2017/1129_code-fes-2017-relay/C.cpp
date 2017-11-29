@@ -48,6 +48,17 @@ ll count(ll x) {
   return ans;
 }
 
+ll heikin(ll x, ll y) {
+  ll ans = 0;
+  ll amari = 0;
+  ans += x/2;
+  ans += y/2;
+  amari += x%2;
+  amari += y%2;
+  ans += amari/2;
+  return ans;
+}
+
 int main () {
   cin >> N >> K;
   for (auto i = 0; i < N; ++i) {
@@ -56,7 +67,7 @@ int main () {
   ll lb = 0;
   ll ub = 1999999999000000000+10;
   while (ub - lb > 1) {
-    ll t = (lb+ub)/2;
+    ll t = heikin(lb, ub);
     if (count(t) >= K) {
       ub = t;
     } else {
