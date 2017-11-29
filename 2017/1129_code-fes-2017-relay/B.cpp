@@ -45,6 +45,9 @@ vector<ll> waru(ll x) {
 }
 
 ll solve(ll x, ll y) {
+  if (N == 1) {
+    return min(x, y);
+  }
   vector<ll> V = waru(x);
   vector<ll> W = waru(y);
   int ind = 0;
