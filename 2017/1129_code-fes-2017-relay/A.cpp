@@ -38,6 +38,6 @@ int main () {
     cout << -1 << endl;
     return 0;
   }
-  cout << (K-A)/(A-B) * 2 + 1 << endl;
+  cout << (K-A+A-B-1)/(A-B) * 2 + 1 << endl;
   
 }
