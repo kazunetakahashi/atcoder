@@ -68,21 +68,29 @@ int d[100010][20];
 int depth[100010];
 vector<int> V[100010];
 
-int lca(int u, int v) {
+tuple<int, int> lca(int u, int v) {
   if (depth[u] > depth[v]) swap(u, v);
-  for (auto k = 0; k < 20; ++k) {
+  int motov = v;
+  for (auto k = 1; k < 20; ++k) {
     if ((depth[v] - depth[u]) >> k & 1) {
       v = d[v][k];
     }
   }
-  if (u == v) return u;
+  if (u == v) {
+    for (auto k = 1; k < 20; ++k) {
+      if ((depth[motov] - depth[u] - 1) >> k & 1) {
+        motov = d[motov][k];
+      }
+    }
+    return make_tuple(motov, motov);
+  };
   for (auto k = 19; k >= 0; --k) {
     if (d[k][u] != d[k][v]) {
       u = d[u][k];
       v = d[v][k];
     }
   }
-  return d[u][0];
+  return make_tuple(u, v);
 }
 
 int main() {
@@ -149,9 +157,10 @@ int main() {
     if (!issame(x[i], y[i])) {
       cout << -1 << endl;
     } else {
-      int c = lca(x[i], y[i]);
-      cerr << "lca(" << x[i] << ", " << y[i] << ") = " << c << endl;
-      cout << get<1>(parent[c])+1 << endl;
+      tuple<int, int> t = lca(x[i], y[i]);
+      int u = get<0>(t);
+      int v = get<1>(t);
+      cout << max(get<1>(parent[u]), get<1>(parent[v]))+1 << endl;
     }
   }
 }
