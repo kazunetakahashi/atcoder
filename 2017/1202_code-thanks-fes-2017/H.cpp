@@ -137,6 +137,9 @@ int main() {
       }
     }
   }
+  for (auto i = 0; i < N; ++i) {
+    cerr << "depth[" << i << "] = " << depth[i] << endl;
+  }
   for (auto i = 0; i < Q; ++i) {
     if (!issame(x[i], y[i])) {
       cout << -1 << endl;
