@@ -71,13 +71,13 @@ vector<int> V[100010];
 tuple<int, int> lca(int u, int v) {
   if (depth[u] > depth[v]) swap(u, v);
   int motov = v;
-  for (auto k = 1; k < 20; ++k) {
+  for (auto k = 0; k < 20; ++k) {
     if ((depth[v] - depth[u]) >> k & 1) {
       v = d[v][k];
     }
   }
   if (u == v) {
-    for (auto k = 1; k < 20; ++k) {
+    for (auto k = 0; k < 20; ++k) {
       if ((depth[motov] - depth[u] - 1) >> k & 1) {
         motov = d[motov][k];
       }
