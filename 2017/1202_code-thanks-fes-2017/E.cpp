@@ -55,9 +55,10 @@ void solve(int x, int y) {
   cin >> w;
   for (auto i = x; i < y; ++i) {
     ans[i] = w%10;
+    // cerr << "ans[" << i << "] = " << ans[i] << endl;
     if (ans[i] < 5) ans[i] += 10;
     w -= ans[i];
-    ans[i] /= 10;
+    w /= 10;
   }
 }
 
