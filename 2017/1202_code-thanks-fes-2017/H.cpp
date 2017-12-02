@@ -160,6 +160,7 @@ int main() {
       tuple<int, int> t = lca(x[i], y[i]);
       int u = get<0>(t);
       int v = get<1>(t);
+      cerr << "u, v = " << u << ", " << v << endl;
       cout << max(get<1>(parent[u]), get<1>(parent[v]))+1 << endl;
     }
   }
