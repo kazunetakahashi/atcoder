@@ -111,6 +111,7 @@ int main() {
   }
   for (auto i = 0; i < N; ++i) {
     d[i][0] = get<0>(parent[i]);
+    cerr << "d[" << i << "][" << 0 << "] = " << d[i][0] << endl;
   }
   for (auto i = 1; i < 20; ++i) {
     for (auto j = 0; j < N; ++j) {
