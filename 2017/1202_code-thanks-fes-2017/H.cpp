@@ -105,15 +105,15 @@ int main() {
   for (auto i = 0; i < M; ++i) {
     if (!issame(a[i], b[i])) {
       parent[root(a[i])] = make_tuple(root(b[i]), i);
-      cerr << "parent[" << root(a[i]) << "] = "
-           << root(b[i]) << endl;
+      //cerr << "parent[" << root(a[i]) << "] = "
+      //     << root(b[i]) << endl;
       V[root(b[i])].push_back(root(a[i]));
       unite(a[i], b[i]);
     }    
   }
   for (auto i = 0; i < N; ++i) {
     d[i][0] = get<0>(parent[i]);
-    cerr << "d[" << i << "][" << 0 << "] = " << d[i][0] << endl;
+    //cerr << "d[" << i << "][" << 0 << "] = " << d[i][0] << endl;
   }
   for (auto i = 1; i < 20; ++i) {
     for (auto j = 0; j < N; ++j) {
@@ -142,14 +142,15 @@ int main() {
       }
     }
   }
-  for (auto i = 0; i < N; ++i) {
-    cerr << "depth[" << i << "] = " << depth[i] << endl;
-  }
+  //for (auto i = 0; i < N; ++i) {
+  //  cerr << "depth[" << i << "] = " << depth[i] << endl;
+  //}
   for (auto i = 0; i < Q; ++i) {
     if (!issame(x[i], y[i])) {
       cout << -1 << endl;
     } else {
       int c = lca(x[i], y[i]);
+      cerr << "lca(" << x[i] << ", " << y[i] << ") = " << c << endl;
       cout << get<1>(parent[c])+1 << endl;
     }
   }
