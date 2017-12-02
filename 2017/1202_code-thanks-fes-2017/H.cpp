@@ -113,8 +113,8 @@ int main() {
   for (auto i = 0; i < M; ++i) {
     if (!issame(a[i], b[i])) {
       parent[root(a[i])] = make_tuple(root(b[i]), i);
-      cerr << "parent[" << root(a[i]) << "] = "
-           << root(b[i]) << ", " << i << endl;
+      //cerr << "parent[" << root(a[i]) << "] = "
+      //     << root(b[i]) << ", " << i << endl;
       V[root(b[i])].push_back(root(a[i]));
       unite(a[i], b[i]);
     }    
