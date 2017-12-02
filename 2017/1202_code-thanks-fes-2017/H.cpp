@@ -157,6 +157,7 @@ int main() {
     if (!issame(x[i], y[i])) {
       cout << -1 << endl;
     } else {
+      cerr << x[i] << ", " << y[i] << endl;
       tuple<int, int> t = lca(x[i], y[i]);
       int u = get<0>(t);
       int v = get<1>(t);
