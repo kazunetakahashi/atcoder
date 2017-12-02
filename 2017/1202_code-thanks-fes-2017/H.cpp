@@ -93,10 +93,14 @@ int main() {
   cin >> N >> M;
   for (auto i = 0; i < M; ++i) {
     cin >> a[i] >> b[i];
+    a[i]--;
+    b[i]--;
   }
   cin >> Q;
   for (auto i = 0; i < Q; ++i) {
     cin >> x[i] >> y[i];
+    x[i]--;
+    y[i]--;
   }
   for (auto i = 0; i < M; ++i) {
     parent[root(a[i])] = make_tuple(root(b[i]), i);
@@ -106,8 +110,8 @@ int main() {
   for (auto i = 0; i < N; ++i) {
     d[i][0] = get<0>(parent[i]);
   }
-  for (auto i = 0; i < 20; ++i) {
-    for (auto j = 1; j < N; ++j) {
+  for (auto i = 1; i < 20; ++i) {
+    for (auto j = 0; j < N; ++j) {
       if (d[j][i-1] >= 0) {
         d[j][i] = d[d[j][i-1]][i-1];
       }
