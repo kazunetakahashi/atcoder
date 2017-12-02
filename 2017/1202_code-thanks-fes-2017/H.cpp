@@ -85,7 +85,7 @@ tuple<int, int> lca(int u, int v) {
     return make_tuple(motov, motov);
   };
   for (auto k = 19; k >= 0; --k) {
-    if (d[k][u] != d[k][v]) {
+    if (d[u][k] != d[v][k]) {
       u = d[u][k];
       v = d[v][k];
     }
@@ -157,11 +157,11 @@ int main() {
     if (!issame(x[i], y[i])) {
       cout << -1 << endl;
     } else {
-      cerr << x[i] << ", " << y[i] << endl;
+      // cerr << x[i] << ", " << y[i] << endl;
       tuple<int, int> t = lca(x[i], y[i]);
       int u = get<0>(t);
       int v = get<1>(t);
-      cerr << "u, v = " << u << ", " << v << endl;
+      // cerr << "u, v = " << u << ", " << v << endl;
       cout << max(get<1>(parent[u]), get<1>(parent[v]))+1 << endl;
     }
   }
