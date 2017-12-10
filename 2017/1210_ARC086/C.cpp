@@ -43,16 +43,18 @@ int main () {
     cnt[A[i]]++;
   }
   vector<int> V;
-  for (auto i = 0; i <= N; ++i) {
+  for (auto i = 1; i <= N; ++i) {
     if (cnt[i] > 0) {
       V.push_back(cnt[i]);
     }
   }
   int ans = 0;
   sort(V.begin(), V.end());
-  while ((int)V.size() > K) {
-    ans += V[0];
-    V.erase(V.begin());
+  int s = V.size();
+  for (auto x : V) {
+    if (s <= K) break;
+    ans += x;
+    s--;
   }
   cout << ans << endl;
 }
