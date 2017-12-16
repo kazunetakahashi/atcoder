@@ -46,7 +46,7 @@ end
 
 ans = cnt(root)
 
-# puts "ans = #{ans}"
+puts "ans = #{ans}"
 
 if ans == 0
   puts "Bob"
