@@ -53,7 +53,10 @@ int main () {
       isx = !isx;
     }
   }
-  if (cnt > 0) {
+  if (isfirst) {
+    x[0] -= cnt;
+    isfirst = false;
+  } else if (cnt > 0) {
     V[isx].push_back(cnt);
   }
   for (auto k = 0; k < 2; ++k) {
