@@ -40,13 +40,13 @@ def cnt(tree)
   elsif tree.zero.nil?
     return cnt(tree.one) + 1
   else
-    return cnt(tree.one) ^ cnt(tree.zero)
+    return (cnt(tree.one)+1) ^ (cnt(tree.zero)+1)
   end
 end
 
 ans = cnt(root)
 
-puts "ans = #{ans}"
+# puts "ans = #{ans}"
 
 if ans == 0
   puts "Bob"
