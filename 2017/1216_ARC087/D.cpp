@@ -62,6 +62,10 @@ int main () {
       return 0;
     }
     int mokuhyo = (x[k] + sum)/2;
+    if (mokuhyo < 0 || mokuhyo > sum) {
+      cout << "No" << endl;
+      return 0;
+    }
     bool dp[10000];
     fill(dp, dp+10000, false);
     dp[0] = true;
