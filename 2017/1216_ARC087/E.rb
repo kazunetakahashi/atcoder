@@ -33,17 +33,20 @@ s.each{|str|
 }
 
 def cnt(tree)
-  if tree.nil?
-    return -1
+  if tree.one.nil? && tree.zero.nil?
+    return 0
+  elsif tree.one.nil?
+    return cnt(tree.one) + 1
+  elsif tree.zero.nil?
+    return cnt(tree.zero) + 1
+  else
+    return cnt(tree.one) ^ cnt(tree.zero)
   end
-  zero = cnt(tree.zero)
-  one = cnt(tree.one)
-  return (one+1)^(zero+1)
 end
 
 ans = cnt(root)
 
-puts "ans = #{ans}"
+# puts "ans = #{ans}"
 
 if ans == 0
   puts "Bob"
