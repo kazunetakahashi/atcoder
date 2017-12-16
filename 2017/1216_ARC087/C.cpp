@@ -49,8 +49,10 @@ int main () {
     }
   }
   for (auto i = 1; i <= N; ++i) {
-    if (cnt[i] > i) {
+    if (cnt[i] >= i) {
       ans += cnt[i] - i;
+    } else {
+      ans += cnt[i];
     }
   }
   cout << ans << endl;
