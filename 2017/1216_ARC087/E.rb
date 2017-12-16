@@ -36,9 +36,9 @@ def cnt(tree)
   if tree.one.nil? && tree.zero.nil?
     return 0
   elsif tree.one.nil?
-    return cnt(tree.one) + 1
-  elsif tree.zero.nil?
     return cnt(tree.zero) + 1
+  elsif tree.zero.nil?
+    return cnt(tree.one) + 1
   else
     return cnt(tree.one) ^ cnt(tree.zero)
   end
