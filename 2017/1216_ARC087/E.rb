@@ -38,7 +38,15 @@ def cnt(tree)
   end
   zero = cnt(tree.zero)
   one = cnt(tree.one)
-  return (zero+1) ^ (one+1)
+  if (zero == 0 && one == 0)
+    return 1
+  elsif (zero != 0 && one != 0)
+    return (zero+1) ^ (one+1)
+  elsif (zero != 0)
+    return zero + 1
+  else
+    return one + 1
+  end
 end
 
 ans = cnt(root)
