@@ -39,9 +39,9 @@ def cnt(tree)
   zero = cnt(tree.zero)
   one = cnt(tree.one)
   if (zero == 0 && one == 0)
-    return 1
+    return 0
   elsif (zero != 0 && one != 0)
-    return (zero+1) ^ (one+1)
+    return (zero) ^ (one)
   elsif (zero != 0)
     return zero + 1
   else
