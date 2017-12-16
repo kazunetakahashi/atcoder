@@ -39,11 +39,15 @@ int main () {
   vector<int> V[2];
   bool isx = 0;
   int cnt = 0;
+  bool isfirst = true;
   for (auto e : S) {
     if (e == 'F') cnt++;
     else {
-      if (cnt > 0) {
-        V[isx].push_back(cnt);
+      if (isfirst) {
+        x[0] -= cnt;
+        isfirst = false;
+      } else if (cnt > 0) {
+        V[isx].push_back(cnt);          
       }
       cnt = 0;
       isx = !isx;
