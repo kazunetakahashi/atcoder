@@ -34,7 +34,7 @@ s.each{|str|
 
 def cnt(tree)
   if tree.nil?
-    return 0
+    return -1
   end
   zero = cnt(tree.zero)
   one = cnt(tree.one)
