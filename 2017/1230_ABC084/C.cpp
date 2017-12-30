@@ -44,7 +44,9 @@ int main () {
     int now = 0;
     for (auto i = k; i < N-1; ++i) {
       if (now < S[i]) now = S[i];
-      now += F[i] - now%F[i];
+      if (now%F[i] != 0) {
+        now += F[i] - (now%F[i]);        
+      }
       now += C[i];
     }
     cout << now << endl;
