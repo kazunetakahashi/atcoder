@@ -37,7 +37,7 @@ int main () {
   int C[1000];
   int S[1000];
   int F[1000];
-  for (auto i = 0; i < N; ++i) {
+  for (auto i = 0; i < N-1; ++i) {
     cin >> C[i] >> S[i] >> F[i];
   }
   for (auto k = 0; k < N; ++k) {
