@@ -77,6 +77,7 @@ string f(ll A, ll B, ll C, ll D) {
       lb = t;
     }
   }
+  assert(false);
   ll L = ub;
   if (D <= L) {
     int back = (C/(K+1)) * (K+1);
