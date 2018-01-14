@@ -81,7 +81,7 @@ string f(ll A, ll B, ll C, ll D) {
   ll L = ub;
   cerr << "L = " << L << endl;
   if (D <= L) {
-    int back = (C/(K+1)) * (K+1);
+    int back = (C/(K+1) - 1) * (K+1);
     C -= back;
     D -= back;
     string X = rep(repa(K) + "B", 100);
@@ -89,7 +89,7 @@ string f(ll A, ll B, ll C, ll D) {
   } else if (C > L) {
     C = A+B+1-C;
     D = A+B+1-D;
-    int back = (D/(K+1)) * (K+1);
+    int back = (D/(K+1) - 1) * (K+1);
     C -= back;
     D -= back;
     cerr << "C = " << C << ", D = " << D << endl;
