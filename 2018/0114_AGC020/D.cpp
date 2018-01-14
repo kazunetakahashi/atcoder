@@ -91,7 +91,8 @@ string f(ll A, ll B, ll C, ll D) {
     D = A+B+1-D;
     int back = (D/(K+1)) * (K+1);
     C -= back;
-    D -= back;    
+    D -= back;
+    cerr << "C = " << C << ", D = " << D << endl;
     string X = rep(repb(K) + "A", 100);
     cerr << "X = " << X << endl;
     string Y = X.substr(D-1, C-D+1);
