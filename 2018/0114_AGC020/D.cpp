@@ -77,7 +77,6 @@ string f(ll A, ll B, ll C, ll D) {
       lb = t;
     }
   }
-  assert(false);
   ll L = ub;
   if (D <= L) {
     int back = (C/(K+1)) * (K+1);
@@ -92,7 +91,7 @@ string f(ll A, ll B, ll C, ll D) {
     C -= back;
     D -= back;    
     string X = rep(repb(K) + "A", 100);
-    string Y = X.substr(D-1, D-C+1);
+    string Y = X.substr(D-1, C-D+1);
     reverse(Y.begin(), Y.end());
     return Y;
   } else {
