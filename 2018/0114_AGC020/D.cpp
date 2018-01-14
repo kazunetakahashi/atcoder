@@ -63,7 +63,7 @@ ll calc_K(ll A, ll B) {
 
 string f(ll A, ll B, ll C, ll D) {
   ll K = calc_K(A, B);
-  cerr << "K = " << K << endl;
+  // cerr << "K = " << K << endl;
   ll ub = A+B+1;
   ll lb = 0;
   while (ub - lb > 1) {
@@ -79,7 +79,7 @@ string f(ll A, ll B, ll C, ll D) {
     }
   }
   ll L = lb;
-  cerr << "L = " << L << endl;
+  // cerr << "L = " << L << endl;
   if (D <= L) {
     int back = (C/(K+1) - 1) * (K+1);
     C -= back;
@@ -92,9 +92,9 @@ string f(ll A, ll B, ll C, ll D) {
     int back = (D/(K+1) - 1) * (K+1);
     C -= back;
     D -= back;
-    cerr << "C = " << C << ", D = " << D << endl;
+    // cerr << "C = " << C << ", D = " << D << endl;
     string X = rep(repb(K) + "A", 100);
-    cerr << "X = " << X << endl;
+    // cerr << "X = " << X << endl;
     string Y = X.substr(D-1, C-D+1);
     reverse(Y.begin(), Y.end());
     return Y;
@@ -103,11 +103,11 @@ string f(ll A, ll B, ll C, ll D) {
     int remb = (A+B-L)%(K+1);
     string X = repa(rema) + repb(remb);
     X = rep(repa(K) + "B", 100) + X + rep("A" + repb(K), 100);
-    cerr << "X = " << X << endl;
+    // cerr << "X = " << X << endl;
     int back = L - (100 * (K+1) + rema);
     C -= back;
     D -= back;
-    cerr << "C = " << C << ", D = " << D << endl;
+    // cerr << "C = " << C << ", D = " << D << endl;
     return X.substr(C-1, D-C+1);    
   }
 }
