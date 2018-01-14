@@ -104,9 +104,11 @@ string f(ll A, ll B, ll C, ll D) {
     int remb = (A+B-L)%(K+1);
     string X = repa(rema) + repb(remb);
     X = rep(repa(K) + "B", 100) + X + rep("A" + repb(K), 100);
+    cerr << "X = " << X << endl;
     int back = L - (100 * (K+1) + rema);
     C -= back;
     D -= back;
+    cerr << "C = " << C << ", D = " << D << endl;
     return X.substr(C-1, D-C+1);    
   }
 }
