@@ -64,8 +64,8 @@ ll calc_K(ll A, ll B) {
 string f(ll A, ll B, ll C, ll D) {
   ll K = calc_K(A, B);
   cerr << "K = " << K << endl;
-  ll ub = A+B;
-  ll lb = -1;
+  ll ub = A+B+1;
+  ll lb = 0;
   while (ub - lb > 1) {
     ll t = (ub+lb)/2;
     ll b = t/(K+1);
@@ -73,12 +73,12 @@ string f(ll A, ll B, ll C, ll D) {
     ll rema = A - a;
     ll remb = B - b;
     if (remb <= (rema+1) * K) {
-      ub = t;
-    } else {
       lb = t;
+    } else {
+      ub = t;
     }
   }
-  ll L = ub;
+  ll L = lb;
   cerr << "L = " << L << endl;
   if (D <= L) {
     int back = (C/(K+1) - 1) * (K+1);
@@ -96,7 +96,6 @@ string f(ll A, ll B, ll C, ll D) {
     string X = rep(repb(K) + "A", 100);
     cerr << "X = " << X << endl;
     string Y = X.substr(D-1, C-D+1);
-    cerr << "Y = " << X << endl;
     reverse(Y.begin(), Y.end());
     return Y;
   } else {
