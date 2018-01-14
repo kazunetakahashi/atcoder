@@ -78,6 +78,7 @@ string f(ll A, ll B, ll C, ll D) {
     }
   }
   ll L = ub;
+  cerr << "L = " << L << endl;
   if (D <= L) {
     int back = (C/(K+1)) * (K+1);
     C -= back;
