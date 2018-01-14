@@ -93,7 +93,9 @@ string f(ll A, ll B, ll C, ll D) {
     C -= back;
     D -= back;    
     string X = rep(repb(K) + "A", 100);
+    cerr << "X = " << X << endl;
     string Y = X.substr(D-1, C-D+1);
+    cerr << "Y = " << X << endl;
     reverse(Y.begin(), Y.end());
     return Y;
   } else {
