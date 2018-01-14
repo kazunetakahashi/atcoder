@@ -61,7 +61,7 @@ ll calc_K(ll A, ll B) {
   return ub;
 }
 
-string f(int A, int B, int C, int D) {
+string f(ll A, ll B, ll C, ll D) {
   ll K = calc_K(A, B);
   ll ub = A+B;
   ll lb = -1;
