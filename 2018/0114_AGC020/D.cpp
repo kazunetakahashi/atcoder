@@ -87,7 +87,7 @@ string f(ll A, ll B, ll C, ll D) {
   } else if (C > L) {
     C = A+B+1-C;
     D = A+B+1-D;
-    int back = (C/(K+1)) * (K+1);
+    int back = (D/(K+1)) * (K+1);
     C -= back;
     D -= back;    
     string X = rep(repb(K) + "A", 100);
