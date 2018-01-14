@@ -63,6 +63,7 @@ ll calc_K(ll A, ll B) {
 
 string f(ll A, ll B, ll C, ll D) {
   ll K = calc_K(A, B);
+  cerr << "K = " << K << endl;
   ll ub = A+B;
   ll lb = -1;
   while (ub - lb > 1) {
