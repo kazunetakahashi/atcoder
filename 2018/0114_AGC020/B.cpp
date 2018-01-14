@@ -54,7 +54,7 @@ int main () {
       cout << -1 << endl;
       return 0;      
     }
-    ll tmaxi = tmini + A[i] - 1;
+    ll tmaxi = (maxi/A[i]) * A[i] + A[i] - 1;
     maxi = tmaxi;
     mini = tmini;
   }
