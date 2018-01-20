@@ -52,6 +52,7 @@ string henkan(string str) {
       start = i+1;
     }
   }
+  cerr << str.substr(start, (int)naka.size()-start) << endl;
   V.push_back(str.substr(start, (int)naka.size()-start));
   for (auto it = V.begin(); it != V.end(); ++it) {
     *it = henkan(*it);
