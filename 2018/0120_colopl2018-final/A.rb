@@ -1,8 +1,8 @@
 n = gets.to_i
 s = []
 s << gets.chomp
-s << s+s
-s << s+s+s
+s << s[0]+s[0]
+s << s[1]+s[0]
 ans = [0, 0, 0]
 
 isa = true
