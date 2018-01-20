@@ -22,3 +22,5 @@ def henkan(str)
   end
   return '(' + ary.join(op) + ')'
 end
+
+puts henkan(s)
