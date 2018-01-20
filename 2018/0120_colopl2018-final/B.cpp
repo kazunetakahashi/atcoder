@@ -44,7 +44,7 @@ string henkan(int l, int r, int d) {
   vector< tuple<int, int> > V;
   auto it = dset[d].lower_bound(l+2);
   int start = l+2;
-  while (*it < r-1) {
+  while (it != dset[d].end() && *it < r-1) {
     V.push_back(make_tuple(start, *it));
     start = (*it) + 1;
     it++;
@@ -82,5 +82,6 @@ int main () {
       dset[cnt].insert(i);
     }
   }
-  cout << henkan(0, S.size(), 0) << endl;
+  cerr << "aaaaa" <<< endl;
+  cout << henkan(0, (int)S.size(), 0) << endl;
 }
