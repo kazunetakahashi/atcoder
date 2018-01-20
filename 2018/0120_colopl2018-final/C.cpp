@@ -59,6 +59,7 @@ int main () {
       for (auto j = 0; j < 2; ++j) {
         if (0 <= nplace[j] && nplace[j] < N) {
           Q.push(state(nnum, nplace[j], ndist));
+          cerr << nnum << " " << nplace[j] << " " << ndist << endl;
         }
       }
     } 
