@@ -38,7 +38,7 @@ string henkan(string str) {
   }
   string opp = string{op};
   string naka = str.substr(2, str.size() - 3);
-  cerr << naka << endl;
+  // cerr << naka << endl;
   int cnt = 0;
   vector<string> V;
   int start = 0;
@@ -48,10 +48,11 @@ string henkan(string str) {
     } else if (naka[i] == ')') {
       cnt--;
     } else if (naka[i] == ',' && cnt == 0) {
-      V.push_back(str.substr(start, i-start-1));
+      V.push_back(str.substr(start, i-start));
       start = i+1;
     }
   }
+  V.push_back(str.substr(start, (int)naka.size()-start));
   for (auto it = V.begin(); it != V.end(); ++it) {
     *it = henkan(*it);
   }
