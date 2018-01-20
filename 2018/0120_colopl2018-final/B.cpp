@@ -43,9 +43,9 @@ string henkan(int l, int r, int d) {
   }
   string opp = string{op};
   vector< tuple<int, int> > V;
-  auto it = dset[d].lower_bound(l+2);
+  auto it = dset[d+1].lower_bound(l+2);
   int start = l+2;
-  while (it != dset[d].end() && *it < r-1) {
+  while (it != dset[d+1].end() && *it < r-1) {
     V.push_back(make_tuple(start, *it));
     start = (*it) + 1;
     it++;
