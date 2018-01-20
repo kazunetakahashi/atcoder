@@ -47,6 +47,7 @@ string henkan(int l, int r, int d) {
   while (*it < r-1) {
     V.push_back(make_tuple(start, *it));
     start = (*it) + 1;
+    it++;
   }
   V.push_back(make_tuple(start, r-1));
   vector<string> W;
