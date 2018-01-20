@@ -54,6 +54,7 @@ int main () {
     Q.pop();
     if (ans[place] == infty) {
       ans[place] = num;
+      cerr << "ans[" << place << "] = " << num << endl;
       ll nplace[2] = {place + 1, place - 1};
       ll ndist = dist+1;
       ll nnum = num - dist * dist + ndist * ndist;
