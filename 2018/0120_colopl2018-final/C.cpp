@@ -50,11 +50,11 @@ int main () {
     ll num = get<0>(Q.top());
     ll place = get<1>(Q.top());
     ll dist = get<2>(Q.top());
-    //cerr << num << " " << place << " " << dist << endl;
+    cerr << num << " " << place << " " << dist << endl;
     Q.pop();
     if (ans[place] == infty) {
       ans[place] = num;
-      //cerr << "ans[" << place << "] = " << num << endl;
+      cerr << "ans[" << place << "] = " << num << endl;
       ll nplace[2] = {place + 1, place - 1};
       ll ndist = dist+1;
       ll nnum = num - dist * dist + ndist * ndist;
