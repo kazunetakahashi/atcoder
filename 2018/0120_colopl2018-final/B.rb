@@ -1,3 +1,9 @@
+if !ENV['RUBY_THREAD_VM_STACK_SIZE']
+	#require 'rbconfig';RUBY=File.join(RbConfig::CONFIG['bindir'],RbConfig::CONFIG['ruby_install_name'])
+	require 'rubygems';RUBY=Gem.ruby
+	exec({'RUBY_THREAD_VM_STACK_SIZE'=>'100000000'},RUBY,$0)
+end
+
 s = gets.chomp
 
 def henkan(str)
