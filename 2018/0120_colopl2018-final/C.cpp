@@ -53,7 +53,7 @@ int main () {
     Q.pop();
     if (ans[place] == infty) {
       ans[place] = num;
-      ll nplace[2] = {num + 1, num - 1};
+      ll nplace[2] = {place + 1, place - 1};
       ll ndist = dist+1;
       ll nnum = num - dist * dist + ndist * ndist;
       for (auto j = 0; j < 2; ++j) {
