@@ -13,7 +13,7 @@ s[0].chars{|c|
 }
 
 if isa
-  m = s.size * n
+  m = s[0].size * n
   puts (m * (m+1))/2
   exit
 end
