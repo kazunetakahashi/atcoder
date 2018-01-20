@@ -82,6 +82,6 @@ int main () {
       dset[cnt].insert(i);
     }
   }
-  cerr << "aaaaa" <<< endl;
+  cerr << "aaaaa" << endl;
   cout << henkan(0, (int)S.size(), 0) << endl;
 }
