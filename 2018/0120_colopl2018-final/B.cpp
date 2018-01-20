@@ -50,6 +50,7 @@ string henkan(int l, int r, int d) {
     it++;
   }
   V.push_back(make_tuple(start, r-1));
+  cerr << start << " " << r-1 << endl;
   vector<string> W;
   for (auto it = V.begin(); it != V.end(); ++it) {
     int s = get<0>(*it);
