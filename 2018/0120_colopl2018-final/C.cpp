@@ -55,15 +55,15 @@ int main () {
     if (ans[place] == infty) {
       ans[place] = num;
       cerr << "ans[" << place << "] = " << num << endl;
-      ll nplace[2] = {place + 1, place - 1};
-      ll ndist = dist+1;
-      ll nnum = num - dist * dist + ndist * ndist;
-      for (auto j = 0; j < 2; ++j) {
-        if (0 <= nplace[j] && nplace[j] < N) {
-          Q.push(state(nnum, nplace[j], ndist));
-        }
+    }    
+    ll nplace[2] = {place + 1, place - 1};
+    ll ndist = dist+1;
+    ll nnum = num - dist * dist + ndist * ndist;
+    for (auto j = 0; j < 2; ++j) {
+      if (0 <= nplace[j] && nplace[j] < N && ans[nplace[j]] == infty) {
+        Q.push(state(nnum, nplace[j], ndist));
       }
-    } 
+    }
   }
   for (auto i = 0; i < N; ++i) {
     cout << ans[i] << endl;
