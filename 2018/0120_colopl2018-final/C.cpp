@@ -50,6 +50,7 @@ int main () {
     ll num = get<0>(Q.top());
     ll place = get<1>(Q.top());
     ll dist = get<2>(Q.top());
+    cerr << num << " " << place << " " << dist << endl;
     Q.pop();
     if (ans[place] == infty) {
       ans[place] = num;
@@ -59,7 +60,6 @@ int main () {
       for (auto j = 0; j < 2; ++j) {
         if (0 <= nplace[j] && nplace[j] < N) {
           Q.push(state(nnum, nplace[j], ndist));
-          cerr << nnum << " " << nplace[j] << " " << ndist << endl;
         }
       }
     } 
