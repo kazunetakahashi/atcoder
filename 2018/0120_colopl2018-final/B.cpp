@@ -48,12 +48,11 @@ string henkan(string str) {
     } else if (naka[i] == ')') {
       cnt--;
     } else if (naka[i] == ',' && cnt == 0) {
-      V.push_back(str.substr(start, i-start));
+      V.push_back(naka.substr(start, i-start));
       start = i+1;
     }
   }
-  cerr << str.substr(start, (int)naka.size()-start) << endl;
-  V.push_back(str.substr(start, (int)naka.size()-start));
+  V.push_back(naka.substr(start, (int)naka.size()-start));
   for (auto it = V.begin(); it != V.end(); ++it) {
     *it = henkan(*it);
   }
