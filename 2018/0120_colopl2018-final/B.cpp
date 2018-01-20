@@ -38,6 +38,7 @@ set<int> dset[100010];
 string henkan(int l, int r, int d) {
   char op = S[l];
   if (op != '+' && op != '-' && op != '*' && op != '/') {
+    cerr << S.substr(l, r-l) << endl;
     return S.substr(l, r-l);
   }
   string opp = string{op};
@@ -82,6 +83,5 @@ int main () {
       dset[cnt].insert(i);
     }
   }
-  cerr << "aaaaa" << endl;
   cout << henkan(0, (int)S.size(), 0) << endl;
 }
