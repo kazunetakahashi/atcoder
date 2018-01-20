@@ -31,35 +31,34 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
-string henkan(string str) {
-  char op = str[0];
+string S;
+int depth[100010];
+set<int> dset[100010];
+
+string henkan(int l, int r, int d) {
+  char op = S[l];
   if (op != '+' && op != '-' && op != '*' && op != '/') {
-    return str;
+    return S.substr(l, r-l);
   }
   string opp = string{op};
-  string naka = str.substr(2, str.size() - 3);
-  // cerr << naka << endl;
-  int cnt = 0;
-  vector<string> V;
-  int start = 0;
-  for (auto i = 0; i < (int)naka.size(); ++i) {
-    if (naka[i] == '(') {
-      cnt++;
-    } else if (naka[i] == ')') {
-      cnt--;
-    } else if (naka[i] == ',' && cnt == 0) {
-      V.push_back(naka.substr(start, i-start));
-      start = i+1;
-    }
+  vector< tuple<int, int> > V;
+  auto it = dset[d].lower_bound(l+2);
+  int start = l+2;
+  while (*it < r-1) {
+    V.push_back(make_tuple(start, *it));
+    start = (*it) + 1;
   }
-  V.push_back(naka.substr(start, (int)naka.size()-start));
+  V.push_back(make_tuple(start, r-1));
+  vector<string> W;
   for (auto it = V.begin(); it != V.end(); ++it) {
-    *it = henkan(*it);
+    int s = get<0>(*it);
+    int g = get<1>(*it);    
+    W.push_back(henkan(s, g, d+1));
   }
   string ans = "";
-  for (auto i = 0; i < (int)V.size(); ++i) {
-    ans += V[i];
-    if (i < (int)V.size()-1) {
+  for (auto i = 0; i < (int)W.size(); ++i) {
+    ans += W[i];
+    if (i < (int)W.size()-1) {
       ans += opp;
     }
   }
@@ -69,5 +68,16 @@ string henkan(string str) {
 int main () {
   string S;
   cin >> S;
-  cout << henkan(S) << endl;
+  fill(depth, depth+100010, 0);
+  int cnt = 0;
+  for (auto i = 0; i < (int)S.size(); ++i) {
+    if (S[i] == '(') {
+      cnt++;
+    } else if (S[i] == ')') {
+      cnt--;
+    } else if (S[i] == ',') {
+      depth[i] = cnt;
+      dset[cnt].insert(i);
+    }
+  }
 }
