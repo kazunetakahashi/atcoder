@@ -69,9 +69,7 @@ string henkan(int l, int r, int d) {
 }
 
 int main () {
-  string S;
   cin >> S;
-  cerr << S.substr(0, 4) << endl;
   fill(depth, depth+100010, 0);
   int cnt = 0;
   for (auto i = 0; i < (int)S.size(); ++i) {
