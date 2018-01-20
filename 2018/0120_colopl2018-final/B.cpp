@@ -37,7 +37,7 @@ string henkan(string str) {
     return str;
   }
   string opp = string{op};
-  string naka = str.substr(1, str.size() - 3);
+  string naka = str.substr(1, str.size() - 2);
   int cnt = 0;
   vector<string> V;
   int start = 0;
