@@ -2,7 +2,6 @@ n = gets.to_i
 s = []
 s << gets.chomp
 s << s[0]+s[0]
-s << s[1]+s[0]
 ans = [0, 0, 0]
 
 isa = true
@@ -19,7 +18,7 @@ if isa
   exit
 end
 
-for i in 0...3
+for i in 0...2
   now = 0
   s[i].chars{|c|
     if c == 'A'
