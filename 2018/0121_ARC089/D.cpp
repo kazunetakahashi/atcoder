@@ -56,7 +56,7 @@ int main () {
       cnt[x + K * (1-area)][y + K][1]++;      
     }
   }
-  /*
+#if DEBUG == 1
   for (auto k = 0; k < 2; ++k) {
     cerr << "k = " << k << endl;
     for (auto i = 0; i < 2 * K; ++i) {
@@ -65,8 +65,8 @@ int main () {
       }
       cerr << endl;
     }    
-  }
-  */
+  }  
+#endif
   for (auto k = 0; k < 2; ++k) {
     for (auto i = 0; i < 2 * K; ++i) {
       for (auto j = 0; j < 2 * K; ++j) {
@@ -84,7 +84,7 @@ int main () {
       }
     }
   }
-  /*
+#if DEBUG == 1
   for (auto k = 0; k < 2; ++k) {
     cerr << "k = " << k << endl;
     for (auto i = 0; i < 2 * K; ++i) {
@@ -93,8 +93,8 @@ int main () {
       }
       cerr << endl;
     }    
-  }
-  */
+  }  
+#endif
   int ans = 0;
   for (auto i = 0; i < K; ++i) {
     for (auto j = 0; j < K; ++j) {
@@ -102,9 +102,12 @@ int main () {
       int y = j + K;
       int w = sum[x][y][0] - sum[i][y][0] - sum[x][j][0] + sum[i][j][0];
       int b = sum[x][y][1] - sum[i][y][1] - sum[x][j][1] + sum[i][j][1];
-      //cerr << "(" << x << ", " << y << ") = ("
-      //     << w << ", " << b << ")" << endl;
+#if DEBUG == 1
+      cerr << "(" << x << ", " << y << ") = ("
+           << w << ", " << b << ")" << endl;
+#endif
       int c = white - w + b;
+      c = max(N-c, c);
       ans = max(ans, c);
     }
   }
