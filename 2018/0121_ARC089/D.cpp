@@ -98,6 +98,8 @@ int main () {
       int y = j + K;
       int w = sum[x][y][0] - sum[i][y][0] - sum[x][j][0] + sum[i][j][0];
       int b = sum[x][y][1] - sum[i][y][1] - sum[x][j][1] + sum[i][j][1];
+      cerr << "(" << x << ", " << y << ") = ("
+           << w << ", " << b << ")" << endl;
       int c = white - w + b;
       ans = max(ans, c);
     }
