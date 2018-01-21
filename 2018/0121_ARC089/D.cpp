@@ -50,10 +50,10 @@ int main () {
     if (color) {
       white++;
       cnt[x + K * area][y][0]++;
-      cnt[x + K * area][y + K][0]++;
+      cnt[x + K * (1-area)][y + K][0]++;
     } else {
       cnt[x + K * area][y][1]++;      
-      cnt[x + K * area][y + K][1]++;      
+      cnt[x + K * (1-area)][y + K][1]++;      
     }
   }
   for (auto k = 0; k < 2; ++k) {
