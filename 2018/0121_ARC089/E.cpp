@@ -38,7 +38,7 @@ typedef tuple<int, int, int> path;
 vector<path> V;
 
 void answer() {
-  cout << 204 << V.size() << endl;
+  cout << 204 << " " << V.size() << endl;
   for (auto x : V) {
     cout << get<0>(x) << " " << get<1>(x) << " ";
     if (get<2>(x) == -1) {
