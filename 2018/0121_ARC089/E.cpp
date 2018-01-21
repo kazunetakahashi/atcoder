@@ -73,13 +73,13 @@ int main () {
   for (auto i = 0; i <= 101; ++i) {
     for (auto j = 0; j <= 101; ++j) {
       int a = 0;
-      for (auto X = 1; X <= 10; ++X) {
-        for (auto Y = 1; Y <= 10; ++Y) {
+      for (auto X = 1; X <= A; ++X) {
+        for (auto Y = 1; Y <= B; ++Y) {
           a = max(a, d[X][Y] - i * X - j * Y);
         }
       }
-      for (auto X = 1; X <= 10; ++X) {
-        for (auto Y = 1; Y <= 10; ++Y) {
+      for (auto X = 1; X <= A; ++X) {
+        for (auto Y = 1; Y <= B; ++Y) {
           if (d[X][Y] == a + i * X + j * Y) {
             ok[X][Y] = true;
           }
@@ -87,8 +87,8 @@ int main () {
       }
     }
   }
-  for (auto X = 1; X <= 10; ++X) {
-    for (auto Y = 1; Y <= 10; ++Y) {
+  for (auto X = 1; X <= A; ++X) {
+    for (auto Y = 1; Y <= B; ++Y) {
       if (!ok[X][Y]) {
         cout << "Impossible" << endl;
         return 0;
