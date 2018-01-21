@@ -78,8 +78,8 @@ int main () {
     for (auto j = 0; j < K; ++j) {
       int x = i + K;
       int y = j + K;
-      int w = cnt[x][y][0] - cnt[i][y][0] - cnt[x][j][0] + cnt[i][j][0];
-      int b = cnt[x][y][1] - cnt[i][y][1] - cnt[x][j][1] + cnt[i][j][1];
+      int w = sum[x][y][0] - sum[i][y][0] - sum[x][j][0] + sum[i][j][0];
+      int b = sum[x][y][1] - sum[i][y][1] - sum[x][j][1] + sum[i][j][1];
       int c = white - w + b;
       ans = max(ans, c);
     }
