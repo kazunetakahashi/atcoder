@@ -57,6 +57,15 @@ int main () {
     }
   }
   for (auto k = 0; k < 2; ++k) {
+    cerr << "k = " << k << endl;
+    for (auto i = 0; i < 2 * K; ++i) {
+      for (auto j = 0; j < 2 * K; ++j) {
+        cerr << cnt[i][j][k] << " ";
+      }
+      cerr << endl;
+    }    
+  }
+  for (auto k = 0; k < 2; ++k) {
     for (auto i = 0; i < 2 * K; ++i) {
       for (auto j = 0; j < 2 * K; ++j) {
         sum[i][j][k] = cnt[i][j][k];
