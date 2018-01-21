@@ -82,6 +82,15 @@ int main () {
       }
     }
   }
+  for (auto k = 0; k < 2; ++k) {
+    cerr << "k = " << k << endl;
+    for (auto i = 0; i < 2 * K; ++i) {
+      for (auto j = 0; j < 2 * K; ++j) {
+        cerr << sum[i][j][k] << " ";
+      }
+      cerr << endl;
+    }    
+  }
   int ans = 0;
   for (auto i = 0; i < K; ++i) {
     for (auto j = 0; j < K; ++j) {
