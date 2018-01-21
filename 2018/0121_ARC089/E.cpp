@@ -78,6 +78,7 @@ int main () {
           a = max(a, d[X][Y] - i * X - j * Y);
         }
       }
+      add(i, j, a);
       for (auto X = 1; X <= A; ++X) {
         for (auto Y = 1; Y <= B; ++Y) {
           if (d[X][Y] == a + i * X + j * Y) {
