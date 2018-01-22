@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -45,7 +45,7 @@ ll f(int j, ll x) {
 
 bool skip_f2(int f1, int f2, int f3) {
   return (K[f1] - K[f2]) * (L[f3] - L[f1])
-    + (K[f1] - K[f3]) * (L[f1] - L[f3]) <= 0;
+    + (K[f1] - K[f3]) * (L[f1] - L[f2]) <= 0;
 }
 
 void add(int t) { // 必ず傾きが広義単調減少になるように入れていく。
