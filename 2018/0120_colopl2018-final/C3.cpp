@@ -49,11 +49,17 @@ bool skip_f2(int f1, int f2, int f3) {
 }
 
 void add(int t) { // 必ず傾きが広義単調減少になるように入れていく。
+#if DEBUG == 1
+  cerr << "add " << t << endl;
+#endif
   while (Q.size() >= 2) {
     auto it = Q.end();
     auto last = it-1;
     auto last2 = it-2;
     if (skip_f2(*last2, *last, t)) {
+#if DEBUG == 1
+      cerr << "skipped " << *last << endl;
+#endif
       Q.pop_back();
     } else {
       break;
@@ -62,11 +68,17 @@ void add(int t) { // 必ず傾きが広義単調減少になるように入れ�
   Q.push_back(t);
 }
 
-ll get_min(int x) {
+ll get_min(int x) { // 必ず x 座標が増えていく順に使用する。
+#if DEBUG == 1
+  cerr << "get_min " << x << endl;
+#endif
   while (Q.size() >= 2) {
     auto it = Q.begin();
     auto it2 = it+1;
     if (f(*it, x) >= f(*it2, x)) {
+#if DEBUG == 1
+      cerr << "popped " << *it << endl;
+#endif
       Q.pop_front();
     } else {
       break;
