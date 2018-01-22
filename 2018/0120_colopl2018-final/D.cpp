@@ -111,7 +111,7 @@ int main () {
     int A = get<1>(V[i]);
     //cerr << "A = " << A << endl;
     nans += (bit.sum(A+1, infty) * power(2, i-1))%MOD;
-    ans = nans;
+    ans = nans%MOD;
     //cerr << "i = " << i << ", ans = " << ans << endl;
     bit.add(get<0>(V[i]));
     bit.add(get<1>(V[i]));
