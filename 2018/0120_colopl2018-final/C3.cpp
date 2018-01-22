@@ -98,7 +98,7 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     cin >> a[i];
   }
-  for (auto j = 0; j < N; ++j) {
+  for (ll j = 0; j < N; ++j) {
     K[j] = -2 * j;
     L[j] = a[j] + j * j;
   }
@@ -109,7 +109,7 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     ans[i] = get_min(i);
   }
-  for (auto i = 0; i < N; ++i) {
+  for (ll i = 0; i < N; ++i) {
     cout << ans[i] + i * i << endl;
   }
 }
