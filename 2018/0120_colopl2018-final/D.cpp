@@ -100,7 +100,7 @@ int main () {
     int A, B;
     cin >> A >> B;
     if (A > B) swap(A, B);
-    V.push_back(make_tuple(A, B));
+    V.push_back(make_tuple(B, A));
   }
   sort(V.begin(), V.end());
   ll ans = 0;
@@ -109,10 +109,10 @@ int main () {
   for (auto i = 1; i < N; ++i) {
     ll nans = (2 * ans) % MOD;
     int A = get<1>(V[i]);
-    cerr << "A = " << A << endl;
+    //cerr << "A = " << A << endl;
     nans += (bit.sum(A+1, infty) * power(2, i-1))%MOD;
     ans = nans;
-    cerr << "i = " << i << ", ans = " << ans << endl;
+    //cerr << "i = " << i << ", ans = " << ans << endl;
     bit.add(get<0>(V[i]));
     bit.add(get<1>(V[i]));
   }
