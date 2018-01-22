@@ -87,7 +87,7 @@ int main () {
     L[j] = a[j] + j * j;
   }
   for (auto j = 0; j < N; ++j) {
-    add(K[j]);
+    add(j);
   }
   ll ans[200010];
   for (auto i = 0; i < N; ++i) {
