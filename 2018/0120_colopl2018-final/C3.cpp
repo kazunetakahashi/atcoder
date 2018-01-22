@@ -86,7 +86,7 @@ ll get_min(int x) { // 必ず x 座標が増えていく順に使用する。
   }
 #if DEBUG == 1
   cerr << "f(" << *(Q.begin()) << ", "
-       << x << ") = " << f(*(Q.begin()), x) << endl;
+       << x << ") = " << f(*(Q.begin()), x) + x * x << endl;
 #endif
   return f(*(Q.begin()), x);
 }
