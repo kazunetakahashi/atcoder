@@ -68,6 +68,8 @@ ll get_min(int x) {
     auto it2 = it+1;
     if (f(*it, x) >= f(*it2, x)) {
       Q.pop_front();
+    } else {
+      break;
     }
   }
   return f(*(Q.begin()), x);
