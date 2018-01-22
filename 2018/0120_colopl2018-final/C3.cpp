@@ -94,6 +94,6 @@ int main () {
     ans[i] = get_min(i);
   }
   for (auto i = 0; i < N; ++i) {
-    cout << ans[i] << endl;
+    cout << ans[i] + i * i << endl;
   }
 }
