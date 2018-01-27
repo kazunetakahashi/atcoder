@@ -31,24 +31,58 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
+int R, C;
+string S[50];
+
+vector<vector<bool> > V[50];
+
+void make_V() {
+  vector<bool> emp;
+  V[0].push_back(emp);
+  for (auto k = 0; k < C; ++k) {
+    if (S[0][k] == '.') {
+      for (auto x : V[k]) {
+        x.push_back(true);
+        x.push_back(false);
+        V[x.size()].push_back(x);
+      }
+    } else {
+      for (auto x : V[k]) {
+        x.push_back(false);
+        V[x.size()].push_back(x);
+      }
+    }
+  }
+}
+  
 int main () {
-  int R, C;
   cin >> R >> C;
-  string S[50];
   for (auto i = 0; i < R; ++i) {
     cin >> S[i];
   }
+  make_V();
   int ans = 0;
-  for (auto k = 0; k < 2; ++k) {
-    int tans = 0;
-    for (auto i = 0; i < R; ++i) {
+  for (auto x : V[C]) {
+    bool f[50][50];
+    for (auto i = 0; i < C; ++i) {
+      f[0][i] = x[i];
+    }
+    for (auto i = 1; i < R; ++i) {
       for (auto j = 0; j < C; ++j) {
-        if ((i+j)%2 == k && S[i][j] == '.') {
-          tans++;
+        if (!f[i-1][j] && (j == 0 || !f[i][j-1]) && S[i][j] == '.') {
+          f[i][j] = true;
+        } else {
+          f[i][j] = false;
         }
       }
     }
-    ans = max(tans, ans);
+    int tans = 0;
+    for (auto i = 0; i < R; ++i) {
+      for (auto j = 0; j < C; ++j) {
+        if (f[i][j]) tans++;
+      }
+    }
+    ans = max(ans, tans);
   }
   cout << ans << endl;
 }
