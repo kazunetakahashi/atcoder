@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -88,7 +88,9 @@ int main () {
         cerr << (f[i][j] ? '#' : ((S[i][j] == '.') ? '.' : '*'));
 #endif
       }
-      cerr << endl;
+#if DEBUG == 1
+      cerr << endl;      
+#endif
     }
 #if DEBUG == 1
     cerr << tans << endl;
