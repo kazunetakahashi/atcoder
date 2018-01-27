@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -80,8 +80,15 @@ int main () {
     for (auto i = 0; i < R; ++i) {
       for (auto j = 0; j < C; ++j) {
         if (f[i][j]) tans++;
+#if DEBUG == 1
+        cerr << (f[i][j] ? '#' : ((S[i][j] == '.') ? '.' : '*'));
+#endif
       }
+      cerr << endl;
     }
+#if DEBUG == 1
+    cerr << tans << endl;
+#endif
     ans = max(ans, tans);
   }
   cout << ans << endl;
