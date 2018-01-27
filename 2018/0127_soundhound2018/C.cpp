@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -42,9 +42,10 @@ void make_V() {
   for (auto k = 0; k < C; ++k) {
     if (S[0][k] == '.') {
       for (auto x : V[k]) {
-        x.push_back(true);
-        x.push_back(false);
-        V[x.size()].push_back(x);
+        if (x.size() == 0 || !x[x.size()-1]) {
+          x.push_back(true);
+          V[x.size()].push_back(x);          
+        }
       }
       for (auto x : V[k]) {
         x.push_back(false);
@@ -93,7 +94,7 @@ int main () {
 #endif
     }
 #if DEBUG == 1
-    cerr << tans << endl;
+    cerr << "tans = " << tans << endl;
 #endif
     ans = max(ans, tans);
   }
