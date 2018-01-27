@@ -45,11 +45,10 @@ void make_V() {
         if (x.size() == 0 || !x[x.size()-1]) {
           x.push_back(true);
           V[x.size()].push_back(x);          
+        } else {
+          x.push_back(false);
+          V[x.size()].push_back(x);          
         }
-      }
-      for (auto x : V[k]) {
-        x.push_back(false);
-        V[x.size()].push_back(x);
       }
     } else {
       for (auto x : V[k]) {
