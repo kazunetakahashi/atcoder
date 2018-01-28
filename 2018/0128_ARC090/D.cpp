@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -67,6 +67,9 @@ int main () {
     visit(i);
   }
   if (loop) {
+#if DEBUG == 1
+    cerr << "loop" << endl;
+#endif
     cout << "No" << endl;
     return 0;
   }
@@ -80,6 +83,9 @@ int main () {
       int dist = get<1>(x);
       if (d[dst] == -1) {
         d[dst] = dist + d[now];
+#if DEBUG == 1
+        cerr << "d[" << dst << "] = " << d[dst] << endl;
+#endif
       } else {
         if (d[dst] == dist + d[now]) {
           //
