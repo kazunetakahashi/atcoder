@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -134,33 +134,27 @@ int main () {
     cerr << "revcnt[" << i << "] = " << revcnt[i] << endl;
   }
 #endif
+  ll ans = (cnt[T] * cnt[T])%MOD;
   ll L = D[T];
   if (L % 2 == 0) {
     for (auto i = 0; i < N; ++i) {
       if (D[i] == L/2) {
         ll t = (cnt[i] * revcnt[i])%MOD;
-        W.push_back(t);
+        ans += MOD - (t * t)%MOD;
+        ans %= MOD;
       }
     }
   }
   for (auto i = 0; i < N; ++i) {
     for (auto x : V[i]) {
+      ll c = get<0>(x);
       int j = get<1>(x);
-      if (2 * D[i] < L && L < 2 * D[j]) {
+      if (2 * D[i] < L && L < 2 * D[j] && D[j] - D[i] == c) {
         ll t = (cnt[i] * revcnt[j])%MOD;
-        W.push_back(t);
+        ans += MOD - (t * t)%MOD;
+        ans %= MOD;
       }
     }
-  }
-  ll sum = 0;
-  for (auto x : W) {
-    sum += x;
-    sum %= MOD;
-  }
-  ll ans = 0;
-  for (auto x : W) {
-    ans += (x * (sum + MOD - x))%MOD;
-    ans %= MOD;
-  }
-  // cout << ans << endl;
+  }  
+  cout << ans << endl;
 }
