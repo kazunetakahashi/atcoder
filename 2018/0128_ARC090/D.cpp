@@ -83,13 +83,15 @@ int main () {
       int dist = get<1>(x);
       if (d[dst] == -1) {
         d[dst] = dist + d[now];
-#if DEBUG == 1
-        cerr << "d[" << dst << "] = " << d[dst] << endl;
-#endif
       } else {
         if (d[dst] == dist + d[now]) {
           //
         } else {
+#if DEBUG == 1
+          cerr << "d[" << dst << "] = " << d[dst] << endl;
+          cerr << "dist = " << dist
+               << ", d[" << now << "] = " << d[now] << endl;
+#endif
           cout << "No" << endl;
           return 0;
         }
