@@ -51,7 +51,7 @@ int main () {
     sum[0][j+1] += sum[0][j];
   }
   for (auto j = 1; j < N; ++j) {
-    sum[0][N-1-j] += sum[0][N-1-j+1];
+    sum[1][N-1-j] += sum[1][N-1-j+1];
   }
   int ans = 0;
   for (auto j = 0; j < N; ++j) {
