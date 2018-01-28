@@ -149,7 +149,7 @@ int main () {
     for (auto x : V[i]) {
       ll c = get<0>(x);
       int j = get<1>(x);
-      if (2 * D[i] < L && L < 2 * D[j] && D[j] - D[i] == c) {
+      if (2 * D[i] < L && L < 2 * D[j]) {
         ll t = (cnt[i] * revcnt[j])%MOD;
         ans += MOD - (t * t)%MOD;
         ans %= MOD;
