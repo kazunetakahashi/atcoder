@@ -112,6 +112,7 @@ int main () {
       X.push_back(state(revD[i], i));      
     }
   }
+  sort(X.begin(), X.end());
   fill(revcnt, revcnt+100010, 0);
   fill(visited, visited+100010, false);
   revcnt[T] = 1;
