@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -67,6 +67,9 @@ int main () {
     Q.pop();
     if (D[now] == -1) {
       D[now] = dist;
+#if DEBUG == 1
+      cerr << "D[" << now << "] = " << D[now] << endl;
+#endif
       for (auto x : V[now]) {
         ll d = get<0>(x);
         ll dst = get<1>(x);
