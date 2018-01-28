@@ -79,11 +79,13 @@ int main () {
   fill(cnt, cnt+100010, 0);
   fill(visited, visited+100010, false);
   cnt[S] = 1;
-  stack<int> X;
-  X.push(S);
-  while (!X.empty()) {
-    int now = X.top();
-    X.pop();
+  vector<state> X;
+  for (auto i = 0; i < N; ++i) {
+    X.push_back(state(D[i], i));
+  }
+  sort(X.begin(), X.end());
+  for (auto y : X) {
+    int now = get<1>(y);
     if (!visited[now]) {
       visited[now] = true;
       for (auto x : V[now]) {
@@ -92,7 +94,6 @@ int main () {
         if (D[dst] == D[now] + d) {
           cnt[dst] += cnt[now];
           cnt[dst] %= MOD;
-          X.push(dst);
         }
       }      
     }
@@ -105,29 +106,20 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     revD[i] = D[T] - D[i];
   }
+  reverse(X.begin(), X.end());
   fill(revcnt, revcnt+100010, 0);
   fill(visited, visited+100010, false);
   revcnt[T] = 1;
-  stack<int> Y;
-  Y.push(T);
-  while (!Y.empty()) {
-    int now = Y.top();
-    Y.pop();
+  for (auto y : X) {
+    int now = get<1>(y);
     if (!visited[now]) {
       visited[now] = true;
       for (auto x : V[now]) {
         ll d = get<0>(x);
         ll dst = get<1>(x);
         if (revD[dst] == revD[now] + d) {
-#if DEBUG == 1
-          if (now == 1 || now == 7) {
-            cerr << "now = " << now << ", dst = " << dst
-                 << ", revcnt[now] = " << revcnt[now] << endl;
-          }
-#endif
           revcnt[dst] += revcnt[now];
           revcnt[dst] %= MOD;
-          Y.push(dst);
         }
       }      
     }
