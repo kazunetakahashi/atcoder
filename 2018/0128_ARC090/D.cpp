@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -35,7 +35,7 @@ typedef tuple<int, int> edge;
 
 int N, M;
 vector<edge> V[100010];
-queue<int> Q;
+stack<int> S;
 int visited[100010];
 bool loop = false;
 int d[100010];
@@ -50,7 +50,7 @@ void visit(int n) {
       visit(m);
     }
     visited[n] = 2;
-    Q.push(n);
+    S.push(n);
   }
 }
 
@@ -74,11 +74,11 @@ int main () {
     return 0;
   }
   fill(d, d+100010, -1);
-  d[Q.front()] = 0;
-  while (!Q.empty()) {
-    int now = Q.front();
-    cerr << "now = " << now << endl;
-    Q.pop();
+  d[S.top()] = 0;
+  while (!S.top()) {
+    int now = S.top();
+    // cerr << "now = " << now << endl;
+    S.pop();
     for (auto x : V[now]) {
       int dst = get<0>(x);
       int dist = get<1>(x);
