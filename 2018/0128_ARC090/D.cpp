@@ -77,6 +77,7 @@ int main () {
   d[Q.front()] = 0;
   while (!Q.empty()) {
     int now = Q.front();
+    cerr << "now = " << now << endl;
     Q.pop();
     for (auto x : V[now]) {
       int dst = get<0>(x);
