@@ -106,7 +106,12 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     revD[i] = D[T] - D[i];
   }
-  reverse(X.begin(), X.end());
+  X.clear();
+  for (auto i = 0; i < N; ++i) {
+    if (revD[i] >= 0) {
+      X.push_back(state(revD[i], i));      
+    }
+  }
   fill(revcnt, revcnt+100010, 0);
   fill(visited, visited+100010, false);
   revcnt[T] = 1;
