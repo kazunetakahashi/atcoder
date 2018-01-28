@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -67,9 +67,6 @@ int main () {
     Q.pop();
     if (D[now] == -1) {
       D[now] = dist;
-#if DEBUG == 1
-      cerr << "D[" << now << "] = " << D[now] << endl;
-#endif
       for (auto x : V[now]) {
         ll d = get<0>(x);
         ll dst = get<1>(x);
@@ -100,6 +97,11 @@ int main () {
       }      
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i < N; ++i) {
+    cerr << "cnt[" << i << "] = " << cnt[i] << endl;
+  }
+#endif
   for (auto i = 0; i < N; ++i) {
     revD[i] = D[T] - D[i];
   }
@@ -117,13 +119,18 @@ int main () {
         ll d = get<0>(x);
         ll dst = get<1>(x);
         if (revD[dst] == revD[now] + d) {
-          cnt[dst] += cnt[now];
-          cnt[dst] %= MOD;
+          revcnt[dst] += revcnt[now];
+          revcnt[dst] %= MOD;
           Y.push(dst);
         }
       }      
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i < N; ++i) {
+    cerr << "revcnt[" << i << "] = " << revcnt[i] << endl;
+  }
+#endif
   ll L = D[T];
   if (L % 2 == 0) {
     for (auto i = 0; i < N; ++i) {
