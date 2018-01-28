@@ -159,5 +159,5 @@ int main () {
     ans += (x * (sum + MOD - x))%MOD;
     ans %= MOD;
   }
-  // cout << ans << endl;
+  cerr << ans << endl;
 }
