@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -162,5 +162,5 @@ int main () {
     ans += (x * (sum + MOD - x))%MOD;
     ans %= MOD;
   }
-  cout << ans << endl;
+  // cout << ans << endl;
 }
