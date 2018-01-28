@@ -119,6 +119,12 @@ int main () {
         ll d = get<0>(x);
         ll dst = get<1>(x);
         if (revD[dst] == revD[now] + d) {
+#if DEBUG == 1
+          if (now == 1 || now == 7) {
+            cerr << "now = " << now << ", dst = " << dst
+                 << ", revcnt[now] = " << revcnt[now] << endl;
+          }
+#endif
           revcnt[dst] += revcnt[now];
           revcnt[dst] %= MOD;
           Y.push(dst);
