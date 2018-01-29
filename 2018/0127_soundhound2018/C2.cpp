@@ -42,7 +42,7 @@ bool used[100010];
 
 void add_edge(int from, int to, ll cap) {
   G[from].push_back((edge){to, cap, (int)G[to].size()});
-  G[to].push_back((edge){from, 0, (int)G[to].size()-1});
+  G[to].push_back((edge){from, 0, (int)G[from].size()-1});
 }
 
 ll dfs(int v, int t, ll f) {
