@@ -92,7 +92,7 @@ void add_edge_grid(int i, int j) {
     for (auto k = 0; k < 4; ++k) {
       int x = i + dx[k];
       int y = j + dy[k];
-      if (valid(i, j)) {
+      if (valid(x, y)) {
         add_edge(now, num(x, y), 1);
       }
       add_edge(src, now, infty);
