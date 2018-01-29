@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -42,7 +42,7 @@ bool used[100010];
 
 void add_edge(int from, int to, ll cap) {
   G[from].push_back((edge){to, cap, (int)G[to].size()});
-  G[to].push_back((edge){to, 0, (int)G[to].size()-1});
+  G[to].push_back((edge){from, 0, (int)G[to].size()-1});
 }
 
 ll dfs(int v, int t, ll f) {
