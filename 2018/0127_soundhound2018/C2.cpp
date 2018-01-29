@@ -94,6 +94,9 @@ void add_edge_grid(int i, int j) {
       int y = j + dy[k];
       if (valid(x, y)) {
         add_edge(now, num(x, y), 1);
+#if DEBUG == 1
+        cerr << "add_edge(" << now << ", " << num(x, y) << ", 1)" << endl;
+#endif
       }
       add_edge(src, now, 1);
     }
