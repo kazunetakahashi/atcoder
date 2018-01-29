@@ -74,7 +74,6 @@ int bipartite_matching() {
 
 int R, C;
 string S[100];
-int src, dst;
 int vertex = 0;
 
 bool valid(int i, int j) {
@@ -100,15 +99,8 @@ void add_edge_grid(int i, int j) {
 #endif
       }
     }
-    add_edge(src, now);
-#if DEBUG == 1
-    cerr << "add_edge(" << src << ", " << now << ", 1)" << endl;
-#endif
   } else {
-    add_edge(now, dst);
-#if DEBUG == 1
-    cerr << "add_edge(" << now << ", " << dst << ", 1)" << endl;
-#endif
+    //
   }
 }
 
@@ -117,8 +109,7 @@ int main () {
   for (auto i = 0; i < R; ++i) {
     cin >> S[i];
   }
-  src = R * C;
-  MAX_V = dst = R * C + 1;
+  MAX_V = R * C - 1;
   for (auto i = 0; i < R; ++i) {
     for (auto j = 0; j < C; ++j) {
       add_edge_grid(i, j);
