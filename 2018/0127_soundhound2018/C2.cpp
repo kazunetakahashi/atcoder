@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -88,7 +88,7 @@ void add_edge_grid(int i, int j) {
   if (!valid(i, j)) return;
   int now = num(i, j);
   vertex++;
-  if (i+j % 2 == 0) {
+  if ((i+j) % 2 == 0) {
     for (auto k = 0; k < 4; ++k) {
       int x = i + dx[k];
       int y = j + dy[k];
