@@ -114,5 +114,10 @@ int main () {
       add_edge_grid(i, j);
     }
   }
-  cout << vertex - max_flow(src, dst) << endl;
+  ll maxi = max_flow(src, dst);
+#if DEBUG == 1
+  cerr << "vertex = " << vertex << endl;
+  cerr << "maxi = " << maxi << endl;
+#endif
+  cout << vertex - maxi << endl;
 }
