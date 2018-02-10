@@ -38,10 +38,10 @@ int main () {
   for (auto i = 0; i < K; ++i) {
     g *= 10;
   }
-  ll amari = X % K;
-  ll Y = X - amari + K;
+  ll amari = X % g;
+  ll Y = X - amari + g;
   if (X == Y) {
-    Y += K;
+    Y += g;
   }
   cout << Y << endl;
 }
