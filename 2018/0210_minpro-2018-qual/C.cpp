@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -113,15 +113,18 @@ int main () {
   }
   ll ans = 0;
   for (auto i = 0; i < N; ++i) {
+#if DEBUG == 1
+    cerr << "ban item i = " << i << endl;    
+#endif
     sort(V[i].begin(), V[i].end());
     reverse(V[i].begin(), V[i].end());
-    for (auto now = 1; now < (int)V[i].size(); ++now) {
+    for (auto now = 1; now <= (int)V[i].size(); ++now) {
       // 0 start, 1 goal, 2...N+2 choten, N+2+i i
-      for (auto j = 0; j < N+2+now; ++j) {
+      for (auto j = 0; j <= N+2+now; ++j) {
         G[j].clear();
       }
-      for (auto j = 2; j < N+2; ++j) {
-        add_edge(0, j, 1);
+      for (auto j = 0; j < N; ++j) {
+        add_edge(0, j+2, 1);
       }
       for (auto j = 0; j < now; ++j) {
         int bit = get<1>(V[i][j]);
@@ -132,7 +135,11 @@ int main () {
         }
         add_edge(N+2+j, 1, infty);
       }
-      if (max_flow(0, 1) <= i+1) {
+      ll f = max_flow(0, 1);
+#if DEBUG == 1
+      cerr << "now = " << now << ", f = " << f << endl;
+#endif
+      if (f <= i+1) {
         now++;
       } else {
         ans = max(ans, get<0>(V[i][now-1]));
