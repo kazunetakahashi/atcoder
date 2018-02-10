@@ -115,8 +115,7 @@ int main () {
   for (auto i = 0; i < N; ++i) {
     sort(V[i].begin(), V[i].end());
     reverse(V[i].begin(), V[i].end());
-    int now = 1;
-    while (now <= (int)V[i].size()) {
+    for (auto now = 1; now < (int)V[i].size(); ++now) {
       // 0 start, 1 goal, 2...N+2 choten, N+2+i i
       for (auto j = 0; j < N+2+now; ++j) {
         G[j].clear();
@@ -124,7 +123,7 @@ int main () {
       for (auto j = 2; j < N+2; ++j) {
         add_edge(0, j, 1);
       }
-      for (auto j = 0; j < now; ++i) {
+      for (auto j = 0; j < now; ++j) {
         int bit = get<1>(V[i][j]);
         for (auto k = 0; k < N; ++k) {
           if ((bit >> k) & 1) {
@@ -138,7 +137,7 @@ int main () {
       } else {
         ans = max(ans, get<0>(V[i][now-1]));
         break;
-      }
+      }      
     }
   }
   cout << ans << endl;
