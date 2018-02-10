@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -114,7 +114,7 @@ int main () {
   ll ans = 0;
   for (auto i = 0; i < N; ++i) {
 #if DEBUG == 1
-    cerr << "ban item i = " << i << endl;    
+    cerr << "ban item i+1 = " << i+1 << endl;    
 #endif
     sort(V[i].begin(), V[i].end());
     reverse(V[i].begin(), V[i].end());
@@ -140,7 +140,7 @@ int main () {
       cerr << "now = " << now << ", f = " << f << endl;
 #endif
       if (f <= i+1) {
-        now++;
+        //
       } else {
         ans = max(ans, get<0>(V[i][now-1]));
         break;
