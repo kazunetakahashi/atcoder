@@ -129,7 +129,7 @@ int main () {
       for (auto j = 0; j < now; ++j) {
         int bit = get<1>(V[i][j]);
         for (auto k = 0; k < N; ++k) {
-          if ((bit >> k) & 0) {
+          if (((bit >> k) & 1) == 0) {
             add_edge(k+2, N+2+j, infty);
           }
         }
