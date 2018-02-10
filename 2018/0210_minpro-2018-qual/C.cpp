@@ -118,11 +118,15 @@ int main () {
     int comb = (1 << (i+1)) - 1;
     while (comb < (1 << N)) {
       // ここで作業する
+      cerr << "comb = " << comb << endl;
       for (auto x : V[i]) {
         int bit = get<1>(x);
         if ((comb & bit) > 0) {
           // ban
+          cerr << "bit = " << bit << " is banned." << endl;
         } else {
+          cerr << "bit = " << bit << " is allowed. Get " << get<0>(x)
+               << "." << endl;
           ans = max(ans, get<0>(x));
           break;
         }
