@@ -129,13 +129,13 @@ int main () {
       for (auto j = 0; j < now; ++j) {
         int bit = get<1>(V[i][j]);
         for (auto k = 0; k < N; ++k) {
-          if ((bit >> k) & 1) {
+          if ((bit >> k) & 0) {
             add_edge(k+2, N+2+j, infty);
           }
         }
         add_edge(N+2+j, 1, 1);
       }
-      ll f = max_flow(0, 1);
+      ll f = N - max_flow(0, 1);
 #if DEBUG == 1
       cerr << "now = " << now << ", f = " << f
            << ", bit = " << get<1>(V[i][now-1]) << endl;
