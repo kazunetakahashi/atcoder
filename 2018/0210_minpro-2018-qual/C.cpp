@@ -135,12 +135,12 @@ int main () {
         }
         add_edge(N+2+j, 1, 1);
       }
-      ll f = max_flow(0, 1);
+      ll f = N - max_flow(0, 1);
 #if DEBUG == 1
       cerr << "now = " << now << ", f = " << f
            << ", bit = " << get<1>(V[i][now-1]) << endl;
 #endif
-      if (f <= i+1) {
+      if (f >= i+1) {
         //
       } else {
 #if DEBUG == 1
