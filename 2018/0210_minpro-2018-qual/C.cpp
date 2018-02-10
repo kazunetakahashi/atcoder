@@ -20,7 +20,7 @@
 #include <cstdlib> // atoi(xxx)
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 // insert #if<tab> by my emacs. #if DEBUG == 1 ... #end
 
 typedef long long ll;
@@ -133,7 +133,7 @@ int main () {
             add_edge(k+2, N+2+j, infty);
           }
         }
-        add_edge(N+2+j, 1, infty);
+        add_edge(N+2+j, 1, 1);
       }
       ll f = max_flow(0, 1);
 #if DEBUG == 1
