@@ -137,11 +137,15 @@ int main () {
       }
       ll f = max_flow(0, 1);
 #if DEBUG == 1
-      cerr << "now = " << now << ", f = " << f << endl;
+      cerr << "now = " << now << ", f = " << f
+           << ", bit = " << get<1>(V[i][now-1]) << endl;
 #endif
       if (f <= i+1) {
         //
       } else {
+#if DEBUG == 1
+        cerr << "value = " << get<0>(V[i][now-1]) << endl;        
+#endif
         ans = max(ans, get<0>(V[i][now-1]));
         break;
       }      
