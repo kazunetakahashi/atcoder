@@ -140,7 +140,7 @@ int main () {
       cerr << "now = " << now << ", f = " << f
            << ", bit = " << get<1>(V[i][now-1]) << endl;
 #endif
-      if (f >= 0) {
+      if (f > 0) {
         //
       } else {
 #if DEBUG == 1
