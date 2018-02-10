@@ -113,42 +113,25 @@ int main () {
   }
   ll ans = 0;
   for (auto i = 0; i < N; ++i) {
-#if DEBUG == 1
-    cerr << "ban item i+1 = " << i+1 << endl;    
-#endif
     sort(V[i].begin(), V[i].end());
     reverse(V[i].begin(), V[i].end());
-    for (auto now = 1; now <= (int)V[i].size(); ++now) {
-      // 0 start, 1 goal, 2...N+2 choten, N+2+i i
-      for (auto j = 0; j <= N+2+now; ++j) {
-        G[j].clear();
-      }
-      for (auto j = 0; j < N; ++j) {
-        add_edge(0, j+2, 1);
-      }
-      for (auto j = 0; j < now; ++j) {
-        int bit = get<1>(V[i][j]);
-        for (auto k = 0; k < N; ++k) {
-          if (((bit >> k) & 1) == 0) {
-            add_edge(k+2, N+2+j, infty);
-          }
+    int comb = (1 << (i+1)) - 1;
+    while (comb < (1 << N)) {
+      // ここで作業する
+      for (auto x : V[i]) {
+        int bit = get<1>(x);
+        if ((comb & bit) > 0) {
+          // ban
+        } else {
+          ans = max(ans, get<0>(x));
+          break;
         }
-        add_edge(N+2+j, 1, 1);
       }
-      ll f = N - max_flow(0, 1);
-#if DEBUG == 1
-      cerr << "now = " << now << ", f = " << f
-           << ", bit = " << get<1>(V[i][now-1]) << endl;
-#endif
-      if (f > 0) {
-        //
-      } else {
-#if DEBUG == 1
-        cerr << "value = " << get<0>(V[i][now-1]) << endl;        
-#endif
-        ans = max(ans, get<0>(V[i][now-1]));
-        break;
-      }      
+      // 以下処理。
+      int tmpx = comb & (-comb);
+      int tmpy = comb + tmpx;
+      int tmpz = comb & (~(tmpy));
+      comb = (((tmpz/tmpx) >> 1) | tmpy);
     }
   }
   cout << ans << endl;
