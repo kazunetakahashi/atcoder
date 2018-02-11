@@ -112,7 +112,8 @@ int main()
   }
   sort(seiri.begin(), seiri.end());
   vector<bool> used(D, false);
-  int cnt = 0;
+  vector<point> dst(D, (point){-1, -1});
+  vector<int> X;
   for (auto e : seiri)
   {
     int n = get<1>(e) + 1;
@@ -121,38 +122,52 @@ int main()
     if (tonari1 >= 0 && !used[tonari1] && tonari2 < D && !used[tonari2])
     {
       used[n] = true;
+      dst[n] = V[n - 1];
+      X.push_back(n);
       // cerr << "n = " << n << " is used." << endl;
-      cnt++;
     }
-    if (cnt >= K - 2)
-      break;
   }
-  for (auto i = 0; i < D; i++)
+  for (auto i : X)
   {
     if (used[i])
     {
+      point r = V[i];
       point p = V[i - 1];
       point q = V[i + 1];
       int lx = max(0, min(p.x, q.x) - 10);
       int ux = min(H - 1, max(p.x, q.x) + 10);
       int ly = max(0, min(p.y, q.y) - 10);
       int uy = min(W - 1, max(p.y, q.y) + 10);
-      int mini = 10000000;
-      point minp = V[i];
+      int maxi = -1;
+      point maxp = V[i];
+      int swapped = -1;
       for (auto j = lx; j < ux; j++)
       {
         for (auto k = ly; k < uy; k++)
         {
           point now = (point){j, k};
-          int d = dist(p, now) + dist(now, q);
-          if (mini > d)
+          int d = (dist(p, r) + dist(r, q)) - (dist(p, now) + dist(now, q));
+          int num = field[j][k];
+          if (num >= 0 && used[num])
           {
-            mini = d;
-            minp = now;
+            point pprime = V[num - 1];
+            point qprime = V[num + 1];
+            d += (dist(pprime, now) + dist(now, qprime)) - (dist(pprime, p) + dist(p, qprime));
+          }
+          if (maxi < d)
+          {
+            maxi = d;
+            maxp = now;
+            swapped = num;
           }
         }
       }
-      ans.push_back(make_swap(V[i], minp));
+      ans.push_back(make_swap(V[i], maxp));
+      used[i] = false;
+      if (swapped >= 0)
+        used[swapped] = false;
+      if ((int)ans.size() >= K)
+        break;
     }
   }
   flush(ans);
