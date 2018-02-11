@@ -40,7 +40,7 @@ int main()
   cin >> S;
   char x = S[S.size() / 2];
   int lb = S.size() / 2;
-  int ub = S.size() / 2;
+  int ub = S.size() - (S.size() / 2);
   while (0 <= lb && ub < (int)S.size())
   {
     if (S[lb] == x && S[ub] == x)
