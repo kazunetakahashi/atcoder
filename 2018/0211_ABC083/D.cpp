@@ -82,7 +82,7 @@ int main()
 {
   cin >> S;
   S = "0" + S + "0";
-  for (auto i = 0; i < S.size() - 1; i++)
+  for (auto i = 0; i < (int)S.size() - 1; i++)
   {
     V.push_back(S[i] == S[i - 1]);
   }
