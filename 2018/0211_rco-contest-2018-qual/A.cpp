@@ -197,7 +197,7 @@ int main()
   vector<state> tempS;
   mt19937 mt(rd());
   auto end_time = std::chrono::system_clock::now();
-  vector<bool> checkpoint(25, false);
+  vector<bool> checkpoint(10000, false);
   while (true)
   {
     end_time = std::chrono::system_clock::now();
@@ -227,25 +227,28 @@ int main()
     }
     else
     {
-      int ind = (timer - 300) / 300;
+      int ind = (timer - 300) / 20;
       // cerr << ind << endl;
       if (!checkpoint[ind])
       {
         checkpoint[ind] = true;
-        S = tempS;
-        tempS.clear();
-        sort(S.begin(), S.end());
-        reverse(S.begin(), S.end());
-        unsigned int l = S.size() / 10;
-        cerr << "l = " << l << endl;
-        while (l < S.size())
+        if ((int)tempS.size() >= 40)
         {
-          S.erase(S.begin() + l);
+          S = tempS;
+          tempS.clear();
+          sort(S.begin(), S.end());
+          reverse(S.begin(), S.end());
+          unsigned int l = S.size() / 4;
+          cerr << "l = " << l << endl;
+          while (l < S.size())
+          {
+            S.erase(S.begin() + l);
+          }
         }
       }
       int l = S.size();
       state st = S[mt() % l];
-      state nst = make_state_longer(st, 50);
+      state nst = make_state_longer(st, 10);
       if (get<0>(nst) > 0)
       {
         tempS.push_back(nst);
