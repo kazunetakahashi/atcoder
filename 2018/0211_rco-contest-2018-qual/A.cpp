@@ -232,7 +232,7 @@ int main()
       if (!checkpoint[ind])
       {
         checkpoint[ind] = true;
-        if ((int)tempS.size() >= 40)
+        if ((int)tempS.size() >= 10)
         {
           S = tempS;
           tempS.clear();
@@ -248,7 +248,7 @@ int main()
       }
       int l = S.size();
       state st = S[mt() % l];
-      state nst = make_state_longer(st, 10);
+      state nst = make_state_longer(st, 12);
       if (get<0>(nst) > 0)
       {
         tempS.push_back(nst);
