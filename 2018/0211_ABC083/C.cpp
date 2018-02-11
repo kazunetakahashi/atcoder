@@ -40,10 +40,17 @@ int main()
   vector<ll> V;
   V.push_back(X);
   ll now = X;
-  while (now <= Y)
+  while (true)
   {
     now *= 2;
-    V.push_back(now);
+    if (now <= Y)
+    {
+      V.push_back(now);
+    }
+    else
+    {
+      break;
+    }
   }
   cout << V.size() << endl;
 }
