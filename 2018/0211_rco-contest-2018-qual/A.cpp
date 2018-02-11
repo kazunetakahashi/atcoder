@@ -42,6 +42,8 @@ typedef tuple<int, vector<int>, vector<int>> state; // score, move, maps
 int N, K, H, W, T;
 string M[100][50];
 place start[100];
+random_device rd;
+mt19937 mt(rd());
 
 int score(int m, vector<int> V)
 {
@@ -73,7 +75,7 @@ int score(int m, vector<int> V)
     }
     else if (map[nx][ny] == 'x')
     {
-      return ans;
+      return 0;
     }
     else
     {
@@ -88,16 +90,55 @@ state make_state(vector<int> moves)
   vector<score_map> V;
   for (auto i = 0; i < N; i++)
   {
-    V.push_back(make_tuple(score(i, moves), i));
+    int s = score(i, moves);
+    if (s > 0)
+    {
+      V.push_back(make_tuple(s, i));
+    }
   }
   sort(V.begin(), V.end());
   reverse(V.begin(), V.end());
   int sum = 0;
   vector<int> maps;
+  if ((int)V.size() < K)
+  {
+    return make_tuple(sum, moves, maps);
+  }
   for (auto i = 0; i < K; i++)
   {
-    sum += get<0>(V[i]);
+    int scored = get<0>(V[i]);
+    sum += scored;
     maps.push_back(get<1>(V[i]));
+  }
+  return make_tuple(sum, moves, maps);
+}
+
+state make_state_longer(state st, int l)
+{
+  vector<int> moves = get<1>(st);
+  vector<int> maps = get<2>(st);
+  vector<int> scr;
+  for (auto i = 0; i < l; i++)
+  {
+    moves.push_back(mt() % 4);
+  }
+  for (auto e : maps)
+  {
+    int s = score(e, moves);
+    if (s > 0)
+    {
+      scr.push_back(s);
+    }
+  }
+  int sum = 0;
+  if ((int)scr.size() < K)
+  {
+    return make_tuple(sum, moves, maps);
+  }
+  for (auto i = 0; i < K; i++)
+  {
+    int scored = scr[i];
+    sum += scored;
   }
   return make_tuple(sum, moves, maps);
 }
@@ -105,7 +146,7 @@ state make_state(vector<int> moves)
 void flush(vector<int> moves, vector<int> maps)
 {
   assert((int)maps.size() == K);
-  assert((int)moves.size() == T);
+  assert((int)moves.size() <= T);
   for (auto i = 0; i < K; i++)
   {
     cout << maps[i];
@@ -153,25 +194,62 @@ int main()
   }
   random_device rd;
   vector<state> S;
+  vector<state> tempS;
   mt19937 mt(rd());
   auto end_time = std::chrono::system_clock::now();
+  vector<bool> checkpoint(25, false);
   while (true)
   {
     end_time = std::chrono::system_clock::now();
     double timer = std::chrono::duration_cast<std::chrono::milliseconds>(
                        end_time - start_time)
                        .count();
-    if (timer > 3900)
+    if (timer > 3950)
     {
+      S = tempS;
       auto maxi = max_element(S.begin(), S.end());
+      cerr << "score: " << get<0>(*maxi) << endl;
       flush(get<1>(*maxi), get<2>(*maxi));
       return 0;
     }
-    vector<int> move;
-    for (auto i = 0; i < T; i++)
+    else if (timer < 300)
     {
-      move.push_back(mt() % 4);
+      vector<int> move;
+      for (auto i = 0; i < 100; i++)
+      {
+        move.push_back(mt() % 4);
+      }
+      auto s = make_state(move);
+      if (get<0>(s) > 0)
+      {
+        tempS.push_back(s);
+      }
     }
-    S.push_back(make_state(move));
+    else
+    {
+      int ind = (timer - 300) / 300;
+      // cerr << ind << endl;
+      if (!checkpoint[ind])
+      {
+        checkpoint[ind] = true;
+        S = tempS;
+        tempS.clear();
+        sort(S.begin(), S.end());
+        reverse(S.begin(), S.end());
+        unsigned int l = S.size() / 10;
+        cerr << "l = " << l << endl;
+        while (l < S.size())
+        {
+          S.erase(S.begin() + l);
+        }
+      }
+      int l = S.size();
+      state st = S[mt() % l];
+      state nst = make_state_longer(st, 50);
+      if (get<0>(nst) > 0)
+      {
+        tempS.push_back(nst);
+      }
+    }
   }
 }
