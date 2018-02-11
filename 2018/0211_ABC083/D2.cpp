@@ -46,7 +46,7 @@ int main()
     if (S[lb] == x && S[ub] == x)
     {
       lb--;
-      ub--;
+      ub++;
     }
     else
     {
