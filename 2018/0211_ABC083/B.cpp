@@ -19,7 +19,7 @@ int main()
   int N, A, B;
   cin >> N >> A >> B;
   int ans = 0;
-  for (auto i = 1; i < N; i++)
+  for (auto i = 1; i <= N; i++)
   {
     int s = string_to_sum(to_string(i));
     if (A <= s && s <= B)
