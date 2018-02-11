@@ -38,9 +38,20 @@ string S;
 int main()
 {
   cin >> S;
-  char x = S[S.size() / 2];
-  int lb = S.size() / 2;
-  int ub = S.size() - (S.size() / 2);
+  char x;
+  int lb, ub;
+  if (S.size() % 2 == 0)
+  {
+    x = S[S.size() / 2];
+    lb = S.size() / 2 - 1;
+    ub = lb + 1;
+  }
+  else
+  {
+    x = S[S.size() / 2];
+    lb = S.size() / 2 - 1;
+    ub = lb + 2;
+  }
   while (0 <= lb && ub < (int)S.size())
   {
     if (S[lb] == x && S[ub] == x)
