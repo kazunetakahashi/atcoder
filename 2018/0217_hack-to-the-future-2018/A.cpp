@@ -148,6 +148,7 @@ public:
           continue;
         ll ns = plus_score(C, nx, ny, nh);
         X.push_back(make_tuple(ns, i, j));
+        minus_score(C, nx, ny, nh);
       }
     }
     auto it = max_element(X.begin(), X.end());
