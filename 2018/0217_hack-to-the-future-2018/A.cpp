@@ -144,6 +144,8 @@ public:
       for (auto j = -1; j <= 1; j++)
       {
         ll nh = h + j;
+        if (!(1 <= nh && nh <= N))
+          continue;
         ll ns = plus_score(C, nx, ny, nh);
         X.push_back(make_tuple(ns, i, j));
       }
