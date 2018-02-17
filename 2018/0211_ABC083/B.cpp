@@ -21,7 +21,6 @@ int main()
   int ans = 0;
   for (auto i = 1; i <= N; i++)
   {
-    cerr << "i = " << i << endl;
     int s = string_to_sum(to_string(i));
     if (A <= s && s <= B)
     {
