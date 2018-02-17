@@ -211,7 +211,10 @@ int main()
     }
     int num = rd() % ((int)W.size());
     state S = W[num];
-    S.improve();
+    for (auto i = 0; i < 100; i++)
+    {
+      S.improve();
+    }
     W.push_back(S);
   }
 }
