@@ -25,7 +25,7 @@
 #include <chrono>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -174,11 +174,13 @@ public:
     auto it = max_element(X.begin(), X.end());
     int j = get<1>(*it);
 #if DEBUG == 1
-    cerr << "x = " << x << ", y = " << y << ", h = " << h + j << endl;
+    cerr << "x = " << x << ", y = " << y << ", j = " << j << endl;
 #endif
     press p = make_tuple(x, y, h + j);
+    cerr << "score: " << score;
     del_press(k);
     add_press(p);
+    cerr << " -> " << score << endl;
   }
 };
 
