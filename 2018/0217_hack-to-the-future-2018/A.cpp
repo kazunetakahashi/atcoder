@@ -25,12 +25,9 @@
 #include <chrono>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
-
-const int dx[5] = {1, 0, -1, 0, 0};
-const int dy[5] = {0, 1, 0, -1, 0};
 
 // const int C = 1e6+10;
 // const ll M = 1000000007;
@@ -75,7 +72,14 @@ ll plus_score(vector<vector<ll>> &C, int X, int Y, ll H)
 
 ll minus_score(vector<vector<ll>> &C, int X, int Y, ll H)
 {
-  return plus_score(C, X, Y, H);
+  for (auto i = 0; i < N; i++)
+  {
+    for (auto j = 0; j < N; j++)
+    {
+      C[i][j] -= max(0ll, H - abs(i - X) - abs(j - Y));
+    }
+  }
+  return calc_score(C);
 }
 
 class state
@@ -155,29 +159,24 @@ public:
     int x = get<0>(V[k]);
     int y = get<1>(V[k]);
     ll h = get<2>(V[k]);
-    vector<tuple<ll, int, int>> X;
+    vector<tuple<ll, int>> X;
     vector<vector<ll>> C = B;
     minus_score(C, x, y, h);
-    for (auto i = 0; i < 5; i++)
+    for (auto j = -10; j <= 10; j++)
     {
-      int nx = x + dx[i];
-      int ny = y + dy[i];
-      if (!valid(nx, ny))
+      ll nh = h + j;
+      if (!(1 <= nh && nh <= N))
         continue;
-      for (auto j = -10; j <= 10; j++)
-      {
-        ll nh = h + j;
-        if (!(1 <= nh && nh <= N))
-          continue;
-        ll ns = plus_score(C, nx, ny, nh);
-        X.push_back(make_tuple(ns, i, j));
-        minus_score(C, nx, ny, nh);
-      }
+      ll ns = plus_score(C, x, y, nh);
+      X.push_back(make_tuple(ns, j));
+      minus_score(C, x, y, nh);
     }
     auto it = max_element(X.begin(), X.end());
-    int i = get<1>(*it);
-    int j = get<2>(*it);
-    press p = make_tuple(x + dx[i], y + dy[i], h + j);
+    int j = get<1>(*it);
+#if DEBUG == 1
+    cerr << "x = " << x << ", y = " << y << ", h = " << h + j << endl;
+#endif
+    press p = make_tuple(x, y, h + j);
     del_press(k);
     add_press(p);
   }
@@ -187,14 +186,14 @@ vector<state> W;
 
 void seed()
 {
-  for (auto k = 0; k < 100; k++)
+  for (auto k = 0; k < 20; k++)
   {
     state S = state();
     for (auto l = 0; l < 1000; l++)
     {
       int x = rd() % N;
       int y = rd() % N;
-      int h = max(1ll, S.able_number(x, y));
+      int h = min(100ll, max(1ll, S.able_number(x, y)));
       S.add_press(make_tuple(x, y, h));
     }
     W.push_back(S);
@@ -226,7 +225,7 @@ int main()
       (*it).show_V();
       return 0;
     }
-    if (W.size() > 100)
+    if (W.size() > 20)
     {
       sort(W.begin(), W.end());
       reverse(W.begin(), W.end());
