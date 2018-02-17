@@ -25,7 +25,7 @@
 #include <chrono>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -118,11 +118,34 @@ public:
 
   void show_V()
   {
+#if DEBUG == 1
+    for (auto i = 0; i < N; i++)
+    {
+      for (auto j = 0; j < N; j++)
+      {
+        cerr << B[i][j] - A[i][j] << " ";
+      }
+      cerr << endl;
+    }
+#endif
     cout << V.size() << endl;
     for (auto e : V)
     {
       cout << get<0>(e) << " " << get<1>(e) << " " << get<2>(e) << endl;
     }
+  }
+
+  ll able_number(int x, int y)
+  {
+    ll ans = N;
+    for (auto i = 0; i < N; i++)
+    {
+      for (auto j = 0; j < N; j++)
+      {
+        ans = min(ans, abs(x - i) + abs(y - j) + (A[i][j] - B[i][j]));
+      }
+    }
+    return ans;
   }
 
   // ここから直す
@@ -162,6 +185,22 @@ public:
 
 vector<state> W;
 
+void seed()
+{
+  for (auto k = 0; k < 100; k++)
+  {
+    state S = state();
+    for (auto l = 0; l < 1000; l++)
+    {
+      int x = rd() % N;
+      int y = rd() % N;
+      int h = max(1ll, S.able_number(x, y));
+      S.add_press(make_tuple(x, y, h));
+    }
+    W.push_back(S);
+  }
+}
+
 int main()
 {
   auto start_time = std::chrono::system_clock::now();
@@ -172,19 +211,7 @@ int main()
       cin >> A[i][j];
     }
   }
-  // ここから直す
-  for (auto i = 0; i < 100; i++)
-  {
-    state S = state();
-    for (auto j = 0; j < 1000; j++)
-    {
-      int x = rd() % N;
-      int y = rd() % N;
-      ll h = rd() % N + 1;
-      S.add_press(make_tuple(x, y, h));
-    }
-    W.push_back(S);
-  }
+  seed();
   sort(W.begin(), W.end());
   reverse(W.begin(), W.end());
   auto end_time = std::chrono::system_clock::now();
@@ -212,7 +239,7 @@ int main()
     }
     int num = rd() % ((int)W.size());
     state S = W[num];
-    for (auto i = 0; i < 100; i++)
+    for (auto i = 0; i < 10; i++)
     {
       S.improve();
     }
