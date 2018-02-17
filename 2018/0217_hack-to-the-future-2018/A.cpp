@@ -164,7 +164,7 @@ public:
       int ny = y + dy[i];
       if (!valid(nx, ny))
         continue;
-      for (auto j = -1; j <= 1; j++)
+      for (auto j = -10; j <= 10; j++)
       {
         ll nh = h + j;
         if (!(1 <= nh && nh <= N))
