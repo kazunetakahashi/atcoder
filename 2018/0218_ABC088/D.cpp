@@ -40,9 +40,8 @@ int H, W;
 string S[100];
 
 bool valid(int x, int y) {
-return (0 <= x && x < H && 0 <= y && y < W && S[x][y] == '#');
+  return (0 <= x && x < H && 0 <= y && y < W && S[x][y] == '.');
 }
-
 
 int main()
 {
