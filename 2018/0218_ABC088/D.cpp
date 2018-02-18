@@ -69,8 +69,8 @@ int main()
     if (x == H-1 && y == W-1) {
       cout << H * W - cnt - (c + 1) << endl;
       return 0;
-    } else if (!(S[i][j] == '.')) {
-      S[i][j] == '#';
+    } else if (!(S[x][y] == '.')) {
+      S[x][y] == '#';
       for (auto k = 0; k < 4; k++)
       {
         int nc = c + 1;
