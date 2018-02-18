@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -65,6 +65,9 @@ int main()
     int c = get<0>(Q.front());
     int x = get<1>(Q.front());
     int y = get<2>(Q.front());
+    #if DEBUG == 1
+    cerr << "x = " << x << ", y = " << y << endl;
+    #endif
     Q.pop();
     if (x == H - 1 && y == W - 1)
     {
