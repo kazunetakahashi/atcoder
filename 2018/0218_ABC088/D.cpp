@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -73,7 +73,7 @@ int main()
     {
       cout << H * W - cnt - (c + 1) << endl;
       return 0;
-    } else if (!(S[x][y] == '.')) {
+    } else if (S[x][y] == '.') {
       S[x][y] = '#';
       for (auto k = 0; k < 4; k++)
       {
