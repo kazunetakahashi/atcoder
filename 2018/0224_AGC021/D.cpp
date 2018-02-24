@@ -102,7 +102,10 @@ int main()
         for (auto j = N-1; j > i; j--)
         {
           if (!used[j])
+          {
             used[j] = true;
+            break;
+          }
         }
         K--;
       }
