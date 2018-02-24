@@ -35,10 +35,12 @@ typedef long long ll;
 // const ll M = 1000000007;
 
 int dp[400][400];
+bool used[400];
 
 int lcs(string s, string t)
 {
   fill(&dp[0][0], &dp[0][0] + 400 * 400, 0);
+  fill(used, used + 400, false);
   int N = s.size();
   int M = t.size();
   for (auto i = 0; i < N; i++)
@@ -53,6 +55,24 @@ int lcs(string s, string t)
       {
         dp[i + 1][j + 1] = max(dp[i][j + 1], dp[i + 1][j]);
       }
+    }
+  }
+  int x = M, y = N;
+  while (x >= 1 && y >= 1)
+  {
+    if (dp[x][y] == dp[x-1][y-1] + 1)
+    {
+      used[x - 1] = true;
+      x--;
+      y--;
+    }
+    else if (dp[x][y] == dp[x-1][y])
+    {
+      x--;
+    }
+    else
+    {
+      y--;
     }
   }
   return dp[N][M];
@@ -72,6 +92,30 @@ int main()
   }
   else
   {
-    cout << min(lcs(S, T) + 2 * K, (int)S.size()) << endl;
+    int N = S.size();
+    lcs(S, T);
+    for (auto i = 0; i < N; i++)
+    {
+      if (K > 0 && !used[i] && !used[N-1-i])
+      {
+        used[i] = used[N - 1 - i] = true;
+        K--;
+      }
+    }
+    for (auto i = 0; i < N; i++)
+    {
+      if (K > 0 && !used[i])
+      {
+        used[i] = true;
+        K--;
+      }
+    }
+    int cnt = 0;
+    for (auto i = 0; i < N; i++)
+    {
+      if (used[i])
+        cnt++;
+    }
+    cout << cnt << endl;
   }
 }
