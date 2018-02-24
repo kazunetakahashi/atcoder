@@ -40,11 +40,6 @@ ll N;
 int main()
 {
   cin >> N;
-  if (N <= 9)
-  {
-    cout << N << endl;
-    return 0;
-  }
   string X = to_string(N);
   bool all_nine = true;
   for (auto x : X)
@@ -56,11 +51,16 @@ int main()
     }
   }
   int ans = 0;
+  for (auto x : X)
+  {
+    ans += x - '0';
+  }
+  int tans = 0;
   if (all_nine)
   {
     for (auto x : X)
     {
-      ans += 9;
+      tans += 9;
     }
   } else {
     int s = X.size();
@@ -68,12 +68,12 @@ int main()
     {
       if (i == 0)
       {
-        ans += X[i] - '0' - 1;
+        tans += X[i] - '0' - 1;
       } else {
-        ans += 9;
+        tans += 9;
       }
     }
   }
-  cout << ans << endl;
+  cout << max(ans, tans) << endl;
   return 0;
 }
