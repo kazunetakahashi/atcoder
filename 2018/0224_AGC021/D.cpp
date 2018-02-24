@@ -38,7 +38,7 @@ int dp[400][400];
 
 int lcs(string s, string t)
 {
-  fill(dp, dp + 400 * 400, 0);
+  fill(&dp[0][0], &dp[0][0] + 400 * 400, 0);
   int N = s.size();
   int M = t.size();
   for (auto i = 0; i < N; i++)
