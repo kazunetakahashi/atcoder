@@ -72,6 +72,6 @@ int main()
   }
   else
   {
-    return 0;
+    cout << min(lcs(S, T) + 2 * K, (int)S.size()) << endl;
   }
 }
