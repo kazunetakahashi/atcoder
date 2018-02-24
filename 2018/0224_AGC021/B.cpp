@@ -102,7 +102,7 @@ int main()
   double ans[120];
   fill(ans, ans + N, 0);
   int M = V.size();
-  for (auto i = 0; i < ; i++)
+  for (auto i = 0; i < M; i++)
   {
     double prob = (PI - kaku(V[(i-1 + M)%M], V[i], V[i+1])) / (2 * PI);
     for (auto j = 0; j < N; j++)
