@@ -45,7 +45,7 @@ int lcs(string s, string t)
   {
     for (auto j = 0; j < M; j++)
     {
-      if (s[i] == t[i])
+      if (s[i] == t[j])
       {
         dp[i + 1][j + 1] = dp[i][j] + 1;
       }
