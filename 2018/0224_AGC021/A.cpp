@@ -40,6 +40,11 @@ ll N;
 int main()
 {
   cin >> N;
+  if (N <= 9)
+  {
+    cout << N << endl;
+    return 0;
+  }
   string X = to_string(N);
   bool all_nine = true;
   for (auto x : X)
@@ -69,6 +74,6 @@ int main()
       }
     }
   }
-      cout << ans << endl;
-    return 0;
+  cout << ans << endl;
+  return 0;
 }
