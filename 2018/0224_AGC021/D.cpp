@@ -55,7 +55,7 @@ int lcs(string s, string t)
       }
     }
   }
-  cout << dp[N][M] << endl;
+  return dp[N][M];
 }
 
 string S;
