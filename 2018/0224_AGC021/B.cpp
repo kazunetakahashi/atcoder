@@ -103,7 +103,7 @@ int main()
   fill(ans, ans + N, 0);
   for (auto i = 0; i < (int)V.size(); i++)
   {
-    double prob = (PI - kaku(V[(i-1 + N)%N], V[i], V[i+1])) / 2 * PI;
+    double prob = (PI - kaku(V[(i-1 + N)%N], V[i], V[i+1])) / (2 * PI);
     for (auto j = 0; j < N; j++)
     {
       if (V[i] == ind[j])
