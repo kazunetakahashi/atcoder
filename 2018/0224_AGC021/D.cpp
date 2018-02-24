@@ -96,9 +96,14 @@ int main()
     lcs(S, T);
     for (auto i = 0; i < N; i++)
     {
-      if (K > 0 && !used[i] && !used[N-1-i])
+      if (K > 0 && !used[i])
       {
-        used[i] = used[N - 1 - i] = true;
+        used[i] = true;
+        for (auto j = N-1; j > i; j--)
+        {
+          if (!used[j])
+            used[j] = true;
+        }
         K--;
       }
     }
