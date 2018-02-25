@@ -85,7 +85,6 @@ void standard_make()
 
 void make()
 {
-  standard_make();
   if (X % 2 == 1)
   {
     for (auto j = 0; j + 1 < Y; j += 2)
@@ -110,6 +109,7 @@ void make()
       }
     }
   }
+  standard_make();
   flush();
 }
 
