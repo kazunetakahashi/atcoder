@@ -55,6 +55,8 @@ int calc(int l, int r, int k) {
   if (nl <= r-1)
     ans = max(ans, calc(nl, r - 1, k) + 1);
   DP[l][r][k] = ans;
+  cerr << "DP[" << l << "][" << r
+       << "][" << k << "] = " << ans << endl;
   return ans;
 }
 
