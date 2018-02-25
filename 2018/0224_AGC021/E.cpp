@@ -89,6 +89,11 @@ ll catalan(ll T, ll X, ll Y)
 int main() {
   init();
   cin >> N >> K;
+  if (N > K)
+  {
+    cout << 0 << endl;
+    return 0;
+  }
   ll ans = 0;
   for (ll R = 0; R <= K; R++)
   {
