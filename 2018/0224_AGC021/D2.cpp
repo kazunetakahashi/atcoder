@@ -53,10 +53,12 @@ int calc(int l, int r, int k) {
     ans = max(ans, calc(l, r - 1, k));
   int nl = DP2[l][S[r - 1] - 'a'] + 1;
   if (nl <= r-1)
-    ans = max(ans, calc(nl, r - 1, k) + 1);
+    ans = max(ans, calc(nl, r - 1, k) + 2);
   DP[l][r][k] = ans;
+#if DEBUG == 1
   cerr << "DP[" << l << "][" << r
        << "][" << k << "] = " << ans << endl;
+#endif
   return ans;
 }
 
