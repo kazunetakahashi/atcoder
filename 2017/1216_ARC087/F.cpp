@@ -195,6 +195,10 @@ int main()
         ll c = C(T[x], i);
         ll plus = (DP[k][x - 1] * fact[i]) % MOD;
         plus = (plus * ((c * c) % MOD)) % MOD;
+#if DEBUG == 1
+        cerr << "x = " << x << ", i = " << i << ", k = " << k << endl;
+        cerr << "DP[" << k + i << "][" << x << "] += " << plus << endl;
+#endif
         DP[k + i][x] += plus;
         DP[k + i][x] %= MOD;
       }
@@ -206,7 +210,7 @@ int main()
   {
     for (auto k = 0; k <= N; k++)
     {
-    cerr << "DP[" << x << "][" << k << "] = " << DP[x][k] << endl;
+      cerr << "DP[" << x << "][" << k << "] = " << DP[x][k] << endl;
     }
   }
 #endif
