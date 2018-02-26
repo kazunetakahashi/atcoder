@@ -118,6 +118,7 @@ int main()
   while (!Q.empty())
   {
     int now = Q.front();
+    Q.pop();
     for (auto x : V[now])
     {
       if (parent[x] == -1)
