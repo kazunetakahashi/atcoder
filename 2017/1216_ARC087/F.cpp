@@ -93,9 +93,6 @@ int calc_child_num(int n)
   child_num[n] = 1;
   for (auto x : children[n])
   {
-#if DEBUG == 1
-    cerr << "x = " << x << endl;
-#endif
     child_num[n] += calc_child_num(x);
   }
 #if DEBUG == 1
@@ -121,6 +118,7 @@ int main()
   Q.push(0);
   fill(child_num, child_num + 5010, -1);
   fill(parent, parent + 5010, -1);
+  parent[0] = -2;
   while (!Q.empty())
   {
     int now = Q.front();
