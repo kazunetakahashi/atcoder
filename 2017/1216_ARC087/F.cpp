@@ -201,11 +201,18 @@ int main()
     }
   }
   ll ans = 0;
+#if DEBUG == 1
+  for (auto x = 1; x <= X; x++)
+  {
+    for (auto k = 0; k <= N; k++)
+    {
+    cerr << "DP[" << x << "][" << k << "] = " << DP[x][k] << endl;
+    }
+  }
+#endif
+
   for (auto k = 0; k <= N; k++)
   {
-#if DEBUG == 1
-      cerr << "DP[" << X << "][" << k << "] = " << DP[X][k] << endl;
-#endif
     if (k%2 == 0)
     {
       ans += (fact[N - k] * DP[X][k]) % MOD;
