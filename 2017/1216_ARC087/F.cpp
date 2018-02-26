@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -205,6 +205,9 @@ int main()
   {
     if (k%2 == 0)
     {
+#if DEBUG == 1
+      cerr << "DP[" << X << "][" << k << "] = " << k << endl;
+#endif
       ans += (fact[N - k] * DP[X][k]) % MOD;
       ans %= MOD;
     }
