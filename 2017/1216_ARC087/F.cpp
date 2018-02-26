@@ -93,6 +93,9 @@ int calc_child_num(int n)
   child_num[n] = 1;
   for (auto x : children[n])
   {
+#if DEBUG == 1
+    cerr << "x = " << x << endl;
+#endif
     child_num[n] += calc_child_num(x);
   }
 #if DEBUG == 1
