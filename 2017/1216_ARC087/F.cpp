@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -95,6 +95,9 @@ int calc_child_num(int n)
   {
     child_num[n] += calc_child_num(x);
   }
+#if DEBUG == 1
+  cerr << "child_num[" << n << "] = " << child_num[n] << endl;
+#endif
   return child_num[n];
 }
 
@@ -135,6 +138,9 @@ int main()
   while (true)
   {
     bool found_center = true;
+#if DEBUG == 1
+    //cerr << "center = " << center << endl;
+#endif
     for (auto x : children[center])
     {
       if (N % 2 == 0 && child_num[x] == N / 2)
