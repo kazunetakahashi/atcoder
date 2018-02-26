@@ -176,6 +176,14 @@ int main()
     T.push_back(nokori);
   int X = T.size();
   X--;
+#if DEBUG == 1
+  cerr << "T : ";
+  for (auto x : T)
+  {
+    cerr << x << " ";
+  }
+  cerr << endl;
+#endif
   fill(&DP[0][0], &DP[0][0] + 5010 * 5010, 0);
   DP[0][0] = 1;
   for (auto x = 1; x <= X; x++)
