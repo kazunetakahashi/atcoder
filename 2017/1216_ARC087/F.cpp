@@ -95,9 +95,6 @@ int calc_child_num(int n)
   {
     child_num[n] += calc_child_num(x);
   }
-#if DEBUG == 1
-  cerr << "child_num[" << n << "] = " << child_num[n] << endl;
-#endif
   return child_num[n];
 }
 
@@ -140,7 +137,7 @@ int main()
   {
     bool found_center = true;
 #if DEBUG == 1
-    //cerr << "center = " << center << endl;
+    cerr << "center = " << center << endl;
 #endif
     for (auto x : children[center])
     {
