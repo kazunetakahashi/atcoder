@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -193,14 +193,14 @@ int main()
       for (auto k = 0; k <= N-i; k++)
       {
         ll c = C(T[x], i);
-        ll plus = (DP[k][x - 1] * fact[i]) % MOD;
+        ll plus = (DP[x - 1][k] * fact[i]) % MOD;
         plus = (plus * ((c * c) % MOD)) % MOD;
 #if DEBUG == 1
         cerr << "x = " << x << ", i = " << i << ", k = " << k << endl;
         cerr << "DP[" << k + i << "][" << x << "] += " << plus << endl;
 #endif
-        DP[k + i][x] += plus;
-        DP[k + i][x] %= MOD;
+        DP[x][k + i] += plus;
+        DP[x][k + i] %= MOD;
       }
     }
   }
