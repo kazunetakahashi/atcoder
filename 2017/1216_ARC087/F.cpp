@@ -206,7 +206,7 @@ int main()
     if (k%2 == 0)
     {
 #if DEBUG == 1
-      cerr << "DP[" << X << "][" << k << "] = " << k << endl;
+      cerr << "DP[" << X << "][" << k << "] = " << DP[X][k] << endl;
 #endif
       ans += (fact[N - k] * DP[X][k]) % MOD;
       ans %= MOD;
