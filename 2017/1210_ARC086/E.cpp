@@ -96,11 +96,11 @@ vector<deque<vector<ll>>>::iterator make(int v)
     itr[v] = DP.begin() + v;
     return itr[v];
   }
-  auto it = itr[children[v][0]];
+  auto it = make(children[v][0]);
   int len = 0;
   for (auto i = 1; i < (int)children[v].size(); i++)
   {
-    auto tit = itr[children[v][i]];
+    auto tit = make(children[v][0]);
     if (it->size() < tit->size())
       swap(it, tit);
     len = max(len, (int)(tit->size()));
@@ -150,12 +150,12 @@ int main()
     {
       depth[x] = depth[now] + 1;
 #if DEBUG == 1
-      cerr << "depth[" << x << "] = " << depth[x] << endl;
+      //cerr << "depth[" << x << "] = " << depth[x] << endl;
 #endif
       Q.push(x);
     }
   }
-  for (auto i = 0; i < N+1; i++)
+  for (auto i = 0; i < N + 1; i++)
   {
     dep[depth[i]]++;
   }
