@@ -150,7 +150,7 @@ int main()
     {
       depth[x] = depth[now] + 1;
 #if DEBUG == 1
-      cerr << "depth[" << x << "] = " << x << endl;
+      cerr << "depth[" << x << "] = " << depth[x] << endl;
 #endif
       Q.push(x);
     }
