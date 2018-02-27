@@ -163,6 +163,9 @@ int main()
   ll res = 0;
   for (auto i = 0; i < (int)ans.size(); i++)
   {
+    #if DEBUG == 1
+    cerr << "ans[" << i << "][1] = " << ans[i][1] << ", dep[" << i << "] = " << dep[i] << endl;
+    #endif
     res += (ans[i][1] * power(2, N + 1 - dep[i])) % MOD;
     res %= MOD;
   }
