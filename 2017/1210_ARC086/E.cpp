@@ -116,8 +116,8 @@ vector<deque<vector<ll>>>::iterator make(int v)
       (*it)[j][0] = zero;
       (*it)[j][1] = one;
       (*it)[j][2] = two;
-      tit->clear();
     }
+    tit->clear();
   }
   for (auto i = 0; i < len; i++)
   {
