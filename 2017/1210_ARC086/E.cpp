@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -100,7 +100,7 @@ vector<deque<vector<ll>>>::iterator make(int v)
   int len = 0;
   for (auto i = 1; i < (int)children[v].size(); i++)
   {
-    auto tit = make(children[v][0]);
+    auto tit = make(children[v][i]);
     if (it->size() < tit->size())
       swap(it, tit);
     len = max(len, (int)(tit->size()));
