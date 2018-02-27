@@ -47,7 +47,7 @@ long long power(long long x, long long n) {
   }
 }
 
-int f[20000010];
+int f[30000010];
 
 int main()
 {
@@ -75,7 +75,7 @@ int main()
   for (auto i = 0; i < 8; i++)
   {
     int lb = power(10, i);
-    int ub = min((int)power(10, i + 1), 20000010);
+    int ub = min((int)power(10, i + 1), 30000010);
     for (auto j = lb; j < ub; j++)
     {
       f[j] = i+1;
