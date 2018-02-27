@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -149,6 +149,9 @@ int main()
     for (auto x : children[now])
     {
       depth[x] = depth[now] + 1;
+#if DEBUG == 1
+      cerr << "depth[" << x << "] = " << x << endl;
+#endif
       Q.push(x);
     }
   }
