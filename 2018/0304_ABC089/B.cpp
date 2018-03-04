@@ -37,14 +37,14 @@ typedef long long ll;
 int main()
 {
   int N;
-  char S[120];
+  string S[120];
   for (auto i = 0; i < N; i++)
   {
     cin >> S[i];
   }
-  for (auto i = 0; i <N; i++)
+  for (auto i = 0; i < N; i++)
   {
-    if (S[i] == 'Y')
+    if (S[i] == "Y")
     {
       cout << "Four" << endl;
       return 0;
