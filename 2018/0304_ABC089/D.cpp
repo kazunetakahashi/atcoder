@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -97,6 +97,9 @@ int main()
     int k = L[i] % D;
     int l = L[i] / D;
     int r = L[i] / D;
+#if DEBUG == 1
+    cerr << "k = " << k << ", l = " << l << ", r = " << r << endl;
+#endif
     cout << sum[k][r] - sum[k][l] << endl;
   }
 }
