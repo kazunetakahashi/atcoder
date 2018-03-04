@@ -63,7 +63,7 @@ int main()
     {
       for (auto k = j+1; k < 5; k++)
       {
-        ans += cnt[i] * cnt[j] * cnt[k];
+        ans += c[i] * c[j] * c[k];
       }
     }
   }
