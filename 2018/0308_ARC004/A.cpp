@@ -57,5 +57,5 @@ int main()
       ans = max(ans, dist(x[i] - x[j], y[i] - y[j]));
     }
   }
-  cout << fixed << setprecision(12) << ans << endl;
+  cout << fixed << setprecision(6) << ans << endl;
 }
