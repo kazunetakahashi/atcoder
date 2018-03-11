@@ -63,7 +63,7 @@ int main()
       if ((int)V.size() > N)
         break;
     }
-    now -= 2 * A;
+    now -= 4 * A;
     if ((int)V.size() > N)
       break;
   }
