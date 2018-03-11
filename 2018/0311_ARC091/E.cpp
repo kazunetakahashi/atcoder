@@ -60,16 +60,12 @@ int main()
     {
       V.push_back(now);
       now++;
-      if ((int)V.size() > N)
+      if ((int)V.size() >= N)
         break;
     }
     now -= 4 * A;
-    if ((int)V.size() > N)
+    if ((int)V.size() >= N)
       break;
-  }
-  for (auto x : V)
-  {
-    cerr << x << endl;
   }
   W = V;
   sort(W.begin(), W.end());
