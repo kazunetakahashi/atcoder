@@ -54,18 +54,34 @@ int main()
     return 0;
   }
   int now = 0;
+  for (auto j = 0; j < A; j++)
+    {
+            if ((int)V.size() >= N)
+        break;
+
+      V.push_back(now);
+      now++;
+  }
+  now -= 4 * A;
+  for (auto i = 0; i < B; i++)
+  {
+      if ((int)V.size() >= N)
+        break;
+    V.push_back(now);
+    now -= 4 * A;
+  }
   for (auto i = 0; i < B; i++)
   {
     for (auto j = 0; j < A; j++)
     {
-      V.push_back(now);
-      now++;
       if ((int)V.size() >= N)
         break;
+      V.push_back(now);
+      now++;
     }
-    now -= 4 * A;
     if ((int)V.size() >= N)
       break;
+    now -= 4 * A;
   }
   W = V;
   sort(W.begin(), W.end());
