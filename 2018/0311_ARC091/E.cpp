@@ -67,6 +67,10 @@ int main()
     if ((int)V.size() > N)
       break;
   }
+  for (auto x : V)
+  {
+    cerr << x << endl;
+  }
   W = V;
   sort(W.begin(), W.end());
   for (auto i = 0; i < N; i++)
