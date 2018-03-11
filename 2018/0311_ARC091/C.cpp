@@ -66,5 +66,5 @@ ll ans()
 int main()
 {
   cin >> N >> M;
-  cout << ans() << endl;
+  cout << N * M - ans() << endl;
 }
