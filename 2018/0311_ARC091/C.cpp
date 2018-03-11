@@ -44,27 +44,27 @@ ll ans()
   {
     if (M == 1)
     {
-      return 0;
+      return 1;
     }
     if (M == 2)
     {
-      return 2;
+      return 0;
     }
-    return 2;
+    return M - 2;
   }
   else if (N == 2)
   {
     if (M == 2)
     {
-      return 4;
+      return 0;
     }
-    return 2 * M;
+    return 0;
   }
-  return (N * M - (N - 1) * (M - 1));
+  return (N - 2) * (M - 2);
 }
 
 int main()
 {
   cin >> N >> M;
-  cout << N * M - ans() << endl;
+  cout << ans() << endl;
 }
