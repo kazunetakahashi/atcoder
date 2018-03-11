@@ -55,20 +55,19 @@ int main()
   }
   ll now = 0;
   for (auto j = 0; j < A; j++)
-    {
-            if ((ll)V.size() >= N)
-        break;
-
-      V.push_back(now);
-      now++;
-  }
-  now -= N * N;
-  for (auto i = 0; i < B; i++)
   {
-      if ((ll)V.size() >= N)
-        break;
+    if ((ll)V.size() >= N)
+      break;
     V.push_back(now);
-    now -= 4 * A;
+    now++;
+  }
+  now -= N * N * N;
+  for (auto i = 0; i < B-1; i++)
+  {
+    if ((ll)V.size() >= N)
+      break;
+    V.push_back(now);
+    now--;
   }
   now = -4 * A;
   for (auto i = 0; i < B; i++)
