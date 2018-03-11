@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -43,7 +43,8 @@ int main()
   {
     ll s = (N + 1 + b - 1) / b;
     ll temp = (b - K) * s;
-    temp -= b - N % b - 1;
+    ll minus = b - N % b - 1;
+    temp -= min(b - K, minus);
     ans += temp;
     #if DEBUG == 1
     cerr << "b = " << b << ", temp = " << temp << endl;
