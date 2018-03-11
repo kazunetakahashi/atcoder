@@ -28,22 +28,22 @@ using namespace std;
 
 typedef long long ll;
 
-// const int dx[4] = {1, 0, -1, 0};
-// const int dy[4] = {0, 1, 0, -1};
+// const ll dx[4] = {1, 0, -1, 0};
+// const ll dy[4] = {0, 1, 0, -1};
 
-// const int C = 1e6+10;
+// const ll C = 1e6+10;
 // const ll M = 1000000007;
 
-int N, A, B;
+ll N, A, B;
 
 bool ok()
 {
   return (1 <= A && A <= N && 1 <= B && B <= N && A * B >= N);
 }
 
-vector<int> V;
-vector<int> W;
-map<int, int> M;
+vector<ll> V;
+vector<ll> W;
+map <ll, ll> M;
 
 int main()
 {
@@ -53,33 +53,34 @@ int main()
     cout << -1 << endl;
     return 0;
   }
-  int now = 0;
+  ll now = 0;
   for (auto j = 0; j < A; j++)
     {
-            if ((int)V.size() >= N)
+            if ((ll)V.size() >= N)
         break;
 
       V.push_back(now);
       now++;
   }
-  now -= 4 * A;
+  now -= N * N;
   for (auto i = 0; i < B; i++)
   {
-      if ((int)V.size() >= N)
+      if ((ll)V.size() >= N)
         break;
     V.push_back(now);
     now -= 4 * A;
   }
+  now = -4 * A;
   for (auto i = 0; i < B; i++)
   {
     for (auto j = 0; j < A; j++)
     {
-      if ((int)V.size() >= N)
+      if ((ll)V.size() >= N)
         break;
       V.push_back(now);
       now++;
     }
-    if ((int)V.size() >= N)
+    if ((ll)V.size() >= N)
       break;
     now -= 4 * A;
   }
