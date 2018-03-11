@@ -38,12 +38,12 @@ ll N, A, B;
 
 bool ok()
 {
-  return (1 <= A && A <= N && 1 <= B && B <= N && A * B >= N);
+  return (1 <= A && A <= N && 1 <= B && B <= N && A + B <= N && A * B >= N);
 }
 
 vector<ll> V;
 vector<ll> W;
-map <ll, ll> M;
+map<ll, ll> M;
 
 int main()
 {
