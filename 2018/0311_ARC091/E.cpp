@@ -38,7 +38,7 @@ int N, A, B;
 
 bool ok()
 {
-  return (1 <= A && A <= N && 1 <= B && B <= N && A + B <= N && A * B >= N);
+  return (1 <= A && A <= N && 1 <= B && B <= N && A * B >= N);
 }
 
 vector<int> V;
