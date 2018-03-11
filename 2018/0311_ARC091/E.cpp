@@ -71,7 +71,7 @@ int main()
   sort(W.begin(), W.end());
   for (auto i = 0; i < N; i++)
   {
-    M[W[i]] = i;
+    M[W[i]] = i+1;
   }
   for (auto i = 0; i < N; i++)
   {
