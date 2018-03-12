@@ -36,21 +36,14 @@ typedef long long ll;
 
 int grundy(int a, int k)
 {
-  #if DEBUG == 1
-  cerr << "a = " << a << ", k = " << k << endl;
-  #endif
+  if (a < k)
+    return 0;
   if (a % k == 0)
     return a / k;
   int d = a / k;
   int x = (a - k * d) / (d + 1) + 1;
   x = min(a / (d + 1), x);
-  for (auto i = 1; i <= x; i++)
-  {
-    if ((a - i * (d + 1)) % k == 0)
-    {
-      return (a - i * (d + 1)) / k;
-    }
-  }
+  x = min((a % d) / (d + 1), x);
   return grundy(a - x * (d + 1), k);
 }
 
