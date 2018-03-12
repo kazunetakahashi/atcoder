@@ -38,6 +38,11 @@ int main()
 {
   ll N, K;
   cin >> N >> K;
+  if (K == 0)
+  {
+    cout << N * N << endl;
+    return 0;
+  }
   ll ans = 0;
   for (ll b = K + 1; b <= N; b++)
   {
