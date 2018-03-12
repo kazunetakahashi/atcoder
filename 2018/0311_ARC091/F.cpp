@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -36,7 +36,10 @@ typedef long long ll;
 
 int grundy(int a, int k)
 {
-  if (a%k == 0)
+  #if DEBUG == 1
+  cerr << "a = " << a << ", k = " << k << endl;
+  #endif
+  if (a % k == 0)
     return a / k;
   int d = a / k;
   int x = (a - k * d) / (d + 1) + 1;
@@ -60,7 +63,7 @@ int main()
   {
     x = x ^ g[i];
   }
-  if (x == 0)
+  if (x != 0)
   {
     cout << "Takahashi" << endl;
   }
