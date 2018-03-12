@@ -41,10 +41,9 @@ int grundy(int a, int k)
   if (a % k == 0)
     return a / k;
   int d = a / k;
-  int x = (a % d) / (d + 1);
-  if ((a - x * (d + 1)) % k == 0)
-    return (a - x * (d + 1)) / k;
-  return grundy(a - (x + 1) * (d + 1), k);
+  if (a % k % (d + 1) == 0)
+    return d;
+  return grundy(d * k - (d + 1) + a % k % (d + 1), k);
 }
 
 int main()
