@@ -70,9 +70,9 @@ int main()
     now--;
   }
   now = -4 * A;
-  for (auto i = 0; i < B; i++)
+  for (auto i = 0; i < B-1; i++)
   {
-    for (auto j = 0; j < A; j++)
+    for (auto j = 0; j < A-1; j++)
     {
       if ((ll)V.size() >= N)
         break;
