@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -43,6 +43,7 @@ int grundy(int a, int k)
     return a / k;
   int d = a / k;
   int x = (a - k * d) / (d + 1) + 1;
+  x = min(a / (d + 1), x);
   return grundy(a - x * (d + 1), k);
 }
 
