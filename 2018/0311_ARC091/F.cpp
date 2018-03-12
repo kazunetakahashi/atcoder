@@ -44,6 +44,13 @@ int grundy(int a, int k)
   int d = a / k;
   int x = (a - k * d) / (d + 1) + 1;
   x = min(a / (d + 1), x);
+  for (auto i = 1; i <= x; i++)
+  {
+    if ((a - i * (d + 1)) % k == 0)
+    {
+      return (a - i * (d + 1)) / k;
+    }
+  }
   return grundy(a - x * (d + 1), k);
 }
 
