@@ -90,6 +90,31 @@ int main()
   {
     cin >> a[i];
   }
+  bool allminus = true;
+  ll maxi = -1000000007;
+  int maxi_i = 0;
+  for (auto i = 0; i < N; i++)
+  {
+    if (a[i] >= 0)
+    {
+      allminus = false;
+      break;
+    }
+    else
+    {
+      if (maxi < a[i])
+      {
+        maxi = a[i];
+        maxi_i = i;
+      }
+    }
+  }
+  if (allminus)
+  {
+    ans[maxi_i] = true;
+    flush();
+    return 0;
+  }
   maxi = 0;
   int maxi_k = 0;
   for (auto k = 0; k < 2; k++)
