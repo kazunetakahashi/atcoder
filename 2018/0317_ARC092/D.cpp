@@ -74,9 +74,9 @@ int main()
   for (auto i = 0; i < 50; i++)
   {
     res[i] = zero[0][i] * one[1][i] + zero[1][i] * one[0][i];
-    for (auto j = 0; j < i; j++)
+    if (i > 0)
     {
-      res[i] += one[0][j] * one[1][j];
+      res[i] += one[0][i-1] * one[1][i-1];
     }
     cerr << "res[" << i << "] = " << res[i] << endl;
   }
