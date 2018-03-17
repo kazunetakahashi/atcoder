@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -114,6 +114,9 @@ int main()
     {
       ans[i] = true;
     }
+#if DEBUG == 1
+    cerr << "ans[" << i << "] = " << ans[i] << endl;
+#endif
   }
   flush();
 }
