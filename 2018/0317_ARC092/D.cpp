@@ -78,6 +78,7 @@ int main()
     {
       res[i] += one[0][j] * one[1][j];
     }
+    cerr << "res[" << i << "] = " << res[i] << endl;
   }
   ll ans = 0;
   for (auto i = 0; i < 50; i++)
