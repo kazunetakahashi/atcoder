@@ -91,7 +91,7 @@ int main()
     cin >> a[i];
   }
   bool allminus = true;
-  ll maxi = -1000000007;
+  maxi = -1000000007;
   int maxi_i = 0;
   for (auto i = 0; i < N; i++)
   {
