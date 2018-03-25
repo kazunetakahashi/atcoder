@@ -176,10 +176,10 @@ ll lca(int u, int v)
   {
     if (get<1>(parent[k][u]) != get<1>(parent[k][v]))
     {
-      u = get<1>(parent[k][u]);
-      v = get<1>(parent[k][v]);
       ans = max(ans, get<0>(parent[k][u]));
       ans = max(ans, get<0>(parent[k][v]));
+      u = get<1>(parent[k][u]);
+      v = get<1>(parent[k][v]);
     }
   }
   ans = max(ans, get<0>(parent[0][v]));
