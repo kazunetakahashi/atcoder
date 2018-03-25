@@ -39,6 +39,7 @@ bool ans[100][100];
 
 void flush()
 {
+  cout << 100 << " " << 100 << endl;
   for (auto i = 0; i < 100; i++)
   {
     for (auto j = 0; j < 100; j++)
