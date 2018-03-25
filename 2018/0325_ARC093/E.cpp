@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -158,15 +158,16 @@ ll lca(int u, int v)
   if (depth[u] > depth[v])
     swap(u, v);
   ll ans = 0;
-  cerr << u << ", " << v << endl;
+#if DEBUG == 1
   cerr << "depth[" << u << "] = " << depth[u]
        << ", depth[" << v << "] = " << depth[v] << endl;
+#endif
   for (auto k = 0; k < 10; k++)
   {
     if ((depth[v] - depth[u]) >> k & 1)
     {
-      v = get<1>(parent[k][v]);
       ans = max(ans, get<0>(parent[k][v]));
+      v = get<1>(parent[k][v]);
     }
   }
   if (u == v)
