@@ -158,6 +158,7 @@ ll lca(int u, int v)
   if (depth[u] > depth[v])
     swap(u, v);
   ll ans = 0;
+  cerr << u << ", " << v << endl;
   cerr << "depth[" << u << "] = " << depth[u]
        << ", depth[" << v << "] = " << depth[v] << endl;
   for (auto k = 0; k < 10; k++)
@@ -244,7 +245,6 @@ int main()
     ll cost = get<0>(e);
     int u = get<1>(e);
     int v = get<2>(e);
-    cerr << u << ", " << v << endl;
     ll temp = cost - lca(u, v);
     if (temp < X - Y)
       L2++;
