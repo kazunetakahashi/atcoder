@@ -183,7 +183,7 @@ int main()
   init();
   cin >> N >> M;
   cin >> X;
-  for (auto i = 0; i < MAX_SIZE; i++)
+  for (auto i = 0; i < M; i++)
   {
     int u, v;
     ll w;
