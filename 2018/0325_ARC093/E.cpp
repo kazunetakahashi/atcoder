@@ -145,6 +145,9 @@ void init2()
         int new_u = get<1>(parent[k][u]);
         ll new_cost = max(cost, get<0>(parent[k][u]));
         parent[k + 1][v] = path(new_cost, new_u);
+#if DEBUG == 1
+        cerr << "parent[" << k + 1 << "][" << v << "] = (" << new_cost << ", " << new_u << ")" << endl;
+#endif
       }
     }
   }
@@ -238,7 +241,6 @@ int main()
     int u = get<1>(e);
     int v = get<2>(e);
     ll temp = cost - lca(u, v);
-    cerr << lca(u, v) << endl;
     if (temp < X - Y)
       L2++;
     else if (temp == X - Y)
