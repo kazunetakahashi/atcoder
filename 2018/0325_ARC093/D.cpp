@@ -76,9 +76,15 @@ int main()
       {
         ans[i][j] = false;
         nowa++;
+        if (nowa >= A)
+        {
+          break;
+        }
+      }
+      if (nowa >= A)
+      {
         break;
       }
-      break;
     }
   }
   int nowb = 1;
@@ -90,9 +96,15 @@ int main()
       {
         ans[i][j] = true;
         nowb++;
+        if (nowb >= B)
+        {
+          break;
+        }
+      }
+      if (nowb >= B)
+      {
         break;
       }
-      break;
     }
   }
   flush();
