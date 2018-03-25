@@ -238,6 +238,7 @@ int main()
     int u = get<1>(e);
     int v = get<2>(e);
     ll temp = cost - lca(u, v);
+    cerr << lca(u, v) << endl;
     if (temp < X - Y)
       L2++;
     else if (temp == X - Y)
