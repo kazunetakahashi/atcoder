@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -211,6 +211,9 @@ int main()
       W.push_back(e);
     }
   }
+#if DEBUG == 1
+  cerr << "X = " << X << ", Y = " << Y << endl;
+#endif
   if (X < Y)
   {
     cout << 0 << endl;
@@ -223,7 +226,9 @@ int main()
   {
     ans = (((power(2, K) + MOD - 2) % MOD) * power(2, L)) % MOD;
   }
+#if DEBUG == 1
   cerr << "L = " << L << ", ans = " << ans << endl;
+#endif
   init2();
   ll L1 = 0;
   ll L2 = 0;
