@@ -175,7 +175,7 @@ ll lca(int u, int v)
       ans = max(ans, get<0>(parent[k][v]));
     }
   }
-  return ans;
+  return max(ans, get<0>(parent[0][v]));
 }
 
 int main()
