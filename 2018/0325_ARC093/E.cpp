@@ -158,6 +158,8 @@ ll lca(int u, int v)
   if (depth[u] > depth[v])
     swap(u, v);
   ll ans = 0;
+  cerr << "depth[" << u << "] = " << depth[u]
+       << "depth[" << v << "] = " << depth[v] << endl;
   for (auto k = 0; k < 10; k++)
   {
     if ((depth[v] - depth[u]) >> k & 1)
