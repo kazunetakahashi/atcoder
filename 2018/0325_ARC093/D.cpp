@@ -51,6 +51,7 @@ void flush()
 
 int main()
 {
+  cin >> A >> B;
   for (auto i = 0; i < 50; i++)
   {
     for (auto j = 0; j < 100; j++)
