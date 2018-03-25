@@ -223,6 +223,7 @@ int main()
   {
     ans = (((power(2, K) + MOD - 2) % MOD) * power(2, L)) % MOD;
   }
+  cerr << "L = " << L << ", ans = " << ans << endl;
   init2();
   ll L1 = 0;
   ll L2 = 0;
