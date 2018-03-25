@@ -243,6 +243,9 @@ int main()
     else if (temp == X - Y)
       L1++;
   }
+#if DEBUG == 1
+  cerr << "L1 = " << L1 << ", L2 = " << L2 << endl;
+#endif
   ans += (2 * (power(2, L - L2) + MOD - power(2, L - L2 - L1))) % MOD;
   ans %= MOD;
   cout << ans << endl;
