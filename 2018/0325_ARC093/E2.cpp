@@ -164,7 +164,7 @@ ll lca(int u, int v)
 ll f(ll n)
 {
   ll lb = 0;
-  ll ub = S.size();
+  ll ub = S.size()+1;
   while (ub - lb > 1)
   {
     ll t = (ub + lb) / 2;
@@ -239,6 +239,7 @@ int main()
     S.push_back(cost - lca(u, v) + Y);
   }
   sort(S.begin(), S.end());
+#if DEBUG == 1
   for (auto x : S)
   {
     cerr << x << " ";
@@ -246,5 +247,6 @@ int main()
   cerr << endl;
   cerr << "f(" << X - 1 << ") = " << f(X - 1)
        << ", f(" << X << ") = " << f(X) << endl;
+#endif
   cout << (f(X - 1) + MOD - f(X)) % MOD << endl;
 }
