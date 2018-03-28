@@ -115,7 +115,7 @@ int main()
   {
     for (auto j = 0; j < N; j++)
     {
-      ll R = (1 << 16) - 1 - i;
+      ll R = (1 << N) - 1 - i;
       if (((i >> j) & 1) == 0)
       {
         DP[i] *= C(R, power(2, j));
