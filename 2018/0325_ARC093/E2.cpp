@@ -239,5 +239,10 @@ int main()
     S.push_back(cost - lca(u, v) + Y);
   }
   sort(S.begin(), S.end());
+  for (auto x : S)
+  {
+    cerr << x << " ";
+  }
+  cerr << endl;
   cout << (f(X - 1) + MOD - f(X)) % MOD << endl;
 }
