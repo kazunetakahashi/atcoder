@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -163,21 +163,27 @@ ll lca(int u, int v)
 
 ll f(ll n)
 {
-  ll lb = 0;
-  ll ub = S.size()+1;
-  while (ub - lb > 1)
+  ll c;
+  if (S[0] > n)
+    c = 0;
+  else
   {
-    ll t = (ub + lb) / 2;
-    if (S[t] <= n)
+    ll lb = 0;
+    ll ub = S.size();
+    while (ub - lb > 1)
     {
-      lb = t;
+      ll t = (ub + lb) / 2;
+      if (S[t] > n)
+      {
+        ub = t;
+      }
+      else
+      {
+        lb = t;
+      }
     }
-    else
-    {
-      ub = t;
-    }
+    c = ub;
   }
-  ll c = lb;
   if (c == 0)
   {
     return power(2, M);
