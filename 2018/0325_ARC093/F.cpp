@@ -113,9 +113,9 @@ int main()
   }
   for (auto i = 0; i < (1 << N); i++)
   {
+    ll R = (1 << N) - 1 - i;
     for (auto j = 0; j < N; j++)
     {
-      ll R = (1 << N) - 1 - i;
       if (((i >> j) & 1) == 0)
       {
         DP[i] *= C(R, power(2, j));
@@ -123,6 +123,7 @@ int main()
         R -= power(2, j);
       }
     }
+    assert(R == 0);
   }
   ll X = 0;
   for (auto i = 0; i < (1 << N); i++)
