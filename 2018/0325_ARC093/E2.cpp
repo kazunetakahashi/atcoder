@@ -244,5 +244,7 @@ int main()
     cerr << x << " ";
   }
   cerr << endl;
+  cerr << "f(" << X - 1 << ") = " << f(X - 1)
+       << ", f(" << X << ") = " << f(X) << endl;
   cout << (f(X - 1) + MOD - f(X)) % MOD << endl;
 }
