@@ -91,6 +91,7 @@ int main()
   for (auto i = 0; i < M; i++)
   {
     cin >> A[i];
+    A[i]--;
   }
   fill(DP, DP + (1 << 16), 0);
   DP[0] = 1;
@@ -98,6 +99,8 @@ int main()
   {
     for (auto i = (1 << N) - 1; i >= 0; i--)
     {
+      if (DP[i] == 0)
+        continue;
       for (auto j = 0; j < N; j++)
       {
         if (((i >> j) & 1) == 0)
