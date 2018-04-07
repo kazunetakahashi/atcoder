@@ -37,6 +37,7 @@ const int infty = 1000000007;
 int N, M, L, X;
 int a[1010];
 int DP[1010];
+int DP2[1010];
 int sum;
 
 int main()
@@ -53,10 +54,12 @@ int main()
   {
     for (auto j = 0; j < M; j++)
     {
-      if (DP[j] == infty)
-        continue;
       sum = DP[j] + a[i];
-      DP[sum % M] = min(DP[sum % M], sum);
+      DP2[sum % M] = min(DP[sum % M], sum);
+    }
+    for (auto j = 0; j < M; j++)
+    {
+      DP[j] = DP2[j];
     }
   }
   cout << ((DP[L] <= maxi) ? "Yes" : "No") << endl;
