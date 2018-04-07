@@ -50,7 +50,7 @@ inline bool valid(int x, int y, int a, int b)
 
 int main()
 {
-  // auto start = std::chrono::system_clock::now();
+  auto start = std::chrono::system_clock::now();
   cin >> A >> B >> h >> w;
   for (auto i = 0; i < h; i++)
   {
@@ -59,22 +59,22 @@ int main()
   S.push(state(1, 1, 0, 0, 0));
   while (!S.empty())
   {
-    // auto end = std::chrono::system_clock::now();
-    // double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
-    // if (elapsed > 2950) {
-    //   cout << "Yes" << endl;
-    //   return 0;
-    // }
+    auto end = std::chrono::system_clock::now();
+    double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
+    if (elapsed > 2950) {
+      cout << "No" << endl;
+      return 0;
+    }
     int now_x = get<0>(S.top());
     int now_y = get<1>(S.top());
     int now_dir = get<2>(S.top());
     int now_a = get<3>(S.top());
     int now_b = get<4>(S.top());
-    #if DEBUG == 1
-    cerr << "(" << now_x << ", " << now_y << "), "
-         << now_dir << ", "
-         << "(" << now_a << ", " << now_b << ")" << endl;
-    #endif
+    // #if DEBUG == 1
+    // cerr << "(" << now_x << ", " << now_y << "), "
+    //     << now_dir << ", "
+    //     << "(" << now_a << ", " << now_b << ")" << endl;
+    // #endif
     S.pop();
     if (now_x == h - 2 && now_y == w - 2 && now_a == A && now_b == B)
     {
