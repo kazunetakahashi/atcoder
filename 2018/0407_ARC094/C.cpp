@@ -40,6 +40,6 @@ int main()
   cin >> A[0] >> A[1] >> A[2];
   sort(A, A + 3);
   int ans = A[2] - A[1];
-  ans += (A[1] - A[0] + 1) % 2;
+  ans += (A[1] - A[0] + 1) / 2;
   cout << ans << endl;
 }
