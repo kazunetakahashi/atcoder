@@ -55,7 +55,7 @@ int solve()
       ub = t;
     }
   }
-  return 2 * ub - 1;
+  return 2 * lb - 1;
 }
 
 int main()
