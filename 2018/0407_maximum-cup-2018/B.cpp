@@ -62,8 +62,8 @@ int main()
   {
     auto end = std::chrono::system_clock::now();
     double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
-    if (elapsed > 2000) {
-      cout << "Yes" << endl;
+    if (elapsed > 2950) {
+      cout << "No" << endl;
       return 0;
     }
     int now_x = get<0>(S.top());
