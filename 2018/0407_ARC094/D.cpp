@@ -55,7 +55,7 @@ int solve()
       ub = t;
     }
   }
-  if (lb > A)
+  if ((S+A)/(A+1) - (S+A-1)/A > 1)
   {
     return 2 * lb - 1;
   }
