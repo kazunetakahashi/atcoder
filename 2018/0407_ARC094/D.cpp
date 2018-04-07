@@ -61,6 +61,7 @@ int solve()
   }
   else
   {
+    cerr << "S = " << S << endl;
     return 2 * lb - 2;
   }
 }
