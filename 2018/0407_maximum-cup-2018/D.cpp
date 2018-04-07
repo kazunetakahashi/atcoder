@@ -52,8 +52,11 @@ int main()
   DP[0] = 0;
   for (auto i = 0; i < N; i++)
   {
+    fill(DP2, DP2 + M, infty);
     for (auto j = 0; j < M; j++)
     {
+      if (DP[j] == infty)
+        continue;
       sum = DP[j] + a[i];
       DP2[sum % M] = min(DP[sum % M], sum);
     }
