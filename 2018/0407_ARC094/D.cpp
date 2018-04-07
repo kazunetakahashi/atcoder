@@ -55,13 +55,12 @@ int solve()
       ub = t;
     }
   }
-  if ((S+A)/(A+1) - (S+A-1)/A >= 2)
+  if ((S+B)/(B+1) - (S+B-1)/B >= 2)
   {
     return 2 * lb - 1;
   }
   else
   {
-    cerr << "S = " << S << endl;
     return 2 * lb - 2;
   }
 }
