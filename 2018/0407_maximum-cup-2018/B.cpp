@@ -65,11 +65,11 @@ int main()
       cout << "No" << endl;
       return 0;
     }
-    int& now_x = get<0>(S.top());
-    int& now_y = get<1>(S.top());
-    int& now_dir = get<2>(S.top());
-    int& now_a = get<3>(S.top());
-    int& now_b = get<4>(S.top());
+    int now_x = get<0>(S.top());
+    int now_y = get<1>(S.top());
+    int now_dir = get<2>(S.top());
+    int now_a = get<3>(S.top());
+    int now_b = get<4>(S.top());
     // #if DEBUG == 1
     // cerr << "(" << now_x << ", " << now_y << "), "
     //     << now_dir << ", "
@@ -83,9 +83,9 @@ int main()
     }
     else
     {
-      int new_dir[3] = {(now_dir + 1) % 4, (now_dir + 3) % 4, now_dir};
-      int new_a[3] = {now_a + 1, now_a, now_a};
-      int new_b[3] = {now_b, now_b + 1, now_b};
+      int new_dir[3] = {now_dir, (now_dir + 1) % 4, (now_dir + 3) % 4};
+      int new_a[3] = {now_a, now_a + 1, now_a};
+      int new_b[3] = {now_b, now_b, now_b + 1};
       for (auto k = 0; k < 3; k++)
       {
         int new_x = now_x + dx[new_dir[k]];
