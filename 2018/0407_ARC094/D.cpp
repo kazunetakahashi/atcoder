@@ -39,6 +39,8 @@ ll A, B;
 int solve()
 {
   ll S = A * B;
+  if (A > B)
+    swap(A, B);
   if (S <= 2)
     return 0;
   ll ub = S;
@@ -56,11 +58,25 @@ int solve()
     }
   }
 #if DEBUG == 1
-  cerr << "S ＝ " << S << ", ub = " << ub << endl;
+  cerr << "S = " << S << ", ub = " << ub << endl;
 #endif
-  ll ans = (ub - 1) + (S / ub - 1);
-  if (S/ub > A)
-    ans--;
+  ll ans = (ub - 1) + ((S+ub-1) / ub - 1);
+  ll X = ub - 1;
+  ll Y = (S + ub - 1) / ub - 1;
+  if (X > Y)
+    swap(X, Y);
+  if (B <= X)
+  {
+    ans -= 2;
+  }
+  else if (A > Y)
+  {
+    //
+  }
+  else
+  {
+    ans -= 1;
+  }
   return ans;
 }
 
@@ -71,8 +87,6 @@ int main()
   for (auto i = 0; i < Q; i++)
   {
     cin >> A >> B;
-    if (A > B)
-      swap(A, B);
     cout << solve() << endl;
   }
 }
