@@ -46,7 +46,7 @@ int solve()
   while (ub - lb > 1)
   {
     ll t = (ub + lb) / 2;
-    if (S/(t+1) + 1 >= S/t)
+    if ((S+t)/(t+1) + 1 >= (S+t-1)/t)
     {
       ub = t;
     }
