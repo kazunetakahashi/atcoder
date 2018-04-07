@@ -43,41 +43,8 @@ int solve()
     swap(A, B);
   if (S <= 2)
     return 0;
-  ll ub = S;
-  ll lb = 1;
-  while (ub - lb > 1)
-  {
-    ll t = (ub + lb) / 2;
-    if ((S+t)/(t+1) + 1 >= (S+t-1)/t)
-    {
-      ub = t;
-    }
-    else
-    {
-      lb = t;
-    }
-  }
-#if DEBUG == 1
-  cerr << "S = " << S << ", ub = " << ub << endl;
-#endif
-  ll ans = (ub - 1) + ((S+ub-1) / ub - 1);
-  ll X = ub - 1;
-  ll Y = (S + ub - 1) / ub - 1;
-  if (X > Y)
-    swap(X, Y);
-  if (B <= X)
-  {
-    ans -= 2;
-  }
-  else if (A > Y)
-  {
-    //
-  }
-  else
-  {
-    ans -= 1;
-  }
-  return ans;
+  int X = sqrt(S);
+  return 2 * X - 1;
 }
 
 int main()
