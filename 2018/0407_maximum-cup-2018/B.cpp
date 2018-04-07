@@ -43,7 +43,7 @@ string c[100];
 
 stack<state> S;
 
-inline bool valid(int x, int y, int a, int b)
+inline bool valid(int& x, int& y, int& a, int& b)
 {
   return (a <= A && b <= B && c[x][y] == '.');
 }
@@ -65,11 +65,11 @@ int main()
       cout << "No" << endl;
       return 0;
     }
-    int now_x = get<0>(S.top());
-    int now_y = get<1>(S.top());
-    int now_dir = get<2>(S.top());
-    int now_a = get<3>(S.top());
-    int now_b = get<4>(S.top());
+    int& now_x = get<0>(S.top());
+    int& now_y = get<1>(S.top());
+    int& now_dir = get<2>(S.top());
+    int& now_a = get<3>(S.top());
+    int& now_b = get<4>(S.top());
     // #if DEBUG == 1
     // cerr << "(" << now_x << ", " << now_y << "), "
     //     << now_dir << ", "
