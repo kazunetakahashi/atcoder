@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -63,6 +63,11 @@ int main()
     int now_dir = get<2>(Q.front());
     int now_a = get<3>(Q.front());
     int now_b = get<4>(Q.front());
+    #if DEBUG == 1
+    cerr << "(" << now_x << ", " << now_y << "), "
+         << now_dir
+         << "(" << now_a << ", " << now_b << "), " << endl;
+    #endif
     Q.pop();
     if (now_x == h - 2 && now_y == w - 2 && now_a == A && now_b == B)
     {
@@ -85,5 +90,5 @@ int main()
       }
     }
   }
-  cout << "No" << endl;
+  // cout << "No" << endl;
 }
