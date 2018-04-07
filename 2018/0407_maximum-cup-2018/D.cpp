@@ -54,6 +54,10 @@ int main()
   {
     for (auto j = 0; j < M; j++)
     {
+      DP2[j] = DP[j];
+    }
+    for (auto j = 0; j < M; j++)
+    {
       if (DP[j] == infty)
         continue;
       sum = DP[j] + a[i];
