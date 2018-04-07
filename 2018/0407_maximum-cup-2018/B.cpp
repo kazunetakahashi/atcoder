@@ -43,16 +43,15 @@ string c[100];
 
 stack<state> S;
 
-bool valid(int x, int y, int a, int b)
+inline bool valid(int x, int y, int a, int b)
 {
   return (a <= A && b <= B && c[x][y] == '.');
 }
 
 int main()
 {
-  auto start = std::chrono::system_clock::now();
-  cin >> A >> B;
-  cin >> h >> w;
+  // auto start = std::chrono::system_clock::now();
+  cin >> A >> B >> h >> w;
   for (auto i = 0; i < h; i++)
   {
     cin >> c[i];
@@ -60,12 +59,12 @@ int main()
   S.push(state(1, 1, 0, 0, 0));
   while (!S.empty())
   {
-    auto end = std::chrono::system_clock::now();
-    double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
-    if (elapsed > 2950) {
-      cout << "Yes" << endl;
-      return 0;
-    }
+    // auto end = std::chrono::system_clock::now();
+    // double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
+    // if (elapsed > 2950) {
+    //   cout << "Yes" << endl;
+    //   return 0;
+    // }
     int now_x = get<0>(S.top());
     int now_y = get<1>(S.top());
     int now_dir = get<2>(S.top());
