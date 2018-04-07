@@ -55,7 +55,14 @@ int solve()
       ub = t;
     }
   }
-  return 2 * lb - 1;
+  if (lb < A)
+  {
+    return 2 * lb - 1;
+  }
+  else
+  {
+    return 2 * lb - 1;
+  }
 }
 
 int main()
