@@ -40,7 +40,7 @@ int A, B;
 int h, w;
 string c[100];
 
-queue<state> Q;
+stack<state> S;
 
 bool valid(int x, int y, int a, int b)
 {
@@ -55,20 +55,20 @@ int main()
   {
     cin >> c[i];
   }
-  Q.push(state(1, 1, 0, 0, 0));
-  while (!Q.empty())
+  S.push(state(1, 1, 0, 0, 0));
+  while (!S.empty())
   {
-    int now_x = get<0>(Q.front());
-    int now_y = get<1>(Q.front());
-    int now_dir = get<2>(Q.front());
-    int now_a = get<3>(Q.front());
-    int now_b = get<4>(Q.front());
+    int now_x = get<0>(S.top());
+    int now_y = get<1>(S.top());
+    int now_dir = get<2>(S.top());
+    int now_a = get<3>(S.top());
+    int now_b = get<4>(S.top());
     #if DEBUG == 1
     cerr << "(" << now_x << ", " << now_y << "), "
          << now_dir << ", "
          << "(" << now_a << ", " << now_b << ")" << endl;
     #endif
-    Q.pop();
+    S.pop();
     if (now_x == h - 2 && now_y == w - 2 && now_a == A && now_b == B)
     {
       cout << "Yes" << endl;
@@ -85,7 +85,7 @@ int main()
         int new_y = now_y + dy[new_dir[k]];
         if (valid(new_x, new_y, new_a[k], new_b[k]))
         {
-          Q.push(state(new_x, new_y, new_dir[k], new_a[k], new_b[k]));
+          S.push(state(new_x, new_y, new_dir[k], new_a[k], new_b[k]));
         }
       }
     }
