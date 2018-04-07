@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -35,7 +35,7 @@ typedef long long ll;
 const int infty = 1000000007;
 
 int N, M, L, X;
-int a[1010];
+int a[10010];
 int DP[1010];
 int DP2[1010];
 int sum;
