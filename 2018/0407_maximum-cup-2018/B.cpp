@@ -35,7 +35,9 @@ const int dy[4] = {0, 1, 0, -1};
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
-typedef tuple<int, int, int, int, int> state; // x, y, dir, a, b
+struct state {
+  int x, y, dir, a, b;
+};
 
 int A, B;
 int h, w;
@@ -56,7 +58,7 @@ int main()
   {
     cin >> c[i];
   }
-  S.push(state(1, 1, 0, 0, 0));
+  S.push(state{1, 1, 0, 0, 0});
   while (!S.empty())
   {
     auto end = std::chrono::system_clock::now();
@@ -65,11 +67,11 @@ int main()
       cout << "No" << endl;
       return 0;
     }
-    int now_x = get<0>(S.top());
-    int now_y = get<1>(S.top());
-    int now_dir = get<2>(S.top());
-    int now_a = get<3>(S.top());
-    int now_b = get<4>(S.top());
+    int now_x = S.top().x;
+    int now_y = S.top().y;
+    int now_dir = S.top().dir;
+    int now_a = S.top().a;
+    int now_b = S.top().b;
     // #if DEBUG == 1
     // cerr << "(" << now_x << ", " << now_y << "), "
     //     << now_dir << ", "
@@ -83,16 +85,16 @@ int main()
     }
     else
     {
-      int new_dir[3] = {now_dir, (now_dir + 1) % 4, (now_dir + 3) % 4};
-      int new_a[3] = {now_a, now_a + 1, now_a};
-      int new_b[3] = {now_b, now_b, now_b + 1};
+      int new_dir[3] = {(now_dir + 1) % 4, (now_dir + 3) % 4, now_dir};
+      int new_a[3] = {now_a + 1, now_a, now_a};
+      int new_b[3] = {now_b, now_b + 1, now_b};
       for (auto k = 0; k < 3; k++)
       {
         int new_x = now_x + dx[new_dir[k]];
         int new_y = now_y + dy[new_dir[k]];
         if (valid(new_x, new_y, new_a[k], new_b[k]))
         {
-          S.push(state(new_x, new_y, new_dir[k], new_a[k], new_b[k]));
+          S.push(state{new_x, new_y, new_dir[k], new_a[k], new_b[k]});
         }
       }
     }
