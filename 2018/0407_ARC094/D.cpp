@@ -41,10 +41,21 @@ int solve()
   ll S = A * B;
   if (A > B)
     swap(A, B);
-  if (S <= 2)
-    return 0;
-  int X = sqrt(S);
-  return 2 * X - 1;
+  ll ub = B;
+  ll lb = A;
+  while (ub - lb > 1)
+  {
+    ll t = (ub + lb) / 2;
+    if (t * t < S)
+    {
+      lb = t;
+    }
+    else
+    {
+      ub = t;
+    }
+  }
+  return 2 * ub - 1;
 }
 
 int main()
