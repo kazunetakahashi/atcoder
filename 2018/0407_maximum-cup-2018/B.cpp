@@ -52,7 +52,6 @@ inline bool valid(int x, int y, int a, int b)
 
 int main()
 {
-  auto start = std::chrono::system_clock::now();
   cin >> A >> B >> h >> w;
   for (auto i = 0; i < h; i++)
   {
@@ -61,12 +60,6 @@ int main()
   S.push(state{1, 1, 0, 0, 0});
   while (!S.empty())
   {
-    auto end = std::chrono::system_clock::now();
-    double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
-    if (elapsed > 2950) {
-      cout << "No" << endl;
-      return 0;
-    }
     int now_x = S.top().x;
     int now_y = S.top().y;
     int now_dir = S.top().dir;
