@@ -43,7 +43,7 @@ string c[100];
 
 stack<state> S;
 
-inline bool valid(int& x, int& y, int& a, int& b)
+inline bool valid(int x, int y, int a, int b)
 {
   return (a <= A && b <= B && c[x][y] == '.');
 }
