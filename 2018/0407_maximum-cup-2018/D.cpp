@@ -75,5 +75,5 @@ int main()
     cerr << endl;
 #endif
   }
-  cerr << ((DP[L] <= maxi) ? "Yes" : "No") << endl;
+  cout << ((DP[L] <= maxi) ? "Yes" : "No") << endl;
 }
