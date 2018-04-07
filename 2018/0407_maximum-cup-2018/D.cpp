@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -64,6 +64,13 @@ int main()
     {
       DP[j] = DP2[j];
     }
+#if DEBUG == 1
+    for (auto j = 0; j < M; j++)
+    {
+      cerr << DP[j] << " ";
+    }
+    cerr << endl;
+#endif
   }
   cout << ((DP[L] <= maxi) ? "Yes" : "No") << endl;
 }
