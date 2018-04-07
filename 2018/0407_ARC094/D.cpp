@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -55,6 +55,9 @@ int solve()
       lb = t;
     }
   }
+#if DEBUG == 1
+  cerr << "S ＝ " << S << ", ub = " << ub << endl;
+#endif
   ll ans = (ub - 1) + (S / ub - 1);
   if (S/ub > A)
     ans--;
