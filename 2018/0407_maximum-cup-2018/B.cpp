@@ -22,6 +22,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <chrono>
 using namespace std;
 
 #define DEBUG 0 // change 0 -> 1 if we need debug.
@@ -49,6 +50,7 @@ bool valid(int x, int y, int a, int b)
 
 int main()
 {
+  auto start = std::chrono::system_clock::now();
   cin >> A >> B;
   cin >> h >> w;
   for (auto i = 0; i < h; i++)
@@ -58,6 +60,12 @@ int main()
   S.push(state(1, 1, 0, 0, 0));
   while (!S.empty())
   {
+    auto end = std::chrono::system_clock::now();
+    double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
+    if (elapsed > 2000) {
+      cout << "No" << endl;
+      return 0;
+    }
     int now_x = get<0>(S.top());
     int now_y = get<1>(S.top());
     int now_dir = get<2>(S.top());
