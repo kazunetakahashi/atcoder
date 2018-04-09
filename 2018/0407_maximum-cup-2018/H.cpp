@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -137,7 +137,7 @@ int main()
     cin >> u >> v >> w;
     u--;
     v--;
-    d[u][v] = d[v][u] = v;
+    d[u][v] = d[v][u] = w;
   }
   cin >> K;
   for (auto i = 0; i < K; i++)
