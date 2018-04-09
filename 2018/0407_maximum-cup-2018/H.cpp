@@ -93,7 +93,7 @@ bool solve(ll T)
   ll cnt = 0;
   for (auto i = 0; i < K - 1; i++)
   {
-    add_edge(start, a[i], 1);
+    add_edge(start, i, 1);
     if (d[a[i]][a[i+1]] > T)
     {
       cnt++;
