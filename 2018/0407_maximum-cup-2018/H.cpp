@@ -178,6 +178,15 @@ int main()
       }
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i < N; i++)
+  {
+    for (auto j = 0; j < N; j++)
+    {
+      cerr << "d[" << i << "][" << j << "] = " << d[i][j] << endl;
+    }
+  }
+#endif
   ll ub = infty;
   ll lb = 0;
   while (ub - lb > 1)
