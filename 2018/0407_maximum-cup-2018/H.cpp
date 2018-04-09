@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -110,7 +110,12 @@ bool solve(ll T)
   {
     add_edge(j + K, goal, 1);
   }
-  return (max_flow(start, goal) == cnt);
+  ll maxi = max_flow(start, goal);
+#if DEBUG == 1
+  cerr << "T = " << T << ", maxi = "
+       << maxi << ", cnt = " << cnt << endl;
+#endif
+  return (maxi == cnt);
 }
 
 int main()
