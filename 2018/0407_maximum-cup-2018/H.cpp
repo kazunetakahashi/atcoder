@@ -99,7 +99,7 @@ bool solve(ll T)
       cnt++;
       for (auto j = 0; j < Q; j++)
       {
-        if (d[a[i+1]][b[j]])
+        if (d[a[i+1]][b[j]] <= T)
         {
           add_edge(i, j + K, 1);
         }
