@@ -96,6 +96,10 @@ bool solve(ll T)
     add_edge(start, i, 1);
     if (d[a[i]][a[i+1]] > T)
     {
+#if DEBUG == 1
+      cerr << "d[" << a[i] << "][" << a[i + 1] << "] = "
+           << d[a[i]][a[i + 1]] << endl;
+#endif
       cnt++;
       for (auto j = 0; j < Q; j++)
       {
