@@ -119,6 +119,7 @@ int main()
   for (auto i = 1; i < S - 1; i++)
   {
     assert(V[path[i]].size() >= 2);
+    cerr << "V[" << path[i] << "].size() = " << V[path[i]].size() << endl;
     cnt += V[path[i]].size() - 2;
   }
   if (cnt != N)
