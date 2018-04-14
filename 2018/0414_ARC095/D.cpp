@@ -48,7 +48,7 @@ int main()
   int k = a[0];
   for (auto i = 0; i < N; i++)
   {
-    if (abs(n/2-a[i]) < abs(n/2-k)) {
+    if (n > a[i] && abs(n/2-a[i]) < abs(n/2-k)) {
       k = a[i];
     }
   }
