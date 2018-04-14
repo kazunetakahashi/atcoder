@@ -100,10 +100,10 @@ int main()
   path.push_back(goal);
   while (dist >= 0)
   {
-    cerr << "dist = " << dist << ", now = " << now << endl;
+    // cerr << "dist = " << dist << ", now = " << now << endl;
     for (auto x : V[now])
     {
-      cerr << "visited[" << x << "] = " << visited[x] << endl;
+      // cerr << "visited[" << x << "] = " << visited[x] << endl;
       if (visited[x] == dist - 1)
       {
         now = x;
@@ -112,7 +112,6 @@ int main()
         break;
       }
     }
-    assert(false);
   }
   reverse(path.begin(), path.end());
   int S = path.size();
