@@ -103,6 +103,7 @@ int main()
     {
       if (visited[x] == dist-1)
       {
+        cerr << now << endl;
         now = x;
         path.push_back(now);
         dist--;
