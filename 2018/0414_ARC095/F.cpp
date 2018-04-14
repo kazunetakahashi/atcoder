@@ -98,7 +98,7 @@ int main()
   int dist = visited[goal];
   int now = goal;
   path.push_back(goal);
-  while (dist >= 0)
+  while (dist > 0)
   {
     // cerr << "dist = " << dist << ", now = " << now << endl;
     for (auto x : V[now])
