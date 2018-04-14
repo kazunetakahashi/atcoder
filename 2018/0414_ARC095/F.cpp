@@ -49,7 +49,6 @@ int longest(int v)
   while (!Q.empty())
   {
     int now = Q.front();
-    cerr << now << endl;
     Q.pop();
     for (auto x : V[now])
     {
@@ -76,7 +75,7 @@ int longest(int v)
 int main()
 {
   cin >> N;
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < N-1; i++)
   {
     int v, w;
     cin >> v >> w;
