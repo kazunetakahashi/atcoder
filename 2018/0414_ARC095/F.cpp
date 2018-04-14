@@ -123,6 +123,7 @@ int main()
   }
   if (cnt != N)
   {
+    cerr << "N = " << N << ", cnt = " << cnt << endl;
     assert(cnt < N);
     cout << -1 << endl;
     return 0;
