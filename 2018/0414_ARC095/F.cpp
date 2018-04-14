@@ -90,7 +90,7 @@ int main()
   assert(V[start].size() == 1 && V[goal].size() == 1);
   int nx_s = V[start][0];
   int nx_g = V[goal][0];
-  if (V[nx_s].size() > V[nx_g].size())
+  if (V[nx_s].size() < V[nx_g].size())
   {
     swap(start, goal);
   }
