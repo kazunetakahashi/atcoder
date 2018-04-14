@@ -39,6 +39,7 @@ vector<int> V[100010];
 int visited[100010];
 vector<int> path;
 vector<int> ans;
+vector<int> ans2;
 
 int longest(int v)
 {
@@ -88,12 +89,6 @@ int main()
   int start = longest(0);
   int goal = longest(start);
   assert(V[start].size() == 1 && V[goal].size() == 1);
-  int nx_s = V[start][0];
-  int nx_g = V[goal][0];
-  if (V[nx_s].size() < V[nx_g].size())
-  {
-    swap(start, goal);
-  }
   longest(start);
   int dist = visited[goal];
   int now = goal;
@@ -149,6 +144,35 @@ int main()
   assert(num + 1 == N);
   ans.push_back(num + 1);
   assert((int)ans.size() == N);
+  //
+  reverse(path.begin(), path.end());
+  ans2.push_back(1);
+  num = 1;
+  for (auto i = 1; i < S - 1; i++)
+  {
+    int subtree = V[path[i]].size() - 1;
+    vector<int> X;
+    for (auto j = 1; j < subtree; j++)
+    {
+      X.push_back(j);
+    }
+    X.push_back(0);
+    for (auto i = 0; i < subtree; i++)
+    {
+      ans2.push_back(X[i] + num + 1);
+    }
+    num += subtree;
+  }
+  ans2.push_back(num + 1);
+  for (auto i = 0; i < N; i++)
+  {
+    if (ans[i] > ans2[i]) {
+      swap(ans, ans2);
+      break;
+    } else if (ans[i] < ans2[i]) {
+      break;
+    }
+  }
   for (auto i = 0; i < N; i++)
   {
     cout << ans[i];
