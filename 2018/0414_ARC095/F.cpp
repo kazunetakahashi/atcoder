@@ -119,12 +119,12 @@ int main()
   for (auto i = 1; i < S - 1; i++)
   {
     assert(V[path[i]].size() >= 2);
-    cerr << "V[" << path[i] << "].size() = " << V[path[i]].size() << endl;
-    cnt += V[path[i]].size() - 2;
+    // cerr << "V[" << path[i] << "].size() = " << V[path[i]].size() << endl;
+    cnt += V[path[i]].size() - 1;
   }
   if (cnt != N)
   {
-    cerr << "N = " << N << ", cnt = " << cnt << endl;
+    // cerr << "N = " << N << ", cnt = " << cnt << endl;
     assert(cnt < N);
     cout << -1 << endl;
     return 0;
@@ -133,7 +133,7 @@ int main()
   int num = 1;
   for (auto i = 1; i < S - 1; i++)
   {
-    int subtree = V[path[i]].size() - 2;
+    int subtree = V[path[i]].size() - 1;
     vector<int> X;
     for (auto j = 1; j < subtree; j++)
     {
