@@ -49,6 +49,7 @@ int longest(int v)
   while (!Q.empty())
   {
     int now = Q.front();
+    cerr << now << endl;
     Q.pop();
     for (auto x : V[now])
     {
@@ -103,7 +104,6 @@ int main()
     {
       if (visited[x] == dist-1)
       {
-        cerr << now << endl;
         now = x;
         path.push_back(now);
         dist--;
