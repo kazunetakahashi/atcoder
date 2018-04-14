@@ -100,9 +100,11 @@ int main()
   path.push_back(goal);
   while (dist >= 0)
   {
+    cerr << "dist = " << dist << ", now = " << now << endl;
     for (auto x : V[now])
     {
-      if (visited[x] == dist-1)
+      cerr << "visited[" << x << "] = " << visited[x] << endl;
+      if (visited[x] == dist - 1)
       {
         now = x;
         path.push_back(now);
