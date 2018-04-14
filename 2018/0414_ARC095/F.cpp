@@ -63,6 +63,7 @@ int longest(int v)
   int max_t = v;
   for (auto i = 0; i < N; i++)
   {
+    assert(visited[i] >= 0);
     if (visited[i] > maxi)
     {
       maxi = visited[i];
