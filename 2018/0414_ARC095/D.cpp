@@ -45,7 +45,7 @@ int main()
     cin >> a[i];
   }
   int n = *max_element(a, a + N);
-  int k = a[0];
+  int k = n+1;
   for (auto i = 0; i < N; i++)
   {
     if (n > a[i] && abs(n/2-a[i]) < abs(n/2-k)) {
