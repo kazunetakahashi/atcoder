@@ -69,20 +69,23 @@ bool solve()
         c[1]++;
       }
     }
-    else if (c[0] == c[1])
-    {
-      if (par[now])
-      {
-        used[now] = true;
-        c[0]++;
-      }
-    }
     else
     {
-      used[now] = true;
-      c[par[now]]++;
+      if (c[0] == c[1])
+      {
+        if (par[now])
+        {
+          used[now] = true;
+          c[0]++;
+        }
+      }
+      else
+      {
+        used[now] = true;
+        c[par[now]]++;
+      }
+      now++;
     }
-    now++;
   }
   if (c[0] < N/4 || c[1] < N/4)
   {
@@ -127,20 +130,23 @@ bool solve()
         c[1]++;
       }
     }
-    else if (c[0] == c[1])
-    {
-      if (!par[now])
-      {
-        used[now] = true;
-        c[0]++;
-      }
-    }
     else
     {
-      used[now] = true;
-      c[1 - (int)par[now]]++;
+      if (c[0] == c[1])
+      {
+        if (!par[now])
+        {
+          used[now] = true;
+          c[0]++;
+        }
+      }
+      else
+      {
+        used[now] = true;
+        c[1 - (int)par[now]]++;
+      }
+      now++;
     }
-    now++;
   }
   if (c[0] < N/4 || c[1] < N/4)
   {
