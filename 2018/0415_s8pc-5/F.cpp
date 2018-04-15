@@ -45,7 +45,7 @@ ll solve()
   ll ans = 0;
   for (auto i = 0; i < Q; i++)
   {
-    int maxi = -1;
+    int maxi = 0;
     for (auto j = 0; j < N; j++)
     {
       if (!used[j] && l[i] <= a[j] && a[j] <= r[i] && a[j] > maxi)
@@ -53,12 +53,10 @@ ll solve()
         maxi = a[j];
       }
     }
-    if (maxi >= 0)
-    {
-      ans += maxi;
-    }
+    cerr << maxi << " ";
+    ans += maxi;
   }
-  cerr << "ans = " << ans << endl;
+  cerr << ", ans = " << ans << endl;
   return ans;
 }
 
@@ -92,7 +90,7 @@ void solveB()
   fill(used, used + N, false);
   for (auto i = 0; i < M; i++)
   {
-    used[i] = false;
+    used[i] = true;
   }
   cout << solve() << endl;
 }
