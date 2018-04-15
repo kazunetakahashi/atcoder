@@ -99,8 +99,8 @@ bool solve()
     {
       cerr << S[i];
     }
-    cerr << endl;
   }
+  cerr << endl;
   cerr << "S2 = ";
   for (auto i = 0; i < N; i++)
   {
@@ -108,8 +108,8 @@ bool solve()
     {
       cerr << S[i];
     }
-    cerr << endl;
   }
+  cerr << endl;
 #endif
   while (now < N && (c[0] < N / 4 || c[1] < N / 4))
   {
