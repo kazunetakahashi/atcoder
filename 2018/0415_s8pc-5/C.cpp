@@ -58,7 +58,7 @@ bool solve()
   fill(used, used + N, false);
   int c[2] = {0, 0};
   int now = 0;
-  while (now < N && c[0] < N / 4 || c[1] < N / 4)
+  while (now < N && (c[0] < N / 4 || c[1] < N / 4))
   {
     assert(c[0] >= c[1]);
     if (c[0] == N/4)
@@ -90,7 +90,7 @@ bool solve()
   }
   c[0] = c[1] = 0;
   now = 0;
-  while (now < N && c[0] < N / 4 || c[1] < N / 4)
+  while (now < N && (c[0] < N / 4 || c[1] < N / 4))
   {
     if (used[now])
     {
