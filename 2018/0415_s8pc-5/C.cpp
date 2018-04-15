@@ -82,7 +82,7 @@ bool solve()
       else
       {
         used[now] = true;
-        c[par[now]]++;
+        c[1 - (int)par[now]]++;
       }
     }
     now++;
@@ -143,7 +143,7 @@ bool solve()
       else
       {
         used[now] = true;
-        c[1 - (int)par[now]]++;
+        c[(int)par[now]]++;
       }
     }
     now++;
