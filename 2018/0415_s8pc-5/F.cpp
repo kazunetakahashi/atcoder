@@ -89,27 +89,16 @@ void solveB()
 {
   ll ans = 10000000000000;
   ll master = (1 << M) - 1;
-  int cnt = 0;
   for (auto k = 0; k < N; k++)
   {
     ll i = master << k;
     for (auto j = 0; j < N; j++)
     {
-      if ((i >> j) & 1)
-      {
-        cnt++;
-      }
+      used[j] = (i >> j) & 1;
     }
-    if (cnt == M)
-    {
-      for (auto j = 0; j < N; j++)
-      {
-        used[j] = (i >> j) & 1;
-      }
-      ans = min(ans, solve());
-    }
-    cout << ans << endl;
+    ans = min(ans, solve());
   }
+  cout << ans << endl;
 }
 
 int main()
