@@ -39,7 +39,7 @@ ll D[777][777][4];
 ll ans[777][777];
 string S[777];
 typedef tuple<ll, int, int, int, ll> state; // dist, x, y, d, dist_before
-priority_queue<state> Q;
+priority_queue<state, vector<state>, greater<state> > Q;
 
 bool valid(int x, int y, int d)
 {
