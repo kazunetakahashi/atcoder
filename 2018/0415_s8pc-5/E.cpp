@@ -94,7 +94,10 @@ int main()
         for (auto k = 0; k < 4; k++)
         {
           D[x][y][k] = dist;
-          cerr << "D[" << x << "][" << y << "][" << k << "] = " << D[x][y][k] << endl;
+          if (k == 0)
+          {
+            cerr << "D[" << x << "][" << y << "] = " << D[x][y][k] << endl;
+          }
           int nx = x + dx[k];
           int ny = y + dy[k];
           if (valid(nx, ny, k))
