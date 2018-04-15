@@ -135,7 +135,7 @@ bool solve()
 int main()
 {
   cin >> H >> W;
-  if (H > W)
+  if (H > W && W == 1)
   {
     swapped = true;
     swap(H, W);
