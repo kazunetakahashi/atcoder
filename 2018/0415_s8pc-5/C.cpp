@@ -60,6 +60,7 @@ bool solve()
   int now = 0;
   while (now < N && (c[0] < N / 4 || c[1] < N / 4))
   {
+    cerr << now << endl;
     assert(c[0] >= c[1]);
     if (c[0] == N/4)
     {
