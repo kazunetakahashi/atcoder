@@ -90,6 +90,27 @@ bool solve()
   }
   c[0] = c[1] = 0;
   now = 0;
+#if DEBUG == 1
+  cerr << "S = " << S << endl;
+  cerr << "S1 = ";
+  for (auto i = 0; i < N; i++)
+  {
+    if (used[i])
+    {
+      cerr << S[i];
+    }
+    cerr << endl;
+  }
+  cerr << "S2 = ";
+  for (auto i = 0; i < N; i++)
+  {
+    if (!used[i])
+    {
+      cerr << S[i];
+    }
+    cerr << endl;
+  }
+#endif
   while (now < N && (c[0] < N / 4 || c[1] < N / 4))
   {
     if (used[now])
