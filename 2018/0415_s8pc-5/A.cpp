@@ -52,7 +52,7 @@ int main()
     {
       now++;
     }
-    if (ans == N)
+    if (now == N)
     {
       cout << ans << endl;
       return 0;
