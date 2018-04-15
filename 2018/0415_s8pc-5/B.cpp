@@ -67,7 +67,7 @@ bool ok(double t)
       }
       P p = W[i];
       P q = W[j];
-      double d = D[i] + t;
+      double d = t + t;
       double dx = get<0>(p) - get<0>(q);
       double dy = get<1>(p) - get<1>(q);
       if (dx * dx + dy * dy < d * d)
