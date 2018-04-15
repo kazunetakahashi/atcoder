@@ -84,8 +84,8 @@ bool solve()
         used[now] = true;
         c[par[now]]++;
       }
-      now++;
     }
+    now++;
   }
   if (c[0] < N/4 || c[1] < N/4)
   {
@@ -145,8 +145,8 @@ bool solve()
         used[now] = true;
         c[1 - (int)par[now]]++;
       }
-      now++;
     }
+    now++;
   }
   if (c[0] < N/4 || c[1] < N/4)
   {
