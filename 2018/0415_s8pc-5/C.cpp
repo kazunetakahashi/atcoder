@@ -58,36 +58,34 @@ bool solve()
   fill(used, used + N, false);
   int c[2] = {0, 0};
   int now = 0;
-  while (now < N && (c[0] < N / 4 || c[1] < N / 4))
+  int K1, K2;
+  for (auto i = 0; i < N; i++)
   {
-    assert(c[0] >= c[1]);
+    if (par[i])
+    {
+      c[0]++;
+      used[i] = true;
+    }
     if (c[0] == N/4)
     {
-      if (!par[now])
-      {
-        used[now] = true;
-        c[1]++;
-      }
+      K1 = i;
+      break;
     }
-    else if (c[0] < N/4)
-    {
-      if (c[0] == c[1])
-      {
-        if (par[now])
-        {
-          used[now] = true;
-          c[0]++;
-        }
-      }
-      else
-      {
-        used[now] = true;
-        c[1 - (int)par[now]]++;
-      }
-    }
-    now++;
   }
-  if (c[0] < N/4 || c[1] < N/4)
+  for (auto i = N-1; i >= 0; i--)
+  {
+    if (!par[i])
+    {
+      c[1]++;
+      used[i] = true;
+    }
+    if (c[1] == N/4)
+    {
+      K2 = i;
+      break;
+    }
+  }
+  if (c[0] < N/4 || c[1] < N/4 || K1 >= K2)
   {
     return false;
   }
