@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -93,9 +93,9 @@ int main()
       }
       else
       {
+        D[x][y][d] = dist;
         for (auto k = 0; k < 4; k++)
         {
-          D[x][y][k] = dist;
 #if DEBUG == 1
           if (k == 0)
           {
