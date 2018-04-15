@@ -81,6 +81,7 @@ int main()
       if (S[x][y] == '.')
       {
         D[x][y][d] = dist;
+        cerr << "D[" << x << "][" << y << "][" << d << "] = " << D[x][y][d] << endl;
         int nx = x + dx[d];
         int ny = y + dy[d];
         if (valid(nx, ny, d))
@@ -93,6 +94,7 @@ int main()
         for (auto k = 0; k < 4; k++)
         {
           D[x][y][k] = dist;
+          cerr << "D[" << x << "][" << y << "][" << k << "] = " << D[x][y][k] << endl;
           int nx = x + dx[k];
           int ny = y + dy[k];
           if (valid(nx, ny, k))
