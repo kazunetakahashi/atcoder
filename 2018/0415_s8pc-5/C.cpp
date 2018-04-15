@@ -69,7 +69,7 @@ bool solve()
         c[1]++;
       }
     }
-    else
+    else if (c[0] < N/4)
     {
       if (c[0] == c[1])
       {
@@ -130,7 +130,7 @@ bool solve()
         c[1]++;
       }
     }
-    else
+    else if (c[0] < N/4)
     {
       if (c[0] == c[1])
       {
