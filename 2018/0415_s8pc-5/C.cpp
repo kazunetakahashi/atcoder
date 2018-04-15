@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -154,7 +154,6 @@ bool solve()
   {
     return false;
   }
-  return true;
   c[0] = c[1] = 0;
   now = 0;
   while (now < N && (c[0] < N / 4 || c[1] < N / 4))
