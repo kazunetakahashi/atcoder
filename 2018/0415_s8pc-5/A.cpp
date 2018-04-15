@@ -52,7 +52,11 @@ int main()
     {
       now++;
     }
+    if (ans == N)
+    {
+      cout << ans << endl;
+      return 0;
+    }
     ans++;
   }
-  cout << ans << endl;
 }
