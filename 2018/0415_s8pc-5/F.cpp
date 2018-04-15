@@ -88,9 +88,25 @@ void solveA()
 void solveB()
 {
   fill(used, used + N, false);
+  int c[50];
+  fill(c, c + 50, 0);
+  for (auto i = 0; i < Q; i++)
+  {
+    for (auto j = l[i]; j <= r[i]; j++)
+    {
+      c[j]++;
+    }
+  }
+  vector< tuple<int, int> > V;
+  for (auto i = 0; i < N; i++)
+  {
+    V.push_back(make_tuple(c[i], i));
+  }
+  sort(V.begin(), V.end());
+  reverse(V.begin(), V.end());
   for (auto i = 0; i < M; i++)
   {
-    used[i] = true;
+    used[get<1>(V[i])] = true;
   }
   cout << solve() << endl;
 }
