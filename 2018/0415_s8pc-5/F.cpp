@@ -46,13 +46,11 @@ ll solve()
   for (auto i = 0; i < Q; i++)
   {
     int maxi = -1;
-    int ind = 0;
     for (auto j = 0; j < N; j++)
     {
       if (!used[j] && l[i] <= a[j] && a[j] <= r[i] && a[j] > maxi)
       {
         maxi = a[j];
-        ind = j;
       }
     }
     if (maxi >= 0)
@@ -66,7 +64,7 @@ ll solve()
 
 void solveA()
 {
-  ll ans = 0;
+  ll ans = 100000000;
   for (auto i = 0; i < (1 << N); i++)
   {
     int cnt = 0;
