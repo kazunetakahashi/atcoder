@@ -57,6 +57,25 @@ bool ok(double t)
       }
     }
   }
+  for (auto i = 0; i < M; i++)
+  {
+    for (auto j = 0; j < M; j++)
+    {
+      if (i == j)
+      {
+        continue;
+      }
+      P p = W[i];
+      P q = W[j];
+      double d = D[i] + t;
+      double dx = get<0>(p) - get<0>(q);
+      double dy = get<1>(p) - get<1>(q);
+      if (dx * dx + dy * dy < d * d)
+      {
+        return false;
+      }
+    }
+  }
   return true;
 }
 
