@@ -65,10 +65,13 @@ bool solve()
     {
       c[0]++;
       used[i] = true;
+      if (c[0] == 1)
+      {
+        K1 = i;
+      }
     }
     if (c[0] == N/4)
     {
-      K1 = i;
       break;
     }
   }
@@ -85,12 +88,10 @@ bool solve()
       break;
     }
   }
-  if (c[0] < N/4 || c[1] < N/4 || K1 >= K2)
+  if (c[0] < N/4 || c[1] < N/4)
   {
     return false;
   }
-  c[0] = c[1] = 0;
-  now = 0;
 #if DEBUG == 1
   cerr << "S = " << S << endl;
   cerr << "S1 = ";
@@ -112,6 +113,46 @@ bool solve()
   }
   cerr << endl;
 #endif
+  c[0] = c[1] = 0;
+  now = 0;
+  while (now < N && (c[0] < N / 4 || c[1] < N / 4))
+  {
+    if (!used[now])
+    {
+      now++;
+      continue;
+    }
+    assert(c[0] >= c[1]);
+    if (c[0] == N/4)
+    {
+      if (!par[now])
+      {
+        c[1]++;
+      }
+    }
+    else if (c[0] < N/4)
+    {
+      if (c[0] == c[1])
+      {
+        if (par[now])
+        {
+          c[0]++;
+        }
+      }
+      else
+      {
+        c[1 - (int)par[now]]++;
+      }
+    }
+    now++;
+  }
+  if (c[0] < N/4 || c[1] < N/4)
+  {
+    return false;
+  }
+  return true;
+  c[0] = c[1] = 0;
+  now = 0;
   while (now < N && (c[0] < N / 4 || c[1] < N / 4))
   {
     if (used[now])
