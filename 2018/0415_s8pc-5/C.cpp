@@ -92,9 +92,9 @@ bool solve()
   now = 0;
   while (now < N && (c[0] < N / 4 || c[1] < N / 4))
   {
-    cerr << now << endl;
     if (used[now])
     {
+      now++;
       continue;
     }
     assert(c[0] >= c[1]);
