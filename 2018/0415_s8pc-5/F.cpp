@@ -46,17 +46,17 @@ ll solve()
   for (auto i = 0; i < Q; i++)
   {
     int maxi = 0;
-    for (auto j = 0; j < N; j++)
+    for (auto j = l[i]; j <= r[i]; j++)
     {
-      if (!used[j] && l[i] <= a[j] && a[j] <= r[i] && a[j] > maxi)
+      if (!used[j] && a[j] > maxi)
       {
         maxi = a[j];
       }
     }
-    cerr << maxi << " ";
+    // cerr << maxi << " ";
     ans += maxi;
   }
-  cerr << ", ans = " << ans << endl;
+  // cerr << ", ans = " << ans << endl;
   return ans;
 }
 
