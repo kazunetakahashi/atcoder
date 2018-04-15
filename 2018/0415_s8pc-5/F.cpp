@@ -61,6 +61,7 @@ ll solve()
       used[ind] = true;
     }
   }
+  cerr << "ans = " << ans << endl;
   return ans;
 }
 
