@@ -112,7 +112,7 @@ int main()
       {
         if (D[i][j][k] >= 0)
         {
-          if (ans[i][j] == -1)
+          if (ans[i][j] < 0)
           {
             ans[i][j] = D[i][j][k];
           }
