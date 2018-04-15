@@ -59,6 +59,7 @@ int main()
 {
   cin >> H >> W >> N;
   vector<P> V = {};
+  init(V);
   string S;
   cin >> S;
   for (auto i = 0; i < H; i++)
