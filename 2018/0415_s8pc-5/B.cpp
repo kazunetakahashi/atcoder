@@ -51,7 +51,7 @@ bool ok(double t)
       double d = D[i] + t;
       double dx = get<0>(p) - get<0>(q);
       double dy = get<1>(p) - get<1>(q);
-      if (dx * dx + dy * dy > d * d)
+      if (dx * dx + dy * dy < d * d)
       {
         return false;
       }
