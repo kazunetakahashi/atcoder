@@ -48,7 +48,7 @@ int main()
   int ans = 0;
   while (now < N)
   {
-    if (ans - a[now] > 0 && (ans - a[now]%T == 0))
+    if (ans - a[now] > 0 && (ans - a[now])%T == 0)
     {
       now++;
     }
