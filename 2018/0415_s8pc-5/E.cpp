@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -81,7 +81,9 @@ int main()
       if (S[x][y] == '.')
       {
         D[x][y][d] = dist;
-        // cerr << "D[" << x << "][" << y << "][" << d << "] = " << D[x][y][d] << endl;
+#if DEBUG == 1
+        cerr << "D[" << x << "][" << y << "][" << d << "] = " << D[x][y][d] << endl;
+#endif
         int nx = x + dx[d];
         int ny = y + dy[d];
         if (valid(nx, ny, d))
@@ -94,12 +96,12 @@ int main()
         for (auto k = 0; k < 4; k++)
         {
           D[x][y][k] = dist;
-          /*
+#if DEBUG == 1
           if (k == 0)
           {
             cerr << "D[" << x << "][" << y << "] = " << D[x][y][k] << endl;
           }
-          */
+#endif
           int nx = x + dx[k];
           int ny = y + dy[k];
           if (valid(nx, ny, k))
@@ -129,6 +131,7 @@ int main()
           }
         }
       }
+#if DEBUG == 0
       cout << ans[i][j];
       if (j < W - 1)
       {
@@ -138,7 +141,7 @@ int main()
       {
         cout << endl;
       }
+#endif
     }
   }
-
 }
