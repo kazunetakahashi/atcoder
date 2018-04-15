@@ -43,7 +43,7 @@ priority_queue<state, vector<state>, greater<state> > Q;
 
 bool valid(int x, int y, int d)
 {
-  return (0 <= x && x <= H && 0 <= y && y < W && D[x][y][d] < 0);
+  return (0 <= x && x < H && 0 <= y && y < W && D[x][y][d] < 0);
 }
 
 int main()
@@ -81,7 +81,7 @@ int main()
       if (S[x][y] == '.')
       {
         D[x][y][d] = dist;
-        cerr << "D[" << x << "][" << y << "][" << d << "] = " << D[x][y][d] << endl;
+        // cerr << "D[" << x << "][" << y << "][" << d << "] = " << D[x][y][d] << endl;
         int nx = x + dx[d];
         int ny = y + dy[d];
         if (valid(nx, ny, d))
@@ -94,10 +94,12 @@ int main()
         for (auto k = 0; k < 4; k++)
         {
           D[x][y][k] = dist;
+          /*
           if (k == 0)
           {
             cerr << "D[" << x << "][" << y << "] = " << D[x][y][k] << endl;
           }
+          */
           int nx = x + dx[k];
           int ny = y + dy[k];
           if (valid(nx, ny, k))
