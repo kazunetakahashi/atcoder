@@ -62,7 +62,7 @@ ll solve()
 
 void solveA()
 {
-  ll ans = 100000000;
+  ll ans = 10000000000000;
   for (auto i = 0; i < (1 << N); i++)
   {
     int cnt = 0;
