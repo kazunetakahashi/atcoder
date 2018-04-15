@@ -95,7 +95,7 @@ int main()
           D[x][y][k] = dist;
           int nx = x + dx[k];
           int ny = y + dy[k];
-          if (valid(nx, ny, d))
+          if (valid(nx, ny, k))
           {
             Q.push(state(dist + dist_b + 1, nx, ny, k, dist_b + 1));
           }
