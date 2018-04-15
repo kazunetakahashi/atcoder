@@ -38,13 +38,22 @@ typedef tuple<int, int> P;
 int H, W;
 int C;
 bool F[50][50];
+bool swapped = false;
 
 P say(P p)
 {
-  cout << get<0>(p)+1 << " " << get<1>(p)+1 << endl;
-  int x, y;
-  cin >> x >> y;
-  return P(x-1, y-1);
+  if (swapped)
+  {
+    cout << get<1>(p)+1 << " " << get<0>(p)+1 << endl;
+    int x, y;
+    cin >> x >> y;
+    return P(y-1, x-1);
+  } else {
+    cout << get<0>(p)+1 << " " << get<1>(p)+1 << endl;
+    int x, y;
+    cin >> x >> y;
+    return P(x-1, y-1);
+  }
 }
 
 int nokori()
@@ -126,6 +135,11 @@ bool solve()
 int main()
 {
   cin >> H >> W;
+  if (H > W)
+  {
+    swapped = true;
+    swap(H, W);
+  }
   fill(&F[0][0], &F[0][0] + 50 * 50, false);
   F[0][0] = true;
   init();
