@@ -58,10 +58,9 @@ ll solve()
     if (maxi >= 0)
     {
       ans += maxi;
-      used[ind] = true;
     }
   }
-  cerr << "ans = " << ans << endl;
+  // cerr << "ans = " << ans << endl;
   return ans;
 }
 
