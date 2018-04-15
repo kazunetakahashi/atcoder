@@ -117,6 +117,10 @@ bool solve()
   now = 0;
   while (now < N && (c[0] < N / 4 || c[1] < N / 4))
   {
+#if DEBUG == 1
+    cerr << "now = " << now << "c = {" << c[0] << ", "
+         << c[1] << "}" << endl;
+#endif
     if (!used[now])
     {
       now++;
