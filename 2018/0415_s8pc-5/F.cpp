@@ -105,6 +105,8 @@ int main()
   for (auto i = 0; i < Q; i++)
   {
     cin >> l[i] >> r[i];
+    l[i]--;
+    r[i]--;
   }
   if (N <= 15)
   {
