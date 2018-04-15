@@ -97,7 +97,7 @@ int main()
           int ny = y + dy[k];
           if (valid(nx, ny, d))
           {
-            Q.push(state(dist + dist_b + 1, nx, ny, d, dist_b + 1));
+            Q.push(state(dist + dist_b + 1, nx, ny, k, dist_b + 1));
           }
         }
       }
