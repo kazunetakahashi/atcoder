@@ -89,13 +89,28 @@ void init()
     cin >> x >> y;
     x--;
     y--;
+    if (swapped)
+    {
+      swap(x, y);
+    }
     F[x][y] = true;
   }
 }
 
 bool solve()
 {
-  if (F[H-1][W-2] || (H > 1 && F[H-2][W-1]))
+  /*
+  cerr << "H = " << H << ", W = " << W << endl;
+  for (auto i = 0; i < H; i++)
+  {
+    for (auto j = 0; j < W; j++)
+    {
+      cerr << F[i][j];
+    }
+    cerr << endl;
+  }
+  */
+  if (F[H - 1][W - 2] || (H > 1 && F[H - 2][W - 1]))
   {
     say(P(H - 1, W - 1));
     return true;
