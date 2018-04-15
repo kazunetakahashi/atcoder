@@ -58,7 +58,7 @@ ll solve()
       ans += maxi;
     }
   }
-  // cerr << "ans = " << ans << endl;
+  cerr << "ans = " << ans << endl;
   return ans;
 }
 
