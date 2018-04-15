@@ -86,7 +86,7 @@ void init()
 
 bool solve()
 {
-  if (F[H-1][W-2] || F[H-2][W-1])
+  if (F[H-1][W-2] || (H > 1 && F[H-2][W-1]))
   {
     say(P(H - 1, W - 1));
     return true;
@@ -109,8 +109,8 @@ bool solve()
             int ny = j + dy[k];
             if (0 <= nx && nx < H && 0 <= ny && ny < W && F[nx][ny])
             {
-              P p = say(P(nx, ny));
-              F[nx][ny] = true;
+              P p = say(P(i, j));
+              F[i][j] = true;
               F[get<0>(p)][get<1>(p)] = true;
               return false;
             }
