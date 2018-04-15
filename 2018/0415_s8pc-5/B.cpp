@@ -95,6 +95,11 @@ int main()
     cin >> x >> y;
     W.push_back(P(x, y));
   }
+  if (M == 0)
+  {
+    cout << *min_element(D.begin(), D.end()) << endl;
+    return 0;
+  }
   double ub = 100000;
   double lb = 0;
   for (auto k = 0; k < 100; k++)
