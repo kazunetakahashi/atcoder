@@ -169,7 +169,7 @@ int main()
 #endif
     vector<bool> used = vector<bool>(W, false);
     bool found = true;
-    bool has_center = false;
+    bool has_center = (W%2 == 0);
     for (auto i = 0; i < W; i++)
     {
       if (used[i])
