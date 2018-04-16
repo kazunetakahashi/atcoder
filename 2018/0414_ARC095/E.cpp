@@ -132,13 +132,16 @@ int main()
   dfs(emp_P, emp_used, H);
   #if DEBUG == 1
   cerr << "pairs.size() = " << pairs.size() << endl;
-  for (auto V : pairs)
+  if (pairs.size() < 5)
   {
-    for (auto e : V)
+    for (auto V : pairs)
     {
-      cerr << "[" << get<0>(e) << ", " << get<1>(e) << "] ";
+      for (auto e : V)
+      {
+        cerr << "[" << get<0>(e) << ", " << get<1>(e) << "] ";
+      }
+      cerr << endl;
     }
-    cerr << endl;
   }
   #endif
   for (auto e : pairs)
