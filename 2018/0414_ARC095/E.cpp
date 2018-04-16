@@ -130,6 +130,7 @@ int main()
   vector<P> emp_P;
   vector<bool> emp_used = vector<bool>(H, false);
   dfs(emp_P, emp_used, H);
+  cerr << "pairs.size() = " << pairs.size() << endl;
   for (auto e : pairs)
   {
     vector<string> V1 = make_strings(e);
@@ -178,5 +179,5 @@ int main()
       return 0;
     }
   }
-  cout << "NO" << endl;
+  cerr << "NO" << endl;
 }
