@@ -151,6 +151,21 @@ int main()
   {
     vector<string> V1 = make_strings(e);
     vector<string> V2 = reverse_strings(V1);
+    #if DEBUG == 1
+    if (pairs.size() < 5)
+    {
+      for (auto x : V1)
+      {
+        cerr << x << " ";
+      }
+      cerr << endl;
+      for (auto x : V2)
+      {
+        cerr << x << " ";
+      }
+      cerr << endl;
+    }
+    #endif
     vector<bool> used = vector<bool>(false, W);
     bool found = true;
     for (auto i = 0; i < W; i++)
@@ -185,5 +200,5 @@ int main()
       return 0;
     }
   }
-  cout << "NO" << endl;
+  cerr << "NO" << endl;
 }
