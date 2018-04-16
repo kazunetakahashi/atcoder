@@ -173,36 +173,36 @@ int main()
     }
 #endif
     vector<bool> used = vector<bool>(W, false);
-    bool found = true;
-    bool has_center = (W%2 == 0);
+    int cnt = 0;
     for (auto i = 0; i < W; i++)
     {
       if (used[i])
       {
         continue;
       }
-      found = false;
-      used[i] = true;
       for (auto j = i + 1; j < W; j++)
       {
         if (!used[j] && V1[i] == V2[j])
         {
+          used[i] = true;
           used[j] = true;
-          found = true;
+          cnt += 2;
           break;
         }
       }
-      if (!has_center && V1[i] == V2[i])
+    }
+    if (W - cnt == 1)
+    {
+      for (auto i = 0; i < W; i++)
       {
-        has_center = true;
-        found = true;
-      }
-      if (!found)
-      {
-        break;
+        if (!used[i] && V1[i] == V2[i]) {
+          used[i] = true;
+          cnt++;
+          break;
+        }
       }
     }
-    if (found)
+    if (W == cnt)
     {
       cout << "YES" << endl;
       return 0;
