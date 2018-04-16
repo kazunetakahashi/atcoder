@@ -41,22 +41,25 @@ vector<vector<P>> pairs;
 
 void dfs(vector<P> temp, vector<bool> used, int R)
 {
-  if (R == 0)
-  {
-    pairs.push_back(temp);
-    return;
-  }
-  if (R == 1)
+  if (R%2 == 1)
   {
     for (auto i = 0; i < H; i++)
     {
       if (!used[i])
       {
-        temp.push_back(P(i, i));
-        dfs(temp, used, 0);
-        return;
+        vector<bool> n_used = used;
+        n_used[i] = true;
+        vector<P> n_temp = temp;
+        n_temp.push_back(P(i, i));
+        dfs(n_temp, n_used, R - 1);
       }
     }
+    return;
+  }
+  if (R == 0)
+  {
+    pairs.push_back(temp);
+    return;
   }
   assert(R >= 2);
   int first = -1;
