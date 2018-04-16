@@ -200,5 +200,6 @@ int main()
       return 0;
     }
   }
-  cerr << "NO" << endl;
+  assert(false);
+  cout << "NO" << endl;
 }
