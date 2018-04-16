@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -152,44 +152,34 @@ int main()
     vector<string> V1 = make_strings(e);
     vector<string> V2 = reverse_strings(V1);
     vector<bool> used = vector<bool>(false, W);
-    int R = W;
-    while (R > 0)
+    bool found = true;
+    for (auto i = 0; i < W; i++)
     {
-      bool ok = true;
-      for (auto i = 0; i < W; i++)
+      if (used[i])
       {
-        if (!used[i])
+        continue;
+      }
+      found = false;
+      used[i] = true;
+      for (auto j = i + 1; j < W; j++)
+      {
+        if (!used[j] && V1[i] == V2[j])
         {
-          bool found = false;
-          used[i] = true;
-          for (auto j = 0; j < W; j++)
-          {
-            if (!used[j] && V1[i] == V2[j])
-            {
-              used[j] = true;
-              R -= 2;
-              found = true;
-              break;
-            }
-          }
-          if (!found && V1[i] == V2[i])
-          {
-            R -= 1;
-            found = true;
-          }
-          if (!found)
-          {
-            ok = false;
-            break;
-          }
+          used[j] = true;
+          found = true;
+          break;
         }
       }
-      if (!ok)
+      if (!found && V1[i] == V2[i])
+      {
+        found = true;
+      }
+      if (!found)
       {
         break;
       }
     }
-    if (R == 0)
+    if (found)
     {
       cout << "YES" << endl;
       return 0;
