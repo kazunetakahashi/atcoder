@@ -189,6 +189,7 @@ int main()
       }
       if (!has_center && V1[i] == V2[i])
       {
+        assert(false);
         has_center = true;
         found = true;
       }
