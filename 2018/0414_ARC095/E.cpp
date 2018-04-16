@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -49,13 +49,16 @@ void dfs(vector<P> temp, vector<bool> used, int R)
       {
         vector<bool> n_used = used;
         n_used[i] = true;
-        dfs(temp, n_used, R - 1);
+        vector<P> n_temp = temp;
+        n_temp.push_back(P(i, i));
+        dfs(n_temp, n_used, R - 1);
       }
     }
     return;
   }
   if (R == 0)
   {
+    reverse(temp.begin(), temp.end());
     pairs.push_back(temp);
     return;
   }
@@ -94,6 +97,10 @@ vector<string> make_strings(vector<P>& V)
   }
   for (auto i = N-1; i >= 0; i--)
   {
+    if (i == N-1 && get<0>(V[i]) == get<1>(V[i]))
+    {
+      continue;
+    }
     X.push_back(get<1>(V[i]));
   }
   vector<string> res;
@@ -197,10 +204,9 @@ int main()
     }
     if (found)
     {
-      cout << "YES" << endl;
+      //cout << "YES" << endl;
       return 0;
     }
   }
-  // assert(false);
-  cout << "NO" << endl;
+  //cout << "NO" << endl;
 }
