@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
+#define DEBUG 1 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -130,7 +130,17 @@ int main()
   vector<P> emp_P;
   vector<bool> emp_used = vector<bool>(H, false);
   dfs(emp_P, emp_used, H);
+  #if DEBUG == 1
   cerr << "pairs.size() = " << pairs.size() << endl;
+  for (auto V : pairs)
+  {
+    for (auto e : V)
+    {
+      cerr << "[" << get<0>(e) << ", " << get<1>(e) << "] ";
+    }
+    cerr << endl;
+  }
+  #endif
   for (auto e : pairs)
   {
     vector<string> V1 = make_strings(e);
