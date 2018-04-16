@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -204,9 +204,9 @@ int main()
     }
     if (found)
     {
-      //cout << "YES" << endl;
+      cout << "YES" << endl;
       return 0;
     }
   }
-  //cout << "NO" << endl;
+  cout << "NO" << endl;
 }
