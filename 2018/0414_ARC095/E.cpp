@@ -49,9 +49,7 @@ void dfs(vector<P> temp, vector<bool> used, int R)
       {
         vector<bool> n_used = used;
         n_used[i] = true;
-        vector<P> n_temp = temp;
-        n_temp.push_back(P(i, i));
-        dfs(n_temp, n_used, R - 1);
+        dfs(temp, n_used, R - 1);
       }
     }
     return;
@@ -189,10 +187,6 @@ int main()
       }
       if (!has_center && V1[i] == V2[i])
       {
-        if (W == 3)
-        {
-          assert(false);
-        }
         has_center = true;
         found = true;
       }
