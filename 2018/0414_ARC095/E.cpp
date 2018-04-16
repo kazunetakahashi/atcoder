@@ -189,7 +189,7 @@ int main()
       }
       if (!has_center && V1[i] == V2[i])
       {
-        if (W == 1)
+        if (W == 3)
         {
           assert(false);
         }
