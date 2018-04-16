@@ -24,7 +24,7 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 1 // change 0 -> 1 if we need debug.
+#define DEBUG 0 // change 0 -> 1 if we need debug.
 
 typedef long long ll;
 
@@ -133,7 +133,7 @@ int main()
   vector<P> emp_P;
   vector<bool> emp_used = vector<bool>(H, false);
   dfs(emp_P, emp_used, H);
-  #if DEBUG == 1
+#if DEBUG == 1
   cerr << "pairs.size() = " << pairs.size() << endl;
   if (pairs.size() < 5)
   {
@@ -146,12 +146,13 @@ int main()
       cerr << endl;
     }
   }
-  #endif
+#endif
   for (auto e : pairs)
   {
     vector<string> V1 = make_strings(e);
     vector<string> V2 = reverse_strings(V1);
-    #if DEBUG == 1
+    assert((int)V1.size() == W && (int)V2.size() == W);
+#if DEBUG == 1
     if (pairs.size() < 5)
     {
       for (auto x : V1)
@@ -165,9 +166,10 @@ int main()
       }
       cerr << endl;
     }
-    #endif
-    vector<bool> used = vector<bool>(false, W);
+#endif
+    vector<bool> used = vector<bool>(W, false);
     bool found = true;
+    bool has_center = false;
     for (auto i = 0; i < W; i++)
     {
       if (used[i])
@@ -185,8 +187,9 @@ int main()
           break;
         }
       }
-      if (!found && V1[i] == V2[i])
+      if (!has_center && V1[i] == V2[i])
       {
+        has_center = true;
         found = true;
       }
       if (!found)
@@ -200,6 +203,6 @@ int main()
       return 0;
     }
   }
-  assert(false);
+  // assert(false);
   cout << "NO" << endl;
 }
