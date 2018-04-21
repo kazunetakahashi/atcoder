@@ -43,7 +43,7 @@ int main()
     cout << A * X + B * Y << endl;
     return 0;
   }
-  ll Z = 2 * min(A, B);
+  ll Z = 2 * min(X, Y);
   X -= Z/2;
   Y -= Z/2;
   if (A > 2 * C) {
