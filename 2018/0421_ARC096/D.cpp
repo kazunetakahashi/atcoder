@@ -36,7 +36,7 @@ typedef long long ll;
 
 int N;
 ll C;
-int x[100010];
+ll x[100010];
 ll v[100010];
 ll w[100010];
 ll w_rev[100010];
