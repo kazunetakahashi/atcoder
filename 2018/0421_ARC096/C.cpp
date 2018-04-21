@@ -44,8 +44,8 @@ int main()
     return 0;
   }
   ll Z = 2 * min(A, B);
-  X -= Z;
-  Y -= Z;
+  X -= Z/2;
+  Y -= Z/2;
   if (A > 2 * C) {
     Z += 2 * X;
     X = 0;
