@@ -59,7 +59,7 @@ int main()
     bool ok = true;
     for (auto i = 0; i < N; i++)
     {
-      if (T[i] != S[i])
+      if (T[i] != S[(i + k) % N])
       {
         ok = false;
         break;
