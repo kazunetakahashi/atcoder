@@ -93,7 +93,11 @@ int main()
   }
   for (auto A = 2; A <= N - 1; A++)
   {
-    Ika[A] = C(A - 2, N - 1 - A);
+    ll x = N - 1 - A;
+    if (x >= 0)
+    {
+      Ika[A] = (C(A - 2, N - 1 - A) * fact[x]) % MOD;
+    }
   }
   ll ans = 0;
   for (ll A = 1; A <= N - 1; A++)
