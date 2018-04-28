@@ -34,7 +34,7 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
-const int MAX_SIZE = 1000010;
+const int MAX_SIZE = 2000010;
 const long long MOD = 1000000007;
 
 long long inv[MAX_SIZE];
@@ -80,7 +80,7 @@ long long gcm(long long a, long long b) {
 }
 
 ll N;
-ll Ika[200010];
+ll Ika[2000010];
 
 int main()
 {
