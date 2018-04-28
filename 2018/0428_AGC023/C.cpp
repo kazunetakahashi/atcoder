@@ -98,7 +98,7 @@ int main()
   ll ans = 0;
   for (ll A = 1; A <= N - 1; A++)
   {
-    ans += (A * (Ika[A] - Ika[A - 1])) % MOD;
+    ans += (A * (Ika[A] + MOD - Ika[A - 1])) % MOD;
     ans %= MOD;
   }
   cout << ans << endl;
