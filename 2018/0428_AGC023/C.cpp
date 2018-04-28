@@ -89,7 +89,8 @@ int main()
   Ika[0] = Ika[1] = 0;
   if (N == 2)
   {
-    Ika[1] = 1;
+    cout << 1 << endl;
+    return 0;
   }
   for (auto A = 2; A <= N - 1; A++)
   {
