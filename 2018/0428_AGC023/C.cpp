@@ -97,7 +97,7 @@ int main()
     ll x = N - 1 - A;
     if (x >= 0 && A >= 0)
     {
-      Ika[A] = ((C(A - 1, N - 1 - A) * fact[x]) % MOD * fact[A]) % MOD;
+      Ika[A] = (((C(A - 1, N - 1 - A) * fact[x]) % MOD) * fact[A]) % MOD;
       if (N < 100)
       {
         cerr << "Ika[" << A << "] = " << Ika[A] << endl;
@@ -107,7 +107,7 @@ int main()
   ll ans = 0;
   for (ll A = 1; A <= N - 1; A++)
   {
-    ans += (A * (Ika[A] + MOD - Ika[A - 1])) % MOD;
+    ans += (A * ((Ika[A] + MOD - Ika[A - 1]) % MOD)) % MOD;
     ans %= MOD;
   }
   cout << ans << endl;
