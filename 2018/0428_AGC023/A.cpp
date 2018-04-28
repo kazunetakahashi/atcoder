@@ -51,6 +51,7 @@ int main()
   {
     sum[i] = sum[i - 1] + A[i];
   }
+  M[0] = 1;
   for (auto i = 0; i < N; i++)
   {
     if (M.find(sum[i]) == M.end())
