@@ -69,6 +69,7 @@ int main()
         if (!ok)
         {
           cout << "No" << endl;
+          return 0;
         }
       }
     }
