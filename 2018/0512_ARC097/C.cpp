@@ -47,6 +47,7 @@ int main()
   {
     for (auto j = 0; i + j < N && j < 5; j++)
     {
+      cerr << "i = " << i << "j = " << j << endl;
       S.insert(s.substr(i, j));
     }
   }
