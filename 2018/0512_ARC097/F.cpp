@@ -113,6 +113,7 @@ int main()
   {
     if ((int)T[i].size() == 1 && S[i] == 'B')
     {
+      cerr << i << " pushed." << endl;
       st.push(i);
     }
   }
