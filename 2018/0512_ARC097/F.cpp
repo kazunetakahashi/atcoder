@@ -41,7 +41,7 @@ int y[100010];
 string S;
 vector<int> T[100010];
 vector<int> V[100010];
-int root;
+int root = -1;
 int parent[100010];
 bool need[100010];
 int maxi = 0;
@@ -49,12 +49,6 @@ std::chrono::system_clock::time_point start_time, end_time;
 
 int dfs(int v)
 {
-  end_time = std::chrono::system_clock::now();
-  double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
-  if (elapsed > 1900)
-  {
-    assert(false);
-  }
   int ans = (need[v] ? 1 : 0);
   vector<int> X;
   for (auto e : V[v])
@@ -128,21 +122,18 @@ int main()
   }
   bool del[100010];
   fill(del, del + 100010, false);
+  bool visited[100010];
+  fill(visited, visited + 100010, false);
   while (!st.empty())
   {
-    end_time = std::chrono::system_clock::now();
-    double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
-    if (elapsed > 1900)
-    {
-      assert(false);
-    }
     int now = st.front();
     st.pop();
     int cnt = 0;
-    if (del[now])
+    if (visited[now])
     {
       continue;
     }
+    visited[now] = true;
     for (auto e : T[now])
     {
       if (!del[e])
@@ -197,6 +188,7 @@ int main()
       break;
     }
   }
+  assert(root >= 0);
   parent[root] = -1;
   dfs(root);
   cout << 2 * (M - 1) + cost - maxi * 2 << endl;
