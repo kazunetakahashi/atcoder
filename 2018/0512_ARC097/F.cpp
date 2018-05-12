@@ -137,7 +137,7 @@ int main()
     if (cnt <= 1)
     {
       del[now] = true;
-      cerr << "del[" << now << "]" << endl;
+      // cerr << "del[" << now << "]" << endl;
       for (auto f : T[now])
       {
         if (!del[f])
@@ -172,6 +172,7 @@ int main()
       need[i] = true;
     }
   }
+  cerr << cost << endl;
   for (auto i = 0; i < N; i++)
   {
     if (!del[i] && S[i] == 'W')
