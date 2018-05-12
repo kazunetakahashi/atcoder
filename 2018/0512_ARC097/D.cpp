@@ -92,7 +92,7 @@ int main()
     unite(p[x[i]], p[y[i]]);
   }
   int ans = 0;
-  for (auto i = 0; i < M; i++)
+  for (auto i = 0; i < N; i++)
   {
     if (issame(i, p[i]))
     {
