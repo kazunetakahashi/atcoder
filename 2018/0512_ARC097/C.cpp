@@ -42,10 +42,9 @@ int main()
 {
   cin >> s;
   cin >> K;
-  int N = (int)S.size();
+  int N = (int)s.size();
   for (auto i = 0; i < N; i++)
   {
-    cerr << "i = " << i << endl;
     for (auto j = 0; i + j < N && j < 5; j++)
     {
       S.insert(s.substr(i, j));
