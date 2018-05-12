@@ -108,7 +108,7 @@ int main()
     cout << 0 << endl;
     return 0;
   }
-  stack<int> st;
+  queue<int> st;
   for (auto i = 0; i < N; i++)
   {
     if ((int)T[i].size() == 1 && S[i] == 'B')
@@ -121,7 +121,7 @@ int main()
   fill(del, del + 100010, false);
   while (!st.empty())
   {
-    int now = st.top();
+    int now = st.front();
     st.pop();
     int cnt = 0;
     if (del[now])
