@@ -172,7 +172,7 @@ int main()
       need[i] = true;
     }
   }
-  // cerr << cost << endl;
+  cerr << cost << endl;
   for (auto i = 0; i < N; i++)
   {
     if (!del[i] && S[i] == 'W')
