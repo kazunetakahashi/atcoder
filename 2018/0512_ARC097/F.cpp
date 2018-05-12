@@ -130,6 +130,12 @@ int main()
   fill(del, del + 100010, false);
   while (!st.empty())
   {
+    end_time = std::chrono::system_clock::now();
+    double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+    if (elapsed > 1900)
+    {
+      assert(false);
+    }
     int now = st.front();
     st.pop();
     int cnt = 0;
