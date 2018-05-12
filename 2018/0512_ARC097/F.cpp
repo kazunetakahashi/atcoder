@@ -86,6 +86,7 @@ int dfs(int v)
 
 bool dfs2(int v)
 {
+  cerr << "v = " << v << endl;
   bool ans = (S[v] == 'B');
   for (auto e : V[v])
   {
