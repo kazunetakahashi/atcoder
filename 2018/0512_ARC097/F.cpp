@@ -137,6 +137,7 @@ int main()
     if (cnt <= 1)
     {
       del[now] = true;
+      cerr << "del[" << now << "]" << endl;
       for (auto f : T[now])
       {
         if (!del[f])
