@@ -97,7 +97,7 @@ bool dfs2(int v)
     else
     {
       parent2[e] = v;
-      ans = (dfs2(e) && ans);
+      ans = (dfs2(e) & ans);
     }
   }
   del[v] = ans;
