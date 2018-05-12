@@ -58,7 +58,7 @@ int dfs(int v)
     else
     {
       parent[e] = v;
-      X.push_back(dfs(v));
+      X.push_back(dfs(e));
     }
   }
   if ((int)X.size() == 0)
@@ -172,7 +172,7 @@ int main()
       need[i] = true;
     }
   }
-  cerr << cost << endl;
+  // cerr << cost << endl;
   for (auto i = 0; i < N; i++)
   {
     if (!del[i] && S[i] == 'W')
