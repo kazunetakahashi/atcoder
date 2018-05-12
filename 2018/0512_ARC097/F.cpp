@@ -146,7 +146,7 @@ int main()
       }
     }
   }
-  int M;
+  int M = 0;
   for (auto i = 0; i < N - 1; i++)
   {
     if (!del[x[i]] && !del[y[i]])
