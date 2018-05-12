@@ -86,9 +86,9 @@ int dfs(int v)
 
 bool dfs2(int v)
 {
-  cerr << "v = " << v << endl;
+  // cerr << "v = " << v << endl;
   bool ans = (S[v] == 'B');
-  for (auto e : V[v])
+  for (auto e : T[v])
   {
     if (e == parent2[v])
     {
@@ -101,10 +101,6 @@ bool dfs2(int v)
     }
   }
   del[v] = ans;
-  if (del[v])
-  {
-    cerr << "del[" << v << "]" << endl;
-  }
   return ans;
 }
 
