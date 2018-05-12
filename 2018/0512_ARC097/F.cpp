@@ -113,7 +113,7 @@ int main()
   {
     if ((int)T[i].size() == 1 && S[i] == 'B')
     {
-      cerr << i << " pushed." << endl;
+      // cerr << i << " pushed." << endl;
       st.push(i);
     }
   }
@@ -138,10 +138,10 @@ int main()
     if (cnt <= 1)
     {
       del[now] = true;
-      cerr << "del[" << now << "]" << endl;
+      // cerr << "del[" << now << "]" << endl;
       for (auto f : T[now])
       {
-        if (!del[f])
+        if (!del[f] && S[f] == 'B')
         {
           st.push(f);
         }
@@ -173,7 +173,7 @@ int main()
       need[i] = true;
     }
   }
-  cerr << "cost = " << cost << endl;
+  // cerr << "cost = " << cost << endl;
   for (auto i = 0; i < N; i++)
   {
     if (!del[i] && S[i] == 'W')
