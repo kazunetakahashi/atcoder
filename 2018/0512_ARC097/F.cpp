@@ -100,6 +100,10 @@ bool dfs2(int v)
     }
   }
   del[v] = ans;
+  if (del[v])
+  {
+    cerr << "del[" << v << "]" << endl;
+  }
   return ans;
 }
 
