@@ -43,9 +43,10 @@ vector<int> T[100010];
 vector<int> V[100010];
 int root = -1;
 int parent[100010];
+int parent2[100010];
 bool need[100010];
+bool del[100010];
 int maxi = 0;
-std::chrono::system_clock::time_point start_time, end_time;
 
 int dfs(int v)
 {
@@ -83,9 +84,27 @@ int dfs(int v)
   }
 }
 
+bool dfs2(int v)
+{
+  bool ans = (S[v] == 'B');
+  for (auto e : V[v])
+  {
+    if (e == parent2[v])
+    {
+      continue;
+    }
+    else
+    {
+      parent2[e] = v;
+      ans = (dfs2(e) && ans);
+    }
+  }
+  del[v] = ans;
+  return ans;
+}
+
 int main()
 {
-  start_time = std::chrono::system_clock::now();
   int N;
   cin >> N;
   for (auto i = 0; i < N - 1; i++)
@@ -111,49 +130,17 @@ int main()
     cout << 0 << endl;
     return 0;
   }
-  queue<int> st;
   for (auto i = 0; i < N; i++)
   {
-    if ((int)T[i].size() == 1 && S[i] == 'B')
+    if (S[i] == 'W')
     {
-      // cerr << i << " pushed." << endl;
-      st.push(i);
+      root = i;
+      break;
     }
   }
-  bool del[100010];
-  fill(del, del + 100010, false);
-  bool visited[100010];
-  fill(visited, visited + 100010, false);
-  while (!st.empty())
-  {
-    int now = st.front();
-    st.pop();
-    int cnt = 0;
-    if (visited[now])
-    {
-      continue;
-    }
-    visited[now] = true;
-    for (auto e : T[now])
-    {
-      if (!del[e])
-      {
-        cnt++;
-      }
-    }
-    if (cnt <= 1)
-    {
-      del[now] = true;
-      // cerr << "del[" << now << "]" << endl;
-      for (auto f : T[now])
-      {
-        if (!del[f] && S[f] == 'B')
-        {
-          st.push(f);
-        }
-      }
-    }
-  }
+  assert(root >= 0);
+  parent2[root] = -1;
+  dfs2(root);
   int M = 0;
   for (auto i = 0; i < N - 1; i++)
   {
