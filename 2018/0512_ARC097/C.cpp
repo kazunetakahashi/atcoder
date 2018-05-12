@@ -45,7 +45,7 @@ int main()
   int N = (int)s.size();
   for (auto i = 0; i < N; i++)
   {
-    for (auto j = 0; i + j < N && j < 5; j++)
+    for (auto j = 1; i + j <= N && j < 5; j++)
     {
       S.insert(s.substr(i, j));
     }
