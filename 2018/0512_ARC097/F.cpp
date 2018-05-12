@@ -22,6 +22,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <chrono>
 using namespace std;
 
 #define DEBUG 0 // change 0 -> 1 if we need debug.
@@ -44,9 +45,16 @@ int root;
 int parent[100010];
 bool need[100010];
 int maxi = 0;
+std::chrono::system_clock::time_point start_time, end_time;
 
 int dfs(int v)
 {
+  end_time = std::chrono::system_clock::now();
+  double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+  if (elapsed > 1900)
+  {
+    assert(false);
+  }
   int ans = (need[v] ? 1 : 0);
   vector<int> X;
   for (auto e : V[v])
@@ -83,6 +91,7 @@ int dfs(int v)
 
 int main()
 {
+  start_time = std::chrono::system_clock::now();
   int N;
   cin >> N;
   for (auto i = 0; i < N - 1; i++)
