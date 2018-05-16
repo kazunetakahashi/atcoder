@@ -85,6 +85,16 @@ long long power(long long x, long long n)
   }
 }
 
+long long power_2_power(ll n)
+{
+  if (n == 0)
+  {
+    return 2 % MOD;
+  }
+  ll half = power_2_power(n - 1);
+  return (half * half) % MOD;
+}
+
 long long gcm(long long a, long long b)
 {
   if (a < b)
@@ -124,7 +134,7 @@ ll calc(ll n, ll k)
 
 ll f(ll k)
 {
-  ll ans = power(2, power(2, N - k));
+  ll ans = power_2_power(N - k);
   ll sum = 0;
   for (auto x = 0; x <= k; x++)
   {
@@ -147,7 +157,6 @@ int main()
     {
       cerr << "k = " << k << ", t = " << t << endl;
       cerr << "f(" << k << ") = " << f(k) << endl;
-      cerr << "C(" << N << ", " << k << ") = " << C(N, k) << endl;
     }
     if (k % 2 == 0)
     {
