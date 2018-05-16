@@ -143,6 +143,7 @@ int main()
   for (auto k = 0; k <= N; k++)
   {
     ll t = (C(N, k) * f(k)) % MOD;
+    cerr << "k = " << k << ", t = " << t << endl;
     if (k % 2 == 0)
     {
       X += t;
