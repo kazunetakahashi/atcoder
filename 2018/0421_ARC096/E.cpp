@@ -146,6 +146,7 @@ int main()
     if (N < 50)
     {
       cerr << "k = " << k << ", t = " << t << endl;
+      cerr << "f(" << k << ") = " << f(k) << endl;
     }
     if (k % 2 == 0)
     {
