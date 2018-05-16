@@ -147,6 +147,7 @@ int main()
     {
       cerr << "k = " << k << ", t = " << t << endl;
       cerr << "f(" << k << ") = " << f(k) << endl;
+      cerr << "C(" << N << ", " << k << ") = " << C(N, k) << endl;
     }
     if (k % 2 == 0)
     {
