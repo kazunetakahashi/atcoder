@@ -136,19 +136,21 @@ ll f(ll k)
 
 int main()
 {
-  init();
   cin >> N >> MOD;
+  init();
   fill(&DP[0][0], &DP[0][0] + 3010 * 3010, -1);
   ll X = 0;
   for (auto k = 0; k <= N; k++)
   {
     ll t = (C(N, k) * f(k)) % MOD;
+    /*
     if (N < 50)
     {
       cerr << "k = " << k << ", t = " << t << endl;
       cerr << "f(" << k << ") = " << f(k) << endl;
       cerr << "C(" << N << ", " << k << ") = " << C(N, k) << endl;
     }
+    */
     if (k % 2 == 0)
     {
       X += t;
