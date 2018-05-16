@@ -38,7 +38,7 @@ typedef long long ll;
 // const ll M = 1000000007;
 
 const int MAX_SIZE = 1000010;
-long long MOD = 1000000007;
+long long MOD;
 
 long long inv[MAX_SIZE];
 long long fact[MAX_SIZE];
