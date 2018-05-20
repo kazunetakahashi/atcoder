@@ -58,8 +58,11 @@ int main()
   }
   for (auto i = 1; i < N; i++)
   {
-    cerr << "A[" << i - 1 << "] = " << A[i - 1] << " skipped." << endl;
     ok[i - 1] = (A[i - 1] + 1 == A[i]);
+    if (ok[i - 1])
+    {
+      cerr << "A[" << i - 1 << "] = " << A[i - 1] << " skipped." << endl;
+    }
   }
   ok[N - 1] = true;
   ll ans = 0;
