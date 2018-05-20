@@ -107,10 +107,8 @@ int main()
     cin >> c[i] >> a[i];
   }
   BIT bit[2];
-  cerr << "aaa" << endl;
   bit[0] = BIT(N);
   bit[1] = BIT(N);
-  cerr << "aaa" << endl;
   reverse(c, c + 2 * N);
   reverse(a, a + 2 * N);
   fill(&cost[0][0][0], &cost[0][0][0] + 2 * 2010 * 2010, -1);
@@ -119,6 +117,7 @@ int main()
     int k = (c[l] == 'B');
     int i = a[l];
     bit[k].add(i);
+    cerr << "bit[" << k << "].add(" << i << ")" << endl;
     if (k == 0)
     {
       for (auto j = 0; j <= N; j++)
