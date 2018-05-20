@@ -48,12 +48,11 @@ int solve()
   {
     *lower_bound(dp, dp + N, P[i]) = P[i];
   }
-  /*
   for (auto i = 0; i < N; i++)
   {
     cerr << "dp[" << i << "] = " << dp[i] << endl;
   }
-  */
+  cerr << (lower_bound(dp, dp + N, infty - 1) - dp) << endl;
   return N - (lower_bound(dp, dp + N, infty - 1) - dp);
 }
 
