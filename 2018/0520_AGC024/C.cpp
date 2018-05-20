@@ -71,6 +71,7 @@ int main()
   {
     if (!ok[i])
     {
+      cerr << A[i] << endl;
       ans += A[i];
     }
   }
