@@ -43,20 +43,17 @@ int Q[200010];
 
 int solve()
 {
-  int l = 0;
-  int r = 0;
   int ans = 0;
-  while (r < N)
+  int lb = 0;
+  for (auto i = 1; i < N; i++)
   {
-    cerr << "r = " << r << ", l = " << l << endl;
-    if (Q[l] <= Q[r])
+    if (Q[i - 1] < Q[i])
     {
-      ans = max(ans, r - l);
-      r++;
+      ans = max(ans, i - lb);
     }
     else
     {
-      l = r;
+      lb = i;
     }
   }
   return N - ans;
