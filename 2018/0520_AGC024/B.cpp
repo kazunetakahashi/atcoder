@@ -40,16 +40,25 @@ const int infty = 1000000007;
 int N;
 int P[200010];
 int Q[200010];
-int dp[200010];
 
 int solve()
 {
-  fill(dp, dp + N, infty);
-  for (auto i = 0; i < N; i++)
+  int l = 0;
+  int r = 0;
+  int ans = 0;
+  while (r < N)
   {
-    *lower_bound(dp, dp + N, Q[i]) = Q[i];
+    if (Q[l] < Q[r])
+    {
+      ans = max(ans, r - l);
+      r++;
+    }
+    else
+    {
+      l = r;
+    }
   }
-  return N - (lower_bound(dp, dp + N, infty) - dp);
+  return N - ans;
 }
 
 int main()
