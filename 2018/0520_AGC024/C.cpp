@@ -57,7 +57,7 @@ int main()
   {
     if (A[i - 1] + 1 == A[i])
     {
-      cerr << "A[" << i - 1 << "] = " << A[i - 1] << endl;
+      cerr << "A[" << i - 1 << "] = " << A[i - 1] << " skipped." << endl;
       A[i - 1] = true;
     }
     else
