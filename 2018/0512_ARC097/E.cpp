@@ -90,7 +90,6 @@ public:
   }
 };
 
-int N;
 char c[4020];
 int a[4020];
 int cost[2][2010][2010];
@@ -98,6 +97,7 @@ int DP[2010][2010];
 
 int main()
 {
+  int N;
   cin >> N;
   for (auto i = 0; i < 2 * N; i++)
   {
