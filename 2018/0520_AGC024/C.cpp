@@ -61,6 +61,7 @@ int main()
     if (A[i - 1] + 1 < A[i])
     {
       cout << "-1" << endl;
+      return 0;
     }
     ok[i - 1] = (A[i - 1] + 1 != A[i]);
   }
