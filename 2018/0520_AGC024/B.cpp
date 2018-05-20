@@ -65,6 +65,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     P[i] = N - P[i] + 1;
+    cerr << "P[" << i << "] = " << P[i] << endl;
   }
   ans = min(ans, solve());
   cout << ans << endl;
