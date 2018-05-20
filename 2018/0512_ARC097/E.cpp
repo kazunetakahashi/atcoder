@@ -107,8 +107,8 @@ int main()
     cin >> c[i] >> a[i];
   }
   BIT bit[2];
-  bit[0] = BIT(N);
-  bit[1] = BIT(N);
+  bit[0] = BIT(N + 10);
+  bit[1] = BIT(N + 10);
   reverse(c, c + 2 * N);
   reverse(a, a + 2 * N);
   fill(&cost[0][0][0], &cost[0][0][0] + 2 * 2010 * 2010, -1);
