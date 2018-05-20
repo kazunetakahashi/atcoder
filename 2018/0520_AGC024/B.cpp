@@ -47,11 +47,11 @@ int solve()
   int lb = 0;
   for (auto i = 1; i < N; i++)
   {
-    cerr << "lb = " << lb << endl;
+    // cerr << "lb = " << lb << endl;
     if (Q[i - 1] < Q[i])
     {
       ans = max(ans, i - lb);
-      cerr << "i = " << i << endl;
+      // cerr << "i = " << i << endl;
     }
     else
     {
@@ -67,6 +67,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     cin >> P[i];
+    P[i]--;
   }
   for (auto i = 0; i < N; i++)
   {
