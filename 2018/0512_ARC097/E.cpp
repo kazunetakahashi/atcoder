@@ -156,6 +156,6 @@ int main()
       }
     }
   }
-  cerr << DP[N][N] << endl;
   cout << DP[N][N] << endl;
+  return 0;
 }
