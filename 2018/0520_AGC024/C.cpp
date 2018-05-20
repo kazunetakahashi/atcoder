@@ -71,7 +71,7 @@ int main()
   {
     if (!ok[i])
     {
-      cerr << A[i] << endl;
+      cerr << "A[" << i << "] = " << A[i] << endl;
       ans += A[i];
     }
   }
