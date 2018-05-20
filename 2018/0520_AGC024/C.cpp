@@ -53,7 +53,6 @@ int main()
     cout << "-1" << endl;
     return 0;
   }
-  reverse(A, A + N);
   for (auto i = 1; i < N; i++)
   {
     if (A[i - 1] + 1 == A[i])
