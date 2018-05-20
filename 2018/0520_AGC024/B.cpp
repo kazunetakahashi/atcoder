@@ -61,11 +61,11 @@ int main()
     cin >> P[i];
   }
   int ans = solve();
-  reverse(P, P + 200010);
+  reverse(P, P + N);
   for (auto i = 0; i < N; i++)
   {
     P[i] = N - P[i] + 1;
-    cerr << "P[" << i << "] = " << P[i] << endl;
+    // cerr << "P[" << i << "] = " << P[i] << endl;
   }
   ans = min(ans, solve());
   cout << ans << endl;
