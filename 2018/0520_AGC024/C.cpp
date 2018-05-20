@@ -58,6 +58,10 @@ int main()
   }
   for (auto i = 1; i < N; i++)
   {
+    if (A[i - 1] + 1 < A[i])
+    {
+      cout << "-1" << endl;
+    }
     ok[i - 1] = (A[i - 1] + 1 != A[i]);
   }
   ok[N - 1] = true;
