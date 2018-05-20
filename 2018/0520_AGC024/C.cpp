@@ -57,21 +57,21 @@ int main()
   {
     if (A[i - 1] + 1 == A[i])
     {
-      cerr << "A[" << i - 1 << "] = " << A[i - 1] << " skipped." << endl;
-      A[i - 1] = true;
+      // cerr << "A[" << i - 1 << "] = " << A[i - 1] << " skipped." << endl;
+      ok[i - 1] = true;
     }
     else
     {
-      A[i - 1] = false;
+      ok[i - 1] = false;
     }
   }
-  A[N - 1] = false;
+  ok[N - 1] = false;
   ll ans = 0;
   for (auto i = 0; i < N; i++)
   {
     if (!ok[i])
     {
-      cerr << "A[" << i << "] = " << A[i] << endl;
+      // cerr << "A[" << i << "] = " << A[i] << endl;
       ans += A[i];
     }
   }
