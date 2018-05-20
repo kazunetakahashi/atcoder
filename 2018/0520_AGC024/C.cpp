@@ -39,7 +39,6 @@ typedef long long ll;
 
 int N;
 ll A[200010];
-bool ok[200010];
 
 int main()
 {
@@ -53,26 +52,17 @@ int main()
     cout << "-1" << endl;
     return 0;
   }
+  reverse(A, A + N);
+  ll ans = A[0];
   for (auto i = 1; i < N; i++)
   {
-    if (A[i - 1] + 1 == A[i])
+    if (A[i] < A[i - 1] - 1)
     {
-      // cerr << "A[" << i - 1 << "] = " << A[i - 1] << " skipped." << endl;
-      ok[i - 1] = true;
+      ans += A[i];
     }
     else
     {
-      ok[i - 1] = false;
-    }
-  }
-  ok[N - 1] = false;
-  ll ans = 0;
-  for (auto i = 0; i < N; i++)
-  {
-    if (!ok[i])
-    {
-      // cerr << "A[" << i << "] = " << A[i] << endl;
-      ans += A[i];
+      ans += A[i] - A[i - 1] + 1;
     }
   }
   cout << ans << endl;
