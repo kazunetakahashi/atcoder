@@ -117,7 +117,7 @@ int main()
     int k = (c[l] == 'B');
     int i = a[l];
     bit[k].add(i);
-    cerr << "bit[" << k << "].add(" << i << ")" << endl;
+    // cerr << "bit[" << k << "].add(" << i << ")" << endl;
     if (k == 0)
     {
       for (auto j = 0; j <= N; j++)
@@ -138,6 +138,7 @@ int main()
   {
     for (auto j = 0; j <= N; j++)
     {
+      cerr << "i = " << i << ", j = " << j << endl;
       if (i == 0 && j == 0)
       {
         DP[i][j] = 0;
