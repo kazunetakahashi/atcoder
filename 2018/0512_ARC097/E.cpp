@@ -52,11 +52,6 @@ public:
     }
   }
 
-  BIT()
-  {
-    BIT(0);
-  }
-
   ~BIT()
   {
     delete[] data;
@@ -106,9 +101,7 @@ int main()
   {
     cin >> c[i] >> a[i];
   }
-  BIT bit[2];
-  bit[0] = BIT(N);
-  bit[1] = BIT(N);
+  BIT bit[2] = {BIT(N), BIT(N)};
   reverse(c, c + 2 * N);
   reverse(a, a + 2 * N);
   fill(&cost[0][0][0], &cost[0][0][0] + 2 * 2010 * 2010, -1);
