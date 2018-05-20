@@ -35,22 +35,20 @@ typedef long long ll;
 // const int dy[4] = {0, 1, 0, -1};
 
 // const int C = 1e6+10;
-// const ll M = 1000000007;
+const int infty = 1000000007;
 
 int N;
 int P[200010];
+int dp[200010];
 
 int solve()
 {
-  int now = 0;
+  fill(dp, dp + 200010, infty);
   for (auto i = 0; i < N; i++)
   {
-    if (P[i] == now + 1)
-    {
-      now++;
-    }
+    *lower_bound(dp, dp + N, P[i]) = P[i];
   }
-  return N - now;
+  return N - (lower_bound(dp, dp + N, infty) - dp);
 }
 
 int main()
