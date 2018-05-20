@@ -39,20 +39,16 @@ const int infty = 1000000007;
 
 int N;
 int P[200010];
+int Q[200010];
 int dp[200010];
 
 int solve()
 {
-  fill(dp, dp + 200010, infty);
+  fill(dp, dp + N, infty);
   for (auto i = 0; i < N; i++)
   {
-    *lower_bound(dp, dp + N, P[i]) = P[i];
+    *lower_bound(dp, dp + N, Q[i]) = Q[i];
   }
-  for (auto i = 0; i < N; i++)
-  {
-    cerr << "dp[" << i << "] = " << dp[i] << endl;
-  }
-  cerr << (lower_bound(dp, dp + N, infty) - dp) << endl;
   return N - (lower_bound(dp, dp + N, infty) - dp);
 }
 
@@ -62,6 +58,10 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     cin >> P[i];
+  }
+  for (auto i = 0; i < N; i++)
+  {
+    Q[P[i]] = i;
   }
   int ans = solve();
   cout << ans << endl;
