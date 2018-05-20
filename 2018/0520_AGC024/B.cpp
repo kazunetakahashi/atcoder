@@ -48,7 +48,7 @@ int solve()
   int ans = 0;
   while (r < N)
   {
-    if (Q[l] < Q[r])
+    if (Q[l] <= Q[r])
     {
       ans = max(ans, r - l);
       r++;
