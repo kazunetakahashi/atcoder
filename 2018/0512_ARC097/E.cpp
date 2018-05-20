@@ -138,7 +138,6 @@ int main()
   {
     for (auto j = 0; j <= N; j++)
     {
-      cerr << "i = " << i << ", j = " << j << endl;
       if (i == 0 && j == 0)
       {
         DP[i][j] = 0;
@@ -157,5 +156,6 @@ int main()
       }
     }
   }
+  cerr << "aaa" << endl;
   cout << DP[N][N] << endl;
 }
