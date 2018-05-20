@@ -43,8 +43,6 @@ public:
   int N;
   ll *data;
 
-  BIT() {}
-
   BIT(int n) : N(n)
   {
     data = new ll[N + 1];
@@ -52,6 +50,11 @@ public:
     {
       data[i] = 0;
     }
+  }
+
+  BIT()
+  {
+    BIT(0);
   }
 
   ~BIT()
