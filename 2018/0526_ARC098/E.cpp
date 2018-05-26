@@ -112,7 +112,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     int Y = V[i].first;
-    cerr << "Y = " << Y << endl;
+    // cerr << "Y = " << Y << endl;
     int k = V[i].second;
     visited[k] = true;
     int left[2010];
