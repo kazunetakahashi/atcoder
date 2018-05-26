@@ -142,6 +142,7 @@ int main()
       k = V[k].second;
       bit.add(k);
       cnt[k] = bit.sum(left[k] + 1, right[k]);
+      cerr << "cnt[" << k << "] = " << cnt[k] << endl;
     }
     int sel = 0;
     for (auto j = i; j >= 0; j--)
