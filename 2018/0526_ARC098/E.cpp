@@ -137,7 +137,7 @@ int main()
     }
     for (auto j = 0; j < N; j++)
     {
-      cerr << i << " : " << left[i] << " " << right[i] << endl;
+      cerr << j << " : " << left[j] << " " << right[j] << endl;
     }
     BIT bit(N + 1);
     int cnt[2010];
