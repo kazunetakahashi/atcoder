@@ -69,7 +69,7 @@ int main()
   int mini = N;
   for (auto i = 0; i < N; i++)
   {
-    mini = min(mini, N);
+    mini = min(mini, cost[i]);
   }
   cout << mini << endl;
 }
