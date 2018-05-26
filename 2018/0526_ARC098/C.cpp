@@ -48,7 +48,7 @@ int main()
   cin >> S;
   for (auto i = 0; i < N; i++)
   {
-    int x = (S[i] == 'W');
+    int x = (S[i] == 'E');
     sum[x][i] = 1;
     sum[1 - x][i] = 0;
   }
@@ -63,7 +63,7 @@ int main()
   cost[0] = sum[1][1];
   for (auto i = 1; i < N - 1; i++)
   {
-    cerr << "cost[" << i << "] = " << sum[0][i - 1] << " + " << sum[1][i + 1] << endl;
+    // cerr << "cost[" << i << "] = " << sum[0][i - 1] << " + " << sum[1][i + 1] << endl;
     cost[i] = sum[0][i - 1] + sum[1][i + 1];
   }
   cost[N - 1] = sum[0][N - 2];
