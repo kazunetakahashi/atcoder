@@ -143,8 +143,8 @@ int main()
     int cnt[2010];
     for (auto j = 0; j <= i; j++)
     {
-      cerr << "k = " << k << endl;
       k = V[j].second;
+      cerr << "k = " << k << endl;
       bit.add(k);
       cnt[k] = bit.sum(left[k] + 1, right[k]);
       cerr << "cnt[" << k << "] = " << cnt[k] << endl;
