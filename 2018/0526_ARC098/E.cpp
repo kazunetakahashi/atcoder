@@ -135,14 +135,16 @@ int main()
       }
       right[j] = t;
     }
+    for (auto j = 0; j < N; j++)
+    {
+      cerr << i << " : " << left[i] << " " << right[i] << endl;
+    }
     BIT bit(N + 1);
     int cnt[2010];
     for (auto j = 0; j <= i; j++)
     {
       k = V[k].second;
       bit.add(k);
-      cerr << "left[" << k << "] = " << left[k] << endl;
-      cerr << "right[" << k << "] = " << right[k] << endl;
       cnt[k] = bit.sum(left[k] + 1, right[k]);
       cerr << "cnt[" << k << "] = " << cnt[k] << endl;
     }
