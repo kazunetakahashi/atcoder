@@ -104,7 +104,7 @@ int main()
     fill(visited, visited + 2010, false);
     int sel = 0;
     int X = V[i].first;
-    // cerr << "X = " << X << endl;
+    cerr << "X = " << X << endl;
     for (auto j = i; j < N; j++)
     {
       int k = V[j].second;
@@ -117,7 +117,7 @@ int main()
       {
         unite(k, k + 1);
       }
-      // cerr << "union_size(" << k << ") = " << union_size(k) << endl;
+      cerr << "union_size(" << k << ") = " << union_size(k) << endl;
       if (union_size(k) >= K)
       {
         sel++;
