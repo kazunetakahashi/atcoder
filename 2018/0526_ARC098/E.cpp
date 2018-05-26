@@ -141,6 +141,8 @@ int main()
     {
       k = V[k].second;
       bit.add(k);
+      cerr << "left[" << k << "] = " << left[k] << endl;
+      cerr << "right[" << k << "] = " << right[k] << endl;
       cnt[k] = bit.sum(left[k] + 1, right[k]);
       cerr << "cnt[" << k << "] = " << cnt[k] << endl;
     }
