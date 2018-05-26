@@ -103,6 +103,7 @@ int main()
     fill(visited, visited + 2010, false);
     int sel = 0;
     int X = V[i].first;
+    cerr << "X = " << X << endl;
     for (auto j = i; j < N; j++)
     {
       int k = V[j].second;
