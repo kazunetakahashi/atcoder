@@ -116,6 +116,7 @@ int main()
       {
         unite(k, k + 1);
       }
+      cerr << "union_size(" << k << ") = " << union_size(k) << endl;
       if (union_size(k) >= K)
       {
         sel++;
