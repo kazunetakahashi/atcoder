@@ -118,20 +118,20 @@ int main()
     int t = -1;
     for (auto j = 0; j < N; j++)
     {
-      if (!visited[i])
+      if (!visited[j])
       {
-        t = i;
+        t = j;
       }
-      left[i] = t;
+      left[j] = t;
     }
     t = N;
     for (auto j = N; j >= 0; j--)
     {
-      if (!visited[i])
+      if (!visited[j])
       {
-        t = i;
+        t = j;
       }
-      right[i] = t;
+      right[j] = t;
     }
     BIT bit(N + 1);
     int cnt[2010];
