@@ -111,6 +111,8 @@ int main()
   fill(visited, visited + 2010, false);
   for (auto i = 0; i < N; i++)
   {
+    int Y = V[i].first;
+    cerr << "Y = " << Y << endl;
     int k = V[i].second;
     visited[k] = true;
     int left[2010];
@@ -141,8 +143,6 @@ int main()
       bit.add(k);
       cnt[k] = bit.sum(left[k] + 1, right[k]);
     }
-    int Y = V[i].first;
-    cerr << "Y = " << Y << endl;
     int sel = 0;
     for (auto j = i; j >= 0; j--)
     {
