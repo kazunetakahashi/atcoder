@@ -135,23 +135,25 @@ int main()
       }
       right[j] = t;
     }
+    /*
     for (auto j = 0; j < N; j++)
     {
       cerr << j << " : " << left[j] << " " << right[j] << endl;
     }
+    */
     BIT bit(N + 1);
     int cnt[2010];
     for (auto j = 0; j <= i; j++)
     {
-      k = V[k].second;
+      k = V[j].second;
       bit.add(k);
       cnt[k] = bit.sum(left[k] + 1, right[k]);
-      cerr << "cnt[" << k << "] = " << cnt[k] << endl;
+      // cerr << "cnt[" << k << "] = " << cnt[k] << endl;
     }
     int sel = 0;
     for (auto j = i; j >= 0; j--)
     {
-      k = V[k].second;
+      k = V[j].second;
       if (cnt[k] >= K)
       {
         sel++;
