@@ -37,46 +37,56 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
-const int UF_SIZE = 2010;
-int union_find[UF_SIZE];
-int cnt[UF_SIZE];
+class BIT
+{ // index starts at 1.
+public:
+  int N;
+  ll *data;
 
-void init()
-{
-  for (auto i = 0; i < UF_SIZE; i++)
+  BIT(int n) : N(n)
   {
-    union_find[i] = i;
-    cnt[i] = 1;
+    data = new ll[N + 1];
+    for (auto i = 1; i <= N; ++i)
+    {
+      data[i] = 0;
+    }
   }
-}
 
-int root(int a)
-{
-  if (a == union_find[a])
-    return a;
-  return (union_find[a] = root(union_find[a]));
-}
+  ~BIT()
+  {
+    delete[] data;
+  }
 
-bool same(int a, int b)
-{
-  return root(a) == root(b);
-}
+  ll sum(int i)
+  { // [1, i]
+    ll s = 0;
+    while (i > 0)
+    {
+      s += data[i];
+      i -= i & -i;
+    }
+    return s;
+  }
 
-void unite(int a, int b)
-{
-  union_find[root(a)] = root(b);
-  cnt[root(b)] += cnt[root(a)];
-}
+  ll sum(int a, int b)
+  { // [a, b)
+    return sum(b - 1) - sum(a - 1);
+  }
 
-int union_size(int a)
-{
-  return cnt[root(a)];
-}
+  void add(int i, ll x)
+  {
+    while (i <= N)
+    {
+      data[i] += x;
+      i += i & -i;
+    }
+  }
 
-bool isroot(int a)
-{
-  return root(a) == a;
-}
+  void add(int i)
+  {
+    add(i, 1);
+  }
+};
 
 typedef pair<int, int> P;
 
@@ -85,6 +95,7 @@ int K;
 int Q;
 int A[2010];
 vector<P> V;
+bool visited[2010];
 
 int main()
 {
@@ -97,33 +108,50 @@ int main()
   sort(V.begin(), V.end());
   reverse(V.begin(), V.end());
   int ans = 1000000007;
+  fill(visited, visited + 2010, false);
   for (auto i = 0; i < N; i++)
   {
-    init();
-    bool visited[2010];
-    fill(visited, visited + 2010, false);
-    int sel = 0;
-    int X = V[i].first;
-    cerr << "X = " << X << endl;
-    for (auto j = i; j < N; j++)
+    int k = V[i].second;
+    visited[k] = true;
+    int left[2010];
+    int right[2010];
+    int t = -1;
+    for (auto j = 0; j < N; j++)
     {
-      int k = V[j].second;
-      visited[k] = true;
-      if (k - 1 >= 0 && visited[k - 1])
+      if (!visited[i])
       {
-        unite(k, k - 1);
+        t = i;
       }
-      if (k + 1 < N && visited[k + 1])
+      left[i] = t;
+    }
+    t = N;
+    for (auto j = N; j >= 0; j--)
+    {
+      if (!visited[i])
       {
-        unite(k, k + 1);
+        t = i;
       }
-      cerr << "union_size(" << k << ") = " << union_size(k) << endl;
-      if (union_size(k) >= K)
+      right[i] = t;
+    }
+    BIT bit(N + 1);
+    int cnt[2010];
+    for (auto j = 0; j <= i; j++)
+    {
+      k = V[k].second;
+      bit.add(k);
+      cnt[k] = bit.sum(left[k] + 1, right[k]);
+    }
+    int Y = V[i].first;
+    int sel = 0;
+    for (auto j = i; j >= 0; j--)
+    {
+      k = V[k].second;
+      if (cnt[k] >= K)
       {
         sel++;
         if (sel == Q)
         {
-          int Y = V[j].second;
+          int X = V[j].first;
           ans = min(ans, X - Y);
           break;
         }
