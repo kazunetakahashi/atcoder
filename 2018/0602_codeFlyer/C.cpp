@@ -41,8 +41,8 @@ ll N, D;
 ll X[100010];
 ll L[100010];
 ll R[100010];
-ll A[100010];
-ll sum[100010];
+ll sumR[100010];
+ll sumL[100010];
 ll cnt[100010];
 
 int main()
@@ -109,23 +109,24 @@ int main()
       r--;
     }
   }
-  for (auto i = 0; i < N; i++)
-  {
-    A[i] = R[i] - i;
-  }
-  sum[0] = 0;
+  sumR[0] = sumL[0] = 0;
   for (auto i = 1; i <= N; i++)
   {
-    sum[i] = sum[i - 1] + A[i - 1];
-    cerr << "sum[" << i << "] = " << sum[i] << endl;
+    sumR[i] = sumR[i - 1] + (R[i - 1] - (i - 1));
+    // cerr << "sumR[" << i << "] = " << sumR[i] << endl;
+  }
+  for (auto i = 1; i <= N; i++)
+  {
+    sumL[i] = sumL[i - 1] + (i - 1 - L[i - 1]);
+    // cerr << "sumL[" << i << "] = " << sumL[i] << endl;
   }
   for (auto j = 0; j < N; j++)
   {
     ll n = R[j] - (L[j] - 1) - 1;
-    cerr << "j = " << j << ", n = " << n << endl;
+    // cerr << "j = " << j << ", n = " << n << endl;
     cnt[j] = n * (n - 1) / 2;
-    ll ext = sum[R[j] + 1] - sum[L[j]] - n;
-    cerr << "ext = " << ext << endl;
+    ll ext = sumR[R[j] + 1] - sumL[L[j]] - n;
+    // cerr << "ext = " << ext << endl;
     cnt[j] -= ext;
   }
   ll ans = 0;
