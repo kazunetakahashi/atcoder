@@ -123,6 +123,7 @@ int main()
     cnt[j] = (j - L[j]) * (R[j] - j);
     ll ext = sum[j] - sum[L[j]] - (j - L[j]);
     cnt[j] -= ext;
+    cerr << "cnt[" << j << "] = " << cnt[j] << endl;
   }
   ll ans = 0;
   for (auto i = 0; i < N; i++)
