@@ -113,20 +113,20 @@ int main()
   for (auto i = 1; i <= N; i++)
   {
     sumR[i] = sumR[i - 1] + (R[i - 1] - (i - 1));
-    // cerr << "sumR[" << i << "] = " << sumR[i] << endl;
+    cerr << "sumR[" << i << "] = " << sumR[i] << endl;
   }
   for (auto i = 1; i <= N; i++)
   {
     sumL[i] = sumL[i - 1] + (i - 1 - L[i - 1]);
-    // cerr << "sumL[" << i << "] = " << sumL[i] << endl;
+    cerr << "sumL[" << i << "] = " << sumL[i] << endl;
   }
   for (auto j = 0; j < N; j++)
   {
     ll n = R[j] - (L[j] - 1) - 1;
-    // cerr << "j = " << j << ", n = " << n << endl;
+    cerr << "j = " << j << ", n = " << n << endl;
     cnt[j] = n * (n - 1) / 2;
     ll ext = sumR[R[j] + 1] - sumL[L[j]] - n;
-    // cerr << "ext = " << ext << endl;
+    cerr << "ext = " << ext << endl;
     cnt[j] -= ext;
   }
   ll ans = 0;
