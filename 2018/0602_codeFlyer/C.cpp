@@ -121,8 +121,8 @@ int main()
   for (auto j = 0; j < N; j++)
   {
     cerr << "L[" << j << "] = " << L[j] << ", R[" << j << "] = " << R[j] << endl;
-    cerr << "cnt[" << j << "] = " << cnt[j] << endl;
     cnt[j] = (j - L[j]) * (R[j] - j);
+    cerr << "cnt[" << j << "] = " << cnt[j] << endl;
     ll ext = sum[j] - sum[L[j]] - (j - L[j]);
     cerr << "ext = " << ext << endl;
     cnt[j] -= ext;
