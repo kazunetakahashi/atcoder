@@ -128,6 +128,7 @@ int main()
     ll ext = sumL[R[j] + 1] - sumR[L[j]] - n;
     // cerr << "ext = " << ext << endl;
     cnt[j] -= ext;
+    cerr << "cnt[" << j << "] = " << cnt[j] << endl;
   }
   ll ans = 0;
   for (auto i = 0; i < N; i++)
