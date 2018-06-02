@@ -52,11 +52,6 @@ int main()
   {
     cin >> X[i];
   }
-  for (auto i = 0; i < N; i++)
-  {
-    R[i] = i;
-    L[i] = i;
-  }
   ll l = 0, r = 0;
   while (r < N)
   {
@@ -68,6 +63,7 @@ int main()
     else
     {
       l++;
+      R[l] = R[l - 1];
     }
   }
   r = N - 1;
@@ -81,6 +77,7 @@ int main()
     else
     {
       l++;
+      R[l] = R[l - 1];
     }
   }
   l = N - 1;
@@ -94,6 +91,7 @@ int main()
     else
     {
       r--;
+      L[r] = L[r + 1];
     }
   }
   l = 0;
@@ -107,29 +105,30 @@ int main()
     else
     {
       r--;
+      L[r] = L[r + 1];
     }
   }
   sumR[0] = sumL[0] = 0;
   for (auto i = 1; i <= N; i++)
   {
     sumR[i] = sumR[i - 1] + (R[i - 1] - (i - 1));
-    cerr << "sumR[" << i << "] = " << sumR[i] << endl;
+    // cerr << "sumR[" << i << "] = " << sumR[i] << endl;
   }
   for (auto i = 1; i <= N; i++)
   {
     sumL[i] = sumL[i - 1] + (i - 1 - L[i - 1]);
-    cerr << "sumL[" << i << "] = " << sumL[i] << endl;
+    // cerr << "sumL[" << i << "] = " << sumL[i] << endl;
   }
   for (auto j = 0; j < N; j++)
   {
-    cerr << "R[" << j << "] = " << R[j] << ", L[" << j << "] = " << L[j] << endl;
+    // cerr << "R[" << j << "] = " << R[j] << ", L[" << j << "] = " << L[j] << endl;
     ll n = R[j] - (L[j] - 1) - 1;
-    cerr << "j = " << j << ", n = " << n << endl;
+    // cerr << "j = " << j << ", n = " << n << endl;
     cnt[j] = n * (n - 1) / 2;
     ll ext = sumL[R[j] + 1] - sumR[L[j]] - n;
-    cerr << "ext = " << ext << endl;
+    // cerr << "ext = " << ext << endl;
     cnt[j] -= ext;
-    cerr << "cnt[" << j << "] = " << cnt[j] << endl;
+    // cerr << "cnt[" << j << "] = " << cnt[j] << endl;
   }
   ll ans = 0;
   for (auto i = 0; i < N; i++)
