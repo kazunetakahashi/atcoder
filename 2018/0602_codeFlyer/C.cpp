@@ -120,11 +120,9 @@ int main()
   }
   for (auto j = 0; j < N; j++)
   {
-    cerr << "L[" << j << "] = " << L[j] << ", R[" << j << "] = " << R[j] << endl;
-    cnt[j] = (j - L[j]) * (R[j] - j);
-    cerr << "cnt[" << j << "] = " << cnt[j] << endl;
-    ll ext = sum[j] - sum[L[j]] - (j - L[j]);
-    cerr << "ext = " << ext << endl;
+    ll n = R[j] - (L[j] - 1) - 1;
+    cnt[j] = n * (n - 1) / 2;
+    ll ext = sum[R[j] + 1] - sum[L[j]] - n;
     cnt[j] -= ext;
   }
   ll ans = 0;
