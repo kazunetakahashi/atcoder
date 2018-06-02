@@ -117,6 +117,7 @@ int main()
   for (auto i = 1; i <= N; i++)
   {
     sum[i] = sum[i - 1] + A[i - 1];
+    cerr << "sum[" << i << "] = " << sum[i] << endl;
   }
   for (auto j = 0; j < N; j++)
   {
