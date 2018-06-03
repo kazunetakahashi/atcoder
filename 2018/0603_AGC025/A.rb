@@ -10,7 +10,7 @@ ans = 0
 
 for a in 1...n
   b = n - a
-  puts "#{a}, #{b}"
+  # puts "#{a}, #{b}"
   sum = 0
   a.to_s.chars{|c|
     sum += c.to_i
@@ -18,7 +18,7 @@ for a in 1...n
   b.to_s.chars{|c|
     sum += c.to_i
   }
-  ans = [ans, sum].max
+  ans = [ans, sum].min
 end
 
 puts ans
