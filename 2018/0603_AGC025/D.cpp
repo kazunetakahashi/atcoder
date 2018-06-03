@@ -205,7 +205,6 @@ int main()
       }
     }
   }
-  assert(false);
   fill(&B[0][0], &B[0][0] + 1010 * 1010, true);
   ans.clear();
   pts.clear();
@@ -243,6 +242,43 @@ int main()
     if (B[i][j])
     {
       B[i][j] = false;
+      ans.push_back(p);
+      if (ans.size() == N * N)
+      {
+        flush();
+        return 0;
+      }
+      for (auto q : F)
+      {
+        P r = p + q;
+        if (valid(r))
+        {
+          B[r.real()][r.imag()] = false;
+        }
+      }
+    }
+  }
+  fill(&B[0][0], &B[0][0] + 1010 * 1010, true);
+  ans.clear();
+  pts.clear();
+  for (auto k = 0; k < 4 * N; k++)
+  {
+    for (auto j = 0; j <= k; j++)
+    {
+      int i = k - j;
+      P p(i, j);
+      if (valid(p))
+      {
+        pts.push_back(p);
+      }
+    }
+  }
+  for (auto p : pts)
+  {
+    int i = p.real();
+    int j = p.imag();
+    if (B[i][j])
+    {
       ans.push_back(p);
       if (ans.size() == N * N)
       {
