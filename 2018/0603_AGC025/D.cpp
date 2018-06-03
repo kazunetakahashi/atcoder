@@ -205,6 +205,7 @@ int main()
       }
     }
   }
+  assert(false);
   fill(&B[0][0], &B[0][0] + 1010 * 1010, true);
   ans.clear();
   pts.clear();
@@ -213,58 +214,25 @@ int main()
     for (auto j = 0; j <= k; j++)
     {
       int i = k - j;
-      P p(i, j);
+      P p(i + N, j + N);
       if (valid(p))
       {
         pts.push_back(p);
       }
-      P s(2 * N - i, 2 * N - j);
-      if (valid(s))
-      {
-        pts.push_back(s);
-      }
-    }
-  }
-  for (auto p : pts)
-  {
-    int i = p.real();
-    int j = p.imag();
-    if (B[i][j])
-    {
-      B[i][j] = false;
-      ans.push_back(p);
-      if (ans.size() == N * N)
-      {
-        flush();
-        return 0;
-      }
-      for (auto q : F)
-      {
-        P r = p + q;
-        if (valid(r))
-        {
-          B[r.real()][r.imag()] = false;
-        }
-      }
-    }
-  }
-  fill(&B[0][0], &B[0][0] + 1010 * 1010, true);
-  ans.clear();
-  pts.clear();
-  for (auto k = 0; k < 4 * N; k++)
-  {
-    for (auto j = 0; j <= k; j++)
-    {
-      int i = k - j;
-      P p(i, j);
-      if (valid(p))
-      {
-        pts.push_back(p);
-      }
-      P q(2 * N - i, j);
+      P q(N - i, j + N);
       if (valid(q))
       {
         pts.push_back(q);
+      }
+      P r(i + N, N - j);
+      if (valid(r))
+      {
+        pts.push_back(r);
+      }
+      P s(N - i, N - j);
+      if (valid(s))
+      {
+        pts.push_back(s);
       }
     }
   }
