@@ -115,6 +115,45 @@ int main()
       }
     }
   }
+  fill(&B[0][0], &B[0][0] + 1010 * 1010, true);
+  ans.clear();
+  pts.clear();
+  for (auto k = 0; k < 4 * N; k++)
+  {
+    for (auto j = 0; j <= k; j++)
+    {
+      int i = k - j;
+      P p(i, j);
+      if (valid(p))
+      {
+        pts.push_back(p);
+      }
+    }
+  }
+  for (auto p : pts)
+  {
+    int i = p.real();
+    int j = p.imag();
+    if (B[i][j])
+    {
+      ans.push_back(p);
+      if (ans.size() == N * N)
+      {
+        flush();
+        return 0;
+      }
+      for (auto q : F)
+      {
+        P r = p + q;
+        if (valid(r))
+        {
+          B[r.real()][r.imag()] = false;
+        }
+      }
+    }
+  }
+  assert(false);
+  /*
   while (true)
   {
     fill(&B[0][0], &B[0][0] + 1010 * 1010, true);
@@ -151,4 +190,5 @@ int main()
       }
     }
   }
+  */
 }
