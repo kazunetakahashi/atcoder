@@ -9,7 +9,7 @@ n = gets.to_i
 ans = 0
 
 for a in 1...n
-  b = n = a
+  b = n - a
   sum = 0
   a.to_s.chars{|c|
     sum += c.to_i
