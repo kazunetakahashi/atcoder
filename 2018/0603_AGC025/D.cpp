@@ -81,6 +81,9 @@ bool valid(P p)
 }
 
 bool B[1010][1010];
+vector<P> pts;
+random_device seed;
+mt19937 engine(seed());
 
 int main()
 {
@@ -112,5 +115,40 @@ int main()
       }
     }
   }
-  assert(false);
+  while (true)
+  {
+    fill(&B[0][0], &B[0][0] + 1010 * 1010, true);
+    ans.clear();
+    pts.clear();
+    for (auto i = 0; i < 2 * N; i++)
+    {
+      for (auto j = 0; j < 2 * N; j++)
+      {
+        pts.push_back(P(i, j));
+      }
+    }
+    shuffle(pts.begin(), pts.end(), engine);
+    for (auto p : pts)
+    {
+      int i = p.real();
+      int j = p.imag();
+      if (B[i][j])
+      {
+        ans.push_back(p);
+        if (ans.size() == N * N)
+        {
+          flush();
+          return 0;
+        }
+        for (auto q : F)
+        {
+          P r = p + q;
+          if (valid(r))
+          {
+            B[r.real()][r.imag()] = false;
+          }
+        }
+      }
+    }
+  }
 }
