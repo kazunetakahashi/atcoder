@@ -261,12 +261,44 @@ int main()
   fill(&B[0][0], &B[0][0] + 1010 * 1010, true);
   ans.clear();
   pts.clear();
-  for (auto k = 0; k < 4 * N; k++)
+  for (auto i = 0; i < N; i++)
   {
-    for (auto j = 0; j <= k; j++)
+    for (auto j = 0; j < N; j++)
     {
-      int i = k - j;
-      P p(i, j);
+      P p(2 * i, 2 * j);
+      if (valid(p))
+      {
+        pts.push_back(p);
+      }
+    }
+  }
+  for (auto i = 0; i < N; i++)
+  {
+    for (auto j = 0; j < N; j++)
+    {
+      P p(2 * i + 1, 2 * j);
+      if (valid(p))
+      {
+        pts.push_back(p);
+      }
+    }
+  }
+  for (auto i = 0; i < N; i++)
+  {
+    for (auto j = 0; j < N; j++)
+    {
+      P p(2 * i, 2 * j + 1);
+      if (valid(p))
+      {
+        pts.push_back(p);
+      }
+    }
+  }
+  for (auto i = 0; i < N; i++)
+  {
+    for (auto j = 0; j < N; j++)
+    {
+      P p(2 * i + 1, 2 * j + 1);
       if (valid(p))
       {
         pts.push_back(p);
