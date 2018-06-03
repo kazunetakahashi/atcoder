@@ -10,6 +10,7 @@ ans = 0
 
 for a in 1...n
   b = n - a
+  puts "#{a}, #{b}"
   sum = 0
   a.to_s.chars{|c|
     sum += c.to_i
