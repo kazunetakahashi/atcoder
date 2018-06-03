@@ -99,6 +99,7 @@ ll calc(ll k, ll l)
 
 int main()
 {
+  init();
   cin >> N >> A >> B >> K;
   ll g = gcm(A, B);
   if (K % g != 0)
