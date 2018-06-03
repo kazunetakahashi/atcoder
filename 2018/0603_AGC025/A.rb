@@ -6,7 +6,7 @@
 #
 
 n = gets.to_i
-ans = 0
+ans = 10000
 
 for a in 1...n
   b = n - a
