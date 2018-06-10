@@ -7,7 +7,7 @@
 
 a = gets.to_i
 if a >= 1000
-  puts "ABD#{a-999}"
+  puts "ABD"
 else
-  puts "ABC" + a.to_s.rjust(3, "0")
+  puts "ABC"
 end
