@@ -40,6 +40,7 @@ typedef long long ll;
 int N, C;
 ll D[40][40];
 ll c[510][510];
+ll total[3][40];
 
 int main()
 {
@@ -59,6 +60,17 @@ int main()
       c[i][j]--;
     }
   }
+  fill(&total[0][0], &total[0][0] + 3 * 40, 0);
+  for (auto i = 0; i < C; i++)
+  {
+    for (auto x = 0; x < N; x++)
+    {
+      for (auto y = 0; y < N; y++)
+      {
+        total[(x + y) % 3][i] += D[c[x][y]][i];
+      }
+    }
+  }
   ll ans = 100000009907;
   for (auto i = 0; i < C; i++)
   {
@@ -71,24 +83,7 @@ int main()
         if (i == k || j == k)
           continue;
         ll sum = 0;
-        for (auto x = 0; x < N; x++)
-        {
-          for (auto y = 0; y < N; y++)
-          {
-            if ((x + y) % 3 == 0)
-            {
-              sum += D[c[x][y]][i];
-            }
-            else if ((x + y) % 3 == 1)
-            {
-              sum += D[c[x][y]][j];
-            }
-            else
-            {
-              sum += D[c[x][y]][k];
-            }
-          }
-        }
+        sum = total[0][i] + total[1][j] + total[2][k];
         ans = min(ans, sum);
       }
     }
