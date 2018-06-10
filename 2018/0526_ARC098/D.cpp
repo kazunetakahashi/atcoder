@@ -48,7 +48,7 @@ int main()
   {
     cin >> A[i];
   }
-  int l, r = 0;
+  int l = 0, r = 0;
   int sum = 0;
   while (l < N)
   {
