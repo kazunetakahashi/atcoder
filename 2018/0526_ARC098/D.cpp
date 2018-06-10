@@ -52,7 +52,7 @@ int main()
   int sum = 0;
   while (l < N)
   {
-    while (r < N && (sum + A[r] == (sum & A[r])))
+    while (r < N && (sum + A[r] == (sum | A[r])))
     {
       sum += A[r++];
     }
@@ -62,7 +62,7 @@ int main()
   ll ans = 0;
   for (auto i = 0; i < N; i++)
   {
-    cerr << "X[" << i << "] = " << X[i] << endl;
+    // cerr << "X[" << i << "] = " << X[i] << endl;
     ans += X[i] - i + 1;
   }
   cout << ans << endl;
