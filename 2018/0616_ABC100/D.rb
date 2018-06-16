@@ -16,18 +16,44 @@ n.times{
   z << r
 }
 
-sum = []
+res = 0
 
-for i in 0...n
-  sum << x[i] + y[i] + z[i]
+for j in 0...2
+  for k in 0...2
+    for l in 0...2
+      sum = []
+
+      for i in 0...n
+        t = 0
+        if j == 0
+          t += x[i]
+        else
+          t += -x[i]
+        end
+        if k == 0
+          t += y[i]
+        else
+          t += -y[i]
+        end
+        if l == 0
+          t += z[i]
+        else
+          t += -z[i]
+        end
+        sum << t
+      end
+
+      sum = sum.sort.reverse
+
+      ans = 0
+
+      for i in 0...m
+        ans += sum[i]
+      end
+
+      res = [res, ans].max
+    end
+  end
 end
 
-sum = sum.sort.reverse
-
-ans = 0
-
-for i in 0...m
-  ans += sum[i]
-end
-
-puts ans
+puts res
