@@ -7,20 +7,8 @@
 
 d, n = gets.chomp.split(" ").map{|i| i.to_i}
 
-ans = 1
-cnt = 0
-
-while cnt < n
-  c = 0
-  t = ans
-  while t % 100 == 0
-    t /= 100
-    c += 1
-  end
-  if c == d
-    cnt += 1
-  end
-  ans += 1
+if n < 100
+  puts (100 ** d) * n
+else
+  puts (100 ** d) * (n + 1)
 end
-
-puts ans - 1
