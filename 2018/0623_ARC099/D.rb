@@ -10,7 +10,7 @@ k = gets.to_i
 a = []
 
 for i in 0...200
-  for n in 0...10
+  for n in 1...10
     x = n * 10 ** i + 10 ** i - 1
     if x > 0
       a << x
