@@ -18,6 +18,7 @@ for i in 0...200
     if a.size == k
       break
     end
+  end
 end
 
 for i in 0...k
