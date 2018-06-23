@@ -114,6 +114,7 @@ int main()
   {
     int x = e.first;
     int y = e.second;
+    cerr << "x = " << x << ", y = " << y << endl;
     for (auto j = N; j >= 0; j--)
     {
       if (reach[j])
@@ -132,5 +133,5 @@ int main()
       ans = min(ans, i * (i - 1) / 2 + j * (j - 1) / 2);
     }
   }
-  cout << ans << endl;
+  cerr << ans << endl;
 }
