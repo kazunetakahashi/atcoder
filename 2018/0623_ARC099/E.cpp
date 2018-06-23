@@ -41,6 +41,8 @@ int N, M;
 set<int> W[1000];
 vector<int> V[1000];
 
+vector<pair<int, int>> res;
+
 int visited[1000];
 int cnt[2];
 
@@ -91,8 +93,6 @@ int main()
     }
   }
   fill(visited, visited + 1000, 0);
-  int maxi = 0;
-  int mini = 0;
   for (auto k = 0; k < N; k++)
   {
     if (visited[k] != 0)
@@ -105,9 +105,32 @@ int main()
       cout << -1 << endl;
       return 0;
     }
-    maxi += max(cnt[0], cnt[1]);
-    mini += min(cnt[0], cnt[1]);
+    res.push_back(make_pair(cnt[0], cnt[1]));
   }
-  cerr << "maxi = " << maxi << ", mini = " << mini << endl;
-  cout << maxi * (maxi - 1) / 2 + mini * (mini - 1) / 2 << endl;
+  bool reach[1000];
+  fill(reach, reach + 1000, false);
+  reach[0] = true;
+  for (auto e : res)
+  {
+    int x = e.first;
+    int y = e.second;
+    for (auto j = N; j >= 0; j--)
+    {
+      if (reach[j])
+      {
+        reach[x + j] = true;
+        reach[y + j] = true;
+      }
+    }
+  }
+  int ans = 1000000007;
+  for (auto i = 0; i <= N; i++)
+  {
+    int j = N - i;
+    if (reach[i])
+    {
+      ans = min(ans, i * (i - 1) / 2 + j * (j - 1) / 2);
+    }
+  }
+  cout << ans << endl;
 }
