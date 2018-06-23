@@ -92,7 +92,7 @@ int main()
   int mini = 0;
   for (auto k = 0; k < N; k++)
   {
-    if (visited[k])
+    if (visited[k] != 0)
     {
       continue;
     }
