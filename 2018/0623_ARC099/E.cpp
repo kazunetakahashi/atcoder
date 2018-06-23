@@ -119,6 +119,9 @@ int main()
     {
       if (reach[j])
       {
+        cerr << "j = " << j << endl;
+        cerr << "j + x = " << j + x << endl;
+        cerr << "j + y = " << j + y << endl;
         reach[x + j] = true;
         reach[y + j] = true;
       }
