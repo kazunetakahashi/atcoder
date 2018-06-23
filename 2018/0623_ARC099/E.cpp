@@ -135,5 +135,5 @@ int main()
       ans = min(ans, i * (i - 1) / 2 + j * (j - 1) / 2);
     }
   }
-  cerr << ans << endl;
+  cout << ans << endl;
 }
