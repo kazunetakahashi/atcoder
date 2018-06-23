@@ -116,13 +116,13 @@ int main()
     auto e = res[i];
     int x = e.first;
     int y = e.second;
-    cerr << "i = " << i << endl;
-    cerr << "x = " << x << ", y = " << y << endl;
+    // cerr << "i = " << i << endl;
+    // cerr << "x = " << x << ", y = " << y << endl;
     for (auto j = N; j >= 0; j--)
     {
       if (reach[i][j])
       {
-        cerr << "j = " << j << endl;
+        // cerr << "j = " << j << endl;
         reach[i + 1][x + j] = true;
         reach[i + 1][y + j] = true;
       }
@@ -132,7 +132,7 @@ int main()
   for (auto i = 0; i <= N; i++)
   {
     int j = N - i;
-    if (reach[N][i])
+    if (reach[(int)res.size()][i])
     {
       ans = min(ans, i * (i - 1) / 2 + j * (j - 1) / 2);
     }
