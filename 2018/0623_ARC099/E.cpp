@@ -108,5 +108,6 @@ int main()
     maxi += max(cnt[0], cnt[1]);
     mini += min(cnt[0], cnt[1]);
   }
+  cerr << "maxi = " << maxi << ", mini = " << mini << endl;
   cout << maxi * (maxi - 1) / 2 + mini * (mini - 1) / 2 << endl;
 }
