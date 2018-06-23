@@ -17,4 +17,8 @@ for i in 0...a.size
   end
 end
 
-puts (n + k - 2) / (k - 1)
+if n == k
+  puts 1
+else
+  puts 1 + (n - k + k - 2) / (k - 1)
+end
