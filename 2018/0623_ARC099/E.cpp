@@ -46,6 +46,7 @@ int cnt[2];
 
 bool nuri(int v, int k)
 {
+  visited[v] = k;
   for (auto x : V[v])
   {
     if (visited[x] == 0)
@@ -60,7 +61,6 @@ bool nuri(int v, int k)
       return false;
     }
   }
-  visited[v] = k;
   cnt[k - 1]++;
   return true;
 }
@@ -81,9 +81,12 @@ int main()
   {
     for (auto j = 0; j < N; j++)
     {
+      if (i == j)
+        continue;
       if (W[i].find(j) == W[i].end())
       {
         V[i].push_back(j);
+        // cerr << "V[" << i << "].push_back(" << j << ")" << endl;
       }
     }
   }
@@ -105,5 +108,5 @@ int main()
     maxi += max(cnt[0], cnt[1]);
     mini += min(cnt[0], cnt[1]);
   }
-  cout << M - maxi * (maxi - 1) / 2 - mini * (mini - 1) / 2 << endl;
+  cout << maxi * (maxi - 1) / 2 + mini * (mini - 1) / 2 << endl;
 }
