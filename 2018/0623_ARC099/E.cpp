@@ -67,6 +67,8 @@ bool nuri(int v, int k)
   return true;
 }
 
+bool reach[1000][1000];
+
 int main()
 {
   cin >> N >> M;
@@ -107,23 +109,20 @@ int main()
     }
     res.push_back(make_pair(cnt[0], cnt[1]));
   }
-  bool reach[1000];
-  fill(reach, reach + 1000, false);
-  reach[0] = true;
-  for (auto e : res)
+  fill(&reach[0][0], &reach[0][0] + 1000 * 1000, false);
+  reach[0][0] = true;
+  for (int i = 0; i < (int)res.size(); i++)
   {
+    auto e = res[i];
     int x = e.first;
     int y = e.second;
-    cerr << "x = " << x << ", y = " << y << endl;
+    // cerr << "x = " << x << ", y = " << y << endl;
     for (auto j = N; j >= 0; j--)
     {
-      if (reach[j])
+      if (reach[i][j])
       {
-        cerr << "j = " << j << endl;
-        cerr << "j + x = " << j + x << endl;
-        cerr << "j + y = " << j + y << endl;
-        reach[x + j] = true;
-        reach[y + j] = true;
+        reach[i + 1][x + j] = true;
+        reach[i + 1][y + j] = true;
       }
     }
   }
