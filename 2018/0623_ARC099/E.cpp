@@ -130,7 +130,7 @@ int main()
   for (auto i = 0; i <= N; i++)
   {
     int j = N - i;
-    if (reach[i])
+    if (reach[N][i])
     {
       ans = min(ans, i * (i - 1) / 2 + j * (j - 1) / 2);
     }
