@@ -95,9 +95,9 @@ int main()
       ll ind2 = index(P + QR / 2);
       for (auto s = ind2 - 2; s < ind2 + 2; s++)
       {
-        if (!(k < s && s < t))
+        if (k < s && s < t)
         {
-          cerr << "k = " << k << ", s = " << s << ", t = " << t << endl;
+          // cerr << "k = " << k << ", s = " << s << ", t = " << t << endl;
           ll Q = imos[s] - P;
           ll R = sum - P - Q - S;
           ll maxi = max(max(P, Q), max(R, S));
