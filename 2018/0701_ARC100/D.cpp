@@ -98,7 +98,7 @@ int main()
           {
             // cerr << "k = " << k << ", s = " << s << ", t = " << t << endl;
             ll R = imos[t] - PQ;
-            ll S = RS - S;
+            ll S = RS - R;
             ll maxi = max(max(P, Q), max(R, S));
             ll mini = min(min(P, Q), min(R, S));
             ans = min(ans, maxi - mini);
