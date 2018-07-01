@@ -83,7 +83,8 @@ int main()
   for (auto k = 0; k < N - 3; k++)
   {
     ll P = imos[k];
-    int ind = index(sum - P);
+    ll QRS = sum - imos[k];
+    int ind = index(P + (QRS / 3) * 2);
     for (auto t = ind - 2; t <= ind + 2; t++)
     {
       if (!(2 <= t && t < N - 1))
