@@ -73,7 +73,7 @@ void make_S(int i)
 int main()
 {
   cin >> N;
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < (1 << N); i++)
   {
     cin >> A[i];
   }
@@ -81,11 +81,11 @@ int main()
   {
     make_S(i);
     auto it = S[i].begin();
-    cerr << "i = " << i << endl;
-    cerr << "(" << -get<0>(*it) << ", " << get<1>(*it) << ")" << endl;
+    // cerr << "i = " << i << endl;
+    // cerr << "(" << -get<0>(*it) << ", " << get<1>(*it) << ")" << endl;
     DP2[i] = -(get<0>(*it));
     it++;
-    cerr << "(" << -get<0>(*it) << ", " << get<1>(*it) << ")" << endl;
+    // cerr << "(" << -get<0>(*it) << ", " << get<1>(*it) << ")" << endl;
     DP2[i] += -(get<0>(*it));
   }
   // flush
