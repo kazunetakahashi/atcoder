@@ -80,30 +80,29 @@ int main()
     imos[i] = imos[i - 1] + A[i];
   }
   ll ans = infty;
-  for (auto k = 0; k < N - 3; k++)
+  for (auto s = 1; s < N - 2; s++)
   {
-    ll P = imos[k];
-    ll QRS = sum - imos[k];
-    int ind = index(P + (QRS / 3) * 2);
-    for (auto t = ind - 2; t <= ind + 2; t++)
+    ll PQ = imos[s];
+    ll RS = sum - imos[s];
+    int ind = index(PQ / 2);
+    for (auto k = ind - 2; k <= ind + 2; k++)
     {
-      if (!(2 <= t && t < N - 1))
+      if (0 <= k && k < s)
       {
-        continue;
-      }
-      ll S = sum - imos[t];
-      ll QR = sum - P - S;
-      ll ind2 = index(P + QR / 2);
-      for (auto s = ind2 - 2; s < ind2 + 2; s++)
-      {
-        if (k < s && s < t)
+        ll P = imos[k];
+        ll Q = PQ - P;
+        ll ind2 = index(PQ + RS / 2);
+        for (auto t = ind2 - 2; t < ind2 + 2; t++)
         {
-          cerr << "k = " << k << ", s = " << s << ", t = " << t << endl;
-          ll Q = imos[s] - P;
-          ll R = sum - P - Q - S;
-          ll maxi = max(max(P, Q), max(R, S));
-          ll mini = min(min(P, Q), min(R, S));
-          ans = min(ans, maxi - mini);
+          if (s < t && t < N - 1)
+          {
+            // cerr << "k = " << k << ", s = " << s << ", t = " << t << endl;
+            ll R = imos[t] - PQ;
+            ll S = RS - S;
+            ll maxi = max(max(P, Q), max(R, S));
+            ll mini = min(min(P, Q), min(R, S));
+            ans = min(ans, maxi - mini);
+          }
         }
       }
     }
