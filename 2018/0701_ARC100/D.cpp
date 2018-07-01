@@ -98,7 +98,7 @@ int main()
       {
         if (k < s && s < t)
         {
-          // cerr << "k = " << k << ", s = " << s << ", t = " << t << endl;
+          cerr << "k = " << k << ", s = " << s << ", t = " << t << endl;
           ll Q = imos[s] - P;
           ll R = sum - P - Q - S;
           ll maxi = max(max(P, Q), max(R, S));
