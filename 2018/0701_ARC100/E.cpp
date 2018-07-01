@@ -82,10 +82,10 @@ int main()
     make_S(i);
     auto it = S[i].begin();
     cerr << "i = " << i << endl;
-    cerr << "(" << get<0>(*it) << ", " << get<1>(*it) << ")" << endl;
+    cerr << "(" << -get<0>(*it) << ", " << get<1>(*it) << ")" << endl;
     DP2[i] = -(get<0>(*it));
     it++;
-    cerr << "(" << get<0>(*it) << ", " << get<1>(*it) << ")" << endl;
+    cerr << "(" << -get<0>(*it) << ", " << get<1>(*it) << ")" << endl;
     DP2[i] += -(get<0>(*it));
   }
   // flush
