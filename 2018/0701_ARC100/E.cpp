@@ -40,11 +40,11 @@ typedef long long ll;
 typedef tuple<int, int> D;
 
 int N;
-int A[100010];
-int DP[100010];
-int DP2[100010];
+int A[300010];
+int DP[300010];
+int DP2[300010];
 
-set<D> S[100010];
+set<D> S[300010];
 
 void make_S(int i)
 {
