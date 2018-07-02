@@ -55,7 +55,6 @@ int main()
   for (auto i = 0; i < (1 << N); i++)
   {
     DP[0][i].insert(D(-A[i], i));
-    DP[0][i].insert(D(-A[0], 0));
   }
   for (auto i = 1; i <= N; i++)
   {
@@ -64,13 +63,19 @@ int main()
       auto it = DP[i - 1][j].begin();
       DP[i][j].insert(*it);
       it++;
-      DP[i][j].insert(*it);
+      if (it != DP[i - 1][j].end())
+      {
+        DP[i][j].insert(*it);
+      }
       if ((j >> i) & 1)
       {
         it = DP[i][j - (1 << i)].begin();
         DP[i][j].insert(*it);
         it++;
-        DP[i][j].insert(*it);
+        if (it != DP[i][j - (1 << i)].end())
+        {
+          DP[i][j].insert(*it);
+        }
       }
       cerr << "DP[" << i << "][" << j << "] = ";
       for (auto e : DP[i][j])
