@@ -75,8 +75,9 @@ int main()
       cerr << "DP[" << i << "][" << j << "] = ";
       for (auto e : DP[i][j])
       {
-        cerr << "(" << -get<0>(e) << ", " << get<1>(e) << ") " << endl;
+        cerr << "(" << -get<0>(e) << ", " << get<1>(e) << ") ";
       }
+      cerr << endl;
     }
   }
   int ans = 0;
