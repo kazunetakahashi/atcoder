@@ -72,6 +72,11 @@ int main()
         it++;
         DP[i][j].insert(*it);
       }
+      cerr << "DP[" << i << "][" << j << "] = ";
+      for (auto e : DP[i][j])
+      {
+        cerr << "(" << -get<0>(e) << ", " << get<1>(e) << ") " << endl;
+      }
     }
   }
   int ans = 0;
