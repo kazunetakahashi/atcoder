@@ -67,22 +67,24 @@ int main()
       {
         DP[i][j].insert(*it);
       }
-      if ((j >> i) & 1)
+      if ((j >> (i - 1)) & 1)
       {
-        it = DP[i][j - (1 << i)].begin();
+        it = DP[i][j - (1 << (i - 1))].begin();
         DP[i][j].insert(*it);
         it++;
-        if (it != DP[i][j - (1 << i)].end())
+        if (it != DP[i][j - (1 << (i - 1))].end())
         {
           DP[i][j].insert(*it);
         }
       }
+      /*
       cerr << "DP[" << i << "][" << j << "] = ";
       for (auto e : DP[i][j])
       {
         cerr << "(" << -get<0>(e) << ", " << get<1>(e) << ") ";
       }
       cerr << endl;
+      */
     }
   }
   int ans = 0;
