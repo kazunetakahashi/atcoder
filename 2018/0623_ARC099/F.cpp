@@ -123,11 +123,11 @@ void calc_g()
     ll A, B;
     if (S[i] == '+')
     {
-      A = 1, B = -1;
+      A = 1, B = MOD - 1;
     }
     else if (S[i] == '-')
     {
-      A = 1, B = -1;
+      A = 1, B = 1;
     }
     else if (S[i] == '>')
     {
@@ -158,9 +158,10 @@ ll count_ans()
       G[J]++;
     }
     ll I = ((get<0>(g[i - 1]) * C) % MOD + get<1>(g[i - 1])) % MOD;
+
     if (G.find(I) != G.end())
     {
-      cerr << "i = " << i - 1 << ", cnt of j = " << G[I] << endl;
+      // cerr << "i = " << i - 1 << ", cnt of j = " << G[I] << endl;
       res += G[I];
     }
   }
