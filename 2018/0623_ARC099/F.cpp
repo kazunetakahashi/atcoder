@@ -16,7 +16,8 @@
 #include <stack>
 #include <map> // if (M.find(key) != M.end()) { }
 #include <set>
-#include <random> // random_device rd; mt19937 mt(rd()); uniform_int_distribution<int> ra(0, 99); ra(mt);
+#include <functional>
+#include <random> // auto rd = std::bind(std::uniform_int_distribution<int>(0, 9), std::mt19937(19920725));
 #include <chrono> // std::chrono::system_clock::time_point start_time, end_time;
 // start = std::chrono::system_clock::now();
 // double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end_time-start_time).count();
@@ -37,8 +38,8 @@ typedef long long ll;
 // const int C = 1e6+10;
 const ll MOD = 1000000007;
 const ll M = 250010;
-random_device rd;
-mt19937 mt(rd());
+auto rd = bind(uniform_int_distribution<ll>(1, MOD - 1),
+               mt19937(19920725));
 uniform_int_distribution<ll> ra(1, MOD - 1);
 typedef tuple<ll, ll> D;
 
@@ -162,7 +163,7 @@ ll count_ans()
 
     if (G.find(I) != G.end())
     {
-      // cerr << "i = " << i - 1 << ", cnt of j = " << G[I] << endl;
+      cerr << "i = " << i - 1 << ", cnt of j = " << G[I] << endl;
       res += G[I];
     }
   }
@@ -171,7 +172,7 @@ ll count_ans()
 
 void solve()
 {
-  X = ra(mt);
+  X = rd();
   X_inv = power(-1);
   C = calc_hash();
   calc_g();
@@ -205,5 +206,5 @@ int main()
       res = a;
     }
   }
-  cout << res << endl;
+  cerr << res << endl;
 }
