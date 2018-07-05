@@ -16,7 +16,7 @@
 #include <stack>
 #include <map> // if (M.find(key) != M.end()) { }
 #include <set>
-#include <random> // random_device rd; mt19937 mt(rd());
+#include <random> // random_device rd; mt19937 mt(rd()); uniform_int_distribution<int> ra(0, 99); ra(mt);
 #include <chrono> // std::chrono::system_clock::time_point start_time, end_time;
 // start = std::chrono::system_clock::now();
 // double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end_time-start_time).count();
@@ -39,6 +39,7 @@ const ll MOD = 1000000007;
 const ll M = 250010;
 random_device rd;
 mt19937 mt(rd());
+uniform_int_distribution<ll> ra(1, MOD - 1);
 typedef tuple<ll, ll> D;
 
 int N;
@@ -170,7 +171,7 @@ ll count_ans()
 
 void solve()
 {
-  X = abs((ll)mt());
+  X = ra(mt);
   X_inv = power(-1);
   C = calc_hash();
   calc_g();
@@ -188,7 +189,7 @@ void solve()
 int main()
 {
   cin >> N >> S;
-  for (auto i = 0; i < 3; i++)
+  for (auto i = 0; i < 4; i++)
   {
     solve();
   }
