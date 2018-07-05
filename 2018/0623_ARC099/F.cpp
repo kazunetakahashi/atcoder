@@ -160,6 +160,7 @@ ll count_ans()
     ll I = ((get<0>(g[i - 1]) * C) % MOD + get<1>(g[i - 1])) % MOD;
     if (G.find(I) != G.end())
     {
+      cerr << "i = " << i - 1 << ", cnt of j = " << G[I] << endl;
       res += G[I];
     }
   }
