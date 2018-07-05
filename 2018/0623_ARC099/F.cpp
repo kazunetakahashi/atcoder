@@ -188,7 +188,7 @@ void solve()
 int main()
 {
   cin >> N >> S;
-  for (auto i = 0; i < 6; i++)
+  for (auto i = 0; i < 3; i++)
   {
     solve();
   }
