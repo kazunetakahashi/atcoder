@@ -174,6 +174,7 @@ void solve()
 {
   X = rd();
   X_inv = power(-1);
+  assert((X * X_inv) % MOD == 1);
   C = calc_hash();
   calc_g();
   ll res = count_ans();
