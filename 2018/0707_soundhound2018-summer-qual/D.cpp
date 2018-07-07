@@ -59,7 +59,9 @@ int main()
     u--;
     v--;
     V[0][u].push_back(P(a, v));
+    V[0][v].push_back(P(a, u));
     V[1][v].push_back(P(b, u));
+    V[1][u].push_back(P(b, v));
   }
   fill(&dist[0][0], &dist[0][0] + 2 * 100010, -1);
   for (auto k = 0; k < 2; k++)
@@ -88,8 +90,8 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     ans[i] = dist[0][i] + dist[1][i];
-    cerr << "dist[0][" << i << "] = " << dist[0][i] << endl;
-    cerr << "dist[1][" << i << "] = " << dist[1][i] << endl;
+    //cerr << "dist[0][" << i << "] = " << dist[0][i] << endl;
+    //cerr << "dist[1][" << i << "] = " << dist[1][i] << endl;
   }
   for (auto i = N - 1; i >= 1; i--)
   {
