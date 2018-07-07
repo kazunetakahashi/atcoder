@@ -109,6 +109,11 @@ int main()
                 return 0;
               }
             }
+            else
+            {
+              cout << 0 << endl;
+              return 0;
+            }
           }
           else
           {
