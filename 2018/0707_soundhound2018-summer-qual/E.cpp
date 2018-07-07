@@ -44,6 +44,7 @@ int n, m;
 vector<P> V[100010];
 I info[100010];
 I nil = I(true, infty);
+set<ll> value;
 
 int main()
 {
@@ -80,11 +81,43 @@ int main()
         if (info[y] == nil)
         {
           info[y] = I(!pm, w - v);
+          Q.push(y);
         }
-        else if (info[y] != I(!pm, w - v))
+        else
         {
-          cout << 0 << endl;
-          return 0;
+          bool pm2 = get<0>(info[y]);
+          ll v2 = get<1>(info[y]);
+          if (pm == pm2)
+          {
+            ll tmp = w - (v + v2);
+            if (tmp % 2 != 0)
+            {
+              cout << 0 << endl;
+              return 0;
+            }
+            tmp = tmp / 2;
+            if (!pm)
+            {
+              tmp = -tmp;
+            }
+            if (tmp > 0)
+            {
+              value.insert(tmp);
+              if ((int)value.size() > 1)
+              {
+                cout << 0 << endl;
+                return 0;
+              }
+            }
+          }
+          else
+          {
+            if (info[y] != I(!pm, w - v))
+            {
+              cout << 0 << endl;
+              return 0;
+            }
+          }
         }
       }
     }
@@ -95,7 +128,7 @@ int main()
   {
     bool pm = get<0>(info[i]);
     ll v = get<1>(info[i]);
-    cerr << "info[" << i << "] = (" << pm << ", " << v << endl;
+    // cerr << "info[" << i << "] = (" << pm << ", " << v << ")" << endl;
     if (pm)
     {
       p_mini = min(p_mini, v);
