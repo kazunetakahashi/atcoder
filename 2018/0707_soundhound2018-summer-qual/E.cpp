@@ -143,15 +143,15 @@ int main()
       m_mini = min(m_mini, v);
     }
   }
-  cerr << p_mini << " " << m_mini << endl;
+  // cerr << p_mini << " " << m_mini << endl;
   ll ans;
   if (p_mini >= 0)
   {
-    ans = m_mini;
+    ans = m_mini - 1;
   }
   else
   {
-    ans = m_mini + p_mini + 1;
+    ans = m_mini + p_mini - 1;
   }
   cout << max(0ll, ans) << endl;
 }
