@@ -71,6 +71,7 @@ int main()
     {
       ll d = get<0>(Q[k].top());
       int now = get<1>(Q[k].top());
+      cerr << "now = " << now << endl;
       Q[k].pop();
       if (dist[k][now] == -1)
       {
@@ -90,8 +91,8 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     ans[i] = dist[0][i] + dist[1][i];
-    //cerr << "dist[0][" << i << "] = " << dist[0][i] << endl;
-    //cerr << "dist[1][" << i << "] = " << dist[1][i] << endl;
+    cerr << "dist[0][" << i << "] = " << dist[0][i] << endl;
+    cerr << "dist[1][" << i << "] = " << dist[1][i] << endl;
   }
   for (auto i = N - 1; i >= 1; i--)
   {
