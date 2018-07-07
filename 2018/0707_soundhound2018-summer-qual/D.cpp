@@ -71,12 +71,11 @@ int main()
     {
       ll d = get<0>(Q[k].top());
       int now = get<1>(Q[k].top());
-      cerr << "now = " << now << endl;
       Q[k].pop();
       if (dist[k][now] == -1)
       {
         dist[k][now] = d;
-        for (auto x : V[2][now])
+        for (auto x : V[k][now])
         {
           ll new_d = get<0>(x);
           int dst = get<1>(x);
@@ -91,8 +90,8 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     ans[i] = dist[0][i] + dist[1][i];
-    cerr << "dist[0][" << i << "] = " << dist[0][i] << endl;
-    cerr << "dist[1][" << i << "] = " << dist[1][i] << endl;
+    //cerr << "dist[0][" << i << "] = " << dist[0][i] << endl;
+    //cerr << "dist[1][" << i << "] = " << dist[1][i] << endl;
   }
   for (auto i = N - 1; i >= 1; i--)
   {
