@@ -124,11 +124,6 @@ int main()
   }
   ll p_mini = infty;
   ll m_mini = infty;
-  if ((int)value.size() == 1)
-  {
-    cout << 1 << endl;
-    return 0;
-  }
   for (auto i = 0; i < n; i++)
   {
     bool pm = get<0>(info[i]);
@@ -141,6 +136,20 @@ int main()
     else
     {
       m_mini = min(m_mini, v);
+    }
+  }
+  if ((int)value.size() == 1)
+  {
+    int x = *value.begin();
+    if (-p_mini <= x && x <= m_mini)
+    {
+      cout << 1 << endl;
+      return 0;
+    }
+    else
+    {
+      cout << 0 << endl;
+      return 0;
     }
   }
   // cerr << p_mini << " " << m_mini << endl;
