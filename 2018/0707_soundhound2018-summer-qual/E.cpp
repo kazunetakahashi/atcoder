@@ -133,7 +133,7 @@ int main()
   {
     bool pm = get<0>(info[i]);
     ll v = get<1>(info[i]);
-    cerr << "info[" << i << "] = (" << pm << ", " << v << ")" << endl;
+    // cerr << "info[" << i << "] = (" << pm << ", " << v << ")" << endl;
     if (pm)
     {
       p_mini = min(p_mini, v);
@@ -143,6 +143,7 @@ int main()
       m_mini = min(m_mini, v);
     }
   }
+  cerr << p_mini << " " << m_mini << endl;
   ll ans;
   if (p_mini >= 0)
   {
