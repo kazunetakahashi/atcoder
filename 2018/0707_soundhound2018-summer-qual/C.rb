@@ -13,4 +13,4 @@ else
   ans = n * (m - 1) / (n * n);
 end
 
-puts sprintf("%.2f", ans)
+puts sprintf("%.12f", ans)
