@@ -138,10 +138,12 @@ int main()
       m_mini = min(m_mini, v);
     }
   }
+  ll A = max(0ll, -p_mini);
+  ll B = m_mini;
   if ((int)value.size() == 1)
   {
     int x = *(value.begin());
-    if (-p_mini < x && x < m_mini)
+    if (A < x && x < B)
     {
       cout << 1 << endl;
       return 0;
@@ -154,8 +156,6 @@ int main()
   }
   // cerr << p_mini << " " << m_mini << endl;
   ll ans;
-  ll A = max(0ll, -p_mini);
-  ll B = m_mini;
   if (A >= B || B - A <= 1 || B <= 1)
   {
     ans = 0;
