@@ -124,11 +124,16 @@ int main()
   }
   ll p_mini = infty;
   ll m_mini = infty;
+  if ((int)value.size() == 1)
+  {
+    cout << 1 << endl;
+    return 0;
+  }
   for (auto i = 0; i < n; i++)
   {
     bool pm = get<0>(info[i]);
     ll v = get<1>(info[i]);
-    // cerr << "info[" << i << "] = (" << pm << ", " << v << ")" << endl;
+    cerr << "info[" << i << "] = (" << pm << ", " << v << ")" << endl;
     if (pm)
     {
       p_mini = min(p_mini, v);
