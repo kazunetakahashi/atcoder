@@ -154,17 +154,15 @@ int main()
   }
   // cerr << p_mini << " " << m_mini << endl;
   ll ans;
-  if (m_mini <= 0)
+  ll A = max(0ll, -p_mini);
+  ll B = m_mini;
+  if (A >= B || B - A <= 1 || B <= 1)
   {
     ans = 0;
   }
-  else if (p_mini >= 0)
-  {
-    ans = m_mini - 1;
-  }
   else
   {
-    ans = m_mini + p_mini - 1;
+    ans = B - A - 1;
   }
-  cout << max(0ll, ans) << endl;
+  cout << ans << endl;
 }
