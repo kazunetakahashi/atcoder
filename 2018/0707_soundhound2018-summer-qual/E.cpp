@@ -128,7 +128,7 @@ int main()
   {
     bool pm = get<0>(info[i]);
     ll v = get<1>(info[i]);
-    // cerr << "info[" << i << "] = (" << pm << ", " << v << ")" << endl;
+    cerr << "info[" << i << "] = (" << pm << ", " << v << ")" << endl;
     if (pm)
     {
       p_mini = min(p_mini, v);
@@ -140,7 +140,7 @@ int main()
   }
   if ((int)value.size() == 1)
   {
-    int x = *value.begin();
+    int x = *(value.begin());
     if (-p_mini <= x && x <= m_mini)
     {
       cout << 1 << endl;
@@ -152,7 +152,7 @@ int main()
       return 0;
     }
   }
-  // cerr << p_mini << " " << m_mini << endl;
+  cerr << p_mini << " " << m_mini << endl;
   ll ans;
   if (p_mini >= 0)
   {
@@ -162,5 +162,5 @@ int main()
   {
     ans = m_mini + p_mini - 1;
   }
-  cout << max(0ll, ans) << endl;
+  // cout << max(0ll, ans) << endl;
 }
