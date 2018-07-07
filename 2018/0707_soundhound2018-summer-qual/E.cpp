@@ -141,7 +141,7 @@ int main()
   if ((int)value.size() == 1)
   {
     int x = *(value.begin());
-    if (-p_mini <= x && x <= m_mini)
+    if (-p_mini < x && x < m_mini)
     {
       cout << 1 << endl;
       return 0;
