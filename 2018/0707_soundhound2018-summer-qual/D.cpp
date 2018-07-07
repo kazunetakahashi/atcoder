@@ -88,14 +88,16 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     ans[i] = dist[0][i] + dist[1][i];
+    cerr << "dist[0][" << i << "] = " << dist[0][i] << endl;
+    cerr << "dist[1][" << i << "] = " << dist[1][i] << endl;
   }
   for (auto i = N - 1; i >= 1; i--)
   {
     ans[i - 1] = min(ans[i - 1], ans[i]);
   }
-  ll shoki = 1000000000000000;
+  ll X = 1000000000000000;
   for (auto i = 0; i < N; i++)
   {
-    cout << shoki - ans[i] << endl;
+    cout << X - ans[i] << endl;
   }
 }
