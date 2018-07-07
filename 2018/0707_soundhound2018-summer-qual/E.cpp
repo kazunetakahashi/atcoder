@@ -98,6 +98,9 @@ int main()
     if (pm)
     {
       p_mini = min(p_mini, v);
+    }
+    else
+    {
       m_mini = min(m_mini, v);
     }
   }
