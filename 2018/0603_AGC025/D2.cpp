@@ -145,6 +145,7 @@ int main()
       }
       if (cnt >= K)
       {
+        cnt = K;
         // cerr << "k = " << k << ", l = " << l << ", cnt = " << cnt << endl;
         for (auto i = 0; i < M; i++)
         {
