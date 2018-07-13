@@ -93,6 +93,8 @@ int main()
           if (valid(q))
           {
             V[k][i][j].push_back(q);
+            cerr << "V[" << k << "][" << i << "][" << j << "].push_back"
+                 << "(" << get<0>(q) << ", " << get<1>(q) << ")" << endl;
           }
         }
       }
