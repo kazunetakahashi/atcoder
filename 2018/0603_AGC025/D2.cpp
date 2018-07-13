@@ -93,8 +93,8 @@ int main()
           if (valid(q))
           {
             V[k][i][j].push_back(q);
-            cerr << "V[" << k << "][" << i << "][" << j << "].push_back"
-                 << "(" << get<0>(q) << ", " << get<1>(q) << ")" << endl;
+            //cerr << "V[" << k << "][" << i << "][" << j << "].push_back"
+            //     << "(" << get<0>(q) << ", " << get<1>(q) << ")" << endl;
           }
         }
       }
@@ -117,7 +117,7 @@ int main()
             {
               int xxx = get<0>(e);
               int yyy = get<1>(e);
-              if (color[k][xxx][yyy] == 0)
+              if (color[k][xxx][yyy] == -1)
               {
                 color[k][xxx][yyy] = 1 - color[k][x][y];
                 S.push(e);
@@ -145,7 +145,7 @@ int main()
       }
       if (cnt >= K)
       {
-        cerr << "k = " << k << ", l = " << l << ", cnt = " << cnt << endl;
+        // cerr << "k = " << k << ", l = " << l << ", cnt = " << cnt << endl;
         for (auto i = 0; i < M; i++)
         {
           for (auto j = 0; j < M; j++)
