@@ -60,10 +60,6 @@ void make_dic()
         B = B + T[j];
       }
     }
-    if (A > B)
-    {
-      swap(A, B);
-    }
     auto it = P(A, B);
     if (M.find(it) == M.end())
     {
@@ -92,10 +88,6 @@ ll cnt_dic()
       {
         B = B + S[j];
       }
-    }
-    if (A > B)
-    {
-      swap(A, B);
     }
     auto it = P(A, B);
     if (M.find(it) != M.end())
