@@ -68,12 +68,13 @@ int main()
   for (auto i = 1; i <= N; i++)
   {
     cin >> h[i];
-    cerr << "h[" << i << "] = " << h[i] << endl;
+    // cerr << "h[" << i << "] = " << h[i] << endl;
   }
   DP[0][0] = 0;
   DP[0][1] = 1;
   for (auto i = 0; i < N; i++)
   {
+    cerr << "i = " << i << endl;
     if (h[i] < h[i + 1])
     {
       if (h[i] >= 2)
