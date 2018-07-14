@@ -38,7 +38,6 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
-const int MAX_SIZE = 1000010;
 const long long MOD = 1000000007;
 
 long long power(long long x, long long n)
@@ -74,6 +73,7 @@ int main()
   DP[0][1] = 1;
   for (auto i = 0; i < N; i++)
   {
+    cerr << "i = " << i << endl;
     if (h[i] < h[i + 1])
     {
       ll t = h[i + 1] - h[i];
