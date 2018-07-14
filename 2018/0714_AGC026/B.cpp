@@ -38,8 +38,26 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
+ll gcd(ll x, ll y)
+{
+  if (y == 0)
+  {
+    return x;
+  }
+  if (x < y)
+  {
+    return gcd(y, x);
+  }
+  return gcd(y, x % y);
+}
+
 bool solve(ll A, ll B, ll C, ll D)
 {
+  ll g = gcd(gcd(A, B), gcd(C, D));
+  A /= g;
+  B /= g;
+  C /= g;
+  D /= g;
   if (B > A)
   {
     return false;
@@ -52,19 +70,13 @@ bool solve(ll A, ll B, ll C, ll D)
   {
     return true;
   }
-  double lb = ((double)A) / B - 1;
-  double ub = ((double)A - C) / B;
-  ll lower = ceil(lb);
-  ll upper = floor(ub);
-  cerr << lb << " " << ub << endl;
-  if (lower <= upper && lower >= 0)
-  {
-    return true;
-  }
-  else
+  ll X = A - B;
+  ll Y = A - C;
+  if (Y > X + 1)
   {
     return false;
   }
+  return true;
 }
 
 int T;
