@@ -56,6 +56,7 @@ bool solve(ll A, ll B, ll C, ll D)
   double ub = ((double)A - C) / B;
   ll lower = ceil(lb);
   ll upper = floor(ub);
+  cerr << lb << " " << ub << endl;
   if (lower <= upper && lower >= 0)
   {
     return true;
