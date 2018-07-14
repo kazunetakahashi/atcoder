@@ -59,7 +59,7 @@ long long power(long long x, long long n)
 
 int N;
 ll h[1010];
-ll DP[2][1010];
+ll DP[1010][2];
 
 int main()
 {
@@ -74,9 +74,9 @@ int main()
   DP[0][1] = 1;
   for (auto i = 0; i < N; i++)
   {
-    cerr << "i = " << i << endl;
-    cerr << "h[" << i << "] = " << h[i] << endl;
-    cerr << "h[" << i + 1 << "] = " << h[i + 1] << endl;
+    // cerr << "i = " << i << endl;
+    // cerr << "h[" << i << "] = " << h[i] << endl;
+    // cerr << "h[" << i + 1 << "] = " << h[i + 1] << endl;
     if (h[i] < h[i + 1])
     {
       if (h[i] >= 2)
@@ -129,7 +129,7 @@ int main()
       DP[i + 1][1] = (DP[i][1] + DP[i][0]) % MOD;
       DP[i + 1][0] = 0;
     }
-    cerr << "DP[" << i + 1 << "] = " << DP[i + 1][0] << " " << DP[i + 1][1] << endl;
+    // cerr << "DP[" << i + 1 << "] = " << DP[i + 1][0] << " " << DP[i + 1][1] << endl;
   }
   cout << (DP[N][1] + DP[N][0]) % MOD << endl;
 }
