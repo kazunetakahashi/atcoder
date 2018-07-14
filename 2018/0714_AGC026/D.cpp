@@ -75,6 +75,8 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     cerr << "i = " << i << endl;
+    cerr << "h[" << i << "] = " << h[i] << endl;
+    cerr << "h[" << i + 1 << "] = " << h[i + 1] << endl;
     if (h[i] < h[i + 1])
     {
       if (h[i] >= 2)
