@@ -72,7 +72,8 @@ bool solve(ll A, ll B, ll C, ll D)
   }
   ll X = A - B;
   ll Y = A - C;
-  if (Y > X + 1)
+  ll g_bd = gcd(B, D);
+  if (Y > X - g_bd)
   {
     return false;
   }
