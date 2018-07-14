@@ -111,6 +111,7 @@ int main()
   cin >> N >> S;
   T = S.substr(N, N);
   S = S.substr(0, N);
+  cerr << S << " " << T << endl;
   make_dic();
   cout << cnt_dic() << endl;
 }
