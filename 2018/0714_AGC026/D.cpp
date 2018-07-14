@@ -75,10 +75,40 @@ int main()
   {
     if (h[i] < h[i + 1])
     {
-      ll t = h[i + 1] - h[i];
-      ll p = power(2, t);
-      DP[i + 1][1] = (((2 * DP[i][1]) % MOD) * p) % MOD;
-      DP[i + 1][0] = (DP[i][0] * p) % MOD;
+      if (h[i] >= 2)
+      {
+        ll t = h[i + 1] - h[i];
+        ll p = power(2, t);
+        DP[i + 1][1] = (((2 * DP[i][1]) % MOD) * p) % MOD;
+        DP[i + 1][0] = (DP[i][0] * p) % MOD;
+      }
+      else if (h[i] == 1)
+      {
+        ll t = h[i + 1] - 2;
+        ll p = power(2, t);
+        DP[i + 1][1] = (((2 * DP[i][1]) % MOD) * p) % MOD;
+        DP[i + 1][0] = DP[i + 1][1];
+      }
+      else
+      {
+        if (h[i + 1] >= 2)
+        {
+          ll t = h[i + 1] - 2;
+          ll p = power(2, t);
+          DP[i + 1][1] = (((2 * DP[i][1]) % MOD) * p) % MOD;
+          DP[i + 1][0] = DP[i + 1][1];
+        }
+        else if (h[i + 1] == 1)
+        {
+          DP[i + 1][1] = (((DP[i][1] + DP[i][0]) % MOD) * 2) % MOD;
+          DP[i + 1][0] = 0;
+        }
+        else
+        {
+          DP[i + 1][1] = (DP[i][1] + DP[i][0]) % MOD;
+          DP[i + 1][0] = 0;
+        }
+      }
     }
     else if (h[i + 1] >= 2)
     {
@@ -87,7 +117,7 @@ int main()
     }
     else if (h[i + 1] == 1)
     {
-      DP[i + 1][1] = (((2 * DP[i][1]) % MOD) + DP[i][0]) % MOD;
+      DP[i + 1][1] = (((DP[i][1] + DP[i][0]) % MOD) * 2) % MOD;
       DP[i + 1][0] = 0;
     }
     else
