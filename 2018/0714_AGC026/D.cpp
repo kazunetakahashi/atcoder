@@ -73,7 +73,6 @@ int main()
   DP[0][1] = 1;
   for (auto i = 0; i < N; i++)
   {
-    cerr << "i = " << i << endl;
     if (h[i] < h[i + 1])
     {
       ll t = h[i + 1] - h[i];
@@ -86,7 +85,7 @@ int main()
       DP[i + 1][1] = (2 * DP[i][1]) % MOD;
       DP[i + 1][0] = DP[i][0];
     }
-    else if (h[i] == 1)
+    else if (h[i + 1] == 1)
     {
       DP[i + 1][1] = (((2 * DP[i][1]) % MOD) + DP[i][0]) % MOD;
       DP[i + 1][0] = 0;
