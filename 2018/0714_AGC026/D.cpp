@@ -73,6 +73,7 @@ int main()
   DP[0][1] = 1;
   for (auto i = 0; i < N; i++)
   {
+    cerr << "i = " << i << endl;
     if (h[i] < h[i + 1])
     {
       ll t = h[i + 1] - h[i];
