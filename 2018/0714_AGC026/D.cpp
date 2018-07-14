@@ -129,7 +129,7 @@ int main()
       DP[i + 1][1] = (DP[i][1] + DP[i][0]) % MOD;
       DP[i + 1][0] = 0;
     }
-    // cerr << "DP[" << i + 1 << "] = " << DP[i + 1][0] << " " << DP[i + 1][1] << endl;
+    cerr << "DP[" << i + 1 << "] = " << DP[i + 1][0] << " " << DP[i + 1][1] << endl;
   }
   cout << (DP[N][1] + DP[N][0]) % MOD << endl;
 }
