@@ -68,6 +68,7 @@ int main()
   for (auto i = 1; i <= N; i++)
   {
     cin >> h[i];
+    cerr << "h[" << i << "] = " << h[i] << endl;
   }
   DP[0][0] = 0;
   DP[0][1] = 1;
