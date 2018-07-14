@@ -92,11 +92,13 @@ ll cnt_dic()
     auto it = P(A, B);
     if (M.find(it) != M.end())
     {
+      /*
       if (N < 12)
       {
         cerr << "A = " << A << ", B = " << B
              << ", M = " << M[it] << endl;
       }
+      */
       ans += M[it];
     }
   }
@@ -108,6 +110,7 @@ int main()
   cin >> N >> S;
   T = S.substr(N, N);
   S = S.substr(0, N);
+  reverse(T.begin(), T.end());
   make_dic();
   cout << cnt_dic() << endl;
 }
