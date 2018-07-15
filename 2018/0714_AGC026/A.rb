@@ -25,7 +25,7 @@ while !a.empty?
   end
 end
 
-p ary
+# p ary
 
 ans = 0
 
