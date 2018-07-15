@@ -9,7 +9,7 @@ n = gets.to_i
 a = gets.chomp.split(" ").map{|i| i.to_i}
 
 ary = []
-while !a.empty
+while !a.empty?
   for i in 0...a.size()
     if a[i] != a[i+1]
       ary << a[0..i]
