@@ -10,14 +10,16 @@ a = gets.chomp.split(" ").map{|i| i.to_i}
 
 ary = []
 while !a.empty?
-  p a
+  sep = false
   for i in 0...a.size()
     if a[i] != a[i+1]
-      p a[0..i]
       ary << a[0..i]
       a = a[i+1...-1]
+      sep = true
       break
     end
+  end
+  if !sep
     ary << a
     a = []
   end
