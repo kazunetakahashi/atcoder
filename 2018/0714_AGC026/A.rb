@@ -21,6 +21,8 @@ while !a.empty?
   end
 end
 
+p ary
+
 ans = 0
 
 ary.each{|it|
