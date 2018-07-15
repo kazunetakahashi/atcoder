@@ -115,6 +115,7 @@ P func(int l, int r, ll h)
   f += (power(2, height) * g1) % MOD;
   f %= MOD;
   ll g = (power(2, height - 1) * g1) % MOD;
+  cerr << "Here" << endl;
   cerr << "func(" << l << ", " << r << ", " << h << ") = ";
   cerr << f << ", " << g << endl;
   return P(f, g);
