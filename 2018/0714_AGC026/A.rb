@@ -12,6 +12,7 @@ ary = []
 while !a.empty?
   for i in 0...a.size()
     if a[i] != a[i+1]
+      puts a[0..i]
       ary << a[0..i]
       a = a[i+1..-1]
       break
