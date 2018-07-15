@@ -14,7 +14,7 @@ while !a.empty?
   for i in 0...a.size()
     if a[i] != a[i+1]
       ary << a[0..i]
-      a = a[i+1...-1]
+      a = a[i+1..-1]
       sep = true
       break
     end
