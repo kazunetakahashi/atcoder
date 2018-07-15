@@ -80,16 +80,16 @@ P func(int l, int r, ll h)
 {
   if (l == r)
   {
-    cerr << "func(" << l << ", " << r << ", " << h << ") = ";
-    cerr << "1, 1" << endl;
+    // cerr << "func(" << l << ", " << r << ", " << h << ") = ";
+    // cerr << "1, 1" << endl;
     return P(1, 1);
   }
   int ind = h_ind(l, r);
   ll height = H[ind] - h;
   if (l + 1 == r && height == 1)
   {
-    cerr << "func(" << l << ", " << r << ", " << h << ") = ";
-    cerr << "2, 1" << endl;
+    // cerr << "func(" << l << ", " << r << ", " << h << ") = ";
+    // cerr << "2, 1" << endl;
     return P(2, 1);
   }
   if (height == 1)
@@ -102,11 +102,11 @@ P func(int l, int r, ll h)
     ll g2 = get<1>(it2);
     ll f = (((2 * f1) % MOD) * f2) % MOD;
     ll g = (g1 * g2) % MOD;
-    cerr << "func(" << l << ", " << r << ", " << h << ") = ";
-    cerr << f << ", " << g << endl;
+    // cerr << "func(" << l << ", " << r << ", " << h << ") = ";
+    // cerr << f << ", " << g << endl;
     return P(f, g);
   }
-  auto it1 = func(l, ind, h + height - 1);
+  auto it1 = func(l, r, h + height - 1);
   ll f1 = get<0>(it1);
   ll g1 = get<1>(it1);
   ll f = f1;
@@ -115,9 +115,8 @@ P func(int l, int r, ll h)
   f += (power(2, height) * g1) % MOD;
   f %= MOD;
   ll g = (power(2, height - 1) * g1) % MOD;
-  cerr << "Here" << endl;
-  cerr << "func(" << l << ", " << r << ", " << h << ") = ";
-  cerr << f << ", " << g << endl;
+  // cerr << "func(" << l << ", " << r << ", " << h << ") = ";
+  // cerr << f << ", " << g << endl;
   return P(f, g);
 }
 
