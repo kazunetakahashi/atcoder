@@ -42,11 +42,10 @@ int N;
 int M;
 string S;
 vector<string> V;
+vector<string> W;
 
-int main()
+void make_V()
 {
-  cin >> N >> S;
-  M = 2 * N;
   int a = 0;
   int b = 0;
   int start = 0;
@@ -67,8 +66,99 @@ int main()
       start = i + 1;
     }
   }
-  for (auto x : V)
+}
+
+vector<int> make_num(string str)
+{
+  vector<int> num;
+  int a = 0;
+  int b = 0;
+  for (auto c : str)
   {
-    cerr << x << endl;
+    if (c == 'a')
+    {
+      num.push_back(a);
+      a++;
+    }
+    else
+    {
+      num.push_back(b);
+      b++;
+    }
   }
+  return num;
+}
+
+string calc_a(string str)
+{
+  vector<int> num = make_num(str);
+  string res = "";
+  bool is_a = true;
+  int search = -1;
+  for (auto i = 0; i < (int)str.size(); i++)
+  {
+    if (is_a && str[i] == 'a')
+    {
+      res += "a";
+      search = num[i];
+      is_a = false;
+    }
+    else if ((!is_a) && str[i] == 'b')
+    {
+      if (num[i] == search)
+      {
+        res += "b";
+        is_a = true;
+      }
+    }
+  }
+  return res;
+}
+
+string calc_b(string str)
+{
+  vector<int> num = make_num(str);
+  vector<string> X;
+  for (auto k = 0; k <= (int)str.size() / 2; k++)
+  {
+    string temp = "";
+    for (auto i = 0; i < (int)str.size(); i++)
+    {
+      if (num[i] >= k)
+      {
+        string s{str[i]};
+        temp += s;
+      }
+    }
+    X.push_back(temp);
+  }
+  return *max_element(X.begin(), X.end());
+}
+
+int main()
+{
+  cin >> N >> S;
+  M = 2 * N;
+  make_V();
+  for (auto str : V)
+  {
+    if (str[0] == 'a')
+    {
+      W.push_back(calc_a(str));
+    }
+    else
+    {
+      W.push_back(calc_b(str));
+    }
+  }
+  reverse(W.begin(), W.end());
+  string ans = "";
+  for (auto str : W)
+  {
+    if (ans < str + ans)
+    {
+      ans = str + ans;
+    }
+  }
+  cout << ans << endl;
 }
