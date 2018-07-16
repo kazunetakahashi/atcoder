@@ -64,7 +64,7 @@ ary.each{|str|
     for k in 0...((str.size)/2)
       temp = ""
       for i in 0..str.size
-        warn num[i], k
+        warn "#{num[i]}, #{k}"
         if num[i] >= k
           temp += str[i]
         end
