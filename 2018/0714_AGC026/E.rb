@@ -52,7 +52,6 @@ ary.each{|str|
         _a = false
       else (!_a) && str[i] == 'b'
         if num[i] == search
-          p res
           res += str[i]
           search = nil
           _a = true
@@ -61,6 +60,7 @@ ary.each{|str|
     end
     ans << res
   else
+    p num
     res = []
     for k in 0...str.size/2
       temp = ""
