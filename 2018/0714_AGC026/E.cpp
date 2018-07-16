@@ -63,8 +63,8 @@ int main()
     if (a == b)
     {
       a = b = 0;
-      V.push_back(S.substr(start, i - start));
-      start = i;
+      V.push_back(S.substr(start, i + 1 - start));
+      start = i + 1;
     }
   }
   for (auto x : V)
