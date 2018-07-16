@@ -52,9 +52,7 @@ ary.each{|str|
         _a = false
       else (!_a) && str[i] == 'b'
         if num[i] == search
-          warn res
           res += str[i]
-          search = nil
           _a = true
         end
       end
