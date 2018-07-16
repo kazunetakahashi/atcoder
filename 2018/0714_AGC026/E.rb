@@ -47,6 +47,7 @@ ary.each{|str|
     search = nil
     for i in 0..str.size
       if _a && str[i] == 'a'
+        p res
         res += str[i]
         search = num[i]
         _a = false
