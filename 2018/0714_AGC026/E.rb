@@ -60,8 +60,9 @@ ary.each{|str|
     end
     ans << res
   else
-    p num
     res = []
+    p str
+    p num
     for k in 0...str.size/2
       temp = ""
       for i in 0..str.size
