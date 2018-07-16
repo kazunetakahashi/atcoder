@@ -20,11 +20,10 @@ while !(s == "")
     if a == b
       ary << s[0..i]
       s = s[i+1..-1]
-      a = 0
-      b = 0
       break
     end
   end
+  p ary
 end
 
 p ary
