@@ -61,8 +61,8 @@ ary.each{|str|
     ans << res
   else
     res = []
-    STDERR.p str
-    STDERR.p num
+    warn str
+    warn num
     for k in 0...str.size/2
       temp = ""
       for i in 0..str.size
