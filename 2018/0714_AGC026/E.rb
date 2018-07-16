@@ -5,6 +5,7 @@
 # Powered by Visual Studio Code
 #
 
+n = gets.to_i
 s = gets.chomp
 
 ary = []
