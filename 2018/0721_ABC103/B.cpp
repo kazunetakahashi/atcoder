@@ -42,7 +42,14 @@ int main()
 {
   string S, T;
   cin >> S >> T;
-  sort(S.begin(), S.end());
-  sort(T.begin(), T.end());
-  cout << ((S == T) ? "Yes" : "No") << endl;
+  for (auto i = 0; i < 10000; i++)
+  {
+    T = T.substr(T.size() - 1, 1) + T.substr(1, T.size() - 1);
+    if (S == T)
+    {
+      cout << "Yes" << endl;
+      return 0;
+    }
+  }
+  cout << "No" << endl;
 }
