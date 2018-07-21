@@ -10,7 +10,6 @@ t = gets.chomp
 
 10000.times{
   t = t[-1] + t[0..-2]
-  p t
   if s == t
     puts "Yes"
     exit
