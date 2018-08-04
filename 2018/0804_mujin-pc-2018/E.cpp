@@ -39,7 +39,7 @@ const char ds[4] = {'D', 'R', 'U', 'L'};
 typedef tuple<ll, int, int> state;
 
 // const int C = 1e6+10;
-const ll infty = 1000000007;
+const ll infty = 10000000000007;
 
 int N, M, K;
 string D;
