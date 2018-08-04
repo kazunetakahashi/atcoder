@@ -74,6 +74,13 @@ int main()
       }
     }
   }
+  for (auto i = 0; i < K; i++)
+  {
+    for (auto k = 0; k < 4; k++)
+    {
+      cerr << "dist[" << i << "][" << k << "] = " << dist[i][k] << endl;
+    }
+  }
   int sx, sy, gx, gy;
   fill(&ans[0][0], &ans[0][0] + 1010 * 1010, -1);
   for (auto i = 0; i < N; i++)
