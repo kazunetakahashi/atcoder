@@ -84,9 +84,9 @@ int main()
   cin >> N >> M;
   fill(&cnt[0][0], &cnt[0][0] + 1010 * 1010, -1);
   int ans = 0;
-  for (auto i = 0; i <= N; i++)
+  for (auto i = 1; i <= N; i++)
   {
-    for (auto j = 0; j <= M; j++)
+    for (auto j = 1; j <= M; j++)
     {
       if (calc(i, j) == -2)
       {
