@@ -45,6 +45,11 @@ int main()
   cin >> A >> S;
   for (auto x : S)
   {
+    if (A == 0)
+    {
+      cout << "Yes" << endl;
+      return 0;
+    }
     if (x == '+')
     {
       A++;
