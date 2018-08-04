@@ -62,11 +62,11 @@ int calc(int x, int y)
   int new_y = y;
   if (x < y)
   {
-    x = rev(x);
+    new_x = rev(new_x);
   }
   else
   {
-    y = rev(y);
+    new_y = rev(new_y);
   }
   if (new_x < new_y)
   {
@@ -98,12 +98,10 @@ int main()
     {
       if (calc(i, j) == -2)
       {
-        /*
         if (ans < 100)
         {
           cerr << "(" << i << ", " << j << ")" << endl;
         }
-        */
         ans++;
       }
     }
