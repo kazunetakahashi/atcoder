@@ -58,8 +58,16 @@ int calc(int x, int y)
     return cnt[x][y] = 0;
   }
   cnt[x][y] = -2;
-  int new_x = rev(x);
-  int new_y = rev(y);
+  int new_x = x;
+  int new_y = y;
+  if (x < y)
+  {
+    x = rev(x);
+  }
+  else
+  {
+    y = rev(y);
+  }
   if (new_x < new_y)
   {
     new_y = new_y - new_x;
@@ -90,10 +98,12 @@ int main()
     {
       if (calc(i, j) == -2)
       {
+        /*
         if (ans < 100)
         {
           cerr << "(" << i << ", " << j << ")" << endl;
         }
+        */
         ans++;
       }
     }
