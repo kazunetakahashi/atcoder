@@ -90,6 +90,10 @@ int main()
     {
       if (calc(i, j) == -2)
       {
+        if (ans < 100)
+        {
+          cerr << "(" << i << ", " << j << ")" << endl;
+        }
         ans++;
       }
     }
