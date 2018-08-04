@@ -103,6 +103,7 @@ int main()
     if (ans[x][y] == -1)
     {
       ans[x][y] = d;
+      cerr << "ans[" << x << "][" << y << "] = " << ans[x][y] << endl;
       if (x == gx && y == gy)
       {
         cout << d << endl;
