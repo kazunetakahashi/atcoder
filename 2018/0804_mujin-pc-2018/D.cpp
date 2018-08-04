@@ -81,6 +81,10 @@ int calc(int x, int y)
 
 int main()
 {
+  for (auto k = 0; k < 1000; k++)
+  {
+    cerr << "rev(" << k << ") = " << rev(k) << endl;
+  }
   cin >> N >> M;
   fill(&cnt[0][0], &cnt[0][0] + 1010 * 1010, -1);
   int ans = 0;
