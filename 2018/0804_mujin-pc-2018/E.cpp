@@ -64,7 +64,7 @@ int main()
   {
     for (auto k = 0; k < 4; k++)
     {
-      if (D[i + 1] == ds[k])
+      if (D[i] == ds[k])
       {
         dist[i][k] = 1;
       }
@@ -74,6 +74,7 @@ int main()
       }
     }
   }
+  /*
   for (auto i = 0; i < K; i++)
   {
     for (auto k = 0; k < 4; k++)
@@ -81,6 +82,7 @@ int main()
       cerr << "dist[" << i << "][" << k << "] = " << dist[i][k] << endl;
     }
   }
+  */
   int sx, sy, gx, gy;
   fill(&ans[0][0], &ans[0][0] + 1010 * 1010, -1);
   for (auto i = 0; i < N; i++)
@@ -110,7 +112,7 @@ int main()
     if (ans[x][y] == -1)
     {
       ans[x][y] = d;
-      cerr << "ans[" << x << "][" << y << "] = " << ans[x][y] << endl;
+      // cerr << "ans[" << x << "][" << y << "] = " << ans[x][y] << endl;
       if (x == gx && y == gy)
       {
         cout << d << endl;
