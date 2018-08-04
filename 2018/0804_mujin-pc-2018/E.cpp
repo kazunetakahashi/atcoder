@@ -44,7 +44,7 @@ const ll infty = 1000000007;
 int N, M, K;
 string D;
 string S[1010];
-ll dist[200010][4];
+ll dist[300010][4];
 ll ans[1010][1010];
 
 int main()
@@ -58,9 +58,9 @@ int main()
   }
   for (auto k = 0; k < 4; k++)
   {
-    dist[2 * K][k] = infty;
+    dist[3 * K][k] = infty;
   }
-  for (int i = 2 * K - 1; i >= 0; i--)
+  for (int i = 3 * K - 1; i >= 0; i--)
   {
     for (auto k = 0; k < 4; k++)
     {
