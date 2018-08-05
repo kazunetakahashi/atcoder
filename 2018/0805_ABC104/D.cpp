@@ -35,55 +35,138 @@ typedef long long ll;
 // const int dx[4] = {1, 0, -1, 0};
 // const int dy[4] = {0, 1, 0, -1};
 
-string S;
-
 // const int C = 1e6+10;
 const ll M = 1000000007;
-ll ans = 0;
-ll cnt_A = 0;
-ll cnt_AB = 0;
+string S;
+int N;
 
-void A()
+const int MAX_SIZE = 1000010;
+const long long MOD = 1000000007;
+
+long long inv[MAX_SIZE];
+long long fact[MAX_SIZE];
+long long factinv[MAX_SIZE];
+
+void init()
 {
-  cnt_A++;
+  inv[1] = 1;
+  for (int i = 2; i < MAX_SIZE; i++)
+  {
+    inv[i] = ((MOD - inv[MOD % i]) * (MOD / i)) % MOD;
+  }
+  fact[0] = factinv[0] = 1;
+  for (int i = 1; i < MAX_SIZE; i++)
+  {
+    fact[i] = (i * fact[i - 1]) % MOD;
+    factinv[i] = (inv[i] * factinv[i - 1]) % MOD;
+  }
 }
 
-void B()
+long long C(int n, int k)
 {
-  cnt_AB += cnt_A;
-  cnt_AB %= M;
+  if (n >= 0 && k >= 0 && n - k >= 0)
+  {
+    return ((fact[n] * factinv[k]) % MOD * factinv[n - k]) % MOD;
+  }
+  return 0;
 }
 
-void C()
+long long power(long long x, long long n)
 {
-  ans += cnt_AB;
-  ans %= M;
+  if (n < 0)
+  {
+    return 0;
+  }
+  else if (n == 0)
+  {
+    return 1;
+  }
+  else if (n % 2 == 1)
+  {
+    return (x * power(x, n - 1)) % MOD;
+  }
+  else
+  {
+    long long half = power(x, n / 2);
+    return (half * half) % MOD;
+  }
 }
+
+long long gcm(long long a, long long b)
+{
+  if (a < b)
+  {
+    return gcm(b, a);
+  }
+  if (b == 0)
+    return a;
+  return gcm(b, a % b);
+}
+
+ll cnt_A[100010];
+ll cnt_q[100010];
+ll cnt_C[100010];
+ll sum_A = 0;
+ll sum_q = 0;
+ll sum_C = 0;
 
 int main()
 {
+  init();
   cin >> S;
-  for (auto x : S)
+  N = S.size();
+  fill(cnt_A, cnt_A + 100010, 0);
+  fill(cnt_q, cnt_q + 100010, 0);
+  fill(cnt_C, cnt_C + 100010, 0);
+  for (auto i = 0; i < N; i++)
   {
-    if (x == '?')
+    if (S[i] == 'A')
     {
-      C();
-      B();
-      A();
+      cnt_A[i] = 1;
     }
-    if (x == 'A')
+    else if (S[i] == '?')
     {
-      A();
+      cnt_q[i] = 1;
     }
-    if (x == 'B')
+    else if (S[i] == 'C')
     {
-      B();
+      cnt_C[i] = 1;
     }
-    if (x == 'C')
+  }
+  for (auto i = 1; i < N; i++)
+  {
+    cnt_A[i] += cnt_A[i - 1];
+    cnt_q[i] += cnt_q[i - 1];
+    cnt_C[i] += cnt_C[i - 1];
+  }
+  sum_A = cnt_A[N - 1];
+  sum_q = cnt_q[N - 1];
+  sum_C = cnt_C[N - 1];
+  ll ans = 0;
+  for (auto i = 1; i < N - 1; i++)
+  {
+    if (S[i] == 'B')
     {
-      C();
+      ans += (cnt_A[i - 1] * (sum_C - cnt_C[i]) * power(3, sum_q)) % M;
+      ans %= M;
+      ans += (cnt_A[i - 1] * (sum_q - cnt_q[i]) * power(3, sum_q - 1)) % M;
+      ans %= M;
+      ans += (cnt_q[i - 1] * (sum_C - cnt_C[i]) * power(3, sum_q - 1)) % M;
+      ans %= M;
+      ans += (cnt_q[i - 1] * (sum_q - cnt_q[i]) * power(3, sum_q - 2)) % M;
+      ans %= M;
     }
-    cerr << cnt_A << " " << cnt_AB << " " << ans << endl;
+    else if (S[i] == '?')
+    {
+      ans += (cnt_A[i - 1] * (sum_C - cnt_C[i]) * power(3, sum_q - 1)) % M;
+      ans %= M;
+      ans += (cnt_A[i - 1] * (sum_q - cnt_q[i]) * power(3, sum_q - 2)) % M;
+      ans %= M;
+      ans += (cnt_q[i - 1] * (sum_C - cnt_C[i]) * power(3, sum_q - 2)) % M;
+      ans %= M;
+      ans += (cnt_q[i - 1] * (sum_q - cnt_q[i]) * power(3, sum_q - 3)) % M;
+      ans %= M;
+    }
   }
   cout << ans << endl;
 }
