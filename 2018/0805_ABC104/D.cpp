@@ -83,6 +83,7 @@ int main()
     {
       C();
     }
+    cerr << cnt_A << " " << cnt_AB << " " << ans << endl;
   }
   cout << ans << endl;
 }
