@@ -26,6 +26,6 @@ else
         exit
       end
     end
+    puts "AC"
   end
-  puts "AC"
 end
