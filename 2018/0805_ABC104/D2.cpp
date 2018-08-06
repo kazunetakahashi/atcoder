@@ -45,12 +45,12 @@ ll DP[100010][4];
 void calc(int i, char x)
 {
   int l = x - 'A';
-  for (auto k = 0; k < 4; k++)
+  for (auto k = 0; k <= 3; k++)
   {
     DP[i][k] += DP[i - 1][k];
     DP[i][k] %= M;
   }
-  DP[i][l + 1] += DP[i][l];
+  DP[i][l + 1] += DP[i - 1][l];
   DP[i][l + 1] %= M;
 }
 
