@@ -112,7 +112,7 @@ int main()
   int ans = 0;
   for (auto i = 1; i <= N; i++)
   {
-    for (auto j = 1; j <= N; j++)
+    for (auto j = 1; j <= M; j++)
     {
       if (!visited[i][j])
       {
