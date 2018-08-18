@@ -104,24 +104,19 @@ int main()
   {
     int l, r;
     cin >> l >> r;
-    l--;
-    r--;
     seg[r].push_back(l);
   }
   for (auto i = 0; i < Q; i++)
   {
     int l, r;
     cin >> l >> r;
-    l--;
-    r--;
     X[r].push_back(que(l, i));
   }
   BIT bit(510);
-  for (auto r = 0; r < N; r++)
+  for (auto r = 1; r <= N; r++)
   {
     for (auto x : seg[r])
     {
-      cerr << "l = " << x << endl;
       bit.add(x);
     }
     for (auto x : X[r])
