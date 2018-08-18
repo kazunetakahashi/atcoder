@@ -121,6 +121,7 @@ int main()
   {
     for (auto x : seg[r])
     {
+      cerr << "l = " << x << endl;
       bit.add(x);
     }
     for (auto x : X[r])
