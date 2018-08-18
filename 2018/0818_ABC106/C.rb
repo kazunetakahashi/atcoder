@@ -11,7 +11,7 @@ k = gets.to_i
 if s[0] != "1"
   puts s[0]
 else
-  for i in 0...(min(k, s.size())
+  for i in 0...([k, s.size()].min)
     if s[i] != "1"
       puts s[i]
       exit
