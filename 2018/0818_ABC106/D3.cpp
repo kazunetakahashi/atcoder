@@ -63,7 +63,7 @@ int main()
   }
   for (auto i = 1; i <= N; i++)
   {
-    for (auto j = 1; j <= M; j++)
+    for (auto j = 1; j <= N; j++)
     {
       imos[i][j] += imos[i][j - 1] + imos[i - 1][j] - imos[i - 1][j - 1];
     }
