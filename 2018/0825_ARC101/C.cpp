@@ -61,15 +61,6 @@ int main()
     }
   }
   sort(V[1].begin(), V[1].end());
-  for (auto x : V[0])
-  {
-    cerr << x << endl;
-  }
-  cerr << " " << endl;
-  for (auto x : V[1])
-  {
-    cerr << x << endl;
-  }
   ll ans = 100000000000000;
   for (auto i = 0; i < 2; i++)
   {
@@ -83,6 +74,8 @@ int main()
     int l = K - k;
     if ((int)V[0].size() >= k && (int)V[1].size() >= l)
     {
+      cerr << "V[0][" << k - 1 << "] = " << V[0][k - 1] << endl;
+      cerr << "V[1][" << l - 1 << "] = " << V[0][l - 1] << endl;
       ans = min(ans, V[0][k - 1] + 2 * V[1][l - 1]);
       ans = min(ans, 2 * V[0][k - 1] + V[1][l - 1]);
     }
