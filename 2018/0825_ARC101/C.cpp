@@ -51,7 +51,11 @@ int main()
   }
   for (auto i = 0; i < N; i++)
   {
-    if (x[i] > 0)
+    if (x[i] == 0)
+    {
+      K--;
+    }
+    else if (x[i] > 0)
     {
       V[0].push_back(x[i]);
     }
@@ -59,6 +63,11 @@ int main()
     {
       V[1].push_back(-1 * x[i]);
     }
+  }
+  if (K <= 0)
+  {
+    cout << 0 << endl;
+    return 0;
   }
   sort(V[1].begin(), V[1].end());
   ll ans = 100000000000000;
@@ -69,13 +78,13 @@ int main()
       ans = min(ans, V[i][K - 1]);
     }
   }
-  for (auto k = 0; k <= K; k++)
+  for (auto k = 1; k <= K - 1; k++)
   {
     int l = K - k;
     if ((int)V[0].size() >= k && (int)V[1].size() >= l)
     {
-      cerr << "V[0][" << k - 1 << "] = " << V[0][k - 1] << endl;
-      cerr << "V[1][" << l - 1 << "] = " << V[0][l - 1] << endl;
+      //cerr << "V[0][" << k - 1 << "] = " << V[0][k - 1] << endl;
+      //cerr << "V[1][" << l - 1 << "] = " << V[0][l - 1] << endl;
       ans = min(ans, V[0][k - 1] + 2 * V[1][l - 1]);
       ans = min(ans, 2 * V[0][k - 1] + V[1][l - 1]);
     }
