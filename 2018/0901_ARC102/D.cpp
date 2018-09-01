@@ -61,13 +61,9 @@ void flush()
   }
 }
 
-void add_edge(int v, int w, int c)
+void add_edge(int x, int y, int c)
 {
-  if (v > w)
-  {
-    swap(v, w);
-  }
-  V[v].push_back(path(w, c));
+  V[x].push_back(path(y, c));
 }
 
 int main()
