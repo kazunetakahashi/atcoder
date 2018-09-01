@@ -102,6 +102,7 @@ ll ans[10010];
 
 void flush()
 {
+  cerr << "total = " << C(N + K - 1, K - 1) << endl;
   for (auto i = 2; i <= 2 * K; i++)
   {
     ll c = (C(N + K - 1, K - 1) + M - (ans[i] % M)) % M;
