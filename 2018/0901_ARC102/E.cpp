@@ -114,18 +114,21 @@ void calc(ll X)
   ll c = ((X / 2) * C(N + K - 3, K - 3)) % M;
   if (X % 2 == 0)
   {
-    ll Y = X / 2;
     c += C(N + K - 2, K - 2);
     c %= M;
     c += C(N + K - 3, K - 2);
     c %= M;
   }
-  ans[X] = c;
+  ans[X] = c % M;
 }
 
 int main()
 {
   init();
   cin >> K >> N;
+  for (auto i = 2; i <= 2 * K; i++)
+  {
+    calc(i);
+  }
   flush();
 }
