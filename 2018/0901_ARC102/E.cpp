@@ -111,7 +111,7 @@ void flush()
 
 void calc(ll X)
 {
-  ll c = ((X / 2) * C(N + K - 3, K - 3)) % M;
+  ll c = (((X - 1) / 2) * C(N + K - 3, K - 3)) % M;
   if (X % 2 == 0)
   {
     c += C(N + K - 2, K - 2);
