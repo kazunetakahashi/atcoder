@@ -102,18 +102,15 @@ ll ans[10010];
 
 void flush()
 {
-  cerr << "total = " << C(N + K - 1, K - 1) << endl;
-  cerr << "chance = " << (2 * C(N + K - 2, K - 2) + M - C(N + K - 3, K - 3)) % M << endl;
   for (auto i = 2; i <= 2 * K; i++)
   {
-    // ll c = (C(N + K - 1, K - 1) + M - (ans[i] % M)) % M;
     cout << ans[i] << endl;
   }
 }
 
 void calc(ll X)
 {
-  ll Y = (2 * C(N + K - 2, K - 2) + M - C(N + K - 3, K - 3)) % M;
+  ll Y = C(N + K - 3, K - 1);
   ll c = (((X - 1) / 2) * Y) % M;
   if (X % 2 == 0)
   {
