@@ -46,14 +46,26 @@ int main()
   if (K % 2 == 0)
   {
     K /= 2;
-  }
-  ll cnt = 0;
-  for (auto i = 1; i <= N; i++)
-  {
-    if (i % K == 0)
+    ll cnt[2] = {0, 0};
+    for (auto i = 1; i <= N; i++)
     {
-      cnt++;
+      if (i % K == 0)
+      {
+        cnt[i % 2]++;
+      }
     }
+    cout << cnt[0] * cnt[0] * cnt[0] + cnt[1] * cnt[1] * cnt[1] << endl;
   }
-  cout << cnt * cnt * cnt << endl;
+  else
+  {
+    ll cnt = 0;
+    for (auto i = 1; i <= N; i++)
+    {
+      if (i % K == 0)
+      {
+        cnt++;
+      }
+    }
+    cout << cnt * cnt * cnt << endl;
+  }
 }
