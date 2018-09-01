@@ -54,6 +54,7 @@ int main()
         cnt[i % 2]++;
       }
     }
+    cerr << "cnt = " << cnt[0] << " " << cnt[1] << endl;
     cout << cnt[0] * cnt[0] * cnt[0] + cnt[1] * cnt[1] * cnt[1] << endl;
   }
   else
