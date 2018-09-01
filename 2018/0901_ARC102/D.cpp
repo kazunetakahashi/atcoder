@@ -46,7 +46,7 @@ vector<path> V[100];
 
 void flush()
 {
-  int M;
+  int M = 0;
   for (auto i = 0; i < N; i++)
   {
     M += (int)V[i].size();
