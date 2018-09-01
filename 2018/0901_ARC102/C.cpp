@@ -45,16 +45,15 @@ int main()
   cin >> N >> K;
   if (K % 2 == 0)
   {
-    K /= 2;
     ll cnt[2] = {0, 0};
     for (auto i = 1; i <= N; i++)
     {
-      if (i % K == 0)
+      if (i % (K / 2) == 0)
       {
-        cnt[i % 2]++;
+        cnt[(i / (K / 2)) % 2]++;
       }
     }
-    cerr << "cnt = " << cnt[0] << " " << cnt[1] << endl;
+    // cerr << "cnt = " << cnt[0] << " " << cnt[1] << endl;
     cout << cnt[0] * cnt[0] * cnt[0] + cnt[1] * cnt[1] * cnt[1] << endl;
   }
   else
