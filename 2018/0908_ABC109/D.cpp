@@ -58,7 +58,7 @@ void flush()
 
 void make_swap(int x, int y, int z, int w)
 {
-  swap(a[x][y], a[z][w]);
+  // swap(a[x][y], a[z][w]);
   V.push_back(X(x, y, z, w));
 }
 
@@ -91,6 +91,7 @@ int main()
         else
         {
           int z = j;
+          cerr << "y = " << y << ", z = " << z << endl;
           for (auto k = y; k < z - 1; k++)
           {
             make_swap(i, k, i, k + 1);
