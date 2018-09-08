@@ -52,7 +52,7 @@ void flush()
   for (auto i = 0; i < N; i++)
   {
     X x = V[i];
-    cout << get<1>(x) + 1 << " " << get<0>(x) + 1 << " " << get<3>(x) + 1 << " " << get<2>(x) + 1 << endl;
+    cout << get<0>(x) + 1 << " " << get<1>(x) + 1 << " " << get<2>(x) + 1 << " " << get<3>(x) + 1 << endl;
   }
 }
 
@@ -77,7 +77,7 @@ int main()
   fill(odd, odd + 510, -1);
   for (auto i = 0; i < H; i++)
   {
-    int y;
+    int y = -1;
     int cnt = 0;
     for (auto j = 0; j < W; j++)
     {
