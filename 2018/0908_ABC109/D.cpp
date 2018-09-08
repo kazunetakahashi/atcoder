@@ -83,6 +83,7 @@ int main()
     {
       if (a[i][j])
       {
+        cerr << "(" << i << ", " << j << ")" << endl;
         if (cnt % 2 == 0)
         {
           y = j;
