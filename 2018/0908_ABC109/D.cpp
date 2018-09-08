@@ -83,7 +83,7 @@ int main()
     {
       if (a[i][j])
       {
-        cerr << "(" << i << ", " << j << ")" << endl;
+        // cerr << "(" << i << ", " << j << ")" << endl;
         if (cnt % 2 == 0)
         {
           y = j;
@@ -91,7 +91,7 @@ int main()
         else
         {
           int z = j;
-          cerr << "y = " << y << ", z = " << z << endl;
+          // cerr << "y = " << y << ", z = " << z << endl;
           for (auto k = y; k < z; k++)
           {
             make_swap(i, k, i, k + 1);
