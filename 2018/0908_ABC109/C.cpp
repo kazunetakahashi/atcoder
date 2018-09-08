@@ -48,9 +48,9 @@ ll gcd(ll a, ll b)
   {
     return gcd(b, a);
   }
-  else if (b == 1)
+  else if (b == 0)
   {
-    return 1;
+    return a;
   }
   else
   {
