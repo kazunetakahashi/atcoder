@@ -92,7 +92,7 @@ int main()
         {
           int z = j;
           cerr << "y = " << y << ", z = " << z << endl;
-          for (auto k = y; k < z - 1; k++)
+          for (auto k = y; k < z; k++)
           {
             make_swap(i, k, i, k + 1);
           }
@@ -109,7 +109,7 @@ int main()
       }
     }
   }
-  int x;
+  int x = -1;
   int cnt = 0;
   for (auto i = 0; i < H; i++)
   {
@@ -122,7 +122,7 @@ int main()
       else
       {
         int z = i;
-        for (auto k = x; k < z - 1; k++)
+        for (auto k = x; k < z; k++)
         {
           make_swap(k, W - 1, k + 1, W - 1);
         }
