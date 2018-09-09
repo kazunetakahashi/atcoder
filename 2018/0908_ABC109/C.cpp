@@ -44,7 +44,7 @@ ll x[100010];
 
 long long gcd(long long x, long long y)
 {
-  return y ? gcd(y % x, x) : x;
+  return y ? gcd(y, x % y) : x;
 }
 
 int main()
