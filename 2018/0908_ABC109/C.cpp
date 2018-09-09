@@ -42,20 +42,9 @@ int N;
 ll X;
 ll x[100010];
 
-ll gcd(ll a, ll b)
+long long gcd(long long x, long long y)
 {
-  if (b > a)
-  {
-    return gcd(b, a);
-  }
-  else if (b == 0)
-  {
-    return a;
-  }
-  else
-  {
-    return gcd(b, a % b);
-  }
+  return y ? gcd(y % x, x) : x;
 }
 
 int main()
