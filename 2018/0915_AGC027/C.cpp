@@ -47,15 +47,6 @@ bool ok[200010];
 int main()
 {
   cin >> N >> M >> s;
-  for (auto i = 0; i < M; i++)
-  {
-    int a, b;
-    cin >> a >> b;
-    a--;
-    b--;
-    S[b][L[a]].insert(a);
-    S[a][L[b]].insert(b);
-  }
   for (auto i = 0; i < N; i++)
   {
     if (s[i] == 'A')
@@ -67,17 +58,21 @@ int main()
       L[i] = 1;
     }
   }
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < M; i++)
   {
-    cerr << L[i];
+    int a, b;
+    cin >> a >> b;
+    a--;
+    b--;
+    S[b][L[a]].insert(a);
+    S[a][L[b]].insert(b);
   }
-  cerr << endl;
   fill(ok, ok + N, true);
   queue<int> Q;
   for (auto i = 0; i < N; i++)
   {
-    cerr << "S[" << i << "][0] = " << (int)S[i][0].empty() << endl;
-    cerr << "S[" << i << "][1] = " << (int)S[i][1].empty() << endl;
+    // cerr << "S[" << i << "][0] = " << (int)S[i][0].empty() << endl;
+    // cerr << "S[" << i << "][1] = " << (int)S[i][1].empty() << endl;
     if (S[i][0].empty() || S[i][1].empty())
     {
       Q.push(i);
