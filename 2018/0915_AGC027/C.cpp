@@ -71,6 +71,8 @@ int main()
   queue<int> Q;
   for (auto i = 0; i < N; i++)
   {
+    cerr << "S[" << i << "][0] = " << (int)S[i][0].empty() << endl;
+    cerr << "S[" << i << "][1] = " << (int)S[i][1].empty() << endl;
     if (S[i][0].empty() || S[i][1].empty())
     {
       Q.push(i);
@@ -106,7 +108,6 @@ int main()
   {
     if (ok[i])
     {
-      cerr << i << " : ok" << endl;
       first[L[i]] = true;
     }
   }
