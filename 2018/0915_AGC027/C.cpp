@@ -101,13 +101,20 @@ int main()
       }
     }
   }
+  bool first[2] = {false, false};
   for (auto i = 0; i < N; i++)
   {
     if (ok[i])
     {
-      cout << "Yes" << endl;
-      return 0;
+      first[L[i]] = true;
     }
   }
-  cout << "No" << endl;
+  if (first[0] && first[1])
+  {
+    cout << "Yes" << endl;
+  }
+  else
+  {
+    cout << "No" << endl;
+  }
 }
