@@ -62,5 +62,9 @@ int main()
       ans++;
     }
   }
+  if (x > 0)
+  {
+    ans--;
+  }
   cout << ans << endl;
 }
