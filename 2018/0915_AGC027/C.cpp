@@ -47,6 +47,16 @@ bool ok[200010];
 int main()
 {
   cin >> N >> M >> s;
+  for (auto i = 0; i < M; i++)
+  {
+    int a, b;
+    cin >> a >> b;
+    a--;
+    b--;
+    S[b][L[a]].insert(a);
+    S[a][L[b]].insert(b);
+  }
+  cerr << "here" << endl;
   for (auto i = 0; i < N; i++)
   {
     if (s[i] == 'A')
@@ -58,16 +68,6 @@ int main()
       L[i] = 1;
     }
   }
-  for (auto i = 0; i < M; i++)
-  {
-    int a, b;
-    cin >> a >> b;
-    a--;
-    b--;
-    S[b][L[a]].insert(a);
-    S[a][L[b]].insert(b);
-  }
-  cerr << "here" << endl;
   fill(ok, ok + N, true);
   queue<int> Q;
   for (auto i = 0; i < N; i++)
