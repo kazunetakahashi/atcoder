@@ -67,6 +67,11 @@ int main()
       L[i] = 1;
     }
   }
+  for (auto i = 0; i < N; i++)
+  {
+    cerr << L[i];
+  }
+  cerr << endl;
   fill(ok, ok + N, true);
   queue<int> Q;
   for (auto i = 0; i < N; i++)
