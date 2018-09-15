@@ -67,6 +67,7 @@ int main()
     S[b][L[a]].insert(a);
     S[a][L[b]].insert(b);
   }
+  cerr << "here" << endl;
   fill(ok, ok + N, true);
   queue<int> Q;
   for (auto i = 0; i < N; i++)
