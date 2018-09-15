@@ -58,7 +58,7 @@ int main()
       L[i] = 1;
     }
   }
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < M; i++)
   {
     int a, b;
     cin >> a >> b;
