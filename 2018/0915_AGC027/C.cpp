@@ -56,7 +56,6 @@ int main()
     S[b][L[a]].insert(a);
     S[a][L[b]].insert(b);
   }
-  cerr << "here" << endl;
   for (auto i = 0; i < N; i++)
   {
     if (s[i] == 'A')
@@ -107,8 +106,8 @@ int main()
     if (ok[i])
     {
       cout << "Yes" << endl;
+      return 0;
     }
-    return 0;
   }
   cout << "No" << endl;
 }
