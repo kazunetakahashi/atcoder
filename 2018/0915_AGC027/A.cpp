@@ -58,7 +58,7 @@ int main()
     }
     else
     {
-      a[i] -= x;
+      x -= a[i];
       ans++;
     }
   }
