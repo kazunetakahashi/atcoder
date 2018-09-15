@@ -47,14 +47,14 @@ int main()
     for (auto j = 0; j < N; j++)
     {
       cout << i + j + 2;
-    }
-    if (i < N - 1)
-    {
-      cout << " ";
-    }
-    else
-    {
-      cout << endl;
+      if (j < N - 1)
+      {
+        cout << " ";
+      }
+      else
+      {
+        cout << endl;
+      }
     }
   }
 }
