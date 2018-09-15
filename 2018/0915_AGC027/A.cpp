@@ -54,6 +54,7 @@ int main()
   {
     if (a[i] > x)
     {
+      x = 0;
       break;
     }
     else
@@ -65,10 +66,6 @@ int main()
   if (x > 0)
   {
     ans--;
-  }
-  if (ans < 0)
-  {
-    ans = 0;
   }
   cout << ans << endl;
 }
