@@ -106,6 +106,7 @@ int main()
   {
     if (ok[i])
     {
+      cerr << i << " : ok" << endl;
       first[L[i]] = true;
     }
   }
