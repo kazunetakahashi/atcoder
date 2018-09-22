@@ -66,6 +66,7 @@ int main()
     ll C = cnt[i];
     for (auto j = 0; j <= K; j++)
     {
+      /*
       DP[i][j][0] = 0;
       int ind = j - 1;
       if (ind >= 0)
@@ -100,6 +101,30 @@ int main()
       if (0 <= ind && ind <= K)
       {
         DP[i][j][1] += DP[i][ind][0];
+        DP[i][j][1] %= MOD;
+      }
+      */
+      DP[i][j][0] = 0;
+      for (auto k = 0; k <= C - 1; k++)
+      {
+        if (0 <= j - k && j - k <= K)
+        {
+          DP[i][j][0] += DP[i - 1][j - k][0];
+          DP[i][j][0] %= MOD;
+        }
+      }
+      DP[i][j][1] = 0;
+      for (auto k = 0; k <= C; k++)
+      {
+        if (0 <= j - k && j - k <= K)
+        {
+          DP[i][j][1] += DP[i - 1][j - k][1];
+          DP[i][j][1] %= MOD;
+        }
+      }
+      if (j - C >= 0)
+      {
+        DP[i][j][1] += DP[i - 1][j - C][0];
         DP[i][j][1] %= MOD;
       }
     }
