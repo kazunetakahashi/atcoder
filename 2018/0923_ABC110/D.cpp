@@ -161,6 +161,7 @@ int main()
     ll ans = 1;
     for (auto x : X)
     {
+      cerr << x.first << ": " << x.second << endl;
       ll k = x.second;
       ans *= C(k + N - 1, k);
       ans %= MOD;
