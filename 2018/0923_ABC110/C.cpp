@@ -53,7 +53,7 @@ int main()
     to[x].insert(y);
     from[y].insert(x);
   }
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < 26; i++)
   {
     if (to[i].size() > 1 || from[i].size() > 1)
     {
