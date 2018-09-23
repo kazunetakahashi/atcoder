@@ -5,7 +5,7 @@
 # Powered by Visual Studio Code
 #
 
-a, b, c = gets.chomp.split(" ").map{|i| i.to_i }.sort
+a, b, c = gets.chomp.split(" ").map{|i| i.to_i }.sort.reverse
 
 puts 10 * a + b + c
 
