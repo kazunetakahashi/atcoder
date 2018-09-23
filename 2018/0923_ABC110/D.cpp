@@ -103,28 +103,6 @@ long long C(int n, int k)
   return 0;
 }
 
-long long power(long long x, long long n)
-{
-  if (n == 0)
-  {
-    return 1;
-  }
-  else if (n % 2 == 1)
-  {
-    return (x * power(x, n - 1)) % MOD;
-  }
-  else
-  {
-    long long half = power(x, n / 2);
-    return (half * half) % MOD;
-  }
-}
-
-long long gcd(long long x, long long y)
-{
-  return y ? gcd(y, x % y) : x;
-}
-
 map<ll, ll> X;
 
 int main()
@@ -133,11 +111,7 @@ int main()
   init2();
   ll N, M;
   cin >> N >> M;
-  if (M == 1)
-  {
-    cout << 1 << endl;
-  }
-  else if (prime(M))
+  if (prime(M))
   {
     cout << N << endl;
   }
@@ -158,6 +132,7 @@ int main()
         }
       }
     }
+    assert(M == 1);
     ll ans = 1;
     for (auto x : X)
     {
