@@ -145,7 +145,7 @@ int main()
   {
     for (auto x : prime_num)
     {
-      if (M % x == 0)
+      while (M % x == 0)
       {
         M /= x;
         if (X.find(x) == X.end())
@@ -161,7 +161,7 @@ int main()
     ll ans = 1;
     for (auto x : X)
     {
-      cerr << x.first << ": " << x.second << endl;
+      // cerr << x.first << ": " << x.second << endl;
       ll k = x.second;
       ans *= C(k + N - 1, k);
       ans %= MOD;
