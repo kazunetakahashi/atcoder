@@ -5,8 +5,8 @@
 # Powered by Visual Studio Code
 #
 
-a, b, c = gets.chomp.split(" ").map{|i| i.to_i }
+a, b, c = gets.chomp.split(" ").map{|i| i.to_i }.sort
 
-puts [10 * a + b + c, a + 10 * b + c].max
+puts 10 * a + b + c
 
 
