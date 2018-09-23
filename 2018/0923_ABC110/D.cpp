@@ -132,7 +132,10 @@ int main()
         }
       }
     }
-    assert(M == 1);
+    if (M != 1)
+    {
+      X[M] = 1;
+    }
     ll ans = 1;
     for (auto x : X)
     {
