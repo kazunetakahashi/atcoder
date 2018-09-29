@@ -54,7 +54,7 @@ int main()
   {
     cnt[i % 2][v[i]]++;
   }
-  int ans = 0;
+  int ans = N;
   for (auto k = 0; k < 2; k++)
   {
     int maxi = 0;
