@@ -40,7 +40,8 @@ typedef long long ll;
 
 int N;
 int v[100010];
-int cnt[100010][2];
+typedef tuple<int, int> I;
+vector<I> cnt[2];
 
 int main()
 {
@@ -49,20 +50,39 @@ int main()
   {
     cin >> v[i];
   }
-  fill(&cnt[0][0], &cnt[0][0] + 100010 * 2, 0);
+  for (auto k = 0; k < 2; k++)
+  {
+    cnt[k] = vector<I>(100010);
+    for (auto i = 0; i < 100010; i++)
+    {
+      cnt[k][i] = I(0, i);
+    }
+  }
   for (auto i = 0; i < N; i++)
   {
-    cnt[i % 2][v[i]]++;
+    get<0>(cnt[i % 2][v[i]])++;
   }
   int ans = N;
   for (auto k = 0; k < 2; k++)
   {
-    int maxi = 0;
+    sort(cnt[k].begin(), cnt[k].end());
+    reverse(cnt[k].begin(), cnt[k].end());
+  }
+  for (auto k = 0; k < 2; k++)
+  {
+    int t_ans = N;
+    int l = 1 - k;
+    int k_num = get<1>(cnt[k][0]);
+    t_ans -= get<0>(cnt[k][0]);
     for (auto i = 0; i < 100010; i++)
     {
-      maxi = max(maxi, cnt[k][i]);
+      if (k_num != get<1>(cnt[l][i]))
+      {
+        t_ans -= get<0>(cnt[l][i]);
+        break;
+      }
     }
-    ans -= maxi;
+    ans = min(ans, t_ans);
   }
   cout << ans << endl;
 }
