@@ -181,7 +181,7 @@ int main()
   ll ans = 0;
   for (auto i = 0; i < N; i++)
   {
-    ans += (fact[N - 1 - i] * (((b[i] * (b[i] + 1)) / 2) % MOD)) % MOD;
+    ans += (fact[N - 1 - i] * (((b[i] * (b[i] - 1)) / 2) % MOD)) % MOD;
     ans %= MOD;
     ans += (((b[i] * fact[N - 1 - i]) % MOD) * ((C(N - 1 - i, 2) * inv[2]) % MOD)) % MOD;
     ans %= MOD;
