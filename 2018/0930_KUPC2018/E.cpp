@@ -158,14 +158,14 @@ int main()
     a[i]--;
   }
   BIT bit(N + 1);
-  cerr << "b: ";
+  // cerr << "b: ";
   for (auto i = 0; i < N; i++)
   {
     b[i] = a[i] - bit.sum(1, a[i] + 1);
     bit.add(a[i] + 1);
-    cerr << b[i] << " ";
+    // cerr << b[i] << " ";
   }
-  cerr << endl;
+  // cerr << endl;
   c[N - 1] = 1;
   for (int i = N - 2; i >= 0; i--)
   {
@@ -173,12 +173,14 @@ int main()
     c[i] += c[i + 1];
     c[i] %= MOD;
   }
+  /*
   cerr << "c: ";
   for (auto i = 0; i < N; i++)
   {
     cerr << c[i] << " ";
   }
   cerr << endl;
+  */
   ll ans = 0;
   for (auto i = 0; i < N; i++)
   {
@@ -187,16 +189,21 @@ int main()
     d[i] %= MOD;
     d[i] += (((b[i] * fact[N - 1 - i]) % MOD) * ((C(N - 1 - i, 2) * inv[2]) % MOD)) % MOD;
     d[i] %= MOD;
-    d[i] += (b[i] * c[i]) % MOD;
-    d[i] %= MOD;
+    if (i < N - 1)
+    {
+      d[i] += (b[i] * c[i + 1]) % MOD;
+      d[i] %= MOD;
+    }
     ans += d[i];
     ans %= MOD;
   }
+  /*
   cerr << "d: ";
   for (auto i = 0; i < N; i++)
   {
     cerr << d[i] << " ";
   }
   cerr << endl;
+  */
   cout << ans << endl;
 }
