@@ -160,9 +160,9 @@ int main()
   {
     b[i] = a[i] - bit.sum(1, a[i] + 1);
     bit.add(a[i] + 1);
-    cerr << b[i] << " ";
+    // cerr << b[i] << " ";
   }
-  cerr << endl;
+  // cerr << endl;
   c[N - 1] = 1;
   for (int i = N - 1; i >= 0; i--)
   {
@@ -170,6 +170,11 @@ int main()
     c[i] += c[i + 1];
     c[i] %= MOD;
   }
+  for (auto i = 0; i < N; i++)
+  {
+    cerr << c[i] << " ";
+  }
+  cerr << endl;
   ll ans = 0;
   for (auto i = 0; i < N; i++)
   {
