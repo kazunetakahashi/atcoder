@@ -57,7 +57,7 @@ bool solve(string S)
     }
     if (!(0 <= now && now < W))
     {
-      return true;
+      return false;
     }
     if (c[i + 1][now] == 'x')
     {
