@@ -157,13 +157,14 @@ int main()
     a[i]--;
   }
   BIT bit(N + 1);
+  cerr << "b: ";
   for (auto i = 0; i < N; i++)
   {
     b[i] = a[i] - bit.sum(1, a[i] + 1);
     bit.add(a[i] + 1);
-    // cerr << b[i] << " ";
+    cerr << b[i] << " ";
   }
-  // cerr << endl;
+  cerr << endl;
   c[N - 1] = 1;
   for (int i = N - 2; i >= 0; i--)
   {
