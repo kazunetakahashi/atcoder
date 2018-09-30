@@ -59,10 +59,10 @@ int main()
   ll A = a[0];
   if (((A - 1) / K) % 2 == 0)
   {
-    cout << "Akari" << endl;
+    cout << "Chinatsu" << endl;
   }
   else
   {
-    cout << "Chinatsu" << endl;
+    cout << "Akari" << endl;
   }
 }
