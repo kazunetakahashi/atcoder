@@ -73,7 +73,7 @@ int main()
   }
   if (C == "even")
   {
-    cout << lb + 1 << endl;
+    cout << "! " << lb + 1 << endl;
   }
   else
   {
