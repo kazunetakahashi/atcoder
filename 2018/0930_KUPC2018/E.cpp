@@ -146,6 +146,7 @@ int N;
 int a[200010];
 ll b[200010];
 ll c[200010];
+ll d[200010];
 
 int main()
 {
@@ -181,12 +182,21 @@ int main()
   ll ans = 0;
   for (auto i = 0; i < N; i++)
   {
-    ans += (fact[N - 1 - i] * (((b[i] * (b[i] - 1)) / 2) % MOD)) % MOD;
-    ans %= MOD;
-    ans += (((b[i] * fact[N - 1 - i]) % MOD) * ((C(N - 1 - i, 2) * inv[2]) % MOD)) % MOD;
-    ans %= MOD;
-    ans += (b[i] * c[i]) % MOD;
+    d[i] = 0;
+    d[i] += (fact[N - 1 - i] * (((b[i] * (b[i] - 1)) / 2) % MOD)) % MOD;
+    d[i] %= MOD;
+    d[i] += (((b[i] * fact[N - 1 - i]) % MOD) * ((C(N - 1 - i, 2) * inv[2]) % MOD)) % MOD;
+    d[i] %= MOD;
+    d[i] += (b[i] * c[i]) % MOD;
+    d[i] %= MOD;
+    ans += d[i];
     ans %= MOD;
   }
+  cerr << "d: ";
+  for (auto i = 0; i < N; i++)
+  {
+    cerr << d[i] << " ";
+  }
+  cerr << endl;
   cout << ans << endl;
 }
