@@ -39,13 +39,14 @@ typedef long long ll;
 // const ll M = 1000000007;
 
 string C = "";
-
+int cnt = 0;
 bool que(int q) // (X/q) が奇数なら true
 {
   assert(q % 2 == 1);
   cout << "? " << q << endl;
   string s;
   cin >> s;
+  cnt++;
   return (s != C);
 }
 
@@ -54,7 +55,7 @@ int main()
   cout << "? 2" << endl;
   cin >> C;
   int lb = 1;
-  int ub = 1000000007;
+  int ub = 1000000001;
   while (ub - lb > 2)
   {
     int t = (lb + ub) / 2;
@@ -71,6 +72,8 @@ int main()
       ub = t;
     }
   }
+  assert(cnt <= 30);
+  cerr << "cnt = " << cnt << endl;
   if (C == "even")
   {
     cout << "! " << lb + 1 << endl;
