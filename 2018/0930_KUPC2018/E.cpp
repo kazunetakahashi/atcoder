@@ -149,6 +149,7 @@ ll c[200010];
 
 int main()
 {
+  init();
   cin >> N;
   for (auto i = 0; i < N; i++)
   {
@@ -170,6 +171,7 @@ int main()
     c[i] += c[i + 1];
     c[i] %= MOD;
   }
+  cerr << "c: ";
   for (auto i = 0; i < N; i++)
   {
     cerr << c[i] << " ";
