@@ -50,6 +50,10 @@ void solve(int X, int Y)
   for (auto i = 0; i < N; i++)
   {
     int t = h[i] + abs(x[i] - X) + abs(y[i] - Y);
+    if (t <= 0)
+    {
+      return;
+    }
     if (h[i] > 0)
     {
       zero = false;
@@ -73,14 +77,9 @@ void solve(int X, int Y)
       }
     }
   }
-  if (ans <= 0)
+  if (ans < 0)
   {
-    if (zero)
-    {
-      cout << X << " " << Y << " " << 1 << endl;
-      exit(0);
-    }
-    return;
+    assert(false);
   }
   cout << X << " " << Y << " " << ans << endl;
   exit(0);
