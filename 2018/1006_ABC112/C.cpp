@@ -46,11 +46,13 @@ int h[100010];
 void solve(int X, int Y)
 {
   int ans = -1;
+  bool zero = true;
   for (auto i = 0; i < N; i++)
   {
     int t = h[i] + abs(x[i] - X) + abs(y[i] - Y);
     if (h[i] > 0)
     {
+      zero = false;
       if (ans != -1)
       {
         if (ans != t)
@@ -73,6 +75,11 @@ void solve(int X, int Y)
   }
   if (ans <= 0)
   {
+    if (zero)
+    {
+      cout << X << " " << Y << " " << 1 << endl;
+      exit(0);
+    }
     return;
   }
   cout << X << " " << Y << " " << ans << endl;
