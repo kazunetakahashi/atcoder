@@ -71,6 +71,10 @@ void solve(int X, int Y)
       }
     }
   }
+  if (ans <= 0)
+  {
+    return;
+  }
   cout << X << " " << Y << " " << ans << endl;
   exit(0);
 }
