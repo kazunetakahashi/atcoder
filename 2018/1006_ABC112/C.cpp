@@ -46,7 +46,6 @@ int h[100010];
 void solve(int X, int Y)
 {
   int ans = -1;
-  bool zero = true;
   for (auto i = 0; i < N; i++)
   {
     int t = h[i] + abs(x[i] - X) + abs(y[i] - Y);
@@ -58,28 +57,15 @@ void solve(int X, int Y)
         {
           return;
         }
-        if (zero)
-        {
-          zero = false;
-        }
       }
       else
       {
         ans = t;
-        zero = false;
       }
     }
-    else
+    else if (ans != -1)
     {
-      if (ans == -1)
-      {
-        ans = t;
-      }
-      else if (zero)
-      {
-        ans = min(ans, t);
-      }
-      else if (ans > t)
+      if (ans > t)
       {
         return;
       }
