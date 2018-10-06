@@ -47,13 +47,13 @@ int main()
 
   for (auto i = 1; i < 100010; i++)
   {
-    if (N % i == 0)
+    if (M % i == 0)
     {
-      int x[2] = {i, N / i};
+      int x[2] = {i, M / i};
       for (auto k = 0; k < 2; k++)
       {
         int g = x[k];
-        int n = N / g;
+        int n = M / g;
         if (n >= N)
         {
           ans = max(ans, g);
