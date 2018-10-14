@@ -39,9 +39,11 @@ typedef long long ll;
 // const ll M = 1000000007;
 
 int N, M;
-double q;
+ll q;
 ll x[2010];
 ll p[2010];
+ll r[2010];
+int ok[2010];
 
 int main()
 {
@@ -50,34 +52,51 @@ int main()
   {
     cin >> x[i] >> p[i];
   }
-  p[M] = 0;
-  x[M] = 1000010;
-  M++;
-  ll mini = 100000000000010;
-  for (auto k = 0; k < M; k++)
+  for (auto i = 0; i < M; i++)
   {
-    ll A = 0;
-    ll B = 0;
-    for (auto i = 0; i < k; i++)
+    r[i] = p[i] * N / q;
+  }
+  ll rem = N;
+  for (auto i = 0; i < M; i++)
+  {
+    rem -= r[i];
+  }
+  for (auto i = 0; i < M; i++)
+  {
+    if (abs(p[i] * N - r[i] * q) > abs(p[i] * N - (r[i] + 1) * q))
     {
-      A += p[i];
-      B -= p[i] * x[i];
+      ok[i] = 2;
     }
-    for (auto i = k; i < M; i++)
+    else if (abs(p[i] * N - r[i] * q) == abs(p[i] * N - (r[i] + 1) * q))
     {
-      A -= p[i];
-      B += p[i] * x[i];
-    }
-    ll y = 0;
-    if (A < 0 || k == 0)
-    {
-      y = x[k];
+      ok[i] = 1;
     }
     else
     {
-      y = x[k - 1];
+      ok[i] = 0;
     }
-    mini = min(mini, y * A + B);
   }
-  cout << fixed << setprecision(12) << mini / q << endl;
+  for (int i = M - 1; i >= 0; i--)
+  {
+    if (ok[i] == 2 && rem > 0)
+    {
+      r[i]++;
+      rem--;
+    }
+  }
+  for (int i = M - 1; i >= 0; i--)
+  {
+    if (ok[i] == 1 && rem > 0)
+    {
+      r[i]++;
+      rem--;
+    }
+  }
+  r[0] += rem;
+  double E = 0;
+  for (auto i = 0; i < M; i++)
+  {
+    E += abs(p[i] / (double)q - r[i] / (double)N) * x[i];
+  }
+  cout << fixed << setprecision(12) << E * N << endl;
 }
