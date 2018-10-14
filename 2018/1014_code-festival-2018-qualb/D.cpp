@@ -79,5 +79,5 @@ int main()
     }
     maxi = max(maxi, y * A + B);
   }
-  cerr << fixed << setprecision(12) << maxi / q << endl;
+  cout << fixed << setprecision(12) << maxi / q << endl;
 }
