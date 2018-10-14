@@ -96,6 +96,11 @@ int main()
     }
   }
   r[0] += rem;
+  for (auto i = 0; i < M; i++)
+  {
+    r[i] = p[i] * N / q;
+    cerr << "r[" << i << "] = " << r[i] << endl;
+  }
   double E = 0;
   for (auto i = 0; i < M; i++)
   {
