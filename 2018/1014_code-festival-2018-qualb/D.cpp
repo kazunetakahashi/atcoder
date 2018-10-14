@@ -106,11 +106,13 @@ int main()
     E_init += r[i] * x[i];
   }
   E_init /= N;
+  cerr << "E_init = " << E_init << endl;
   double E = 0;
   for (auto i = 0; i < M; i++)
   {
     E += p[i] * x[i];
   }
   E /= q;
+  cerr << "E = " << E << endl;
   cout << fixed << setprecision(12) << abs(E - E_init) * N << endl;
 }
