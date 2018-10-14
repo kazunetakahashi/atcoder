@@ -103,14 +103,14 @@ int main()
   double E_init = 0;
   for (auto i = 0; i < M; i++)
   {
-    E_init += p[i] * x[i];
+    E_init += r[i] * x[i];
   }
-  E_init /= q;
-  cerr << "E_init = " << E_init << endl;
+  E_init /= N;
   double E = 0;
   for (auto i = 0; i < M; i++)
   {
-    E += abs(p[i] / (double)q - r[i] / (double)N) * abs(x[i] - E_init);
+    E += p[i] * x[i];
   }
-  cout << fixed << setprecision(12) << E * N << endl;
+  E /= q;
+  cout << fixed << setprecision(12) << abs(E - E_init) * N << endl;
 }
