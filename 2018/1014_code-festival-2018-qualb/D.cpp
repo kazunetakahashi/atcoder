@@ -100,11 +100,17 @@ int main()
   {
     cerr << "r[" << i << "] = " << r[i] << endl;
   }
+  double E_init = 0;
+  for (auto i = 0; i < M; i++)
+  {
+    E_init += r[i] * x[i];
+  }
+  E_init /= N;
+  cerr << "E_init = " << E_init << endl;
   double E = 0;
   for (auto i = 0; i < M; i++)
   {
-    E += abs(p[i] / (double)q - r[i] / (double)N) * x[i];
+    E += abs(p[i] / (double)q - r[i] / (double)N) * (x[i] - E_init);
   }
-  cerr << "E = " << E << endl;
   cout << fixed << setprecision(12) << E * N << endl;
 }
