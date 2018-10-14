@@ -53,7 +53,7 @@ int main()
   p[M] = 0;
   x[M] = 1000010;
   M++;
-  ll maxi = 0;
+  ll mini = 100000000000010;
   for (auto k = 0; k < M; k++)
   {
     ll A = 0;
@@ -69,7 +69,7 @@ int main()
       B += p[i] * x[i];
     }
     ll y = 0;
-    if (A > 0 || k == 0)
+    if (A < 0 || k == 0)
     {
       y = x[k];
     }
@@ -77,7 +77,7 @@ int main()
     {
       y = x[k - 1];
     }
-    maxi = max(maxi, y * A + B);
+    mini = min(mini, y * A + B);
   }
-  cout << fixed << setprecision(12) << maxi / q << endl;
+  cout << fixed << setprecision(12) << mini / q << endl;
 }
