@@ -55,12 +55,14 @@ int main()
   for (auto i = 0; i < M; i++)
   {
     r[i] = p[i] * N / q;
+    cerr << "r[" << i << "] = " << r[i] << endl;
   }
   ll rem = N;
   for (auto i = 0; i < M; i++)
   {
     rem -= r[i];
   }
+  cerr << "rem = " << rem << endl;
   for (auto i = 0; i < M; i++)
   {
     if (abs(p[i] * N - r[i] * q) > abs(p[i] * N - (r[i] + 1) * q))
@@ -75,6 +77,7 @@ int main()
     {
       ok[i] = 0;
     }
+    cerr << "ok[" << i << "] = " << ok[i] << endl;
   }
   for (int i = M - 1; i >= 0; i--)
   {
