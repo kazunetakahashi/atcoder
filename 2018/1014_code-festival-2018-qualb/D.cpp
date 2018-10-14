@@ -103,9 +103,9 @@ int main()
   double E_init = 0;
   for (auto i = 0; i < M; i++)
   {
-    E_init += r[i] * x[i];
+    E_init += p[i] * x[i];
   }
-  E_init /= N;
+  E_init /= q;
   cerr << "E_init = " << E_init << endl;
   double E = 0;
   for (auto i = 0; i < M; i++)
