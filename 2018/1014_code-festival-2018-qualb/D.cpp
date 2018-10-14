@@ -105,7 +105,7 @@ int main()
   {
     E_init += r[i] * x[i];
   }
-  E_init /= q;
+  E_init /= N;
   cerr << "E_init = " << E_init << endl;
   double E = 0;
   for (auto i = 0; i < M; i++)
