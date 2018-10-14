@@ -103,6 +103,7 @@ int main()
   double E = 0;
   for (auto i = 0; i < M; i++)
   {
+    cerr << fixed << setprecision(3) << abs(p[i] / (double)q - r[i] / (double)N) << endl;
     E += abs(p[i] / (double)q - r[i] / (double)N) * x[i];
   }
   cout << fixed << setprecision(12) << E * N << endl;
