@@ -81,22 +81,22 @@ int main()
         ans += cnt_x * cnt_y;
         if (H < 10 && cnt_x > 0 && cnt_y > 0)
         {
-          cerr << "now: (" << i << ", " << j << ")" << endl;
+          cerr << "now: (" << i << ", " << j - C / 2 << ")" << endl;
           if (value(i - l, j) > 0)
           {
-            cerr << "(" << i - l << ", " << j << ")" << endl;
+            cerr << "(" << i - l << ", " << j - C / 2 << ")" << endl;
           }
           if (value(i + l, j) > 0)
           {
-            cerr << "(" << i + l << ", " << j << ")" << endl;
+            cerr << "(" << i + l << ", " << j - C / 2 << ")" << endl;
           }
           if (value(i, j - l) > 0)
           {
-            cerr << "(" << i << ", " << j - l << ")" << endl;
+            cerr << "(" << i << ", " << j - l - C / 2 << ")" << endl;
           }
           if (value(i, j + l) > 0)
           {
-            cerr << "(" << i << ", " << j + l << ")" << endl;
+            cerr << "(" << i << ", " << j + l - C / 2 << ")" << endl;
           }
         }
       }
