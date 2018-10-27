@@ -64,6 +64,7 @@ int main()
   ll sum = 0;
   for (auto i = 0; i < N - 1; i++)
   {
+    cerr << "B[" << i << "] = " << B[i] << endl;
     sum += abs(B[i] - B[i + 1]);
   }
   cout << sum << endl;
