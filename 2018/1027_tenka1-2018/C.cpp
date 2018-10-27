@@ -39,13 +39,15 @@ typedef long long ll;
 // const ll M = 1000000007;
 
 int N;
-ll A[100010];
+vector<ll> X;
+vector<ll> A;
+ll start = 0;
 ll B[100010];
 ll ans = 0;
 
 void solve()
 {
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < N - 1; i++)
   {
     if (i % 2 == 0)
     {
@@ -53,11 +55,11 @@ void solve()
     }
     else
     {
-      B[i] = A[N - i / 2 - 1];
+      B[i] = A[N - 1 - i / 2 - 1];
     }
   }
-  ll sum = 0;
-  for (auto i = 0; i < N - 1; i++)
+  ll sum = abs(start - B[0]);
+  for (auto i = 0; i < N - 2; i++)
   {
     // cerr << "B[" << i << "] = " << B[i] << endl;
     sum += abs(B[i] - B[i + 1]);
@@ -70,11 +72,25 @@ int main()
   cin >> N;
   for (auto i = 0; i < N; i++)
   {
-    cin >> A[i];
+    ll x;
+    cin >> x;
+    X.push_back(x);
   }
-  sort(A, A + N);
+  for (auto i = max(0, N / 2 - 1); i < min(N, N / 2 + 2); i++)
+  {
+    start = X[i];
+    A.clear();
+    for (auto j = 0; j < N; j++)
+    {
+      if (j != i)
+      {
+        A.push_back(X[j]);
+      }
+    }
+  }
+  sort(A.begin(), A.end());
   solve();
-  reverse(A, A + N);
+  reverse(A.begin(), A.end());
   solve();
   cout << ans << endl;
 }
