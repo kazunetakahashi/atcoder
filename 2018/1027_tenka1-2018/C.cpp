@@ -87,10 +87,10 @@ int main()
         A.push_back(X[j]);
       }
     }
+    sort(A.begin(), A.end());
+    solve();
+    reverse(A.begin(), A.end());
+    solve();
   }
-  sort(A.begin(), A.end());
-  solve();
-  reverse(A.begin(), A.end());
-  solve();
   cout << ans << endl;
 }
