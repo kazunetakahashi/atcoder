@@ -102,6 +102,5 @@ int main()
       }
     }
   }
-  assert(ans % 6 == 0);
-  cout << ans / 6 << endl;
+  cout << ans << endl;
 }
