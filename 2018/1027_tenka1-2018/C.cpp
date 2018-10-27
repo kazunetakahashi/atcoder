@@ -41,15 +41,10 @@ typedef long long ll;
 int N;
 ll A[100010];
 ll B[100010];
+ll ans = 0;
 
-int main()
+void solve()
 {
-  cin >> N;
-  for (auto i = 0; i < N; i++)
-  {
-    cin >> A[i];
-  }
-  sort(A, A + N);
   for (auto i = 0; i < N; i++)
   {
     if (i % 2 == 0)
@@ -64,8 +59,22 @@ int main()
   ll sum = 0;
   for (auto i = 0; i < N - 1; i++)
   {
-    cerr << "B[" << i << "] = " << B[i] << endl;
+    // cerr << "B[" << i << "] = " << B[i] << endl;
     sum += abs(B[i] - B[i + 1]);
   }
-  cout << sum << endl;
+  ans = max(ans, sum);
+}
+
+int main()
+{
+  cin >> N;
+  for (auto i = 0; i < N; i++)
+  {
+    cin >> A[i];
+  }
+  sort(A, A + N);
+  solve();
+  reverse(A, A + N);
+  solve();
+  cout << ans << endl;
 }
