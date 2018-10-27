@@ -79,6 +79,26 @@ int main()
         cnt_y += value(i, j - l);
         cnt_y += value(i, j + l);
         ans += cnt_x * cnt_y;
+        if (H < 10 && cnt_x > 0 && cnt_y > 0)
+        {
+          cerr << "now: (" << i << ", " << j << ")" << endl;
+          if (value(i - l, j) > 0)
+          {
+            cerr << "(" << i - l << ", " << j << ")" << endl;
+          }
+          if (value(i + l, j) > 0)
+          {
+            cerr << "(" << i + l << ", " << j << ")" << endl;
+          }
+          if (value(i, j - l) > 0)
+          {
+            cerr << "(" << i << ", " << j - l << ")" << endl;
+          }
+          if (value(i, j + l) > 0)
+          {
+            cerr << "(" << i << ", " << j + l << ")" << endl;
+          }
+        }
       }
     }
   }
