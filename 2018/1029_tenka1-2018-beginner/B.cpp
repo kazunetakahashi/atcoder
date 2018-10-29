@@ -52,7 +52,7 @@ int main()
         A--;
       }
       A = A / 2;
-      B = B + A / 2;
+      B = B + A;
     }
     else
     {
@@ -61,7 +61,7 @@ int main()
         B--;
       }
       B = B / 2;
-      A = A + B / 2;
+      A = A + B;
     }
   }
   cout << A << " " << B << endl;
