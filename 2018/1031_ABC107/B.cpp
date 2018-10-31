@@ -88,17 +88,17 @@ int main()
   }
   for (auto i = 0; i < H; i++)
   {
+    string X = "";
     for (auto j = 0; j < W; j++)
     {
-      string X = "";
       if (valid[i][j])
       {
         X = X + S[i].substr(j, 1);
       }
-      if (X != "")
-      {
-        cout << X << endl;
-      }
+    }
+    if (X != "")
+    {
+      cout << X << endl;
     }
   }
 }
