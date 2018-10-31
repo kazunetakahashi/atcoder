@@ -64,7 +64,7 @@ int main()
     {
       for (auto j = 0; j < W; j++)
       {
-        valid[i][j] = true;
+        valid[i][j] = false;
       }
     }
   }
@@ -82,7 +82,7 @@ int main()
     {
       for (auto i = 0; i < H; i++)
       {
-        valid[i][j] = true;
+        valid[i][j] = false;
       }
     }
   }
