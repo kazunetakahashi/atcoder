@@ -71,7 +71,7 @@ int main()
   for (auto j = 0; j < W; j++)
   {
     bool ok = true;
-    for (auto i = 0; i < W; i++)
+    for (auto i = 0; i < H; i++)
     {
       if (S[i][j] == '#')
       {
