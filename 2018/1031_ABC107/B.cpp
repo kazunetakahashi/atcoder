@@ -90,11 +90,15 @@ int main()
   {
     for (auto j = 0; j < W; j++)
     {
+      string X = "";
       if (valid[i][j])
       {
-        cout << S[i][j];
+        X = X + S[i].substr(j, 1);
+      }
+      if (X != "")
+      {
+        cout << X << endl;
       }
     }
-    cout << endl;
   }
 }
