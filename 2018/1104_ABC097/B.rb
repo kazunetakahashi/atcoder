@@ -6,12 +6,12 @@
 #
 
 x = gets.to_i
-ok = Array.new(1010){true}
+ok = Array.new(1010){false}
 ok[0] = ok[1] = true
 
 for i in 2...1010 do
   for j in 2...1010 do
-    if i ** j <= 1010
+    if i ** j < 1010
       ok[i ** j] = true;
     else
       break
