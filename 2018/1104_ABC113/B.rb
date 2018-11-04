@@ -19,5 +19,5 @@ for i in 0...n do
   ans << [(a - th(h[i])).abs, i]
 end
 
-puts (ans.min)[1]
+puts (ans.min)[1] + 1
 
