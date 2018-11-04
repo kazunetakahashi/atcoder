@@ -58,8 +58,8 @@ int main()
   }
   for (ll i = 0; i < 10; i++)
   {
-    S[i] = cnt[max(i - 2, 0ll)] * cnt[max(W - i - 3, 0ll)];
-    T[i] = cnt[max(i - 2, 0ll)] * cnt[max(W - i - 2, 0ll)];
+    S[i] = cnt[max(i - 1, 0ll)] * cnt[max(W - i - 3, 0ll)];
+    T[i] = cnt[max(i - 1, 0ll)] * cnt[max(W - i - 2, 0ll)];
   }
   DP[0][0] = 1;
   for (auto i = 1; i < W; i++)
