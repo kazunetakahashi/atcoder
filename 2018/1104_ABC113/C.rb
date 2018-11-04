@@ -17,7 +17,7 @@ ans = []
 for i in 0...n
   pref[i].sort!
   for j in 0...pref[i].size
-    ans << [pref[i][j][1], i.to_s.rjust(6, "0") + j.to_s.rjust(6, "0")]
+    ans << [pref[i][j][1], (i+1).to_s.rjust(6, "0") + (j+1).to_s.rjust(6, "0")]
   end
 end
 
