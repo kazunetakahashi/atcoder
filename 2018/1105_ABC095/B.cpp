@@ -48,10 +48,7 @@ int main()
   {
     cin >> m[i];
   }
-  for (auto i = 0; i < N; i++)
-  {
-    X -= m[i];
-  }
+  X -= accumulate(m, m + N, 0);
   int ans = N;
   int mini = *min_element(m, m + N);
   ans += X / mini;
