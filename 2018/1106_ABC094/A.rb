@@ -6,8 +6,8 @@
 #
 
 a, b, x = gets.chomp.split(" ").map{|i| i.to_i}
-if 0 <= x && x <= b
-  puts "Yes"
+if a <= x && x <= a + b
+  puts "YES"
 else
-  puts "No"
+  puts "NO"
 end
