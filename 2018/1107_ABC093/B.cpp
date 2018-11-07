@@ -46,8 +46,14 @@ int main()
   cin >> A >> B >> K;
   for (auto i = 0; i < K; i++)
   {
-    S.insert(A + i);
-    S.insert(B - i);
+    if (A + i <= B)
+    {
+      S.insert(A + i);
+    }
+    if (B - i >= A)
+    {
+      S.insert(B - i);
+    }
   }
   for (auto x : S)
   {
