@@ -73,9 +73,18 @@ void flush()
   }
 }
 
+void solve()
+{
+  for (auto i = M / 2; i < M / 2 + 10; i++)
+  {
+    T[i][M / 2] = '.';
+  }
+}
+
 int main()
 {
   input();
   make_wall();
+  solve();
   flush();
 }
