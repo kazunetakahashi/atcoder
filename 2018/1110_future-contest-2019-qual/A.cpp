@@ -32,8 +32,8 @@ using namespace std;
 
 typedef long long ll;
 
-// const int dx[4] = {1, 0, -1, 0};
-// const int dy[4] = {0, 1, 0, -1};
+const int dx[4] = {1, 0, -1, 0};
+const int dy[4] = {0, 1, 0, -1};
 
 // const int C = 1e6+10;
 // const ll M = 1000000007;
@@ -73,11 +73,17 @@ void flush()
   }
 }
 
-void solve()
+void solve(int k)
 {
-  for (auto i = 2; i < M - 1; i++)
+  assert(1 <= k && k <= 13);
+  for (auto i = 1; i <= k; i++)
   {
-    T[i][M / 2] = '.';
+    for (auto t = 0; t < 4; t++)
+    {
+      int x = M / 2 + dx[t] * i;
+      int y = M / 2 + dy[t] * i;
+      T[x][y] = '.';
+    }
   }
 }
 
@@ -85,6 +91,6 @@ int main()
 {
   input();
   make_wall();
-  solve();
+  solve(5);
   flush();
 }
