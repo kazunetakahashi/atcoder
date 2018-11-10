@@ -75,7 +75,7 @@ void flush()
 
 void solve()
 {
-  for (auto i = 10; i < M - 1; i++)
+  for (auto i = 6; i < M - 1; i++)
   {
     T[i][M / 2] = '.';
   }
