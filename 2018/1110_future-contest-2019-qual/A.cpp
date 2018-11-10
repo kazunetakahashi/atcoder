@@ -91,6 +91,6 @@ int main()
 {
   input();
   make_wall();
-  solve(6);
+  solve(7);
   flush();
 }
