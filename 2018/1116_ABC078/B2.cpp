@@ -40,7 +40,7 @@ typedef long long ll;
 
 ll X, Y, Z;
 
-int sum(int n)
+ll sum(int n)
 {
   return n * Y + (n + 1) * Z;
 }
