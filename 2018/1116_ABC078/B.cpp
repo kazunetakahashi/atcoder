@@ -40,7 +40,7 @@ typedef long long ll;
 
 int X, Y, Z;
 
-bool sum(int n)
+int sum(int n)
 {
   return n * Y + (n + 1) * Z;
 }
@@ -49,7 +49,7 @@ int main()
 {
   cin >> X >> Y >> Z;
   int ans = 0;
-  for (auto i = 0; i < 100010; i++)
+  for (auto i = 1; i < 100010; i++)
   {
     if (sum(i) > X)
     {
