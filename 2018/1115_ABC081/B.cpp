@@ -41,7 +41,7 @@ typedef long long ll;
 int cnt(int X)
 {
   int ans = 0;
-  if (X % 2 == 0)
+  while (X % 2 == 0)
   {
     X /= 2;
     ++ans;
