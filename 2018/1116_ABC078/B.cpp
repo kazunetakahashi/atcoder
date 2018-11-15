@@ -53,7 +53,7 @@ int main()
   {
     if (sum(i) > X)
     {
-      ans = i;
+      ans = i - 1;
       break;
     }
   }
