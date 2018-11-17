@@ -59,8 +59,8 @@ int main()
     }
     else
     {
-      lb = t;
+      ub = t;
     }
   }
-  cout << lb << endl;
+  cout << lb * lb << endl;
 }
