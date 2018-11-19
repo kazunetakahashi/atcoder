@@ -44,7 +44,7 @@ int main()
   cin >> S;
   for (auto i = 0; i < (int)S.size(); i++)
   {
-    if (i % 2 == 1)
+    if (i % 2 == 0)
     {
       cout << S[i];
     }
