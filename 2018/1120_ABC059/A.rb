@@ -10,7 +10,7 @@ s = gets.chomp.split(" ").map{|i| i.to_s}
 ans = ""
 
 s.each{|str|
-  ans += str[0].toupper
+  ans += str[0].upcase
 }
 
 puts ans
