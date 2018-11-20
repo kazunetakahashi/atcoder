@@ -50,10 +50,12 @@ int main()
   if (A.size() > B.size())
   {
     cout << "GREATER" << endl;
+    return 0;
   }
   else if (A.size() < B.size())
   {
     cout << "LESS" << endl;
+    return 0;
   }
   else
   {
