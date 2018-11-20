@@ -41,6 +41,7 @@ typedef long long ll;
 int main()
 {
   string A, B;
+  cin >> A >> B;
   if (A == B)
   {
     cout << "EQUAL" << endl;
