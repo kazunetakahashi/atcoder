@@ -134,6 +134,7 @@ bool discover(vector<ll> V)
             for (auto f : Y[5])
             {
               ll N = a + b + c + d + e + f;
+              cerr << "N = " << N << endl;
               if (check(N))
               {
                 cout << N << endl;
@@ -155,7 +156,6 @@ int main()
   {
     cin >> a[i];
   }
-  no();
   for (auto i = 0; i <= 8; i++)
   {
     for (auto j = 0; j <= 8; j++)
