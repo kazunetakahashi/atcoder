@@ -155,6 +155,7 @@ int main()
   {
     cin >> a[i];
   }
+  no();
   for (auto i = 0; i <= 8; i++)
   {
     for (auto j = 0; j <= 8; j++)
@@ -184,11 +185,6 @@ int main()
         V.push_back(X3);
         V.push_back(X4);
         V.push_back(X5);
-        for (auto x : V)
-        {
-          cerr << x << " ";
-        }
-        cerr << endl;
         if (discover(V))
         {
           return 0;
