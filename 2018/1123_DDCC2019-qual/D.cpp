@@ -52,7 +52,7 @@ ll sum(ll N, ll k)
   while (N > 0)
   {
     ans += N % k;
-    ans /= k;
+    N /= k;
   }
   return ans;
 }
@@ -134,7 +134,6 @@ bool discover(vector<ll> V)
             for (auto f : Y[5])
             {
               ll N = a + b + c + d + e + f;
-              cerr << "N = " << N << endl;
               if (check(N))
               {
                 cout << N << endl;
