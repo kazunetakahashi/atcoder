@@ -155,6 +155,7 @@ int main()
   {
     cin >> a[i];
   }
+  cerr << "xxx" << endl;
   for (auto i = 0; i <= 8; i++)
   {
     for (auto j = 0; j <= 8; j++)
