@@ -134,6 +134,7 @@ bool discover(vector<ll> V)
             for (auto f : Y[5])
             {
               ll N = a + b + c + d + e + f;
+              cerr << N << endl;
               if (check(N))
               {
                 cout << N << endl;
