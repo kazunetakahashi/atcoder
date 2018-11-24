@@ -24,7 +24,7 @@ class Solve
         @primes[i - 1] = @a[i] % (i - 1)
       end
     end
-    STDERR.puts primes.inspect
+    # STDERR.puts primes.inspect
     @m = 1
     @x = 0
     @ans = nil
@@ -73,8 +73,8 @@ class Solve
       STDERR.puts "q = #{q}, b = #{b}"
       # STDERR.puts "Solve.inv(#{m % q}, #{q}) = #{Solve.inv(m, q)}"
       t = ((b + q - x % q) * Solve.inv(m, q)) % q
-      @m *= q
       @x += m * t
+      @m *= q
     }
   end
 
