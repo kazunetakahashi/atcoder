@@ -68,7 +68,7 @@ int main()
     cerr << x << endl;
   }
   */
-  for (int i = 60 - 1; i >= 0; i--)
+  for (int i = 45; i >= 0; i--)
   {
     int cnt = 0;
     int L = V.size();
