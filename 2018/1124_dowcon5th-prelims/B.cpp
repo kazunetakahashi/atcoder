@@ -85,7 +85,8 @@ int main()
       auto it = V.begin();
       while (it != V.end())
       {
-        if (((*it) >> 1) & 1)
+        ll t = *it;
+        if ((t >> 1) & 1)
         {
           it++;
         }
