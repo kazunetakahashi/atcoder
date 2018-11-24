@@ -41,6 +41,9 @@ class Solve
 
   def check(y)
     for i in 2...L
+      if y == 25
+        puts "Solve.sum(#{y}, #{i}) = #{Solve.sum(y, i)}, a[#{i}] = #{a[i]}"
+      end
       if Solve.sum(y, i) != a[i]
         return false
       end
@@ -70,7 +73,7 @@ class Solve
 
   def calc_x()
     primes.each{|q, b|
-      STDERR.puts "q = #{q}, b = #{b}"
+      # STDERR.puts "q = #{q}, b = #{b}"
       # STDERR.puts "Solve.inv(#{m % q}, #{q}) = #{Solve.inv(m, q)}"
       t = ((b + q - x % q) * Solve.inv(m, q)) % q
       @x += m * t
@@ -81,7 +84,7 @@ class Solve
   def solve()
     calc_x()
     n = x
-    puts "n = #{n}"
+    # STDERR.puts "n = #{n}"
     while n <= MAXI
       # STDERR.puts "n = #{n}"
       if check(n)
