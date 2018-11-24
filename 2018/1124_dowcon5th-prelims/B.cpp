@@ -62,14 +62,16 @@ int main()
       V.push_back(sum[i] - sum[j]);
     }
   }
+  /*
   for (auto x : V)
   {
     cerr << x << endl;
   }
-  int L = V.size();
+  */
   for (int i = 60 - 1; i >= 0; i--)
   {
     int cnt = 0;
+    int L = V.size();
     for (auto j = 0; j < L; j++)
     {
       if ((V[j] >> i) & 1)
@@ -79,7 +81,7 @@ int main()
     }
     if (cnt >= K)
     {
-      cerr << "i = " << i << ", cnt = " << cnt << endl;
+      // cerr << "i = " << i << ", cnt = " << cnt << endl;
       auto it = V.begin();
       while (it != V.end())
       {
@@ -89,7 +91,7 @@ int main()
         }
         else
         {
-          cerr << "erased : " << *it << endl;
+          // cerr << "erased : " << *it << endl;
           it = V.erase(it);
         }
       }
