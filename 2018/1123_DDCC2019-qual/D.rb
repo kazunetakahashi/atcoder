@@ -24,7 +24,7 @@ class Solve
         @primes[i - 1] = @a[i] % (i - 1)
       end
     end
-    p primes
+    STDERR.p primes
     @m = 1
     @x = 0
     @ans = nil
