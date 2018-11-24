@@ -139,6 +139,7 @@ int main()
   cerr << "r = " << r << ", s = " << s << endl;
   ll alpha = calc_(0);
   ll beta = calc_(1);
+  cerr << "alpha = " << alpha << ", beta = " << beta << endl;
   ll ans = max(min(alpha, beta) + r * D, max(alpha, beta) + s * D);
   cout << ans << endl;
 }
