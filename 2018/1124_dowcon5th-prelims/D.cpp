@@ -122,7 +122,7 @@ int main()
   reverse(W.begin(), W.end());
   ll maxi = get<0>(W[0]);
   ll r = calc(maxi);
-  ll upper = r * (r - 1);
+  ll upper = r * (r + 1);
   for (auto e : W)
   {
     if (get<0>(e) <= upper)
@@ -132,6 +132,7 @@ int main()
     A[0].insert(get<1>(e));
     A[1].insert(get<2>(e));
   }
+  /*
   for (auto i = 0; i < D; i++)
   {
     for (auto j = 0; j < D; j++)
@@ -142,6 +143,7 @@ int main()
   }
   cerr << "maxi = " << maxi << endl;
   cerr << "r = " << r << endl;
+  */
   ll ans = calc_A() + r * D;
   cout << ans << endl;
 }
