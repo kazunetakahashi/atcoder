@@ -95,6 +95,7 @@ int main()
           it = V.erase(it);
         }
       }
+      cerr << "V.size() = " << V.size() << endl;
     }
   }
   ll ans = V[0];
