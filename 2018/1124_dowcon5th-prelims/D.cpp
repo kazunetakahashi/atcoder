@@ -114,16 +114,18 @@ int main()
     {
       if (cnt[i][j] > 0)
       {
-        W.push_back(X(calc(cnt[i][j]), i, j));
+        W.push_back(X(cnt[i][j], i, j));
       }
     }
   }
   sort(W.begin(), W.end());
   reverse(W.begin(), W.end());
   ll maxi = get<0>(W[0]);
+  ll r = calc(maxi);
+  ll upper = r * (r - 1);
   for (auto e : W)
   {
-    if (get<0>(e) < maxi)
+    if (get<0>(e) <= upper)
     {
       break;
     }
@@ -138,7 +140,6 @@ int main()
     }
     cerr << endl;
   }
-  cerr << "maxi = " << maxi << endl;
-  ll ans = calc_A() + maxi * D;
+  ll ans = calc_A() + r * D;
   cout << ans << endl;
 }
