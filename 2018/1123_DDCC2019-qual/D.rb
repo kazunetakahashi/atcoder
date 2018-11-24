@@ -50,6 +50,7 @@ class Solve
         return false
       end
     end
+    STDERR.puts "y = #{y}"
     return true
   end
 
