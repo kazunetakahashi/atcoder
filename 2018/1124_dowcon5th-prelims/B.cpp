@@ -79,6 +79,7 @@ int main()
     }
     if (cnt >= K)
     {
+      cerr << "i = " << i << ", cnt = " << cnt << endl;
       auto it = V.begin();
       while (it != V.end())
       {
