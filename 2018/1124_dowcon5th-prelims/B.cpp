@@ -81,7 +81,7 @@ int main()
     }
     if (cnt >= K)
     {
-      // cerr << "i = " << i << ", cnt = " << cnt << endl;
+      cerr << "i = " << i << ", cnt = " << cnt << endl;
       auto it = V.begin();
       while (it != V.end())
       {
@@ -91,7 +91,7 @@ int main()
         }
         else
         {
-          // cerr << "erased : " << *it << endl;
+          cerr << "erased : " << *it << endl;
           it = V.erase(it);
         }
       }
