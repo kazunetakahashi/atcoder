@@ -69,6 +69,7 @@ class Solve
 
   def calc_x()
     primes.each{|q, b|
+      STDERR.puts "q = #{q}, b = #{b}"
       # STDERR.puts "Solve.inv(#{m}, #{q}) = #{Solve.inv(m, q)}"
       t = ((b + q - x % q) * Solve.inv(m, q)) % q
       @m *= q
