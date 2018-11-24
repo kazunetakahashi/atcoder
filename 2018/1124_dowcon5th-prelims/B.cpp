@@ -88,6 +88,7 @@ int main()
         ll t = *it;
         if ((t >> 1) & 1)
         {
+          cerr << "not erased : " << *it << endl;
           it++;
         }
         else
