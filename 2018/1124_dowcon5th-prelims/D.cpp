@@ -87,11 +87,6 @@ ll calc_(int k)
   return mini;
 }
 
-ll calc_A()
-{
-  return max(calc_(0), calc_(1));
-}
-
 int main()
 {
   cin >> N >> D;
@@ -122,10 +117,10 @@ int main()
   reverse(W.begin(), W.end());
   ll maxi = get<0>(W[0]);
   ll r = calc(maxi);
-  ll upper = r * (r + 1);
+  ll s = (maxi + r) / (r + 1) - 1;
   for (auto e : W)
   {
-    if (get<0>(e) <= upper)
+    if (get<0>(e) <= (r + 1) * (s + 1))
     {
       break;
     }
@@ -144,6 +139,8 @@ int main()
   cerr << "maxi = " << maxi << endl;
   cerr << "r = " << r << endl;
   */
-  ll ans = calc_A() + r * D;
+  ll alpha = calc_(0);
+  ll beta = calc_(1);
+  ll ans = max(min(alpha, beta) + r * D, max(alpha, beta) + s * D);
   cout << ans << endl;
 }
