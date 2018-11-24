@@ -81,6 +81,7 @@ class Solve
   def solve()
     calc_x()
     n = x
+    puts "n = #{n}"
     while n <= MAXI
       # STDERR.puts "n = #{n}"
       if check(n)
