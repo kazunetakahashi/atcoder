@@ -14,17 +14,16 @@ class Solve
   attr_accessor :a, :primes, :m, :x, :ans
 
   def initialize()
-    a = Array.new(L)
+    @a = Array.new(L)
     for i in 2...L
-      a[i] = gets.to_i
+      @a[i] = gets.to_i
     end
-    primes = {}
+    @primes = {}
     for i in 2...L do
       if Prime.prime?(i - 1)
-        primes[i - 1] = a[i] % (i - 1)
+        @primes[i - 1] = @a[i] % (i - 1)
       end
     end
-    p primes
     @m = 1
     @x = 0
     @ans = nil
