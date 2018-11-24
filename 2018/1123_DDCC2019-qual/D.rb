@@ -71,6 +71,7 @@ class Solve
     primes.each{|q, b|
       STDERR.puts "Solve.inv(#{m}, #{q}) = #{Solve.inv(m, q)}"
       t = ((b + q - x % q) * Solve.inv(m, q)) % q
+      STDERR.puts "m = #{m}, q = #{q}"
       m *= q
       x += m * t
     }
