@@ -140,6 +140,8 @@ int main()
     }
     cerr << endl;
   }
+  cerr << "maxi = " << maxi << endl;
+  cerr << "r = " << r << endl;
   ll ans = calc_A() + r * D;
   cout << ans << endl;
 }
