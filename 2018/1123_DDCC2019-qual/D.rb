@@ -41,9 +41,11 @@ class Solve
 
   def check(y)
     for i in 2...L
+=begin
       if y == 25
         puts "Solve.sum(#{y}, #{i}) = #{Solve.sum(y, i)}, a[#{i}] = #{a[i]}"
       end
+=end
       if Solve.sum(y, i) != a[i]
         return false
       end
@@ -88,7 +90,8 @@ class Solve
     while n <= MAXI
       # STDERR.puts "n = #{n}"
       if check(n)
-        ans = x
+        ans = n
+        STDERR.puts "ans = #{ans}"
         return
       end
       n += m
