@@ -141,6 +141,6 @@ int main()
   */
   ll alpha = calc_(0);
   ll beta = calc_(1);
-  ll ans = max(min(alpha, beta) + r * D, max(alpha, beta) + s * D);
+  ll ans = max(min(alpha, beta) + s * D, max(alpha, beta) + r * D);
   cout << ans << endl;
 }
