@@ -24,6 +24,7 @@ class Solve
         @primes[i - 1] = @a[i] % (i - 1)
       end
     end
+    p primes
     @m = 1
     @x = 0
     @ans = nil
@@ -70,7 +71,7 @@ class Solve
   def calc_x()
     primes.each{|q, b|
       STDERR.puts "q = #{q}, b = #{b}"
-      STDERR.puts "Solve.inv(#{m % q}, #{q}) = #{Solve.inv(m, q)}"
+      # STDERR.puts "Solve.inv(#{m % q}, #{q}) = #{Solve.inv(m, q)}"
       t = ((b + q - x % q) * Solve.inv(m, q)) % q
       @m *= q
       @x += m * t
@@ -81,7 +82,7 @@ class Solve
     calc_x()
     n = x
     while n <= MAXI
-      STDERR.puts "n = #{n}"
+      # STDERR.puts "n = #{n}"
       if check(n)
         ans = x
         return
