@@ -120,13 +120,16 @@ int main()
   ll s = (maxi + r) / (r + 1) - 1;
   for (auto e : W)
   {
-    if (get<0>(e) <= (r + 1) * (s + 1))
+    if (get<0>(e) < (r + 1) * (s + 1))
     {
       break;
     }
     A[0].insert(get<1>(e));
     A[1].insert(get<2>(e));
   }
+  ll alpha = calc_(0);
+  ll beta = calc_(1);
+  /*
   for (auto i = 0; i < D; i++)
   {
     for (auto j = 0; j < D; j++)
@@ -137,9 +140,8 @@ int main()
   }
   cerr << "maxi = " << maxi << endl;
   cerr << "r = " << r << ", s = " << s << endl;
-  ll alpha = calc_(0);
-  ll beta = calc_(1);
-  cerr << "alpha = " << alpha << ", beta = " << beta << endl;
+  */
+  // cerr << "alpha = " << alpha << ", beta = " << beta << endl;
   ll ans = max(min(alpha, beta) + r * D, max(alpha, beta) + s * D);
   cout << ans << endl;
 }
