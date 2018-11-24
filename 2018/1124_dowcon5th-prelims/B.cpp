@@ -26,6 +26,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <list>
 using namespace std;
 
 #define DEBUG 0 // change 0 -> 1 if we need debug.
@@ -41,7 +42,7 @@ typedef long long ll;
 int N, K;
 ll a[1010];
 ll sum[1010];
-vector<ll> V;
+list<ll> V;
 
 int main()
 {
@@ -72,9 +73,9 @@ int main()
   {
     int cnt = 0;
     int L = V.size();
-    for (auto j = 0; j < L; j++)
+    for (auto it = V.begin(); it != V.end(); it++)
     {
-      if ((V[j] >> i) & 1)
+      if (((*it) >> i) & 1)
       {
         cnt++;
       }
@@ -97,10 +98,12 @@ int main()
       }
     }
   }
-  ll ans = V[0];
+  auto it = V.begin();
+  ll ans = *it;
   for (auto i = 0; i < K; i++)
   {
-    ans = ans & V[i];
+    ans = ans & (*it);
+    it++;
   }
   cout << ans << endl;
 }
