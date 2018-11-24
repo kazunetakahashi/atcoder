@@ -130,6 +130,14 @@ int main()
     A[0].insert(get<1>(e));
     A[1].insert(get<2>(e));
   }
+  for (auto i = 0; i < D; i++)
+  {
+    for (auto j = 0; j < D; j++)
+    {
+      cerr << cnt[i][j] << " ";
+    }
+    cerr << endl;
+  }
   cerr << "maxi = " << maxi << endl;
   ll ans = calc_A() + maxi * D;
   cout << ans << endl;
