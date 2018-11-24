@@ -130,6 +130,7 @@ int main()
     A[0].insert(get<1>(e));
     A[1].insert(get<2>(e));
   }
+  cerr << "maxi = " << maxi << endl;
   ll ans = calc_A() + maxi * D;
   cout << ans << endl;
 }
