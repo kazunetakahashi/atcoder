@@ -62,6 +62,10 @@ int main()
       V.push_back(sum[i] - sum[j]);
     }
   }
+  for (auto x : V)
+  {
+    cerr << x << endl;
+  }
   int L = V.size();
   for (int i = 60 - 1; i >= 0; i--)
   {
