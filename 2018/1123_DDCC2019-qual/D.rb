@@ -70,7 +70,7 @@ class Solve
   def calc_x()
     primes.each{|q, b|
       STDERR.puts "q = #{q}, b = #{b}"
-      # STDERR.puts "Solve.inv(#{m}, #{q}) = #{Solve.inv(m, q)}"
+      STDERR.puts "Solve.inv(#{m}, #{q}) = #{Solve.inv(m, q)}"
       t = ((b + q - x % q) * Solve.inv(m, q)) % q
       @m *= q
       @x += m * t
@@ -79,7 +79,6 @@ class Solve
 
   def solve()
     calc_x()
-    n = x % m
     while n <= MAXI
       STDERR.puts "n = #{n}"
       if check(n)
