@@ -81,23 +81,20 @@ int main()
     }
     if (cnt >= K)
     {
-      cerr << "i = " << i << ", cnt = " << cnt << endl;
+      // cerr << "i = " << i << ", cnt = " << cnt << endl;
       auto it = V.begin();
       while (it != V.end())
       {
         ll t = *it;
-        if ((t >> 1) & 1)
+        if ((t >> i) & 1)
         {
-          cerr << "not erased : " << *it << endl;
           it++;
         }
         else
         {
-          cerr << "erased : " << *it << endl;
           it = V.erase(it);
         }
       }
-      cerr << "V.size() = " << V.size() << endl;
     }
   }
   ll ans = V[0];
