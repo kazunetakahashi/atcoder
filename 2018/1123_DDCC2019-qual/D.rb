@@ -50,7 +50,6 @@ class Solve
         return false
       end
     end
-    STDERR.puts "y = #{y}"
     return true
   end
 
@@ -91,13 +90,12 @@ class Solve
     while n <= MAXI
       # STDERR.puts "n = #{n}"
       if check(n)
-        ans = n
-        STDERR.puts "ans = #{ans}"
+        @ans = n
         return
       end
       n += m
     end
-    ans = nil
+    @ans = nil
   end
 
 end
