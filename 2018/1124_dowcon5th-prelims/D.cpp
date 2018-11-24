@@ -51,7 +51,7 @@ ll calc(ll x)
 {
   ll lb = 0;
   ll ub = 100010;
-  while (ub - lb > 0)
+  while (ub - lb > 1)
   {
     ll t = (ub + lb) / 2;
     if (t * t < x)
