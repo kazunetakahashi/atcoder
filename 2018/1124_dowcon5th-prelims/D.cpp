@@ -127,7 +127,6 @@ int main()
     A[0].insert(get<1>(e));
     A[1].insert(get<2>(e));
   }
-  /*
   for (auto i = 0; i < D; i++)
   {
     for (auto j = 0; j < D; j++)
@@ -137,10 +136,9 @@ int main()
     cerr << endl;
   }
   cerr << "maxi = " << maxi << endl;
-  cerr << "r = " << r << endl;
-  */
+  cerr << "r = " << r << ", s = " << s << endl;
   ll alpha = calc_(0);
   ll beta = calc_(1);
-  ll ans = max(min(alpha, beta) + s * D, max(alpha, beta) + r * D);
+  ll ans = max(min(alpha, beta) + r * D, max(alpha, beta) + s * D);
   cout << ans << endl;
 }
