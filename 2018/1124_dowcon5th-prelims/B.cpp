@@ -89,6 +89,7 @@ int main()
         }
         else
         {
+          cerr << "erased : " << *it << endl;
           it = V.erase(it);
         }
       }
