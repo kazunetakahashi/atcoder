@@ -176,13 +176,10 @@ bool erasable(int v)
   ans.push_back(v);
   children[P[v]].erase(children[P[v]].find(v));
   init();
-  /*
   cerr << "cnt_c[" << root << "] = " << cnt_c[root] << endl;
-  cerr << "M - ans.size() - 1 = " << M - ans.size() - 1 << endl;
   cerr << "cost = " << cost << endl;
-  cerr << "cnt_sum[" << root << "] = " << cnt_sum[root] << endl;
+  cerr << "maxi = " << maxi << endl;
   cerr << "mini = " << mini << endl;
-  */
   if ((int)ans.size() == M)
   {
     if (cost == K)
