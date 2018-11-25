@@ -134,9 +134,6 @@ void init()
   calc_c(root);
   calc_sum(root);
   calc_mini(M - (int)ans.size());
-  cerr << "cnt_c[" << root << "] = " << cnt_c[root] << endl;
-  cerr << "cnt_sum[" << root << "] = " << cnt_sum[root] << endl;
-  cerr << "mini = " << mini << endl;
 }
 
 void make_used(int v)
@@ -171,6 +168,11 @@ bool erasable(int v)
     }
   }
   init();
+  cerr << "cnt_c[" << root << "] = " << cnt_c[root] << endl;
+  cerr << "M - ans.size() - 1 = " << M - ans.size() - 1 << endl;
+  cerr << "cost = " << cost << endl;
+  cerr << "cnt_sum[" << root << "] = " << cnt_sum[root] << endl;
+  cerr << "mini = " << mini << endl;
   if ((int)ans.size() == M - 1)
   {
     if (cost == K)
