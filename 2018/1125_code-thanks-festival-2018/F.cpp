@@ -146,7 +146,10 @@ void init()
   fill(T, T + 310, 0);
   for (auto i = 0; i < N; i++)
   {
-    T[calc_S(i)]++;
+    if (!used[i])
+    {
+      T[calc_S(i)]++;
+    }
   }
   calc_c(root);
   // calc_sum(root);
