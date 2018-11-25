@@ -78,6 +78,7 @@ int main()
       }
     }
   }
+  /*
   for (auto i = 0; i < T; i++)
   {
     for (auto j = 0; j < 1000; j++)
@@ -85,6 +86,7 @@ int main()
       cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
     }
   }
+  */
   ll ans = 0;
   for (auto i = 1; i <= T; i++)
   {
