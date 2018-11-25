@@ -79,6 +79,13 @@ int main()
     }
   }
   ll ans = 0;
+  for (auto i = 0; i < 10; i++)
+  {
+    for (auto j = 0; j < 10; j++)
+    {
+      cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
+    }
+  }
   for (auto i = 1; i <= T; i++)
   {
     ans += DP[i][1];
