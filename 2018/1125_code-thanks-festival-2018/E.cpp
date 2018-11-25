@@ -80,7 +80,7 @@ int main()
   }
   for (auto i = 0; i < 4; i++)
   {
-    for (auto j = 0; j < 600; j++)
+    for (auto j = 0; j < 100; j++)
     {
       cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
     }
