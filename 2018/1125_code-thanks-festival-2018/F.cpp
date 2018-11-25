@@ -96,6 +96,7 @@ int calc_c(int v)
   return cnt_c[v];
 }
 
+/*
 int calc_sum(int v)
 {
   cnt_sum[v] = cnt_c[v];
@@ -105,6 +106,7 @@ int calc_sum(int v)
   }
   return cnt_sum[v];
 }
+*/
 
 int calc_mini(int remain)
 {
@@ -147,7 +149,7 @@ void init()
     T[calc_S(i)]++;
   }
   calc_c(root);
-  calc_sum(root);
+  // calc_sum(root);
   calc_mini(M - (int)ans.size());
   calc_maxi(M - (int)ans.size());
 }
@@ -177,6 +179,7 @@ bool erasable(int v)
   children[P[v]].erase(children[P[v]].find(v));
   init();
   cerr << "cnt_c[" << root << "] = " << cnt_c[root] << endl;
+  cerr << "K = " << K << endl;
   cerr << "cost = " << cost << endl;
   cerr << "maxi = " << maxi << endl;
   cerr << "mini = " << mini << endl;
