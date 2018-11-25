@@ -77,6 +77,7 @@ void flush()
         cout << " ";
       }
     }
+    cout << endl;
   }
   else
   {
