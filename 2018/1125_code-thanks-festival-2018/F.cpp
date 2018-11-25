@@ -220,6 +220,7 @@ int main()
       }
       if (erasable(j))
       {
+        cerr << "erase: " << j << endl;
         valid = true;
         break;
       }
