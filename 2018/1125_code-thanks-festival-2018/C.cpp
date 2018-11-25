@@ -62,7 +62,6 @@ int main()
     {
       ll dist = x[i + 1] - x[i];
       sum -= (N - 1 - i) * dist;
-      sum += (i + 1) * dist;
     }
   }
   cout << ans << endl;
