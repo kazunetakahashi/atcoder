@@ -86,12 +86,12 @@ void flush()
 
 int calc_c(int v)
 {
-  cnt_c[v] = 0;
+  cnt_c[v] = 1;
   for (auto x : children[v])
   {
     cnt_c[v] += calc_c(x);
   }
-  return cnt_c[v] + 1;
+  return cnt_c[v];
 }
 
 int calc_sum(int v)
@@ -134,9 +134,11 @@ void init()
   calc_c(root);
   calc_sum(root);
   calc_mini(M - (int)ans.size());
+  /*
   cerr << "cnt_c[" << root << "] = " << cnt_c[root] << endl;
   cerr << "cnt_sum[" << root << "] = " << cnt_sum[root] << endl;
   cerr << "mini = " << mini << endl;
+  */
 }
 
 void make_used(int v)
