@@ -43,6 +43,46 @@ int P[310];
 int root = 0;
 vector<int> children[310];
 int cnt_c[310];
+int cnt_sum[310];
+int S[310];
+vector<int> T[310];
+bool used[310];
+bool ok = true;
+vector<int> ans;
+int mini = 0;
+
+int calc_S(int v)
+{
+  if (S[v] != -1)
+  {
+    return S[v];
+  }
+  if (v == root)
+  {
+    return S[v] = 1;
+  }
+  return S[v] = calc_S(P[v]) + 1;
+}
+
+void flush()
+{
+  if (ok)
+  {
+    assert((int)ans.size() == M);
+    for (auto i = 0; i < M; i++)
+    {
+      cout << ans[i] + 1;
+      if (i < M - 1)
+      {
+        cout << " ";
+      }
+    }
+  }
+  else
+  {
+    cout << -1 << endl;
+  }
+}
 
 int calc_c(int v)
 {
@@ -52,6 +92,100 @@ int calc_c(int v)
     cnt_c[v] += calc_c(x);
   }
   return cnt_c[v] + 1;
+}
+
+int calc_sum(int v)
+{
+  cnt_sum[v] = 0;
+  for (auto x : children[v])
+  {
+    cnt_sum[v] += calc_sum(x);
+  }
+  return cnt_sum[v];
+}
+
+int calc_mini(int remain)
+{
+  mini = 0;
+  for (auto i = 0; i < 310; i++)
+  {
+    if (remain <= 0)
+    {
+      break;
+    }
+    int x = min((int)T[i].size(), remain);
+    mini += i * x;
+    remain -= x;
+  }
+  return mini;
+}
+
+void init()
+{
+  fill(S, S + N, -1);
+  for (auto i = 0; i < 310; i++)
+  {
+    T[i].clear();
+  }
+  for (auto i = 0; i < N; i++)
+  {
+    T[calc_S(i)].push_back(i);
+  }
+  calc_c(root);
+  calc_sum(root);
+  calc_mini(M - (int)ans.size());
+}
+
+void make_used(int v)
+{
+  used[v] = true;
+  for (auto x : children[v])
+  {
+    make_used(x);
+  }
+}
+
+bool erasable(int v)
+{
+  int cost = S[v];
+  if (P[v] == -1)
+  {
+    if (K == 1 && (int)ans.size() == M - 1)
+    {
+      ans.push_back(v);
+      return true;
+    }
+    return false;
+  }
+  ans.push_back(v);
+  auto it = children[P[v]].begin();
+  while (it != children[P[v]].end())
+  {
+    if (*it == v)
+    {
+      children[P[v]].erase(it);
+      break;
+    }
+  }
+  init();
+  if ((int)ans.size() == M - 1)
+  {
+    if (cost == K)
+    {
+      return true;
+    }
+  }
+  else if (cnt_c[root] >= M - (int)ans.size() - 1 && mini <= K - cost && K - cost <= cnt_sum[root])
+  {
+    K -= cost;
+    make_used(v);
+    return true;
+  }
+  children[P[v]].push_back(v);
+  it = ans.end();
+  it--;
+  ans.erase(it);
+  return false;
 }
 
 int main()
@@ -73,6 +207,28 @@ int main()
       children[P[i]].push_back(i);
     }
   }
-  assert(calc_c(root) == N);
-  
+  init();
+  fill(used, used + N, false);
+  for (auto i = 0; i < M; i++)
+  {
+    bool valid = false;
+    for (auto j = 0; j < N; j++)
+    {
+      if (used[j])
+      {
+        continue;
+      }
+      if (erasable(j))
+      {
+        valid = true;
+        break;
+      }
+    }
+    if (!valid)
+    {
+      ok = false;
+      break;
+    }
+  }
+  flush();
 }
