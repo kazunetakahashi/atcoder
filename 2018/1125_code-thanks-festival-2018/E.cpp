@@ -78,9 +78,9 @@ int main()
       }
     }
   }
-  for (auto i = 0; i < 4; i++)
+  for (auto i = 0; i < T; i++)
   {
-    for (auto j = 0; j < 100; j++)
+    for (auto j = 0; j < 1000; j++)
     {
       cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
     }
