@@ -153,6 +153,15 @@ void make_used(int v)
   }
 }
 
+void make_unused(int v)
+{
+  used[v] = false;
+  for (auto x : children[v])
+  {
+    make_unused(x);
+  }
+}
+
 bool erasable(int v)
 {
   int cost = S[v];
@@ -167,6 +176,7 @@ bool erasable(int v)
   }
   ans.push_back(v);
   children[P[v]].erase(children[P[v]].find(v));
+  make_used(v);
   init();
   cerr << "v = " << v << endl;
   cerr << "cnt_c[" << root << "] = " << cnt_c[root] << endl;
@@ -184,9 +194,9 @@ bool erasable(int v)
   else if (cnt_c[root] >= M - (int)ans.size() && mini <= K - cost && K - cost <= maxi)
   {
     K -= cost;
-    make_used(v);
     return true;
   }
+  make_unused(v);
   children[P[v]].insert(v);
   auto it = ans.end();
   it--;
