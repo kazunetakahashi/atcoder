@@ -41,11 +41,11 @@ typedef long long ll;
 int N, M, K;
 int P[310];
 int root = 0;
-vector<int> children[310];
+set<int> children[310];
 int cnt_c[310];
 int cnt_sum[310];
 int S[310];
-vector<int> T[310];
+int T[310];
 bool used[310];
 bool ok = true;
 vector<int> ans;
@@ -113,7 +113,7 @@ int calc_mini(int remain)
     {
       break;
     }
-    int x = min((int)T[i].size(), remain);
+    int x = min(T[i], remain);
     mini += i * x;
     remain -= x;
   }
@@ -123,13 +123,10 @@ int calc_mini(int remain)
 void init()
 {
   fill(S, S + N, -1);
-  for (auto i = 0; i < 310; i++)
-  {
-    T[i].clear();
-  }
+  fill(T, T + 310, 0);
   for (auto i = 0; i < N; i++)
   {
-    T[calc_S(i)].push_back(i);
+    T[calc_S(i)]++;
   }
   calc_c(root);
   calc_sum(root);
@@ -158,15 +155,7 @@ bool erasable(int v)
     return false;
   }
   ans.push_back(v);
-  auto it = children[P[v]].begin();
-  while (it != children[P[v]].end())
-  {
-    if (*it == v)
-    {
-      children[P[v]].erase(it);
-      break;
-    }
-  }
+  children[P[v]].erase(children[P[v]].find(v));
   init();
   /*
   cerr << "cnt_c[" << root << "] = " << cnt_c[root] << endl;
@@ -188,8 +177,8 @@ bool erasable(int v)
     make_used(v);
     return true;
   }
-  children[P[v]].push_back(v);
-  it = ans.end();
+  children[P[v]].insert(v);
+  auto it = ans.end();
   it--;
   ans.erase(it);
   return false;
@@ -211,7 +200,7 @@ int main()
     }
     else
     {
-      children[P[i]].push_back(i);
+      children[P[i]].insert(i);
     }
   }
   init();
