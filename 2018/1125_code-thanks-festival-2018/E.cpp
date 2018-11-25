@@ -97,8 +97,10 @@ int main()
   }
   for (auto i = 1; i <= T; i++)
   {
-    cerr << "DP[" << i << "][" << 1 << "] = " << DP[i][1] << endl;
-    ans += DP[i][1];
+    for (auto j = 0; j <= 9; j++)
+    {
+      ans += DP[i][1 << j];
+    }
     ans %= M;
   }
   cout << ans << endl;
