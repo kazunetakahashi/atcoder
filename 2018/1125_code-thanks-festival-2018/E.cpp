@@ -78,12 +78,19 @@ int main()
       }
     }
   }
-  ll ans = 0;
-  for (auto i = 0; i < 10; i++)
+  for (auto i = 0; i < 4; i++)
   {
-    for (auto j = 0; j < 10; j++)
+    for (auto j = 0; j < 4; j++)
     {
       cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
+    }
+  }
+  ll ans = 0;
+  for (auto i = 1; i <= T; i++)
+  {
+    if (a[i] > 0)
+    {
+      ans++;
     }
   }
   for (auto i = 1; i <= T; i++)
