@@ -71,7 +71,7 @@ int main()
     for (auto j = 0; j < 1000; j++)
     {
       DP[i][j] = 0;
-      for (auto k = 0; k <= min(2 * j, 1000); k++)
+      for (auto k = 0; k <= min(2 * j, 999); k++)
       {
         DP[i][j] += DP[i - 1][k] * cnt(i, 2 * j - k);
         DP[i][j] %= M;
