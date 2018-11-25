@@ -99,6 +99,7 @@ int main()
   {
     for (auto j = 0; j <= 9; j++)
     {
+      cerr << "DP[" << i << "][" << (1 << j) << "] = " << DP[i][1 << j] << endl;
       ans += DP[i][1 << j];
     }
     ans %= M;
