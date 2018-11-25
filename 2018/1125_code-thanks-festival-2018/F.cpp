@@ -196,8 +196,8 @@ bool erasable(int v)
     K -= cost;
     return true;
   }
-  make_unused(v);
   children[P[v]].insert(v);
+  make_unused(v);
   auto it = ans.end();
   it--;
   ans.erase(it);
