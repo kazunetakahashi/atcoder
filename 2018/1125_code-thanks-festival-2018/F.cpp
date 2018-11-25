@@ -96,18 +96,6 @@ int calc_c(int v)
   return cnt_c[v];
 }
 
-/*
-int calc_sum(int v)
-{
-  cnt_sum[v] = cnt_c[v];
-  for (auto x : children[v])
-  {
-    cnt_sum[v] += calc_sum(x);
-  }
-  return cnt_sum[v];
-}
-*/
-
 int calc_mini(int remain)
 {
   mini = 0;
@@ -152,7 +140,6 @@ void init()
     }
   }
   calc_c(root);
-  // calc_sum(root);
   calc_mini(M - (int)ans.size());
   calc_maxi(M - (int)ans.size());
 }
