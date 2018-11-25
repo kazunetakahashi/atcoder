@@ -44,7 +44,7 @@ ll DP[310][400];
 
 ll cnt(ll i, ll l)
 {
-  if (0 <= 2 * l && 2 * l <= a[i])
+  if (0 <= l && l <= a[i])
   {
     return 1;
   }
@@ -73,7 +73,7 @@ int main()
       DP[i][j] = 0;
       for (auto k = 0; k <= j; k++)
       {
-        DP[i][j] += DP[i - 1][k] * cnt(i, j - k);
+        DP[i][j] += DP[i - 1][k] * cnt(i, 2 * j - k);
         DP[i][j] %= M;
       }
     }
