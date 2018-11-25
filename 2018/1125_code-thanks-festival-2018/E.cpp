@@ -97,6 +97,7 @@ int main()
   }
   for (auto i = 1; i <= T; i++)
   {
+    cerr << "DP[" << i << "][" << 1 << "] = " << DP[i][1] << endl;
     ans += DP[i][1];
     ans %= M;
   }
