@@ -40,7 +40,7 @@ const ll M = 1000000007;
 
 int T;
 ll a[310];
-ll DP[310][400];
+ll DP[310][1000];
 
 ll cnt(ll i, ll l)
 {
@@ -61,17 +61,17 @@ int main()
   {
     cin >> a[i];
   }
-  for (auto i = 0; i < 400; i++)
+  for (auto i = 0; i < 1000; i++)
   {
     DP[0][i] = 0;
   }
   DP[0][0] = 1;
   for (auto i = 1; i <= T; i++)
   {
-    for (auto j = 0; j < 400; j++)
+    for (auto j = 0; j < 1000; j++)
     {
       DP[i][j] = 0;
-      for (auto k = 0; k <= j; k++)
+      for (auto k = 0; k <= min(2 * j, 1000); k++)
       {
         DP[i][j] += DP[i - 1][k] * cnt(i, 2 * j - k);
         DP[i][j] %= M;
