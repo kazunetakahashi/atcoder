@@ -50,6 +50,7 @@ bool used[310];
 bool ok = true;
 vector<int> ans;
 int mini = 0;
+int maxi;
 
 int calc_S(int v)
 {
@@ -121,6 +122,22 @@ int calc_mini(int remain)
   return mini;
 }
 
+int calc_maxi(int remain)
+{
+  maxi = 0;
+  for (auto i = 309; i >= 0; i--)
+  {
+    if (remain <= 0)
+    {
+      break;
+    }
+    int x = min(T[i], remain);
+    maxi += i * x;
+    remain -= x;
+  }
+  return maxi;
+}
+
 void init()
 {
   fill(S, S + N, -1);
@@ -132,6 +149,7 @@ void init()
   calc_c(root);
   calc_sum(root);
   calc_mini(M - (int)ans.size());
+  calc_maxi(M - (int)ans.size());
 }
 
 void make_used(int v)
@@ -172,7 +190,7 @@ bool erasable(int v)
       return true;
     }
   }
-  else if (cnt_c[root] >= M - (int)ans.size() && mini <= K - cost && K - cost <= cnt_sum[root])
+  else if (cnt_c[root] >= M - (int)ans.size() && mini <= K - cost && K - cost <= maxi)
   {
     K -= cost;
     make_used(v);
