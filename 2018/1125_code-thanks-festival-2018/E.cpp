@@ -39,8 +39,8 @@ typedef long long ll;
 const ll M = 1000000007;
 
 int T;
-ll a[310];
-ll DP[310][1000];
+ll a[700];
+ll DP[700][1000];
 
 ll cnt(ll i, ll l)
 {
@@ -57,6 +57,7 @@ ll cnt(ll i, ll l)
 int main()
 {
   cin >> T;
+  fill(a, a + 700, 0);
   for (auto i = 1; i <= T; i++)
   {
     cin >> a[i];
@@ -66,7 +67,7 @@ int main()
     DP[0][i] = 0;
   }
   DP[0][0] = 1;
-  for (auto i = 1; i <= T; i++)
+  for (auto i = 1; i <= 2 * T; i++)
   {
     for (auto j = 0; j < 1000; j++)
     {
@@ -88,20 +89,16 @@ int main()
   }
   */
   ll ans = 0;
-  for (auto i = 1; i <= T; i++)
+  for (auto i = 1; i <= 2 * T; i++)
   {
     if (a[i] > 0)
     {
       ans++;
     }
   }
-  for (auto i = 1; i <= T; i++)
+  for (auto i = 1; i <= 2 * T; i++)
   {
-    for (auto j = 0; j <= 9; j++)
-    {
-      cerr << "DP[" << i << "][" << (1 << j) << "] = " << DP[i][1 << j] << endl;
-      ans += DP[i][1 << j];
-    }
+    ans += DP[i][1];
     ans %= M;
   }
   cout << ans << endl;
