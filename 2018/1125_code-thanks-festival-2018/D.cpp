@@ -47,7 +47,7 @@ int main()
   char now = S[0];
   for (auto x : S)
   {
-    if (now > x)
+    if (now >= x)
     {
       now = x;
       ans++;
