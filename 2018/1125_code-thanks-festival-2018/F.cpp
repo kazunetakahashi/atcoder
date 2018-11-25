@@ -178,6 +178,7 @@ bool erasable(int v)
   ans.push_back(v);
   children[P[v]].erase(children[P[v]].find(v));
   init();
+  cerr << "v = " << v << endl;
   cerr << "cnt_c[" << root << "] = " << cnt_c[root] << endl;
   cerr << "K = " << K << endl;
   cerr << "cost = " << cost << endl;
