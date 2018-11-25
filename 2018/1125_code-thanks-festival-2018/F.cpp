@@ -134,11 +134,9 @@ void init()
   calc_c(root);
   calc_sum(root);
   calc_mini(M - (int)ans.size());
-  /*
   cerr << "cnt_c[" << root << "] = " << cnt_c[root] << endl;
   cerr << "cnt_sum[" << root << "] = " << cnt_sum[root] << endl;
   cerr << "mini = " << mini << endl;
-  */
 }
 
 void make_used(int v)
