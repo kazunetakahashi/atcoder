@@ -10,6 +10,7 @@ s = gets.chomp
 
 x = 0
 cnt = []
+cnt << x
 s.chars{|c|
   if c == 'I'
     x += 1
