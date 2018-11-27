@@ -5,4 +5,5 @@
 # Powered by Visual Studio Code
 #
 
-eval(gets.chomp)
+x = eval(gets.chomp)
+puts x
