@@ -53,6 +53,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     cin >> s[i] >> t[i] >> c[i];
+    c[i]--;
   }
   fill(&broad[0][0], &broad[0][0] + 30 * 100010, false);
   for (auto i = 0; i < N; i++)
@@ -84,7 +85,7 @@ int main()
   int t = 0;
   for (auto x : V)
   {
-    cerr << "(" << get<0>(x) << ", " << get<1>(x) << ")" << endl;
+    // cerr << "(" << get<0>(x) << ", " << get<1>(x) << ")" << endl;
     if (get<1>(x) == 0)
     {
       t--;
