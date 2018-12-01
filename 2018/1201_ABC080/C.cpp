@@ -41,7 +41,6 @@ typedef long long ll;
 int N;
 int F[110][10];
 ll P[110][11];
-ll sum[110][11];
 int cnt[110];
 ll ans = -10000000000000;
 
@@ -60,14 +59,6 @@ int main()
     for (auto j = 0; j < 11; j++)
     {
       cin >> P[i][j];
-    }
-  }
-  for (auto i = 0; i < N; i++)
-  {
-    sum[i][0] = P[i][0];
-    for (auto j = 1; j < 11; j++)
-    {
-      sum[i][j] = P[i][j] + sum[i][j - 1];
     }
   }
   for (auto i = 1; i < (1 << 10); i++)
@@ -89,7 +80,7 @@ int main()
     ll tans = 0;
     for (auto k = 0; k < N; k++)
     {
-      tans += sum[k][cnt[k]];
+      tans += P[k][cnt[k]];
     }
     ans = max(tans, ans);
   }
