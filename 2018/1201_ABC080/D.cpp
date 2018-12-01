@@ -66,17 +66,17 @@ int main()
   {
     if (broad[i][0])
     {
-      V.push_back(X(i, 1));
+      V.push_back(X(0, 1));
     }
     for (auto j = 1; j < 100010; j++)
     {
       if (broad[i][j - 1] && !broad[i][j])
       {
-        V.push_back(X(i, 0));
+        V.push_back(X(j, 0));
       }
       else if (!broad[i][j - 1] && broad[i][j])
       {
-        V.push_back(X(i, 1));
+        V.push_back(X(j, 1));
       }
     }
   }
@@ -84,7 +84,7 @@ int main()
   int t = 0;
   for (auto x : V)
   {
-    cerr << "(" << get<0>(x) << ", " << get<1>(x) << ")" << endl;
+    // cerr << "(" << get<0>(x) << ", " << get<1>(x) << ")" << endl;
     if (get<1>(x) == 0)
     {
       t--;
