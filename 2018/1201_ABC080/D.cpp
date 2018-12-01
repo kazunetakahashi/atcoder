@@ -84,7 +84,7 @@ int main()
   int t = 0;
   for (auto x : V)
   {
-    // cerr << "(" << get<0>(x) << ", " << get<1>(x) << ")" << endl;
+    cerr << "(" << get<0>(x) << ", " << get<1>(x) << ")" << endl;
     if (get<1>(x) == 0)
     {
       t--;
