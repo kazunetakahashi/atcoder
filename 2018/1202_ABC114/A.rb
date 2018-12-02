@@ -8,7 +8,7 @@
 x = gets.to_i
 
 if x == 3 || x == 5 || x == 7
-  puts "Yes"
+  puts "YES"
 else
-  puts "No"
+  puts "NO"
 end
