@@ -7,7 +7,7 @@
 
 n = gets.to_i
 
-ary = Array.new(10)
+ary = Array.new(10){[]}
 ary[0] = ['7', '5', '3']
 
 10.times{|t|
