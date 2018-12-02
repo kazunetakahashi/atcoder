@@ -35,10 +35,14 @@ hash.each{|prime, cnt|
   ary[cnt] += 1
 }
 
+for i in 0...99
+  ary[98 - i] += ary[99 - i]
+end
+
 ans = 0
 ans += ary[74]
-ans += ary[4] * ary[14]
-ans += ary[2] * ary[24]
-ans += ary[2] * ary[4] * (ary[4] - 1) / 2
+ans += ary[4] * ary[14] - ary[14]
+ans += ary[2] * ary[24] - ary[24]
+ans += (ary[2] - 2) * ary[4] * (ary[4] - 1) / 2
 
 puts ans
