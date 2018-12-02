@@ -32,7 +32,7 @@ hash.each{|prime, cnt|
 }
 
 98.downto(0){
-  hash[i] += hash[i + 1]
+  ary[i] += ary[i + 1]
 }
 
 ans = 0
