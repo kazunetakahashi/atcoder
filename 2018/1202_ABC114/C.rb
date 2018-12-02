@@ -7,7 +7,7 @@
 
 n = gets.to_i
 
-ary = Array.new(10){[]}
+ary = Array.new(11){[]}
 ary[0] = ['7', '5', '3']
 
 10.times{|t|
@@ -19,7 +19,7 @@ ary[0] = ['7', '5', '3']
 }
 
 ans = []
-10.times{|t|
+11.times{|t|
   ans.concat(ary[t])
 }
 
