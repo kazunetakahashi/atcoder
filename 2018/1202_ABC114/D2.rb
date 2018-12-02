@@ -31,7 +31,7 @@ hash.each{|prime, cnt|
   ary[cnt] += 1
 }
 
-98.downto(0){
+98.downto(0){|i|
   ary[i] += ary[i + 1]
 }
 
