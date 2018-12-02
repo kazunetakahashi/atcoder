@@ -7,7 +7,7 @@
 
 s = gets.chomp
 ans = []
-for i in 0...s.size - 3
+for i in 0...s.size - 2
   ans << (753 - s[i...i + 3].to_i).abs
 end
 puts ans.min
