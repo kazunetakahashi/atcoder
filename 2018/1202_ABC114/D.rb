@@ -27,7 +27,7 @@ for i in 1..n
   }
 end
 
-p hash
+# p hash
 
 ary = Array.new(100){0}
 
