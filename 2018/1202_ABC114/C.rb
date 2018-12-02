@@ -26,7 +26,7 @@ ans = []
 res = 0
 
 ans.each{|str|
-  if str <= n
+  if str.to_i <= n
     res += 1
   end
 }
