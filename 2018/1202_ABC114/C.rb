@@ -26,6 +26,9 @@ ans = []
 res = 0
 
 ans.each{|str|
+  if !(str.include?('3') && str.include?('5') && str.include?('7'))
+    next
+  end
   if str.to_i <= n
     res += 1
   end
