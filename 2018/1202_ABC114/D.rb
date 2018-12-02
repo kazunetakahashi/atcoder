@@ -5,6 +5,8 @@
 # Powered by Visual Studio Code
 #
 
+require 'prime'
+
 n = gets.to_i
 
 hash = {}
