@@ -8,16 +8,16 @@
 n = gets.to_i
 ary = []
 n.times{
-  ary << gets.chomp.split(" ").map{|i| i.to_f}
+  ary << gets.chomp.split(" ").map{|i| i.to_i}
 }
 
 takahashi = 1
 aoki = 1
 
 ary.each{|t, a|
-  n = [(takahashi/t).ceil, (aoki/a).ceil].max
-  takahashi = (t * n).to_i
-  aoki = (a * n).to_i
+  n = [(takahashi + t - 1)/t, (aoki + a - 1)/a].max
+  takahashi = t * n
+  aoki = a * n
 }
 
 puts takahashi + aoki
