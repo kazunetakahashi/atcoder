@@ -35,4 +35,4 @@ def calc(y, k)
   end
 end
 
-puts calc(n, x)
+puts calc(x, n)
