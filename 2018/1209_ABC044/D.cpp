@@ -62,7 +62,8 @@ int main()
     cout << N + 1 << endl;
     return 0;
   }
-  for (auto b = 2; b * b <= N; b++)
+  ll sq = sqrt(N);
+  for (auto b = 2; b <= sq + 10; b++)
   {
     if (f(b, N) == S)
     {
@@ -71,7 +72,7 @@ int main()
     }
   }
   ll ans = infty;
-  for (auto p = 1; p * p <= N; p++)
+  for (auto p = 1; p <= sq + 10; p++)
   {
     ll q = S - p;
     if ((N - q) % p != 0)
