@@ -40,7 +40,6 @@ const ll infty = 100000000000000;
 
 ll f(ll b, ll n)
 {
-  cerr << "b = " << b << ", n = " << n << endl;
   if (b < 0)
   {
     assert(false);
@@ -60,6 +59,11 @@ ll N, S;
 int main()
 {
   cin >> N >> S;
+  if (N < S)
+  {
+    cout << -1 << endl;
+    return 0;
+  }
   if (N == S)
   {
     cout << N + 1 << endl;
