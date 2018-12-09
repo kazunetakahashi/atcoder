@@ -65,5 +65,5 @@ int main()
       DP[i + 1][j + x[i]] += DP[i][j];
     }
   }
-  cout << DP[N][C] << endl;
+  cout << DP[N][C] - 1 << endl;
 }
