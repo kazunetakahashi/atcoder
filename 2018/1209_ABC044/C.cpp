@@ -61,6 +61,7 @@ int main()
       {
         continue;
       }
+      DP[i + 1][j] += DP[i][j];
       DP[i + 1][j + x[i]] += DP[i][j];
     }
   }
