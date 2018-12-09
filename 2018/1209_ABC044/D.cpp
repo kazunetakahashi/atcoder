@@ -41,6 +41,10 @@ const ll infty = 100000000000000;
 ll f(ll b, ll n)
 {
   cerr << "b = " << b << ", n = " << n << endl;
+  if (b < 0)
+  {
+    assert(false);
+  }
   if (n < b)
   {
     return n;
