@@ -40,19 +40,11 @@ const ll infty = 100000000000000;
 
 ll f(ll b, ll n)
 {
-  cerr << "b = " << b << ", n = " << n << endl;
-  if (b < 0)
-  {
-    assert(false);
-  }
   if (n < b)
   {
     return n;
   }
-  else
-  {
-    return f(b, n / b) + n % b;
-  }
+  return f(b, n / b) + n % b;
 }
 
 ll N, S;
@@ -81,7 +73,16 @@ int main()
   ll ans = infty;
   for (auto p = 1; p * p <= N; p++)
   {
-    ll b = (N - S) / p + 1;
+    ll q = S - p;
+    if ((N - q) % p != 0)
+    {
+      continue;
+    }
+    ll b = (N - q) / p;
+    if (!(0 <= q && q < b && p < b))
+    {
+      continue;
+    }
     if (f(b, N) == S)
     {
       ans = min(ans, b);
