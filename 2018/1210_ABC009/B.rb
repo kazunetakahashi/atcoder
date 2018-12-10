@@ -13,4 +13,4 @@ n.times{
     hash[a] = 1
   end
 }
-puts hash.keys.sort[1]
+puts hash.keys.sort[-2]
