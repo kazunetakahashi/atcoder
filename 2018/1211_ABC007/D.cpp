@@ -45,6 +45,7 @@ ll cnt(ll X)
   {
     S = "0" + S;
   }
+  cerr << S << endl;
   ll DP[21][2][2]; // digit, equal?, 4-9?
   fill(&DP[0][0][0], &DP[0][0][0] + 21 * 2 * 2, 0);
   DP[0][1][0] = 1;
