@@ -40,8 +40,7 @@ typedef long long ll;
 
 int N;
 int A[200010];
-int K[100];
-int S;
+int K[1000];
 
 bool solve(int X)
 {
@@ -50,7 +49,7 @@ bool solve(int X)
   {
     if (A[i] > A[i + 1])
     {
-      S = A[i + 1];
+      continue;
     }
     else
     {
@@ -87,7 +86,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     cin >> A[i];
-    A[i] = min(100, A[i]);
+    A[i] = min(1000, A[i]);
   }
   reverse(A, A + N);
   int ub = N;
