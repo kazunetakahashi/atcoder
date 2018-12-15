@@ -35,7 +35,7 @@ typedef long long ll;
 // const int dx[4] = {1, 0, -1, 0};
 // const int dy[4] = {0, 1, 0, -1};
 
-const int C = 100;
+const int C = 10000;
 // const ll M = 1000000007;
 
 int N;
