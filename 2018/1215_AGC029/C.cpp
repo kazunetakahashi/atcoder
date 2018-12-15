@@ -35,12 +35,12 @@ typedef long long ll;
 // const int dx[4] = {1, 0, -1, 0};
 // const int dy[4] = {0, 1, 0, -1};
 
-// const int C = 1e6+10;
+const int C = 10000;
 // const ll M = 1000000007;
 
 int N;
 int A[200010];
-int K[1000];
+int K[C];
 
 bool solve(int X)
 {
@@ -86,7 +86,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     cin >> A[i];
-    A[i] = min(1000, A[i]);
+    A[i] = min(C, A[i]);
   }
   reverse(A, A + N);
   int ub = N;
