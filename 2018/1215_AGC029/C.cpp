@@ -51,7 +51,7 @@ bool solve(int X)
     {
       continue;
     }
-    else if (A[i] == C + 1)
+    else if (A[i + 1] == C + 1)
     {
       continue;
     }
