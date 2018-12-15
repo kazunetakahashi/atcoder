@@ -51,7 +51,7 @@ bool solve(int X)
     {
       continue;
     }
-    else if (A[i + 1] == C + 1)
+    else if (A[i] == C)
     {
       continue;
     }
@@ -90,7 +90,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     cin >> A[i];
-    A[i] = min(C + 1, A[i]);
+    A[i] = min(C, A[i]);
   }
   reverse(A, A + N);
   int ub = N;
