@@ -184,16 +184,16 @@ int main()
   for (auto i = 0; i <= N; i++)
   {
     ll t_ans = i;
-    // cerr << "i = " << i << endl;
+    cerr << "i = " << i << endl;
     if (i < N)
     {
       t_ans += ans_X[i];
-      // cerr << "ans_X[" << i << "] = " << ans_X[i] << endl;
+      cerr << "ans_X[" << i << "] = " << ans_X[i] << endl;
     }
     if (i > 0)
     {
       t_ans += ans_Y[i - 1];
-      // cerr << "ans_Y[" << i - 1 << "] = " << ans_Y[i - 1] << endl;
+      cerr << "ans_Y[" << i - 1 << "] = " << ans_Y[i - 1] << endl;
     }
     ans = min(t_ans, ans);
   }
