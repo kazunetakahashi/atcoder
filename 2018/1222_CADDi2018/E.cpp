@@ -152,7 +152,7 @@ int main()
   for (auto i = N - 2; i >= 0; i--)
   {
     mini = min(imos_X[i], mini);
-    ans_X[i] = sum - mini * (N - i);
+    ans_X[i] = sum - mini * (N - i - 1);
     sum += imos_X[i];
   }
   for (auto i = 0; i < N; i++)
@@ -176,7 +176,7 @@ int main()
   for (auto i = N - 2; i >= 0; i--)
   {
     mini = min(imos_Y[i], mini);
-    ans_Y[i] = sum - mini * (N - i);
+    ans_Y[i] = sum - mini * (N - i - 1);
     sum += imos_Y[i];
   }
   reverse(ans_Y, ans_Y + N);
