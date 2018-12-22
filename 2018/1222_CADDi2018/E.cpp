@@ -146,23 +146,14 @@ int main()
     imos_X[i] = X[i] + imos_X[i - 1];
     cerr << "imos_X[" << i << "] = " << imos_X[i] << endl;
   }
-  vector<T> V;
-  BIT bit_X = BIT(N);
-  BIT bit_cnt_X = BIT(N);
-  for (auto i = 0; i < N; i++)
+  ll sum = 0;
+  ll mini = imos_X[N - 1];
+  ans_X[N - 1] = 0;
+  for (auto i = N - 2; i >= 0; i--)
   {
-    V.push_back(T(imos_X[i], i));
-  }
-  sort(V.begin(), V.end());
-  reverse(V.begin(), V.end());
-  for (auto i = 0; i < N; i++)
-  {
-    ll M = get<0>(V[i]);
-    int ind = get<1>(V[i]) + 1;
-    bit_X.add(ind, M);
-    bit_cnt_X.add(ind);
-    ans_X[ind - 1] = bit_X.sum(ind, N + 1);
-    //  -M *bit_cnt_X.sum(ind, N + 1);
+    mini = min(imos_X[i], mini);
+    sum += imos_X[i];
+    ans_X[i] = sum - mini * (N - i);
   }
   for (auto i = 0; i < N; i++)
   {
@@ -179,39 +170,30 @@ int main()
   {
     imos_Y[i] = Y[i] + imos_Y[i - 1];
   }
-  V.clear();
-  BIT bit_Y = BIT(N);
-  BIT bit_cnt_Y = BIT(N);
-  for (auto i = 0; i < N; i++)
+  sum = 0;
+  mini = imos_Y[N - 1];
+  ans_Y[N - 1] = 0;
+  for (auto i = N - 2; i >= 0; i--)
   {
-    V.push_back(T(imos_Y[i], i));
-  }
-  sort(V.begin(), V.end());
-  reverse(V.begin(), V.end());
-  for (auto i = 0; i < N; i++)
-  {
-    ll M = get<0>(V[i]);
-    int ind = get<1>(V[i]) + 1;
-    bit_Y.add(ind, M);
-    bit_cnt_Y.add(ind);
-    ans_Y[ind - 1] = bit_Y.sum(ind, N + 1);
-    //  -M *bit_cnt_Y.sum(ind, N + 1);
+    mini = min(imos_Y[i], mini);
+    sum += imos_Y[i];
+    ans_Y[i] = sum - mini * (N - i);
   }
   reverse(ans_Y, ans_Y + N);
   ll ans = 10000000000000000;
   for (auto i = 0; i <= N; i++)
   {
     ll t_ans = i;
-    cerr << "i = " << i << endl;
+    // cerr << "i = " << i << endl;
     if (i < N)
     {
       t_ans += ans_X[i];
-      cerr << "ans_X[" << i << "] = " << ans_X[i] << endl;
+      // cerr << "ans_X[" << i << "] = " << ans_X[i] << endl;
     }
     if (i > 0)
     {
       t_ans += ans_Y[i - 1];
-      cerr << "ans_Y[" << i - 1 << "] = " << ans_Y[i - 1] << endl;
+      // cerr << "ans_Y[" << i - 1 << "] = " << ans_Y[i - 1] << endl;
     }
     ans = min(t_ans, ans);
   }
