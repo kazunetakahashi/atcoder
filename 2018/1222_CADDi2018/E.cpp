@@ -144,9 +144,9 @@ int main()
   for (auto i = 1; i < N; i++)
   {
     imos_X[i] = X[i] + imos_X[i - 1];
-    cerr << "imos_X[" << i << "] = " << imos_X[i] << endl;
+    // cerr << "imos_X[" << i << "] = " << imos_X[i] << endl;
   }
-  ll sum = 0;
+  ll sum = imos_X[N - 1];
   ll mini = imos_X[N - 1];
   ans_X[N - 1] = 0;
   for (auto i = N - 2; i >= 0; i--)
