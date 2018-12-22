@@ -144,7 +144,7 @@ int main()
   for (auto i = 1; i < N; i++)
   {
     imos_X[i] = X[i] + imos_X[i - 1];
-    // cerr << "imos_X[" << i << "] = " << imos_X[i] << endl;
+    cerr << "imos_X[" << i << "] = " << imos_X[i] << endl;
   }
   vector<T> V;
   BIT bit_X = BIT(N);
