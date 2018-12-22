@@ -74,6 +74,7 @@ int main()
   imos_X[0] = 0;
   for (auto i = 1; i < N; i++)
   {
+    cerr << "imos_X[" << i << "] = " << imos_X[i] << endl;
     imos_X[i] = X[i] + imos_X[i - 1];
   }
   imos_imos_X[0] = 0;
@@ -89,6 +90,7 @@ int main()
   imos_Y[N - 1] = 0;
   for (auto i = N - 2; i >= 0; i--)
   {
+    cerr << "imos_Y[" << i << "] = " << imos_Y[i] << endl;
     imos_Y[i] = Y[i] + imos_Y[i + 1];
   }
   imos_imos_Y[N - 1] = 0;
