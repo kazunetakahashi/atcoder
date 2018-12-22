@@ -161,7 +161,8 @@ int main()
     int ind = get<1>(V[i]) + 1;
     bit_X.add(ind, M);
     bit_cnt_X.add(ind);
-    ans_X[ind - 1] = bit_X.sum(ind, N + 1) - M * bit_cnt_X.sum(ind, N + 1);
+    ans_X[ind - 1] = bit_X.sum(ind, N + 1);
+    //  -M *bit_cnt_X.sum(ind, N + 1);
   }
   for (auto i = 0; i < N; i++)
   {
@@ -193,7 +194,8 @@ int main()
     int ind = get<1>(V[i]) + 1;
     bit_Y.add(ind, M);
     bit_cnt_Y.add(ind);
-    ans_Y[ind - 1] = bit_Y.sum(ind, N + 1) - M * bit_cnt_Y.sum(ind, N + 1);
+    ans_Y[ind - 1] = bit_Y.sum(ind, N + 1);
+    //  -M *bit_cnt_Y.sum(ind, N + 1);
   }
   reverse(ans_Y, ans_Y + N);
   ll ans = 10000000000000000;
