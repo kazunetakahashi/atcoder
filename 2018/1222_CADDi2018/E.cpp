@@ -84,7 +84,7 @@ int main()
   Y[N - 1] = 0;
   for (auto i = N - 2; i >= 0; i--)
   {
-    Y[i] = calc(A[i], A[i - 1]);
+    Y[i] = calc(A[i + 1], A[i]);
   }
   imos_Y[N - 1] = 0;
   for (auto i = N - 2; i >= 0; i--)
