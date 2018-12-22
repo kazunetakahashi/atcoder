@@ -170,9 +170,9 @@ int main()
   {
     imos_Y[i] = Y[i] + imos_Y[i - 1];
   }
-  sum = 0;
+  sum = imos_Y[N - 1];
   mini = imos_Y[N - 1];
-  ans_Y[N - 1] = imos_Y[N - 1];
+  ans_Y[N - 1] = 0;
   for (auto i = N - 2; i >= 0; i--)
   {
     mini = min(imos_Y[i], mini);
