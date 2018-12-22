@@ -38,26 +38,95 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
-int N;
-ll A[200010];
-ll X[200010];
-ll Y[200010];
-ll imos_X[200010];
-ll imos_Y[200010];
-ll imos_imos_X[200010];
-ll imos_imos_Y[200010];
+class BIT
+{ // index starts at 1.
+public:
+  int N;
+  ll *data;
+
+  BIT(int n) : N(n)
+  {
+    data = new ll[N + 1];
+    for (auto i = 1; i <= N; ++i)
+    {
+      data[i] = 0;
+    }
+  }
+
+  ~BIT()
+  {
+    delete[] data;
+  }
+
+  ll sum(int i)
+  { // [1, i]
+    ll s = 0;
+    while (i > 0)
+    {
+      s += data[i];
+      i -= i & -i;
+    }
+    return s;
+  }
+
+  ll sum(int a, int b)
+  { // [a, b)
+    return sum(b - 1) - sum(a - 1);
+  }
+
+  void add(int i, ll x)
+  {
+    while (i <= N)
+    {
+      data[i] += x;
+      i += i & -i;
+    }
+  }
+
+  void add(int i)
+  {
+    add(i, 1);
+  }
+};
 
 ll calc(ll x, ll y)
 {
-  ll res = 0;
-  ll mult = 1;
-  while (x > y * mult)
+  if (x > y)
   {
-    res += 2;
-    mult *= 4;
+    ll res = 0;
+    ll mult = 1;
+    while (x > y * mult)
+    {
+      res += 2;
+      mult *= 4;
+    }
+    return res;
   }
-  return res;
+  else
+  {
+    ll res = 0;
+    ll mult = 1;
+    while (x * (mult * 4) > y)
+    {
+      res -= 2;
+      mult *= 4;
+    }
+    return res;
+  }
 }
+
+int N;
+ll A[200010];
+ll X[200010];
+ll imos_X[200010];
+ll ans_X[200010];
+
+ll B[200010];
+ll Y[200010];
+ll imos_Y[200010];
+ll ans_Y[200010];
+
+typedef tuple<ll, int> T;
 
 int main()
 {
@@ -75,38 +144,71 @@ int main()
   for (auto i = 1; i < N; i++)
   {
     imos_X[i] = X[i] + imos_X[i - 1];
-    cerr << "imos_X[" << i << "] = " << imos_X[i] << endl;
+    // cerr << "imos_X[" << i << "] = " << imos_X[i] << endl;
   }
-  imos_imos_X[0] = 0;
+  vector<T> V;
+  BIT bit_X = BIT(N);
+  BIT bit_cnt_X = BIT(N);
   for (auto i = 0; i < N; i++)
   {
-    imos_imos_X[i] = imos_X[i] + imos_imos_X[i - 1];
+    V.push_back(T(imos_X[i], i));
   }
-  Y[N - 1] = 0;
-  for (auto i = N - 2; i >= 0; i--)
-  {
-    Y[i] = calc(A[i + 1], A[i]);
-  }
-  imos_Y[N - 1] = 0;
-  for (auto i = N - 2; i >= 0; i--)
-  {
-    imos_Y[i] = Y[i] + imos_Y[i + 1];
-    cerr << "imos_Y[" << i << "] = " << imos_Y[i] << endl;
-  }
-  imos_imos_Y[N - 1] = 0;
-  for (auto i = N - 2; i >= 0; i--)
-  {
-    imos_imos_Y[i] = imos_Y[i] + imos_imos_Y[i + 1];
-  }
-  ll ans = 1000000000000000;
+  sort(V.begin(), V.end());
+  reverse(V.begin(), V.end());
   for (auto i = 0; i < N; i++)
   {
-    ll t = i + imos_imos_X[N - 1] - imos_imos_X[i] + imos_imos_Y[0];
-    if (i >= 1)
+    ll M = get<0>(V[i]);
+    int ind = get<1>(V[i]) + 1;
+    bit_X.add(ind, M);
+    bit_cnt_X.add(ind);
+    ans_X[ind - 1] = bit_X.sum(ind, N + 1) - M * bit_cnt_X.sum(ind, N + 1);
+  }
+  for (auto i = 0; i < N; i++)
+  {
+    B[i] = A[i];
+  }
+  reverse(B, B + N);
+  Y[0] = 0;
+  for (auto i = 1; i < N; i++)
+  {
+    Y[i] = calc(B[i - 1], B[i]);
+  }
+  imos_Y[0] = 0;
+  for (auto i = 1; i < N; i++)
+  {
+    imos_Y[i] = Y[i] + imos_Y[i - 1];
+  }
+  V.clear();
+  BIT bit_Y = BIT(N);
+  BIT bit_cnt_Y = BIT(N);
+  for (auto i = 0; i < N; i++)
+  {
+    V.push_back(T(imos_Y[i], i));
+  }
+  sort(V.begin(), V.end());
+  reverse(V.begin(), V.end());
+  for (auto i = 0; i < N; i++)
+  {
+    ll M = get<0>(V[i]);
+    int ind = get<1>(V[i]) + 1;
+    bit_Y.add(ind, M);
+    bit_cnt_Y.add(ind);
+    ans_Y[ind - 1] = bit_Y.sum(ind, N + 1) - M * bit_cnt_Y.sum(ind, N + 1);
+  }
+  reverse(ans_Y, ans_Y + N);
+  ll ans = 10000000000000000;
+  for (auto i = 0; i <= N; i++)
+  {
+    ll t_ans = i;
+    if (i < N)
     {
-      t -= imos_imos_Y[i - 1];
+      t_ans += ans_X[i];
     }
-    ans = min(t, ans);
+    if (i > 0)
+    {
+      t_ans += ans_Y[i - 1];
+    }
+    ans = min(t_ans, ans);
   }
   cout << ans << endl;
 }
