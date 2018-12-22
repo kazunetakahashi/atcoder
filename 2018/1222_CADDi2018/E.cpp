@@ -99,7 +99,11 @@ int main()
   ll ans = 1000000000000000;
   for (auto i = 0; i < N; i++)
   {
-    ll t = i + imos_imos_X[N - 1] - imos_imos_X[i] + imos_imos_Y[0] - imos_imos_Y[i];
+    ll t = i + imos_imos_X[N - 1] - imos_imos_X[i] + imos_imos_Y[0];
+    if (i >= 1)
+    {
+      t -= imos_imos_Y[i - 1];
+    }
     ans = min(t, ans);
   }
   cout << ans << endl;
