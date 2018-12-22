@@ -106,7 +106,7 @@ ll calc(ll x, ll y)
   {
     ll res = 0;
     ll mult = 1;
-    while (x * (mult * 4) > y)
+    while (x * (mult * 4) >= y)
     {
       res -= 2;
       mult *= 4;
