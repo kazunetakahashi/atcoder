@@ -72,15 +72,15 @@ int main()
   {
     vector<P> v;
     lb -= 20;
-    v.push_back(P(lb, -1000000000));
+    v.push_back(P(lb, -1000000000 + i));
     lb += 2;
-    v.push_back(P(ub, 7));
+    v.push_back(P(ub, 1000000000 - i));
     ub += 2;
-    v.push_back(P(lb, -1000000000));
+    v.push_back(P(lb, -1000000000 + i));
     lb += 2;
-    v.push_back(P(ub, 7));
+    v.push_back(P(ub, 1000000000 - i));
     ub += 2;
-    v.push_back(P(lb, -1000000000));
+    v.push_back(P(lb, -1000000000 + i));
     lb += 2;
     V.push_back(v);
   }
