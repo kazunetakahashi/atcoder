@@ -76,12 +76,14 @@ void solve_normal()
     {
       for (auto i = 0; i < H; i++)
       {
-        if (i % 2 != j % 2)
+        if (i % 2 != j % 2 && i + 1 < H)
         {
           M[P(i, j)] = P(i + 1, j);
           M[P(i + 1, j)] = P(i, j);
           used[i][j] = true;
           used[i + 1][j] = true;
+          cerr << "(" << i << ", " << j << ") - ("
+               << i + 1 << ", " << j << ")" << endl;
         }
       }
     }
@@ -92,12 +94,14 @@ void solve_normal()
     {
       for (auto j = 0; j < W; j++)
       {
-        if (i % 2 != j % 2)
+        if (i % 2 != j % 2 && j + 1 < W)
         {
           M[P(i, j)] = P(i, j + 1);
           M[P(i, j + 1)] = P(i, j);
           used[i][j] = true;
           used[i][j + 1] = true;
+          cerr << "(" << i << ", " << j << ") - ("
+               << i << ", " << j + 1 << ")" << endl;
         }
       }
     }
@@ -108,6 +112,7 @@ void solve_normal()
     {
       if (!used[i][j])
       {
+        cerr << "(" << i << ", " << j << ")" << endl;
         S.insert(P(i, j));
       }
     }
@@ -115,7 +120,6 @@ void solve_normal()
   int r, c;
   while (cin >> r >> c && r >= 0 && c >= 0)
   {
-    used[r][c] = true;
     P p = P(r, c);
     if (M.find(p) == M.end())
     {
@@ -124,7 +128,6 @@ void solve_normal()
       int x = get<0>(*q);
       int y = get<1>(*q);
       cout << x << " " << y << endl;
-      used[x][y] = true;
       S.erase(q);
     }
     else
@@ -133,7 +136,6 @@ void solve_normal()
       int x = get<0>(q);
       int y = get<1>(q);
       cout << x << " " << y << endl;
-      used[x][y] = true;
     }
   }
 }
