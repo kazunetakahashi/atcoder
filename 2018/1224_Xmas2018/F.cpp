@@ -82,7 +82,6 @@ int main()
     ub += 2;
     v.push_back(P(lb, -1000000000));
     lb += 2;
-    reverse(v.begin(), v.end());
     V.push_back(v);
   }
   flush();
