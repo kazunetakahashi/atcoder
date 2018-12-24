@@ -47,6 +47,7 @@ set<P> S;
 
 void solve_subtask()
 {
+  cout << "Second" << endl;
   int r, c;
   while (cin >> r >> c && r >= 0 && c >= 0)
   {
@@ -142,13 +143,12 @@ void solve()
   cin >> H >> W;
   if (H % 2 == 0 && W % 2 == 0)
   {
-    cout << "Second" << endl;
+    solve_subtask();
   }
   else
   {
     solve_normal();
   }
-  solve_subtask();
 }
 
 int main()
