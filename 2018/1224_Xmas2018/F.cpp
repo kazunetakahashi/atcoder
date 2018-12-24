@@ -67,20 +67,22 @@ int main()
 {
   cin >> N;
   int ub = 20;
-  int lb = 20;
+  int lb = 0;
   for (auto i = 0; i < N; i++)
   {
     vector<P> v;
-    v.push_back(P(-lb, -1000000000));
+    lb -= 20;
+    v.push_back(P(lb, -1000000000));
     lb += 2;
     v.push_back(P(ub, 1000000000));
     ub += 2;
-    v.push_back(P(-lb, -1000000000));
+    v.push_back(P(lb, -1000000000));
     lb += 2;
     v.push_back(P(ub, 1000000000));
     ub += 2;
-    v.push_back(P(-lb, -1000000000));
+    v.push_back(P(lb, -1000000000));
     lb += 2;
+    reverse(v.begin(), v.end());
     V.push_back(v);
   }
   flush();
