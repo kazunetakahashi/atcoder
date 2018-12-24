@@ -74,11 +74,11 @@ int main()
     lb -= 20;
     v.push_back(P(lb, -1000000000));
     lb += 2;
-    v.push_back(P(ub, 1000000000));
+    v.push_back(P(ub, 7));
     ub += 2;
     v.push_back(P(lb, -1000000000));
     lb += 2;
-    v.push_back(P(ub, 1000000000));
+    v.push_back(P(ub, 7));
     ub += 2;
     v.push_back(P(lb, -1000000000));
     lb += 2;
