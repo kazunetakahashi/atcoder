@@ -40,6 +40,10 @@ typedef long long ll;
 
 int T;
 int H, W;
+bool used[50][50];
+typedef tuple<int, int> P;
+map<P, P> M;
+set<P> S;
 
 void solve_subtask()
 {
@@ -47,6 +51,89 @@ void solve_subtask()
   while (cin >> r >> c && r >= 0 && c >= 0)
   {
     cout << H - r - 1 << " " << W - c - 1 << endl;
+  }
+}
+
+void solve_normal()
+{
+  fill(&used[0][0], &used[0][0] + 50 * 50, false);
+  M.clear();
+  S.clear();
+  if (H * W % 2 == 0)
+  {
+    cout << "Second" << endl;
+  }
+  else
+  {
+    cout << "First" << endl;
+    cout << 0 << " " << 0 << endl;
+    used[0][0] = true;
+  }
+  if (H % 2 == 1)
+  {
+    for (auto j = 0; j < W; j++)
+    {
+      for (auto i = 0; i < H; i++)
+      {
+        if (i % 2 != j % 2)
+        {
+          M[P(i, j)] = P(i + 1, j);
+          M[P(i + 1, j)] = P(i, j);
+          used[i][j] = true;
+          used[i + 1][j] = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    for (auto i = 0; i < H; i++)
+    {
+      for (auto j = 0; j < W; j++)
+      {
+        if (i % 2 != j % 2)
+        {
+          M[P(i, j)] = P(i, j + 1);
+          M[P(i, j + 1)] = P(i, j);
+          used[i][j] = true;
+          used[i][j + 1] = true;
+        }
+      }
+    }
+  }
+  for (auto i = 0; i < H; i++)
+  {
+    for (auto j = 0; j < W; j++)
+    {
+      if (!used[i][j])
+      {
+        S.insert(P(i, j));
+      }
+    }
+  }
+  int r, c;
+  while (cin >> r >> c && r >= 0 && c >= 0)
+  {
+    used[r][c] = true;
+    P p = P(r, c);
+    if (M.find(p) == M.end())
+    {
+      S.erase(S.find(p));
+      auto q = S.begin();
+      int x = get<0>(*q);
+      int y = get<1>(*q);
+      cout << x << " " << y << endl;
+      used[x][y] = true;
+      S.erase(q);
+    }
+    else
+    {
+      P q = M[p];
+      int x = get<0>(q);
+      int y = get<1>(q);
+      cout << x << " " << y << endl;
+      used[x][y] = true;
+    }
   }
 }
 
@@ -59,7 +146,7 @@ void solve()
   }
   else
   {
-    assert(false);
+    solve_normal();
   }
   solve_subtask();
 }
