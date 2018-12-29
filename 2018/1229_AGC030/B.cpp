@@ -64,6 +64,8 @@ void solve()
   {
     int left = N - right;
     int num = min(right, left);
+    cerr << "left = " << left << ", right = " << right
+         << ", num = " << num << endl;
     ll tans = sum[right] - sum[right - num] + sum_rev[right + 1] - sum_rev[right + 1 + num];
     tans *= 2;
     tans -= L - X[right + 1 + num];
