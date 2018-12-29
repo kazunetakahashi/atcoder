@@ -97,6 +97,7 @@ int X[3010];
 int Y[3010];
 ll T[3010][3010];
 ll t_half[3010];
+ll t_half_rev[3010];
 
 void flush()
 {
@@ -130,7 +131,7 @@ int main()
   ll initial = power(2, Q);
   for (auto i = 0; i < N; i++)
   {
-    for (auto j = i + 1; j < N; j++)
+    for (auto j = 0; j < N; j++)
     {
       if (A[i] > A[j])
       {
@@ -141,13 +142,29 @@ int main()
   ll two_inv = inv[2];
   for (auto i = 0; i < Q; i++)
   {
+    int x = X[i];
+    int y = Y[i];
     for (auto j = 0; j < N; j++)
     {
-      t_half[j] = T[X[i]][j] * two_inv + T[Y[i]][j] * two_inv;
-      t_half[j] %= MOD;
-      T[X[i]][j] = t_half[j];
-      T[Y[i]][j] = t_half[j];
+      if (j != x && j != y)
+      {
+        t_half[j] = (T[j][x] + T[j][y]) * two_inv;
+        t_half[j] %= MOD;
+        t_half_rev[j] = (T[x][j] + T[y][j]) * two_inv;
+        t_half_rev[j] %= MOD;
+      }
     }
+    for (auto j = 0; j < N; j++)
+    {
+      if (j != x && j != y)
+      {
+        T[j][x] = t_half[j];
+        T[j][y] = t_half[j];
+        T[x][j] = t_half_rev[j];
+        T[y][j] = t_half_rev[j];
+      }
+    }
+    swap(T[x][y], T[y][x]);
     /*
     cerr << "i = " << i << endl;
     for (auto j = 0; j < N; j++)
