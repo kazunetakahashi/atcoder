@@ -165,7 +165,6 @@ int main()
       }
     }
     swap(T[x][y], T[y][x]);
-    /*
     cerr << "i = " << i << endl;
     for (auto j = 0; j < N; j++)
     {
@@ -174,7 +173,6 @@ int main()
         cerr << "T[" << j << "][" << k << "] = " << T[j][k] << endl;
       }
     }
-    */
   }
   flush();
 }
