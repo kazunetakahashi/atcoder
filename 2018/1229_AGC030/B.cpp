@@ -52,11 +52,13 @@ void solve()
   for (auto i = 1; i <= N; i++)
   {
     sum[i] = sum[i - 1] + X[i];
+    cerr << "sum[" << i << "] = " << sum[i] << endl;
   }
   sum_rev[N + 1] = 0;
   for (auto i = N; i >= 1; i--)
   {
     sum_rev[i] = sum_rev[i + 1] + L - X[i];
+    cerr << "sum_rev[" << i << "] = " << sum_rev[i] << endl;
   }
   for (auto right = 0; right <= N; right++)
   {
