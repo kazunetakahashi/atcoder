@@ -41,28 +41,50 @@ typedef long long ll;
 ll L;
 int N;
 ll X[200010];
-ll ans;
+ll sum[200010];
+ll sum_rev[200010];
+ll ans = 0;
 
 void solve()
 {
-  sort(X, X + N);
-  ans = min(ans, X[N - 1]);
-  for (auto i = 0; i < N - 1; i++)
+  sort(X + 1, X + N + 1);
+  sum[0] = 0;
+  for (auto i = 1; i <= N; i++)
   {
-    ans = min(ans, 2 * X[i] + L - X[i + 1]);
+    sum[i] = sum[i - 1] + X[i];
+  }
+  sum_rev[N + 1] = 0;
+  for (auto i = N; i >= 1; i--)
+  {
+    sum_rev[i] = sum_rev[i + 1] + L - X[i];
+  }
+  for (auto right = 0; right <= N; right++)
+  {
+    int left = N - right;
+    int num = min(right, left);
+    ll tans = sum[right] - sum[right - num] + sum_rev[right + 1] - sum_rev[right + 1 + num];
+    tans *= 2;
+    tans -= L - X[right + 1 + num];
+    ans = max(tans, ans);
+    num = min(right, left + 1);
+    tans = sum[right] - sum[right - num] + sum_rev[right + 1] - sum_rev[right + 1 + num - 1];
+    tans *= 2;
+    tans -= X[right - num];
+    ans = max(tans, ans);
   }
 }
 
 int main()
 {
   cin >> L >> N;
-  for (auto i = 0; i < N; i++)
+  X[0] = 0;
+  for (auto i = 1; i <= N; i++)
   {
     cin >> X[i];
   }
-  ans = N * L * 10;
+  X[N + 1] = L;
   solve();
-  for (auto i = 0; i < N; i++)
+  for (auto i = 1; i <= N; i++)
   {
     X[i] = L - X[i];
   }
