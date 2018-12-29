@@ -139,6 +139,13 @@ int main()
       }
     }
   }
+  for (auto j = 0; j < N; j++)
+  {
+    for (auto k = 0; k < N; k++)
+    {
+      cerr << "T[" << j << "][" << k << "] = " << T[j][k] << endl;
+    }
+  }
   ll two_inv = inv[2];
   for (auto i = 0; i < Q; i++)
   {
