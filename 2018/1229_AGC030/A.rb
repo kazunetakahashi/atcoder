@@ -6,8 +6,8 @@
 #
 
 a, b, c = gets.chomp.split(" ").map{|i| i.to_i}
-if c >= a + b
+if c >= a + b - 1
   puts b + c
 else
-  puts b + (a + b)
+  puts b + (a + b + 1)
 end
