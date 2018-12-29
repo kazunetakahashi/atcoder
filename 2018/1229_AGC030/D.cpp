@@ -93,11 +93,10 @@ long long gcd(long long x, long long y)
 ll N;
 ll Q;
 ll A[3010];
-ll U[3010];
+ll B[3010];
 int X[3010];
 int Y[3010];
 map<ll, ll> M;
-set<ll> S;
 ll T[3010][3010];
 ll t_half[3010];
 
@@ -108,7 +107,7 @@ void flush()
   {
     for (auto j = 0LL; j < N; j++)
     {
-      ans += (max(0LL, U[j] - i) * T[i][j]) % MOD;
+      ans += (abs(j - B[i]) * T[i][j]) % MOD;
       ans %= MOD;
     }
   }
@@ -122,6 +121,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     cin >> A[i];
+    B[i] = A[i];
   }
   for (auto i = 0; i < Q; i++)
   {
@@ -129,25 +129,18 @@ int main()
     X[i]--;
     Y[i]--;
   }
+  sort(B, B + N);
   for (auto i = 0; i < N; i++)
   {
-    S.insert(A[i]);
+    if (M.find(B[i]) == M.end())
+    {
+      M[B[i]] = i;
+    }
   }
-  ll cnt = 0;
-  for (auto it = S.begin(); it != S.end(); it++)
-  {
-    M[*it] = cnt++;
-  }
-  fill(U, U + 3010, 0);
   for (auto i = 0; i < N; i++)
   {
     A[i] = M[A[i]];
-    cerr << "A[" << i << "] = " << A[i] << endl;
-    U[A[i] + 1]++;
-  }
-  for (auto i = 0; i < 3009; i++)
-  {
-    U[i + 1] += U[i];
+    B[i] = M[B[i]];
   }
   fill(&T[0][0], &T[0][0] + 3010 * 3010, 0);
   ll initial = power(2, Q);
@@ -165,6 +158,7 @@ int main()
       T[X[i]][j] = t_half[j];
       T[Y[i]][j] = t_half[j];
     }
+    /*
     cerr << "i = " << i << endl;
     for (auto j = 0; j < N; j++)
     {
@@ -173,6 +167,7 @@ int main()
         cerr << "T[" << j << "][" << k << "] = " << T[j][k] << endl;
       }
     }
+    */
   }
   flush();
 }
