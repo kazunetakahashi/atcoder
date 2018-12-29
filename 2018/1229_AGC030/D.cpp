@@ -92,22 +92,23 @@ long long gcd(long long x, long long y)
 
 ll N;
 ll Q;
-int A[3010];
+ll A[3010];
+ll U[3010];
 int X[3010];
 int Y[3010];
-map<int, int> M;
-set<int> S;
+map<ll, ll> M;
+set<ll> S;
 ll T[3010][3010];
 ll t_half[3010];
 
 void flush()
 {
   ll ans = 0;
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0LL; i < N; i++)
   {
-    for (auto j = i + 1; j < N; j++)
+    for (auto j = 0LL; j < N; j++)
     {
-      ans += ((j - i) * T[i][j]) % MOD;
+      ans += (max(0LL, U[j] - i) * T[i][j]) % MOD;
       ans %= MOD;
     }
   }
@@ -132,15 +133,21 @@ int main()
   {
     S.insert(A[i]);
   }
-  int cnt = 0;
+  ll cnt = 0;
   for (auto it = S.begin(); it != S.end(); it++)
   {
     M[*it] = cnt++;
   }
+  fill(U, U + 3010, 0);
   for (auto i = 0; i < N; i++)
   {
     A[i] = M[A[i]];
     cerr << "A[" << i << "] = " << A[i] << endl;
+    U[A[i] + 1]++;
+  }
+  for (auto i = 0; i < 3009; i++)
+  {
+    U[i + 1] += U[i];
   }
   fill(&T[0][0], &T[0][0] + 3010 * 3010, 0);
   ll initial = power(2, Q);
