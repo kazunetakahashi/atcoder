@@ -139,6 +139,7 @@ int main()
       }
     }
   }
+  /*
   for (auto j = 0; j < N; j++)
   {
     for (auto k = 0; k < N; k++)
@@ -146,6 +147,7 @@ int main()
       cerr << "T[" << j << "][" << k << "] = " << T[j][k] << endl;
     }
   }
+  */
   ll two_inv = inv[2];
   for (auto i = 0; i < Q; i++)
   {
@@ -157,7 +159,7 @@ int main()
       {
         t_half[j] = (T[j][x] + T[j][y]) * two_inv;
         t_half[j] %= MOD;
-        cerr << "t_half[" << j << "] = " << t_half[j] << endl;
+        // cerr << "t_half[" << j << "] = " << t_half[j] << endl;
         t_half_rev[j] = (T[x][j] + T[y][j]) * two_inv;
         t_half_rev[j] %= MOD;
       }
@@ -172,7 +174,11 @@ int main()
         T[y][j] = t_half_rev[j];
       }
     }
-    swap(T[x][y], T[y][x]);
+    ll t = (T[x][y] + T[y][x]) * two_inv;
+    t %= MOD;
+    T[x][y] = t;
+    T[y][x] = t;
+    /*
     cerr << "i = " << i << endl;
     for (auto j = 0; j < N; j++)
     {
@@ -181,6 +187,7 @@ int main()
         cerr << "T[" << j << "][" << k << "] = " << T[j][k] << endl;
       }
     }
+    */
   }
   flush();
 }
