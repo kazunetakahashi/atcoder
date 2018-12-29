@@ -93,21 +93,19 @@ long long gcd(long long x, long long y)
 ll N;
 ll Q;
 ll A[3010];
-ll B[3010];
 int X[3010];
 int Y[3010];
-map<ll, ll> M;
 ll T[3010][3010];
 ll t_half[3010];
 
 void flush()
 {
   ll ans = 0;
-  for (auto i = 0LL; i < N; i++)
+  for (auto i = 0; i < N; i++)
   {
-    for (auto j = 0LL; j < N; j++)
+    for (auto j = i + 1; j < N; j++)
     {
-      ans += (abs(j - B[i]) * T[i][j]) % MOD;
+      ans += T[i][j];
       ans %= MOD;
     }
   }
@@ -121,7 +119,6 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     cin >> A[i];
-    B[i] = A[i];
   }
   for (auto i = 0; i < Q; i++)
   {
@@ -129,24 +126,17 @@ int main()
     X[i]--;
     Y[i]--;
   }
-  sort(B, B + N);
-  for (auto i = 0; i < N; i++)
-  {
-    if (M.find(B[i]) == M.end())
-    {
-      M[B[i]] = i;
-    }
-  }
-  for (auto i = 0; i < N; i++)
-  {
-    A[i] = M[A[i]];
-    B[i] = M[B[i]];
-  }
   fill(&T[0][0], &T[0][0] + 3010 * 3010, 0);
   ll initial = power(2, Q);
   for (auto i = 0; i < N; i++)
   {
-    T[i][A[i]] = initial;
+    for (auto j = i + 1; j < N; j++)
+    {
+      if (A[i] > A[j])
+      {
+        T[i][j] = initial;
+      }
+    }
   }
   ll two_inv = inv[2];
   for (auto i = 0; i < Q; i++)
@@ -158,6 +148,7 @@ int main()
       T[X[i]][j] = t_half[j];
       T[Y[i]][j] = t_half[j];
     }
+    /*
     cerr << "i = " << i << endl;
     for (auto j = 0; j < N; j++)
     {
@@ -166,6 +157,7 @@ int main()
         cerr << "T[" << j << "][" << k << "] = " << T[j][k] << endl;
       }
     }
+    */
   }
   flush();
 }
