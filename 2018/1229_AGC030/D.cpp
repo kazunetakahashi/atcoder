@@ -165,6 +165,14 @@ int main()
       T[X[i]][j] = t_half[j];
       T[Y[i]][j] = t_half[j];
     }
+    cerr << "i = " << i << endl;
+    for (auto j = 0; j < N; j++)
+    {
+      for (auto k = 0; k < N; k++)
+      {
+        cerr << "T[" << j << "][" << k << "] = " << T[j][k] << endl;
+      }
+    }
   }
   flush();
 }
