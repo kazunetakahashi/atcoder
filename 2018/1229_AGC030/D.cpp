@@ -96,7 +96,7 @@ int A[3010];
 int X[3010];
 int Y[3010];
 map<int, int> M;
-int S[3010];
+set<int> S;
 ll T[3010][3010];
 ll t_half[3010];
 
@@ -130,12 +130,12 @@ int main()
   }
   for (auto i = 0; i < N; i++)
   {
-    S[i] = A[i];
+    S.insert(A[i]);
   }
-  sort(S, S + N);
-  for (auto i = 0; i < N; i++)
+  int cnt = 0;
+  for (auto it = S.begin(); it != S.end(); it++)
   {
-    M[S[i]] = i;
+    M[*it] = cnt++;
   }
   for (auto i = 0; i < N; i++)
   {
