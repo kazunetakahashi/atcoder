@@ -63,15 +63,15 @@ void solve()
   for (auto right = 0; right <= N; right++)
   {
     int left = N - right;
-    int num = min(right, left);
+    int num = min(right + 1, left);
     cerr << "left = " << left << ", right = " << right << endl;
-    ll tans = sum[right] - sum[right - num] + sum_rev[right + 1] - sum_rev[right + 1 + num];
+    ll tans = sum[right] - sum[right - (num - 1)] + sum_rev[right + 1] - sum_rev[right + 1 + num];
     tans *= 2;
     tans -= L - X[right + 1 + num];
     cerr << "tans = " << tans << endl;
     ans = max(tans, ans);
     num = min(right, left + 1);
-    tans = sum[right] - sum[right - num] + sum_rev[right + 1] - sum_rev[right + 1 + num - 1];
+    tans = sum[right] - sum[right - num] + sum_rev[right + 1] - sum_rev[right + 1 + (num - 1)];
     tans *= 2;
     tans -= X[right - num];
     cerr << "tans = " << tans << endl;
