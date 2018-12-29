@@ -157,6 +157,7 @@ int main()
       {
         t_half[j] = (T[j][x] + T[j][y]) * two_inv;
         t_half[j] %= MOD;
+        cerr << "t_half[" << j << "] = " << t_half[j] << endl;
         t_half_rev[j] = (T[x][j] + T[y][j]) * two_inv;
         t_half_rev[j] %= MOD;
       }
