@@ -140,6 +140,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     A[i] = M[A[i]];
+    cerr << "A[" << i << "] = " << A[i] << endl;
   }
   fill(&T[0][0], &T[0][0] + 3010 * 3010, 0);
   ll initial = power(2, Q);
