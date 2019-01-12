@@ -82,6 +82,7 @@ int main()
             }
           }
         }
+        cerr << cnt[0] << " " << cnt[1] << endl;
         ans += cnt[0] * cnt[1];
       }
     }
