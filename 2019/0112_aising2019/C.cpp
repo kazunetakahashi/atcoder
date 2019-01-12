@@ -75,14 +75,14 @@ int main()
             {
               int nx = x + dx[k];
               int ny = x + dy[k];
-              if (0 <= nx && nx < H && 0 <= ny && ny < W && S[x][y] != S[nx][ny])
+              if (0 <= nx && nx < H && 0 <= ny && ny < W && !visited[nx][ny] && S[x][y] != S[nx][ny])
               {
                 St.push(P(nx, ny));
               }
             }
           }
         }
-        cerr << cnt[0] << " " << cnt[1] << endl;
+        // cerr << cnt[0] << " " << cnt[1] << endl;
         ans += cnt[0] * cnt[1];
       }
     }
