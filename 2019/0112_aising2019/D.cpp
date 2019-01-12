@@ -109,6 +109,7 @@ int main()
       ll mini = X[first + second - 1];
       upper = (maxi + mini + 1) / 2;
     }
+    cerr << "i = " << i << ", upper = " << upper << endl;
     while (it != S.end())
     {
       if (*it <= upper)
