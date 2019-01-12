@@ -61,7 +61,7 @@ int main()
       {
         stack<P> St;
         St.push(P(i, j));
-        ll cnt = 0;
+        ll cnt[2] = {0, 0};
         while (!St.empty())
         {
           int x = get<0>(St.top());
@@ -70,7 +70,7 @@ int main()
           if (!visited[x][y])
           {
             visited[x][y] = true;
-            cnt++;
+            cnt[S[x][y] == '#']++;
             for (auto k = 0; k < 4; k++)
             {
               int nx = x + dx[k];
@@ -82,7 +82,7 @@ int main()
             }
           }
         }
-        ans += cnt * (cnt - 1) / 2;
+        ans += cnt[0] * cnt[1];
       }
     }
   }
