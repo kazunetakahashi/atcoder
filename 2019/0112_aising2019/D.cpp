@@ -115,12 +115,12 @@ int main()
     {
       ll FA = B[first];
       ll FB = B[first + second];
-      lower = (FA + FB) / 2;
+      upper = (FA + FB) / 2;
       ll GA = B[first + 1];
       ll GB = B[first + second + 1];
-      upper = (GA + GB) / 2 + 1;
+      lower = (GA + GB) / 2 + 1;
     }
-    cerr << "i = " << i << ", upper = " << upper << ", lower = " << lower << endl;
+    // cerr << "i = " << i << ", upper = " << upper << ", lower = " << lower << endl;
     while (it != S.end())
     {
       if (lower <= *it && *it <= upper)
