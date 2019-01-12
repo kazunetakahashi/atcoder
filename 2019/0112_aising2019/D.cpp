@@ -66,19 +66,19 @@ int main()
     cin >> X[i];
     S.insert(X[i]);
   }
-  reverse(X, X + N);
+  reverse(A, A + N);
   Y[N + 1] = 0;
   Y[N] = 0;
-  Y[N - 1] = X[N - 1];
-  Y[N - 2] = Y[N - 2];
+  Y[N - 1] = A[N - 1];
+  Y[N - 2] = A[N - 2];
   for (auto i = N - 3; i >= 0; i--)
   {
-    Y[i] = X[i] + Y[i + 2];
+    Y[i] = A[i] + Y[i + 2];
   }
-  Z[0] = X[0];
+  Z[0] = A[0];
   for (auto i = 1; i < N; i++)
   {
-    Z[i] = X[i] + Z[i - 1];
+    Z[i] = A[i] + Z[i - 1];
   }
   auto it = S.begin();
   for (auto i = N; i >= 0; i--)
