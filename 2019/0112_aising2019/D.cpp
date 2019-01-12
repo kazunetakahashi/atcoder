@@ -36,10 +36,11 @@ typedef long long ll;
 // const int dy[4] = {0, 1, 0, -1};
 
 // const int C = 1e6+10;
-const ll infty = 1000000007;
+const ll infty = 100000000007;
 
 int N, Q;
 ll A[100010];
+vector<ll> B;
 ll X[100010];
 set<ll> S;
 map<ll, ll> M;
@@ -80,6 +81,12 @@ int main()
   {
     Z[i] = A[i] + Z[i - 1];
   }
+  B.push_back(infty);
+  for (auto i = 0; i < N; i++)
+  {
+    B.push_back(A[i]);
+  }
+  B.push_back(-infty);
   auto it = S.begin();
   for (auto i = N; i >= 0; i--)
   {
@@ -98,22 +105,25 @@ int main()
     {
       score = Z[first - 1] + Y[i + 1];
     }
-    ll upper;
+    ll upper, lower;
     if (second == 0)
     {
       upper = infty;
+      lower = -infty;
     }
     else
     {
-      ll maxi = A[first - 1];
-      ll mini = A[first + second - 1];
-      // cerr << "maxi = " << maxi << ", mini = " << mini << endl;
-      upper = (maxi + mini + 1) / 2;
+      ll FA = B[first];
+      ll FB = B[first + second];
+      lower = (FA + FB) / 2;
+      ll GA = B[first + 1];
+      ll GB = B[first + second + 1];
+      upper = (GA + GB) / 2 + 1;
     }
     // cerr << "i = " << i << ", upper = " << upper << endl;
     while (it != S.end())
     {
-      if (*it <= upper)
+      if (lower <= *it && *it <= upper)
       {
         M[*it] = score;
         it++;
@@ -124,5 +134,6 @@ int main()
       }
     }
   }
+  assert(it == S.end());
   flush();
 }
