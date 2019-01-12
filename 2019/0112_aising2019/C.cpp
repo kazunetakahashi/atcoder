@@ -69,14 +69,14 @@ int main()
           St.pop();
           if (!visited[x][y])
           {
-            cerr << "visiting: (" << x << ", " << y << ")" << endl;
+            // cerr << "visiting: (" << x << ", " << y << ")" << endl;
             visited[x][y] = true;
             cnt[S[x][y] == '.']++;
             for (auto k = 0; k < 4; k++)
             {
               int nx = x + dx[k];
-              int ny = x + dy[k];
-              cerr << "considering: (" << nx << ", " << ny << ")" << endl;
+              int ny = y + dy[k];
+              // cerr << "considering: (" << nx << ", " << ny << ")" << endl;
               if (0 <= nx && nx < H && 0 <= ny && ny < W && !visited[nx][ny] && S[x][y] != S[nx][ny])
               {
                 St.push(P(nx, ny));
@@ -84,7 +84,7 @@ int main()
             }
           }
         }
-        cerr << cnt[0] << " " << cnt[1] << endl;
+        // cerr << cnt[0] << " " << cnt[1] << endl;
         ans += cnt[0] * cnt[1];
       }
     }
