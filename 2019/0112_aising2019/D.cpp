@@ -105,12 +105,12 @@ int main()
     }
     else
     {
-      ll maxi = X[first - 1];
-      ll mini = X[first + second - 1];
-      cerr << "maxi = " << maxi << ", mini = " << mini << endl;
+      ll maxi = A[first - 1];
+      ll mini = A[first + second - 1];
+      // cerr << "maxi = " << maxi << ", mini = " << mini << endl;
       upper = (maxi + mini + 1) / 2;
     }
-    cerr << "i = " << i << ", upper = " << upper << endl;
+    // cerr << "i = " << i << ", upper = " << upper << endl;
     while (it != S.end())
     {
       if (*it <= upper)
