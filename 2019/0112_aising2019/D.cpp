@@ -107,6 +107,7 @@ int main()
     {
       ll maxi = X[first - 1];
       ll mini = X[first + second - 1];
+      cerr << "maxi = " << maxi << ", mini = " << mini << endl;
       upper = (maxi + mini + 1) / 2;
     }
     cerr << "i = " << i << ", upper = " << upper << endl;
