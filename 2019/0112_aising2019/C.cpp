@@ -69,6 +69,7 @@ int main()
           St.pop();
           if (!visited[x][y])
           {
+            cerr << "(" << x << ", " << y << ")" << endl;
             visited[x][y] = true;
             cnt[S[x][y] == '#']++;
             for (auto k = 0; k < 4; k++)
@@ -82,7 +83,7 @@ int main()
             }
           }
         }
-        // cerr << cnt[0] << " " << cnt[1] << endl;
+        cerr << cnt[0] << " " << cnt[1] << endl;
         ans += cnt[0] * cnt[1];
       }
     }
