@@ -7,7 +7,7 @@
 
 q = gets.chomp.split(" ").map{|i| i.to_i}.sort
 if q == [1, 4, 7, 9]
-  puts "Yes"
+  puts "YES"
 else
-  puts "No"
+  puts "NO"
 end
