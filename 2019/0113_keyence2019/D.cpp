@@ -60,14 +60,14 @@ int main()
   sort(B, B + M);
   reverse(B, B + N);
   A[N] = 0;
-  B[N] = 0;
+  B[M] = 0;
   int ind_a = 0;
   int ind_b = 0;
   int P = 0;
   for (auto i = N * M; i >= 1; i--)
   {
-    cerr << "i = " << i << ", A[" << ind_a << "] = " << A[ind_a]
-         << ", B[" << ind_b << "] = " << B[ind_b] << endl;
+    // cerr << "i = " << i << ", A[" << ind_a << "] = " << A[ind_a]
+    // << ", B[" << ind_b << "] = " << B[ind_b] << endl;
     if (i == A[ind_a] && i == B[ind_b])
     {
       ind_a++;
