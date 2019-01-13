@@ -66,6 +66,8 @@ int main()
   int P = 0;
   for (auto i = N * M; i >= 1; i--)
   {
+    cerr << "i = " << i << ", A[" << ind_a << "] = " << A[ind_a]
+         << ", B[" << ind_b << "] = " << B[ind_b] << endl;
     if (i == A[ind_a] && i == B[ind_b])
     {
       ind_a++;
