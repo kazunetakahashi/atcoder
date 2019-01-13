@@ -58,7 +58,7 @@ int main()
   sort(A, A + N);
   reverse(A, A + N);
   sort(B, B + M);
-  reverse(B, B + N);
+  reverse(B, B + M);
   A[N] = 0;
   B[M] = 0;
   int ind_a = 0;
