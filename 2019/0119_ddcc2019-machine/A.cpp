@@ -70,31 +70,39 @@ int main()
   XSP = YSP = 500;
   for (auto i = 1; i < 100; i++)
   {
-    ll x, y;
-    XP = XA + 3 * i;
-    YP = YA;
-    AS = BS = ES = 0;
-    flush();
-    XP = XA;
-    YP = YA;
+    for (auto k = 0; k < 4; k++)
+    {
+      XP = XA + dx[k] * i;
+      YP = YA + dy[k] * i;
+      if (0 <= XP && XP <= 900 && 0 <= YP && YP <= 900)
+      {
+        break;
+      }
+    }
     AS = BS = ES = 0;
     AS = 1333;
     flush();
-    XP = XB + 3 * i;
-    YP = YB;
-    AS = BS = ES = 0;
-    flush();
-    XP = XB;
-    YP = YB;
+    for (auto k = 0; k < 4; k++)
+    {
+      XP = XB + dx[k] * i;
+      YP = YB + dy[k] * i;
+      if (0 <= XP && XP <= 900 && 0 <= YP && YP <= 900)
+      {
+        break;
+      }
+    }
     AS = BS = ES = 0;
     BS = 1333;
     flush();
-    XP = XE;
-    YP = YE;
-    AS = BS = ES = 0;
-    flush();
-    XP = XB;
-    YP = YB;
+    for (auto k = 0; k < 4; k++)
+    {
+      XP = XE + dx[k] * i;
+      YP = YE + dy[k] * i;
+      if (0 <= XP && XP <= 900 && 0 <= YP && YP <= 900)
+      {
+        break;
+      }
+    }
     AS = BS = ES = 0;
     ES = 2666;
     flush();
