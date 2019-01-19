@@ -32,8 +32,8 @@ using namespace std;
 
 typedef long long ll;
 
-// const int dx[4] = {1, 0, -1, 0};
-// const int dy[4] = {0, 1, 0, -1};
+const int dx[4] = {1, 0, -1, 0};
+const int dy[4] = {0, 1, 0, -1};
 
 // const int C = 1e6+10;
 // const ll M = 1000000007;
@@ -70,6 +70,7 @@ int main()
   XSP = YSP = 500;
   for (auto i = 0; i < 100; i++)
   {
+    ll x, y;
     XP = XA;
     YP = YA;
     AS = BS = ES = 0;
@@ -79,8 +80,8 @@ int main()
     AS = BS = ES = 0;
     AS = 1333;
     flush();
-    XP = XB;
-    YP = YB;
+    XP = XB + 2;
+    YP = YB + 2;
     AS = BS = ES = 0;
     flush();
     XP = XB;
