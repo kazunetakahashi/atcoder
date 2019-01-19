@@ -72,5 +72,30 @@ int main()
   {
     XP = XA;
     YP = YA;
+    AS = BS = ES = 0;
+    flush();
+    XP = XA;
+    YP = YA;
+    AS = BS = ES = 0;
+    AS = 1333;
+    flush();
+    XP = XB;
+    YP = YB;
+    AS = BS = ES = 0;
+    flush();
+    XP = XB;
+    YP = YB;
+    AS = BS = ES = 0;
+    BS = 1333;
+    flush();
+    XP = XE;
+    YP = YE;
+    AS = BS = ES = 0;
+    flush();
+    XP = XB;
+    YP = YB;
+    AS = BS = ES = 0;
+    ES = 2666;
+    flush();
   }
 }
