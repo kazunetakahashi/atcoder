@@ -68,10 +68,10 @@ int main()
   cin >> XST >> YST >> XA >> YA >> XB >> YB >> XE >> YE;
   XAS = XDS = YAS = YDS = 1000;
   XSP = YSP = 500;
-  for (auto i = 0; i < 100; i++)
+  for (auto i = 1; i < 100; i++)
   {
     ll x, y;
-    XP = XA;
+    XP = XA + 3 * i;
     YP = YA;
     AS = BS = ES = 0;
     flush();
@@ -80,8 +80,8 @@ int main()
     AS = BS = ES = 0;
     AS = 1333;
     flush();
-    XP = XB + 2;
-    YP = YB + 2;
+    XP = XB + 3 * i;
+    YP = YB;
     AS = BS = ES = 0;
     flush();
     XP = XB;
