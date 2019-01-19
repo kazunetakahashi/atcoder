@@ -64,7 +64,7 @@ set<P> S;
 
 int main()
 {
-  cerr << 51 * 51 * PI * 44 / 3 / 1000000 << endl;
+  cerr << 51 * 51 * PI * 44 / 3 / 1000 << endl;
   cin >> XST >> YST >> XA >> YA >> XB >> YB >> XE >> YE;
   XAS = XDS = YAS = YDS = 1000;
   XSP = YSP = 500;
