@@ -62,6 +62,7 @@ int main()
   {
     if (S.find(a[i]) == S.end())
     {
+      S.insert(a[i]);
       a[i + 1] = f(a[i]);
     }
     else
