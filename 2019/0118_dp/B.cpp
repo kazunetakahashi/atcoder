@@ -55,7 +55,7 @@ int main()
   DP[0] = 0;
   for (auto i = 0; i < N; i++)
   {
-    for (auto j = i + 1; j < min(i + K, N); j++)
+    for (auto j = i + 1; j < min(i + K + 1, N); j++)
     {
       DP[j] = min(DP[j], DP[i] + abs(h[i] - h[j]));
     }
