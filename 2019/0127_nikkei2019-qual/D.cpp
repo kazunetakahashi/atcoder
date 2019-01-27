@@ -59,7 +59,7 @@ void solve(int v)
   {
     solve(x);
   }
-  int maxi = 0;
+  int maxi = -1;
   int ind = -1;
   for (auto x : W[v])
   {
@@ -71,8 +71,8 @@ void solve(int v)
   }
   parent[v] = ind;
   depth[v] = maxi + 1;
-  cerr << "parent[" << v << "] = " << parent[v] << endl;
-  cerr << "depth[" << v << "] = " << depth[v] << endl;
+  // cerr << "parent[" << v << "] = " << parent[v] << endl;
+  // cerr << "depth[" << v << "] = " << depth[v] << endl;
 }
 
 int main()
