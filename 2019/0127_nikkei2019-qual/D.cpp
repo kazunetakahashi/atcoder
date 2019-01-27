@@ -69,7 +69,11 @@ void solve(int v)
       maxi = depth[x];
     }
   }
-  assert(ind >= 0);
+  if (ind < 0)
+  {
+    cerr << "v = " << v << endl;
+    assert(false);
+  }
   parent[v] = ind;
   depth[v] = maxi + 1;
 }
