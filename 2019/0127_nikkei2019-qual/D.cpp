@@ -82,6 +82,7 @@ int main()
     int v = get<0>(Q.front());
     int p = get<1>(Q.front());
     int d = get<2>(Q.front());
+    Q.pop();
     if (depth[v] == -1)
     {
       parent[v] = p;
