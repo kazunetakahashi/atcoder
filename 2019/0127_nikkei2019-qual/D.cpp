@@ -69,15 +69,10 @@ void solve(int v)
       maxi = depth[x];
     }
   }
-  /*
-  if (ind < 0)
-  {
-    cerr << "v = " << v << endl;
-    assert(false);
-  }
-  */
   parent[v] = ind;
   depth[v] = maxi + 1;
+  cerr << "parent[" << v << "] = " << parent[v] << endl;
+  cerr << "depth[" << v << "] = " << depth[v] << endl;
 }
 
 int main()
