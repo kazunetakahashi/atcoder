@@ -49,6 +49,31 @@ int parent[100010];
 typedef tuple<int, int, int> T; // v, pa, de
 queue<T> Q;
 
+void solve(int v)
+{
+  if (parent[v] != -2)
+  {
+    return;
+  }
+  for (auto x : W[v])
+  {
+    solve(x);
+  }
+  int maxi = 0;
+  int ind = -1;
+  for (auto x : W[v])
+  {
+    if (maxi < depth[x])
+    {
+      ind = x;
+      maxi = depth[x];
+    }
+  }
+  assert(ind >= 0);
+  parent[v] = ind;
+  depth[v] = maxi + 1;
+}
+
 int main()
 {
   cin >> N >> M;
@@ -76,31 +101,9 @@ int main()
     }
   }
   assert(root_cnt == 1);
-  Q.push(T(root, -1, 0));
-  while (!Q.empty())
+  for (auto i = 0; i < N; i++)
   {
-    int v = get<0>(Q.front());
-    int p = get<1>(Q.front());
-    int d = get<2>(Q.front());
-    Q.pop();
-    if (depth[v] == -1)
-    {
-      parent[v] = p;
-      depth[v] = d;
-      for (auto x : V[v])
-      {
-        Q.push(T(x, v, d + 1));
-      }
-    }
-    else if (depth[v] < d)
-    {
-      parent[v] = p;
-      depth[v] = d;
-      for (auto x : V[v])
-      {
-        Q.push(T(x, v, d + 1));
-      }
-    }
+    solve(i);
   }
   for (auto i = 0; i < N; i++)
   {
