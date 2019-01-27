@@ -8,6 +8,6 @@
 n, a, b = gets.chomp.split(" ").map{|i| i.to_i}
 
 mini = [a + b - n, 0].max
-maxi = [a, b].max
+maxi = [a, b].min
 
 puts "#{maxi} #{mini}"
