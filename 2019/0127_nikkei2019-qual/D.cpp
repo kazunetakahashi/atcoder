@@ -96,6 +96,10 @@ int main()
     {
       parent[v] = p;
       depth[v] = d;
+      for (auto x : V[v])
+      {
+        Q.push(T(x, v, d + 1));
+      }
     }
   }
   for (auto i = 0; i < N; i++)
