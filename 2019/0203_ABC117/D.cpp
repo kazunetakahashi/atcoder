@@ -68,30 +68,30 @@ int main()
     cerr << "S[" << i << "][" << 1 << "] = " << S[i][1] << endl;
   }
   DP[60][0] = 0;
-  DP[60][1] = 0;
+  DP[60][1] = -1;
   for (auto i = 60 - 1; i >= 0; i--)
   {
     DP[i][0] = 0;
     DP[i][1] = 0;
     if ((K >> i) & 1)
     {
-      DP[i][0] = max(DP[i][0], DP[i + 1][0] + S[i][1]);
       DP[i][1] = max(DP[i][1], DP[i + 1][0] + S[i][0]);
-      DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][1]);
       DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][0]);
+      DP[i][0] = max(DP[i][0], DP[i + 1][0] + S[i][1]);
+      DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][1]);
     }
     else
     {
       DP[i][0] = max(DP[i][0], DP[i + 1][0] + S[i][0]);
-      if (1LL << i < K)
+      DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][0]);
+      if (DP[i + 1][1] >= 0)
       {
         DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][1]);
       }
-      else if (1LL << i == K)
+      else
       {
-        DP[i][0] = max(DP[i][0], DP[i + 1][0] + S[i][1]);
+        DP[i][1] = -1;
       }
-      DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][0]);
     }
     cerr << "DP[" << i << "][" << 0 << "] = " << DP[i][0] << endl;
     cerr << "DP[" << i << "][" << 1 << "] = " << DP[i][1] << endl;
