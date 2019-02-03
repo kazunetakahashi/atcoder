@@ -83,9 +83,13 @@ int main()
     else
     {
       DP[i][0] = max(DP[i][0], DP[i + 1][0] + S[i][0]);
-      if (1LL << i <= K)
+      if (1LL << i < K)
       {
         DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][1]);
+      }
+      else if (1LL << i == K)
+      {
+        DP[i][0] = max(DP[i][0], DP[i + 1][0] + S[i][1]);
       }
       DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][0]);
     }
