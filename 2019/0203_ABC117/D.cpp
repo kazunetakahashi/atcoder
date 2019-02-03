@@ -36,13 +36,12 @@ typedef long long ll;
 // const int dy[4] = {0, 1, 0, -1};
 
 // const int C = 1e6+10;
-const ll infty = (1LL << 60);
 
 ll N;
 ll K;
 ll A[100010];
-ll S[45][2];
-ll DP[46][2];
+ll S[60][2];
+ll DP[61][2];
 
 int main()
 {
@@ -51,8 +50,8 @@ int main()
   {
     cin >> A[i];
   }
-  fill(&S[0][0], &S[0][0] + 45 * 2, 0);
-  for (auto i = 0; i < 45; i++)
+  fill(&S[0][0], &S[0][0] + 60 * 2, 0);
+  for (auto i = 0; i < 60; i++)
   {
     for (auto j = 0; j < N; j++)
     {
@@ -68,10 +67,10 @@ int main()
     cerr << "S[" << i << "][" << 0 << "] = " << S[i][0] << endl;
     cerr << "S[" << i << "][" << 1 << "] = " << S[i][1] << endl;
   }
-  DP[45][0] = 0;
-  DP[45][1] = 0;
+  DP[60][0] = 0;
+  DP[60][1] = 0;
   bool early = true;
-  for (auto i = 45 - 1; i >= 0; i--)
+  for (auto i = 60 - 1; i >= 0; i--)
   {
     DP[i][0] = 0;
     DP[i][1] = 0;
