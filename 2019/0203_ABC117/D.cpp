@@ -76,8 +76,12 @@ int main()
     if ((K >> i) & 1)
     {
       DP[i][1] = max(DP[i][1], DP[i + 1][0] + S[i][0]);
-      DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][0]);
       DP[i][0] = max(DP[i][0], DP[i + 1][0] + S[i][1]);
+      if (DP[i + 1][1] < 0)
+      {
+        DP[i + 1][1] = 0;
+      }
+      DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][0]);
       DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][1]);
     }
     else
