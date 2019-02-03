@@ -8,7 +8,7 @@
 n = gets.to_i
 l = gets.chomp.split(" ").map{|i| i.to_i}
 sum = l.inject(:+)
-maxi = l.maxi
+maxi = l.max
 if sum - maxi > maxi
   puts "Yes"
 else
