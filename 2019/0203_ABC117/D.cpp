@@ -89,6 +89,11 @@ int main()
       DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][1]);
       DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][0]);
     }
+    else
+    {
+      DP[i][0] = max(DP[i][1], DP[i + 1][0] + S[i][0]);
+      DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][0]);
+    }
     cerr << "DP[" << i << "][" << 0 << "] = " << DP[i][0] << endl;
     cerr << "DP[" << i << "][" << 1 << "] = " << DP[i][1] << endl;
   }
