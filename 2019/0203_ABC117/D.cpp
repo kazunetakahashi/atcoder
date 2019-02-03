@@ -72,7 +72,7 @@ int main()
   for (auto i = 60 - 1; i >= 0; i--)
   {
     DP[i][0] = 0;
-    DP[i][1] = 0;
+    DP[i][1] = -1;
     if ((K >> i) & 1)
     {
       DP[i][1] = max(DP[i][1], DP[i + 1][0] + S[i][0]);
@@ -87,10 +87,6 @@ int main()
       if (DP[i + 1][1] >= 0)
       {
         DP[i][1] = max(DP[i][1], DP[i + 1][1] + S[i][1]);
-      }
-      else
-      {
-        DP[i][1] = -1;
       }
     }
     cerr << "DP[" << i << "][" << 0 << "] = " << DP[i][0] << endl;
