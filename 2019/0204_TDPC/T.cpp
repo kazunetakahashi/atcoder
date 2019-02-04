@@ -100,7 +100,7 @@ Poly operator+(Poly p, Poly q)
   }
   else
   {
-    for (auto i = 0; i < q.size(); i++)
+    for (auto i = 0; i < (int)q.size(); i++)
     {
       p[i] += q[i];
       p[i] %= MOD;
@@ -113,7 +113,7 @@ Poly operator+(Poly p, Poly q)
 Poly operator-(Poly p)
 {
   reduce(p);
-  for (auto i = 0; i < p.size(); i++)
+  for (auto i = 0; i < (int)p.size(); i++)
   {
     p[i] %= MOD;
     p[i] = MOD - p[i];
@@ -133,11 +133,11 @@ Poly operator*(Poly p, Poly q)
   reduce(p);
   reduce(q);
   Poly res(p.size() + q.size() - 1, 0);
-  for (auto i = 0; i < res.size(); i++)
+  for (auto i = 0; i < (int)res.size(); i++)
   {
     for (auto j = 0; j <= i; j++)
     {
-      if (j < p.size() && i - j < q.size())
+      if (j < (int)p.size() && i - j < (int)q.size())
       {
         res[i] += (p[j] * q[i - j]) % MOD;
         res[i] %= MOD;
@@ -152,7 +152,7 @@ Poly operator*(Poly p, ll k)
 {
   reduce(p);
   Poly res(p.size());
-  for (auto i = 0; i < p.size(); i++)
+  for (auto i = 0; i < (int)p.size(); i++)
   {
     res[i] = (p[i] * k) % MOD;
   }
@@ -190,7 +190,7 @@ Poly shift(Poly &p, int k)
   {
     res[i] = 0;
   }
-  for (auto i = k; i < res.size(); i++)
+  for (auto i = k; i < (int)res.size(); i++)
   {
     res[i] = p[i - k];
   }
@@ -255,7 +255,7 @@ int main()
     a[i] = 0;
     for (auto j = 0; j < K; j++)
     {
-      a[i] += a[i - 1 - j] * k[K - 1 - j];
+      a[i] += (a[i - 1 - j] * k[K - 1 - j]) % MOD;
       a[i] %= MOD;
     }
   }
