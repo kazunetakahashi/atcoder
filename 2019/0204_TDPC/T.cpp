@@ -241,13 +241,13 @@ int main()
     cout << 1 << endl;
     return 0;
   }
-  cerr << "aaa" << endl;
   k = Poly(K + 1);
   for (auto i = 0; i < K; i++)
   {
     k[i] = 1;
   }
   k[K] = 1;
+  a = vector<ll>(K);
   for (auto i = 0; i < K; i++)
   {
     a[i] = 1;
