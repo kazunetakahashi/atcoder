@@ -261,13 +261,14 @@ int main()
       a[i] %= MOD;
     }
   }
-  cerr << "aaa" << endl;
   for (auto i = 0; i < K; i++)
   {
     k[i] = MOD - k[i];
     k[i] %= MOD;
   }
+  cerr << "aaa" << endl;
   Poly f = mod_power(k, N - 1 - K);
+  cerr << "aaa" << endl;
   ll ans = 0;
   for (auto i = 0; i < min(K, (ll)f.size()); i++)
   {
