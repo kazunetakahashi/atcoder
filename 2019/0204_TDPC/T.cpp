@@ -217,6 +217,7 @@ Poly operator%(Poly p, Poly q)
 
 Poly mod_power(Poly q, ll k)
 {
+  cerr << "mod_power(" << k << ")" << endl;
   if (k == 0)
   {
     return {1};
@@ -226,7 +227,7 @@ Poly mod_power(Poly q, ll k)
     Poly t = mod_power(q, k / 2);
     return (t * t) % q;
   }
-  return (mod_power(q, k - 1) * X_k(1)) % q;
+  return (mod_power(q, k - 1) * (X_k(1) % q)) % q;
 }
 
 ll K, N;
@@ -266,9 +267,7 @@ int main()
     k[i] = MOD - k[i];
     k[i] %= MOD;
   }
-  cerr << "aaa" << endl;
   Poly f = mod_power(k, N - 1 - K);
-  cerr << "aaa" << endl;
   ll ans = 0;
   for (auto i = 0; i < min(K, (ll)f.size()); i++)
   {
