@@ -72,16 +72,14 @@ void reduce(Poly &v)
 
 Poly X_k(int k, ll a)
 {
-  vector<ll> p(k + 1, 0);
+  Poly p(k + 1, 0);
   p[k] = a % MOD;
   return p;
 }
 
 Poly X_k(int k)
 {
-  vector<ll> p(k + 1, 0);
-  p[k] = 1;
-  return p;
+  return X_k(k, 1);
 }
 
 bool is_zero(Poly p)
