@@ -78,7 +78,7 @@ ll mod_rev(ll x)
 
 void reduce(Poly &v)
 {
-  while (!v.empty() && v.back() % MOD != 0)
+  while (!v.empty() && v.back() % MOD == 0)
   {
     v.pop_back();
   }
