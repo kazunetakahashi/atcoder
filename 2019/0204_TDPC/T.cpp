@@ -43,6 +43,20 @@ const ll MOD = 1000000007;
 
 typedef vector<ll> Poly;
 
+ostream &operator<<(ostream &o_str, const Poly &p)
+{
+  o_str << "{ ";
+  for (auto i = 0; i < (int)p.size(); i++)
+  {
+    o_str << p[i];
+    if (i < (int)p.size() - 1)
+    {
+      o_str << ", ";
+    }
+  }
+  return o_str << " }";
+}
+
 ll mod_power(ll x, ll k)
 {
   if (k == 0)
@@ -215,7 +229,7 @@ Poly operator%(Poly p, Poly q)
 
 Poly mod_power(Poly q, ll k)
 {
-  cerr << "mod_power(" << k << ")" << endl;
+  cerr << "mod_power(" << q << ", " << k << ")" << endl;
   if (k == 0)
   {
     return {1};
@@ -225,7 +239,7 @@ Poly mod_power(Poly q, ll k)
     Poly t = mod_power(q, k / 2);
     return (t * t) % q;
   }
-  return (mod_power(q, k - 1) * (X_k(1) % q)) % q;
+  return (mod_power(q, k - 1) * X_k(1)) % q;
 }
 
 ll K, N;
