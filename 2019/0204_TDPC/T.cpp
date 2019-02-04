@@ -238,8 +238,10 @@ int main()
   cin >> K >> N;
   if (N <= K)
   {
-    return 1;
+    cout << 1 << endl;
+    return 0;
   }
+  cerr << "aaa" << endl;
   k = Poly(K + 1);
   for (auto i = 0; i < K; i++)
   {
@@ -259,7 +261,6 @@ int main()
       a[i] %= MOD;
     }
   }
-  cerr << "aaa" << endl;
   for (auto i = 0; i < K; i++)
   {
     k[i] = MOD - k[i];
