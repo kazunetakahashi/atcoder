@@ -247,7 +247,7 @@ int main()
     k[i] = 1;
   }
   k[K] = 1;
-  a = vector<ll>(K);
+  a = vector<ll>(2 * K - 1);
   for (auto i = 0; i < K; i++)
   {
     a[i] = 1;
