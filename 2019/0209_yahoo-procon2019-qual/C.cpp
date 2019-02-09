@@ -60,6 +60,6 @@ int main()
   {
     ans++;
   }
-  ans += (A - 1) + 2 * (B - A);
+  ans += (A - 1) + x * (B - A);
   cout << ans << endl;
 }
