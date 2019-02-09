@@ -120,11 +120,8 @@ int main()
         for (auto d = c; d <= L; d++)
         {
           ll t = calc(a, b, c, d);
-          if (t <= mini)
-          {
-            mini = min(mini, t);
-            cerr << "calc(" << a << ", " << b << ", " << c << ", " << d << ") = " << t << endl;
-          }
+          mini = min(mini, t);
+          cerr << "calc(" << a << ", " << b << ", " << c << ", " << d << ") = " << t << endl;
         }
       }
     }
