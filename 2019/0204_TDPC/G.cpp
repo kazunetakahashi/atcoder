@@ -105,7 +105,6 @@ int main()
         {
           string t{(char)('a' + j)};
           ans += t;
-          K--;
           i = pos[i][j];
           break;
         }
