@@ -42,30 +42,16 @@ int L;
 ll A[200010];
 ll B[200010]; // even
 ll C[200010]; // odd
+ll sum[200010][3];
 
 ll calc(int a, int b, int c, int d)
 {
   ll ans = 0;
-  if (0 < a)
-  {
-    ans += A[a - 1];
-  }
-  if (a < b)
-  {
-    ans += B[b - 1] - B[a - 1];
-  }
-  if (b < c)
-  {
-    ans += C[c - 1] - C[b - 1];
-  }
-  if (c < d)
-  {
-    ans += B[d - 1] - B[c - 1];
-  }
-  if (d < L)
-  {
-    ans += A[L - 1] - A[d - 1];
-  }
+  ans += sum[a][0] - sum[0][0];
+  ans += sum[b][1] - sum[a][1];
+  ans += sum[c][2] - sum[b][2];
+  ans += sum[d][1] - sum[c][1];
+  ans += sum[L][0] - sum[d][0];
   return ans;
 }
 
@@ -118,19 +104,20 @@ int main()
       C[i] = 1;
     }
   }
-  for (auto i = 0; i < L - 1; i++)
+  sum[0][0] = sum[0][1] = sum[0][2] = 0;
+  for (auto i = 0; i < L; i++)
   {
-    A[i + 1] += A[i];
-    B[i + 1] += B[i];
-    C[i + 1] += C[i];
+    sum[0][i + 1] = sum[0][i] + A[i];
+    sum[1][i + 1] = sum[1][i] + B[i];
+    sum[2][i + 1] = sum[2][i] + C[i];
   }
-  for (auto a = 0; a < L; a++)
+  for (auto a = 0; a <= L; a++)
   {
-    for (auto b = a; b < L; b++)
+    for (auto b = a; b <= L; b++)
     {
-      for (auto c = b; c < L; c++)
+      for (auto c = b; c <= L; c++)
       {
-        for (auto d = c; d < L; d++)
+        for (auto d = c; d <= L; d++)
         {
           ll t = calc(a, b, c, d);
           if (t <= mini)
