@@ -133,7 +133,7 @@ int main()
       {
         continue;
       }
-      cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
+      // cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
       int r = j;
       int b = i - r;
       if (R[i + 1] - r > 0)
