@@ -62,7 +62,7 @@ ll calc(int a, int b, int c, int d)
   {
     ans += B[d - 1] - B[c - 1];
   }
-  if (d < L - 1)
+  if (d < L)
   {
     ans += A[L - 1] - A[d - 1];
   }
