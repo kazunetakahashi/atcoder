@@ -8,7 +8,7 @@
 n, k = gets.chomp.split(" ").map{|i| i.to_i}
 ary = []
 for i in 1..n
-  if i - ary[-1] > 1
+  if ary.empty? || i - ary[-1] > 1
     ary << i
   end
 end
