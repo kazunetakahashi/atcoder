@@ -85,8 +85,14 @@ int main()
     return 0;
   }
   string ans = "";
-  for (auto i = 0; i < L; i++)
+  for (auto i = 0; i < L;)
   {
+    K--;
+    if (K == 0)
+    {
+      cout << ans << endl;
+      return 0;
+    }
     for (auto j = 0; j < 26; j++)
     {
       if (pos[i][j] >= 0)
@@ -95,17 +101,13 @@ int main()
         {
           K -= DP[pos[i][j]];
         }
-        else if (K > 0)
+        else
         {
           string t{(char)('a' + j)};
           ans += t;
           K--;
+          i = pos[i][j];
           break;
-        }
-        else
-        {
-          cout << ans << endl;
-          return 0;
         }
       }
     }
