@@ -44,6 +44,8 @@ ll B[200010]; // even
 ll C[200010]; // odd
 ll sum[3][200010];
 
+// TLE
+
 ll calc(int a, int b, int c, int d)
 {
   ll ans = 0;
@@ -121,10 +123,10 @@ int main()
         {
           ll t = calc(a, b, c, d);
           mini = min(mini, t);
-          cerr << "calc(" << a << ", " << b << ", " << c << ", " << d << ") = " << t << endl;
+          // cerr << "calc(" << a << ", " << b << ", " << c << ", " << d << ") = " << t << endl;
         }
       }
     }
   }
-  cerr << mini << endl;
+  cout << mini << endl;
 }
