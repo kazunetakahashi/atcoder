@@ -30,8 +30,6 @@
 #include <cstdlib>
 using namespace std;
 
-#define DEBUG 0 // change 0 -> 1 if we need debug.
-
 typedef long long ll;
 
 // const int dx[4] = {1, 0, -1, 0};
