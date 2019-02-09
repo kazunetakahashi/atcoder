@@ -124,6 +124,7 @@ int main()
   }
   for (auto i = 0; i < N; i++)
   {
+    cerr << "R[" << i + 1 << "] = " << R[i + 1] << ", B[" << i + 1 << "] = " << B[i + 1] << endl;
     for (auto j = 0; j <= i; j++)
     {
       if (DP[i][j] == 0)
