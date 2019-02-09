@@ -49,6 +49,7 @@ int main()
     return 0;
   }
   ll x = (K - (A - 1)) / 2;
+  cerr << "x = " << x << endl;
   ll ans = 0;
   if (x <= 0)
   {
