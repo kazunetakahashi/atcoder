@@ -42,16 +42,16 @@ int L;
 ll A[200010];
 ll B[200010]; // even
 ll C[200010]; // odd
-ll sum[200010][3];
+ll sum[3][200010];
 
 ll calc(int a, int b, int c, int d)
 {
   ll ans = 0;
-  ans += sum[a][0] - sum[0][0];
-  ans += sum[b][1] - sum[a][1];
-  ans += sum[c][2] - sum[b][2];
-  ans += sum[d][1] - sum[c][1];
-  ans += sum[L][0] - sum[d][0];
+  ans += sum[0][a] - sum[0][0];
+  ans += sum[1][b] - sum[1][a];
+  ans += sum[2][c] - sum[2][b];
+  ans += sum[1][d] - sum[1][c];
+  ans += sum[0][L] - sum[0][d];
   return ans;
 }
 
