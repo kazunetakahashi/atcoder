@@ -126,7 +126,7 @@ int main()
   }
   for (auto i = 0; i < N; i++)
   {
-    cerr << "R[" << i + 1 << "] = " << R[i + 1] << ", B[" << i + 1 << "] = " << B[i + 1] << endl;
+    // cerr << "R[" << i + 1 << "] = " << R[i + 1] << ", B[" << i + 1 << "] = " << B[i + 1] << endl;
     for (auto j = 0; j <= i; j++)
     {
       if (DP[i][j] == 0)
@@ -156,7 +156,7 @@ int main()
       continue;
     }
     int r = i;
-    int b = N = i;
+    int b = N - i;
     int res_r = R[N] - r;
     int res_b = B[N] - b;
     ans += (DP[N][i] * C(res_r + res_b, res_r)) % MOD;
