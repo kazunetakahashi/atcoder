@@ -124,14 +124,14 @@ int main()
   }
   for (auto i = 0; i < N; i++)
   {
-    // cerr << "R[" << i + 1 << "] = " << R[i + 1] << ", B[" << i + 1 << "] = " << B[i + 1] << endl;
+    cerr << "R[" << i + 1 << "] = " << R[i + 1] << ", B[" << i + 1 << "] = " << B[i + 1] << endl;
     for (auto j = 0; j <= i; j++)
     {
       if (DP[i][j] == 0)
       {
         continue;
       }
-      // cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
+      cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
       int r = j;
       int b = i - r;
       if (R[i + 1] - r > 0)
