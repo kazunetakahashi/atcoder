@@ -108,11 +108,11 @@ int main()
   R[0] = B[0] = 0;
   for (auto i = 1; i <= N; i++)
   {
-    if (S[i - 1] == 0)
+    if (S[i - 1] == '0')
     {
       R[i] = R[i - 1] + 2;
     }
-    else if (S[i - 1] == 1)
+    else if (S[i - 1] == '1')
     {
       R[i] = R[i - 1] + 1;
       B[i] = B[i - 1] + 1;
@@ -124,14 +124,14 @@ int main()
   }
   for (auto i = 0; i < N; i++)
   {
-    cerr << "R[" << i + 1 << "] = " << R[i + 1] << ", B[" << i + 1 << "] = " << B[i + 1] << endl;
+    // cerr << "R[" << i + 1 << "] = " << R[i + 1] << ", B[" << i + 1 << "] = " << B[i + 1] << endl;
     for (auto j = 0; j <= i; j++)
     {
       if (DP[i][j] == 0)
       {
         continue;
       }
-      cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
+      // cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
       int r = j;
       int b = i - r;
       if (R[i + 1] - r > 0)
