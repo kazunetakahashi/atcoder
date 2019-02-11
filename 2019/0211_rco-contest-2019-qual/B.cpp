@@ -66,6 +66,11 @@ void AC(int x, int y)
   cout << 2 << " " << x << " " << y << endl;
 }
 
+void AC_zero()
+{
+  cout << 1 << " " << 1 << " " << 1 << endl;
+}
+
 int main()
 {
   cin >> N >> M;
@@ -78,7 +83,7 @@ int main()
   }
   for (auto i = 1; i < N - 1; i++)
   {
-    for (auto j = 1; j <= 1; j++)
+    for (auto j = 1; j <= 3; j++)
     {
       if (A[i][j] == 1)
       {
