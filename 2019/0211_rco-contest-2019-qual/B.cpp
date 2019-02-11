@@ -110,12 +110,12 @@ int main()
           {
             if (ary[k] == 4)
             {
-              RE();
+              AC(i, j);
             }
           }
         }
       }
     }
   }
-  WA();
+  AC_zero();
 }
