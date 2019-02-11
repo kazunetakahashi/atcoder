@@ -51,6 +51,20 @@ void RE()
   assert(false);
 }
 
+void AC(int x, int y)
+{
+  assert(A[x][y] == 1);
+  for (auto i = 0; i < k; i++)
+  {
+    int nx = x + dx[i];
+    int ny = y + dy[i];
+    if (0 <= nx && nx < N && 0 <= ny && ny < N)
+    {
+      assert(A[nx][ny] != 1);
+    }
+  }
+}
+
 int main()
 {
   cin >> N >> M;
@@ -61,9 +75,9 @@ int main()
       cin >> A[i][j];
     }
   }
-  for (auto i = 0; i < N; i++)
+  for (auto i = 1; i < N - 1; i++)
   {
-    for (auto j = 0; j < N; j++)
+    for (auto j = 1; j <= 1; j++)
     {
       if (A[i][j] == 1)
       {
