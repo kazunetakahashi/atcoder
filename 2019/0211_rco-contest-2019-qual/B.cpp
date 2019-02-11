@@ -54,7 +54,7 @@ void RE()
 void AC(int x, int y)
 {
   assert(A[x][y] == 1);
-  for (auto i = 0; i < k; i++)
+  for (auto i = 0; i < 4; i++)
   {
     int nx = x + dx[i];
     int ny = y + dy[i];
@@ -63,6 +63,7 @@ void AC(int x, int y)
       assert(A[nx][ny] != 1);
     }
   }
+  cout << 2 << " " << x << " " << y << endl;
 }
 
 int main()
