@@ -67,19 +67,31 @@ int main()
     {
       if (A[i][j] == 1)
       {
+        bool ok = true;
+        int ary[10];
+        fill(ary, ary + 10, 0);
         for (auto k = 0; k < 4; k++)
         {
           int x = i + dx[k];
           int y = j + dy[k];
-          bool ok = true;
           if (0 <= i && i < N && 0 <= j && j < N && A[x][y] == 1)
           {
             ok = false;
-            continue;
+            break;
           }
-          if (ok)
+          else
           {
-            RE();
+            ary[A[x][y]]++;
+          }
+        }
+        if (ok)
+        {
+          for (auto k = 0; k < 10; k++)
+          {
+            if (ary[k] == 4)
+            {
+              RE();
+            }
           }
         }
       }
