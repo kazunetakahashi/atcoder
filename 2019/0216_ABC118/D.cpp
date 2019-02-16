@@ -85,7 +85,7 @@ ll max_score(vector<int> L)
   sort(F.begin(), F.end());
   reverse(F.begin(), F.end());
   string ans = "";
-  for (auto i = 0; i < min(18, (int)F.size()); i++)
+  for (auto i = 0; i < min(15, (int)F.size()); i++)
   {
     ans = ans + to_string(F[i]);
   }
@@ -197,9 +197,12 @@ int main()
         maxi_score = m_s;
         ans = v;
       }
+      else if (maxi_score == m_s)
+      {
+        assert(false);
+      }
     }
     represent(ans);
-    assert(false);
   }
   for (auto i = 0; i < cnt; i++)
   {
