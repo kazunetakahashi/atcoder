@@ -176,6 +176,14 @@ int main()
     {
       if ((int)v.size() == maxi)
       {
+#if DEBUG == 1
+        cerr << "v: ";
+        for (auto x : v)
+        {
+          cerr << x << " ";
+        }
+        cerr << endl;
+#endif
         W.push_back(v);
       }
     }
