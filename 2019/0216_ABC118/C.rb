@@ -7,4 +7,9 @@
 
 n = gets.to_i
 a = gets.chomp.split(" ").map{|i| i.to_i}
-puts a.lcm
+ans = a[0]
+a.each{|x|
+  ans = ans.lcm(x)
+}
+puts ans
+
