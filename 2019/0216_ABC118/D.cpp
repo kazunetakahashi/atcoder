@@ -48,7 +48,7 @@ vector<vector<int>> W;
 void dfs(vector<int> L, int R)
 {
 #if DEBUG == 1
-  // cerr << "dfs(" << L.size() << ", " << R << ")" << endl;
+  cerr << "dfs(" << L.size() << ", " << R << ")" << endl;
 #endif
   if (R == 0)
   {
@@ -100,7 +100,7 @@ void represent(vector<int> L)
   reverse(F.begin(), F.end());
   for (auto i = 0; i < (int)F.size(); i++)
   {
-    cout << F[i];
+    cerr << F[i];
   }
 }
 
@@ -123,7 +123,7 @@ int main()
   int cnt = 0;
   int cost = (*X.begin()).first;
   string base = to_string((*X.begin()).second);
-  while (N > 1000)
+  while (N > 200)
   {
     N -= cost;
     cnt++;
