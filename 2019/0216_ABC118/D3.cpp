@@ -64,7 +64,7 @@ int main()
     {
       for (auto j = 0; j < M; j++)
       {
-        DP[i + A[j]] = max(DP[i + A[j]], DP[i] + H[A[j]]);
+        DP[i + H[A[j]]] = max(DP[i + H[A[j]]], DP[i] + 1);
       }
     }
   }
