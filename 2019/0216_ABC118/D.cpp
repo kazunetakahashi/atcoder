@@ -129,7 +129,7 @@ int main()
   int cnt = 0;
   int cost = (*X.begin()).first;
   string base = to_string((*X.begin()).second);
-  while (N > 200)
+  while (N > 500)
   {
     N -= cost;
     cnt++;
@@ -199,6 +199,7 @@ int main()
       }
     }
     represent(ans);
+    assert(false);
   }
   for (auto i = 0; i < cnt; i++)
   {
