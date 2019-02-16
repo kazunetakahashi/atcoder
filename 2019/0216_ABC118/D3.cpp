@@ -73,7 +73,7 @@ int main()
   while (N > 0)
   {
     assert(ind < M);
-    if (DP[N] - 1 == DP[N - H[A[ind]]])
+    if (N - H[A[ind]] >= 0 && DP[N] - 1 == DP[N - H[A[ind]]])
     {
       cout << A[ind];
       N -= H[A[ind]];
