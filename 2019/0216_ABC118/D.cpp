@@ -95,12 +95,16 @@ ll max_score(vector<int> L)
   return stoll(ans);
 }
 
-void represent(vector<int> L)
+void represent(vector<int> L, int cnt)
 {
   vector<int> F;
   for (auto x : L)
   {
     F.push_back(X[x]);
+  }
+  for (auto i = 0; i < cnt; i++)
+  {
+    F.push_back((*X.begin()).second);
   }
   sort(F.begin(), F.end());
   reverse(F.begin(), F.end());
@@ -108,6 +112,8 @@ void represent(vector<int> L)
   {
     cout << F[i];
   }
+  cout << endl;
+  exit(0);
 }
 
 int main()
@@ -197,12 +203,8 @@ int main()
         maxi_score = m_s;
         ans = v;
       }
-      else if (maxi_score == m_s)
-      {
-        assert(false);
-      }
     }
-    represent(ans);
+    represent(ans, cnt);
   }
   for (auto i = 0; i < cnt; i++)
   {
