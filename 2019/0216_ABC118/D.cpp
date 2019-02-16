@@ -123,7 +123,7 @@ int main()
   int cnt = 0;
   int cost = (*X.begin()).first;
   string base = to_string((*X.begin()).second);
-  while (N > 60)
+  while (N > 1000)
   {
     N -= cost;
     cnt++;
