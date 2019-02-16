@@ -148,6 +148,9 @@ int main()
   else
   {
     vector<int> V;
+#if DEBUG == 1
+    cerr << "N = " << N << endl;
+#endif
     dfs(V, N);
     int maxi = 0;
     for (auto v : Y)
