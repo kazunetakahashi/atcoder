@@ -79,7 +79,7 @@ int max_score(vector<int> L)
   sort(F.begin(), F.end());
   reverse(F.begin(), F.end());
   string ans = "";
-  for (auto i = 0; i < max(9, (int)F.size()); i++)
+  for (auto i = 0; i < min(9, (int)F.size()); i++)
   {
     ans = ans + to_string(F[i]);
   }
