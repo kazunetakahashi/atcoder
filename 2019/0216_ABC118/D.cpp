@@ -154,6 +154,9 @@ int main()
     {
       maxi = max((int)v.size(), maxi);
     }
+#if DEBUG == 1
+    cerr << "maxi = " << maxi << endl;
+#endif
     for (auto v : Y)
     {
       if ((int)v.size() == maxi)
