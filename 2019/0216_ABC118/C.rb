@@ -9,7 +9,7 @@ n = gets.to_i
 a = gets.chomp.split(" ").map{|i| i.to_i}
 ans = a[0]
 a.each{|x|
-  ans = ans.lcm(x)
+  ans = ans.gcd(x)
 }
 puts ans
 
