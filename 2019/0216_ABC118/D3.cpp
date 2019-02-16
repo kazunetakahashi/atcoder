@@ -76,7 +76,7 @@ int main()
     if (DP[N] - 1 == DP[N - H[A[ind]]])
     {
       cout << A[ind];
-      N -= A[ind];
+      N -= H[A[ind]];
     }
     else
     {
