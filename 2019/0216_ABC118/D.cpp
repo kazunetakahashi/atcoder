@@ -49,6 +49,12 @@ void dfs(vector<int> L, int R)
 {
 #if DEBUG == 1
   cerr << "dfs(" << L.size() << ", " << R << ")" << endl;
+  cerr << "L: ";
+  for (auto x : L)
+  {
+    cerr << x << " ";
+  }
+  cerr << endl;
 #endif
   if (R == 0)
   {
