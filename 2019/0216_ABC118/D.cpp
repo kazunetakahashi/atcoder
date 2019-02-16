@@ -191,9 +191,10 @@ int main()
     vector<int> ans;
     for (auto v : W)
     {
-      if (maxi_score < max_score(v))
+      int m_s = max_score(v);
+      if (maxi_score < m_s)
       {
-        maxi_score = max_score(v);
+        maxi_score = m_s;
         ans = v;
       }
     }
