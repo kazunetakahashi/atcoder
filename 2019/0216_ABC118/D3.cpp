@@ -83,4 +83,5 @@ int main()
       ind++;
     }
   }
+  cout << endl;
 }
