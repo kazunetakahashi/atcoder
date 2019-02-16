@@ -6,7 +6,7 @@
 #
 
 a, b = gets.chomp.split(" ").map{|i| i.to_i}
-if a % b == 0
+if b % a == 0
   puts a + b
 else
   puts b - a
