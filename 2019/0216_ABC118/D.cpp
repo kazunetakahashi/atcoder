@@ -59,7 +59,7 @@ void dfs(vector<int> L, int R)
     for (auto x : X)
     {
       int cost = x.first;
-      if (cost >= L[L.size() - 1] && cost >= R)
+      if ((L.empty() || cost >= L[L.size() - 1]) && cost >= R)
       {
         L.push_back(cost);
         dfs(L, R - cost);
