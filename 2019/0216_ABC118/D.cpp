@@ -48,7 +48,7 @@ vector<vector<int>> W;
 void dfs(vector<int> L, int R)
 {
 #if DEBUG == 1
-  cerr << "dfs(" << L.size() << ", " << R << ")" << endl;
+  // cerr << "dfs(" << L.size() << ", " << R << ")" << endl;
 #endif
   if (R == 0)
   {
@@ -83,6 +83,9 @@ int max_score(vector<int> L)
   {
     ans = ans + to_string(F[i]);
   }
+#if DEBUG == 1
+  cerr << "max_score: " << ans << endl;
+#endif
   return stoi(ans);
 }
 
