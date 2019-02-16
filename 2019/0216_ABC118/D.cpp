@@ -75,7 +75,7 @@ void dfs(vector<int> L, int R)
   }
 }
 
-int max_score(vector<int> L)
+ll max_score(vector<int> L)
 {
   vector<int> F;
   for (auto x : L)
@@ -85,14 +85,14 @@ int max_score(vector<int> L)
   sort(F.begin(), F.end());
   reverse(F.begin(), F.end());
   string ans = "";
-  for (auto i = 0; i < min(9, (int)F.size()); i++)
+  for (auto i = 0; i < min(18, (int)F.size()); i++)
   {
     ans = ans + to_string(F[i]);
   }
 #if DEBUG == 1
   cerr << "max_score: " << ans << endl;
 #endif
-  return stoi(ans);
+  return stoll(ans);
 }
 
 void represent(vector<int> L)
@@ -106,7 +106,7 @@ void represent(vector<int> L)
   reverse(F.begin(), F.end());
   for (auto i = 0; i < (int)F.size(); i++)
   {
-    cerr << F[i];
+    cout << F[i];
   }
 }
 
@@ -187,11 +187,11 @@ int main()
         W.push_back(v);
       }
     }
-    int maxi_score = 0;
+    ll maxi_score = 0;
     vector<int> ans;
     for (auto v : W)
     {
-      int m_s = max_score(v);
+      ll m_s = max_score(v);
       if (maxi_score < m_s)
       {
         maxi_score = m_s;
