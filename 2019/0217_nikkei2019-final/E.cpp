@@ -39,6 +39,7 @@ typedef long long ll;
 const ll MOD = 1000000007;
 
 ll N, K;
+ll L;
 ll memo[100010];
 
 ll power(int x)
@@ -72,12 +73,13 @@ void init()
     memo[i] = memo[i - 1] * 2;
     memo[i] %= MOD;
   }
-  for (auto i = 0; i < N; i++)
+  L = N - K;
+  for (auto i = 0; i < L; i++)
   {
-    DP[0][i] = power(i - K);
+    DP[0][i] = power(i);
   }
   DP2[0][0] = DP[0][0];
-  for (auto i = 1; i < N; i++)
+  for (auto i = 1; i < L; i++)
   {
     DP2[0][i] = DP2[0][i - 1] + DP[0][i];
     DP2[0][i] %= MOD;
@@ -87,38 +89,38 @@ void init()
 void flush()
 {
 #if DEBUG == 1
-  if (N <= 10)
+  if (L <= 10)
   {
-    for (auto i = 0; i < N; i++)
+    for (auto i = 0; i < L; i++)
     {
-      for (auto j = 0; j < N; j++)
+      for (auto j = 0; j < L; j++)
       {
         cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
       }
     }
   }
 #endif
-  cout << DP[N - 1][N - 1] << endl;
+  cout << DP[L - 1][L - 1] << endl;
 }
 
 int main()
 {
   cin >> N >> K;
   init();
-  for (auto i = 1; i < N; i++)
+  for (auto i = 1; i < L; i++)
   {
-    for (auto j = 0; j < N; j++)
+    for (auto j = 0; j < L; j++)
     {
       DP[i][j] = 0;
       if (j > 0)
       {
-        DP[i][j] += (DP2[i - 1][j - 1] * power(j - i - K)) % MOD;
+        DP[i][j] += (DP2[i - 1][j - 1] * power(j - i)) % MOD;
       }
-      DP[i][j] += (DP[i - 1][j] * power2(j - i - K + 1)) % MOD;
+      DP[i][j] += (DP[i - 1][j] * power2(j - i + 1)) % MOD;
       DP[i][j] %= MOD;
     }
     DP2[i][0] = DP[i][0];
-    for (auto j = 1; j < N; j++)
+    for (auto j = 1; j < L; j++)
     {
       DP2[i][j] = DP2[i][j - 1] + DP[i][j];
       DP2[i][j] %= MOD;
