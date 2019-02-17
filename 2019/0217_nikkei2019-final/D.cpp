@@ -75,12 +75,12 @@ int main()
         if (choose == 0)
         {
           S.insert(score);
+          it++;
         }
         else
         {
-          S.erase(S.find(score));
+          break;
         }
-        it++;
       }
       else
       {
@@ -95,6 +95,28 @@ int main()
       cerr << "i = " << i << ", score = " << *S_it << endl;
 #endif
       ans += *S_it;
+    }
+    while (it != V.end())
+    {
+      int time = get<0>(*it);
+      int choose = get<1>(*it);
+      ll score = get<2>(*it);
+      if (time == i)
+      {
+        if (choose == 1)
+        {
+          S.erase(S.find(score));
+          it++;
+        }
+        else
+        {
+          break;
+        }
+      }
+      else
+      {
+        break;
+      }
     }
   }
   cout << ans << endl;
