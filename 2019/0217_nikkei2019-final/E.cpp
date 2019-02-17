@@ -119,8 +119,12 @@ int main()
       DP[i][j] += (DP[i - 1][j] * power2(j - i + 1)) % MOD;
       DP[i][j] %= MOD;
     }
-    DP2[i][0] = DP[i][0];
-    for (auto j = 1; j < L; j++)
+    for (auto j = 0; j < i; j++)
+    {
+      DP2[i][j] = 0;
+    }
+    DP2[i][i] = DP[i][i];
+    for (auto j = i + 1; j < L; j++)
     {
       DP2[i][j] = DP2[i][j - 1] + DP[i][j];
       DP2[i][j] %= MOD;
