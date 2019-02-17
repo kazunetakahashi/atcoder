@@ -67,7 +67,7 @@ int main()
   {
     while (it != V.end())
     {
-      ll time = get<0>(*it);
+      int time = get<0>(*it);
       int choose = get<1>(*it);
       ll score = get<2>(*it);
       if (time == i)
@@ -91,6 +91,9 @@ int main()
     {
       auto S_it = S.end();
       S_it--;
+#if DEBUG == 1
+      cerr << "i = " << i << ", score = " << *S_it << endl;
+#endif
       ans += *S_it;
     }
   }
