@@ -111,11 +111,11 @@ int main()
   }
   reverse(B.begin(), B.end());
   int s = solve();
-  if (s == 0)
+  if (s == 1)
   {
     cout << "X" << endl;
   }
-  else if (s == 1)
+  else if (s == 0)
   {
     cout << "Y" << endl;
   }
