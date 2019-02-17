@@ -80,6 +80,15 @@ void init()
 
 void flush()
 {
+#if DEBUG == 1
+  for (auto i = 0; i < N; i++)
+  {
+    for (auto j = 0; j < N; j++)
+    {
+      cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
+    }
+  }
+#endif
   ll ans = 0;
   for (auto i = 0; i < N; i++)
   {
