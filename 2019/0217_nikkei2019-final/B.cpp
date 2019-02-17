@@ -39,8 +39,8 @@ typedef long long ll;
 // const ll M = 1000000007;
 
 int N, M, K;
-ll A[100010];
-ll B[100010];
+vector<ll> A;
+vector<ll> B;
 
 int solve()
 {
@@ -88,12 +88,28 @@ int main()
   cin >> N >> M >> K;
   for (auto i = 0; i < N; i++)
   {
-    cin >> A[i];
+    ll t;
+    cin >> t;
+    A.push_back(t);
   }
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < M; i++)
   {
-    cin >> B[i];
+    ll t;
+    cin >> t;
+    B.push_back(t);
   }
+  reverse(A.begin(), A.end());
+  while ((int)A.size() < 100010)
+  {
+    A.push_back(0);
+  }
+  reverse(A.begin(), A.end());
+  reverse(B.begin(), B.end());
+  while ((int)B.size() < 100010)
+  {
+    B.push_back(0);
+  }
+  reverse(B.begin(), B.end());
   int s = solve();
   if (s == 0)
   {
