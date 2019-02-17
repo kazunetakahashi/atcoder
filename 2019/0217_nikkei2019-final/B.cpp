@@ -48,7 +48,7 @@ int solve()
   {
     ll sum_A = 0;
     ll sum_B = 0;
-    for (auto i = 0; i < N; i++)
+    for (auto i = 0; i < 100010; i++)
     {
       sum_A += A[i];
       sum_B += B[i];
@@ -68,7 +68,7 @@ int solve()
   }
   else
   {
-    for (auto i = 0; i < N; i++)
+    for (auto i = 0; i < 100010; i++)
     {
       if (A[i] < B[i])
       {
