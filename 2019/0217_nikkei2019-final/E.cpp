@@ -116,10 +116,7 @@ int main()
       {
         continue;
       }
-      if (j > 0)
-      {
-        DP[i][j] += (DP2[i - 1][j - 1] * power(j - i)) % MOD;
-      }
+      DP[i][j] += (DP2[i - 1][j - 1] * power(j - i)) % MOD;
       DP[i][j] += (DP[i - 1][j] * power2(j - i + 1)) % MOD;
       DP[i][j] %= MOD;
     }
