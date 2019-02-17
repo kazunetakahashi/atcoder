@@ -77,11 +77,14 @@ void init()
 void flush()
 {
 #if DEBUG == 1
-  for (auto i = 0; i < N; i++)
+  if (N <= 10)
   {
-    for (auto j = 0; j < N; j++)
+    for (auto i = 0; i < N; i++)
     {
-      cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
+      for (auto j = 0; j < N; j++)
+      {
+        cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
+      }
     }
   }
 #endif
