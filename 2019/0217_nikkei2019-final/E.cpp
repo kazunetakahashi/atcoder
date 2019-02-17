@@ -51,6 +51,16 @@ ll power(int x)
   return memo[x];
 }
 
+ll power2(int x)
+{
+  if (x < 0)
+  {
+    return 1;
+  }
+  assert(x < 100010);
+  return memo[x];
+}
+
 ll DP[5010][5010];
 ll DP2[5010][5010];
 
@@ -104,7 +114,7 @@ int main()
       {
         DP[i][j] += (DP2[i - 1][j - 1] * power(j - i - K)) % MOD;
       }
-      DP[i][j] += (DP[i - 1][j] * power(j - i - K + 1)) % MOD;
+      DP[i][j] += (DP[i - 1][j] * power2(j - i - K + 1)) % MOD;
     }
     DP2[i][0] = DP[i][0];
     for (auto j = 1; j < N; j++)
