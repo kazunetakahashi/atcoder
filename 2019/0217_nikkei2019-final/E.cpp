@@ -114,7 +114,7 @@ int main()
       DP[i][j] = 0;
       if (j < i)
       {
-        DP[i][j] = 0;
+        continue;
       }
       if (j > 0)
       {
