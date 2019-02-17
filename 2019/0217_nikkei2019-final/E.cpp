@@ -112,6 +112,10 @@ int main()
     for (auto j = 0; j < L; j++)
     {
       DP[i][j] = 0;
+      if (j < i)
+      {
+        DP[i][j] = 0;
+      }
       if (j > 0)
       {
         DP[i][j] += (DP2[i - 1][j - 1] * power(j - i)) % MOD;
