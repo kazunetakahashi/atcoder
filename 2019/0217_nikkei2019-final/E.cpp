@@ -39,6 +39,7 @@ typedef long long ll;
 const ll MOD = 1000000007;
 
 ll N, K;
+ll memo[100010];
 
 ll power(int x)
 {
@@ -46,19 +47,8 @@ ll power(int x)
   {
     return 0;
   }
-  if (x == 0)
-  {
-    return 1;
-  }
-  if (x % 2 == 0)
-  {
-    ll y = power(x / 2);
-    return (y * y) % MOD;
-  }
-  else
-  {
-    return (power(x - 1) * 2) % MOD;
-  }
+  assert(x < 100010);
+  return memo[x];
 }
 
 ll DP[5010][5010];
@@ -66,6 +56,12 @@ ll DP2[5010][5010];
 
 void init()
 {
+  memo[0] = 1;
+  for (auto i = 1; i < 100010; i++)
+  {
+    memo[i] = memo[i - 1] * 2;
+    memo[i] %= MOD;
+  }
   for (auto i = 0; i < N; i++)
   {
     DP[0][i] = power(i - (K - 1));
