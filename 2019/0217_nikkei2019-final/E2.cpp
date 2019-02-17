@@ -111,6 +111,12 @@ int main()
       f = -1;
     }
     ll k = i * (i + 1) / 2;
+#if DEBUG == 1
+    if (L < 10)
+    {
+      cerr << "i = " << i << ", k = " << k << ", power(2, " << k << ") = " << power(2, k) << ", C(" << L << ", " << i << ") = " << C(L, i) << endl;
+    }
+#endif
     k %= MOD;
     ans += (MOD + f * (C(L, i) * power(2, k)) % MOD) % MOD;
   }
