@@ -119,6 +119,7 @@ int main()
 #endif
     k %= MOD;
     ans += (MOD + f * (C(L, i) * power(2, k)) % MOD) % MOD;
+    cerr << "ans = " << ans << endl;
   }
   cout << ans << endl;
 }
