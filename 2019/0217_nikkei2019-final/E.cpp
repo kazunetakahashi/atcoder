@@ -64,7 +64,7 @@ void init()
   }
   for (auto i = 0; i < N; i++)
   {
-    DP[0][i] = power(i - (K - 1));
+    DP[0][i] = power(i - (K - 2));
   }
   DP2[0][0] = DP[0][0];
   for (auto i = 1; i < N; i++)
@@ -88,13 +88,7 @@ void flush()
     }
   }
 #endif
-  ll ans = 0;
-  for (auto i = 0; i < N; i++)
-  {
-    ans += DP[i][N - 1];
-    ans %= MOD;
-  }
-  cout << ans << endl;
+  cout << DP[N - 1][N - 1] << endl;
 }
 
 int main()
@@ -108,9 +102,9 @@ int main()
       DP[i][j] = 0;
       if (j > 0)
       {
-        DP[i][j] += (DP2[i - 1][j - 1] * power(j - i - (K - 1))) % MOD;
+        DP[i][j] += (DP2[i - 1][j - 1] * power(j - i - (K - 2))) % MOD;
       }
-      DP[i][j] += (DP[i - 1][j] * power(j - i - (K - 2))) % MOD;
+      DP[i][j] += (DP[i - 1][j] * power(j - i - (K - 1))) % MOD;
     }
     DP2[i][0] = DP[i][0];
     for (auto j = 1; j < N; j++)
