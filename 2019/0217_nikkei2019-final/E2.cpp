@@ -113,6 +113,7 @@ int main()
     ll k = i * (i + 1) / 2;
     k %= MOD;
     ans += (MOD + f * (C(L, i) * power(2, k)) % MOD) % MOD;
+    ans %= MOD;
 #if DEBUG == 1
     if (L < 10)
     {
