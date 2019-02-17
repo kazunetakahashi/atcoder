@@ -102,7 +102,7 @@ int main()
   for (ll i = L; i >= 0; i--)
   {
     ll f;
-    if (L - i % 2 == 0)
+    if ((L - i) % 2 == 0)
     {
       f = 1;
     }
