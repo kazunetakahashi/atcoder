@@ -48,6 +48,9 @@ int main()
     if (i * i <= N)
     {
       ans = i;
+    }
+    else
+    {
       break;
     }
   }
