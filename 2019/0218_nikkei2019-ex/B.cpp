@@ -48,8 +48,8 @@ int main()
     if (i * i <= N)
     {
       ans = i;
+      break;
     }
-    break;
   }
   cout << ans << endl;
 }
