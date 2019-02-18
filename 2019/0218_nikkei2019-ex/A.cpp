@@ -41,6 +41,7 @@ typedef long long ll;
 int main()
 {
   string S;
+  cin >> S;
   int N = S.size();
   for (auto i = 1; i <= N; i++)
   {
