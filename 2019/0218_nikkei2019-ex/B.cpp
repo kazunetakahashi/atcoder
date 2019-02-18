@@ -41,6 +41,7 @@ typedef long long ll;
 int main()
 {
   int N;
+  cin >> N;
   int ans = 0;
   for (auto i = 0; i < N; i++)
   {
