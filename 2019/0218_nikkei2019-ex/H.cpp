@@ -40,7 +40,7 @@ typedef long long ll;
 
 int main()
 {
-  int N;
+  ll N;
   cin >> N;
   N %= 9;
   if (N == 0 || N == 2 || N == 4 || N == 6)
