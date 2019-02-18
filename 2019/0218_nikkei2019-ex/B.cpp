@@ -43,7 +43,7 @@ int main()
   ll N;
   cin >> N;
   ll A = 0;
-  for (auto i = 0LL; i < N; i++)
+  for (auto i = 0LL; i <= N; i++)
   {
     if (i * i <= N)
     {
