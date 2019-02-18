@@ -40,19 +40,19 @@ typedef long long ll;
 
 int main()
 {
-  int N;
+  ll N;
   cin >> N;
-  int ans = 0;
-  for (auto i = 0; i < N; i++)
+  ll A = 0;
+  for (auto i = 0LL; i < N; i++)
   {
     if (i * i <= N)
     {
-      ans = i;
+      A = i;
     }
     else
     {
       break;
     }
   }
-  cout << ans << endl;
+  cout << A << endl;
 }
