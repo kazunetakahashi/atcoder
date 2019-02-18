@@ -49,6 +49,7 @@ int main()
     {
       ans = i;
     }
+    break;
   }
   cout << ans << endl;
 }
