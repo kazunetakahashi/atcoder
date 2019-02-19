@@ -72,9 +72,11 @@ vector<P> half(int x, int y)
     }
   }
   vector<P> V;
+  ll maxi = 0;
   for (auto x : M)
   {
-    V.push_back(P(x.first, x.second));
+    maxi = max(x.second, maxi);
+    V.push_back(P(x.first, maxi));
   }
   return V;
 }
