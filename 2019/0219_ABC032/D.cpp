@@ -173,21 +173,34 @@ int main()
   {
     cin >> v[i] >> w[i];
   }
-  if (N > 30)
+  bool ok_w = true;
+  for (auto i = 0; i < N; i++)
   {
-    for (auto i = 0; i < N; i++)
+    if (w[i] > 1000LL)
     {
-      if (w[i] > 1000LL)
-      {
-        solve3();
-        return 0;
-      }
+      ok_w = false;
+      break;
     }
+  }
+  bool ok_v = true;
+  for (auto i = 0; i < N; i++)
+  {
+    if (v[i] > 1000LL)
+    {
+      ok_v = false;
+      break;
+    }
+  }
+  if (!ok_v && !ok_w)
+  {
+    solve1();
+  }
+  else if (ok_w)
+  {
     solve2();
-    return 0;
   }
   else
   {
-    solve1();
+    solve3();
   }
 }
