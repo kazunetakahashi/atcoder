@@ -173,11 +173,7 @@ int main()
   {
     cin >> v[i] >> w[i];
   }
-  if (N <= 30)
-  {
-    solve1();
-  }
-  else
+  if (N > 30)
   {
     for (auto i = 0; i < N; i++)
     {
@@ -188,5 +184,10 @@ int main()
       }
     }
     solve2();
+    return 0;
+  }
+  else
+  {
+    solve1();
   }
 }
