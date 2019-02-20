@@ -72,7 +72,7 @@ int main()
   {
     DP[i] = base;
   }
-  DP[0] = base;
+  DP[0] = "";
   for (auto i = 0; i <= N; i++)
   {
     if (DP[i] == base)
