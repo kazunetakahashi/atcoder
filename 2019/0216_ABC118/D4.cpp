@@ -70,7 +70,7 @@ int main()
   }
   for (auto i = 0; i < 10010; i++)
   {
-    DP[i] = -1;
+    DP[i] = base;
   }
   DP[0] = base;
   for (auto i = 0; i <= N; i++)
