@@ -38,24 +38,17 @@ typedef long long ll;
 // const int C = 1e6+10;
 const ll MOD = 1000000007;
 
+ll p[100010];
+
 ll power(ll x)
 {
   if (x < 0)
   {
     return 0;
   }
-  else if (x == 0)
-  {
-    return 1;
-  }
-  else if (x % 2 == 0)
-  {
-    ll y = power(x / 2);
-    return (y * y) % MOD;
-  }
   else
   {
-    return (power(x - 1) * 2) % MOD;
+    return p[x];
   }
 }
 
@@ -64,12 +57,17 @@ ll DP[5010][5010];
 
 int main()
 {
+  p[0] = 1;
+  for (auto i = 1; i < 100010; i++)
+  {
+    p[i] = (p[i - 1] * 2) % MOD;
+  }
   cin >> N >> K;
   fill(&DP[0][0], &DP[0][0] + 5010 * 5010, 0);
   DP[0][0] = 1;
-  for (auto j = 0; j < N; j++)
+  for (ll j = 0; j < N; j++)
   {
-    for (auto i = 0; i <= j; i++)
+    for (ll i = 0; i <= j; i++)
     {
       DP[i][j + 1] += (DP[i][j] * power(j - i - K)) % MOD;
       DP[i][j + 1] %= MOD;
