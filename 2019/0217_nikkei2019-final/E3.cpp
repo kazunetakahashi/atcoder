@@ -69,9 +69,13 @@ int main()
   {
     for (ll i = 0; i <= j; i++)
     {
+#if DEBUG == 1
+      cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
+#endif
       DP[i][j + 1] += (DP[i][j] * power(j - i - K)) % MOD;
       DP[i][j + 1] %= MOD;
       DP[j + 1][j + 1] += (DP[i][j] * (power(j + 1 - K) + MOD - power(j - i - K)) % MOD) % MOD;
+      DP[j + 1][j + 1] %= MOD;
     }
   }
   cout << DP[N][N] << endl;
