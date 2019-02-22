@@ -70,7 +70,10 @@ int main()
     for (ll i = 0; i <= j; i++)
     {
 #if DEBUG == 1
-      cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
+      if (N < 100)
+      {
+        cerr << "DP[" << i << "][" << j << "] = " << DP[i][j] << endl;
+      }
 #endif
       DP[i][j + 1] += (DP[i][j] * power(j - i - K)) % MOD;
       DP[i][j + 1] %= MOD;
