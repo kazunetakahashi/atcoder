@@ -68,7 +68,7 @@ int main()
   dp[0][0][1] = 1;
   for (auto k = 1; k <= N; k++)
   {
-    for (auto j = 0; j <= N; j++)
+    for (auto j = 0; j <= k; j++)
     {
       for (auto i = 0; i < 2; i++)
       {
