@@ -109,7 +109,7 @@ int main()
       cerr << "dp[" << 1 << "][" << j << "][" << N + 1 << "] = " << dp[1][j][N + 1] << endl;
     }
 #endif
-    ans += MOD - dp[0][j][N + 1];
+    ans += MOD - dp[1][j][N + 1];
     ans %= MOD;
   }
   cout << ans << endl;
