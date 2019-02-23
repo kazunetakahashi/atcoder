@@ -92,11 +92,23 @@ int main()
   ll ans = 0;
   for (auto j = 0; j <= N; j++)
   {
+#if DEBUG == 1
+    if (N < 100)
+    {
+      cerr << "dp[" << 0 << "][" << j << "][" << N + 1 << "] = " << dp[0][j][N + 1] << endl;
+    }
+#endif
     ans += dp[0][j][N + 1];
     ans %= MOD;
   }
   for (auto j = 0; j <= N; j++)
   {
+#if DEBUG == 1
+    if (N < 100)
+    {
+      cerr << "dp[" << 1 << "][" << j << "][" << N + 1 << "] = " << dp[1][j][N + 1] << endl;
+    }
+#endif
     ans += MOD - dp[0][j][N + 1];
     ans %= MOD;
   }
