@@ -73,7 +73,10 @@ int main()
       for (auto i = 0; i < 2; i++)
       {
 #if DEBUG == 1
-        cerr << "dp[" << i << "][" << j << "][" << k << "] = " << dp[i][j][k] << endl;
+        if (N < 100)
+        {
+          cerr << "dp[" << i << "][" << j << "][" << k << "] = " << dp[i][j][k] << endl;
+        }
 #endif
         if (dp[i][j][k] == 0)
         {
