@@ -61,6 +61,10 @@ void flush()
       {
         cout << " ";
       }
+      else
+      {
+        cout << endl;
+      }
     }
   }
   exit(0);
@@ -77,27 +81,39 @@ int main()
     cin >> a[i];
     W.push_back(C(a[i], i));
   }
-  sort(W.begin(), W.end());
-  reverse(W.begin(), W.end());
+  C remain = C(-1, -1);
   for (auto i = 0; i < 100; i++)
   {
-    for (auto j = 0; j < N; j++)
+    sort(W.begin(), W.end());
+    reverse(W.begin(), W.end());
+    for (auto it = W.begin(); it != W.end(); it++)
     {
-      if (get<0>(W[j]) == 0)
+      if (get<0>(*it) == 0)
       {
         able = false;
         flush();
       }
-      V.push_back(get<1>(W[j]));
-      get<0>(W[j])--;
-      if (j == (100 * N - 1 - i) % N)
-      {
-        K--;
-      }
-      if (K < 0)
-      {
-        flush();
-      }
+      get<0>(*it)--;
+      V.push_back(get<1>(*it));
+    }
+    K--;
+    if (K == -1)
+    {
+      flush();
+    }
+    auto it = W.end();
+    it--;
+    if (get<1>(remain) == -1)
+    {
+      remain = *it;
+      W.erase(it);
+    }
+    else
+    {
+      C temp = *it;
+      W.erase(it);
+      W.push_back(remain);
+      remain = temp;
     }
   }
 }
