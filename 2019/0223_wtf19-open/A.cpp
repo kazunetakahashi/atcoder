@@ -90,11 +90,7 @@ int main()
       }
       V.push_back(get<1>(W[j]));
       get<0>(W[j])--;
-      if (i > 0 && j >= N - 2)
-      {
-        K--;
-      }
-      else if (i == 0 && j == N - 1)
+      if (j == (100 * N - 1 - i) % N)
       {
         K--;
       }
