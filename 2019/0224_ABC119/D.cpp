@@ -75,10 +75,10 @@ void flush(ll y)
     }
   }
   int ind_b = lb;
-  ll p0 = s[ind_a - 1];
-  ll p1 = s[ind_a];
-  ll q0 = t[ind_b - 1];
-  ll q1 = t[ind_b];
+  ll p0 = s[ind_a];
+  ll p1 = s[ind_a + 1];
+  ll q0 = t[ind_b];
+  ll q1 = t[ind_b + 1];
 #if DEBUG == 1
   cerr << y << " " << p0 << " " << p1 << " " << q0 << " " << q1 << endl;
 #endif
