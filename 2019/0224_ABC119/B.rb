@@ -18,4 +18,4 @@ n.times{
   end
 }
 
-puts sprintf("%.12", ans)
+puts sprintf(".%12", ans)
