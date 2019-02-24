@@ -52,7 +52,7 @@ int main()
   ll ans = infty;
   for (auto i = 0; i < (1 << 2 * N); i++)
   {
-    vector<int> V[3];
+    vector<ll> V[3];
     for (auto j = 0; j < N; j++)
     {
       bool x = (i >> (2 * j)) & 1;
@@ -86,6 +86,14 @@ int main()
     ll t = 0;
     for (auto j = 0; j < 3; j++)
     {
+#if DEBUG == 1
+      cerr << "j = " << j << ": ";
+      for (auto x : V[j])
+      {
+        cerr << x << " ";
+      }
+      cerr << endl;
+#endif
       ll sum = 0;
       for (auto x : V[j])
       {
