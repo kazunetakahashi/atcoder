@@ -362,7 +362,7 @@ int main()
   }
   for (auto i = 1; i < N; i++)
   {
-    if (S[i] == '-')
+    if (S[i] == 'X')
     {
       for (auto k = 0; k < 2; k++)
       {
@@ -390,7 +390,7 @@ int main()
       {
         for (auto l = 0; l < 2; l++)
         {
-          DP[i][0][0][1] = DP[i][0][0][1] + int_1(DP[i - 1][k][l][1]);
+          DP[i][0][0][1] = DP[i][0][0][1] + int_1(DP[i - 1][k][1][l]);
         }
       }
     }
