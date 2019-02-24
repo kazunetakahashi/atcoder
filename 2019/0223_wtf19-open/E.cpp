@@ -358,7 +358,7 @@ int main()
     DP[0][0][0][1] = Func(temp_v, temp_v, 1);
     vector<ll> temp_w;
     temp_w.push_back(1);
-    DP[0][0][0][1] = Func(temp_w, temp_v, MOD - 1);
+    DP[0][1][1][1] = Func(temp_w, temp_v, MOD - 1);
   }
   for (auto i = 1; i < N; i++)
   {
