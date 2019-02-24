@@ -50,7 +50,7 @@ void flush(ll y)
   while (ub - lb > 1)
   {
     int temp = (lb + ub) / 2;
-    if (y < s[temp])
+    if (y > s[temp])
     {
       lb = temp;
     }
@@ -65,7 +65,7 @@ void flush(ll y)
   while (ub - lb > 1)
   {
     int temp = (lb + ub) / 2;
-    if (y < t[temp])
+    if (y > t[temp])
     {
       lb = temp;
     }
