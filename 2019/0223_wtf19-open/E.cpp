@@ -362,7 +362,7 @@ int main()
   }
   for (auto i = 1; i < N; i++)
   {
-    if (S[i] == 'X')
+    if (S[i] == '-')
     {
       for (auto k = 0; k < 2; k++)
       {
