@@ -79,6 +79,9 @@ void flush(ll y)
   ll p1 = s[ind_a];
   ll q0 = t[ind_b - 1];
   ll q1 = t[ind_b];
+#if DEBUG == 1
+  cerr << y << " " << p0 << " " << p1 << " " << q0 << " " << q1 << endl;
+#endif
   ll ans = min(y - min(p0, q0), max(p1, q1) - y);
   ans = min(ans, 2 * (p1 - y) + (y - q0));
   ans = min(ans, (p1 - y) + 2 * (y - q0));
