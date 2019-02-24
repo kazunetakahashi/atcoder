@@ -414,6 +414,19 @@ int main()
     */
   }
   Flush ans = Flush(0, 0, 0);
+#if DEBUG == 1
+  for (auto k = 0; k < 2; k++)
+  {
+    for (auto l = 0; l < 2; l++)
+    {
+      for (auto m = 0; m < 2; m++)
+      {
+        cerr << "DP[" << N - 1 << "][" << k << "][" << l << "][" << m << "]:" << endl;
+        cerr << DP[N - 1][k][l][m] << endl;
+      }
+    }
+  }
+#endif
   for (auto k = 0; k < 2; k++)
   {
     ans = ans + integral(DP[N - 1][k][0][1]);
