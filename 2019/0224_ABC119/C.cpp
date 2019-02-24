@@ -59,15 +59,15 @@ int main()
       bool y = (i >> (2 * j + 1)) & 1;
       if (x && y)
       {
-        V[0].push_back(l[i]);
+        V[0].push_back(l[j]);
       }
       else if (!x && y)
       {
-        V[1].push_back(l[i]);
+        V[1].push_back(l[j]);
       }
       else if (x && !y)
       {
-        V[2].push_back(l[i]);
+        V[2].push_back(l[j]);
       }
     }
     bool ok = true;
@@ -86,6 +86,7 @@ int main()
     ll t = 0;
     for (auto j = 0; j < 3; j++)
     {
+      /*
 #if DEBUG == 1
       cerr << "j = " << j << ": ";
       for (auto x : V[j])
@@ -94,6 +95,7 @@ int main()
       }
       cerr << endl;
 #endif
+*/
       ll sum = 0;
       for (auto x : V[j])
       {
