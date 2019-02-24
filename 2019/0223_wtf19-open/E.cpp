@@ -394,6 +394,7 @@ int main()
         }
       }
     }
+    /*
 #if DEBUG == 1
     if (N < 10)
     {
@@ -410,6 +411,7 @@ int main()
       }
     }
 #endif
+    */
   }
   Flush ans = Flush(0, 0, 0);
   for (auto k = 0; k < 2; k++)
