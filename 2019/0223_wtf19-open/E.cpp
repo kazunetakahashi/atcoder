@@ -131,16 +131,18 @@ Poly operator-(Poly p, Poly q)
 
 typedef tuple<Poly, Poly, ll> Func;
 
+ostream &operator<<(ostream &o_str, const Func &f)
+{
+  o_str << "a = " << get<0>(f) << endl;
+  o_str << "b = " << get<1>(f) << endl;
+  o_str << "c = " << get<2>(f);
+  return o_str;
+}
+
 void reduce(Func &f)
 {
   reduce(get<0>(f));
   reduce(get<1>(f));
-}
-
-bool is_zero(Func f)
-{
-  reduce(f);
-  return (is_zero(get<0>(f)) && is_zero(get<1>(f)) && (get<2>(f) % MOD == 0));
 }
 
 Func operator+(Func f, Func g)
@@ -392,6 +394,22 @@ int main()
         }
       }
     }
+#if DEBUG == 1
+    if (N < 10)
+    {
+      for (auto k = 0; k < 2; k++)
+      {
+        for (auto l = 0; l < 2; l++)
+        {
+          for (auto m = 0; m < 2; m++)
+          {
+            cerr << "DP[" << i << "][" << k << "][" << l << "][" << m << "]:" << endl;
+            cerr << DP[i][k][l][m] << endl;
+          }
+        }
+      }
+    }
+#endif
   }
   Flush ans = Flush(0, 0, 0);
   for (auto k = 0; k < 2; k++)
