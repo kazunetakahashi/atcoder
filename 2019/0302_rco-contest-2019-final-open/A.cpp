@@ -40,21 +40,29 @@ typedef long long ll;
 
 int N, T;
 
-void CE()
+void RE()
 {
   assert(false);
 }
 
-void WA()
+void TLE()
 {
   while (true)
   {
-    cout << 99 << endl;
+    cout << 49 << endl;
     int x;
     cin >> x;
     cout << 0 << endl;
     cin >> x;
   }
+}
+
+void WA()
+{
+  cout << 100000 << endl;
+  int x;
+  cin >> x;
+  cout << -1 << endl;
 }
 
 void AC()
@@ -66,6 +74,7 @@ int a[50];
 
 int main()
 {
+  assert(false);
   cin >> N >> T;
   fill(a, a + N, -1);
   int cnt = 0;
@@ -80,7 +89,7 @@ int main()
     }
     if (score == 1)
     {
-      CE();
+      RE();
     }
     else if (score > 1)
     {
@@ -99,7 +108,7 @@ int main()
           cout << j << endl;
           int x;
           cin >> x;
-          CE();
+          RE();
         }
       }
     }
