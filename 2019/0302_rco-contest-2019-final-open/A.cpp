@@ -62,7 +62,7 @@ void AC()
 
 int a[50];
 
-int X = 50;
+int X = 4;
 
 int main()
 {
