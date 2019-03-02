@@ -62,56 +62,31 @@ void AC()
 
 int a[50];
 
-int X = 3;
+int X = 20;
 
 int main()
 {
   cin >> N >> T;
   fill(a, a + N, -1);
-  int cnt = 0;
-  int score = 0;
-  int place = -1;
-  for (auto i = 0; i < X; i++)
+  cout << 0 << endl;
+  cin >> a[0];
+  if (a[0] != 1)
+  {
+    WA();
+  }
+  for (auto i = 1; i < X; i++)
   {
     cout << i << endl;
     cin >> a[i];
-    if (cnt == 0)
+    if (a[i] == 1)
     {
-      if (i >= 1 && a[i - 1] == a[i])
-      {
-        score += a[i];
-      }
-      if (score == 1)
-      {
-        // nothing
-        TLE();
-      }
-      else if (score > 1)
-      {
-        AC();
-      }
-      if (a[i] == 1)
-      {
-        cnt++;
-        place = i;
-        cout << place << endl;
-        int x;
-        cin >> x;
-      }
+      TLE();
     }
-    else if (cnt == 1)
+    else
     {
-      if (a[i] == 1)
-      {
-        cnt++;
-        TLE();
-      }
-      else
-      {
-        cout << place << endl;
-        int x;
-        cin >> x;
-      }
+      cout << 0 << endl;
+      int x;
+      cin >> x;
     }
   }
   WA();
