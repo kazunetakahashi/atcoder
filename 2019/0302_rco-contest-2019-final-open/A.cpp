@@ -40,7 +40,7 @@ typedef long long ll;
 
 int N, T;
 
-void RE()
+void WA()
 {
   assert(false);
 }
@@ -49,20 +49,10 @@ void TLE()
 {
   while (true)
   {
-    cout << 49 << endl;
+    cout << 0 << endl;
     int x;
     cin >> x;
-    cout << 0 << endl;
-    cin >> x;
   }
-}
-
-void WA()
-{
-  cout << 100000 << endl;
-  int x;
-  cin >> x;
-  cout << -1 << endl;
 }
 
 void AC()
@@ -74,42 +64,51 @@ int a[50];
 
 int main()
 {
-  assert(false);
   cin >> N >> T;
   fill(a, a + N, -1);
   int cnt = 0;
   int score = 0;
+  int place = -1;
   for (auto i = 0; i < N; i++)
   {
     cout << i << endl;
     cin >> a[i];
-    if (i >= 1 && a[i - 1] == a[i])
+    if (cnt == 0)
     {
-      score += a[i];
-    }
-    if (score == 1)
-    {
-      RE();
-    }
-    else if (score > 1)
-    {
-      WA();
-    }
-    if (a[i] == 1)
-    {
-      cnt++;
-    }
-    if (cnt == 2)
-    {
-      for (auto j = 0; j < i; j++)
+      if (i >= 1 && a[i - 1] == a[i])
       {
-        if (a[j] == 1)
-        {
-          cout << j << endl;
-          int x;
-          cin >> x;
-          RE();
-        }
+        score += a[i];
+      }
+      if (score == 1)
+      {
+        // nothing
+        TLE();
+      }
+      else if (score > 1)
+      {
+        WA();
+      }
+      if (a[i] == 1)
+      {
+        cnt++;
+        place = i;
+        cout << place << endl;
+        int x;
+        cin >> x;
+      }
+    }
+    else if (cnt == 1)
+    {
+      if (a[i] == 1)
+      {
+        cnt++;
+        TLE();
+      }
+      else
+      {
+        cout << place << endl;
+        int x;
+        cin >> x;
       }
     }
   }
