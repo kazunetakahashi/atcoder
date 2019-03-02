@@ -84,7 +84,7 @@ int main()
     }
     else
     {
-      cout << 0 << endl;
+      cout << 1 << endl;
       int x;
       cin >> x;
     }
