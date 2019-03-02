@@ -68,13 +68,13 @@ int main()
 {
   cin >> N >> T;
   fill(a, a + N, -1);
-  cout << 0 << endl;
-  cin >> a[0];
-  if (a[0] != 1)
+  cout << 1 << endl;
+  cin >> a[1];
+  if (a[1] != 1)
   {
     WA();
   }
-  for (auto i = 1; i < X; i++)
+  for (auto i = 2; i < X; i++)
   {
     cout << i << endl;
     cin >> a[i];
