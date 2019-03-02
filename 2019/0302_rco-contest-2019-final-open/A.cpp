@@ -62,6 +62,8 @@ void AC()
 
 int a[50];
 
+int X = 10;
+
 int main()
 {
   cin >> N >> T;
@@ -69,7 +71,7 @@ int main()
   int cnt = 0;
   int score = 0;
   int place = -1;
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < X; i++)
   {
     cout << i << endl;
     cin >> a[i];
