@@ -62,7 +62,7 @@ void AC()
 
 int a[50];
 
-int X = 10;
+int X = 5;
 
 int main()
 {
@@ -88,7 +88,7 @@ int main()
       }
       else if (score > 1)
       {
-        WA();
+        AC();
       }
       if (a[i] == 1)
       {
