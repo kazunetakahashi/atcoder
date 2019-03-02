@@ -49,10 +49,10 @@ void WA()
 {
   while (true)
   {
-    cout << 0 << endl;
+    cout << 99 << endl;
     int x;
     cin >> x;
-    cout << 49 << endl;
+    cout << 0 << endl;
     cin >> x;
   }
 }
