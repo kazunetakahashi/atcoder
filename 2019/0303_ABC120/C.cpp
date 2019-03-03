@@ -43,36 +43,10 @@ string S;
 int main()
 {
   cin >> S;
-  int cnt = 0;
-  int ans = 0;
+  int cnt[2] = {0, 0};
   for (auto x : S)
   {
-    if (cnt > 0 && x == '0')
-    {
-      cnt--;
-      ans++;
-    }
-    else if (cnt > 0 && x == '1')
-    {
-      cnt++;
-    }
-    else if (cnt < 0 && x == '0')
-    {
-      cnt--;
-    }
-    else if (cnt < 0 && x == '1')
-    {
-      cnt++;
-      ans++;
-    }
-    else if (x == '0')
-    {
-      cnt--;
-    }
-    else
-    {
-      cnt--;
-    }
+    cnt[x - '0']++;
   }
-  cout << ans * 2 << endl;
+  cout << min(cnt[0], cnt[1]) * 2 << endl;
 }
