@@ -78,7 +78,7 @@ bool is_same_group(int ia, int ib)
   return i2g[ia] == i2g[ib];
 }
 
-vector<int> ans;
+vector<ll> ans;
 
 int main()
 {
