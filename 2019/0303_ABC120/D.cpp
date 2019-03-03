@@ -38,6 +38,8 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
+// https://topcoder.g.hatena.ne.jp/iwiwi/20131226/1388062106 より。
+
 ll N, M;
 int A[100010];
 int B[100010];
@@ -111,6 +113,6 @@ int main()
   reverse(ans.begin(), ans.end());
   for (auto x : ans)
   {
-    cout << x << endl;
+    cerr << x << endl;
   }
 }
