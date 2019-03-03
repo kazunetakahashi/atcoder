@@ -94,7 +94,7 @@ int main()
   init(N);
   ll cnt = N * (N - 1) / 2;
   ans.push_back(cnt);
-  for (auto i = 0; i < M - 1; i++)
+  for (auto i = 0; i < M; i++)
   {
     if (is_same_group(A[i], B[i]))
     {
@@ -111,8 +111,15 @@ int main()
     }
   }
   reverse(ans.begin(), ans.end());
-  for (auto x : ans)
+  for (auto i = 0; i <= M; i++)
   {
-    cerr << x << endl;
+    if (i == 0)
+    {
+      assert(ans[i] == 0);
+    }
+    else
+    {
+      cout << ans[i] << endl;
+    }
   }
 }
