@@ -7,10 +7,10 @@
 
 a, b, k = gets.chomp.split(" ").map{|i| i.to_i}
 
-for i in 1..[a, b].max
+for j in 0..[a, b].min
+  i = [a, b].min - j
   if a % i == 0 && b % i == 0
     k -= 1
-    p i
   end
   if k == 0
     puts i
