@@ -41,7 +41,7 @@ typedef long long ll;
 class UnionFind
 {
 public:
-  vector<int> par;
+  vector<long long> par;
 
   UnionFind(int n) : par(n, -1) {}
   void init(int n)
@@ -53,7 +53,7 @@ public:
   {
     if (par[x] < 0)
     {
-      return 0;
+      return x;
     }
     return par[x] = root(par[x]);
   }
@@ -80,7 +80,7 @@ public:
     return true;
   }
 
-  int size(int x)
+  long long size(int x)
   {
     return -par[root(x)];
   }
