@@ -76,7 +76,7 @@ public:
       swap(x, y);
     }
     par[x] += par[y];
-    par[x] = x;
+    par[y] = x;
     return true;
   }
 
