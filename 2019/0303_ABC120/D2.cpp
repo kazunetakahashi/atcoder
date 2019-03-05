@@ -110,6 +110,7 @@ int main()
     if (!UF.is_same(A[i], B[i]))
     {
       cnt -= UF.size(A[i]) * UF.size(B[i]);
+      UF.merge(A[i], B[i]);
     }
     ans.push_back(cnt);
   }
