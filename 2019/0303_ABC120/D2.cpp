@@ -100,8 +100,8 @@ int main()
     A[i]--;
     B[i]--;
   }
-  reverse(A, A + N);
-  reverse(B, B + N);
+  reverse(A, A + M);
+  reverse(B, B + M);
   UnionFind UF(N);
   ll cnt = N * (N - 1) / 2;
   ans.push_back(cnt);
