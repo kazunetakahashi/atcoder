@@ -46,15 +46,7 @@ ll F(ll x)
   {
     return 0;
   }
-  ll ans;
-  if (x % 4 == 2 || x % 4 == 3)
-  {
-    ans = 1;
-  }
-  else
-  {
-    ans = 0;
-  }
+  ll ans = (x + 1) / 4;
   if (x % 2 == 0)
   {
     ans ^= x;
