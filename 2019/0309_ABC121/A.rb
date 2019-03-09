@@ -7,4 +7,4 @@
 
 h, w = gets.chomp.split(" ").map{|i| i.to_i}
 x, y = gets.chomp.split(" ").map{|i| i.to_i}
-puts (h - x) * (w - t)
+puts (h - x) * (w - y)
