@@ -46,7 +46,7 @@ ll F(ll x)
   {
     return 0;
   }
-  ll ans = (x + 1) / 4;
+  ll ans = ((x + 1) / 2) % 2;
   if (x % 2 == 0)
   {
     ans ^= x;
