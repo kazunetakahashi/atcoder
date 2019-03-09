@@ -15,6 +15,9 @@ ary = ary.sort_by{|a, b|
 }
 ans = 0
 m.times{
+  if m < 100
+    p ary
+  end
   if ary[0][1] == 0
     ary.shift
   end
