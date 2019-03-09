@@ -43,8 +43,8 @@ ll A, B;
 ll X(ll L)
 {
   L += 1;
-  ll ans = 0;
-  for (auto i = 0; i < 60; i++)
+  ll ans = L % 2;
+  for (auto i = 1; i < 60; i++)
   {
     ll M = (1LL << (i + 1));
     ll cnt = L % M;
