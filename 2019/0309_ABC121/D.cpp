@@ -44,7 +44,11 @@ ll X(ll L)
 {
   L++;
   ll ans = 0;
-  for (auto i = 0; i < 60; i++)
+  if (ans % 4 == 1 || ans % 4 == 2)
+  {
+    ans++;
+  }
+  for (auto i = 1; i < 60; i++)
   {
     ll M = (1LL << (i + 1));
     ll cnt = L % M;
