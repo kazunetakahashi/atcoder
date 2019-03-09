@@ -11,13 +11,10 @@ n.times{
   ary << gets.chomp.split(" ").map{|i| i.to_i}
 }
 ary = ary.sort_by{|a, b|
-  b
+  a
 }
 ans = 0
 m.times{
-  if m < 100
-    p ary
-  end
   if ary[0][1] == 0
     ary.shift
   end
