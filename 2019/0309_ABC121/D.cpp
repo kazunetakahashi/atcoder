@@ -58,6 +58,9 @@ ll X(ll L)
         ans += (1LL << i);
       }
     }
+#if DEBUG == 1
+    cerr << "ans = " << ans << endl;
+#endif
   }
   return ans;
 }
