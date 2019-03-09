@@ -47,6 +47,9 @@ ll X(ll L)
   {
     ll M = (1LL << (i + 1));
     ll cnt = L % M;
+#if DEBUG == 1
+    cerr << "M = " << M << ", cnt = " << cnt << endl;
+#endif
     if (cnt >= M / 2)
     {
       cnt -= M / 2;
