@@ -42,6 +42,7 @@ ll A, B;
 
 ll X(ll L)
 {
+  L++;
   ll ans = 0;
   for (auto i = 0; i < 60; i++)
   {
