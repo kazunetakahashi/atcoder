@@ -42,8 +42,8 @@ ll A, B;
 
 ll X(ll L)
 {
-  ll ans = L % 2;
-  for (auto i = 1; i < 60; i++)
+  ll ans = 0;
+  for (auto i = 0; i < 60; i++)
   {
     ll M = (1LL << (i + 1));
     ll cnt = L % M;
@@ -68,5 +68,12 @@ ll X(ll L)
 int main()
 {
   cin >> A >> B;
-  cout << (X(A - 1) ^ X(B)) << endl;
+  if (A == 0)
+  {
+    cout << X(B) << endl;
+  }
+  else
+  {
+    cout << (X(A - 1) ^ X(B)) << endl;
+  }
 }
