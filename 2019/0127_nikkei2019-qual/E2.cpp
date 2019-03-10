@@ -99,6 +99,9 @@ vector<task> T;
 
 void dfs(ll cost, int v)
 {
+#if DEBUG == 1
+  cerr << "dfs(" << cost << ", " << v << ")" << endl;
+#endif
   if (W[v].empty())
   {
     return;
