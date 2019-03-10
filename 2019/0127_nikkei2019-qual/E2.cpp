@@ -178,11 +178,11 @@ int main()
   reverse(T.begin(), T.end());
   for (auto x : T)
   {
+#if DEBUG == 1
+    cerr << get<0>(x) << " " << get<1>(x) << endl;
+#endif
     dfs(get<0>(x), get<1>(x));
   }
-#if DEBUG == 1
-  cerr << "Here" << endl;
-#endif
   int ans = 0;
   for (auto i = 0; i < M; i++)
   {
