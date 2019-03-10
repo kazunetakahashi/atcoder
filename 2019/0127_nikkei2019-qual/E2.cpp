@@ -175,14 +175,14 @@ int main()
       T.push_back(task(cost, a));
     }
   }
-#if DEBUG == 1
-  cerr << "Here" << endl;
-#endif
   reverse(T.begin(), T.end());
   for (auto x : T)
   {
     dfs(get<0>(x), get<1>(x));
   }
+#if DEBUG == 1
+  cerr << "Here" << endl;
+#endif
   int ans = 0;
   for (auto i = 0; i < M; i++)
   {
