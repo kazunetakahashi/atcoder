@@ -110,7 +110,7 @@ void dfs(ll cost, int v)
   visited[v] = true;
   for (auto i : W[v])
   {
-    edge x = V[i];
+    edge &x = V[i];
     ll score = get<0>(x);
     int a = get<1>(x);
     int b = get<2>(x);
