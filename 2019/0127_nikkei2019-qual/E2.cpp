@@ -115,6 +115,9 @@ void dfs(ll cost, int v)
     int a = get<1>(x);
     int b = get<2>(x);
     int dst = ((a == v) ? b : a);
+#if DEBUG == 1
+    cerr << "score = " << score << ", dst = " << dst << endl;
+#endif
     if (get<3>(x))
     {
       continue;
