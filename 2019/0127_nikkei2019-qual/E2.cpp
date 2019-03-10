@@ -122,7 +122,7 @@ void dfs(ll cost, int v)
     if (cost >= score)
     {
       get<3>(x) = true;
-      if (!W[dst].empty())
+      if (!visited[dst])
       {
         dfs(cost, dst);
       }
