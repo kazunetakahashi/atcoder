@@ -154,9 +154,6 @@ int main()
   {
     UF.par[i] = -X[i];
   }
-#if DEBUG == 1
-  cerr << "Here" << endl;
-#endif
   for (auto i = 0; i < M; i++)
   {
     edge x = V[i];
@@ -178,6 +175,9 @@ int main()
       T.push_back(task(cost, a));
     }
   }
+#if DEBUG == 1
+  cerr << "Here" << endl;
+#endif
   reverse(T.begin(), T.end());
   for (auto x : T)
   {
