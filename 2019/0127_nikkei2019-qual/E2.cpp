@@ -94,6 +94,7 @@ ll Y[100010];
 typedef tuple<ll, int, int, bool> edge;
 vector<edge> V;
 vector<int> W[100010];
+bool visited[100010];
 typedef tuple<ll, int> task;
 vector<task> T;
 
@@ -102,10 +103,11 @@ void dfs(ll cost, int v)
 #if DEBUG == 1
   cerr << "dfs(" << cost << ", " << v << ")" << endl;
 #endif
-  if (W[v].empty())
+  if (visited[v])
   {
     return;
   }
+  visited[v] = true;
   for (auto i : W[v])
   {
     edge x = V[i];
@@ -126,7 +128,6 @@ void dfs(ll cost, int v)
       }
     }
   }
-  W[v].clear();
 }
 
 int main()
@@ -179,6 +180,7 @@ int main()
     }
   }
   reverse(T.begin(), T.end());
+  fill(visited, visited + N, false);
   for (auto x : T)
   {
 #if DEBUG == 1
