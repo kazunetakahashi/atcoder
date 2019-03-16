@@ -117,10 +117,10 @@ int main()
 #endif
   */
   cin >> N >> A >> B;
-  int x = abs(A - B);
+  ll x = (A ^ B);
   for (auto i = 0; i < 20; i++)
   {
-    if ((1 << i) == x)
+    if ((1LL << i) == x)
     {
       cout << "YES" << endl;
       solve(i);
