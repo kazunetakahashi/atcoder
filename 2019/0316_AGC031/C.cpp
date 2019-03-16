@@ -124,6 +124,7 @@ int main()
     {
       cout << "YES" << endl;
       solve(i);
+      assert(false);
       return 0;
     }
   }
