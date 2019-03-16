@@ -39,7 +39,8 @@ typedef long long ll;
 const ll M = 1000000007;
 
 ll N;
-int C[200010];
+int X[200010];
+vector<int> C;
 ll dp[200010];
 ll table[200010];
 
@@ -48,9 +49,18 @@ int main()
   cin >> N;
   for (auto i = 0; i < N; i++)
   {
-    cin >> C[i];
-    C[i]--;
+    cin >> X[i];
+    X[i]--;
   }
+  C.push_back(X[0]);
+  for (auto i = 1; i < N; i++)
+  {
+    if (C.back() != X[i])
+    {
+      C.push_back(X[i]);
+    }
+  }
+  N = C.size();
   fill(dp, dp + 200010, 0);
   fill(table, table + 200010, 0);
   dp[0] = 1;
@@ -58,17 +68,10 @@ int main()
   table[C[0]] = 1;
   for (auto i = 2; i <= N; i++)
   {
-    if (C[i] == C[i - 1])
-    {
-      dp[i] = dp[i - 1];
-    }
-    else
-    {
-      dp[i] = dp[i - 1] + table[C[i - 1]];
-      dp[i] %= M;
-      table[C[i - 1]] += dp[i - 1];
-      table[C[i - 1]] %= M;
-    }
+    dp[i] = dp[i - 1] + table[C[i - 1]];
+    dp[i] %= M;
+    table[C[i - 1]] += dp[i - 1];
+    table[C[i - 1]] %= M;
   }
   cout << dp[N] << endl;
 }
