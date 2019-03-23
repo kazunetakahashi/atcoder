@@ -66,6 +66,9 @@ ll calc(int l, int r)
     }
     else
     {
+#if DEBUG == 1
+      cerr << "(" << l << ", " << r << ")" << endl;
+#endif
       cost[l][r] = min(A, B);
     }
   }
