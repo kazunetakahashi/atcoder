@@ -70,7 +70,7 @@ int main()
   while (!b.empty())
   {
     ok = false;
-    for (auto i = b.size() - 1; i >= 0; i--)
+    for (auto i = (int)b.size() - 1; i >= 0; i--)
     {
       if (b[i] == i)
       {
