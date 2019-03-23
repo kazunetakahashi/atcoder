@@ -60,15 +60,15 @@ ll calc(int l, int r)
   }
   else if (l == r + 2)
   {
+#if DEBUG == 1
+    cerr << "(" << l << ", " << r << ")" << endl;
+#endif
     if (p[l] < p[l + 1])
     {
       cost[l][r] = 0;
     }
     else
     {
-#if DEBUG == 1
-      cerr << "(" << l << ", " << r << ")" << endl;
-#endif
       cost[l][r] = min(A, B);
     }
   }
