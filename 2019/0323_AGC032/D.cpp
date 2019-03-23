@@ -36,7 +36,7 @@ typedef long long ll;
 // const int dy[4] = {0, 1, 0, -1};
 
 // const int C = 1e6+10;
-const ll infty = 100000000000000007;
+const ll infty = 10000000000000007;
 
 ll N, A, B;
 int p[5010];
@@ -49,10 +49,6 @@ ll calc(int l, int r)
   if (cost[l][r] < infty)
   {
     return cost[l][r];
-  }
-  else if (l == r)
-  {
-    cost[l][r] = 0;
   }
   else if (l + 1 == r)
   {
@@ -71,7 +67,7 @@ ll calc(int l, int r)
   }
   else
   {
-    cost[l][r] = min(A, B * R[l][r - 1]) + calc(l + 1, r);
+    cost[l][r] = min(A, B * R[l][r]) + calc(l + 1, r);
     cost[l][r] = min(cost[l][r], min(B, A * L[r - 1][l]) + calc(l, r - 1));
   }
 #if DEBUG == 1
@@ -88,8 +84,6 @@ int main()
     cin >> p[i];
     p[i]--;
   }
-  fill(&R[0][0], &R[0][0] + 5010 * 5010, N + 1);
-  fill(&L[0][0], &L[0][0] + 5010 * 5010, N + 1);
   fill(&cost[0][0], &cost[0][0] + 5010 * 5010, infty);
   for (auto i = 0; i < N; i++)
   {
