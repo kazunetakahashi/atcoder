@@ -47,6 +47,7 @@ void flush()
 {
   if (ok)
   {
+    reverse(V.begin(), V.end());
     for (auto x : V)
     {
       cout << x + 1 << endl;
