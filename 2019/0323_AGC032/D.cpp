@@ -54,20 +54,9 @@ ll calc(int l, int r)
   {
     cost[l][r] = 0;
   }
-  else if (l + 2 == r)
-  {
-    if (p[l] < p[l + 1])
-    {
-      cost[l][r] = 0;
-    }
-    else
-    {
-      cost[l][r] = min(A, B);
-    }
-  }
   else
   {
-    cost[l][r] = min(A, B * R[l][r]) + calc(l + 1, r);
+    cost[l][r] = min(A, B * R[l][r - 1]) + calc(l + 1, r);
     cost[l][r] = min(cost[l][r], min(B, A * L[r - 1][l]) + calc(l, r - 1));
   }
 #if DEBUG == 1
