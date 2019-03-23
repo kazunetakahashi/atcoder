@@ -101,6 +101,9 @@ int main()
       {
         R[i][j]++;
       }
+#if DEBUG == 1
+      cerr << "R[" << i << "][" << j << "] = " << R[i][j] << endl;
+#endif
     }
   }
   for (auto i = 0; i < N; i++)
@@ -113,6 +116,9 @@ int main()
       {
         L[i][j]++;
       }
+#if DEBUG == 1
+      cerr << "L[" << i << "][" << j << "] = " << L[i][j] << endl;
+#endif
     }
   }
   cout << calc(0, N) << endl;
