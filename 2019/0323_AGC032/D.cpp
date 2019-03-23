@@ -54,11 +54,11 @@ ll calc(int l, int r)
   {
     cost[l][r] = 0;
   }
-  else if (l == r + 1)
+  else if (l + 1 == r)
   {
     cost[l][r] = 0;
   }
-  else if (l == r + 2)
+  else if (l + 2 == r)
   {
 #if DEBUG == 1
     cerr << "(" << l << ", " << r << ")" << endl;
