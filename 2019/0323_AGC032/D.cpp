@@ -50,27 +50,33 @@ ll calc(int l, int r)
   {
     return cost[l][r];
   }
-  if (l == r)
+  else if (l == r)
   {
-    return cost[l][r] = 0;
+    cost[l][r] = 0;
   }
-  if (l == r + 1)
+  else if (l == r + 1)
   {
-    return cost[l][r] = 0;
+    cost[l][r] = 0;
   }
-  if (l == r + 2)
+  else if (l == r + 2)
   {
     if (p[l] < p[l + 1])
     {
-      return cost[l][r] = 0;
+      cost[l][r] = 0;
     }
     else
     {
-      return cost[l][r] = min(A, B);
+      cost[l][r] = min(A, B);
     }
   }
-  cost[l][r] = min(A, B * L[l][r - 1]) + calc(l + 1, r);
-  cost[l][r] = min(cost[l][r], min(B, A * R[r - 1][l])) + calc(l, r - 1);
+  else
+  {
+    cost[l][r] = min(A, B * L[l][r - 1]) + calc(l + 1, r);
+    cost[l][r] = min(cost[l][r], min(B, A * R[r - 1][l])) + calc(l, r - 1);
+  }
+#if DEBUG == 1
+  cerr << "cost[" << l << "][" << r << "] = " << cost[l][r] << endl;
+#endif
   return cost[l][r];
 }
 
