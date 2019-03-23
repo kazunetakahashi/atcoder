@@ -59,6 +59,7 @@ void flush()
       }
     }
   }
+  cout << E.size() << endl;
   for (auto x : E)
   {
     cout << get<0>(x) << " " << get<1>(x) << endl;
