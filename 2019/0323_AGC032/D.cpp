@@ -60,9 +60,6 @@ ll calc(int l, int r)
   }
   else if (l + 2 == r)
   {
-#if DEBUG == 1
-    cerr << "(" << l << ", " << r << ")" << endl;
-#endif
     if (p[l] < p[l + 1])
     {
       cost[l][r] = 0;
