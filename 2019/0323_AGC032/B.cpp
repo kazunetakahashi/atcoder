@@ -59,6 +59,10 @@ void flush()
       }
     }
   }
+  for (auto x : E)
+  {
+    cout << get<0>(x) << " " << get<1>(x) << endl;
+  }
 }
 
 int main()
