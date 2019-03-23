@@ -72,7 +72,7 @@ ll calc(int l, int r)
   else
   {
     cost[l][r] = min(A, B * L[l][r - 1]) + calc(l + 1, r);
-    cost[l][r] = min(cost[l][r], min(B, A * R[r - 1][l])) + calc(l, r - 1);
+    cost[l][r] = min(cost[l][r], min(B, A * R[r - 1][l]) + calc(l, r - 1));
   }
 #if DEBUG == 1
   cerr << "cost[" << l << "][" << r << "] = " << cost[l][r] << endl;
