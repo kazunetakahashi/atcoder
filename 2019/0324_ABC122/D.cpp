@@ -39,14 +39,14 @@ typedef long long ll;
 const ll M = 1000000007;
 
 int N;
-ll DP[4][4][110];
+ll DP[4][4][4][110];
 char chars[4] = {'A', 'C', 'G', 'T'};
 
 int main()
 {
   cin >> N;
-  fill(&DP[0][0][0], &DP[0][0][0] + 4 * 4 * 110, 0);
-  DP[3][3][0] = 1;
+  fill(&DP[0][0][0][0], &DP[0][0][0][0] + 4 * 4 * 4 * 110, 0);
+  DP[3][3][3][0] = 1;
   for (auto i = 0; i < N; i++)
   {
     for (auto j = 0; j < 4; j++)
@@ -59,30 +59,14 @@ int main()
           {
             if (l != 1)
             {
-              DP[k][l][i + 1] += DP[j][k][i];
-              DP[k][l][i + 1] %= M;
-            }
-          }
-        }
-        else if (j == 2 && k == 0)
-        {
-          for (auto l = 0; l < 4; l++)
-          {
-            if (l != 1)
-            {
-              DP[k][l][i + 1] += DP[j][k][i];
-              DP[k][l][i + 1] %= M;
-            }
-          }
-        }
-        else if (j == 0 && k == 1)
-        {
-          for (auto l = 0; l < 4; l++)
-          {
-            if (l != 2)
-            {
-              DP[k][l][i + 1] += DP[j][k][i];
-              DP[k][l][i + 1] %= M;
+              for (auto m = 0; m < 4; m++)
+              {
+                if (m != 1)
+                {
+                  DP[k][l][m][i + 1] += DP[j][k][l][i];
+                  DP[k][l][m][i + 1] %= M;
+                }
+              }
             }
           }
         }
@@ -90,20 +74,48 @@ int main()
         {
           for (auto l = 0; l < 4; l++)
           {
-            DP[k][l][i + 1] += DP[j][k][i];
-            DP[k][l][i + 1] %= M;
+            if (k == 0 && l == 2)
+            {
+              for (auto m = 0; m < 4; m++)
+              {
+                if (m != 1)
+                {
+                  DP[k][l][m][i + 1] += DP[j][k][l][i];
+                  DP[k][l][m][i + 1] %= M;
+                }
+              }
+            }
+            else if (k == 2 && l == 0)
+            {
+              for (auto m = 0; m < 4; m++)
+              {
+                if (m != 1)
+                {
+                  DP[k][l][m][i + 1] += DP[j][k][l][i];
+                  DP[k][l][m][i + 1] %= M;
+                }
+              }
+            }
+            else if (k == 0 && l == 1)
+            {
+              for (auto m = 0; m < 4; m++)
+              {
+                if (m != 2)
+                {
+                  DP[k][l][m][i + 1] += DP[j][k][l][i];
+                  DP[k][l][m][i + 1] %= M;
+                }
+              }
+            }
+            else
+            {
+              for (auto m = 0; m < 4; m++)
+              {
+                DP[k][l][m][i + 1] += DP[j][k][l][i];
+                DP[k][l][m][i + 1] %= M;
+              }
+            }
           }
-        }
-      }
-    }
-    if (i >= 2)
-    {
-      for (auto l = 0; l < 4; l++)
-      {
-        if (l != 1)
-        {
-          DP[l][1][i] += M - DP[0][2][i - 2];
-          DP[l][1][i] %= M;
         }
       }
     }
@@ -113,8 +125,11 @@ int main()
   {
     for (auto k = 0; k < 4; k++)
     {
-      ans += DP[j][k][N];
-      ans %= M;
+      for (auto l = 0; l < 4; l++)
+      {
+        ans += DP[j][k][l][N];
+        ans %= M;
+      }
     }
   }
   cout << ans << endl;
