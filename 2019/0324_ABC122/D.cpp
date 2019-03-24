@@ -57,10 +57,6 @@ int main()
         {
           if (j == 0 && k == 2)
           {
-            if (l == 1)
-            {
-              continue;
-            }
             for (auto m = 0; m < 4; m++)
             {
               if (m != 1)
