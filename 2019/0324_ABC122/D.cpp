@@ -57,9 +57,13 @@ int main()
         {
           if (j == 0 && k == 2)
           {
+            if (l == 1)
+            {
+              continue;
+            }
             for (auto m = 0; m < 4; m++)
             {
-              if (l != 1 && m != 1)
+              if (m != 1)
               {
                 DP[k][l][m][i + 1] += DP[j][k][l][i];
                 DP[k][l][m][i + 1] %= M;
