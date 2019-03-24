@@ -55,11 +55,11 @@ int main()
       {
         for (auto l = 0; l < 4; l++)
         {
-          if (j == 0 && k == 2 && l != 1)
+          if (j == 0 && k == 2)
           {
             for (auto m = 0; m < 4; m++)
             {
-              if (m != 1)
+              if (l &= 1 && m != 1)
               {
                 DP[k][l][m][i + 1] += DP[j][k][l][i];
                 DP[k][l][m][i + 1] %= M;
@@ -119,18 +119,7 @@ int main()
       for (auto l = 0; l < 4; l++)
       {
 #if DEBUG == 1
-        int temp = 4;
-        for (auto i = 0; i < 4; i++)
-        {
-          string t{chars[i], chars[j], chars[k], chars[l]};
-          string x = t.substr(0, 3);
-          string y = t.substr(1, 3);
-          if (x == "AGC" || x == "GAC" || x == "ACG" || y == "AGC" || y == "GAC" || y == "ACG")
-          {
-            temp--;
-          }
-        }
-        cerr << chars[j] << chars[k] << chars[l] << ": " << DP[j][k][l][N] << " " << temp << endl;
+        cerr << chars[j] << chars[k] << chars[l] << ": " << DP[j][k][l][N] << endl;
 #endif
         ans += DP[j][k][l][N];
         ans %= M;
