@@ -61,20 +61,20 @@ int main()
       imos[1][i + 2]++;
     }
   }
-  for (auto i = 1; i <= N + 1; i++)
+  for (auto i = 1; i <= N; i++)
   {
     imos[0][i] += imos[0][i - 1];
     imos[1][i] += imos[1][i - 1];
   }
   for (auto i = 0; i < Q; i++)
   {
-    int ansA = imos[0][r[i] + 1] - imos[0][l[i]];
-    int ansC = imos[1][r[i] + 1] - imos[1][l[i]];
-    if (S[l[i]] == 'C' && S[r[i]] == 'A' && ansA == ansC)
+    if (imos[1][r[i]] == imos[0][r[i]])
     {
-      ansA--;
-      ansC--;
+      cout << imos[1][r[i]] - imos[1][l[i] + 1] << endl;
     }
-    cout << min(ansA, ansC) << endl;
+    else
+    {
+      cout << imos[1][r[i]] - imos[1][l[i] + 1] << endl;
+    }
   }
 }
