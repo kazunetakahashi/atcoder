@@ -99,7 +99,7 @@ ll dfs(int x, string S)
       ans %= MOD;
     }
   }
-  return ans;
+  return M[key(x, S)] = ans;
 }
 
 int main()
