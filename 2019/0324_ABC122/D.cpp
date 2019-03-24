@@ -55,9 +55,16 @@ int main()
       {
         for (auto l = 0; l < 4; l++)
         {
-          if (j == 0 && k == 2 && l == 1)
+          if (j == 0 && k == 2 && l != 1)
           {
-            DP[j][k][l][i] = 0;
+            for (auto m = 0; m < 4; m++)
+            {
+              if (m != 1)
+              {
+                DP[k][l][m][i + 1] += DP[j][k][l][i];
+                DP[k][l][m][i + 1] %= M;
+              }
+            }
           }
           else if (k == 0 && l == 2)
           {
