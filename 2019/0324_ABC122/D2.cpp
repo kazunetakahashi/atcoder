@@ -36,11 +36,13 @@ typedef long long ll;
 // const int dy[4] = {0, 1, 0, -1};
 
 // const int C = 1e6+10;
-const ll M = 1000000007;
+const ll MOD = 1000000007;
 
 int N;
 set<string> forbid;
 string chars[4] = {"A", "G", "C", "T"};
+typedef tuple<int, string> key;
+map<key, ll> M;
 
 void make(string S)
 {
@@ -79,6 +81,10 @@ bool ok(string S)
 
 ll dfs(int x, string S)
 {
+  if (M.find(key(x, S)) != M.end())
+  {
+    return M[key(x, S)];
+  }
   if (x == N)
   {
     return 1;
@@ -90,7 +96,7 @@ ll dfs(int x, string S)
     if (ok(T))
     {
       ans += dfs(x + 1, T.substr(1, 3));
-      ans %= M;
+      ans %= MOD;
     }
   }
   return ans;
@@ -100,5 +106,11 @@ int main()
 {
   cin >> N;
   make("");
+#if DEBUG == 1
+  for (auto x : forbid)
+  {
+    cerr << x << endl;
+  }
+#endif
   cout << dfs(0, "TTT") << endl;
 }
