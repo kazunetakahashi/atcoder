@@ -53,67 +53,51 @@ int main()
     {
       for (auto k = 0; k < 4; k++)
       {
-        if (j == 0 && k == 2)
+        for (auto l = 0; l < 4; l++)
         {
-          for (auto l = 0; l < 4; l++)
+          if (j == 0 && k == 2 && l == 1)
           {
-            if (l != 1)
-            {
-              for (auto m = 0; m < 4; m++)
-              {
-                if (m != 1)
-                {
-                  DP[k][l][m][i + 1] += DP[j][k][l][i];
-                  DP[k][l][m][i + 1] %= M;
-                }
-              }
-            }
+            DP[j][k][l][i] = 0;
           }
-        }
-        else
-        {
-          for (auto l = 0; l < 4; l++)
+          else if (k == 0 && l == 2)
           {
-            if (k == 0 && l == 2)
+            for (auto m = 0; m < 4; m++)
             {
-              for (auto m = 0; m < 4; m++)
-              {
-                if (m != 1)
-                {
-                  DP[k][l][m][i + 1] += DP[j][k][l][i];
-                  DP[k][l][m][i + 1] %= M;
-                }
-              }
-            }
-            else if (k == 2 && l == 0)
-            {
-              for (auto m = 0; m < 4; m++)
-              {
-                if (m != 1)
-                {
-                  DP[k][l][m][i + 1] += DP[j][k][l][i];
-                  DP[k][l][m][i + 1] %= M;
-                }
-              }
-            }
-            else if (k == 0 && l == 1)
-            {
-              for (auto m = 0; m < 4; m++)
-              {
-                if (m != 2)
-                {
-                  DP[k][l][m][i + 1] += DP[j][k][l][i];
-                  DP[k][l][m][i + 1] %= M;
-                }
-              }
-            }
-            else
-            {
-              for (auto m = 0; m < 4; m++)
+              if (m != 1)
               {
                 DP[k][l][m][i + 1] += DP[j][k][l][i];
                 DP[k][l][m][i + 1] %= M;
               }
+            }
+          }
+          else if (k == 2 && l == 0)
+          {
+            for (auto m = 0; m < 4; m++)
+            {
+              if (m != 1)
+              {
+                DP[k][l][m][i + 1] += DP[j][k][l][i];
+                DP[k][l][m][i + 1] %= M;
+              }
+            }
+          }
+          else if (k == 0 && l == 1)
+          {
+            for (auto m = 0; m < 4; m++)
+            {
+              if (m != 2)
+              {
+                DP[k][l][m][i + 1] += DP[j][k][l][i];
+                DP[k][l][m][i + 1] %= M;
+              }
+            }
+          }
+          else
+          {
+            for (auto m = 0; m < 4; m++)
+            {
+              DP[k][l][m][i + 1] += DP[j][k][l][i];
+              DP[k][l][m][i + 1] %= M;
             }
           }
         }
