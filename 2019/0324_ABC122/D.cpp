@@ -61,7 +61,7 @@ int main()
             {
               DP[k][l][i + 1] += DP[j][k][i];
               DP[k][l][i + 1] %= M;
-              DP[l][1][i + 2] += M - DP[j][k][i];
+              DP[l][1][i + 2] += 3 * (M - DP[j][k][i]);
               DP[l][1][i + 2] %= M;
             }
           }
