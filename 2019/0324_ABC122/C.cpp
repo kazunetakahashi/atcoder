@@ -51,7 +51,6 @@ int main()
   {
     cin >> l[i] >> r[i];
     l[i]--;
-    r[i]--;
   }
   fill(&imos[0][0], &imos[0][0] + 100010, 0);
   for (auto i = 0; i < N - 1; i++)
