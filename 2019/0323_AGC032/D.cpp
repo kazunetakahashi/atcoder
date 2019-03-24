@@ -56,8 +56,8 @@ ll calc(int l, int r)
   }
   else
   {
-    cost[l][r] = min(A, B * max(1LL, R[l][r - 1])) + calc(l + 1, r);
-    cost[l][r] = min(cost[l][r], min(B, A * max(1LL, L[r - 1][l])) + calc(l, r - 1));
+    cost[l][r] = min(A, B * min(1LL, R[l][r - 1])) + calc(l + 1, r);
+    cost[l][r] = min(cost[l][r], min(B, A * min(1LL, L[r - 1][l])) + calc(l, r - 1));
   }
 #if DEBUG == 1
   cerr << "cost[" << l << "][" << r << "] = " << cost[l][r] << endl;
