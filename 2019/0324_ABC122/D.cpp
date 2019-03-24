@@ -119,7 +119,18 @@ int main()
       for (auto l = 0; l < 4; l++)
       {
 #if DEBUG == 1
-        cerr << chars[j] << chars[k] << chars[l] << ": " << DP[j][k][l][N] << endl;
+        int temp = 4;
+        for (auto i = 0; i < 4; i++)
+        {
+          string t{chars[i], chars[k], chars[j], chars[l]};
+          string x = t.substr(0, 3);
+          string y = t.substr(1, 3);
+          if (x == "AGC" || x == "GAC" || x == "ACG" || y == "AGC" || y == "GAC" || y == "ACG")
+          {
+            temp--;
+          }
+        }
+        cerr << chars[j] << chars[k] << chars[l] << ": " << DP[j][k][l][N] << " " << temp << endl;
 #endif
         ans += DP[j][k][l][N];
         ans %= M;
