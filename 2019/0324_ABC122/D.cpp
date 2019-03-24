@@ -122,7 +122,7 @@ int main()
         int temp = 4;
         for (auto i = 0; i < 4; i++)
         {
-          string t{chars[i], chars[k], chars[j], chars[l]};
+          string t{chars[i], chars[j], chars[k], chars[l]};
           string x = t.substr(0, 3);
           string y = t.substr(1, 3);
           if (x == "AGC" || x == "GAC" || x == "ACG" || y == "AGC" || y == "GAC" || y == "ACG")
