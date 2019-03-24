@@ -55,9 +55,9 @@ void make(string S)
   }
   else
   {
-    string T = S;
     for (auto i = 0; i < 4; i++)
     {
+      string T = S;
       if (i < 3)
       {
         swap(T[i], T[i + 1]);
