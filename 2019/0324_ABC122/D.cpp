@@ -59,7 +59,7 @@ int main()
           {
             for (auto m = 0; m < 4; m++)
             {
-              if (l &= 1 && m != 1)
+              if (l != 1 && m != 1)
               {
                 DP[k][l][m][i + 1] += DP[j][k][l][i];
                 DP[k][l][m][i + 1] %= M;
