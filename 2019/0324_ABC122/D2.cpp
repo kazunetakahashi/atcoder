@@ -46,7 +46,7 @@ map<key, ll> M;
 
 void make(string S)
 {
-  if (S.size() < 4)
+  if ((int)S.size() < 4)
   {
     for (auto i = 0; i < 4; i++)
     {
@@ -62,13 +62,13 @@ void make(string S)
       {
         swap(T[i], T[i + 1]);
       }
-    }
-    for (auto i = 0; i < 2; i++)
-    {
-      if (T.substr(i, 3) == "AGC")
+      for (auto i = 0; i < 2; i++)
       {
-        forbid.insert(S);
-        return;
+        if (T.substr(i, 3) == "AGC")
+        {
+          forbid.insert(S);
+          return;
+        }
       }
     }
   }
