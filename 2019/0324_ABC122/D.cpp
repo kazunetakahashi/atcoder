@@ -127,6 +127,9 @@ int main()
     {
       for (auto l = 0; l < 4; l++)
       {
+#if DEBUG == 1
+        cerr << chars[j] << chars[k] << chars[l] << ": " << DP[j][k][l][N] << endl;
+#endif
         ans += DP[j][k][l][N];
         ans %= M;
       }
