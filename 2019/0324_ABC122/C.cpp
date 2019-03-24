@@ -61,7 +61,7 @@ int main()
       imos[1][i + 2]++;
     }
   }
-  for (auto i = 1; i <= N; i++)
+  for (auto i = 1; i <= N + 1; i++)
   {
     imos[0][i] += imos[0][i - 1];
     imos[1][i] += imos[1][i - 1];
