@@ -190,7 +190,7 @@ int main()
     }
     if (i - B >= 0)
     {
-      ll y = fact[W] * fact[i - B];
+      ll y = fact[B] * fact[i - B];
       y %= MOD;
       y *= C(i - 1, B - 1);
       y %= MOD;
