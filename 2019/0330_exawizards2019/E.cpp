@@ -137,6 +137,12 @@ Q operator*(Q p, Q q)
   return Q(y, z);
 }
 
+ostream &operator<<(ostream &o_str, const Q &p)
+{
+  o_str << "{ " << get<0>(p) << " / " << get<1>(p);
+  return o_str << " }";
+}
+
 vector<Q> ans;
 
 void flush()
@@ -195,6 +201,10 @@ int main()
     {
       w[i + 1] = Q(0, 1);
     }
+#if DEBUG == 1
+    cerr << "b[" << i + 1 << "] = " << b[i + 1] << endl;
+    cerr << "w[" << i + 1 << "] = " << w[i + 1] << endl;
+#endif
     ans.push_back(x);
   }
   flush();
