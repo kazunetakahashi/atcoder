@@ -126,6 +126,17 @@ Q operator-(Q p, Q q)
   return p + (-q);
 }
 
+Q operator*(Q p, Q q)
+{
+  ll a = get<0>(p);
+  ll b = get<1>(p);
+  ll c = get<0>(q);
+  ll d = get<1>(q);
+  ll y = (a * c) % MOD;
+  ll z = (b * d) % MOD;
+  return Q(y, z);
+}
+
 vector<Q> ans;
 
 void flush()
@@ -139,49 +150,50 @@ void flush()
   }
 }
 
+Q b[200010];
+Q w[200010];
+
 int main()
 {
   init();
   cin >> B >> W;
   N = B + W;
+  b[0] = Q(0, 1);
+  w[0] = Q(0, 1);
   for (auto i = 0LL; i < N; i++)
   {
     Q x = Q(1, 2);
+    ll z = power(2, i) * fact[W];
+    z %= MOD;
+    z *= fact[B];
+    z %= MOD;
+    z *= factinv[N - i];
+    z %= MOD;
     if (i - W > 0)
     {
-      ll b_y = C(i, W) * fact[W];
-      b_y %= MOD;
-      b_y *= C(B, i - W);
-      b_y %= MOD;
-      b_y *= fact[i - W];
-      b_y %= MOD;
-      ll b_z = 2 * power(2, i);
-      b_z %= MOD;
-      b_z *= fact[W];
-      b_z %= MOD;
-      b_z *= fact[B];
-      b_z %= MOD;
-      b_z *= factinv[N - i];
-      b_z %= MOD;
-      x = x + Q(b_y, b_z);
+      ll y = fact[W] * fact[i - W];
+      y %= MOD;
+      y *= C(i - 1, W - 1);
+      y %= MOD;
+      b[i + 1] = b[i] + Q(y, z);
+      x = x + b[i + 1] * Q(1, 2);
+    }
+    else
+    {
+      b[i + 1] = Q(0, 1);
     }
     if (i - B > 0)
     {
-      ll w_y = C(i, B) * fact[B];
-      w_y %= MOD;
-      w_y *= C(W, i - B);
-      w_y %= MOD;
-      w_y *= fact[i - B];
-      w_y %= MOD;
-      ll b_z = 2 * power(2, i);
-      b_z %= MOD;
-      b_z *= fact[W];
-      b_z %= MOD;
-      b_z *= fact[B];
-      b_z %= MOD;
-      b_z *= factinv[N - i];
-      b_z %= MOD;
-      x = x - Q(w_y, b_z);
+      ll y = fact[W] * fact[i - B];
+      y %= MOD;
+      y *= C(i - 1, B - 1);
+      y %= MOD;
+      w[i + 1] = w[i] + Q(y, z);
+      x = x - w[i + 1] * Q(1, 2);
+    }
+    else
+    {
+      w[i + 1] = Q(0, 1);
     }
     ans.push_back(x);
   }
