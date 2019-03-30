@@ -155,7 +155,11 @@ int main()
       b_y %= MOD;
       b_y *= fact[i - W];
       b_y %= MOD;
-      ll b_z = fact[N] * 2;
+      ll b_z = 2 * power(2, i);
+      b_z %= MOD;
+      b_z *= fact[W];
+      b_z %= MOD;
+      b_z *= fact[B];
       b_z %= MOD;
       b_z *= factinv[N - i];
       b_z %= MOD;
@@ -169,7 +173,11 @@ int main()
       w_y %= MOD;
       w_y *= fact[i - B];
       w_y %= MOD;
-      ll b_z = fact[N] * 2;
+      ll b_z = 2 * power(2, i);
+      b_z %= MOD;
+      b_z *= fact[W];
+      b_z %= MOD;
+      b_z *= fact[B];
       b_z %= MOD;
       b_z *= factinv[N - i];
       b_z %= MOD;
