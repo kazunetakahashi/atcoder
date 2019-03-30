@@ -177,7 +177,9 @@ int main()
     z %= MOD;
     if (i - W >= 0)
     {
-      ll y = fact[W] * fact[i - W];
+      ll y = fact[W] * fact[B];
+      y %= MOD;
+      y *= factinv[i - W];
       y %= MOD;
       y *= C(i - 1, W - 1);
       y %= MOD;
@@ -190,7 +192,9 @@ int main()
     }
     if (i - B >= 0)
     {
-      ll y = fact[B] * fact[i - B];
+      ll y = fact[B] * fact[W];
+      y %= MOD;
+      y *= factinv[i - B];
       y %= MOD;
       y *= C(i - 1, B - 1);
       y %= MOD;
