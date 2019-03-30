@@ -179,7 +179,7 @@ int main()
     {
       ll y = fact[W] * fact[B];
       y %= MOD;
-      y *= factinv[i - W];
+      y *= factinv[N - i];
       y %= MOD;
       y *= C(i - 1, W - 1);
       y %= MOD;
@@ -194,7 +194,7 @@ int main()
     {
       ll y = fact[B] * fact[W];
       y %= MOD;
-      y *= factinv[i - B];
+      y *= factinv[N - i];
       y %= MOD;
       y *= C(i - 1, B - 1);
       y %= MOD;
