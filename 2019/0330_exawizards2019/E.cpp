@@ -118,7 +118,7 @@ int main()
   cin >> B >> W;
   for (auto i = 0LL; i < B + W; i++)
   {
-    ll y = 2;
+    ll y = power(2, i);
     y += C(i, W);
     y %= MOD;
     y += MOD - C(i, B);
