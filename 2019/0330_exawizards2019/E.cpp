@@ -97,8 +97,35 @@ ll Inv(ll x)
 }
 
 ll B, W;
+ll N;
 
 typedef tuple<ll, ll> Q;
+
+Q operator+(Q p, Q q)
+{
+  ll a = get<0>(p);
+  ll b = get<1>(p);
+  ll c = get<0>(q);
+  ll d = get<1>(q);
+  ll y = ((a * d) % MOD) + ((b * c) % MOD);
+  y %= MOD;
+  ll z = (b * d) % MOD;
+  return Q(y, z);
+}
+
+Q operator-(Q p)
+{
+  ll a = get<0>(p);
+  ll b = get<1>(p);
+  ll y = (MOD - a) % MOD;
+  return Q(y, b);
+}
+
+Q operator-(Q p, Q q)
+{
+  return p + (-q);
+}
+
 vector<Q> ans;
 
 void flush()
@@ -116,15 +143,39 @@ int main()
 {
   init();
   cin >> B >> W;
-  for (auto i = 0LL; i < B + W; i++)
+  N = B + W;
+  for (auto i = 0LL; i < N; i++)
   {
-    ll y = power(2, i);
-    y += C(i, W);
-    y %= MOD;
-    y += MOD - C(i, B);
-    y %= MOD;
-    ll z = power(2, i + 1);
-    ans.push_back(Q(y, z));
+    Q x = Q(1, 2);
+    if (i - W > 0)
+    {
+      ll b_y = C(i, W) * fact[W];
+      b_y %= MOD;
+      b_y *= C(B, i - W);
+      b_y %= MOD;
+      b_y *= fact[i - W];
+      b_y %= MOD;
+      ll b_z = fact[N] * 2;
+      b_z %= MOD;
+      b_z *= factinv[N - i];
+      b_z %= MOD;
+      x = x + Q(b_y, b_z);
+    }
+    if (i - B > 0)
+    {
+      ll w_y = C(i, B) * fact[B];
+      w_y %= MOD;
+      w_y *= C(W, i - B);
+      w_y %= MOD;
+      w_y *= fact[i - B];
+      w_y %= MOD;
+      ll b_z = fact[N] * 2;
+      b_z %= MOD;
+      b_z *= factinv[N - i];
+      b_z %= MOD;
+      x = x - Q(w_y, b_z);
+    }
+    ans.push_back(x);
   }
   flush();
 }
