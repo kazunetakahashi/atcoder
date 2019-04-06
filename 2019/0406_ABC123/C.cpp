@@ -56,5 +56,5 @@ int main()
     mini = min(mini, A[i]);
   }
   ll ans = (N + mini - 1) / mini;
-  cout << ans + 5 << endl;
+  cout << ans + 4 << endl;
 }
