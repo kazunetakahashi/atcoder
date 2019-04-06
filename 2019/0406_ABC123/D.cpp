@@ -89,6 +89,10 @@ int main()
     ll index = 0;
     for (auto j = 0; j < X; j++)
     {
+      if (ind[j] >= W)
+      {
+        continue;
+      }
       ll t = D[ind[j]] + A[j];
       if (t > maxi)
       {
