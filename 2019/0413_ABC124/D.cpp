@@ -87,6 +87,13 @@ int main()
   {
     imos[i + 1] = imos[i] + V[i];
   }
+#if DEBUG == 1
+  for (auto x : imos)
+  {
+    cerr << x << " ";
+  }
+  cerr << endl;
+#endif
   int seg = min(2 * K + 1, (int)V.size());
   int ans = 0;
   for (auto i = 0; i + seg <= (int)V.size(); i++)
