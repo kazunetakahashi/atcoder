@@ -83,7 +83,7 @@ int main()
   cerr << endl;
 #endif
   vector<int> imos(V.size() + 1, 0);
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < (int)V.size(); i++)
   {
     imos[i + 1] = imos[i] + V[i];
   }
