@@ -14,7 +14,7 @@ for i in 0...n
   else
     ok = true
     for j in 0...i
-      if h[j] > h[j + 1]
+      if h[j] > h[i]
         ok = false
         break
       end
