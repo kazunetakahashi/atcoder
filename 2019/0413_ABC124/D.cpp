@@ -75,6 +75,13 @@ int main()
   {
     V.push_back(0);
   }
+#if DEBUG == 1
+  for (auto x : V)
+  {
+    cerr << x << " ";
+  }
+  cerr << endl;
+#endif
   vector<int> imos(V.size() + 1, 0);
   for (auto i = 0; i < N; i++)
   {
