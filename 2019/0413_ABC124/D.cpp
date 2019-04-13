@@ -98,7 +98,10 @@ int main()
   int ans = 0;
   for (auto i = 0; i + seg <= (int)V.size(); i++)
   {
-    ans = max(ans, imos[i + seg] - imos[i]);
+    if (i % 2 == 0)
+    {
+      ans = max(ans, imos[i + seg] - imos[i]);
+    }
   }
   cout << ans << endl;
 }
