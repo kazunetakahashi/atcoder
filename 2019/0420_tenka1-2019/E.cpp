@@ -125,7 +125,7 @@ void flush()
 
 void check_prime(ll p)
 {
-  vector<ll> A(max(p, N), 0);
+  vector<ll> A(max(p, N + 1), 0);
   A[0] = a[0];
   for (auto i = 1; i <= N; i++)
   {
