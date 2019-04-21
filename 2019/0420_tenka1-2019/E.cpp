@@ -95,7 +95,7 @@ void make_primes()
 {
   for (auto it = prime_num.begin(); it != prime_num.end(); it++)
   {
-    if (*it < N)
+    if (*it <= N)
     {
       S.insert(*it);
 #if DEBUG == 1
@@ -107,7 +107,7 @@ void make_primes()
       break;
     }
   }
-  auto W = make_factors(a[N]);
+  auto W = make_factors(abs(a[N]));
   for (auto x : W)
   {
 #if DEBUG == 1
