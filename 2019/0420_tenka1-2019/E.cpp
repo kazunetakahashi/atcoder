@@ -116,6 +116,11 @@ void make_primes()
 
 void flush()
 {
+  if (ans.empty())
+  {
+    cout << endl;
+    return;
+  }
   sort(ans.begin(), ans.end());
   for (auto x : ans)
   {
