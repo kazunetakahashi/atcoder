@@ -69,15 +69,12 @@ vector<long long> make_factors(long long x)
     {
       break;
     }
-    if (x % *it == 0)
+    while (x % *it == 0)
     {
       ans.push_back(*it);
       x /= *it;
     }
-    else
-    {
-      it++;
-    }
+    it++;
   }
   if (x != 1)
   {
@@ -128,7 +125,7 @@ void flush()
 
 void check_prime(ll p)
 {
-  vector<ll> A(p, 0);
+  vector<ll> A(max(p, N), 0);
   A[0] = a[0];
   for (auto i = 1; i <= N; i++)
   {
