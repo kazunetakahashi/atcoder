@@ -98,6 +98,9 @@ void make_primes()
     if (*it < N)
     {
       S.insert(*it);
+#if DEBUG == 1
+      cerr << "S.insert(" << *it << ")" << endl;
+#endif
     }
     else
     {
@@ -107,6 +110,9 @@ void make_primes()
   auto W = make_factors(a[N]);
   for (auto x : W)
   {
+#if DEBUG == 1
+    cerr << "W inclues " << x << endl;
+#endif
     S.insert(x);
   }
 }
