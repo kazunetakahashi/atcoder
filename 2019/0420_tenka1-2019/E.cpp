@@ -125,13 +125,7 @@ void flush()
 
 void check_prime(ll p)
 {
-#if DEBUG == 1
-  cerr << "start:" << p << endl;
-#endif
-  vector<ll> A(max(p, N + 1), 0);
-#if DEBUG == 1
-  cerr << "end:" << p << endl;
-#endif
+  vector<ll> A(min(p, N + 1), 0);
   A[0] = a[0];
   for (auto i = 1; i <= N; i++)
   {
