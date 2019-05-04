@@ -32,8 +32,8 @@ using namespace std;
 
 typedef long long ll;
 
-const int dx[4] = {0, 0, -1, 1};
-const int dy[4] = {-1, 1, 0, 0};
+// const int dx[4] = {0, 0, -1, 1};
+// const int dy[4] = {-1, 1, 0, 0};
 
 // const int C = 1e6+10;
 // const ll M = 1000000007;
@@ -79,7 +79,7 @@ bool solve(int X, int s, vector<event> V)
       }
     }
 #if DEBUG == 1
-    cerr << "(" << player << ", " << move << ")";
+    cerr << "(" << player << ", " << move << ") : ";
     cerr << "maxi = " << maxi << ", mini = " << mini << endl;
 #endif
     if (mini < 0 || maxi >= X)
@@ -163,7 +163,7 @@ int main()
       U.push_back(event(1, B[i] - 2));
     }
   }
-  if (solve(H, sr, V) || solve(W, sc, U))
+  if (solve(H, sr, U) || solve(W, sc, V))
   {
     cout << "NO" << endl;
   }
