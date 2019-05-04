@@ -131,37 +131,37 @@ int main()
         B[i] = 3;
       }
     }
-    vector<event> V;
-    for (auto i = 0; i < N; i++)
+  }
+  vector<event> V;
+  for (auto i = 0; i < N; i++)
+  {
+    if (A[i] < 2)
     {
-      if (A[i] < 2)
-      {
-        V.push_back(event(0, A[i]));
-      }
-      if (B[i] < 2)
-      {
-        V.push_back(event(1, B[i]));
-      }
+      V.push_back(event(0, A[i]));
     }
-    vector<event> U;
-    for (auto i = 0; i < N; i++)
+    if (B[i] < 2)
     {
-      if (A[i] >= 2)
-      {
-        U.push_back(event(0, A[i] - 2));
-      }
-      if (B[i] >= 2)
-      {
-        U.push_back(event(1, B[i] - 2));
-      }
+      V.push_back(event(1, B[i]));
     }
-    if (solve(H, sr, V) || solve(W, sc, U))
+  }
+  vector<event> U;
+  for (auto i = 0; i < N; i++)
+  {
+    if (A[i] >= 2)
     {
-      cout << "NO" << endl;
+      U.push_back(event(0, A[i] - 2));
     }
-    else
+    if (B[i] >= 2)
     {
-      cout << "YES" << endl;
+      U.push_back(event(1, B[i] - 2));
     }
+  }
+  if (solve(H, sr, V) || solve(W, sc, U))
+  {
+    cout << "NO" << endl;
+  }
+  else
+  {
+    cout << "YES" << endl;
   }
 }
