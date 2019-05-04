@@ -63,7 +63,7 @@ int main()
     }
   }
   int ans = 0;
-  while (Q.empty())
+  while (!Q.empty())
   {
     int x = get<0>(Q.front());
     int y = get<1>(Q.front());
