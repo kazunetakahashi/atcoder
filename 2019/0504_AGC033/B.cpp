@@ -48,6 +48,9 @@ typedef tuple<int, int> event;
 
 bool solve(int X, int s, vector<event> V)
 {
+#if DEBUG == 1
+  cerr << "X = " << X << ", s = " << s << endl;
+#endif
   int maxi = s, mini = s;
   for (auto x : V)
   {
@@ -75,6 +78,10 @@ bool solve(int X, int s, vector<event> V)
         mini++;
       }
     }
+#if DEBUG == 1
+    cerr << "(" << player << ", " << move << ")";
+    cerr << "maxi = " << maxi << ", mini = " << mini << endl;
+#endif
     if (mini < 0 || maxi >= X)
     {
       return true;
