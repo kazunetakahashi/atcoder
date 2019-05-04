@@ -47,9 +47,6 @@ int G[200010];
 
 void dfs(int v)
 {
-#if DEBUG == 1
-  cerr << v << endl;
-#endif
   for (auto x : V[v])
   {
     if (parent[x] == -2)
@@ -126,17 +123,11 @@ int main()
   fill(G, G + N, -1);
   parent[0] = -1;
   dfs(0);
-  for (auto i = 0; i < N; i++)
+  for (auto i = 1; i < N; i++)
   {
     children[parent[i]].push_back(i);
   }
-#if DEBUG == 1
-  cerr << "AAA" << endl;
-#endif
   g(0);
-#if DEBUG == 1
-  cerr << "AAA" << endl;
-#endif
   if (G[0] == 0)
   {
     cout << "Second" << endl;
