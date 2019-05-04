@@ -47,6 +47,9 @@ int G[200010];
 
 void dfs(int v)
 {
+#if DEBUG == 1
+  cerr << v << endl;
+#endif
   for (auto x : V[v])
   {
     if (parent[x] == -2)
