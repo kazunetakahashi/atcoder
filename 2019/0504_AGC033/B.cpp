@@ -66,14 +66,14 @@ bool solve(int X, int s, vector<event> V)
     }
     else if (player == 1 && move == 0)
     {
-      if (maxi > mini)
+      if (maxi > 0)
       {
         maxi--;
       }
     }
     else
     {
-      if (maxi > mini)
+      if (mini < X - 1)
       {
         mini++;
       }
