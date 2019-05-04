@@ -62,9 +62,6 @@ void dfs(int v)
 
 int g(int v)
 {
-#if DEBUG == 1
-  cerr << v << endl;
-#endif
   if (G[v] >= 0)
   {
     return G[v];
@@ -133,7 +130,13 @@ int main()
   {
     children[parent[i]].push_back(i);
   }
+#if DEBUG == 1
+  cerr << "AAA" << endl;
+#endif
   g(0);
+#if DEBUG == 1
+  cerr << "AAA" << endl;
+#endif
   if (G[0] == 0)
   {
     cout << "Second" << endl;
