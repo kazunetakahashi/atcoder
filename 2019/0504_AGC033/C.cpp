@@ -62,6 +62,9 @@ void dfs(int v)
 
 int g(int v)
 {
+#if DEBUG == 1
+  cerr << v << endl;
+#endif
   if (G[v] >= 0)
   {
     return G[v];
