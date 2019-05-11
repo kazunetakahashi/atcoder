@@ -88,7 +88,7 @@ int main()
       ans++;
       A--;
     }
-    else if (B > 0)
+    if (B > 0)
     {
       ans++;
       B--;
