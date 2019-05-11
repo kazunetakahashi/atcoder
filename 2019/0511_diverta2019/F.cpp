@@ -30,6 +30,59 @@
 #include <cstdlib>
 using namespace std;
 
+const int MAX_SIZE = 1000010;
+const long long MOD = 1000000007;
+
+long long inv[MAX_SIZE];
+long long fact[MAX_SIZE];
+long long factinv[MAX_SIZE];
+
+void init()
+{
+  inv[1] = 1;
+  for (int i = 2; i < MAX_SIZE; i++)
+  {
+    inv[i] = ((MOD - inv[MOD % i]) * (MOD / i)) % MOD;
+  }
+  fact[0] = factinv[0] = 1;
+  for (int i = 1; i < MAX_SIZE; i++)
+  {
+    fact[i] = (i * fact[i - 1]) % MOD;
+    factinv[i] = (inv[i] * factinv[i - 1]) % MOD;
+  }
+}
+
+long long C(int n, int k)
+{
+  if (n >= 0 && k >= 0 && n - k >= 0)
+  {
+    return ((fact[n] * factinv[k]) % MOD * factinv[n - k]) % MOD;
+  }
+  return 0;
+}
+
+long long power(long long x, long long n)
+{
+  if (n == 0)
+  {
+    return 1;
+  }
+  else if (n % 2 == 1)
+  {
+    return (x * power(x, n - 1)) % MOD;
+  }
+  else
+  {
+    long long half = power(x, n / 2);
+    return (half * half) % MOD;
+  }
+}
+
+long long gcd(long long x, long long y)
+{
+  return y ? gcd(y, x % y) : x;
+}
+
 typedef long long ll;
 
 // const int dx[4] = {1, 0, -1, 0};
@@ -47,9 +100,23 @@ int b[210];
 vector<edge> V[20];
 vector<int> W[1 << 20];
 vector<int> masks;
+vector<ll> scores[1 << 20];
+
+void add_mask(int mask, ll score)
+{
+  scores[mask].push_back(score);
+  for (auto i = 0; i < N; i++)
+  {
+    if (((mask >> i) & 1) == 0)
+    {
+      add_mask(mask + (1 << i), score - 1);
+    }
+  }
+}
 
 int main()
 {
+  init();
   cin >> N >> M;
   for (auto i = 0; i < M; i++)
   {
@@ -102,8 +169,30 @@ int main()
       temp = get<0>(from[temp]);
     }
     masks.push_back(mask);
-#if DEBUG == 1
-    cerr << "i = " << i << ", mask = " << mask << endl;
-#endif
   }
+  for (auto mask : masks)
+  {
+    int x = (1 << N) - mask;
+    ll score = 0;
+    for (auto i = 0; i < N; i++)
+    {
+      if ((x >> i) & 1)
+      {
+        score++;
+      }
+    }
+    add_mask(mask, score);
+  }
+#if DEBUG == 1
+  for (auto i = 0; i < (1 << N); i++)
+  {
+    cerr << "scores[" << i << "] = {";
+    for (auto x : scores[i])
+    {
+      cerr << x << ", ";
+    }
+    cerr << "}" << endl;
+  }
+#endif
+  ll ans = (fact[N] * fact[M]) % MOD;
 }
