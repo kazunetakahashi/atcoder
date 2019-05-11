@@ -99,17 +99,21 @@ int a[210];
 int b[210];
 vector<edge> V[20];
 vector<int> W[1 << 20];
-vector<int> masks;
-vector<ll> scores[1 << 20];
+vector<int> memo[1 << 20];
+set<int> sets[1 << 20];
 
-void add_mask(int mask, ll score)
+void add_mask(int mask, int num)
 {
-  scores[mask].push_back(score);
+  if (sets[mask].find(num) == sets[mask].end())
+  {
+    return;
+  }
+  sets[mask].insert(num);
   for (auto i = 0; i < N; i++)
   {
     if (((mask >> i) & 1) == 0)
     {
-      add_mask(mask + (1 << i), score - 1);
+      add_mask(mask + (1 << i), num);
     }
   }
 }
@@ -168,10 +172,6 @@ int main()
       mask += (1 << num);
       temp = get<0>(from[temp]);
     }
-    masks.push_back(mask);
-  }
-  for (auto mask : masks)
-  {
     int x = (1 << N) - mask;
     ll score = 0;
     for (auto i = 0; i < N; i++)
@@ -181,13 +181,13 @@ int main()
         score++;
       }
     }
-    add_mask(mask, score);
+    memo[mask].push_back(i);
   }
 #if DEBUG == 1
   for (auto i = 0; i < (1 << N); i++)
   {
-    cerr << "scores[" << i << "] = {";
-    for (auto x : scores[i])
+    cerr << "sets[" << i << "] = {";
+    for (auto x : sets[i])
     {
       cerr << x << ", ";
     }
