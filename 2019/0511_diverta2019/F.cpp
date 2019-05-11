@@ -182,6 +182,7 @@ int main()
       }
     }
     memo[mask].push_back(i);
+    add_mask(mask, i);
   }
 #if DEBUG == 1
   if (N < 10)
