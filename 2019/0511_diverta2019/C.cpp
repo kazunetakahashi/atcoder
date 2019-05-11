@@ -62,6 +62,9 @@ int main()
   int A = 0;
   int B = 0;
   int AB = 0;
+#if DEBUG == 1
+  cerr << "A = " << A << ", B = " << B << ", AB = " << AB << endl;
+#endif
   for (auto i = 0; i < N; i++)
   {
     if (S[i][0] == 'B' && S[i][S[i].size() - 1] == 'A')
