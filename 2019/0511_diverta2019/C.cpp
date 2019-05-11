@@ -78,7 +78,7 @@ int main()
     }
   }
 #if DEBUG == 1
-  cerr << "A = " << A << ", B = " << B << ", AB = " << AB << endl;
+  cerr << "ans = " << ans << "A = " << A << ", B = " << B << ", AB = " << AB << endl;
 #endif
   if (AB > 0)
   {
