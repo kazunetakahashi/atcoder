@@ -94,6 +94,9 @@ int main()
       B--;
     }
   }
+#if DEBUG == 1
+  cerr << "ans = " << ans << ", A = " << A << ", B = " << B << ", AB = " << AB << endl;
+#endif
   ans += min(A, B);
   cout << ans << endl;
 }
