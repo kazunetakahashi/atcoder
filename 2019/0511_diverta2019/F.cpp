@@ -184,14 +184,17 @@ int main()
     memo[mask].push_back(i);
   }
 #if DEBUG == 1
-  for (auto i = 0; i < (1 << N); i++)
+  if (N < 10)
   {
-    cerr << "sets[" << i << "] = {";
-    for (auto x : sets[i])
+    for (auto i = 0; i < (1 << N); i++)
     {
-      cerr << x << ", ";
+      cerr << "sets[" << i << "] = {";
+      for (auto x : sets[i])
+      {
+        cerr << x << ", ";
+      }
+      cerr << "}" << endl;
     }
-    cerr << "}" << endl;
   }
 #endif
   ll ans = (fact[N] * fact[M]) % MOD;
