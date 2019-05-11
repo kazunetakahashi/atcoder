@@ -191,7 +191,7 @@ int main()
     }
   }
 #if DEBUG == 1
-  if (N < 10)
+  if (N < 16)
   {
     for (auto i = 0; i < (1 << N); i++)
     {
