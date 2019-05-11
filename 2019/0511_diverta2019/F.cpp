@@ -104,7 +104,7 @@ set<int> sets[1 << 20];
 
 void add_mask(int mask, int num)
 {
-  if (sets[mask].find(num) == sets[mask].end())
+  if (sets[mask].find(num) != sets[mask].end())
   {
     return;
   }
@@ -182,7 +182,13 @@ int main()
       }
     }
     memo[mask].push_back(i);
-    add_mask(mask, i);
+  }
+  for (auto i = 0; i < (1 << N); i++)
+  {
+    for (auto x : memo[i])
+    {
+      add_mask(i, x);
+    }
   }
 #if DEBUG == 1
   if (N < 10)
