@@ -84,6 +84,12 @@ res DP(int K)
   vector<ll> DP0(S + 1, 0);
   vector<ll> DP1(S + 1, 0);
   DP0[0] = 1;
+#if DEBUG == 1
+  if (K < 4)
+  {
+    cerr << "DP(" << K << ")" << endl;
+  }
+#endif
   for (auto i = 0; i < S; i++)
   {
     int n = get<0>(V[K][i]);
@@ -98,6 +104,13 @@ res DP(int K)
       DP0[i + 1] = DP0[i];
       DP1[i + 1] = (DP0[i] + DP1[i]) % M;
     }
+#if DEBUG == 1
+    if (K < 4)
+    {
+      cerr << "DP0[" << i + 1 << "] = " << DP0[i + 1]
+           << ", DP1[" << i + 1 << "] = " << DP1[i + 1] << endl;
+    }
+#endif
   }
   return res(DP0[S], DP1[S]);
 }
@@ -116,7 +129,8 @@ void solve0()
   make_vector();
   for (auto K = 1; K < (1 << 20); K++)
   {
-    ans += get<1>(DP(K));
+    ll temp = get<1>(DP(K));
+    ans += temp;
     ans %= M;
   }
   cout << ans << endl;
