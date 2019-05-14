@@ -120,7 +120,7 @@ void solve0()
   ll ans = 1;
   for (auto i = 1; i < N; i++)
   {
-    if (X[0] == 0)
+    if (X[i] == 0)
     {
       ans *= 2;
       ans %= M;
