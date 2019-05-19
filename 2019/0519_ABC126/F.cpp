@@ -38,86 +38,54 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
-int x[100010];
-
-void test(ll M, ll K)
-{
-  cerr << "K = " << K << endl;
-  for (auto i = 0; i < (1 << (M + 1)); i++)
-  {
-    x[i] = i / 2;
-  }
-  do
-  {
-    bool ok = true;
-    for (auto i = 0; i < (1 << M); i++)
-    {
-      int start = 0;
-      int goal = 0;
-      for (auto j = 0; j < (1 << (M + 1)); j++)
-      {
-        if (x[i] == i)
-        {
-          start = j;
-          break;
-        }
-      }
-      for (auto j = (1 << (M + 1)) - 1; j >= 0; j--)
-      {
-        if (x[i] == i)
-        {
-          goal = j;
-          break;
-        }
-      }
-      int v = 0;
-      for (auto j = start; j <= goal; j++)
-      {
-        v = v ^ j;
-      }
-      if (v != K)
-      {
-        ok = false;
-        break;
-      }
-    }
-    if (ok)
-    {
-      for (auto i = 0; i < (1 << (M + 1)); i++)
-      {
-        cerr << x[i] << " ";
-      }
-      cerr << endl;
-      return;
-    }
-  } while (next_permutation(x, x + (1 << (M + 1))));
-}
-
 ll M, K;
 
 int main()
 {
   cin >> M >> K;
-#if DEBUG == 1
-  for (auto k = 0; k < (1 << M); k++)
+  if (!(0 <= K && K < (1 << M)))
   {
-    test(M, k);
+    cout << "-1" << endl;
+    return 0;
   }
-#endif
-  if (K != 0)
+  if (M == 0)
   {
-    cout << -1 << endl;
+    cout << "0 0" << endl;
+  }
+  else if (M == 1)
+  {
+    if (K == 0)
+    {
+      cout << "0 0 1 1" << endl;
+    }
+    else
+    {
+      cout << "-1" << endl;
+    }
   }
   else
   {
-    for (auto i = 0; i < (1 << (M + 1)); i++)
+    vector<int> V;
+    vector<int> W;
+    for (auto i = 0; i < (1 << M); i++)
     {
-      cout << i / 2;
-      if (i < (1 << (M + 1)) - 1)
+      if (i == K)
       {
-        cout << " ";
+        continue;
       }
-      cout << endl;
+      V.push_back(i);
+      W.push_back(i);
     }
+    reverse(W.begin(), W.end());
+    for (auto x : V)
+    {
+      cout << x << " ";
+    }
+    cout << K;
+    for (auto x : W)
+    {
+      cout << x << " ";
+    }
+    cout << K << endl;
   }
 }
