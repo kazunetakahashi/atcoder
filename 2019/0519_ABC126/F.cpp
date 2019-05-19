@@ -81,7 +81,7 @@ int main()
     {
       cout << x << " ";
     }
-    cout << K;
+    cout << K << " ";
     for (auto x : W)
     {
       cout << x << " ";
