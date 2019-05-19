@@ -58,7 +58,7 @@ int main()
       t *= 2;
     }
   }
-  fill(cnt, cnt + 100, 0);
+  fill(cnt, cnt + 50, 0);
   for (auto i = 1; i <= N; i++)
   {
     cnt[P[i]]++;
@@ -74,5 +74,5 @@ int main()
     ans += cnt[i] / (double)t;
   }
   ans /= N;
-  cout << ans << endl;
+  cout << fixed << setprecision(15) << ans << endl;
 }
