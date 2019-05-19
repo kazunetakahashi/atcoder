@@ -112,7 +112,12 @@ int main()
   {
     for (auto i = 0; i < (1 << (M + 1)); i++)
     {
-      cout << i / 2 << endl;
+      cout << i / 2;
+      if (i < (1 << (M + 1)) - 1)
+      {
+        cout << " ";
+      }
+      cout << endl;
     }
   }
 }
