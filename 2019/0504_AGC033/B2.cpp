@@ -87,7 +87,7 @@ int main()
     {
       down--;
     }
-    if (right <= left || down <= up)
+    if (right < left || down < up)
     {
       cout << "NO" << endl;
       return 0;
