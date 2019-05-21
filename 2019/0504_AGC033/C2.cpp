@@ -89,12 +89,12 @@ int main()
       maxi = visited[i];
     }
   }
-  if (maxi % 3 == 2)
+  if (maxi % 3 == 1)
   {
-    cout << "First" << endl;
+    cout << "Second" << endl;
   }
   else
   {
-    cout << "Second" << endl;
+    cout << "First" << endl;
   }
 }
