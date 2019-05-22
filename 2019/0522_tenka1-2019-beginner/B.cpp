@@ -48,7 +48,7 @@ int main()
   char x = S[K];
   for (auto i = 0; i < N; i++)
   {
-    if (S[i] == x)
+    if (S[i] != x)
     {
       S[i] = '*';
     }
