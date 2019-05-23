@@ -106,5 +106,10 @@ int main()
     }
   }
   int right = ok;
+#if DEBUG == 1
+  cerr << "left = " << left << ", right = " << right << endl;
+  cerr << "f(" << left << ") = " << f(left) << endl;
+  cerr << "f(" << right << ") = " << f(right) << endl;
+#endif
   cout << right - left + 1 << endl;
 }
