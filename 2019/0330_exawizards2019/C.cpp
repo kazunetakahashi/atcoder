@@ -40,8 +40,8 @@ typedef long long ll;
 
 int N, Q;
 string S;
-string T = "";
-string D = "";
+char T[200010];
+char D[200010];
 
 int f(int n)
 {
@@ -71,15 +71,11 @@ int main()
   cin >> N >> Q >> S;
   for (auto i = 0; i < Q; i++)
   {
-    string t, d;
+    char t, d;
     cin >> t >> d;
-    T = T + t;
-    D = D + d;
+    T[i] = t;
+    D[i] = d;
   }
-#if DEBUG == 1
-  cerr << "T = " << T << endl;
-  cerr << "D = " << D << endl;
-#endif
   int ok = N;
   int ng = -1;
   while (abs(ok - ng) > 1)
