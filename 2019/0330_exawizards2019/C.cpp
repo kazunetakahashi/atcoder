@@ -69,7 +69,7 @@ int f(int n)
 int main()
 {
   cin >> N >> Q >> S;
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < Q; i++)
   {
     string t, d;
     cin >> t >> d;
