@@ -78,11 +78,8 @@ int main()
   for (auto i = 0; i < (int)W.size(); i += 2)
   {
     int start = i;
-    int goal = i + 2 * K + 1;
-    if (goal < (int)W.size())
-    {
-      ans = max(ans, W[goal] - W[start]);
-    }
+    int goal = min(i + 2 * K + 1, (int)W.size());
+    ans = max(ans, W[goal] - W[start]);
   }
   cout << ans << endl;
 }
