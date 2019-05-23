@@ -76,6 +76,10 @@ int main()
     T = T + t;
     D = D + d;
   }
+#if DEBUG == 1
+  cerr << "T = " << T << endl;
+  cerr << "D = " << D << endl;
+#endif
   int ok = N;
   int ng = -1;
   while (abs(ok - ng) > 1)
