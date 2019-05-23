@@ -68,7 +68,7 @@ int f(int n)
 
 int main()
 {
-  cin >> N >> Q;
+  cin >> N >> Q >> S;
   for (auto i = 0; i < N; i++)
   {
     string t, d;
