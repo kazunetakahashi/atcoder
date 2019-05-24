@@ -108,7 +108,7 @@ int main()
     ans[k + 1] += (C(k - 1, W - 1) * power(inv[2], k + 1)) % MOD;
     ans[k + 1] %= MOD;
   }
-  for (auto i = 1; i <= N; i++)
+  for (auto i = 0; i < N; i++)
   {
     cout << ans[i] << endl;
   }
