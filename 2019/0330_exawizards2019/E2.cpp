@@ -100,13 +100,13 @@ int main()
   cin >> B >> W;
   ll N = B + W;
   ans[0] = inv[2];
-  for (auto k = 0; k < N - 1; k++)
+  for (auto k = 1; k < N; k++)
   {
-    ans[k + 1] = ans[k];
-    ans[k + 1] += MOD - (C(k - 1, W - 1) * power(inv[2], k + 1)) % MOD;
-    ans[k + 1] %= MOD;
-    ans[k + 1] += (C(k - 1, B - 1) * power(inv[2], k + 1)) % MOD;
-    ans[k + 1] %= MOD;
+    ans[k] = ans[k - 1];
+    ans[k] += MOD - (C(k - 1, W - 1) * power(inv[2], k + 1)) % MOD;
+    ans[k] %= MOD;
+    ans[k] += (C(k - 1, B - 1) * power(inv[2], k + 1)) % MOD;
+    ans[k] %= MOD;
   }
   for (auto i = 0; i < N; i++)
   {
