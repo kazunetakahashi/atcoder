@@ -123,6 +123,12 @@ int main()
       DP[i % S[j]] += (DP[i] * inv[ind]) % MOD;
       DP[i % S[j]] %= MOD;
     }
+#if DEBUG == 1
+    if (i < 100)
+    {
+      cerr << "P[" << i << "] = " << (DP[i] * fact[N]) % MOD << endl;
+    }
+#endif
     DP[i] = 0;
   }
   ll ans = 0;
@@ -131,12 +137,6 @@ int main()
     ans += (i * DP[i]) % MOD;
     ans %= MOD;
   }
-#if DEBUG == 1
-  for (auto i = 0; i <= min(N, 10); i++)
-  {
-    cerr << "P[" << i << "] = " << (DP[i] * fact[N]) % MOD << endl;
-  }
-#endif
   ans *= fact[N];
   ans %= MOD;
   cout << ans << endl;
