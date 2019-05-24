@@ -103,9 +103,9 @@ int main()
   for (auto k = 1; k < N; k++)
   {
     ans[k] = ans[k - 1];
-    ans[k] += MOD - (C(k - 1, W - 1) * power(inv[2], k + 1)) % MOD;
+    ans[k] += MOD - (C(k - 1, B - 1) * power(inv[2], k + 1)) % MOD;
     ans[k] %= MOD;
-    ans[k] += (C(k - 1, B - 1) * power(inv[2], k + 1)) % MOD;
+    ans[k] += (C(k - 1, W - 1) * power(inv[2], k + 1)) % MOD;
     ans[k] %= MOD;
   }
   for (auto i = 0; i < N; i++)
