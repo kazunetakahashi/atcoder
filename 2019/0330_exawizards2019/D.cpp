@@ -131,6 +131,12 @@ int main()
     ans += (i * DP[i]) % MOD;
     ans %= MOD;
   }
+#if DEBUG == 1
+  for (auto i = 0; i <= min(N, 10); i++)
+  {
+    cerr << "P[" << i << "] = " << (DP[i] * fact[N]) % MOD << endl;
+  }
+#endif
   ans *= fact[N];
   ans %= MOD;
   cout << ans << endl;
