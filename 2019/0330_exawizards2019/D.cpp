@@ -132,7 +132,7 @@ int main()
     DP[i] = 0;
   }
   ll ans = 0;
-  for (auto i = 0LL; i <= N; i++)
+  for (auto i = 0LL; i <= X; i++)
   {
     ans += (i * DP[i]) % MOD;
     ans %= MOD;
