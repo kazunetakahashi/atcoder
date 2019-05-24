@@ -107,8 +107,8 @@ int main()
   sort(S, S + N);
   fill(DP, DP + 100010, 0);
   int ind = N;
-  DP[N] = 1;
-  for (auto i = N; i >= 0; i--)
+  DP[X] = 1;
+  for (auto i = X; i >= 0; i--)
   {
 #if DEBUG == 1
     if (i < 100)
