@@ -57,6 +57,8 @@ int main()
     cin >> b >> c;
     S[i] = spell(c, b);
   }
+  sort(S, S + M);
+  reverse(S, S + M);
   int ind = 0;
   int ind_s = 0;
   ll now = 0;
