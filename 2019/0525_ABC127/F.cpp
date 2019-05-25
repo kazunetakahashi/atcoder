@@ -38,19 +38,69 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
+class BIT
+{ // index starts at 1.
+public:
+  int N;
+  ll *data;
+
+  BIT(int n) : N(n)
+  {
+    data = new ll[N + 1];
+    for (auto i = 1; i <= N; ++i)
+    {
+      data[i] = 0;
+    }
+  }
+
+  ~BIT()
+  {
+    delete[] data;
+  }
+
+  ll sum(int i)
+  { // [1, i]
+    ll s = 0;
+    while (i > 0)
+    {
+      s += data[i];
+      i -= i & -i;
+    }
+    return s;
+  }
+
+  ll sum(int a, int b)
+  {
+    return sum(b) - sum(a);
+  }
+
+  void add(int i, ll x)
+  {
+    while (i <= N)
+    {
+      data[i] += x;
+      i += i & -i;
+    }
+  }
+
+  void add(int i)
+  {
+    add(i, 1);
+  }
+};
+
 int Q;
+typedef tuple<char, ll, ll> query;
+vector<query> V;
 char c;
-ll a, b;
-ll A = 0;
 ll B = 0;
-ll cnt_l = 0;
-ll cnt_r = 0;
-ll cnt_zero = 0;
-ll lower = -1000000000000LL;
+map<ll, int> M;
+vector<ll> W;
 priority_queue<ll> L;
 priority_queue<ll, vector<ll>, greater<ll>> R;
+BIT bit = BIT(0);
 
-void merge()
+void merge(ll a, ll b)
 {
   ll x = L.top();
   ll y = R.top();
@@ -79,37 +129,15 @@ void merge()
     L.push(t);
   }
   B += b;
-  if (a < 0)
-  {
-    cnt_l++;
-    A += abs(a);
-  }
-  else if (a > 0)
-  {
-    cnt_r++;
-    A += abs(a);
-  }
-  else
-  {
-    cnt_zero++;
-  }
+  bit.add(M[a], a);
 }
 
 void flush()
 {
   ll val = L.top();
-  ll ans = A + B;
-  ll dist = abs(val);
-  ll c = 0;
-  if (val < 0)
-  {
-    c = cnt_l - cnt_r - cnt_zero;
-  }
-  else
-  {
-    c = cnt_r - cnt_l - cnt_zero;
-  }
-  ans -= dist * c;
+  ll ans = B;
+  ans -= bit.sum(M[val]);
+  ans += bit.sum(M[val], W.size());
   cout << val << " " << ans << endl;
 }
 
@@ -123,8 +151,34 @@ int main()
     cin >> c;
     if (c == '1')
     {
+      ll a, b;
       cin >> a >> b;
-      merge();
+      V.push_back(query(c, a, b));
+    }
+    else
+    {
+      V.push_back(query(c, 0, 0));
+    }
+  }
+  for (auto i = 0; i < Q; i++)
+  {
+    if (get<0>(V[i]) == '1')
+    {
+      ll a = get<1>(V[i]);
+      W.push_back(a);
+    }
+  }
+  sort(W.begin(), W.end());
+  for (auto i = 0; i < (int)W.size(); i++)
+  {
+    M[W[i]] = i + 1;
+  }
+  bit = BIT(W.size());
+  for (auto i = 0; i < Q; i++)
+  {
+    if (get<0>(V[i]) == '1')
+    {
+      merge(get<1>(V[i]), get<2>(V[i]));
     }
     else
     {
