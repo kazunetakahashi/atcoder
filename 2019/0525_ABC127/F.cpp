@@ -177,7 +177,7 @@ int main()
   {
     M[W[i]] = i + 1;
 #if DEBUG == 1
-    cerr << "M[" << W[i] << "] = " << M[M[i]] << endl;
+    cerr << "M[" << W[i] << "] = " << M[W[i]] << endl;
 #endif
   }
   bit = BIT(W.size());
