@@ -95,7 +95,7 @@ void flush()
   ll val = L.top();
   ll ans = A + B;
   ll dist = abs(val);
-  ll c = (abs(cnt_l - cnt_r) + 1) / 2;
+  ll c = abs(cnt_l - cnt_r);
   ans -= dist * c;
   cout << val << " " << ans << endl;
 }
