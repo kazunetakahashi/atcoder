@@ -110,7 +110,7 @@ map<ll, int> M;
 vector<ll> W;
 priority_queue<ll> L;
 priority_queue<ll, vector<ll>, greater<ll>> R;
-BIT bit;
+BIT bit = BIT(200010);
 
 void merge(ll a, ll b)
 {
@@ -193,7 +193,6 @@ int main()
     cerr << "M[" << W[i] << "] = " << M[W[i]] << endl;
 #endif
   }
-  bit = BIT(W.size());
   for (auto i = 0; i < Q; i++)
   {
     if (get<0>(V[i]) == '1')
