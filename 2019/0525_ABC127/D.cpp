@@ -79,6 +79,10 @@ int main()
       ind++;
       cnt--;
     }
+    else
+    {
+      break;
+    }
   }
   ll ans = 0;
   for (auto i = 0; i < N; i++)
