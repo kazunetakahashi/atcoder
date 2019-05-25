@@ -83,7 +83,7 @@ void merge()
     cnt_l++;
     A += abs(a);
   }
-  else
+  else if (a > 0)
   {
     cnt_r++;
     A += abs(a);
