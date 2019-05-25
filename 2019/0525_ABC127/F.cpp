@@ -45,6 +45,7 @@ ll A = 0;
 ll B = 0;
 ll cnt_l = 0;
 ll cnt_r = 0;
+ll cnt_zero = 0;
 ll lower = -1000000000000LL;
 priority_queue<ll> L;
 priority_queue<ll, vector<ll>, greater<ll>> R;
@@ -88,6 +89,10 @@ void merge()
     cnt_r++;
     A += abs(a);
   }
+  else
+  {
+    cnt_zero++;
+  }
 }
 
 void flush()
@@ -95,7 +100,7 @@ void flush()
   ll val = L.top();
   ll ans = A + B;
   ll dist = abs(val);
-  ll c = abs(cnt_l - cnt_r);
+  ll c = abs(cnt_l - cnt_r) - cnt_zero;
   ans -= dist * c;
   cout << val << " " << ans << endl;
 }
