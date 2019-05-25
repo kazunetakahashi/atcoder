@@ -96,7 +96,7 @@ ll ans = 0;
 
 void solve()
 {
-  for (auto i = 0; i < M - 1; i++)
+  for (ll i = 0; i < M - 1; i++)
   {
     ll t = (M - i) * (M - 1 - i) / 2;
     t %= MOD;
