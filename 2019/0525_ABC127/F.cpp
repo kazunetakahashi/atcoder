@@ -64,6 +64,14 @@ public:
 
   ll sum(int i)
   { // [1, i]
+    if (i <= 0)
+    {
+      return 0;
+    }
+    if (i > N)
+    {
+      return sum(N);
+    }
     ll s = 0;
     while (i > 0)
     {
@@ -142,6 +150,9 @@ void flush()
   ll ans = B;
   ans -= bit.sum(M[val]);
   ans += bit.sum(M[val], W.size());
+#if DEBUG == 1
+  cerr << "M[" << val << "] = " << M[val] << ", W.size()" << W.size() << endl;
+#endif
   cout << val << " " << ans << endl;
 }
 
