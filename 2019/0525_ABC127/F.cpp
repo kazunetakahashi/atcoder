@@ -152,8 +152,8 @@ void flush()
   ans += bit.sum(M[val] - 1, W.size());
 #if DEBUG == 1
   cerr << "M[" << val << "] = " << M[val] << ", W.size() = " << W.size() << endl;
-  cerr << "bit.sum(" << M[val] << ") = " << bit.sum(M[val]) << endl;
-  cerr << "bit.sum(" << M[val] << ", " << W.size() << ") = " << bit.sum(M[val], W.size()) << endl;
+  cerr << "bit.sum(" << M[val] - 1 << ") = " << bit.sum(M[val] - 1) << endl;
+  cerr << "bit.sum(" << M[val] - 1 << ", " << W.size() << ") = " << bit.sum(M[val] - 1, W.size()) << endl;
 #endif
   cout << val << " " << ans << endl;
 }
