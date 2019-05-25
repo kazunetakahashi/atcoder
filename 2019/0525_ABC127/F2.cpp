@@ -48,7 +48,7 @@ void merge()
 {
   B += b;
   L.push(a);
-  R.push(b);
+  R.push(a);
   if (L.top() <= R.top())
   {
     // nothing
