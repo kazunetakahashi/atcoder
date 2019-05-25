@@ -116,6 +116,7 @@ void solve()
 
 int main()
 {
+  init();
   cin >> N >> M >> K;
   solve();
   swap(N, M);
