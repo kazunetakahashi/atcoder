@@ -99,14 +99,14 @@ void solve()
   for (ll i = 0; i < M - 1; i++)
   {
     ll t = (M - i) * (M - 1 - i) / 2;
+    t %= MOD;
+    t *= N;
+    t %= MOD;
+    t *= N;
+    t %= MOD;
 #if DEBUG == 1
     cerr << "i = " << i << ", t = " << t << endl;
 #endif
-    t %= MOD;
-    t *= N;
-    t %= MOD;
-    t *= N;
-    t %= MOD;
     t *= C(N * M - 2, K - 2);
     t %= MOD;
     ans += t;
