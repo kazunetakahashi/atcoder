@@ -176,6 +176,9 @@ int main()
   for (auto i = 0; i < (int)W.size(); i++)
   {
     M[W[i]] = i + 1;
+#if DEBUG == 1
+    cerr << "M[" << W[i] << "] = " << M[M[i]] << endl;
+#endif
   }
   bit = BIT(W.size());
   for (auto i = 0; i < Q; i++)
