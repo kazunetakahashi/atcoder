@@ -106,6 +106,9 @@ void solve()
     t %= MOD;
     t *= C(N * M - 2, K - 2);
     t %= MOD;
+#if DEBUG == 1
+    cerr << "i = " << i << ", t = " << t << endl;
+#endif
     ans += t;
     ans %= MOD;
   }
