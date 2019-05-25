@@ -44,6 +44,10 @@ public:
   int N;
   ll *data;
 
+  BIT()
+  {
+  }
+
   BIT(int n) : N(n)
   {
     data = new ll[N + 1];
@@ -98,7 +102,7 @@ map<ll, int> M;
 vector<ll> W;
 priority_queue<ll> L;
 priority_queue<ll, vector<ll>, greater<ll>> R;
-BIT bit = BIT(0);
+BIT bit;
 
 void merge(ll a, ll b)
 {
