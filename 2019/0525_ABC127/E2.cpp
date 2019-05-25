@@ -105,6 +105,7 @@ void solve()
   t *= ((M - 1) * M * (M + 1)) % MOD;
   t %= MOD;
   ans += t;
+  ans %= MOD;
 }
 
 int main()
