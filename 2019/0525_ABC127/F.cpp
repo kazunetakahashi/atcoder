@@ -148,8 +148,8 @@ void flush()
 {
   ll val = L.top();
   ll ans = B;
-  ans -= ((ll)M[val]) * val + bit.sum(M[val]);
-  ans += ((ll)(W.size() - M[val])) * val + bit.sum(M[val], W.size());
+  ans -= -((ll)M[val]) * val + bit.sum(M[val]);
+  ans += -((ll)(W.size() - M[val])) * val + bit.sum(M[val], W.size());
 #if DEBUG == 1
   cerr << "M[" << val << "] = " << M[val] << ", W.size() = " << W.size() << endl;
   cerr << "bit.sum(" << M[val] << ") = " << bit.sum(M[val]) << endl;
