@@ -55,7 +55,7 @@ int main()
     set<int> S;
     int b = 0;
     int f = N - 1;
-    while (b < N && f >= 0 && b != f && b > d && S.find(b) == S.end() && S.find(f) == S.end())
+    while (b < N && f >= 0 && b != f && f > d && S.find(b) == S.end() && S.find(f) == S.end())
     {
       t += s[b];
       t += s[f];
