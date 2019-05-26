@@ -54,7 +54,10 @@ private:
   }
 
 public:
-  SegTree() {}
+  SegTree()
+  {
+    dat = new T[0];
+  }
 
   ~SegTree()
   {
@@ -179,8 +182,5 @@ int main()
   {
     M[x] = ind++;
   }
-#if DEBUG == 1
-  cerr << "aaaaa" << endl;
-#endif
   tree = SegTree<ll>(S.size(), 0);
 }
