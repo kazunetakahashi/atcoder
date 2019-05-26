@@ -145,6 +145,9 @@ void flush()
 {
   ll p = L.top();
   int ind = M[p];
+#if DEBUG == 1
+  cerr << "aaaaa" << endl;
+#endif
   ll v = -tree.find(0, ind) + tree.find(ind + 1, S.size());
   cout << p << " " << v << endl;
 }
