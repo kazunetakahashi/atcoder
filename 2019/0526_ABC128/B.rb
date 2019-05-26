@@ -5,7 +5,7 @@
 # Powered by Visual Studio Code
 #
 
-n = gets.chomp.split(" ").map{|i| i.to_i}
+n = gets.to_i
 ary = []
 for i in 1..n
   s, q = gets.chomp.split(" ").map{|x| x.to_s}
