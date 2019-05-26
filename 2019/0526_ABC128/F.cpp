@@ -53,17 +53,17 @@ int main()
   {
     ll t = 0;
     set<int> S;
-    int mini = 0;
-    int maxi = N - 1;
-    while (mini < N && maxi >= 0 && mini != maxi && S.find(mini) == S.end() && S.find(maxi) == S.end())
+    int b = 0;
+    int f = N - 1;
+    while (b < N && f >= 0 && b < f && S.find(b) == S.end() && S.find(f) == S.end())
     {
-      t += s[mini];
-      t += s[maxi];
-      S.insert(mini);
-      S.insert(maxi);
+      t += s[b];
+      t += s[f];
+      S.insert(b);
+      S.insert(f);
       ans = max(ans, t);
-      mini += d;
-      maxi -= d;
+      b += d;
+      f -= d;
     }
   }
   cout << ans << endl;
