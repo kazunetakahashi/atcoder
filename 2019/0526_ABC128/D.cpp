@@ -99,6 +99,20 @@ int main()
     {
       W.push_back(X[j]);
     }
+#if DEBUG == 1
+    cerr << "V :";
+    for (auto x : V)
+    {
+      cerr << x << " ";
+    }
+    cerr << endl;
+    cerr << "W :";
+    for (auto x : W)
+    {
+      cerr << x << " ";
+    }
+    cerr << endl;
+#endif
     ans = max(ans, solve(V, W));
   }
   cout << ans << endl;
