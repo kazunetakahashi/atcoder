@@ -49,9 +49,9 @@ int main()
   {
     cin >> a[i];
   }
-  for (auto l = 0; l < K; l++)
+  for (auto l = 0; l <= K; l++)
   {
-    for (auto r = 0; r < K - l; r++)
+    for (auto r = 0; r <= K - l; r++)
     {
       if (l + r > N)
       {
