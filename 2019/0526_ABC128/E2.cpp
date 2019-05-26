@@ -39,7 +39,7 @@ typedef long long ll;
 // const ll M = 1000000007;
 
 int N, Q;
-typedef tuple<ll, int, ll> event; // 0: 壁が置かれる。 1: 半直線発射。 2: 壁が取り除かれる。
+typedef tuple<ll, int, ll> event; // 0: 壁が置かれる。 1: 壁が取り除かれる。 2: 半直線発射
 vector<event> V;
 multiset<ll> S; // 壁が置かれた座標。
 
@@ -51,13 +51,13 @@ int main()
     ll s, t, x;
     cin >> s >> t >> x;
     V.push_back(event(s - x, 0, x));
-    V.push_back(event(t - x, 2, x));
+    V.push_back(event(t - x, 1, x));
   }
   for (auto i = 0; i < Q; i++)
   {
     ll d;
     cin >> d;
-    V.push_back(event(d, 1, 0));
+    V.push_back(event(d, 2, 0));
   }
   sort(V.begin(), V.end());
   for (auto e : V)
@@ -72,7 +72,7 @@ int main()
     {
       S.insert(dist);
     }
-    else if (c == 1)
+    else if (c == 2)
     {
       if (S.empty())
       {
