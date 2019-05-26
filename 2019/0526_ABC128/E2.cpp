@@ -65,6 +65,9 @@ int main()
     ll time, dist;
     int c;
     tie(time, c, dist) = e;
+#if DEBUG == 1
+    cerr << "time = " << time << ", c = " << c << ", dist = " << dist << endl;
+#endif
     if (c == 0)
     {
       S.insert(dist);
