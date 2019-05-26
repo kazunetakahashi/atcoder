@@ -95,7 +95,7 @@ int main()
       }
       ans[ind] = a;
 #if DEBUG == 1
-      cerr << "ans[" << ind << "] = " << ans[ind] << endl;
+      cerr << "D[" << ind << "] = " << D[ind] << ", ans[" << ind << "] = " << ans[ind] << endl;
 #endif
       ind++;
       if (ind == Q)
