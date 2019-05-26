@@ -47,7 +47,7 @@ int main()
 {
   cin >> N >> M;
   V = vector<int>(N);
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < M; i++)
   {
     int k;
     cin >> k;
