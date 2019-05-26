@@ -65,9 +65,10 @@ int main()
   for (auto d = 1; d < N; d++)
   {
     ll t = 0;
-    ll mini = 0;
-    ll maxi = N - 1;
-    while (maxi > mini)
+    set<int> S;
+    int mini = 0;
+    int maxi = N - 1;
+    while (S.find(mini) == S.end() && S.find(maxi) == S.end())
     {
       t += s[mini];
       t += s[maxi];
