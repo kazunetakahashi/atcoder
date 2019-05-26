@@ -49,7 +49,6 @@ int main()
   {
     cin >> s[i];
   }
-  /*
   for (auto t = 1; t <= N - 1; t += 2)
   {
     if ((N - 1) % t == 0)
@@ -63,7 +62,6 @@ int main()
       ans = max(ans, t);
     }
   }
-  */
   for (auto d = 1; d < N; d++)
   {
     ll t = 0;
