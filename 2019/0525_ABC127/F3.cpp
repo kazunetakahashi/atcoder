@@ -53,6 +53,12 @@ private:
     return x + y;
   }
 
+  static T _update(T x, T y)
+  { // update で 値をどうするかを書く。
+    // return y;
+    return func(x, y);
+  }
+
 public:
   SegTree() {}
 
@@ -76,7 +82,7 @@ public:
   void update(int k, T a)
   {
     k += N - 1;
-    dat[k] = a;
+    dat[k] = _update(dat[k], a);
     while (k > 0)
     {
       k = (k - 1) / 2;
