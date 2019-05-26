@@ -8,7 +8,7 @@
 n = gets.chomp.split(" ").map{|i| i.to_i}
 ary = []
 for i in 1..n
-  s, q = gets.chomp.split(" ").map{|i| i.to_s}
+  s, q = gets.chomp.split(" ").map{|x| x.to_s}
   q = q.to_i
   ary << [s, -q, i]
 end
