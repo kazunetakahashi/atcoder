@@ -88,14 +88,14 @@ int main()
     cin >> X[i];
   }
   int ans = 0;
-  for (auto i = 0; i <= K; i++)
+  for (auto i = 0; i <= N; i++)
   {
     vector<int> V, W;
     for (auto j = 0; j < i; j++)
     {
       V.push_back(X[j]);
     }
-    for (auto j = K - 1; j >= i; j--)
+    for (auto j = N - 1; j >= i; j--)
     {
       W.push_back(X[j]);
     }
