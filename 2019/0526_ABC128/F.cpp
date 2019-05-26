@@ -70,7 +70,7 @@ int main()
     set<int> S;
     int mini = 0;
     int maxi = N - 1;
-    while (mini < N && maxi >= 0 && S.find(mini) == S.end() && S.find(maxi) == S.end())
+    while (mini < N && maxi >= 0 && mini != maxi && S.find(mini) == S.end() && S.find(maxi) == S.end())
     {
       t += s[mini];
       t += s[maxi];
