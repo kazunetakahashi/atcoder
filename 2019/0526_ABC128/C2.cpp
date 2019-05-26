@@ -70,7 +70,7 @@ int main()
     int sw = 0;
     for (auto j = 0; j < N; j++)
     {
-      if ((i >> j) & 1)
+      if (i >> j & 1)
       {
         sw ^= V[j];
       }
