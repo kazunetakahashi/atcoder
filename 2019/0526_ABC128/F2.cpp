@@ -84,4 +84,5 @@ int main()
       x++;
     }
   }
+  cout << ans << endl;
 }
