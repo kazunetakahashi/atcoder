@@ -65,12 +65,11 @@ int main()
     ll x = get<0>(KK[i]);
     ll s = get<1>(KK[i]);
     ll t = get<2>(KK[i]);
-    ll ind = get<3>(KK[i]);
+    int ind = get<3>(KK[i]);
     P.push(info(s - x, ind, 0));
     P.push(info(t - x, ind, 1));
   }
   int ind = 0;
-  ll t = -10000000000000LL;
   set<int> S;
   fill(ans, ans + Q, -1);
   while (!P.empty())
@@ -80,9 +79,8 @@ int main()
     ll next_t = get<0>(x);
     int point = get<1>(x);
     bool start = (get<2>(x) == 0);
-    if (next_t < D[ind])
+    if (next_t <= D[ind])
     {
-      t = next_t;
       if (start)
       {
         S.insert(point);
@@ -91,6 +89,7 @@ int main()
       {
         S.erase(S.find(point));
       }
+      continue;
     }
     else
     {
@@ -119,24 +118,6 @@ int main()
       else
       {
         S.erase(S.find(point));
-      }
-      if (next_t == D[ind])
-      {
-        int a = -1;
-        if (S.empty())
-        {
-          a = -1;
-        }
-        else
-        {
-          a = *S.begin();
-        }
-        ans[ind] = a;
-        ind++;
-        if (ind == Q)
-        {
-          goto EXIT;
-        }
       }
     }
   }
