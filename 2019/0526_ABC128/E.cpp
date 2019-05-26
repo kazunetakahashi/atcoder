@@ -79,46 +79,31 @@ int main()
     ll next_t = get<0>(x);
     int point = get<1>(x);
     bool start = (get<2>(x) == 0);
-    if (next_t <= D[ind])
+    while (next_t > D[ind])
     {
-      if (start)
+      int a = -1;
+      if (S.empty())
       {
-        S.insert(point);
+        a = -1;
       }
       else
       {
-        S.erase(S.find(point));
+        a = *S.begin();
       }
-      continue;
+      ans[ind] = a;
+      ind++;
+      if (ind == Q)
+      {
+        goto EXIT;
+      }
+    }
+    if (start)
+    {
+      S.insert(point);
     }
     else
     {
-      while (next_t > D[ind])
-      {
-        int a = -1;
-        if (S.empty())
-        {
-          a = -1;
-        }
-        else
-        {
-          a = *S.begin();
-        }
-        ans[ind] = a;
-        ind++;
-        if (ind == Q)
-        {
-          goto EXIT;
-        }
-      }
-      if (start)
-      {
-        S.insert(point);
-      }
-      else
-      {
-        S.erase(S.find(point));
-      }
+      S.erase(S.find(point));
     }
   }
 EXIT:
