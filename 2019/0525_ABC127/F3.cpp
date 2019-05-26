@@ -109,7 +109,8 @@ int Q;
 query X[200010];
 set<ll> S;
 map<ll, int> M;
-SegTree<ll> tree;
+SegTree<ll> sum;
+SegTree<ll> cnt;
 
 priority_queue<ll> L;
 priority_queue<ll, vector<ll>, greater<ll>> R;
@@ -133,14 +134,15 @@ void merge(ll a, ll b)
     L.push(r);
     R.push(l);
   }
-  tree.update(M[a], a);
+  sum.update(M[a], a);
+  cnt.update(M[a], 1);
 }
 
 void flush()
 {
   ll p = L.top();
   int ind = M[p];
-  ll v = -tree.find(0, ind) + tree.find(ind + 1, S.size());
+  ll v = -sum.find(0, ind) + cnt.find(0, ind) * p + sum.find(ind + 1, S.size()) - cnt.find(ind + 1, S.size()) * p;
   cout << p << " " << v + B << endl;
 }
 
@@ -174,7 +176,8 @@ int main()
   {
     M[x] = ind++;
   }
-  tree = SegTree<ll>(S.size(), 0);
+  sum = SegTree<ll>(S.size(), 0);
+  cnt = SegTree<ll>(S.size(), 0);
   for (auto i = 0; i < Q; i++)
   {
     if (get<0>(X[i]))
