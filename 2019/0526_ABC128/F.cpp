@@ -72,6 +72,8 @@ int main()
     {
       t += s[mini];
       t += s[maxi];
+      S.insert(mini);
+      S.insert(maxi);
       ans = max(ans, t);
       mini += d;
       maxi -= d;
