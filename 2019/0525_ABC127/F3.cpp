@@ -54,15 +54,7 @@ private:
   }
 
 public:
-  SegTree()
-  {
-    dat = new T[0];
-  }
-
-  ~SegTree()
-  {
-    delete[] dat;
-  }
+  SegTree() {}
 
   SegTree(int n, T unit)
   { // ここで unit を定義するのも変な実装だけどめんどいからこれでいい。
