@@ -42,7 +42,7 @@ int N, Q;
 ll S[200010], T[200010], X[200010];
 ll D[200010];
 int ans[200010];
-typedef tuple<ll, ll, ll, int> K;
+typedef tuple<ll, ll, ll> K;
 vector<K> KK;
 typedef tuple<ll, int, int> info;
 priority_queue<info, vector<info>, greater<info>> P;
@@ -53,7 +53,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     cin >> S[i] >> T[i] >> X[i];
-    KK.push_back(K(X[i], S[i], T[i], i));
+    KK.push_back(K(X[i], S[i], T[i]));
   }
   sort(KK.begin(), KK.end());
   for (auto i = 0; i < Q; i++)
@@ -65,12 +65,11 @@ int main()
     ll x = get<0>(KK[i]);
     ll s = get<1>(KK[i]);
     ll t = get<2>(KK[i]);
-    int ind = get<3>(KK[i]);
-    P.push(info(s - x, ind, 0));
-    P.push(info(t - x, ind, 1));
+    P.push(info(s - x, x, 0));
+    P.push(info(t - x, x, 1));
   }
   int ind = 0;
-  set<int> S;
+  multiset<int> S;
   fill(ans, ans + Q, -1);
   while (!P.empty())
   {
@@ -127,7 +126,7 @@ EXIT:
     }
     else
     {
-      cout << X[ans[i]] << endl;
+      cout << ans[i] << endl;
     }
   }
 }
