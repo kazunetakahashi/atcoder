@@ -175,4 +175,15 @@ int main()
     M[x] = ind++;
   }
   tree = SegTree<ll>(S.size(), 0);
+  for (auto i = 0; i < Q; i++)
+  {
+    if (get<0>(X[i]))
+    {
+      merge(get<1>(X[i]), get<2>(X[i]));
+    }
+    else
+    {
+      flush();
+    }
+  }
 }
