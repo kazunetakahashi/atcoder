@@ -56,7 +56,7 @@ int main()
     int x = 0;
     while (true)
     {
-      if (x * C < N)
+      if (x * C >= N)
       {
         break;
       }
