@@ -79,6 +79,9 @@ int main()
     ll next_t = get<0>(x);
     int point = get<1>(x);
     bool start = (get<2>(x) == 0);
+#if DEBUG == 1
+    cerr << "next_t = " << next_t << endl;
+#endif
     while (next_t > D[ind])
     {
       int a = -1;
@@ -91,6 +94,9 @@ int main()
         a = *S.begin();
       }
       ans[ind] = a;
+#if DEBUG == 1
+      cerr << "ans[" << ind << "] = " << ans[ind] << endl;
+#endif
       ind++;
       if (ind == Q)
       {
@@ -100,10 +106,16 @@ int main()
     if (start)
     {
       S.insert(point);
+#if DEBUG == 1
+      cerr << "insert: " << point << endl;
+#endif
     }
     else
     {
       S.erase(S.find(point));
+#if DEBUG == 1
+      cerr << "erase: " << point << endl;
+#endif
     }
   }
 EXIT:
