@@ -141,7 +141,7 @@ void flush()
   ll p = L.top();
   int ind = M[p];
   ll v = -tree.find(0, ind) + tree.find(ind + 1, S.size());
-  cout << p << " " << v << endl;
+  cout << p << " " << v + B << endl;
 }
 
 int main()
