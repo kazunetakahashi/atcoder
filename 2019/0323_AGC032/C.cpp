@@ -38,6 +38,18 @@ typedef long long ll;
 // const int C = 1e6+10;
 // const ll M = 1000000007;
 
+void Yes()
+{
+  cout << "Yes" << endl;
+  exit(0);
+}
+
+void No()
+{
+  cout << "No" << endl;
+  exit(0);
+}
+
 int N, M;
 vector<int> V[100010];
 int parent[100010];
@@ -80,36 +92,34 @@ int main()
     V[a].push_back(b);
     V[b].push_back(a);
   }
-  bool odd = false;
-  bool six = false;
-  int four = 0;
   for (auto i = 0; i < N; i++)
   {
     int s = V[i].size();
     if (s % 2 == 1)
     {
-      odd = true;
+      No();
     }
-    if (s >= 6)
+  }
+  for (auto i = 0; i < N; i++)
+  {
+    int s = V[i].size();
+    if (s % 2 >= 6)
     {
-      six = true;
+      Yes();
     }
+  }
+  int four = 0;
+  for (auto i = 0; i < N; i++)
+  {
+    int s = V[i].size();
     if (s == 4)
     {
       four++;
     }
   }
-  if (odd)
+  if (four >= 3)
   {
-    cout << "No" << endl;
-  }
-  else if (six)
-  {
-    cout << "Yes" << endl;
-  }
-  else if (four >= 3)
-  {
-    cout << "Yes" << endl;
+    Yes();
   }
   else if (four == 2)
   {
@@ -131,15 +141,15 @@ int main()
     fill(parent, parent + N, -1);
     if (!dfs(start))
     {
-      cout << "Yes" << endl;
+      Yes();
     }
     else
     {
-      cout << "No" << endl;
+      No();
     }
   }
   else
   {
-    cout << "No" << endl;
+    No();
   }
 }
