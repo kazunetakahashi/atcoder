@@ -92,12 +92,21 @@ int main()
   while (abs(ok - ng) > 1)
   {
     int t = (ng + ok) / 2;
+#if DEBUG == 1
+    cerr << "t = " << t << endl;
+#endif
     if (solve(t))
     {
+#if DEBUG == 1
+      cerr << "ok, ans = " << ans << endl;
+#endif
       ok = t;
     }
     else
     {
+#if DEBUG == 1
+      cerr << "ng" << endl;
+#endif
       ng = t;
     }
   }
