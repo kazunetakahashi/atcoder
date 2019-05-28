@@ -103,7 +103,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     int s = V[i].size();
-    if (s % 2 >= 6)
+    if (s >= 6)
     {
       Yes();
     }
