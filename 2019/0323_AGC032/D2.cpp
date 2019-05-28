@@ -64,20 +64,26 @@ int main()
   }
   fill(&DP[0][0], &DP[0][0] + 5010 * 5010, infty);
   DP[0][0] = 0;
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i <= N; i++)
   {
-    for (auto j = 0; j < N; j++)
+    for (auto j = 0; j <= N; j++)
     {
-      DP[i][j + 1] = min(DP[i][j + 1], DP[i][j]);
-      if (p[i + 1] <= j)
+      if (j < N)
       {
-        DP[i + 1][j] = min(DP[i + 1][j], DP[i][j] + B);
+        DP[i][j + 1] = min(DP[i][j + 1], DP[i][j]);
       }
-      else
+      if (i < N)
       {
-        DP[i + 1][j] = min(DP[i + 1][j], DP[i][j] + A);
+        if (p[i + 1] <= j)
+        {
+          DP[i + 1][j] = min(DP[i + 1][j], DP[i][j] + B);
+        }
+        else
+        {
+          DP[i + 1][j] = min(DP[i + 1][j], DP[i][j] + A);
+        }
       }
-      if (p[i + 1] == j + 1)
+      if (i < N && j < N && p[i + 1] == j + 1)
       {
         DP[i + 1][j + 1] = min(DP[i + 1][j + 1], DP[i][j]);
       }
