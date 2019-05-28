@@ -115,6 +115,7 @@ int main()
   }
   else if (four == 2)
   {
+    assert(false);
     for (auto i = 0; i < N; i++)
     {
       if ((int)V[i].size() == 4)
