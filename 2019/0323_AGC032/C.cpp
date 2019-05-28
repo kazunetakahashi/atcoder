@@ -89,12 +89,10 @@ int main()
     if (s % 2 == 1)
     {
       odd = true;
-      break;
     }
     if (s >= 6)
     {
       six = true;
-      break;
     }
     if (s == 4)
     {
@@ -115,7 +113,6 @@ int main()
   }
   else if (four == 2)
   {
-    assert(false);
     for (auto i = 0; i < N; i++)
     {
       if ((int)V[i].size() == 4)
