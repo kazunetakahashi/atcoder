@@ -64,6 +64,6 @@ int main()
   }
   for (auto i = 0; i < Q; i++)
   {
-    cout << sum[r[i]] - sum[l[i] - 1] << endl;
+    cout << sum[r[i]] - sum[l[i]] << endl;
   }
 }
