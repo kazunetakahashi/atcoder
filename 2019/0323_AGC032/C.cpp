@@ -121,32 +121,29 @@ int main()
   {
     Yes();
   }
-  else if (four == 2)
+  if (four <= 1)
   {
-    for (auto i = 0; i < N; i++)
+    No();
+  }
+  for (auto i = 0; i < N; i++)
+  {
+    if ((int)V[i].size() == 4)
     {
-      if ((int)V[i].size() == 4)
+      if (start == -1)
       {
-        if (start == -1)
-        {
-          start = i;
-        }
-        else
-        {
-          goal = i;
-          break;
-        }
+        start = i;
+      }
+      else
+      {
+        goal = i;
+        break;
       }
     }
-    fill(parent, parent + N, -1);
-    if (!dfs(start))
-    {
-      Yes();
-    }
-    else
-    {
-      No();
-    }
+  }
+  fill(parent, parent + N, -1);
+  if (!dfs(start))
+  {
+    Yes();
   }
   else
   {
