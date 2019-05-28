@@ -54,7 +54,7 @@ const int dy[4] = {0, 1, 0, -1};
 int N;
 ll M;
 ll a[200010];
-ll ans = 100 * M;
+ll ans;
 
 bool solve(int t)
 {
@@ -82,6 +82,7 @@ bool solve(int t)
 int main()
 {
   cin >> N >> M;
+  ans = 100 * M;
   for (auto i = 0; i < 2 * N; i++)
   {
     cin >> a[i];
