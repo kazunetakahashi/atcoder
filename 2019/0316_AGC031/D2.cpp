@@ -130,6 +130,9 @@ int main()
     cin >> b[i];
     b[i]--;
   }
+#if DEBUG == 1
+  cerr << "N = " << N << endl;
+#endif
   A = inv(a);
   B = inv(b);
   // $x = bABa$, $y = AbaB$
@@ -141,9 +144,6 @@ int main()
     return 0;
   }
   int n = (K - 1) / 6;
-#if DEBUG == 1
-  cerr << "n = " << n << endl;
-#endif
   vector<int> p = mult(mult(power(x, n), b), power(y, n));
   vector<int> q = mult(mult(power(x, n), mult(b, A)), power(y, n));
   for (auto i = 6 * n + 1; i < K; i++)
