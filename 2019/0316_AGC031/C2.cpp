@@ -103,7 +103,7 @@ void dfs(int A, int B, int mask)
   int next;
   for (next = 0; next < N; next++)
   {
-    if (mask >> next & 1)
+    if (new_mask >> next & 1)
     {
       continue;
     }
