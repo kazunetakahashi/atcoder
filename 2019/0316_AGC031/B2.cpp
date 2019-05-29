@@ -64,6 +64,7 @@ int main()
     cin >> C[i];
     C[i]--;
   }
+  C[N] = -1;
   DP[0] = 1;
   for (auto i = 1; i <= N; i++)
   {
@@ -76,8 +77,11 @@ int main()
       DP[i] = DP[i - 1] + sum[C[i - 1]];
       DP[i] %= MOD;
       sum[C[i - 1]] += DP[i];
-      DP[i] %= MOD;
+      sum[i] %= MOD;
     }
+#if DEBUG == 1
+    cerr << "DP[" << i << "] = " << DP[i] << endl;
+#endif
   }
   cout << DP[N] << endl;
 }
