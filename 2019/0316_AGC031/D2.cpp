@@ -100,7 +100,7 @@ void flush(vector<int> V)
 {
   for (auto i = 0; i < N; i++)
   {
-    cout << V[i];
+    cout << V[i] + 1;
     if (i < N - 1)
     {
       cout << " ";
