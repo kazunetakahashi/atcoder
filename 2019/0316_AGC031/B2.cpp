@@ -69,7 +69,7 @@ int main()
   {
     if (C[i - 1] == C[i])
     {
-      DP[i] == DP[i - 1];
+      DP[i] = DP[i - 1];
     }
     else
     {
