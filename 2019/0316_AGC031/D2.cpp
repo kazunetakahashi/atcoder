@@ -116,6 +116,9 @@ int main()
 {
   cin >> N >> K;
   K--;
+  a = vector<int>(N);
+  b = vector<int>(N);
+  I = vector<int>(N);
   for (auto i = 0; i < N; i++)
   {
     I[i] = i;
@@ -130,9 +133,6 @@ int main()
     cin >> b[i];
     b[i]--;
   }
-#if DEBUG == 1
-  cerr << "N = " << N << endl;
-#endif
   A = inv(a);
   B = inv(b);
   // $x = bABa$, $y = AbaB$
