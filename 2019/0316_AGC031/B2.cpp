@@ -76,7 +76,7 @@ int main()
     {
       DP[i] = DP[i - 1] + sum[C[i - 1]];
       DP[i] %= MOD;
-      sum[C[i - 1]] += DP[i];
+      sum[C[i - 1]] += DP[i - 1];
       sum[i] %= MOD;
     }
 #if DEBUG == 1
