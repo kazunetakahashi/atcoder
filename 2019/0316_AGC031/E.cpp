@@ -153,7 +153,7 @@ void solve()
     }
     else if (t[i] == 'R')
     {
-      for (auto j = 0; j < K - b[i] - 1; j++)
+      for (auto j = 0; j < K - b[i]; j++)
       {
         rx[j] = min(rx[j], a[i]);
       }
@@ -167,7 +167,7 @@ void solve()
     }
     else if (t[i] == 'U')
     {
-      for (auto j = 0; j < K - b[i] - 1; j++)
+      for (auto j = 0; j < K - b[i]; j++)
       {
         ry[j] = min(ry[j], a[i]);
       }
