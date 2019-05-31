@@ -177,6 +177,17 @@ void solve()
       assert(false);
     }
   }
+#if DEBUG == 1
+  cerr << "K = " << K << endl;
+  for (auto i = 0; i < K; i++)
+  {
+    cerr << "lx[" << i << "] = " << lx[i] << ", rx[" << i << "] = " << rx[i] << endl;
+  }
+  for (auto i = 0; i < K; i++)
+  {
+    cerr << "ly[" << i << "] = " << ly[i] << ", ry[" << i << "] = " << ry[i] << endl;
+  }
+#endif
   flow = MinCostFlow(402);
   for (auto i = 0; i < K; i++)
   {
