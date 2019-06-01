@@ -125,7 +125,7 @@ int main()
   }
   if (K > 0)
   {
-    ans *= (100 * inv[K]) % MOD;
+    ans *= (100 * inv[A + B]) % MOD;
     ans %= MOD;
   }
   cout << ans << endl;
