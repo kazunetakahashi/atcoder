@@ -77,19 +77,12 @@ int main()
       }
       if (!dp_L[a][b] && W[a][b])
       {
-        if (a + 1 == b)
+        for (auto c = a; c < b; c++)
         {
-          dp_L[a][b] = true;
-        }
-        else
-        {
-          for (auto c = a; c < b; c++)
+          if (dp_L[a][c] && dp_R[c + 1][b])
           {
-            if (dp_L[a][c] && dp_R[c + 1][b])
-            {
-              dp_L[a][b] = true;
-              break;
-            }
+            dp_L[a][b] = true;
+            break;
           }
         }
       }
@@ -104,29 +97,14 @@ int main()
       }
       if (!dp_R[a][b] && W[b][a])
       {
-        if (a + 1 == b)
+        for (auto c = a; c < b; c++)
         {
-          dp_R[a][b] = true;
-        }
-        else
-        {
-          for (auto c = a; c < b; c++)
+          if (dp_L[a][c] && dp_R[c + 1][b])
           {
-            if (dp_L[a][c] && dp_R[c + 1][b])
-            {
-              dp_R[a][b] = true;
-              break;
-            }
+            dp_L[a][b] = true;
+            break;
           }
         }
-      }
-      if (dp_R[a][b] && W[a][b])
-      {
-        dp_L[a][b] = true;
-      }
-      if (dp_L[a][b] && W[b][a])
-      {
-        dp_R[a][b] = true;
       }
 #if DEBUG == 1
       cerr << "dp_L[" << a << "][" << b << "] = " << dp_L[a][b] << endl;
