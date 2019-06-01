@@ -61,10 +61,11 @@ int main()
     dp_L[i][i] = true;
     dp_R[i][i] = true;
   }
-  for (auto a = 0; a < N - 1; a++)
+  for (auto n = 1; n < N; n++)
   {
-    for (auto b = a + 1; b < N; b++)
+    for (auto a = 0; a + n < N; a++)
     {
+      int b = a + n;
       dp_L[a][b] = false;
       for (auto c = a + 1; c < b; c++)
       {
