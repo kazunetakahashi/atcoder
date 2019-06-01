@@ -75,6 +75,6 @@ int main()
       }
     }
   }
-  int ans = (dp_L[0] & dp_R[N - 1]).count();
+  int ans = (dp_R[0] & dp_L[N - 1]).count();
   cout << ans << endl;
 }
