@@ -138,6 +138,9 @@ void dfs2(int v)
       {
         dfs2(x);
         uf.merge(v, x);
+#if DEBUG == 1
+        cerr << "merged(" << v << ", " << x << ")" << endl;
+#endif
       }
     }
   }
@@ -181,16 +184,10 @@ int main()
     }
   }
   fill(visited, visited + N, false);
-#if DEBUG == 1
-  cerr << "dfs" << endl;
-#endif
   for (auto i = 0; i < N; i++)
   {
     dfs(i);
   }
-#if DEBUG == 1
-  cerr << "dfs" << endl;
-#endif
   uf = UnionFind(N);
   reverse(X.begin(), X.end());
   fill(visited, visited + N, false);
