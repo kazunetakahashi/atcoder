@@ -152,7 +152,7 @@ void dfs3(int v)
     {
       if (!visited[x] && Y.find(v) != Y.end())
       {
-        dfs(x);
+        dfs3(x);
       }
     }
   }
