@@ -104,20 +104,6 @@ long long gcd(long long x, long long y)
   return y ? gcd(y, x % y) : x;
 }
 
-ll exe(ll x, ll y)
-{
-  if (x == 0)
-  {
-    return 0;
-  }
-  ll n = y / MOD - (x - 1) / MOD;
-  if (n == 0)
-  {
-    return 0;
-  }
-  return (factinv[(x - 1) % MOD] * fact[y % MOD]) % MOD;
-}
-
 int main()
 {
   init();
@@ -125,16 +111,25 @@ int main()
   cin >> Q;
   while (Q--)
   {
-    ll N, X, D;
-    cin >> N >> X >> D;
-    if (D == 0)
+    ll x, d, n;
+    cin >> x >> d >> n;
+    if (d == 0)
     {
-      cout << power(X, N) << endl;
+      cout << power(x, n) << endl;
+      continue;
     }
     else
     {
-      X = (X * inv[D]) % MOD;
-      cout << (power(D, N) * exe(X, X + N - 1)) % MOD << endl;
+      x = (x * inv[d]) % MOD;
+      if (x + n - 1 >= MOD)
+      {
+        cout << 0 << endl;
+        continue;
+      }
+      ll ans = power(d, n);
+      ans *= (fact[x + n - 1] * factinv[x - 1]) % MOD;
+      ans %= MOD;
+      cout << ans << endl;
     }
   }
 }
