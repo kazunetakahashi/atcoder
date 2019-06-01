@@ -185,6 +185,9 @@ int main()
   {
     dfs(i);
   }
+#if DEBUG == 1
+  cerr << "dfs" << endl;
+#endif
   uf = UnionFind(N);
   reverse(X.begin(), X.end());
   fill(visited, visited + N, false);
