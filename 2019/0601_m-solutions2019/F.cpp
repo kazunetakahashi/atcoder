@@ -181,6 +181,9 @@ int main()
     }
   }
   fill(visited, visited + N, false);
+#if DEBUG == 1
+  cerr << "dfs" << endl;
+#endif
   for (auto i = 0; i < N; i++)
   {
     dfs(i);
