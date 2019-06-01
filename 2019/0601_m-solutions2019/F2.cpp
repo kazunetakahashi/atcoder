@@ -105,7 +105,7 @@ int main()
       {
         if (a + 1 == b)
         {
-          dp_L[a][b] = true;
+          dp_R[a][b] = true;
         }
         else
         {
