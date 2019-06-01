@@ -118,9 +118,9 @@ int main()
 #endif
   for (auto n = 0; n < N; n++)
   {
-    ans += ((((power(X, N) * power(Y, n)) % MOD) * C(N + n, n)) % MOD * (N + n)) % MOD;
+    ans += ((((power(X, N) * power(Y, n)) % MOD) * C(N + n - 1, n)) % MOD * (N + n)) % MOD;
     ans %= MOD;
-    ans += ((((power(Y, N) * power(X, n)) % MOD) * C(N + n, n)) % MOD * (N + n)) % MOD;
+    ans += ((((power(Y, N) * power(X, n)) % MOD) * C(N + n - 1, n)) % MOD * (N + n)) % MOD;
     ans %= MOD;
   }
   if (K > 0)
