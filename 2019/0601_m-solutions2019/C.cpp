@@ -112,9 +112,11 @@ int main()
   cin >> N >> A >> B >> K;
   ll X = (A * inv[A + B]) % MOD;
   ll Y = (B * inv[A + B]) % MOD;
-  for (auto n = 0; n <= N; n++)
+  for (auto n = 0; n < N; n++)
   {
-    ans += (((power(X, n) * power(Y, N - n)) % MOD) * C(N, n)) % MOD;
+    ans += (((power(X, N) * power(Y, n)) % MOD) * C(N + n, n)) % MOD;
+    ans %= MOD;
+    ans += (((power(Y, N) * power(X, n)) % MOD) * C(N + n, n)) % MOD;
     ans %= MOD;
   }
   ans *= (100 * inv[K]);
