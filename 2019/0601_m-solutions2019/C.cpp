@@ -109,6 +109,7 @@ ll ans = 0;
 
 int main()
 {
+  init();
   cin >> N >> A >> B >> K;
   ll X = (A * inv[A + B]) % MOD;
   ll Y = (B * inv[A + B]) % MOD;
