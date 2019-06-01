@@ -120,6 +120,14 @@ int main()
           }
         }
       }
+      if (dp_R[a][b] && W[a][b])
+      {
+        dp_L[a][b] = true;
+      }
+      if (dp_L[a][b] && W[b][a])
+      {
+        dp_R[a][b] = true;
+      }
 #if DEBUG == 1
       cerr << "dp_L[" << a << "][" << b << "] = " << dp_L[a][b] << endl;
       cerr << "dp_R[" << a << "][" << b << "] = " << dp_R[a][b] << endl;
