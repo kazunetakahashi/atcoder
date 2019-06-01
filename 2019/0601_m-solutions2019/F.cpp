@@ -161,7 +161,7 @@ void dfs3(int v)
 int main()
 {
   cin >> N;
-  for (auto i = 1; i < N; i++)
+  for (auto i = 0; i < N; i++)
   {
     for (auto j = 0; j < i; j++)
     {
