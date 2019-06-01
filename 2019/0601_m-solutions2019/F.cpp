@@ -163,11 +163,11 @@ int main()
   cin >> N;
   for (auto i = 0; i < N; i++)
   {
+    string S;
+    cin >> S;
     for (auto j = 0; j < i; j++)
     {
-      int x;
-      cin >> x;
-      A[i][j] = (x == 1);
+      A[i][j] = (S[j] == '1');
       if (A[i][j])
       {
         V[j].push_back(i);
