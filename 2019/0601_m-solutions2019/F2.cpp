@@ -67,11 +67,11 @@ int main()
       int b = a + n;
       if ((dp_R[a + 1] & dp_L[b] & W[a]).any())
       {
-        dp_L[a][b] = 1;
+        dp_L[b][a] = 1;
       }
       if ((dp_R[a] & dp_L[b - 1] & W[b]).any())
       {
-        dp_R[b][a] = 1;
+        dp_R[a][b] = 1;
       }
     }
   }
