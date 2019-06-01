@@ -123,7 +123,10 @@ int main()
     ans += ((((power(Y, N) * power(X, n)) % MOD) * C(N + n, n)) % MOD * (N + n)) % MOD;
     ans %= MOD;
   }
-  ans *= (100 * inv[K]);
-  ans %= MOD;
+  if (K > 0)
+  {
+    ans *= (100 * inv[K]);
+    ans %= MOD;
+  }
   cout << ans << endl;
 }
