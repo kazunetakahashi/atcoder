@@ -46,13 +46,13 @@ int main()
     {
       if (S[j] == '1')
       {
-        W[i][j] = false;
-        W[j][i] = true;
+        W[i][j] = true;
+        W[j][i] = false;
       }
       else
       {
-        W[i][j] = true;
-        W[j][i] = false;
+        W[i][j] = false;
+        W[j][i] = true;
       }
     }
   }
@@ -101,7 +101,7 @@ int main()
         {
           if (dp_L[a][c] && dp_R[c + 1][b])
           {
-            dp_L[a][b] = true;
+            dp_R[a][b] = true;
             break;
           }
         }
