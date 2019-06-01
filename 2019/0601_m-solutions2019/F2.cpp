@@ -83,7 +83,7 @@ int main()
         }
         else
         {
-          for (auto c = a + 1; c < b; c++)
+          for (auto c = a; c < b; c++)
           {
             if (dp_L[a][c] && dp_R[c + 1][b])
             {
@@ -110,7 +110,7 @@ int main()
         }
         else
         {
-          for (auto c = a + 1; c < b; c++)
+          for (auto c = a; c < b; c++)
           {
             if (dp_L[a][c] && dp_R[c + 1][b])
             {
