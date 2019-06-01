@@ -26,13 +26,14 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <bitset>
 using namespace std;
 
 typedef long long ll;
 
-bool dp_L[2010][2010];
-bool dp_R[2010][2010];
-bool W[2010][2010];
+bitset<2010> dp_L[2010];
+bitset<2010> dp_R[2010];
+bitset<2010> W[2010];
 
 int main()
 {
@@ -44,72 +45,34 @@ int main()
     cin >> S;
     for (auto j = 0; j < i; j++)
     {
-      if (S[j] == '1')
+      if (S[j] == '0')
       {
-        W[i][j] = true;
-        W[j][i] = false;
+        W[j][i] = 1;
       }
       else
       {
-        W[i][j] = false;
-        W[j][i] = true;
+        W[i][j] = 1;
       }
     }
   }
   for (auto i = 0; i < N; i++)
   {
-    dp_L[i][i] = true;
-    dp_R[i][i] = true;
+    dp_L[i][i] = 1;
+    dp_R[i][i] = 1;
   }
   for (auto n = 1; n < N; n++)
   {
     for (auto a = 0; a + n < N; a++)
     {
       int b = a + n;
-      dp_L[a][b] = false;
-      for (auto c = a + 1; c < b; c++)
+      if ((dp_L[a + 1] & dp_R[b] & W[a]).any())
       {
-        if (dp_L[a][c] && dp_L[c][b])
-        {
-          dp_L[a][b] = true;
-          break;
-        }
+        dp_L[a][b] = 1;
       }
-      if (!dp_L[a][b] && W[a][b])
+      if ((dp_L[a] & dp_R[b - 1] & W[b]).any())
       {
-        for (auto c = a; c < b; c++)
-        {
-          if (dp_L[a][c] && dp_R[c + 1][b])
-          {
-            dp_L[a][b] = true;
-            break;
-          }
-        }
+        dp_R[a][b] = 1;
       }
-      dp_R[a][b] = false;
-      for (auto c = a + 1; c < b; c++)
-      {
-        if (dp_R[a][c] && dp_R[c][b])
-        {
-          dp_R[a][b] = true;
-          break;
-        }
-      }
-      if (!dp_R[a][b] && W[b][a])
-      {
-        for (auto c = a; c < b; c++)
-        {
-          if (dp_L[a][c] && dp_R[c + 1][b])
-          {
-            dp_R[a][b] = true;
-            break;
-          }
-        }
-      }
-#if DEBUG == 1
-      cerr << "dp_L[" << a << "][" << b << "] = " << dp_L[a][b] << endl;
-      cerr << "dp_R[" << a << "][" << b << "] = " << dp_R[a][b] << endl;
-#endif
     }
   }
   int ans = 0;
