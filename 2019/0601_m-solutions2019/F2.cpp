@@ -115,7 +115,7 @@ int main()
   int ans = 0;
   for (auto i = 0; i < N; i++)
   {
-    if (dp_L[0][i] && dp_R[i][N - 1])
+    if (dp_R[0][i] && dp_L[i][N - 1])
     {
       ans++;
     }
