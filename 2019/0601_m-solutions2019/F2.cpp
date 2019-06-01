@@ -119,6 +119,10 @@ int main()
           }
         }
       }
+#if DEBUG == 1
+      cerr << "dp_L[" << a << "][" << b << "] = " << dp_L[a][b] << endl;
+      cerr << "dp_R[" << a << "][" << b << "] = " << dp_R[a][b] << endl;
+#endif
     }
   }
   int ans = 0;
