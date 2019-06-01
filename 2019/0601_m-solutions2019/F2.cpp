@@ -71,7 +71,7 @@ int main()
       }
       if ((dp_R[a] & dp_L[b - 1] & W[b]).any())
       {
-        dp_R[a][b] = 1;
+        dp_R[b][a] = 1;
       }
     }
   }
