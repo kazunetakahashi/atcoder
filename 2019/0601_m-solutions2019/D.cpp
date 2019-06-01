@@ -51,14 +51,28 @@ const int dy[4] = {0, 1, 0, -1};
 
 // const ll MOD = 1000000007;
 
-typedef tuple<ll, int> edge;
 typedef tuple<int, int> X;
 
 ll sum = 0;
 int N;
 ll c[10010];
-vector<edge> V[10010];
+int ind = 0;
+bool visited[10010];
+vector<int> V[10010];
 ll assign[10010];
+
+void dfs(int v)
+{
+  if (!visited[v])
+  {
+    visited[v] = true;
+    assign[v] = c[ind++];
+    for (auto x : V[v])
+    {
+      dfs(v);
+    }
+  }
+}
 
 int main()
 {
@@ -69,30 +83,21 @@ int main()
     cin >> a >> b;
     a--;
     b--;
-    V[b].push_back(edge(-1, a));
-    V[a].push_back(edge(-1, b));
+    V[b].push_back(a);
+    V[a].push_back(b);
   }
   for (auto i = 0; i < N; i++)
   {
     cin >> c[i];
   }
   sort(c, c + N);
-  vector<X> W;
+  reverse(c, c + N);
+  fill(visited, visited + N, false);
+  dfs(0);
   for (auto i = 0; i < N; i++)
   {
-    W.push_back(X((int)V[i].size(), i));
-  }
-  sort(W.begin(), W.end());
-  for (auto i = 0; i < N; i++)
-  {
-    int x = get<1>(W[i]);
-    assign[x] = c[i];
-  }
-  for (auto i = 0; i < N; i++)
-  {
-    for (auto x : V[i])
+    for (auto j : V[i])
     {
-      int j = get<1>(x);
       sum += min(assign[i], assign[j]);
     }
   }
