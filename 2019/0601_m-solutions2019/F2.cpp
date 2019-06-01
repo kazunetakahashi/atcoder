@@ -46,13 +46,13 @@ int main()
     {
       if (S[j] == '1')
       {
-        W[i][j] = false;
-        W[j][i] = true;
+        W[i][j] = true;
+        W[j][i] = false;
       }
       else
       {
-        W[i][j] = true;
-        W[j][i] = false;
+        W[i][j] = false;
+        W[j][i] = true;
       }
     }
   }
