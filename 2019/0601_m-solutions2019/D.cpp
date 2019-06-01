@@ -69,7 +69,7 @@ void dfs(int v)
     assign[v] = c[ind++];
     for (auto x : V[v])
     {
-      dfs(v);
+      dfs(x);
     }
   }
 }
