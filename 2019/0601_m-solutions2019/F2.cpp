@@ -76,12 +76,19 @@ int main()
       }
       if (!dp_L[a][b] && W[a][b])
       {
-        for (auto c = a + 1; c < b; c++)
+        if (a + 1 == b)
         {
-          if (dp_L[a][c] && dp_R[c][b])
+          dp_L[a][b] = true;
+        }
+        else
+        {
+          for (auto c = a + 1; c < b; c++)
           {
-            dp_L[a][b] = true;
-            break;
+            if (dp_L[a][c] && dp_R[c][b])
+            {
+              dp_L[a][b] = true;
+              break;
+            }
           }
         }
       }
@@ -96,12 +103,19 @@ int main()
       }
       if (!dp_R[a][b] && W[b][a])
       {
-        for (auto c = a + 1; c < b; c++)
+        if (a + 1 == b)
         {
-          if (dp_L[a][c] && dp_R[c][b])
+          dp_L[a][b] = true;
+        }
+        else
+        {
+          for (auto c = a + 1; c < b; c++)
           {
-            dp_R[a][b] = true;
-            break;
+            if (dp_L[a][c] && dp_R[c][b])
+            {
+              dp_R[a][b] = true;
+              break;
+            }
           }
         }
       }
