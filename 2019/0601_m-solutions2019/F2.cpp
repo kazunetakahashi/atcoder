@@ -65,11 +65,11 @@ int main()
     for (auto a = 0; a + n < N; a++)
     {
       int b = a + n;
-      if ((dp_L[a + 1] & dp_R[b] & W[a]).any())
+      if ((dp_R[a + 1] & dp_L[b] & W[a]).any())
       {
         dp_L[a][b] = 1;
       }
-      if ((dp_L[a] & dp_R[b - 1] & W[b]).any())
+      if ((dp_R[a] & dp_L[b - 1] & W[b]).any())
       {
         dp_R[a][b] = 1;
       }
