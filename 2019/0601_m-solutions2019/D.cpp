@@ -96,7 +96,7 @@ int main()
       sum += min(assign[i], assign[j]);
     }
   }
-  cout << sum << endl;
+  cout << sum / 2 << endl;
   for (auto i = 0; i < N; i++)
   {
     cout << assign[i];
