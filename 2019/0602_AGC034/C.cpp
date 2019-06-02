@@ -92,6 +92,7 @@ int main()
     {
       break;
     }
+    now += t;
   }
   ans = X;
   ll dx = maxi - now;
