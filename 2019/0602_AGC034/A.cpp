@@ -54,9 +54,9 @@ int A, B, C, D, N;
 
 bool solve(int X, int Y)
 {
-  for (auto i = X; i < Y; i++)
+  for (auto i = X; i < Y - 2; i++)
   {
-    if (S[i] == '#' && S[i + 1] == '#')
+    if (S[i + 1] == '#' && S[i + 2] == '#')
     {
       return false;
     }
@@ -66,25 +66,16 @@ bool solve(int X, int Y)
 
 bool solve2(int X, int Y, int Z, int W)
 {
-  bool ok = false;
   for (auto i = Z; i < W - 1; i++)
   {
-    if ((i == 0 || S[i - 1] == '.') && S[i] == '.' && S[i + 1] == '.')
+    if (S[i - 1] == '.' && S[i] == '.' && S[i + 1] == '.')
     {
       S[i] = '#';
-      ok = true;
-      break;
+      return solve(X, Y);
     }
   }
-  if (ok)
-  {
-    return solve(X, Y);
-  }
-  else
-  {
-    S[W] = '#';
-    return solve(X, Y);
-  }
+  S[W] = '#';
+  return solve(X, Y);
 }
 
 int main()
