@@ -79,6 +79,9 @@ bool solve(ll T)
     }
     maxi = max(maxi, tmp);
   }
+#if DEBUG == 1
+  cerr << "T = " << T << ", ans = " << ans + maxi << endl;
+#endif
   return (ans + maxi >= 0);
 }
 
