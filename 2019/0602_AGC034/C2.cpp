@@ -60,10 +60,10 @@ ll sum[100010];
 
 bool solve(ll T)
 {
-  int cnt = T / X;
+  ll cnt = T / X;
   ll x = T % X;
   ll ans = sum[cnt];
-  ll maxi = 0;
+  ll maxi = -1000000000000000;
   for (auto i = cnt; i < N; i++)
   {
     ll t, b, l, u;
@@ -71,7 +71,7 @@ bool solve(ll T)
     ll tmp = 0;
     if (x >= b)
     {
-      tmp = l * b + (x - b) * u;
+      tmp = l * b + u * (x - b);
     }
     else
     {
@@ -94,11 +94,11 @@ int main()
   }
   for (auto i = 0; i < N; i++)
   {
-    base -= b[i] * l[i];
+    base -= l[i] * b[i];
   }
   for (auto i = 0; i < N; i++)
   {
-    ll t = l[i] * b[i] + (X - b[i]) * u[i];
+    ll t = l[i] * b[i] + u[i] * (X - b[i]);
     V.emplace_back(t, b[i], l[i], u[i]);
   }
   sort(V.begin(), V.end());
