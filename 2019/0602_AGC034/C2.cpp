@@ -62,8 +62,22 @@ bool solve(ll T)
 {
   ll cnt = T / X;
   ll x = T % X;
-  ll ans = sum[cnt];
-  ll maxi = 0;
+  ll ans = 0;
+  for (auto i = 0; i < cnt; i++)
+  {
+    ll t, b, l, u;
+    tie(t, b, l, u) = V[i];
+    ll tmp = -t;
+    if (x >= b)
+    {
+      tmp += l * b + u * (x - b);
+    }
+    else
+    {
+      tmp += l * x;
+    }
+    ans = max(ans, sum[cnt + 1] + tmp);
+  }
   for (auto i = cnt; i < N; i++)
   {
     ll t, b, l, u;
@@ -77,12 +91,9 @@ bool solve(ll T)
     {
       tmp = l * x;
     }
-    maxi = max(maxi, tmp);
+    ans = max(ans, sum[cnt] + tmp);
   }
-#if DEBUG == 1
-  cerr << "T = " << T << ", cnt = " << cnt << ", ans = " << ans + maxi << endl;
-#endif
-  return (ans + maxi >= 0);
+  return (ans >= 0);
 }
 
 int main()
@@ -104,15 +115,9 @@ int main()
   sort(V.begin(), V.end());
   reverse(V.begin(), V.end());
   sum[0] = base;
-#if DEBUG == 1
-  cerr << "sum[0] = " << sum[0] << endl;
-#endif
   for (auto i = 0; i < N; i++)
   {
     sum[i + 1] = sum[i] + get<0>(V[i]);
-#if DEBUG == 1
-    cerr << "sum[" << i + 1 << "] = " << sum[i + 1] << endl;
-#endif
   }
   ll ok = N * X + 1;
   ll ng = -1;
@@ -128,5 +133,5 @@ int main()
       ng = t;
     }
   }
-  // cout << ok << endl;
+  cout << ok << endl;
 }
