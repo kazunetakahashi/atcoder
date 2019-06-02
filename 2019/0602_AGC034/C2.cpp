@@ -62,7 +62,7 @@ bool solve(ll T)
 {
   ll cnt = T / X;
   ll x = T % X;
-  ll ans = 0;
+  ll ans = -1000000000000000;
   for (auto i = 0; i < cnt; i++)
   {
     ll t, b, l, u;
