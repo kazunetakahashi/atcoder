@@ -126,9 +126,6 @@ int main()
       ng = t;
     }
   }
-  if (ok == N * X)
-  {
-    assert(false);
-  }
+  assert(false);
   cout << ok << endl;
 }
