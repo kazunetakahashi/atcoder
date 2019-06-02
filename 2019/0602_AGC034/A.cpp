@@ -76,7 +76,7 @@ bool solve2(int X, int Y, int Z, int W)
       break;
     }
   }
-  if (!ok)
+  if (ok)
   {
     return solve(X, Y);
   }
