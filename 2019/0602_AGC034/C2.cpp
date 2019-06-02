@@ -80,7 +80,7 @@ bool solve(ll T)
     maxi = max(maxi, tmp);
   }
 #if DEBUG == 1
-  cerr << "T = " << T << ", ans = " << ans + maxi << endl;
+  cerr << "T = " << T << ", cnt = " << cnt << ", ans = " << ans + maxi << endl;
 #endif
   return (ans + maxi >= 0);
 }
@@ -98,7 +98,7 @@ int main()
   }
   for (auto i = 0; i < N; i++)
   {
-    ll t = l[i] * b[i] + (X - l[i]) * u[i];
+    ll t = l[i] * b[i] + (X - b[i]) * u[i];
     V.emplace_back(t, b[i], l[i], u[i]);
   }
   sort(V.begin(), V.end());
