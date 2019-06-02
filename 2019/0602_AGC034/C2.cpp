@@ -126,6 +126,9 @@ int main()
       ng = t;
     }
   }
-  assert(false);
+  if (ok % X == 0)
+  {
+    assert(false);
+  }
   cout << ok << endl;
 }
