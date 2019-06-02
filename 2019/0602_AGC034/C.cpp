@@ -91,9 +91,18 @@ int main()
     now += t;
     ans += X;
     W.emplace_back(u, l, b, X);
+#if DEBUG == 1
+    cerr << "(" << t << ", " << b << ", " << l << ", " << u << ")" << endl;
+#endif
   }
   sort(W.begin(), W.end());
   ind = 0;
+#if DEBUG == 1
+  ll u, l, b, x;
+  tie(u, l, b, x) = W[0];
+  cerr << "W[0]: ";
+  cerr << "(" << u << ", " << l << ", " << b << ", " << x << ")" << endl;
+#endif
   while (now >= maxi)
   {
     if (get<3>(W[0]) > get<2>(W[0]))
