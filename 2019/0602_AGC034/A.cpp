@@ -92,13 +92,13 @@ int main()
   D--;
   if (C < B)
   {
-    if (solve(A, B) && solve(C, D))
+    if (solve(A, C) && solve(B, D))
     {
       Yes();
     }
     No();
   }
-  if (solve(C, D) && solve2(A, B, C, D))
+  if (solve(B, D) && solve2(A, C, B, D))
   {
     Yes();
   }
