@@ -67,16 +67,16 @@ bool solve(ll T)
   {
     ll t, b, l, u;
     tie(t, b, l, u) = V[i];
-    ll tmp = -t;
+    ll tmp = 0;
     if (x >= b)
     {
-      tmp += l * b + u * (x - b);
+      tmp = l * b + u * (x - b);
     }
     else
     {
-      tmp += l * x;
+      tmp = l * x;
     }
-    ans = max(ans, sum[cnt + 1] + tmp);
+    ans = max(ans, sum[cnt + 1] - t + tmp);
   }
   for (auto i = cnt; i < N; i++)
   {
