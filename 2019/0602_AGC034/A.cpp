@@ -66,7 +66,7 @@ bool solve(int X, int Y)
 
 bool solve2(int X, int Y, int Z, int W)
 {
-  for (auto i = Z; i < W - 1; i++)
+  for (auto i = Z; i <= W; i++)
   {
     if (S[i - 1] == '.' && S[i] == '.' && S[i + 1] == '.')
     {
@@ -74,8 +74,7 @@ bool solve2(int X, int Y, int Z, int W)
       return solve(X, Y);
     }
   }
-  S[W] = '#';
-  return solve(X, Y);
+  return false;
 }
 
 int main()
