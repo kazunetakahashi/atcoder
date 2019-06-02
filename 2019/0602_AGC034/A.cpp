@@ -94,7 +94,7 @@ int main()
   B--;
   C--;
   D--;
-  if (C < B)
+  if (C < D)
   {
     if (solve(A, C) && solve(B, D))
     {
