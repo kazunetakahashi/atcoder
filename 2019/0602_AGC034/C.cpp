@@ -87,12 +87,13 @@ int main()
   while (true)
   {
     ll t, b, l, u;
-    tie(t, b, l, u) = V[ind++];
+    tie(t, b, l, u) = V[ind];
     if (now + t >= maxi)
     {
       break;
     }
     now += t;
+    ind++;
   }
   ans = X;
   ll dx = maxi - now;
