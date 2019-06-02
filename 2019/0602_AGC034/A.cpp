@@ -66,13 +66,19 @@ bool solve(int X, int Y)
 
 bool solve2(int X, int Y, int Z, int W)
 {
+  bool ok = false;
   for (auto i = Z; i < W - 1; i++)
   {
     if ((i == 0 || S[i - 1] == '.') && S[i] == '.' && S[i + 1] == '.')
     {
       S[i] = '#';
+      ok = true;
       break;
     }
+  }
+  if (!ok)
+  {
+    return false;
   }
   return solve(X, Y);
 }
