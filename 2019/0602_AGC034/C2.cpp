@@ -63,7 +63,7 @@ bool solve(ll T)
   ll cnt = T / X;
   ll x = T % X;
   ll ans = -1000000000000000;
-  for (auto i = 0; i < cnt; i++)
+  for (auto i = 0; i < N; i++)
   {
     ll t, b, l, u;
     tie(t, b, l, u) = V[i];
@@ -76,22 +76,14 @@ bool solve(ll T)
     {
       tmp = l * x;
     }
-    ans = max(ans, sum[cnt + 1] - t + tmp);
-  }
-  for (auto i = cnt; i < N; i++)
-  {
-    ll t, b, l, u;
-    tie(t, b, l, u) = V[i];
-    ll tmp = 0;
-    if (x >= b)
+    if (i < cnt)
     {
-      tmp = l * b + u * (x - b);
+      ans = max(ans, sum[cnt + 1] - t + tmp);
     }
     else
     {
-      tmp = l * x;
+      ans = max(ans, sum[cnt] + tmp);
     }
-    ans = max(ans, sum[cnt] + tmp);
   }
   return (ans >= 0);
 }
@@ -119,6 +111,7 @@ int main()
   {
     sum[i + 1] = sum[i] + get<0>(V[i]);
   }
+  sum[N + 1] = sum[N];
   ll ok = N * X + 1;
   ll ng = -1;
   while (abs(ok - ng) > 1)
