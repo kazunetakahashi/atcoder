@@ -96,6 +96,9 @@ int main()
   }
   ans = X;
   ll dx = maxi - now;
+#if DEBUG == 1
+  cerr << "dx = " << maxi << " - " << now << " = " << dx << endl;
+#endif
   for (auto i = ind; i < N; i++)
   {
     ll t, b, l, u;
