@@ -61,7 +61,6 @@ ll now = 0;
 ll ans = 0;
 
 typedef tuple<ll, ll, ll, ll> card; // maxi, b, l, u;
-typedef tuple<ll, ll, ll> card2;    // b, l, u;
 
 vector<card> V;
 
@@ -111,7 +110,7 @@ int main()
     }
     else
     {
-      tmp = (dx + b - 1) / b;
+      tmp = (dx + l - 1) / l;
     }
     ans = min(tmp, ans);
   }
