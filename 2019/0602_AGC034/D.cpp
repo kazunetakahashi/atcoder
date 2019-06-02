@@ -182,5 +182,5 @@ int main()
     flow.add_edge(1000 + i, 2005, BC[i], 0);
   }
   ll K = flow.min_cost_flow(2000, 2005, S);
-  cout << S * C - K << endl;
+  cout << 2 * S * C - K << endl;
 }
