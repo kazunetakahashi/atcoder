@@ -63,6 +63,10 @@ bool solve(ll T)
   ll cnt = T / X;
   ll x = T % X;
   ll ans = -1000000000000000;
+  if (x == 0)
+  {
+    return (sum[cnt] >= 0);
+  }
   for (auto i = 0; i < N; i++)
   {
     ll t, b, l, u;
@@ -125,10 +129,6 @@ int main()
     {
       ng = t;
     }
-  }
-  if (ok % X == 0)
-  {
-    assert(false);
   }
   cout << ok << endl;
 }
