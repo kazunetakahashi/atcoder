@@ -104,6 +104,10 @@ int main()
     ll t, b, l, u;
     tie(t, b, l, u) = V[i];
     ll tmp = 0;
+    if (t < dx)
+    {
+      continue;
+    }
     if (dx >= l * b)
     {
       tmp = b + (dx - l * b + u - 1) / u;
