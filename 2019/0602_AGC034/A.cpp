@@ -78,9 +78,13 @@ bool solve2(int X, int Y, int Z, int W)
   }
   if (!ok)
   {
-    return false;
+    return solve(X, Y);
   }
-  return solve(X, Y);
+  else
+  {
+    S[W] = '#';
+    return solve(X, Y);
+  }
 }
 
 int main()
