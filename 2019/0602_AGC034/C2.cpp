@@ -111,7 +111,7 @@ int main()
   {
     sum[i + 1] = sum[i] + get<0>(V[i]);
 #if DEBUG == 1
-    cerr << "sum[" << i << "] = " << sum[i] << endl;
+    cerr << "sum[" << i + 1 << "] = " << sum[i + 1] << endl;
 #endif
   }
   ll ok = N * X + 1;
@@ -128,5 +128,5 @@ int main()
       ng = t;
     }
   }
-  cout << ok << endl;
+  // cout << ok << endl;
 }
