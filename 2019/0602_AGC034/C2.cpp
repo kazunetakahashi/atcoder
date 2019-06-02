@@ -63,7 +63,7 @@ bool solve(ll T)
   ll cnt = T / X;
   ll x = T % X;
   ll ans = sum[cnt];
-  ll maxi = -1000000000000000;
+  ll maxi = 0;
   for (auto i = cnt; i < N; i++)
   {
     ll t, b, l, u;
@@ -104,9 +104,15 @@ int main()
   sort(V.begin(), V.end());
   reverse(V.begin(), V.end());
   sum[0] = base;
+#if DEBUG == 1
+  cerr << "sum[0] = " << sum[0] << endl;
+#endif
   for (auto i = 0; i < N; i++)
   {
     sum[i + 1] = sum[i] + get<0>(V[i]);
+#if DEBUG == 1
+    cerr << "sum[" << i << "] = " << sum[i] << endl;
+#endif
   }
   ll ok = N * X + 1;
   ll ng = -1;
