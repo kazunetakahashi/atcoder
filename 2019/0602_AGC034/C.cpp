@@ -60,10 +60,10 @@ ll maxi = 0;
 ll now = 0;
 ll ans = 0;
 
-typedef tuple<ll, ll, ll, ll> card;  // maxi, b, l, u;
-typedef tuple<ll, ll, ll, ll> card2; // u, l, b, cost;
+typedef tuple<ll, ll, ll, ll> card; // maxi, b, l, u;
+typedef tuple<ll, ll, ll> card2;    // b, l, u;
+
 vector<card> V;
-vector<card2> W;
 
 int main()
 {
@@ -84,37 +84,31 @@ int main()
   sort(V.begin(), V.end());
   reverse(V.begin(), V.end());
   int ind = 0;
-  while (maxi >= now)
+  while (true)
   {
     ll t, b, l, u;
     tie(t, b, l, u) = V[ind++];
-    now += t;
-    ans += X;
-    W.emplace_back(u, l, b, X);
-#if DEBUG == 1
-    cerr << "(" << t << ", " << b << ", " << l << ", " << u << ")" << endl;
-#endif
-  }
-  sort(W.begin(), W.end());
-  ind = 0;
-#if DEBUG == 1
-  ll u, l, b, x;
-  tie(u, l, b, x) = W[0];
-  cerr << "W[0]: ";
-  cerr << "(" << u << ", " << l << ", " << b << ", " << x << ")" << endl;
-#endif
-  while (now >= maxi)
-  {
-    if (get<3>(W[0]) > get<2>(W[0]))
+    if (now + t >= maxi)
     {
-      now -= get<0>(W[0]);
+      break;
+    }
+  }
+  ans = X;
+  ll dx = maxi - now;
+  for (auto i = ind; i < N; i++)
+  {
+    ll t, b, l, u;
+    tie(t, b, l, u) = V[i];
+    ll tmp = 0;
+    if (dx >= l * b)
+    {
+      tmp = b + (dx - l * b + u - 1) / u;
     }
     else
     {
-      now -= get<1>(W[0]);
+      tmp = (dx + b - 1) / b;
     }
-    get<3>(W[0])--;
-    ans--;
+    ans = min(tmp, ans);
   }
-  cout << ans + 1 << endl;
+  cout << ans + X * ind << endl;
 }
