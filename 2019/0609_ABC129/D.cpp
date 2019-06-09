@@ -103,5 +103,5 @@ int main()
   }
   swap(H, W);
   ans += solve();
-  cout << ans << endl;
+  cout << ans + 1 << endl;
 }
