@@ -198,7 +198,7 @@ public:
     return a[i];
   }
 
-  Matrix power(T N)
+  Matrix power(T N) const
   {
     assert(H == W);
     // N > 0
@@ -221,6 +221,21 @@ T Matrix<T>::MOD = 0;
 ll L, A, B, M;
 ll upper[100];
 
+Matrix<ll> power(Matrix<ll> A, ll N)
+{
+  // N > 0
+  if (N == 1)
+  {
+    return A;
+  }
+  if (N % 2 == 1)
+  {
+    return power(A, N - 1) * A;
+  }
+  Matrix<ll> X = power(A, N / 2);
+  return X * X;
+}
+
 Matrix<ll> choose(ll k, ll n)
 {
   Matrix<ll> K(3, 3);
@@ -231,7 +246,7 @@ Matrix<ll> choose(ll k, ll n)
   }
   p %= M;
   K = {p, 1, 0, 0, 1, B, 0, 0, 1};
-  return K.power(n);
+  return power(K, n);
 }
 
 ll f(ll i)
