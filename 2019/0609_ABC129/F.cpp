@@ -229,7 +229,7 @@ Matrix<ll> choose(ll k, ll n)
   {
     p *= 10LL;
   }
-  K = {p % Matrix<ll>::MOD, 1, 0, 0, 1, B, 0, 0, 1};
+  K = {p, 1, 0, 0, 1, B, 0, 0, 1};
   return K.power(n);
 }
 
