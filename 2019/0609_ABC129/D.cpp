@@ -54,10 +54,11 @@ const int dy[4] = {0, 1, 0, -1};
 int H, W;
 string S[2010];
 bool X[2010][2010];
+ll A[2010][2010];
+ll B[2010][2010];
 
 ll solve()
 {
-  ll ans = 0;
   for (auto i = 0; i < H; i++)
   {
     ll t = 0;
@@ -69,11 +70,48 @@ ll solve()
       }
       else
       {
-        ans = max(ans, t);
+        for (auto k = j; k > j - t; k--)
+        {
+          A[i][k] = t;
+        }
         t = 0;
       }
     }
-    ans = max(ans, t);
+    for (auto k = W - 1; k > W - 1 - t; k--)
+    {
+      A[i][k] = t;
+    }
+  }
+  for (auto j = 0; j < W; j++)
+  {
+    ll t = 0;
+    for (auto i = 0; i < H; i++)
+    {
+      if (X[i][j])
+      {
+        t++;
+      }
+      else
+      {
+        for (auto k = j; k > i - t; k--)
+        {
+          B[k][j] = t;
+        }
+        t = 0;
+      }
+    }
+    for (auto k = H - 1; k > H - 1 - t; k--)
+    {
+      B[k][j] = t;
+    }
+  }
+  ll ans = 0;
+  for (auto i = 0; i < H; i++)
+  {
+    for (auto j = 0; j < W; j++)
+    {
+      ans = max(ans, A[i][j] + B[i][j]);
+    }
   }
   return ans;
 }
@@ -92,16 +130,5 @@ int main()
       X[i][j] = (S[i][j] == '.');
     }
   }
-  ll ans = 0;
-  ans += solve();
-  for (auto i = 0; i < 2010; i++)
-  {
-    for (auto j = 0; j < i; j++)
-    {
-      swap(X[i][j], X[j][i]);
-    }
-  }
-  swap(H, W);
-  ans += solve();
-  cout << ans - 1 << endl;
+  cout << solve() << endl;
 }
