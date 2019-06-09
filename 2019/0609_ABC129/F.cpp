@@ -299,6 +299,11 @@ int main()
   {
     ll ok = upper[i - 1];
     ll ng = L;
+    if ((int)to_string(f(ok)).size() != i)
+    {
+      upper[i] = ng;
+      continue;
+    }
     while (abs(ok - ng) > 1)
     {
       ll t = (ok + ng) / 2;
