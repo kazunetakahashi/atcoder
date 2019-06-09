@@ -130,5 +130,26 @@ int main()
       X[i][j] = (S[i][j] == '.');
     }
   }
-  cout << solve() - 1 << endl;
+  solve();
+#if DEBUG == 1
+  cerr << "A" << endl;
+  for (auto i = 0; i < H; i++)
+  {
+    for (auto j = 0; j < W; j++)
+    {
+      cerr << A[i][j];
+    }
+    cerr << endl;
+  }
+  cerr << "B" << endl;
+  for (auto i = 0; i < H; i++)
+  {
+    for (auto j = 0; j < W; j++)
+    {
+      cerr << B[i][j];
+    }
+    cerr << endl;
+  }
+#endif
+  // cout << solve() - 1 << endl;
 }
