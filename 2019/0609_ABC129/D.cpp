@@ -93,7 +93,7 @@ ll solve()
       }
       else
       {
-        for (auto k = j; k > i - t; k--)
+        for (auto k = i; k > i - t; k--)
         {
           B[k][j] = t;
         }
