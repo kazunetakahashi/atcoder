@@ -62,7 +62,7 @@ int main()
   dp[0][0] = 1;
   for (auto i = 0; i < N; i++)
   {
-    dp[i + 1][1] += (3 * (dp[i][1] + dp[i][0])) % MOD;
+    dp[i + 1][1] += (3 * dp[i][1]) % MOD;
     dp[i + 1][1] %= MOD;
     if (L[i] == '0')
     {
