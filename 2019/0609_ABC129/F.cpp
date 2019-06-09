@@ -137,6 +137,7 @@ public:
         }
       }
     }
+    return X;
   }
 
   Matrix &operator+=(const Matrix &A)
