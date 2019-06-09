@@ -323,7 +323,7 @@ int main()
       continue;
     }
 #if DEBUG == 1
-    cerr << "i = " << i << ", upper[" << i << "] = " << upper << endl;
+    cerr << "i = " << i << ", upper[" << i << "] = " << upper[i] << endl;
     cerr << "f(" << upper[i] << ") = " << f(upper[i]) << endl;
 #endif
     v = mod_multiply(choose(i, x), v);
