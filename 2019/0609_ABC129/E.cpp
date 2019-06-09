@@ -76,6 +76,8 @@ int main()
       dp[i + 1][0] += (2 * dp[i][0]) % MOD;
       dp[i + 1][0] %= MOD;
     }
+    cerr << "dp[" << i + 1 << "][" << 0 << "] = " << dp[i + 1][0] << endl;
+    cerr << "dp[" << i + 1 << "][" << 1 << "] = " << dp[i + 1][1] << endl;
   }
   cout << (dp[N][0] + dp[N][1]) % MOD << endl;
 }
