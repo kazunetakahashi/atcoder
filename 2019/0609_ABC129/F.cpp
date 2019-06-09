@@ -280,6 +280,9 @@ int main()
     cerr << "f(" << upper[i] << ") = " << f(upper[i]) << endl;
 #endif
     v = choose(i, x) * v;
+#if DEBUG == 1
+    cerr << v[0][0] << " " << v[1][0] << " " << v[2][0] << endl;
+#endif
   }
   cout << v[0][0] << endl;
 }
