@@ -294,8 +294,7 @@ ll f(ll i)
 int main()
 {
   cin >> L >> A >> B >> MOD;
-  ll start = to_string(f(0)).size();
-  for (auto i = start; i <= 18; i++)
+  for (auto i = 1; i <= 18; i++)
   {
     ll ok = upper[i - 1];
     ll ng = L;
@@ -320,7 +319,7 @@ int main()
   }
   matrix v(3, 1);
   v.a = {0, A, 1};
-  for (auto i = start; i <= 18; i++)
+  for (auto i = 1; i <= 18; i++)
   {
     ll x = upper[i] - upper[i - 1];
     if (x == 0)
@@ -334,5 +333,5 @@ int main()
 #endif
     v = mod_multiply(choose(i, x), v);
   }
-  // cout << v.a[0] << endl;
+  cout << v.a[0] << endl;
 }
