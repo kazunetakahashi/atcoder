@@ -30,12 +30,94 @@ using namespace std;
 
 typedef long long ll;
 
+class mint
+{
+public:
+  static ll MOD;
+  ll x;
+
+  mint() : x(0) {}
+
+  mint(ll x) : x(x % MOD) {}
+
+  mint &fix()
+  {
+    x = (x % MOD + MOD) % MOD;
+    return *this;
+  }
+
+  mint operator-() const
+  {
+    return mint(0) - *this;
+  }
+
+  mint &operator+=(const mint &a)
+  {
+    if ((x += a.x) >= MOD)
+    {
+      x -= MOD;
+    }
+    return *this;
+  }
+
+  mint &operator-=(const mint &a)
+  {
+    if ((x += MOD - a.x) >= MOD)
+    {
+      x -= MOD;
+    }
+    return *this;
+  }
+
+  mint &operator*=(const mint &a)
+  {
+    (x *= a.x) %= MOD;
+    return *this;
+  }
+
+  mint operator+(const mint &a) const
+  {
+    return mint(*this) += a;
+  }
+
+  mint operator-(const mint &a) const
+  {
+    return mint(*this) -= a;
+  }
+
+  mint operator*(const mint &a) const
+  {
+    return mint(*this) *= a;
+  }
+
+  bool operator<(const mint &a) const
+  {
+    return x < a.x;
+  }
+
+  bool operator==(const mint &a) const
+  {
+    return x == a.x;
+  }
+};
+
+ll mint::MOD = 100000007;
+
+istream &operator>>(istream &stream, mint &a)
+{
+  stream >> a.x;
+  return stream;
+}
+
+ostream &operator<<(ostream &stream, const mint &a)
+{
+  stream << a.x;
+  return stream;
+}
+
 template <class T>
 class Matrix
 {
-public:
-  static T MOD;
-
 private:
   int H, W;
   T **a;
@@ -109,11 +191,7 @@ public:
     {
       for (auto j = 0; j < W; j++)
       {
-        X.a[i][j] = MOD - a[i][j];
-        if (MOD > 0)
-        {
-          X.a[i][j] %= MOD;
-        }
+        X.a[i][j] = -a[i][j];
       }
     }
     return X;
@@ -129,10 +207,6 @@ public:
       for (auto j = 0; j < W; j++)
       {
         X.a[i][j] = a[i][j] + A.a[i][j];
-        if (MOD > 0)
-        {
-          X.a[i][j] %= MOD;
-        }
       }
     }
     return X;
@@ -155,15 +229,7 @@ public:
         for (auto k = 0; k < W; k++)
         {
           T t = a[i][k] * A.a[k][j];
-          if (MOD > 0)
-          {
-            t %= MOD;
-          }
           X.a[i][j] += t;
-          if (MOD > 0)
-          {
-            X.a[i][j] %= MOD;
-          }
         }
       }
     }
@@ -221,7 +287,7 @@ public:
     return a[i];
   }
 
-  const Matrix power(T N) const
+  const Matrix power(ll N) const
   {
     assert(H == W);
     // N > 0
@@ -238,21 +304,18 @@ public:
   }
 };
 
-template <class T>
-T Matrix<T>::MOD = 0;
-
 ll L, A, B, M;
 ll upper[100];
 
-Matrix<ll> choose(ll k, ll n)
+Matrix<mint> choose(ll k, ll n)
 {
-  Matrix<ll> K(3, 3);
+  Matrix<mint> K(3, 3);
   ll p = 1;
   for (auto i = 0; i < k; i++)
   {
     p *= 10LL;
   }
-  K = {p % M, 1, 0, 0, 1, B, 0, 0, 1};
+  K = {p, 1, 0, 0, 1, B, 0, 0, 1};
   return K.power(n);
 }
 
@@ -264,7 +327,7 @@ ll f(ll i)
 int main()
 {
   cin >> L >> A >> B >> M;
-  Matrix<ll>::MOD = M;
+  mint::MOD = M;
   for (auto i = 1; i <= 18; i++)
   {
     ll ok = upper[i - 1];
@@ -288,7 +351,7 @@ int main()
     }
     upper[i] = ng;
   }
-  Matrix<ll> v(3, 1);
+  Matrix<mint> v(3, 1);
   v = {0, A, 1};
   for (auto i = 1; i <= 18; i++)
   {
