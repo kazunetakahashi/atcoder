@@ -57,7 +57,6 @@ ll dp[100010][2];
 int main()
 {
   cin >> L;
-  reverse(L.begin(), L.end());
   int N = L.size();
   dp[0][0] = 1;
   for (auto i = 0; i < N; i++)
