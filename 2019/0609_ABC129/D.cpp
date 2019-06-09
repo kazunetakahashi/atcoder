@@ -130,5 +130,5 @@ int main()
       X[i][j] = (S[i][j] == '.');
     }
   }
-  cout << solve() << endl;
+  cout << solve() - 1 << endl;
 }
