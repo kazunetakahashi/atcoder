@@ -93,6 +93,7 @@ public:
         }
       }
     }
+    return this;
   }
 
   const Matrix operator+(const Matrix &A) const
@@ -111,6 +112,7 @@ public:
         }
       }
     }
+    return this;
   }
 
   const Matrix operator-(const Matrix &A) const
@@ -129,7 +131,12 @@ public:
         X.a[i][j] = 0;
         for (auto k = 0; k < W; k++)
         {
-          X.a[i][j] += a[i][k] * A.a[k][j];
+          T t = a[i][k] * A.a[k][j];
+          if (MOD > 0)
+          {
+            t %= MOD;
+          }
+          X.a[i][j] += t;
           if (MOD > 0)
           {
             X.a[i][j] %= MOD;
