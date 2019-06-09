@@ -63,7 +63,6 @@ int main()
   {
     int a;
     cin >> a;
-    a--;
     ok[a] = false;
   }
   dp[0] = 1;
