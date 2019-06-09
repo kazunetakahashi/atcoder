@@ -52,10 +52,33 @@ public:
     }
   }
 
+  Matrix(const Matrix &A)
+  {
+    H = A.H;
+    W = A.W;
+    a = new T *[H];
+    for (auto i = 0; i < H; i++)
+    {
+      a[i] = new T[W];
+    }
+    for (auto i = 0; i < H; i++)
+    {
+      for (auto j = 0; j < W; j++)
+      {
+        a[i][j] = A.a[i][j];
+      }
+    }
+  }
+
   Matrix &operator=(const Matrix A)
   {
     H = A.H;
     W = A.W;
+    a = new T *[H];
+    for (auto i = 0; i < H; i++)
+    {
+      a[i] = new T[W];
+    }
     for (auto i = 0; i < H; i++)
     {
       for (auto j = 0; j < W; j++)
@@ -93,7 +116,7 @@ public:
         }
       }
     }
-    return this;
+    return X;
   }
 
   const Matrix operator+(const Matrix &A) const
@@ -198,7 +221,7 @@ public:
     return a[i];
   }
 
-  Matrix power(T N) const
+  const Matrix power(T N) const
   {
     assert(H == W);
     // N > 0
@@ -221,21 +244,6 @@ T Matrix<T>::MOD = 0;
 ll L, A, B, M;
 ll upper[100];
 
-Matrix<ll> power(Matrix<ll> A, ll N)
-{
-  // N > 0
-  if (N == 1)
-  {
-    return A;
-  }
-  if (N % 2 == 1)
-  {
-    return power(A, N - 1) * A;
-  }
-  Matrix<ll> X = power(A, N / 2);
-  return X * X;
-}
-
 Matrix<ll> choose(ll k, ll n)
 {
   Matrix<ll> K(3, 3);
@@ -246,7 +254,7 @@ Matrix<ll> choose(ll k, ll n)
   }
   p %= M;
   K = {p, 1, 0, 0, 1, B, 0, 0, 1};
-  return power(K, n);
+  return K.power(n);
 }
 
 ll f(ll i)
