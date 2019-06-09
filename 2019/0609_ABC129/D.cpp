@@ -70,14 +70,14 @@ ll solve()
       }
       else
       {
-        for (auto k = j; k > j - t; k--)
+        for (auto k = j - 1; k >= j - t; k--)
         {
           A[i][k] = t;
         }
         t = 0;
       }
     }
-    for (auto k = W - 1; k > W - 1 - t; k--)
+    for (auto k = W - 1; k >= W - t; k--)
     {
       A[i][k] = t;
     }
@@ -93,14 +93,14 @@ ll solve()
       }
       else
       {
-        for (auto k = i; k > i - t; k--)
+        for (auto k = i - 1; k >= i - t; k--)
         {
           B[k][j] = t;
         }
         t = 0;
       }
     }
-    for (auto k = H - 1; k > H - 1 - t; k--)
+    for (auto k = H - 1; k >= H - t; k--)
     {
       B[k][j] = t;
     }
