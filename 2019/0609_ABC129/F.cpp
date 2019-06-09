@@ -252,7 +252,6 @@ Matrix<ll> choose(ll k, ll n)
   {
     p *= 10LL;
   }
-  p %= M;
   K = {p, 1, 0, 0, 1, B, 0, 0, 1};
   return K.power(n);
 }
@@ -289,18 +288,13 @@ int main()
     }
     upper[i] = ng;
   }
-  Matrix<ll> v[100];
-  for (auto i = 0; i < 100; i++)
-  {
-    v[i] = Matrix<ll>(3, 1);
-  }
-  v[0] = {0, A, 1};
+  Matrix<ll> v(3, 1);
+  v = {0, A, 1};
   for (auto i = 1; i <= 18; i++)
   {
     ll x = upper[i] - upper[i - 1];
     if (x == 0)
     {
-      v[i] = v[i - 1];
       continue;
     }
 #if DEBUG == 1
@@ -308,10 +302,10 @@ int main()
     cerr << "f(" << upper[i] - 1 << ") = " << f(upper[i] - 1) << endl;
     cerr << "f(" << upper[i] << ") = " << f(upper[i]) << endl;
 #endif
-    v[i] = choose(i, x) * v[i - 1];
+    v = choose(i, x) * v;
 #if DEBUG == 1
-    cerr << v[18][0][0] << " " << v[18][1][0] << " " << v[18][2][0] << endl;
+    cerr << v[0][0] << " " << v[1][0] << " " << v[2][0] << endl;
 #endif
   }
-  cout << v[18][0][0] << endl;
+  cout << v[0][0] << endl;
 }
