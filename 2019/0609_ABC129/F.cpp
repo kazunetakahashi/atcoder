@@ -329,9 +329,10 @@ int main()
     }
 #if DEBUG == 1
     cerr << "i = " << i << ", upper[" << i << "] = " << upper[i] << endl;
+    cerr << "f(" << upper[i] - 1 << ") = " << f(upper[i] - 1) << endl;
     cerr << "f(" << upper[i] << ") = " << f(upper[i]) << endl;
 #endif
     v = mod_multiply(choose(i, x), v);
   }
-  cout << v.a[0] << endl;
+  // cout << v.a[0] << endl;
 }
