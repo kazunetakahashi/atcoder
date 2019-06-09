@@ -151,5 +151,5 @@ int main()
     cerr << endl;
   }
 #endif
-  // cout << solve() - 1 << endl;
+  cout << solve() - 1 << endl;
 }
