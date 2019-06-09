@@ -301,7 +301,7 @@ int main()
     ll ng = L;
     if ((int)to_string(f(ok)).size() != i)
     {
-      upper[i] = ng;
+      upper[i] = ok;
       continue;
     }
     while (abs(ok - ng) > 1)
