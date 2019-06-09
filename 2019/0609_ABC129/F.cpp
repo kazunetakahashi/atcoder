@@ -112,7 +112,7 @@ public:
         }
       }
     }
-    return this;
+    return X;
   }
 
   const Matrix operator-(const Matrix &A) const
