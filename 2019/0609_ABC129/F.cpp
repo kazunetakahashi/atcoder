@@ -30,260 +30,199 @@ using namespace std;
 
 typedef long long ll;
 
-#define mattype long long
-
-#include <valarray>
-#include <random>
-using namespace std;
-
-// 行列
-struct matrix
+template <class T>
+class Matrix
 {
-  int row, col;
-  valarray<mattype> a;
-  matrix(int N, int M)
-  { // matrix A(N, M); で初期化できる。
-    a = valarray<mattype>(N * M);
-    row = N;
-    col = M;
-  }
-  bool operator<(const matrix &right) const
-  { // 使わないけどtupleに必要
-    if (row != right.row)
-    {
-      return row < right.row;
-    }
-    if (col != right.col)
-    {
-      return col < right.col;
-    }
-    for (auto i = 0; i < row * col; i++)
-    {
-      if (a[i] != right.a[i])
-      {
-        return a[i] < right.a[i];
-      }
-    }
-    return false;
-  }
-  bool operator>(const matrix &right) const
-  { // 使わないけどtupleに必要
-    if (row != right.row)
-    {
-      return row > right.row;
-    }
-    if (col != right.col)
-    {
-      return col > right.col;
-    }
-    for (auto i = 0; i < row * col; i++)
-    {
-      if (a[i] != right.a[i])
-      {
-        return a[i] > right.a[i];
-      }
-    }
-    return false;
-  }
-  bool operator==(const matrix &right) const
+public:
+  static T MOD;
+
+private:
+  int H, W;
+  T **a;
+
+public:
+  Matrix() {}
+
+  Matrix(int h, int w) : H(h), W(w)
   {
-    if (row != right.row)
-      return false;
-    if (col != right.col)
-      return false;
-    for (auto i = 0; i < row * col; i++)
+    a = new T *[H];
+    for (auto i = 0; i < H; i++)
     {
-      if (a[i] != right.a[i])
+      a[i] = new T[W];
+    }
+  }
+
+  Matrix &operator=(const Matrix A)
+  {
+    H = A.H;
+    W = A.W;
+    for (auto i = 0; i < H; i++)
+    {
+      for (auto j = 0; j < W; j++)
       {
-        return false;
+        a[i][j] = A.a[i][j];
+      }
+    }
+    return *this;
+  }
+
+  Matrix &operator=(const vector<T> v)
+  {
+    assert((int)v.size() == H * W);
+    for (auto i = 0; i < H; i++)
+    {
+      for (auto j = 0; j < W; j++)
+      {
+        a[i][j] = v[i * W + j];
+      }
+    }
+    return *this;
+  }
+
+  const Matrix operator-() const
+  {
+    Matrix X(H, W);
+    for (auto i = 0; i < H; i++)
+    {
+      for (auto j = 0; j < W; j++)
+      {
+        X.a[i][j] = MOD - a[i][j];
+        if (MOD > 0)
+        {
+          X.a[i][j] %= MOD;
+        }
+      }
+    }
+  }
+
+  const Matrix operator+(const Matrix &A) const
+  {
+    assert(A.H == H);
+    assert(A.W == W);
+    Matrix X(H, W);
+    for (auto i = 0; i < H; i++)
+    {
+      for (auto j = 0; j < W; j++)
+      {
+        X.a[i][j] = a[i][j] + A.a[i][j];
+        if (MOD > 0)
+        {
+          X.a[i][j] %= MOD;
+        }
+      }
+    }
+  }
+
+  const Matrix operator-(const Matrix &A) const
+  {
+    return this + (-A);
+  }
+
+  const Matrix operator*(const Matrix &A) const
+  {
+    assert(W == A.H);
+    Matrix X(H, A.W);
+    for (auto i = 0; i < X.H; i++)
+    {
+      for (auto j = 0; j < X.W; j++)
+      {
+        X.a[i][j] = 0;
+        for (auto k = 0; k < W; k++)
+        {
+          X.a[i][j] += a[i][k] * A.a[k][j];
+          if (MOD > 0)
+          {
+            X.a[i][j] %= MOD;
+          }
+        }
+      }
+    }
+  }
+
+  Matrix &operator+=(const Matrix &A)
+  {
+    Matrix X = this + A;
+    this = X;
+    return this;
+  }
+
+  Matrix &operator-=(const Matrix &A)
+  {
+    return this += (-A);
+  }
+
+  Matrix &operator*=(const Matrix &A)
+  {
+    Matrix X = this * A;
+    this = X;
+    return this;
+  }
+
+  bool operator==(const Matrix &A) const
+  {
+    assert(H == A.H);
+    assert(W == A.W);
+    for (auto i = 0; i < H; i++)
+    {
+      for (auto j = 0; j < W; j++)
+      {
+        if (a[i][j] != A.a[i][j])
+        {
+          return false;
+        }
       }
     }
     return true;
   }
-  string to_s() const
+
+  bool operator!=(const Matrix &A) const
   {
-    string res = "";
-    for (auto i = 0; i < row; i++)
-    {
-      for (auto j = 0; j < col; j++)
-      {
-        res += to_string(a[i * col + j]);
-        if (j != col - 1)
-          res += " ";
-      }
-      if (i != row - 1)
-        res += "\n";
-    }
-    return res;
+    return !(this == A);
   }
-  void input()
-  { // 大抵行列表示で入力されるからこれで事足りるでしょう。
-    for (auto i = 0; i < row * col; i++)
+
+  const T *&operator[](const size_t i) const
+  {
+    return a[i];
+  }
+
+  T *&operator[](const size_t i)
+  {
+    return a[i];
+  }
+
+  Matrix power(T N)
+  {
+    assert(H == W);
+    // N > 0
+    if (N == 1)
     {
-      cin >> a[i];
+      return *this;
     }
+    if (N % 2 == 1)
+    {
+      return power(N - 1) * (*this);
+    }
+    Matrix X = power(N / 2);
+    return X * X;
   }
 };
 
-ostream &operator<<(ostream &s, const matrix A)
-{ // cout << A << endl; で苦もなく表示。
-  return s << A.to_s();
-}
+template <class T>
+T Matrix<T>::MOD = 0;
 
-matrix multiply(matrix A, matrix B)
-{ // AB を出力
-  assert(A.col == B.row);
-  int N = A.col;
-  matrix C(A.row, B.col);
-  for (auto i = 0; i < C.row; i++)
-  {
-    for (auto j = 0; j < C.col; j++)
-    {
-      C.a[i * C.col + j] = ((valarray<mattype>)A.a[slice(i * A.col, N, 1)] *
-                            (valarray<mattype>)B.a[slice(j, N, B.col)])
-                               .sum();
-    }
-  }
-  return C;
-}
-
-matrix inverse(matrix A, matrix B)
-{ // A^{-1} B を出力
-  assert(A.row == A.col);
-  assert(A.col == B.row);
-  int N = A.row;
-  int M = B.col;
-  for (auto i = 0; i < N; i++)
-  {
-    mattype taikaku = A.a[i * N + i];
-    for (auto k = 0; k < N; k++)
-    {
-      if (i == k)
-        continue;
-      mattype keisu = A.a[k * N + i] / taikaku;
-      // A.a[k*N+i] = 0;
-      for (auto j = i + 1; j < N; j++)
-      {
-        A.a[k * N + j] = A.a[k * N + j] - keisu * A.a[i * N + j];
-      }
-      for (auto j = 0; j < M; j++)
-      {
-        B.a[k * M + j] = B.a[k * M + j] - keisu * B.a[i * M + j];
-      }
-    }
-  }
-  for (auto i = 0; i < N; i++)
-  {
-    mattype taikaku = A.a[i * N + i];
-    for (auto j = 0; j < M; j++)
-    {
-      B.a[i * M + j] = B.a[i * M + j] / taikaku;
-    }
-  }
-  return B;
-}
-
-matrix transposed(matrix A)
-{ // 転置
-  matrix B = matrix(A.col, A.row);
-  for (auto i = 0; i < B.row; i++)
-  {
-    for (auto j = 0; j < B.col; j++)
-    {
-      B.a[i * B.col + j] = A.a[j * A.col + i];
-    }
-  }
-  return B;
-}
-
-bool AB_is_equal_to_C(matrix A, matrix B, matrix C, int times)
-{ // AB = C かどうかを判定。timesには回数を指定。
-  // N * M が 10^6 くらいなら、times = 10 で 1秒単位がかかるようになるから要注意。
-  // でも 10 はほしいところである。
-  assert(A.col == B.row);
-  assert(A.row == C.row);
-  assert(B.col == C.col);
-  random_device rd;
-  mt19937 mt(rd());
-  matrix p = matrix(B.col, 1);
-  for (auto i = 0; i < times; i++)
-  {
-    for (auto j = 0; j < B.col; j++)
-    {
-      p.a[j] = mt() % 10000;
-    }
-    if (multiply(A, multiply(B, p)) == multiply(C, p))
-    {
-      /*
-      cerr << "ABp is following:" << endl;
-      cerr << multiply(A, multiply(B, p)) << endl;
-      cerr << "Cp is following:" << endl;
-      cerr << multiply(C, p) << endl;
-      */
-      continue;
-    }
-    else
-    {
-      return false;
-    }
-  }
-  return true;
-}
-
-// 此処から先は、modを取るパターン。
-
-mattype MOD = 1000;
-
-matrix mod_multiply(matrix A, matrix B)
-{
-  assert(A.col == B.row);
-  int N = A.col;
-  matrix C(A.row, B.col);
-  for (auto i = 0; i < C.row; i++)
-  {
-    for (auto j = 0; j < C.col; j++)
-    {
-      C.a[i * C.col + j] = ((valarray<mattype>)A.a[slice(i * A.col, N, 1)] *
-                            (valarray<mattype>)B.a[slice(j, N, B.col)])
-                               .sum() %
-                           MOD;
-    }
-  }
-  return C;
-}
-
-matrix mod_pow(matrix A, mattype n)
-{ // n \geq 1
-  if (n % 2 == 0)
-  {
-    matrix B = mod_pow(A, n / 2);
-    return mod_multiply(B, B);
-  }
-  else if (n == 1)
-  {
-    return A;
-  }
-  else
-  {
-    return mod_multiply(A, mod_pow(A, n - 1));
-  }
-}
-
-// 此処から先 main
-
-ll L, A, B;
+ll L, A, B, M;
 ll upper[100];
 
-matrix choose(ll k, ll n)
+Matrix<ll> choose(ll k, ll n)
 {
-  matrix K(3, 3);
+  Matrix<ll> K(3, 3);
   ll p = 1;
   for (auto i = 0; i < k; i++)
   {
     p *= 10LL;
   }
-  K.a = {p % MOD, 1, 0, 0, 1, B, 0, 0, 1};
-  return mod_pow(K, n);
+  K = {p % M, 1, 0, 0, 1, B, 0, 0, 1};
+  return K.power(n);
 }
 
 ll f(ll i)
@@ -293,7 +232,8 @@ ll f(ll i)
 
 int main()
 {
-  cin >> L >> A >> B >> MOD;
+  cin >> L >> A >> B >> M;
+  Matrix<ll>::MOD = M;
   for (auto i = 1; i <= 18; i++)
   {
     ll ok = upper[i - 1];
@@ -317,8 +257,8 @@ int main()
     }
     upper[i] = ng;
   }
-  matrix v(3, 1);
-  v.a = {0, A, 1};
+  Matrix<ll> v(3, 1);
+  v = {0, A, 1};
   for (auto i = 1; i <= 18; i++)
   {
     ll x = upper[i] - upper[i - 1];
@@ -331,7 +271,7 @@ int main()
     cerr << "f(" << upper[i] - 1 << ") = " << f(upper[i] - 1) << endl;
     cerr << "f(" << upper[i] << ") = " << f(upper[i]) << endl;
 #endif
-    v = mod_multiply(choose(i, x), v);
+    v = choose(i, x) * v;
   }
-  cout << v.a[0] << endl;
+  cout << v[0][0] << endl;
 }
