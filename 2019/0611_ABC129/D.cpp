@@ -177,6 +177,26 @@ int main()
       Y[k][j] = t;
     }
   }
+#if DEBUG == 1
+  cerr << "X:" << endl;
+  for (auto i = 0; i < H; i++)
+  {
+    for (auto j = 0; j < W; j++)
+    {
+      cerr << X[i][j];
+    }
+    cerr << endl;
+  }
+  cerr << "Y:" << endl;
+  for (auto i = 0; i < H; i++)
+  {
+    for (auto j = 0; j < W; j++)
+    {
+      cerr << Y[i][j];
+    }
+    cerr << endl;
+  }
+#endif
   int ans = 0;
   for (auto i = 0; i < H; i++)
   {
