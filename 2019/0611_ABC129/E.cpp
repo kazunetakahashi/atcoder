@@ -129,6 +129,7 @@ int main()
   // init();
   cin >> L;
   N = L.size();
+  dp[0][0] = 1;
   for (auto i = 0; i < N; i++)
   {
     dp[1][i + 1] += (mint)3 * dp[1][i];
