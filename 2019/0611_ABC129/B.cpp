@@ -137,7 +137,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     t += W[i];
-    ans = mins(ans, abs(sum - t - t));
+    mins(ans, abs(sum - t - t));
   }
   cout << ans << endl;
 }
