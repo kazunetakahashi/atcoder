@@ -318,15 +318,14 @@ Matrix<mint> affine(ll k)
   {
     x *= 10;
   }
-  vector<mint> V = {x, 1, 0, 0, 1, B, 0, 0, 1};
   Matrix<mint> X(3, 3);
-  X = V;
+  X = {x, 1, 0, 0, 1, B, 0, 0, 1};
   return X;
 }
 
 int f(int i)
 {
-  return to_string(A + B * i).size();
+  return (to_string(A + B * i)).size();
 }
 
 ll ub[100];
@@ -361,8 +360,7 @@ int main()
     ub[i] = ng;
   }
   Matrix<mint> v(3, 1);
-  vector<mint> t = {0, A, 1};
-  v = t;
+  v = {0, A, 1};
   for (auto i = 1; i <= 18; i++)
   {
     int x = ub[i] - ub[i - 1];
