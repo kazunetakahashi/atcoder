@@ -148,6 +148,7 @@ int main()
         {
           X[i][k] = t;
         }
+        t = 0;
       }
     }
     for (auto k = W - 1; k >= W - t; k--)
@@ -170,6 +171,7 @@ int main()
         {
           Y[k][j] = t;
         }
+        t = 0;
       }
     }
     for (auto k = H - 1; k >= H - t; k--)
