@@ -368,7 +368,7 @@ int main()
   v = {0, A, 1};
   for (auto i = 1; i <= 18; i++)
   {
-    int x = ub[i] - ub[i - 1];
+    ll x = ub[i] - ub[i - 1];
     if (x == 0)
     {
       continue;
