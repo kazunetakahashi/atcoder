@@ -328,7 +328,7 @@ Matrix<mint> affine(ll k)
   return X;
 }
 
-int f(int i)
+int f(ll i)
 {
   return (to_string(A + B * i)).size();
 }
