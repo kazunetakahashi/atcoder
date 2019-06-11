@@ -335,6 +335,7 @@ int main()
 {
   // init();
   cin >> L >> A >> B >> M;
+  mint::MOD = M;
   for (auto i = 1; i <= 18; i++)
   {
     ll x = ub[i - 1];
