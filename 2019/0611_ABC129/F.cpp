@@ -47,6 +47,11 @@ public:
   ll x;
   mint() : x(0) {}
   mint(ll x) : x(x % MOD) {}
+  mint &fix()
+  {
+    x = (x % MOD + MOD) % MOD;
+    return *this;
+  }
   mint operator-() const { return mint(0) - *this; }
   mint &operator+=(const mint &a)
   {
