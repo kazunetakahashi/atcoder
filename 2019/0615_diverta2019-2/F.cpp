@@ -132,7 +132,13 @@ void make_vector()
 {
   for (auto i = 0; i < N; i++)
   {
+#if DEBUG == 1
+    cerr << "aaa" << endl;
+#endif
     ll mini = *max_element(V.begin(), V.end()) + 1;
+#if DEBUG == 1
+    cerr << "mini = " << mini << endl;
+#endif
     for (auto i = mini;; i++)
     {
       if (H.find(i) != H.end())
