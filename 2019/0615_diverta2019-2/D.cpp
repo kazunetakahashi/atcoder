@@ -216,6 +216,36 @@ int main()
           x = change_N(x, e1, 1);
           x = change_G(x, e2, 1);
           x = change_N(x, e3, 0);
+#if DEBUG == 1
+          if (ans < get<0>(x))
+          {
+            cerr << "maxi: " << get<0>(x) << endl;
+            cerr << "{";
+            for (auto e : e0)
+            {
+              cerr << e << ", ";
+            }
+            cerr << "}" << endl;
+            cerr << "{";
+            for (auto e : e1)
+            {
+              cerr << e << ", ";
+            }
+            cerr << "}" << endl;
+            cerr << "{";
+            for (auto e : e2)
+            {
+              cerr << e << ", ";
+            }
+            cerr << "}" << endl;
+            cerr << "{";
+            for (auto e : e3)
+            {
+              cerr << e << ", ";
+            }
+            cerr << "}" << endl;
+          }
+#endif
           maxs(ans, get<0>(x));
         }
       }
