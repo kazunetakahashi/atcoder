@@ -229,7 +229,7 @@ int main()
             cerr << "{";
             for (auto e : e1)
             {
-              cerr << e << ", ";
+              cerr << e << " ";
             }
             cerr << "}" << endl;
             cerr << "{";
