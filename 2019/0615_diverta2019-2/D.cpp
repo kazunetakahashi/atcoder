@@ -210,6 +210,9 @@ int main()
     x = change_N(x, W[0], 1);
     maxs(ans, get<0>(x));
   }
+#if DEBUG == 1
+  cerr << ans << endl;
+#endif
   for (auto e2 : W)
   {
     state x = state(ans, 0, 0, 0);
