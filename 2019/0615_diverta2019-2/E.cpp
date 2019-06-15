@@ -98,6 +98,7 @@ void init()
   for (int i = 2; i < MAX_SIZE; i++)
   {
 #if DEBUG == 1
+    cerr << mint::MOD % i << endl;
     cerr << -inv[mint::MOD % i] << endl;
 #endif
     inv[i] = (-inv[mint::MOD % i]) * (mint::MOD / i);
