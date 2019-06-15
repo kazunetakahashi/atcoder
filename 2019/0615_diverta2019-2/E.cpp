@@ -133,6 +133,9 @@ int main()
   {
     X += fact[i];
   }
+#if DEBUG == 1
+  cerr << X << endl;
+#endif
   dp[0] = 1;
   sum[0] = 0;
   for (auto i = 1; i <= H; i++)
