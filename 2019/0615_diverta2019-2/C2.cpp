@@ -133,6 +133,13 @@ int main()
     cin >> A[i];
   }
   sort(A, A + N);
+#if DEBUG == 1
+  for (auto i = 0; i < N; i++)
+  {
+    cerr << A[i] << " ";
+  }
+  cerr << endl;
+#endif
   is_plus[0] = false;
   is_plus[N - 1] = true;
   for (auto i = 1; i < N - 1; i++)
@@ -158,8 +165,8 @@ int main()
     if (is_plus[i])
     {
       cout << now << " " << A[i] << endl;
+      now -= A[i];
     }
-    now -= A[i];
   }
   ll now2 = A[N - 1];
   for (auto i = 1; i < N - 1; i++)
@@ -167,6 +174,7 @@ int main()
     if (!is_plus[i])
     {
       cout << now2 << " " << A[i] << endl;
+      now2 -= A[i];
     }
   }
   cout << now2 << " " << now << endl;
