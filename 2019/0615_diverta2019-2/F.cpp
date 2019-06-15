@@ -132,28 +132,42 @@ void make_vector()
 {
   for (auto i = 0; i < N; i++)
   {
-    for (auto i = 1;; i++)
+    for (auto j = 1;; j++)
     {
-      if (H.find(i) != H.end())
+      bool ok = true;
+      if (H.find(j) != H.end())
+      {
+        ok = false;
+      }
+      for (auto &x : V)
+      {
+        if (H.find(x + j) != H.end())
+        {
+          ok = false;
+          break;
+        }
+      }
+      if (!ok)
       {
         continue;
       }
-      for (auto &x : V)
-      {
-        if (H.find(x + i) != H.end())
-        {
-          continue;
-        }
-      }
-      V.push_back(i);
 #if DEBUG == 1
-      cerr << "insert: " << i << endl;
+      assert(H.find(j) == H.end());
+      cerr << "H.insert(" << j << ")" << endl;
 #endif
-      H.insert(i);
+      H.insert(j);
       for (auto &x : V)
       {
-        H.insert(x + i);
+#if DEBUG == 1
+        assert(H.find(x + j) == H.end());
+        cerr << "H.insert(" << x + j << ")" << endl;
+#endif
+        H.insert(x + j);
       }
+      V.push_back(j);
+#if DEBUG == 1
+      cerr << "V.push_back(" << j << ")" << endl;
+#endif
       break;
     }
   }
