@@ -223,7 +223,7 @@ int main()
             cerr << "{";
             for (auto e : e0)
             {
-              cerr << e << ", ";
+              cerr << e << " ";
             }
             cerr << "}" << endl;
             cerr << "{";
@@ -235,13 +235,13 @@ int main()
             cerr << "{";
             for (auto e : e2)
             {
-              cerr << e << ", ";
+              cerr << e << " ";
             }
             cerr << "}" << endl;
             cerr << "{";
             for (auto e : e3)
             {
-              cerr << e << ", ";
+              cerr << e << " ";
             }
             cerr << "}" << endl;
           }
