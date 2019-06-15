@@ -123,7 +123,6 @@ ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 ll N, H, D;
 mint X = 0;
 mint dp[1000010];
-mint sum[1000010];
 
 int main()
 {
@@ -137,15 +136,15 @@ int main()
   cerr << X << endl;
 #endif
   dp[0] = 1;
-  sum[0] = 0;
+  mint sum = 1;
   for (auto i = 1; i <= H; i++)
   {
-    sum[i] = sum[i - 1] + dp[i - 1];
-    dp[i] = sum[i] * X;
+    dp[i] = sum * X;
+    sum += dp[i];
     if (i - D >= 0)
     {
-      dp[i] -= sum[i - D] * X;
+      sum -= dp[i - D];
     }
   }
-  cout << dp[N] * fact[N] << endl;
+  cout << dp[H] * fact[N] << endl;
 }
