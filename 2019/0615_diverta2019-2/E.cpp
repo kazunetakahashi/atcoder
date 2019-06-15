@@ -129,6 +129,9 @@ int main()
 {
   init();
   cin >> N >> H >> D;
+#if DEBUG == 1
+  cerr << N << " " << H << " " << D << endl;
+#endif
   for (auto i = 1; i <= N; i++)
   {
     X += fact[i];
