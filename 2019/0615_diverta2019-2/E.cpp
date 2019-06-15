@@ -140,8 +140,11 @@ int main()
     sum[i] = sum[i - 1] + dp[i - 1];
     dp[i] = sum[i] * X;
 #if DEBUG == 1
-    cerr << "sum[" << i << "] = " << sum[i] << endl;
-    cerr << "dp[" << i << "] = " << dp[i] << endl;
+    if (H < 100)
+    {
+      cerr << "sum[" << i << "] = " << sum[i] << endl;
+      cerr << "dp[" << i << "] = " << dp[i] << endl;
+    }
 #endif
     if (i - D >= 0)
     {
