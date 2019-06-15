@@ -205,20 +205,15 @@ int main()
   } while (next_permutation(alpha, alpha + 4));
   for (auto e0 : W)
   {
-    state x = state(ans, 0, 0, 0);
+    state x = state(N, 0, 0, 0);
     x = change_G(x, e0, 0);
     x = change_N(x, W[0], 1);
-#if DEBUG == 1
-    if (get<0>(x) > ans)
-    {
-      cerr << get<0>(x) << endl;
-    }
-#endif
     maxs(ans, get<0>(x));
   }
+  N = ans;
   for (auto e2 : W)
   {
-    state x = state(ans, 0, 0, 0);
+    state x = state(N, 0, 0, 0);
     x = change_G(x, e2, 1);
     x = change_N(x, W[0], 0);
     maxs(ans, get<0>(x));
