@@ -132,7 +132,7 @@ void make_vector()
 {
   for (auto i = 0; i < N; i++)
   {
-    for (auto i = 0;; i++)
+    for (auto i = 1;; i++)
     {
       if (H.find(i) != H.end())
       {
