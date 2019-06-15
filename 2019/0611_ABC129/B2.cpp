@@ -136,6 +136,7 @@ int sum(int *start, int *goal)
 using Task_type = int(int *, int *);
 
 #include <future>
+#include <pthread.h>
 
 int main()
 {
