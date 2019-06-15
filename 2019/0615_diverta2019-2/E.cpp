@@ -133,12 +133,16 @@ int main()
   {
     X += fact[i];
   }
-  dp[0] = 1;
-  sum[0] = 0;
-  for (auto i = 1; i <= H; i++)
+  dp[1] = 1;
+  sum[1] = 0;
+  for (auto i = 2; i <= H; i++)
   {
     sum[i] = sum[i - 1] + dp[i - 1];
     dp[i] = sum[i] * X;
+    if (i - D >= 1)
+    {
+      dp[i] -= sum[i - D] * X;
+    }
 #if DEBUG == 1
     if (H < 100)
     {
@@ -146,10 +150,6 @@ int main()
       cerr << "dp[" << i << "] = " << dp[i] << endl;
     }
 #endif
-    if (i - D >= 0)
-    {
-      dp[i] -= sum[i - D] * X;
-    }
   }
   cout << dp[H] * fact[N] << endl;
 }
