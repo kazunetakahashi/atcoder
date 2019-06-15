@@ -153,6 +153,7 @@ void solve()
     now2 -= A[i];
   }
   cout << now2 << " " << now << endl;
+  assert(now2 - now == ans);
 }
 
 void solve_plus()
@@ -170,6 +171,7 @@ void solve_plus()
     now -= A[i];
   }
   cout << A[N - 1] << " " << now << endl;
+  assert(A[N - 1] - now == ans);
 }
 
 void solve_minus()
@@ -186,6 +188,7 @@ void solve_minus()
     cout << now << " " << A[i] << endl;
     now -= A[i];
   }
+  assert(now == ans);
 }
 
 int main()
