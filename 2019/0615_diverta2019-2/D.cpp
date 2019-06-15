@@ -205,51 +205,17 @@ int main()
   } while (next_permutation(alpha, alpha + 4));
   for (auto e0 : W)
   {
-    for (auto e1 : W)
-    {
-      for (auto e2 : W)
-      {
-        for (auto e3 : W)
-        {
-          state x = state(N, 0, 0, 0);
-          x = change_G(x, e0, 0);
-          x = change_N(x, e1, 1);
-          x = change_G(x, e2, 1);
-          x = change_N(x, e3, 0);
-#if DEBUG == 1
-          if (ans < get<0>(x))
-          {
-            cerr << "maxi: " << get<0>(x) << endl;
-            cerr << "{";
-            for (auto e : e0)
-            {
-              cerr << e << " ";
-            }
-            cerr << "}" << endl;
-            cerr << "{";
-            for (auto e : e1)
-            {
-              cerr << e << " ";
-            }
-            cerr << "}" << endl;
-            cerr << "{";
-            for (auto e : e2)
-            {
-              cerr << e << " ";
-            }
-            cerr << "}" << endl;
-            cerr << "{";
-            for (auto e : e3)
-            {
-              cerr << e << " ";
-            }
-            cerr << "}" << endl;
-          }
-#endif
-          maxs(ans, get<0>(x));
-        }
-      }
-    }
+    state x = state(ans, 0, 0, 0);
+    x = change_G(x, e0, 0);
+    x = change_N(x, W[0], 1);
+    maxs(ans, get<0>(x));
+  }
+  for (auto e2 : W)
+  {
+    state x = state(ans, 0, 0, 0);
+    x = change_G(x, e2, 1);
+    x = change_N(x, W[0], 0);
+    maxs(ans, get<0>(x));
   }
   cout << ans << endl;
 }
