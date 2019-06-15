@@ -94,15 +94,15 @@ mint fact[MAX_SIZE];
 mint factinv[MAX_SIZE];
 void init()
 {
-#if DEBUG == 1
-  cerr << "XXX" << endl;
-#endif
-
   inv[1] = 1;
   for (int i = 2; i < MAX_SIZE; i++)
   {
     inv[i] = (-inv[mint::MOD % i]) * (mint::MOD / i);
   }
+#if DEBUG == 1
+  cerr << "XXX" << endl;
+#endif
+
   fact[0] = factinv[0] = 1;
   for (int i = 1; i < MAX_SIZE; i++)
   {
