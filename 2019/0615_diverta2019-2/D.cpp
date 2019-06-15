@@ -125,47 +125,67 @@ ll X[2][3];
 ll ans;
 
 typedef tuple<ll, ll, ll, ll> state;
+typedef vector<int> sat;
 
-state change(state x, int k, int t)
+state change_G(state x, sat V, int t)
 {
-  if (k == 6)
-  {
-    return x;
-  }
   ll n, g, s, b;
   tie(n, g, s, b) = x;
-  if (k == 0)
+  for (auto e : V)
   {
-    g += (n / X[t][k / 2]);
-    n %= X[t][k / 2];
-  }
-  else if (k == 1)
-  {
-    n += X[t][k / 2] * g;
-    g = 0;
-  }
-  else if (k == 2)
-  {
-    s += (n / X[t][k / 2]);
-    n %= X[t][k / 2];
-  }
-  else if (k == 3)
-  {
-    n += X[t][k / 2] * s;
-    s = 0;
-  }
-  else if (k == 4)
-  {
-    b += (n / X[t][k / 2]);
-    n %= X[t][k / 2];
-  }
-  else if (k == 5)
-  {
-    n += X[t][k / 2] * b;
-    b = 0;
+    if (e == 3)
+    {
+      break;
+    }
+    else if (e == 0)
+    {
+      g += N / X[t][e];
+      n %= X[t][e];
+    }
+    else if (e == 1)
+    {
+      s += N / X[t][e];
+      n %= X[t][e];
+    }
+    else if (e == 2)
+    {
+      b += N / X[t][e];
+      n %= X[t][e];
+    }
   }
   return tie(n, g, s, b);
 }
+
+state change_N(state x, sat V, int t)
+{
+  ll n, g, s, b;
+  tie(n, g, s, b) = x;
+  for (auto e : V)
+  {
+    if (e == 3)
+    {
+      break;
+    }
+    else if (e == 0)
+    {
+      n += X[t][e] * g;
+      g = 0;
+    }
+    else if (e == 1)
+    {
+      n += X[t][e] * s;
+      s = 0;
+    }
+    else if (e == 2)
+    {
+      n += X[t][e] * b;
+      b = 0;
+    }
+  }
+  return tie(n, g, s, b);
+}
+
+vector<sat> W;
 
 int main()
 {
@@ -173,17 +193,31 @@ int main()
   ans = N;
   cin >> X[0][0] >> X[0][1] >> X[0][2];
   cin >> X[1][0] >> X[1][1] >> X[1][2];
-  for (auto i = 0; i < 7; i++)
+  int alpha[4] = {0, 1, 2, 3};
+  do
   {
-    for (auto j = 0; j < 7; j++)
+    sat V;
+    for (auto i = 0; i < 4; i++)
     {
-      for (auto k = 0; k < 7; k++)
+      V.push_back(alpha[i]);
+    }
+    W.push_back(V);
+  } while (next_permutation(alpha, alpha + 4));
+  for (auto e0 : W)
+  {
+    for (auto e1 : W)
+    {
+      for (auto e2 : W)
       {
-        state x = state(N, 0, 0, 0);
-        x = change(x, i, 0);
-        x = change(x, j, 1);
-        x = change(x, k, 0);
-        maxs(ans, get<0>(x));
+        for (auto e3 : W)
+        {
+          state x = state(N, 0, 0, 0);
+          x = change_G(x, e0, 0);
+          x = change_N(x, e1, 1);
+          x = change_G(x, e2, 1);
+          x = change_N(x, e3, 0);
+          maxs(ans, get<0>(x));
+        }
       }
     }
   }
