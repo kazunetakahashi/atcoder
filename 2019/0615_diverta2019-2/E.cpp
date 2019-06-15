@@ -146,5 +146,5 @@ int main()
       sum -= dp[i - D];
     }
   }
-  cout << dp[H] * fact[N] << endl;
+  cout << dp[H] << endl;
 }
