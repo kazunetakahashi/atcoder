@@ -125,12 +125,12 @@ int main()
   // init();
   int N, K;
   cin >> N >> K;
-  if (N % K == 0)
+  if (K == 1)
   {
     cout << 0 << endl;
   }
   else
   {
-    cout << 1 << endl;
+    cout << N - K << endl;
   }
 }
