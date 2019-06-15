@@ -147,6 +147,9 @@ void make_vector()
         }
       }
       V.push_back(i);
+#if DEBUG == 1
+      cerr << "insert: " << i << endl;
+#endif
       H.insert(i);
       for (auto &x : V)
       {
