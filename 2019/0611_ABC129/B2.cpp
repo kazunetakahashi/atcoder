@@ -153,6 +153,8 @@ int main()
     future<int> f1{pt1.get_future()};
     thread t0{move(pt0), W, W + i};
     thread t1{move(pt1), W + i, W + N};
+    t0.join();
+    t1.join();
     mins(ans, abs(f0.get() - f1.get()));
   }
   cout << ans << endl;
