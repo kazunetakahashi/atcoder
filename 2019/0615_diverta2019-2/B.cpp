@@ -123,10 +123,10 @@ ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 int N;
 ll x[100];
 ll y[100];
+bool visited[100];
 
 ll solve(ll p, ll q)
 {
-  bool visited[100];
   fill(visited, visited + N, false);
   for (auto i = 0; i < N; i++)
   {
@@ -136,7 +136,7 @@ ll solve(ll p, ll q)
       {
         continue;
       }
-      if (!(x[i] - x[j] == p && y[i] - y[j] == q))
+      if (x[i] - x[j] == p && y[i] - y[j] == q)
       {
         visited[j] = true;
         break;
