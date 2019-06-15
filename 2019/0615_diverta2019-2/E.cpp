@@ -94,6 +94,10 @@ mint fact[MAX_SIZE];
 mint factinv[MAX_SIZE];
 void init()
 {
+#if DEBUG == 1
+  cerr << "XXX" << endl;
+#endif
+
   inv[1] = 1;
   for (int i = 2; i < MAX_SIZE; i++)
   {
@@ -128,9 +132,6 @@ mint sum[1000010];
 int main()
 {
   init();
-#if DEBUG == 1
-  cerr << "XXX" << endl;
-#endif
   cin >> N >> H >> D;
 #if DEBUG == 1
   cerr << N << " " << H << " " << D << endl;
