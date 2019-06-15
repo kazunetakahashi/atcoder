@@ -133,7 +133,10 @@ int main()
   {
     X += fact[i];
   }
-  dp[1] = 1;
+  for (auto i = 1; i <= D; i++)
+  {
+    dp[i] = 1;
+  }
   sum[1] = 0;
   for (auto i = 2; i <= H; i++)
   {
