@@ -147,7 +147,7 @@ void solve()
     now -= A[i];
   }
   ll now2 = A[N - 1];
-  for (auto i = 0; i < ind; i++)
+  for (auto i = 1; i < ind; i++)
   {
     cout << now2 << " " << A[i] << endl;
     now2 -= A[i];
