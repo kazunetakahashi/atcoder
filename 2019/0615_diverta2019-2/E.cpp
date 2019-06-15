@@ -129,9 +129,6 @@ int main()
 {
   init();
   cin >> N >> H >> D;
-#if DEBUG == 1
-  cerr << N << " " << H << " " << D << endl;
-#endif
   for (auto i = 1; i <= N; i++)
   {
     X += fact[i];
@@ -144,11 +141,11 @@ int main()
   for (auto i = 1; i <= H; i++)
   {
     sum[i] = sum[i - 1] + dp[i - 1];
-    dp[i] = sum[i];
+    dp[i] = sum[i] * X;
     if (i - D >= 0)
     {
-      dp[i] -= sum[i - D];
+      dp[i] -= sum[i - D] * X;
     }
   }
-  cout << dp[N] * X * fact[N] << endl;
+  cout << dp[N] * fact[N] << endl;
 }
