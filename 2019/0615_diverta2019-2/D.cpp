@@ -139,17 +139,17 @@ state change_G(state x, sat V, int t)
     }
     else if (e == 0)
     {
-      g += N / X[t][e];
+      g += n / X[t][e];
       n %= X[t][e];
     }
     else if (e == 1)
     {
-      s += N / X[t][e];
+      s += n / X[t][e];
       n %= X[t][e];
     }
     else if (e == 2)
     {
-      b += N / X[t][e];
+      b += n / X[t][e];
       n %= X[t][e];
     }
   }
