@@ -150,7 +150,7 @@ int main()
     packaged_task<Task_type> pt0{sum};
     packaged_task<Task_type> pt1{sum};
     future<int> f0{pt0.get_future()};
-    future<int> f1{pt0.get_future()};
+    future<int> f1{pt1.get_future()};
     thread t0{move(pt0), W, W + i};
     thread t1{move(pt1), W + i, W + N};
     mins(ans, abs(f0.get() - f1.get()));
