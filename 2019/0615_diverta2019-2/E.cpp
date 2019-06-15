@@ -47,7 +47,7 @@ public:
   ll x;
   mint() : x(0) {}
   mint(ll x) : x(x % MOD) {}
-  mint operator-() const { return mint(0) - *this; }
+  mint operator-() const { return x ? MOD - x : 0; }
   mint &operator+=(const mint &a)
   {
     if ((x += a.x) >= MOD)
