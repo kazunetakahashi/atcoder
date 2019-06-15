@@ -175,7 +175,7 @@ void solve_plus()
 void solve_minus()
 {
   ll ans = A[N - 1];
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < N - 1; i++)
   {
     ans += abs(A[i]);
   }
