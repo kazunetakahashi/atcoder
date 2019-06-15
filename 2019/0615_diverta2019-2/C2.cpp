@@ -137,7 +137,7 @@ int main()
   is_plus[N - 1] = true;
   for (auto i = 1; i < N - 1; i++)
   {
-    is_plus[i] = (A[i] < 0);
+    is_plus[i] = (A[i] > 0);
   }
   ll ans = 0;
   for (auto i = 0; i < N; i++)
