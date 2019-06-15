@@ -141,7 +141,7 @@ int main()
   for (auto i = 2; i <= H; i++)
   {
     sum[i] = sum[i - 1] + dp[i - 1];
-    dp[i] = sum[i] * X;
+    dp[i] += sum[i] * X;
     if (i - D >= 1)
     {
       dp[i] -= sum[i - D] * X;
