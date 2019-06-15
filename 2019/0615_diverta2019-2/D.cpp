@@ -208,11 +208,14 @@ int main()
     state x = state(ans, 0, 0, 0);
     x = change_G(x, e0, 0);
     x = change_N(x, W[0], 1);
+#if DEBUG == 1
+    if (get<0>(x) > ans)
+    {
+      cerr << get<0>(x) << endl;
+    }
+#endif
     maxs(ans, get<0>(x));
   }
-#if DEBUG == 1
-  cerr << ans << endl;
-#endif
   for (auto e2 : W)
   {
     state x = state(ans, 0, 0, 0);
