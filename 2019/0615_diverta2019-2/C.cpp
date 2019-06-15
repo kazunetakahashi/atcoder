@@ -200,11 +200,11 @@ int main()
     cin >> A[i];
   }
   sort(A, A + N);
-  if (A[0] > 0)
+  if (A[0] >= 0)
   {
     solve_plus();
   }
-  else if (A[N - 1] < 0)
+  else if (A[N - 1] <= 0)
   {
     solve_minus();
   }
