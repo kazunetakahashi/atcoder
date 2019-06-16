@@ -128,7 +128,7 @@ int main()
 {
   // init();
   cin >> W >> H >> x >> y;
-  ll X = ((double)W) * H / 2;
+  double X = ((double)W) * H / 2;
   int ans;
   if (W % 2 == 0 && W / 2 == x && H % 2 == 0 && H / 2 == y)
   {
