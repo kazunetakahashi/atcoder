@@ -216,4 +216,5 @@ int main()
     double now = xd.get(t) * yd.get(t);
     mins(ans, now);
   }
+  cout << fixed << setprecision(12) << ans << endl;
 }
