@@ -150,11 +150,11 @@ int main()
     for (auto j = 0; j <= M; j++)
     {
       dp[i][j] = dp[i - 1][j];
-      dp[i][j] += sum;
       if (j > 0 && S[i - 1] == T[j - 1])
       {
         sum += dp[i - 1][j - 1];
       }
+      dp[i][j] += sum;
     }
   }
   cout << dp[N][M] << endl;
