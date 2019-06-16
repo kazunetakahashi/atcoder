@@ -142,14 +142,14 @@ int main()
     cin >> T[i];
   }
   dp0[0][0] = 1;
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i <= N; i++)
   {
-    for (auto j = 0; j < M; j++)
+    for (auto j = 0; j <= M; j++)
     {
       dp0[i + 1][j] += dp0[i][j];
-      dp1[i][j + 1] += dp0[i][j];
+      dp1[i][j] += dp0[i][j];
       dp1[i][j + 1] += dp1[i][j];
-      if (S[i] == T[j])
+      if (i < N && j < M && S[i] == T[j])
       {
         dp0[i + 1][j + 1] += dp1[i][j];
       }
