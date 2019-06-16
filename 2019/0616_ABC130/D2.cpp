@@ -122,7 +122,7 @@ ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 // const int dx[4] = {1, 0, -1, 0};
 // const int dy[4] = {0, 1, 0, -1};
 
-int N;
+ll N;
 ll K;
 ll a[100010];
 
@@ -141,7 +141,7 @@ int main()
   {
     while (j < N && s + a[j] < K)
     {
-      j++;
+      s += a[j++];
     }
     ans += j - i;
     s -= a[i];
