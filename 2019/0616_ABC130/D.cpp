@@ -139,6 +139,9 @@ int main()
   ll ans = 0;
   while (ub < N)
   {
+#if DEBUG == 1
+    cerr << "ub, lb, sum = " << ub << ", " << lb << ", " << sum << endl;
+#endif
     if (sum < K)
     {
       sum += a[ub++];
