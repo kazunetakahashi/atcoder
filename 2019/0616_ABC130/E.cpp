@@ -140,7 +140,10 @@ mint calc(int x, int y)
   dp[x][y] = calc(x - 1, y);
   for (auto e : chars[S[x - 1]])
   {
-    dp[x][y] += calc(x - 1, e);
+    if (e < y)
+    {
+      dp[x][y] += calc(x - 1, e);
+    }
   }
   visited[x][y] = true;
   return dp[x][y];
