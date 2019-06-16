@@ -126,28 +126,7 @@ int N, M;
 int S[2010];
 int T[2010];
 
-vector<int> chars[100010];
-
 mint dp[2010][2010];
-bool visited[2010][2010];
-
-mint calc(int x, int y)
-{
-  if (visited[x][y])
-  {
-    return dp[x][y];
-  }
-  dp[x][y] = calc(x - 1, y);
-  for (auto e : chars[S[x - 1]])
-  {
-    if (e < y)
-    {
-      dp[x][y] += calc(x - 1, e);
-    }
-  }
-  visited[x][y] = true;
-  return dp[x][y];
-}
 
 int main()
 {
@@ -161,24 +140,22 @@ int main()
   {
     cin >> T[i];
   }
-  for (auto i = 0; i < M; i++)
-  {
-    chars[T[i]].push_back(i);
-  }
-  fill(&visited[0][0], &visited[0][0] + 2010 * 2010, false);
   for (auto j = 0; j <= M; j++)
   {
     dp[0][j] = 1;
-    visited[0][j] = true;
   }
-  cout << calc(N, M) << endl;
-#if DEBUG == 1
-  for (auto i = 0; i <= N; i++)
+  for (auto i = 1; i <= N; i++)
   {
+    mint sum = 0;
     for (auto j = 0; j <= M; j++)
     {
-      cerr << "calc(" << i << ", " << j << ") = " << calc(i, j) << endl;
+      dp[i][j] = dp[i - 1][j];
+      dp[i][j] += sum;
+      if (j > 0 && S[i - 1] == T[j - 1])
+      {
+        sum += dp[i - 1][j - 1];
+      }
     }
   }
-#endif
+  cout << dp[N][M] << endl;
 }
