@@ -146,7 +146,7 @@ int main()
     int ok = -1;
     while (abs(ok - ng) > 1)
     {
-      int t = (ok - ng) / 2;
+      int t = (ok + ng) / 2;
       if (sum[i] - sum[t] >= K)
       {
         ok = t;
