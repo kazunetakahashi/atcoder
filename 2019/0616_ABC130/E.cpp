@@ -156,9 +156,9 @@ int main()
     }
   }
 #if DEBUG == 1
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i <= N; i++)
   {
-    for (auto j = 0; j < M; j++)
+    for (auto j = 0; j <= M; j++)
     {
       cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
     }
