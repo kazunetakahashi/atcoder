@@ -164,6 +164,7 @@ public:
         }
       }
     }
+    return ts;
   }
 };
 
