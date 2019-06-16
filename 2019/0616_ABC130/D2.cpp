@@ -145,5 +145,5 @@ int main()
     }
     ans += j - i;
   }
-  cout << ans << endl;
+  cout << N * (N + 1) / 2 - ans << endl;
 }
