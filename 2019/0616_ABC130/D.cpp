@@ -124,6 +124,8 @@ ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 
 ll N, K;
 ll a[100010];
+ll sum[100010];
+ll mini[100010];
 
 int main()
 {
@@ -133,24 +135,33 @@ int main()
   {
     cin >> a[i];
   }
-  ll sum = 0;
-  ll ub = 0;
-  ll lb = 0;
-  ll ans = 0;
-  while (ub < N)
+  sum[0] = 0;
+  for (auto i = 0; i < N; i++)
   {
-#if DEBUG == 1
-    cerr << "ub, lb, sum = " << ub << ", " << lb << ", " << sum << endl;
-#endif
-    if (sum < K)
+    sum[i + 1] = sum[i] + a[i];
+  }
+  for (auto i = 1; i <= N; i++)
+  {
+    int ng = i;
+    int ok = -1;
+    while (abs(ok - ng) > 1)
     {
-      sum += a[ub++];
+      int t = (ok - ng) / 2;
+      if (sum[i] - sum[t] >= K)
+      {
+        ok = t;
+      }
+      else
+      {
+        ng = t;
+      }
     }
-    else
-    {
-      ans += lb + 1;
-      sum -= a[lb++];
-    }
+    mini[i] = ok;
+  }
+  ll ans = 0;
+  for (auto i = 1; i <= N; i++)
+  {
+    ans += mini[i] + 1;
   }
   cout << ans << endl;
 }
