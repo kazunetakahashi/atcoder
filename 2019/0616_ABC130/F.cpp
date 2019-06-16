@@ -197,6 +197,9 @@ int main()
   double l = 0;
   for (auto i = 0; i < 1000; i++)
   {
+#if DEBUG == 1
+    cerr << "(" << l << ", " << r << ")" << endl;
+#endif
     double s = (2 * r + l) / 3;
     double t = (r + 2 * l) / 3;
     ll A = S(s);
