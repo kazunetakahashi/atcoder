@@ -127,6 +127,7 @@ const int C = 19;
 
 enum class state
 {
+  count_error,
   black_win,
   white_win,
   black_even,
@@ -192,7 +193,7 @@ public:
     int t = cnt[0] - cnt[1];
     if (!(t == 0 || t == 1))
     {
-      return state::error;
+      return state::count_error;
     }
     bool black_turn = (t == 1);
     bool black_win = win('o');
@@ -253,6 +254,10 @@ int main()
   cerr << I.cnt[0] << " VS " << I.cnt[1] << endl;
   cerr << "I_state: " << (int)I_state << endl;
 #endif
+  if (I_state == state::count_error)
+  {
+    No();
+  }
   if (I_state == state::error)
   {
     assert(false);
