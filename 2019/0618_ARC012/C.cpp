@@ -259,6 +259,7 @@ int main()
   }
   if (I_state == state::white_even || I_state == state::black_even)
   {
+    assert(false);
     Yes();
   }
   if (I_state == state::black_win)
