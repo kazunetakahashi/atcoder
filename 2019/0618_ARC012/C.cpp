@@ -261,11 +261,11 @@ int main()
   }
   if (I_state == state::double_win_error)
   {
+    assert(false);
     No();
   }
   if (I_state == state::error)
   {
-    assert(false);
     No();
   }
   if (I_state == state::white_even || I_state == state::black_even)
