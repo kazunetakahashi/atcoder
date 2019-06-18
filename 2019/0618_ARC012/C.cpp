@@ -33,12 +33,12 @@ using namespace std;
 typedef long long ll;
 void Yes()
 {
-  // cout << "YES" << endl;
+  cout << "YES" << endl;
   exit(0);
 }
 void No()
 {
-  // cout << "NO" << endl;
+  cout << "NO" << endl;
   exit(0);
 }
 const int MAX_SIZE = 1000010;
@@ -119,8 +119,8 @@ mint choose(int n, int k)
 ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 // const double epsilon = 1e-10;
 // const ll infty = 1000000000000000LL;
-// const int dx[4] = {1, 0, -1, 0};
-// const int dy[4] = {0, 1, 0, -1};
+const int dx[8] = {1, 0, -1, 0, 1, -1, 1, -1};
+const int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
 
 typedef vector<string> ban;
 const int C = 19;
@@ -165,29 +165,22 @@ public:
     {
       for (auto j = 0; j < C; j++)
       {
-        for (auto a = -1; a < 2; a++)
+        for (auto a = 0; a < 8; a++)
         {
-          for (auto b = -1; b < 2; b++)
+          bool ok = true;
+          for (auto k = 0; k < 5; k++)
           {
-            if (a == 0 && b == 0)
+            int x = i + dx[a] * k;
+            int y = j + dy[a] * k;
+            if (0 <= x && x < C && 0 <= y && y < C && B[x][y] != c)
             {
-              continue;
+              ok = false;
+              break;
             }
-            bool ok = true;
-            for (auto k = 0; k < 5; k++)
-            {
-              int x = i + a * k;
-              int y = j + b * k;
-              if (0 <= x && x < C && 0 <= y && y < C && B[x][y] != c)
-              {
-                ok = false;
-                break;
-              }
-            }
-            if (ok)
-            {
-              return true;
-            }
+          }
+          if (ok)
+          {
+            return true;
           }
         }
       }
