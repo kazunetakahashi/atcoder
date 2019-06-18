@@ -291,7 +291,7 @@ int main()
     {
       for (auto j = 0; j < C; j++)
       {
-        Go before = I;
+        Go before(B);
         if (before.B[i][j] == 'x')
         {
           before.B[i][j] = '.';
