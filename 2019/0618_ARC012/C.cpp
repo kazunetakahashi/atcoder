@@ -215,6 +215,10 @@ public:
       {
         return state::black_win;
       }
+      else
+      {
+        return state::error;
+      }
     }
     else if (white_win)
     {
@@ -222,12 +226,22 @@ public:
       {
         return state::white_win;
       }
+      else
+      {
+        return state::error;
+      }
     }
     else
     {
-      return (black_turn ? state::black_even : state::white_even);
+      if (black_turn)
+      {
+        return state::black_even;
+      }
+      else
+      {
+        return state::white_even;
+      }
     }
-    return state::error;
   }
 };
 
@@ -243,15 +257,15 @@ int main()
   }
   Go I(B);
   state I_state = I.st();
-  if (I.cnt[0] == 0 && I.cnt[1] == 0)
-  {
-    Yes();
-  }
   if (I_state == state::error)
   {
     No();
   }
-  if (I_state == state::black_win || I_state == state::black_even)
+  if (I_state == state::white_even || I_state == state::black_even)
+  {
+    Yes();
+  }
+  if (I_state == state::black_win)
   {
     for (auto i = 0; i < C; i++)
     {
@@ -271,7 +285,7 @@ int main()
     }
     No();
   }
-  if (I_state == state::white_win || I_state == state::white_even)
+  if (I_state == state::white_win)
   {
     for (auto i = 0; i < C; i++)
     {
