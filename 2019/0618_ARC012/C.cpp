@@ -247,11 +247,7 @@ int main()
   {
     No();
   }
-  if (I_state == state::white_even || I_state == state::black_even)
-  {
-    Yes();
-  }
-  if (I_state == state::black_win)
+  if (I_state == state::black_win || I_state == state::black_even)
   {
     for (auto i = 0; i < C; i++)
     {
@@ -271,7 +267,7 @@ int main()
     }
     No();
   }
-  if (I_state == state::white_win)
+  if (I_state == state::white_win || I_state == state::white_even)
   {
     for (auto i = 0; i < C; i++)
     {
