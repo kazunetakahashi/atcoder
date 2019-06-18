@@ -138,11 +138,10 @@ class Go
 {
 public:
   ban B;
-  int cnt[2];
+  vector<int> cnt = vector<int>(2, 0);
   Go() {}
   Go(ban V) : B(V)
   {
-    cnt[0] = cnt[1] = 0;
     for (auto i = 0; i < C; i++)
     {
       for (auto j = 0; j < C; j++)
