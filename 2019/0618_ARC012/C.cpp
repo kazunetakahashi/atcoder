@@ -131,8 +131,6 @@ enum class state
   white_win,
   black_even,
   white_even,
-  count_error,
-  double_win_error,
   error,
 };
 
@@ -173,7 +171,7 @@ public:
           {
             int x = i + dx[a] * k;
             int y = j + dy[a] * k;
-            if (0 <= x && x < C && 0 <= y && y < C && B[x][y] != c)
+            if (!(0 <= x && x < C && 0 <= y && y < C && B[x][y] == c))
             {
               ok = false;
               break;
@@ -194,14 +192,14 @@ public:
     int t = cnt[0] - cnt[1];
     if (!(t == 0 || t == 1))
     {
-      return state::count_error;
+      return state::error;
     }
     bool black_turn = (t == 1);
     bool black_win = win('o');
     bool white_win = win('x');
     if (black_win && white_win)
     {
-      return state::double_win_error;
+      return state::error;
     }
     else if (black_win)
     {
@@ -251,19 +249,6 @@ int main()
   }
   Go I(B);
   state I_state = I.st();
-#if DEBUG == 1
-  cerr << I.cnt[0] << " VS " << I.cnt[1] << endl;
-  cerr << "I_state: " << (int)I_state << endl;
-#endif
-  if (I_state == state::count_error)
-  {
-    No();
-  }
-  if (I_state == state::double_win_error)
-  {
-    assert(false);
-    No();
-  }
   if (I_state == state::error)
   {
     No();
@@ -285,14 +270,6 @@ int main()
           Go before(V);
           if (before.st() == state::white_even)
           {
-#if DEBUG == 1
-            cerr << "Prev Board: " << endl;
-            cerr << before.cnt[0] << " VS " << before.cnt[1] << endl;
-            for (auto i = 0; i < C; i++)
-            {
-              cerr << before.B[i] << endl;
-            }
-#endif
             Yes();
           }
         }
@@ -313,13 +290,6 @@ int main()
           Go before(V);
           if (before.st() == state::black_even)
           {
-#if DEBUG == 1
-            cerr << "Prev Board: " << endl;
-            for (auto i = 0; i < C; i++)
-            {
-              cerr << before.B[i] << endl;
-            }
-#endif
             Yes();
           }
         }
