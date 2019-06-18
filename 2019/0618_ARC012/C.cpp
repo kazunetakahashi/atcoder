@@ -267,11 +267,11 @@ int main()
     {
       for (auto j = 0; j < C; j++)
       {
-        Go before(B);
-        if (before.B[i][j] == 'o')
+        if (B[i][j] == 'o')
         {
-          before.B[i][j] = '.';
-          before.cnt[0]--;
+          ban V = B;
+          V[i][j] = '.';
+          Go before(V);
           if (before.st() == state::white_even)
           {
 #if DEBUG == 1
@@ -295,14 +295,13 @@ int main()
     {
       for (auto j = 0; j < C; j++)
       {
-        Go before(B);
-        if (before.B[i][j] == 'x')
+        if (B[i][j] == 'x')
         {
-          before.B[i][j] = '.';
-          before.cnt[1]--;
+          ban V = B;
+          V[i][j] = '.';
+          Go before(V);
           if (before.st() == state::black_even)
           {
-            Yes();
 #if DEBUG == 1
             cerr << "Prev Board: " << endl;
             for (auto i = 0; i < C; i++)
@@ -310,6 +309,7 @@ int main()
               cerr << before.B[i] << endl;
             }
 #endif
+            Yes();
           }
         }
       }
