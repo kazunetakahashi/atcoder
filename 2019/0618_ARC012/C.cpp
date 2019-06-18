@@ -33,12 +33,12 @@ using namespace std;
 typedef long long ll;
 void Yes()
 {
-  cout << "YES" << endl;
+  // cout << "YES" << endl;
   exit(0);
 }
 void No()
 {
-  cout << "NO" << endl;
+  // cout << "NO" << endl;
   exit(0);
 }
 const int MAX_SIZE = 1000010;
@@ -257,6 +257,9 @@ int main()
   }
   Go I(B);
   state I_state = I.st();
+#if DEBUG == 1
+  cerr << "I_state: " << (int)I_state << endl;
+#endif
   if (I_state == state::error)
   {
     No();
