@@ -202,7 +202,7 @@ public:
     {
       return state::error;
     }
-    bool black_turn = t;
+    bool black_turn = (t == 1);
     bool black_win = win('o');
     bool white_win = win('x');
     if (black_win && white_win)
