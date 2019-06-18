@@ -243,6 +243,10 @@ int main()
   }
   Go I(B);
   state I_state = I.st();
+  if (I.cnt[0] == 0 && I.cnt[1] == 0)
+  {
+    Yes();
+  }
   if (I_state == state::error)
   {
     No();
