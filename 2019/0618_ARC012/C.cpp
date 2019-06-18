@@ -258,6 +258,7 @@ int main()
   Go I(B);
   state I_state = I.st();
 #if DEBUG == 1
+  cerr << I.cnt[0] << " VS " << I.cnt[1] << endl;
   cerr << "I_state: " << (int)I_state << endl;
 #endif
   if (I_state == state::error)
@@ -281,6 +282,14 @@ int main()
           before.cnt[0]--;
           if (before.st() == state::white_even)
           {
+#if DEBUG == 1
+            cerr << "Prev Board: " << endl;
+            cerr << before.cnt[0] << " VS " << before.cnt[1] << endl;
+            for (auto i = 0; i < C; i++)
+            {
+              cerr << before.B[i] << endl;
+            }
+#endif
             Yes();
           }
         }
@@ -302,6 +311,13 @@ int main()
           if (before.st() == state::black_even)
           {
             Yes();
+#if DEBUG == 1
+            cerr << "Prev Board: " << endl;
+            for (auto i = 0; i < C; i++)
+            {
+              cerr << before.B[i] << endl;
+            }
+#endif
           }
         }
       }
