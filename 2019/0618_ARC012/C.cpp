@@ -255,11 +255,11 @@ int main()
 #endif
   if (I_state == state::error)
   {
+    assert(false);
     No();
   }
   if (I_state == state::white_even || I_state == state::black_even)
   {
-    assert(false);
     Yes();
   }
   if (I_state == state::black_win)
