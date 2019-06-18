@@ -227,8 +227,7 @@ public:
     {
       return (black_turn ? state::black_even : state::white_even);
     }
-    assert(false);
-    return state::error; // avoid compile warnings
+    return state::error;
   }
 };
 
