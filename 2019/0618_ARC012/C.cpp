@@ -127,11 +127,12 @@ const int C = 19;
 
 enum class state
 {
-  count_error,
   black_win,
   white_win,
   black_even,
   white_even,
+  count_error,
+  double_win_error,
   error,
 };
 
@@ -200,7 +201,7 @@ public:
     bool white_win = win('x');
     if (black_win && white_win)
     {
-      return state::error;
+      return state::double_win_error;
     }
     else if (black_win)
     {
@@ -255,6 +256,10 @@ int main()
   cerr << "I_state: " << (int)I_state << endl;
 #endif
   if (I_state == state::count_error)
+  {
+    No();
+  }
+  if (I_state == state::double_win_error)
   {
     No();
   }
