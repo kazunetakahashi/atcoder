@@ -156,10 +156,10 @@ void vector<T, A>::reserve(size_type new_alloc)
     new (static_cast<void *>(&*oo)) T{std::move(*begin)};
     begin->~T();
   }
-  my_swap<vector_base<T, A>>(vb, b);
 #if DEBUG == 1
   std::cerr << "aaaa" << std::endl;
 #endif
+  my_swap<vector_base<T, A>>(vb, b);
 }
 
 /*
