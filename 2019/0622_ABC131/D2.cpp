@@ -189,6 +189,9 @@ void vector<T, A>::push_back(const T &val)
 {
   if (capacity() == size())
   {
+#if DEBUG == 1
+    std::cerr << "aaa" << std::endl;
+#endif
     reserve(size() ? 2 * size() : 8);
   }
   vb.alloc.construct(&vb.elem[size()], val);
@@ -208,9 +211,6 @@ int main()
   {
     ll a, b;
     std::cin >> a >> b;
-#if DEBUG == 1
-    std::cerr << "aaa" << std::endl;
-#endif
     V.push_back(work(b, a));
   }
   std::sort(V.begin(), V.end());
