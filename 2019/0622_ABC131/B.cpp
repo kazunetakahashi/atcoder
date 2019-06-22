@@ -129,9 +129,27 @@ int main()
   // init();
   cin >> N >> L;
   int ans = 0;
-  for (auto i = 2; i <= N; i++)
+  for (auto i = 1; i <= N; i++)
   {
-    ans += L + i - 1;
+    int t = L + i - 1;
+    ans += t;
   }
-  cout << ans << endl;
+  int res = 1000000;
+  for (auto i = 1; i <= N; i++)
+  {
+    int sum = 0;
+    for (auto j = 1; j <= N; j++)
+    {
+      if (i != j)
+      {
+        int t = L + i - 1;
+        sum += t;
+      }
+    }
+    if (abs(ans - res) > abs(ans - sum))
+    {
+      res = sum;
+    }
+  }
+  cout << res << endl;
 }
