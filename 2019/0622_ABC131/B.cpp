@@ -142,7 +142,7 @@ int main()
     {
       if (i != j)
       {
-        int t = L + i - 1;
+        int t = L + j - 1;
         sum += t;
       }
     }
