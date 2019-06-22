@@ -142,7 +142,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     ll a, b;
-    tie(a, b) = V[i];
+    tie(b, a) = V[i];
     t += a;
     if (t > b)
     {
