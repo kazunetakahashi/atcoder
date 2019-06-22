@@ -145,11 +145,12 @@ void vector<T, A>::reserve(size_type new_alloc)
   T *begin = vb.elem;
   T *end = vb.elem + size();
   T *oo = b.elem;
+#if DEBUG == 1
+  std::cerr << (begin == end) << std::endl;
+  std::cerr << "aaa" << std::endl;
+#endif
   for (; begin != end; ++begin, ++oo)
   {
-#if DEBUG == 1
-    std::cerr << "aaa" << std::endl;
-#endif
     new (static_cast<void *>(&*oo)) T{std::move(*begin)};
     begin->~T();
   }
