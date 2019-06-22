@@ -147,6 +147,9 @@ void vector<T, A>::reserve(size_type new_alloc)
   T *oo = b.elem;
   for (; begin != end; ++begin, ++oo)
   {
+#if DEBUG == 1
+    std::cerr << "aaa" << std::endl;
+#endif
     new (static_cast<void *>(&*oo)) T{std::move(*begin)};
     begin->~T();
   }
@@ -190,9 +193,6 @@ void vector<T, A>::push_back(const T &val)
   if (capacity() == size())
   {
     reserve(size() ? 2 * size() : 8);
-#if DEBUG == 1
-    std::cerr << "aaa" << std::endl;
-#endif
   }
   vb.alloc.construct(&vb.elem[size()], val);
   ++vb.space;
