@@ -138,6 +138,6 @@ int main()
   // init();
   ll a, b, c, d;
   cin >> a >> b >> c >> d;
-  ll ans = f(b, c, d) - f(a - a, c, d);
+  ll ans = f(b, c, d) - f(a - 1, c, d);
   cout << ans << endl;
 }
