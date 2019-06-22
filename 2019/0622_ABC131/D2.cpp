@@ -208,11 +208,11 @@ int main()
   {
     ll a, b;
     std::cin >> a >> b;
+#if DEBUG == 1
+    std::cerr << "aaa" << std::endl;
+#endif
     V.push_back(work(b, a));
   }
-#if DEBUG == 1
-  std::cerr << "aaa" << std::endl;
-#endif
   std::sort(V.begin(), V.end());
   ll now = 0;
   for (auto i = 0; i < N; i++)
