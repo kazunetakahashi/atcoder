@@ -157,6 +157,9 @@ void vector<T, A>::reserve(size_type new_alloc)
     begin->~T();
   }
   my_swap<vector_base<T, A>>(vb, b);
+#if DEBUG == 1
+  std::cerr << "aaaa" << std::endl;
+#endif
 }
 
 /*
@@ -214,9 +217,6 @@ int main()
   {
     ll a, b;
     std::cin >> a >> b;
-#if DEBUG == 1
-    std::cerr << "aaaa" << std::endl;
-#endif
     V.push_back(work(b, a));
   }
   std::sort(V.begin(), V.end());
