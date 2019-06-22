@@ -21,7 +21,13 @@ struct vector_base
   vector_base(const A &a, typename A::size_type n = 0, typename A::size_type m = 0)
       : alloc{a}, elem{alloc.allocate(n + m)}, space{elem + n}, last{elem + n + m} {}
 
-  ~vector_base() { alloc.deallocate(elem, last - elem); }
+  ~vector_base()
+  {
+#if DEBUG == 1
+    std::cerr << "aaaaa" << std::endl;
+#endif
+    alloc.deallocate(elem, last - elem);
+  }
 
   vector_base(const vector_base &) = delete;            // コピー演算は行えない
   vector_base &operator=(const vector_base &) = delete; // コピー代入演算子も無効化
@@ -148,13 +154,7 @@ void vector<T, A>::reserve(size_type new_alloc)
     new (static_cast<void *>(&*oo)) T{std::move(*begin)};
     begin->~T();
   }
-#if DEBUG == 1
-  std::cerr << new_alloc << std::endl;
-#endif
   std::swap(vb, b);
-#if DEBUG == 1
-  std::cerr << new_alloc << std::endl;
-#endif
 }
 
 /*
