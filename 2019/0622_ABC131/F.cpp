@@ -177,17 +177,18 @@ bool visited[100010];
 
 vector<int> X[100010];
 vector<int> Y[100010];
-bool used_x[100010];
-bool used_y[100010];
+
+set<int> used_x;
+set<int> used_y;
 
 void add_point(int P, UnionFind &uf, int k)
 {
   visited[P] = true;
-  used_x[x[P]] = true;
-  used_y[y[P]] = true;
+  used_x.insert(x[P]);
+  used_y.insert(y[P]);
   if (k == 0)
   {
-    for (auto e : X[P])
+    for (auto e : X[x[P]])
     {
       if (!visited[e])
       {
@@ -198,7 +199,7 @@ void add_point(int P, UnionFind &uf, int k)
   }
   else if (k == 1)
   {
-    for (auto e : Y[P])
+    for (auto e : Y[y[P]])
     {
       if (!visited[e])
       {
@@ -214,27 +215,15 @@ ll solve(int P)
 #if DEBUG == 1
   cerr << "solve(" << P << ")" << endl;
 #endif
-  fill(used_x, used_x + 100010, false);
-  fill(used_y, used_y + 100010, false);
+  used_x.clear();
+  used_y.clear();
   UnionFind uf(N);
   add_point(P, uf, 0);
   add_point(P, uf, 1);
   ll s = uf.size(P);
   ll a = 0, b = 0;
-  for (auto i = 0; i < 100010; i++)
-  {
-    if (used_x[i])
-    {
-      a++;
-    }
-  }
-  for (auto i = 0; i < 100010; i++)
-  {
-    if (used_y[i])
-    {
-      b++;
-    }
-  }
+  a = used_x.size();
+  b = used_y.size();
 #if DEBUG == 1
   cerr << "a = " << a << ", b = " << b << ", s = " << s << endl;
 #endif
