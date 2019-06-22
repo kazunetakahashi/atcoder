@@ -149,7 +149,7 @@ void vector<T, A>::reserve(size_type new_alloc)
     begin->~T();
   }
 #if DEBUG == 1
-  std::cerr << size() << std::endl;
+  std::cerr << new_alloc << std::endl;
 #endif
   std::swap(vb, b);
 }
