@@ -80,7 +80,7 @@ vector_base<T, A>::vector_base(vector_base &&a)
 template <typename T, typename A>
 vector_base<T, A> &vector_base<T, A>::operator=(vector_base &&a)
 {
-  my_swap<vector_base<T, A>>(*this, a);
+  std::swap(*this, a);
   return *this;
 }
 
@@ -156,13 +156,7 @@ void vector<T, A>::reserve(size_type new_alloc)
     new (static_cast<void *>(&*oo)) T{std::move(*begin)};
     begin->~T();
   }
-#if DEBUG == 1
-  std::cerr << "aaaa" << std::endl;
-#endif
   my_swap<vector_base<T, A>>(vb, b);
-#if DEBUG == 1
-  std::cerr << "aaaa" << std::endl;
-#endif
 }
 
 /*
