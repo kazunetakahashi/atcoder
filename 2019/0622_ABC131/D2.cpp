@@ -62,6 +62,14 @@ public:
   T &operator[](const size_type t) { return *(vb.elem + t); }
 };
 
+template <typename T>
+void my_swap(T &a, T &b)
+{
+  T tmp{std::move(a)};
+  a = std::move(b);
+  b = std::move(tmp);
+}
+
 template <typename T, typename A>
 vector_base<T, A>::vector_base(vector_base &&a)
     : alloc{a.alloc}, elem{a.elem}, space{a.space}, last{a.last}
@@ -72,7 +80,7 @@ vector_base<T, A>::vector_base(vector_base &&a)
 template <typename T, typename A>
 vector_base<T, A> &vector_base<T, A>::operator=(vector_base &&a)
 {
-  swap(*this, a);
+  my_swap<vector_base<T, A>>(*this, a);
   return *this;
 }
 
@@ -102,7 +110,7 @@ template <typename T, typename A>
 vector<T, A> &vector<T, A>::operator=(const vector &a)
 {
   vector temp{a};
-  swap(*this, temp);
+  my_swap<vector<T, A>>(*this, temp);
   return *this;
 }
 
@@ -112,7 +120,7 @@ vector<T, A>::vector(vector &&a) : vb{std::move(a.vb)} {}
 template <typename T, typename A>
 vector<T, A> &vector<T, A>::operator=(vector &&a)
 {
-  swap(vb, a.vb);
+  my_swap<vector<T, A>>(vb, a.vb);
   return *this;
 }
 
@@ -148,7 +156,7 @@ void vector<T, A>::reserve(size_type new_alloc)
     new (static_cast<void *>(&*oo)) T{std::move(*begin)};
     begin->~T();
   }
-  swap(vb, b);
+  my_swap<vector_base<T, A>>(vb, b);
 }
 
 /*
