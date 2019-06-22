@@ -143,14 +143,14 @@ void vector<T, A>::reserve(size_type new_alloc)
   vector_base<T, A> b{vb.alloc, new_alloc - size()};
   // uninitialized_move(vb.elem, vb.elem + size(), b.elem);
   T *oo = b.elem;
-#if DEBUG == 1
-  std::cerr << size() << std::endl;
-#endif
   for (auto begin = vb.elem; begin != vb.elem + size(); ++begin, ++oo)
   {
     new (static_cast<void *>(&*oo)) T{std::move(*begin)};
     begin->~T();
   }
+#if DEBUG == 1
+  std::cerr << size() << std::endl;
+#endif
   std::swap(vb, b);
 }
 
