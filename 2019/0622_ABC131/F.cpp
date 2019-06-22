@@ -211,6 +211,9 @@ void add_point(int P, UnionFind &uf, int k)
 
 ll solve(int P)
 {
+#if DEBUG == 1
+  cerr << "solve(" << P << ")" << endl;
+#endif
   fill(used_x, used_x + 100010, false);
   fill(used_y, used_y + 100010, false);
   UnionFind uf(N);
@@ -232,6 +235,9 @@ ll solve(int P)
       b++;
     }
   }
+#if DEBUG == 1
+  cerr << "a = " << a << ", b = " << b << ", s = " << s << endl;
+#endif
   return a * b - s;
 }
 
