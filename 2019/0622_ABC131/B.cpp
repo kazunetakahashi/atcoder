@@ -146,6 +146,9 @@ int main()
         sum += t;
       }
     }
+#if DEBUG == 1
+    cerr << "sum = " << sum << endl;
+#endif
     if (abs(ans - res) > abs(ans - sum))
     {
       res = sum;
