@@ -148,7 +148,13 @@ void vector<T, A>::reserve(size_type new_alloc)
     new (static_cast<void *>(&*oo)) T{std::move(*begin)};
     begin->~T();
   }
+#if DEBUG == 1
+  std::cerr << "aaaa" << std::endl;
+#endif
   vb = move(b);
+#if DEBUG == 1
+  std::cerr << "aaaa" << std::endl;
+#endif
 }
 
 /*
