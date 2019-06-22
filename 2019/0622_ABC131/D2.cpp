@@ -216,6 +216,9 @@ int main()
     std::cin >> a >> b;
     V.push_back(work(b, a));
   }
+#if DEBUG == 1
+  std::cerr << "aaaa" << std::endl;
+#endif
   std::sort(V.begin(), V.end());
   ll now = 0;
   for (auto i = 0; i < N; i++)
