@@ -123,7 +123,7 @@ void Yes()
   {
     M += static_cast<int>(V[i].size());
   }
-  cout << M << endl;
+  cout << M / 2 << endl;
   for (auto i = 0; i < N; i++)
   {
     for (auto j : V[i])
