@@ -65,9 +65,6 @@ public:
 template <typename T>
 void my_swap(T &a, T &b)
 {
-#if DEBUG == 1
-  std::cerr << "aaaa" << std::endl;
-#endif
   T tmp{std::move(a)};
   a = std::move(b);
   b = std::move(tmp);
@@ -159,7 +156,13 @@ void vector<T, A>::reserve(size_type new_alloc)
     new (static_cast<void *>(&*oo)) T{std::move(*begin)};
     begin->~T();
   }
+#if DEBUG == 1
+  std::cerr << "aaaa" << std::endl;
+#endif
   my_swap<vector_base<T, A>>(vb, b);
+#if DEBUG == 1
+  std::cerr << "aaaa" << std::endl;
+#endif
 }
 
 /*
