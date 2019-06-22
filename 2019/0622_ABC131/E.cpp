@@ -118,7 +118,6 @@ vector<int> V[110];
 
 void Yes()
 {
-  cout << "Yes" << endl;
   int M = 0;
   for (auto i = 0; i < N; i++)
   {
@@ -139,7 +138,7 @@ void Yes()
 }
 void No()
 {
-  cout << "No" << endl;
+  cout << "-1" << endl;
   exit(0);
 }
 
