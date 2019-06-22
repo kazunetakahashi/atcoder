@@ -21,13 +21,7 @@ struct vector_base
   vector_base(const A &a, typename A::size_type n = 0, typename A::size_type m = 0)
       : alloc{a}, elem{alloc.allocate(n + m)}, space{elem + n}, last{elem + n + m} {}
 
-  ~vector_base()
-  {
-#if DEBUG == 1
-    std::cerr << "aaaaa" << std::endl;
-#endif
-    alloc.deallocate(elem, last - elem);
-  }
+  ~vector_base() { alloc.deallocate(elem, last - elem); }
 
   vector_base(const vector_base &) = delete;            // コピー演算は行えない
   vector_base &operator=(const vector_base &) = delete; // コピー代入演算子も無効化
@@ -78,7 +72,7 @@ vector_base<T, A>::vector_base(vector_base &&a)
 template <typename T, typename A>
 vector_base<T, A> &vector_base<T, A>::operator=(vector_base &&a)
 {
-  std::swap(*this, a);
+  swap(*this, a);
   return *this;
 }
 
@@ -108,7 +102,7 @@ template <typename T, typename A>
 vector<T, A> &vector<T, A>::operator=(const vector &a)
 {
   vector temp{a};
-  std::swap(*this, temp);
+  swap(*this, temp);
   return *this;
 }
 
@@ -118,7 +112,7 @@ vector<T, A>::vector(vector &&a) : vb{std::move(a.vb)} {}
 template <typename T, typename A>
 vector<T, A> &vector<T, A>::operator=(vector &&a)
 {
-  std::swap(vb, a.vb);
+  swap(vb, a.vb);
   return *this;
 }
 
@@ -154,7 +148,7 @@ void vector<T, A>::reserve(size_type new_alloc)
     new (static_cast<void *>(&*oo)) T{std::move(*begin)};
     begin->~T();
   }
-  std::swap(vb, b);
+  swap(vb, b);
 }
 
 /*
