@@ -152,7 +152,7 @@ int main()
   {
     for (auto i = 1; i <= X; i++)
     {
-      for (auto j = 1; j <= max(X, N / i); j++)
+      for (auto j = 1; j <= min(X, N / i); j++)
       {
         dp[j][t + 1] += dp[i][t];
       }
