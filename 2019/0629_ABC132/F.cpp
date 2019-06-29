@@ -160,7 +160,7 @@ int main()
     }
     for (auto i = 1; i < C; i++)
     {
-      for (auto j = 1; j <= i; i++)
+      for (auto j = 1; j <= i; j++)
       {
         dp[j][t + 1] += dp2[i][t];
       }
