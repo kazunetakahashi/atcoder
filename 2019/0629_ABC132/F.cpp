@@ -123,7 +123,7 @@ ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 // const int dy[4] = {0, 1, 0, -1};
 
 ll N, K;
-constexpr ll X = 100000;
+ll X;
 mint dp[100010][100];
 mint dp2[100010][100];
 mint cnt[100010];
@@ -133,6 +133,7 @@ int main()
   // init();
   cin >> N >> K;
   int C = -1;
+  X = sqrt(N) + 10;
   for (auto i = 1; i <= X; i++)
   {
     ll ub = max(N / i, X + 1);
