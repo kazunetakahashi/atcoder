@@ -138,15 +138,15 @@ int main()
     ll ub = max(N / i, X + 1);
     ll lb = max(N / (i + 1), X + 1);
     cnt[i] = ub - lb;
-#if DEBUG == 1
-    cerr << "cnt[" << i << "] = " << cnt[i] << endl;
-#endif
     if (ub == X + 1 && lb == X + 1)
     {
       C = i;
       break;
     }
   }
+#if DEBUG == 1
+  cerr << "C = " << C << endl;
+#endif
   dp[1][0] = 1;
   for (auto t = 0; t < K; t++)
   {
