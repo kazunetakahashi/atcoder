@@ -156,7 +156,7 @@ int main()
   {
     for (auto j = 1; j <= X; j++)
     {
-      DP[t][j] = DP_sum[t - 1][j];
+      DP[t][j] = DP_sum[t - 1][min(X, N / j)];
       if (j < C)
       {
         DP[t][j] += DP2_sum[t - 1][C - 1] - DP2_sum[t - 1][j - 1];
