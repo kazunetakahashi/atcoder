@@ -177,5 +177,9 @@ int main()
       }
     }
   }
+  if (visited[T] > 0)
+  {
+    visited[T] /= 3;
+  }
   cout << visited[T] << endl;
 }
