@@ -146,6 +146,7 @@ int main()
     }
   }
 #if DEBUG == 1
+  cerr << "X = " << X << endl;
   cerr << "C = " << C << endl;
 #endif
   dp[1][0] = 1;
