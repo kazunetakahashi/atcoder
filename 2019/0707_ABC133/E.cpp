@@ -129,6 +129,10 @@ bool visited[100010];
 
 void dfs(int n)
 {
+#if DEBUG == 1
+  cerr << "n = " << n << endl;
+#endif
+
   if (!visited[n])
   {
     visited[n] = true;
@@ -160,9 +164,6 @@ int main()
   queue<int> Q;
   Q.push(0);
   mint ans = 1;
-#if DEBUG == 1
-  cerr << "Here" << endl;
-#endif
   while (!Q.empty())
   {
     int n = Q.front();
