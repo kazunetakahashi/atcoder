@@ -140,7 +140,7 @@ int main()
   {
     cin >> A[i];
   }
-  sum = accumulate(A, A + N, 0) / 2;
+  sum = accumulate(A, A + N, 0LL) / 2;
   ll tmp = 0;
   for (auto i = 0; i < N; i += 2)
   {
