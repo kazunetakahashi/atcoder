@@ -153,17 +153,10 @@ int main()
     for (auto j = i + 1; j < N; j++)
     {
       int t = dist(i, j);
-      for (auto k = 0; k < 100000; k++)
+      int sq = sqrt(t) + 0.5;
+      if (sq * sq == t)
       {
-        if (k * k == t)
-        {
-          ans++;
-          break;
-        }
-        else if (k * k > t)
-        {
-          break;
-        }
+        ++ans;
       }
     }
   }
