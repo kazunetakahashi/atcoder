@@ -159,7 +159,7 @@ int main()
   dfs(0);
   queue<int> Q;
   Q.push(0);
-  mint ans = 1;
+  mint ans = K;
   while (!Q.empty())
   {
     int n = Q.front();
@@ -170,6 +170,9 @@ int main()
     {
       D--;
     }
+#if DEBUG == 1
+    cerr << "n = " << n << ", D = " << D << ", child = " << child << endl;
+#endif
     ans *= choose(D, child);
     for (auto x : children[n])
     {
