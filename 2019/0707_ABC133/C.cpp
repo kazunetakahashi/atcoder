@@ -128,7 +128,7 @@ ll up(ll x)
 {
   for (auto i = 0; i <= C; i++)
   {
-    if (x + i % C == 0)
+    if ((x + i) % C == 0)
     {
       return x + i;
     }
