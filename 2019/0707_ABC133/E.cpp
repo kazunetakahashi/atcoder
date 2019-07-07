@@ -41,7 +41,6 @@ void No()
   cout << "No" << endl;
   exit(0);
 }
-const int MAX_SIZE = 1000010;
 class mint
 {
 public:
@@ -91,31 +90,42 @@ public:
 ll mint::MOD = 1e9 + 7;
 istream &operator>>(istream &stream, mint &a) { return stream >> a.x; }
 ostream &operator<<(ostream &stream, const mint &a) { return stream << a.x; }
-mint inv[MAX_SIZE];
-mint fact[MAX_SIZE];
-mint factinv[MAX_SIZE];
-void init()
+
+class combination
 {
-  inv[1] = 1;
-  for (int i = 2; i < MAX_SIZE; i++)
+public:
+  vector<mint> inv, fact, factinv;
+  static int MAX_SIZE;
+
+  combination()
   {
-    inv[i] = (-inv[mint::MOD % i]) * (mint::MOD / i);
+    inv = vector<mint>(MAX_SIZE);
+    fact = vector<mint>(MAX_SIZE);
+    factinv = vector<mint>(MAX_SIZE);
+    inv[1] = 1;
+    for (int i = 2; i < MAX_SIZE; i++)
+    {
+      inv[i] = (-inv[mint::MOD % i]) * (mint::MOD / i);
+    }
+    fact[0] = factinv[0] = 1;
+    for (int i = 1; i < MAX_SIZE; i++)
+    {
+      fact[i] = mint(i) * fact[i - 1];
+      factinv[i] = inv[i] * factinv[i - 1];
+    }
   }
-  fact[0] = factinv[0] = 1;
-  for (int i = 1; i < MAX_SIZE; i++)
+
+  mint operator()(int n, int k)
   {
-    fact[i] = mint(i) * fact[i - 1];
-    factinv[i] = inv[i] * factinv[i - 1];
+    if (n >= 0 && k >= 0 && n - k >= 0)
+    {
+      return fact[n] * factinv[k] * factinv[n - k];
+    }
+    return 0;
   }
-}
-mint choose(int n, int k)
-{
-  if (n >= 0 && k >= 0 && n - k >= 0)
-  {
-    return fact[n] * factinv[k] * factinv[n - k];
-  }
-  return 0;
-}
+};
+int combination::MAX_SIZE = 1e6 + 10;
+
 ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 // const double epsilon = 1e-10;
 // const ll infty = 1000000000000000LL;
@@ -145,7 +155,7 @@ void dfs(int n)
 
 int main()
 {
-  init();
+  combination C{};
   cin >> N >> K;
   for (auto i = 0; i < N - 1; i++)
   {
@@ -173,7 +183,7 @@ int main()
 #if DEBUG == 1
     cerr << "n = " << n << ", D = " << D << ", child = " << child << endl;
 #endif
-    ans *= choose(D, child) * fact[child];
+    ans *= C(D, child) * C.fact[child];
     for (auto x : children[n])
     {
       Q.push(x);
