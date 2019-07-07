@@ -149,6 +149,9 @@ int main()
   // init();
   cin >> L >> R;
   ll t = up(L);
+#if DEBUG == 1
+  cerr << "up(" << L << ") = " << t << endl;
+#endif
   if (t <= R)
   {
     zero();
