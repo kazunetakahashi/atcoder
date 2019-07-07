@@ -128,13 +128,14 @@ ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 template <typename T>
 class LCA
 {
-public:
   int N, root, L;
   vector<vector<int>> to;
   vector<vector<T>> co;
   vector<int> dep;
   vector<T> costs;
   vector<vector<int>> par;
+
+public:
   LCA(int n) : N{n}, to(n), co(n), dep(n), costs(n)
   {
     L = 0;
@@ -151,25 +152,6 @@ public:
     co[a].push_back(c);
     to[b].push_back(a);
     co[b].push_back(c);
-  }
-
-  void dfs(int v, int d = 0, T c = 0, int p = -1)
-  {
-    if (p != -1)
-    {
-      par[v][0] = p;
-    }
-    dep[v] = d;
-    costs[v] = c;
-    for (auto i = 0u; i < to[v].size(); i++)
-    {
-      int u = to[v][i];
-      if (u == p)
-      {
-        continue;
-      }
-      dfs(u, d + 1, c + co[v][i], v);
-    }
   }
 
   void init(int _root)
@@ -232,6 +214,26 @@ public:
   {
     int c = (*this)(a, b);
     return costs[a] + costs[b] - 2 * costs[c];
+  }
+
+private:
+  void dfs(int v, int d = 0, T c = 0, int p = -1)
+  {
+    if (p != -1)
+    {
+      par[v][0] = p;
+    }
+    dep[v] = d;
+    costs[v] = c;
+    for (auto i = 0u; i < to[v].size(); i++)
+    {
+      int u = to[v][i];
+      if (u == p)
+      {
+        continue;
+      }
+      dfs(u, d + 1, c + co[v][i], v);
+    }
   }
 };
 
@@ -300,7 +302,7 @@ int main()
     --a;
     --b;
     int c = g(a, b);
-    ans[i] = g.costs[a] + g.costs[b] - g.costs[c] * 2;
+    ans[i] = g.dist(a, b);
     qs[a].emplace_back(x, i, 1, y);
     qs[b].emplace_back(x, i, 1, y);
     qs[c].emplace_back(x, i, -2, y);
