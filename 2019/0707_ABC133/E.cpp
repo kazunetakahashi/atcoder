@@ -160,6 +160,9 @@ int main()
   queue<int> Q;
   Q.push(0);
   mint ans = 1;
+#if DEBUG == 1
+  cerr << "Here" << endl;
+#endif
   while (!Q.empty())
   {
     int n = Q.front();
