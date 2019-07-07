@@ -173,7 +173,7 @@ int main()
 #if DEBUG == 1
     cerr << "n = " << n << ", D = " << D << ", child = " << child << endl;
 #endif
-    ans *= choose(D, child);
+    ans *= choose(D, child) * fact[child];
     for (auto x : children[n])
     {
       Q.push(x);
