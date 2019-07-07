@@ -129,10 +129,6 @@ bool visited[100010];
 
 void dfs(int n)
 {
-#if DEBUG == 1
-  cerr << "n = " << n << endl;
-#endif
-
   if (!visited[n])
   {
     visited[n] = true;
@@ -151,7 +147,7 @@ int main()
 {
   init();
   cin >> N >> K;
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < N - 1; i++)
   {
     int a, b;
     cin >> a >> b;
