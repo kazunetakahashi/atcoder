@@ -210,37 +210,24 @@ void solve()
         V[x].erase(v);
         Q.push(info(V[x].size(), x));
       }
-      if (cnt[v] % 2 == 1)
+      auto ed = ans.end();
+      auto it = ed - V[v].size();
+      while (it != ed)
       {
-        if (V[v].empty())
+        if (cnt[get<0>(*it)] % 2 == 1)
         {
-          // nothing
+          cnt[get<0>(*it)]--;
+          cnt[get<1>(*it)]++;
+          swap(get<0>(*it), get<1>(*it));
         }
-        else
-        {
-          auto ed = ans.end();
-          auto it = ed - V[v].size();
-          bool ok = false;
-          while (it != ed)
-          {
-            if (cnt[get<0>(*it)] % 2 == 1)
-            {
-              cnt[get<0>(*it)]--;
-              cnt[get<1>(*it)]++;
-              swap(get<0>(*it), get<1>(*it));
-              ok = true;
-              break;
-            }
-            ++it;
-          }
-          if (!ok)
-          {
-            it--;
-            cnt[get<0>(*it)]--;
-            cnt[get<1>(*it)]++;
-            swap(get<0>(*it), get<1>(*it));
-          }
-        }
+        ++it;
+      }
+      if (cnt[v] % 2 == 0)
+      {
+        it--;
+        cnt[get<0>(*it)]--;
+        cnt[get<1>(*it)]++;
+        swap(get<0>(*it), get<1>(*it));
       }
       V[v].clear();
     }
