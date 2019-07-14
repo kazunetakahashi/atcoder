@@ -141,6 +141,9 @@ ll calc(int l, int r, ll x, ll y) // [l, r), c_l = x, c_r = y
   }
   if (y == 0)
   {
+#if DEBUG == 1
+    cerr << "l = " << l << ", r = " << r << ", x = " << x << endl;
+#endif
     assert(l == 0 && r == N && x == 0);
     return memo[l][r][x][y] = calc(l, r - 1, 1, 1) + A[r - 1];
   }
