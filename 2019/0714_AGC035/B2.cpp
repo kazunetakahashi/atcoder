@@ -173,7 +173,7 @@ void Yes()
 {
   for (auto x : ans)
   {
-    cout << get<0>(x) << " " << get<1>(x) << endl;
+    cout << get<0>(x) + 1 << " " << get<1>(x) + 1 << endl;
   }
   exit(0);
 }
@@ -245,7 +245,7 @@ int main()
     --b;
     E.push_back(edge(a, b));
   }
-  if (M % 2 == 0)
+  if (M % 2 == 1)
   {
     No();
   }
