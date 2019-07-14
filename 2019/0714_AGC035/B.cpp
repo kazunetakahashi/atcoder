@@ -127,9 +127,15 @@ priority_queue<info, vector<info>, greater<info>> Q;
 void Yes()
 {
   assert((int)ans.size() == M);
+  vector<int> c(N, 0);
   for (auto x : ans)
   {
     cout << get<0>(x) + 1 << " " << get<1>(x) + 1 << endl;
+    c[get<0>(x)]++;
+  }
+  for (auto i = 0; i < N; i++)
+  {
+    assert(c[i] % 2 == 0);
   }
   exit(0);
 }
