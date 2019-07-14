@@ -233,7 +233,7 @@ void Yes()
   }
   for (auto i = 0; i < N; i++)
   {
-    if (c[i] % 2 == 0)
+    if (c[i] % 2 == 1)
     {
       pts.push_back(i);
     }
