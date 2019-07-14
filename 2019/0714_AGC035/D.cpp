@@ -144,6 +144,9 @@ ll calc(int l, int r, ll x, ll y) // [l, r), c_l = x, c_r = y
   {
     mins(mini, calc(l, i, x, x + y) + calc(i, r, x + y, y));
   }
+#if DEBUG == 1
+  cerr << "memo[" << l << "][" << r << "][" << x << "][" << y << "] = " << mini << endl;
+#endif
   return memo[l][r][x][y] = mini;
 }
 
