@@ -221,10 +221,12 @@ void dfs(int v, int p = -1)
   if (cnt[v] % 2 == 1)
   {
     ans.push_back(edge(v, p));
+    cnt[v]++;
   }
   else
   {
     ans.push_back(edge(p, v));
+    cnt[p]++;
   }
 }
 
