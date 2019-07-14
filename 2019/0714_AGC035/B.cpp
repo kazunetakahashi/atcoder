@@ -118,6 +118,9 @@ ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 int N, M;
 using edge = tuple<int, int>;
 using info = tuple<int, int>;
+vector<int> pts;
+set<edge> rev;
+vector<int> W[100010];
 set<int> V[100010];
 vector<edge> ans;
 bool visited[100010];
@@ -130,6 +133,10 @@ void Yes()
   vector<int> c(N, 0);
   for (auto x : ans)
   {
+    if (rev.find(x) != rev.end())
+    {
+      swap(get<0>(x), get<1>(x));
+    }
     cout << get<0>(x) + 1 << " " << get<1>(x) + 1 << endl;
     c[get<0>(x)]++;
   }
@@ -143,6 +150,56 @@ void No()
 {
   cout << "-1" << endl;
   exit(0);
+}
+
+void dfs(int v, int w, vector<int> &from)
+{
+  if (from[w] != -1)
+  {
+    return;
+  }
+  for (auto x : V[v])
+  {
+    if (from[x] == -1)
+    {
+      from[x] = v;
+      dfs(x, w, from);
+    }
+  }
+}
+
+void make_path(int v, int w)
+{
+  vector<int> from(N, -1);
+  dfs(v, w, from);
+  v = from[w];
+  while (v != -1)
+  {
+    edge e = edge(v, w);
+    edge f = edge(w, v);
+    if (rev.find(e) == rev.end())
+    {
+      rev.insert(e);
+      rev.insert(f);
+    }
+    else
+    {
+      rev.erase(e);
+      rev.erase(f);
+    }
+    w = v;
+    v = from[w];
+  }
+}
+
+void make_rev()
+{
+  for (auto i = 0u; i < pts.size(); i += 2)
+  {
+    int v = pts[i];
+    int w = pts[i + 1];
+    make_path(v, w);
+  }
 }
 
 void solve()
@@ -166,15 +223,26 @@ void solve()
         V[x].erase(v);
         Q.push(info(V[x].size(), x));
       }
-      V[v].clear();
       if (cnt[v] % 2 == 1)
       {
-        auto it = ans.end();
-        --it;
-        cnt[get<0>(*it)]--;
-        swap(get<0>(*it), get<1>(*it));
+        if (V[v].empty())
+        {
+          pts.push_back(v);
+        }
+        else
+        {
+          auto it = ans.end();
+          --it;
+          cnt[get<0>(*it)]--;
+          swap(get<0>(*it), get<1>(*it));
+        }
       }
+      V[v].clear();
     }
+  }
+  if (!pts.empty())
+  {
+    make_rev();
   }
 }
 
@@ -189,6 +257,8 @@ int main()
     --b;
     V[a].insert(b);
     V[b].insert(a);
+    W[a].push_back(b);
+    W[b].push_back(a);
   }
   if (M % 2 == 1)
   {
