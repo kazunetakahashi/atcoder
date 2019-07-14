@@ -231,6 +231,7 @@ void solve()
               ok = true;
               break;
             }
+            ++it;
           }
           if (!ok)
           {
