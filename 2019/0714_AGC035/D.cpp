@@ -135,13 +135,14 @@ ll calc(int l, int r, ll x, ll y) // [l, r), c_l = x, c_r = y
   {
     return memo[l][r][x][y];
   }
-  if (r == N - 1 && y != 1)
-  {
-    return infty;
-  }
   if (l + 1 == r)
   {
     return memo[l][r][x][y] = x * A[l];
+  }
+  if (y == 0)
+  {
+    assert(l == 0 && r == N && x == 0);
+    return memo[l][r][x][y] = calc(l, r - 1, 1, 1) + A[r - 1];
   }
   ll mini = infty;
   for (auto i = l + 1; i < r; i++)
