@@ -150,7 +150,7 @@ void solve()
   {
     add_edge(1, i);
     add_edge(i, i + 1 + N);
-    add_edge(1, i);
+    add_edge(1, i + 1);
     add_edge(i + 1, i + N);
   }
   if (N % 2 == 0)
