@@ -165,7 +165,7 @@ void solve()
       }
     }
     assert(a != -1);
-    int b = N - a;
+    int b = N - a + 1;
     add_edge(N, a);
     add_edge(b, N + N);
   }
