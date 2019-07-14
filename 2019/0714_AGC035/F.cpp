@@ -137,7 +137,7 @@ int main()
   }
   mint ans = 0;
   mint n{N}, m{M};
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i <= N; i++)
   {
     mint sum = (n + 1).power(M - i) * (m + 1).power(N - i) * C(M, i) * C(N, i) * C.fact[i];
     if (i % 2 == 0)
