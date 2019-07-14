@@ -218,10 +218,27 @@ void solve()
         }
         else
         {
-          auto it = ans.end();
-          --it;
-          cnt[get<0>(*it)]--;
-          swap(get<0>(*it), get<1>(*it));
+          auto ed = ans.end();
+          auto it = ed - V[v].size();
+          bool ok = false;
+          while (it != ed)
+          {
+            if (cnt[get<0>(*it)] % 2 == 1)
+            {
+              cnt[get<0>(*it)]--;
+              cnt[get<1>(*it)]++;
+              swap(get<0>(*it), get<1>(*it));
+              ok = true;
+              break;
+            }
+          }
+          if (!ok)
+          {
+            it--;
+            cnt[get<0>(*it)]--;
+            cnt[get<1>(*it)]++;
+            swap(get<0>(*it), get<1>(*it));
+          }
         }
       }
       V[v].clear();
