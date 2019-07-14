@@ -127,25 +127,6 @@ bool visited[100010];
 int cnt[100010];
 priority_queue<info, vector<info>, greater<info>> Q;
 
-void Yes()
-{
-  assert((int)ans.size() == M);
-  vector<int> c(N, 0);
-  for (auto x : ans)
-  {
-    if (rev.find(x) != rev.end())
-    {
-      swap(get<0>(x), get<1>(x));
-    }
-    cout << get<0>(x) + 1 << " " << get<1>(x) + 1 << endl;
-    c[get<0>(x)]++;
-  }
-  for (auto i = 0; i < N; i++)
-  {
-    assert(c[i] % 2 == 0);
-  }
-  exit(0);
-}
 void No()
 {
   cout << "-1" << endl;
@@ -227,7 +208,7 @@ void solve()
       {
         if (V[v].empty())
         {
-          pts.push_back(v);
+          // nothing
         }
         else
         {
@@ -240,10 +221,37 @@ void solve()
       V[v].clear();
     }
   }
+}
+
+void Yes()
+{
+  assert((int)ans.size() == M);
+  vector<int> c(N, 0);
+  for (auto x : ans)
+  {
+    c[get<0>(x)]++;
+  }
+  for (auto i = 0; i < N; i++)
+  {
+    if (c[i] % 2 == 0)
+    {
+      pts.push_back(i);
+    }
+  }
   if (!pts.empty())
   {
     make_rev();
   }
+  for (auto x : ans)
+  {
+    if (rev.find(x) != rev.end())
+    {
+      swap(get<0>(x), get<1>(x));
+    }
+    cout << get<0>(x) + 1 << " " << get<1>(x) + 1 << endl;
+    c[get<0>(x)]++;
+  }
+  exit(0);
 }
 
 int main()
