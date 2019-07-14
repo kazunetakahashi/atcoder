@@ -133,26 +133,32 @@ void No()
   exit(0);
 }
 
-void dfs(int v, int w, vector<int> &from)
-{
-  if (from[w] != -1)
-  {
-    return;
-  }
-  for (auto x : V[v])
-  {
-    if (from[x] == -1)
-    {
-      from[x] = v;
-      dfs(x, w, from);
-    }
-  }
-}
-
 void make_path(int v, int w)
 {
   vector<int> from(N, -1);
-  dfs(v, w, from);
+  queue<info> P;
+  P.push(info(-1, v));
+  while (!P.empty())
+  {
+    int f = get<0>(P.front());
+    int now = get<1>(P.front());
+    P.pop();
+    if (from[now] == -1)
+    {
+      from[now] = f;
+      if (now == w)
+      {
+        break;
+      }
+      for (auto x : W[now])
+      {
+        if (from[x] == -1)
+        {
+          P.push(info(now, x));
+        }
+      }
+    }
+  }
   v = from[w];
   while (v != -1)
   {
@@ -249,7 +255,6 @@ void Yes()
       swap(get<0>(x), get<1>(x));
     }
     cout << get<0>(x) + 1 << " " << get<1>(x) + 1 << endl;
-    c[get<0>(x)]++;
   }
   exit(0);
 }
