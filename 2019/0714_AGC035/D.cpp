@@ -135,6 +135,10 @@ ll calc(int l, int r, ll x, ll y) // [l, r), c_l = x, c_r = y
   {
     return memo[l][r][x][y];
   }
+  if (r == N - 1 && y != 1)
+  {
+    return infty;
+  }
   if (l + 1 == r)
   {
     return memo[l][r][x][y] = x * A[l];
