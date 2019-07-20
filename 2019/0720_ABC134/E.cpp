@@ -156,7 +156,8 @@ int main()
   for (auto e : M)
   {
     vector<int> &V = e.second;
-    auto it = S.lower_bound(V[0]);
+    reverse(V.begin(), V.end());
+    auto it = S.end();
     if (S.empty())
     {
       for (auto x : V)
@@ -169,14 +170,19 @@ int main()
       --it;
       for (auto x : V)
       {
-        if (it != S.end() && *it < x)
+        bool ok = true;
+        while (*it > x)
         {
-          it = S.erase(it);
           if (it == S.begin())
           {
+            ok = false;
             break;
           }
-          it--;
+          --it;
+        }
+        if (ok)
+        {
+          it = S.erase(it);
         }
       }
       for (auto x : V)
@@ -193,5 +199,5 @@ int main()
     cerr << "}" << endl;
 #endif
   }
-  cout << S.size() << endl;
+  cerr << S.size() << endl;
 }
