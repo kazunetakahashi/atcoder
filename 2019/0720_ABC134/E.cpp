@@ -157,7 +157,7 @@ int main()
   {
     vector<int> &V = e.second;
     auto it = S.lower_bound(V[0]);
-    if (it == S.end() || S.empty())
+    if (S.empty())
     {
       for (auto x : V)
       {
@@ -172,6 +172,11 @@ int main()
         if (it != S.end() && *it < x)
         {
           it = S.erase(it);
+          if (it == S.begin())
+          {
+            break;
+          }
+          it--;
         }
       }
       for (auto x : V)
