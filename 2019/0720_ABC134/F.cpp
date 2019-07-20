@@ -223,7 +223,7 @@ vector<int> mini_strange()
       vector<bool> used_t = used;
       W.push_back(t);
       used_t[t] = true;
-      for (auto i = 0; i < N; i++)
+      for (auto i = N - 1; i >= 0; i--)
       {
         if (!used_t[i])
         {
