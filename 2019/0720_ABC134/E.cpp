@@ -147,7 +147,7 @@ int main()
   }
   sort(V.begin(), V.end());
   set<int> S;
-  S.insert(get<0>(V[1]));
+  S.insert(get<1>(V[0]));
   for (auto i = 1; i < N; i++)
   {
     int n = get<1>(V[i]);
