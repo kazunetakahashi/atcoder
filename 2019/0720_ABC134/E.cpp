@@ -147,10 +147,10 @@ int main()
   }
   sort(V.begin(), V.end());
   set<int> S;
-  S.insert(get<0>(V[0]));
+  S.insert(get<0>(V[1]));
   for (auto i = 1; i < N; i++)
   {
-    int n = get<0>(V[i]);
+    int n = get<1>(V[i]);
     auto it = S.lower_bound(n);
     if (it == S.begin())
     {
