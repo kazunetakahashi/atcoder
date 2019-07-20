@@ -173,14 +173,14 @@ int main()
     {
       cout << i;
       ++cnt;
-    }
-    if (cnt < M)
-    {
-      cout << " ";
-    }
-    else
-    {
-      cout << endl;
+      if (cnt < M)
+      {
+        cout << " ";
+      }
+      else
+      {
+        cout << endl;
+      }
     }
   }
 }
