@@ -183,6 +183,14 @@ int main()
         if (ok)
         {
           it = S.erase(it);
+          if (it == S.end())
+          {
+            break;
+          }
+        }
+        else
+        {
+          break;
         }
       }
       for (auto x : V)
