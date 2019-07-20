@@ -193,5 +193,5 @@ int main()
     cerr << "}" << endl;
 #endif
   }
-  cerr << S.size() << endl;
+  cout << S.size() << endl;
 }
