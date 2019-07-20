@@ -140,6 +140,7 @@ int main()
     cout << 0 << endl;
     return 0;
   }
+  K /= 2;
   dp[0][0][0] = 1;
   for (auto i = 0; i < N; i++)
   {
@@ -169,5 +170,5 @@ int main()
       }
     }
   }
-  cout << dp[N][0][K / 2] << endl;
+  cout << dp[N][0][K] << endl;
 }
