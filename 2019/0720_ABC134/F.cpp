@@ -239,8 +239,8 @@ vector<int> mini_strange()
         mini = t;
       }
     }
-    used[maxi] = true;
-    V.push_back(maxi);
+    used[mini] = true;
+    V.push_back(mini);
   }
   return V;
 }
