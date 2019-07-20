@@ -148,6 +148,10 @@ int main()
       second = maxi;
       maxi = A[i];
     }
+    else if (A[i] >= second)
+    {
+      second = A[i];
+    }
   }
   for (auto i = 0; i < N; i++)
   {
