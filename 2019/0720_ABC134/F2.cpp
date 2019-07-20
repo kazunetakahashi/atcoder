@@ -171,7 +171,7 @@ int main()
   }
   else
   {
-    ans = dp[N][0][K];
+    ans = dp[N][0][K / 2];
   }
   cout << ans << endl;
 }
