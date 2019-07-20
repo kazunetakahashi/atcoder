@@ -157,46 +157,21 @@ int main()
   {
     vector<int> &V = e.second;
     reverse(V.begin(), V.end());
-    auto it = S.end();
-    if (S.empty())
+    if (!S.empty())
     {
       for (auto x : V)
       {
-        S.insert(x);
+        auto it = S.lower_bound(x);
+        if (it != S.begin())
+        {
+          --it;
+          S.erase(it);
+        }
       }
     }
-    else
+    for (auto x : V)
     {
-      --it;
-      for (auto x : V)
-      {
-        bool ok = true;
-        while (*it > x)
-        {
-          if (it == S.begin())
-          {
-            ok = false;
-            break;
-          }
-          --it;
-        }
-        if (ok)
-        {
-          it = S.erase(it);
-          if (it == S.end())
-          {
-            break;
-          }
-        }
-        else
-        {
-          break;
-        }
-      }
-      for (auto x : V)
-      {
-        S.insert(x);
-      }
+      S.insert(x);
     }
 #if DEBUG == 1
     cerr << "{ ";
@@ -207,5 +182,5 @@ int main()
     cerr << "}" << endl;
 #endif
   }
-  cout << S.size() << endl;
+  cerr << S.size() << endl;
 }
