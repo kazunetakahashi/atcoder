@@ -193,12 +193,72 @@ vector<int> maxi_strange()
   return V;
 }
 
+vector<int> mini_strange()
+{
+  vector<int> V;
+  vector<bool> used(N, false);
+  for (auto k = 0; k < N; k++)
+  {
+    int mini = 0, maxi = N - 1;
+    for (auto i = 0; i < N; i++)
+    {
+      if (!used[i])
+      {
+        mini = i;
+        break;
+      }
+    }
+    for (auto i = N - 1; i >= 0; i--)
+    {
+      if (!used[i])
+      {
+        maxi = i;
+        break;
+      }
+    }
+    while (abs(maxi - mini) > 1)
+    {
+      int t = (maxi + mini) / 2;
+      vector<int> W = V;
+      vector<bool> used_t = used;
+      W.push_back(t);
+      used_t[t] = true;
+      for (auto i = 0; i < N; i++)
+      {
+        if (!used_t[i])
+        {
+          W.push_back(i);
+        }
+      }
+      if (calc(W) >= K)
+      {
+        maxi = t;
+      }
+      else
+      {
+        mini = t;
+      }
+    }
+    used[maxi] = true;
+    V.push_back(maxi);
+  }
+  return V;
+}
+
 int main()
 {
   cin >> N >> K;
   auto V = maxi_strange();
+  auto W = mini_strange();
 #if DEBUG == 1
   for (auto x : V)
+  {
+    cerr << x << " ";
+  }
+  cerr << endl;
+#endif
+#if DEBUG == 1
+  for (auto x : W)
   {
     cerr << x << " ";
   }
