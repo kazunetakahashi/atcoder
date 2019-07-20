@@ -232,11 +232,11 @@ vector<int> mini_strange()
       }
       if (calc(W) >= K)
       {
-        maxi = t;
+        mini = t;
       }
       else
       {
-        mini = t;
+        maxi = t;
       }
     }
     used[mini] = true;
