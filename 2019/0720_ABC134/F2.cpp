@@ -135,12 +135,17 @@ mint dp[55][55][1305];
 int main()
 {
   cin >> N >> K;
+  if (K & 1)
+  {
+    cout << 0 << endl;
+    return 0;
+  }
   dp[0][0][0] = 1;
   for (auto i = 0; i < N; i++)
   {
     for (auto j = 0; j <= i; j++)
     {
-      for (auto k = 0; k <= K / 2; k++)
+      for (auto k = 0; k <= K; k++)
       {
         {
           int nj = j;
@@ -164,14 +169,5 @@ int main()
       }
     }
   }
-  mint ans;
-  if (K & 1)
-  {
-    ans = 0;
-  }
-  else
-  {
-    ans = dp[N][0][K / 2];
-  }
-  cout << ans << endl;
+  cout << dp[N][0][K / 2] << endl;
 }
