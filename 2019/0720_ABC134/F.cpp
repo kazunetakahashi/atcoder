@@ -230,7 +230,7 @@ vector<int> mini_strange()
           W.push_back(i);
         }
       }
-      if (calc(W) >= K)
+      if (calc(W) < K)
       {
         mini = t;
       }
