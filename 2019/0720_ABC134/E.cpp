@@ -132,6 +132,7 @@ void No()
 int N;
 int A[100010];
 using info = tuple<int, int>;
+map<int, vector<int>> M;
 
 int main()
 {
@@ -140,27 +141,43 @@ int main()
   {
     cin >> A[i];
   }
-  vector<info> V(N);
   for (auto i = 0; i < N; i++)
   {
-    V[i] = info(A[i], i);
-  }
-  sort(V.begin(), V.end());
-  set<int> S;
-  S.insert(get<1>(V[0]));
-  for (auto i = 1; i < N; i++)
-  {
-    int n = get<1>(V[i]);
-    auto it = S.lower_bound(n);
-    if (it == S.begin())
+    if (M.find(A[i]) == M.end())
     {
-      S.insert(n);
+      M[A[i]] = {i};
+    }
+    else
+    {
+      M[A[i]].push_back(i);
+    }
+  }
+  set<int> S;
+  for (auto e : M)
+  {
+    vector<int> &V = e.second;
+    auto it = S.lower_bound(V[0]);
+    if (it == S.end() || S.empty())
+    {
+      for (auto x : V)
+      {
+        S.insert(x);
+      }
     }
     else
     {
       --it;
-      S.erase(it);
-      S.insert(n);
+      for (auto x : V)
+      {
+        if (it != S.end() && *it < x)
+        {
+          it = S.erase(it);
+        }
+      }
+      for (auto x : V)
+      {
+        S.insert(x);
+      }
     }
 #if DEBUG == 1
     cerr << "{ ";
