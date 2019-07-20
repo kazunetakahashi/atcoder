@@ -130,7 +130,7 @@ void No()
 }
 
 int N, K;
-mint dp[55][55][2605];
+mint dp[55][55][1305];
 
 int main()
 {
@@ -140,7 +140,7 @@ int main()
   {
     for (auto j = 0; j <= i; j++)
     {
-      for (auto k = 0; k <= K; k++)
+      for (auto k = 0; k <= K / 2; k++)
       {
         {
           int nj = j;
@@ -164,6 +164,14 @@ int main()
       }
     }
   }
-  mint ans = dp[N][0][K];
+  mint ans;
+  if (K & 1)
+  {
+    ans = 0;
+  }
+  else
+  {
+    ans = dp[N][0][K];
+  }
   cout << ans << endl;
 }
