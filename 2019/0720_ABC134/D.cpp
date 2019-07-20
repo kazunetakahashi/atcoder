@@ -133,30 +133,8 @@ int N;
 int a[200010];
 int b[200010];
 
-int main()
+void flush()
 {
-  cin >> N;
-  for (auto i = 1; i <= N; i++)
-  {
-    cin >> a[i];
-  }
-  for (auto i = N; i >= 1; i--)
-  {
-    int sum = 0;
-    for (auto j = i * 2; j <= N; j++)
-    {
-      sum += b[j];
-    }
-    sum %= 2;
-    if (sum == a[i])
-    {
-      b[i] = 0;
-    }
-    else
-    {
-      b[i] = 1;
-    }
-  }
   int M = 0;
   for (auto i = 1; i <= N; i++)
   {
@@ -183,4 +161,31 @@ int main()
       }
     }
   }
+}
+
+int main()
+{
+  cin >> N;
+  for (auto i = 1; i <= N; i++)
+  {
+    cin >> a[i];
+  }
+  for (auto i = N; i >= 1; i--)
+  {
+    int sum = 0;
+    for (auto j = i * 2; j <= N; j += i)
+    {
+      sum += b[j];
+    }
+    sum %= 2;
+    if (sum == a[i])
+    {
+      b[i] = 0;
+    }
+    else
+    {
+      b[i] = 1;
+    }
+  }
+  flush();
 }
