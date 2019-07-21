@@ -140,9 +140,10 @@ int main()
   {
     ans -= C(3 * M - K + N - 2, N - 2) * N;
 #if DEBUG == 1
+    cerr << "K = " << K << endl;
     if (ans == 572350597)
     {
-      cerr << "K = " << K << endl;
+      cerr << "!!!K = " << K << endl;
     }
 #endif
   }
