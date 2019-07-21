@@ -136,7 +136,7 @@ int main()
   cin >> N >> M;
   combination C;
   mint ans = C(3 * M + N - 1, N - 1);
-  for (auto K = 2 * M + 1; K <= 3 * M; K++)
+  for (auto K = 3 * M; K >= 2 * M + 1; K--)
   {
     ans -= C(3 * M - K + N - 2, N - 2) * N;
 #if DEBUG == 1
