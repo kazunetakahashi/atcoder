@@ -168,5 +168,5 @@ int main()
     Y = 1;
     X = XY;
   }
-  flush(F, F, X, Y);
+  flush(X, F, F, Y);
 }
