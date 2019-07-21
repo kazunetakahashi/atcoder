@@ -139,7 +139,7 @@ bool check(ll x)
 
 bool ok(ll X0, ll Y0, ll X1, ll Y1)
 {
-  check(X0) && check(Y0) && check(X1) && check(Y1) && abs(X0 * Y1 - Y0 * X1) == S;
+  return check(X0) && check(Y0) && check(X1) && check(Y1) && abs(X0 * Y1 - Y0 * X1) == S;
 }
 
 void flush(ll X0, ll Y0, ll X1, ll Y1)
