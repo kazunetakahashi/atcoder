@@ -140,12 +140,8 @@ int main()
   {
     ans -= C(3 * M - K + N - 2, N - 2) * N;
   }
-  for (auto K = 0LL; K < M; K++)
+  for (auto K = 0LL; K <= M; K++)
   {
-    if (N - (3 * M - 2 * K) >= 0)
-    {
-      assert(false);
-    }
     ans -= C(N, 3 * M - 2 * K) * C(K + N - 1, N - 1);
   }
   cout << ans << endl;
