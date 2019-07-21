@@ -191,6 +191,9 @@ int main()
     sum += a[ind][now];
     now = sum % N;
   }
+#if DEBUG == 1
+  cerr << "sum = " << sum << endl;
+#endif
   deque<int> D;
   vector<bool> stacked(200010, false);
   for (auto i = now; i < N; i++)
