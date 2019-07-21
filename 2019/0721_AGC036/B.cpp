@@ -147,16 +147,16 @@ void test()
   for (auto i = 0; i < N * K; i++)
   {
 #if DEBUG == 1
-    cerr << "A[" << i << "] = " << A[i] << endl;
+    cerr << "V[" << i << "] = " << V[i] << endl;
 #endif
-    if (!used[A[i]])
+    if (!used[V[i]])
     {
-      used[A[i]] = true;
-      X.push_back(A[i]);
+      used[V[i]] = true;
+      X.push_back(V[i]);
     }
     else
     {
-      while (*X.rbegin() == A[i])
+      while (*X.rbegin() == V[i])
       {
         assert(used[*X.rbegin()]);
         used[*X.rbegin()] = false;
@@ -172,7 +172,7 @@ void test()
     {
       cerr << x << ", ";
     }
-    cerr << "}";
+    cerr << "}" << endl;
 #endif
   }
 }
