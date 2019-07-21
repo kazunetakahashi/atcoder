@@ -143,7 +143,7 @@ int main()
     cin >> A[i];
   }
   vector<int> used(200010, -1);
-  for (auto k = 0; k < 10; k++)
+  for (auto k = 0; k < 2; k++)
   {
     for (auto i = 0; i < N; i++)
     {
@@ -160,7 +160,7 @@ int main()
     cerr << "a[0][" << i << "] = " << a[0][i] << endl;
   }
 #endif
-  for (auto k = 1; k < 70; k++)
+  for (auto k = 1; k < 60; k++)
   {
     for (auto i = 0; i < N; i++)
     {
@@ -178,7 +178,7 @@ int main()
   while (true)
   {
     int ind = 0;
-    for (auto k = 0; k < 70; k++)
+    for (auto k = 0; k < 60; k++)
     {
       if (a[k][now] + sum >= C)
       {
