@@ -170,7 +170,7 @@ int main()
     {
       a[k][i] = a[k - 1][i] + a[k - 1][a[k - 1][i] % N];
 #if DEBUG == 1
-      if (k < 3)
+      if (k < 5)
       {
         cerr << "a[" << k << "][" << i << "] = " << a[k][i] << endl;
       }
