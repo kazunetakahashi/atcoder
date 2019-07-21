@@ -142,7 +142,7 @@ int main()
   }
   for (auto K = 0LL; K < M; K++)
   {
-    if (3 * M - 2 * K >= 0)
+    if (N - (3 * M - 2 * K) >= 0)
     {
       assert(false);
     }
