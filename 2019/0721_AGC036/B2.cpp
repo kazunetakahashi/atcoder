@@ -184,7 +184,7 @@ int main()
     int ind = 0;
     for (auto k = 0; k < 60; k++)
     {
-      if (a[k][now] + sum >= C)
+      if (a[k][now] + sum > C)
       {
         ind = k - 1;
         break;
