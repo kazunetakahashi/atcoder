@@ -168,7 +168,7 @@ int main()
   {
     for (auto i = 0; i < N; i++)
     {
-      a[k][i] = a[k - 1][i] + a[k - 1][(a[k - 1][i] + i) % N];
+      a[k][i] = a[k - 1][i] + a[k - 1][(a[k - 1][i] + i + 1) % N];
 #if DEBUG == 1
       if (k < 5)
       {
