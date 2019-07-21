@@ -164,4 +164,66 @@ int main()
     cerr << "a[0][" << i << "] = " << a[0][i] << endl;
   }
 #endif
+  for (auto k = 1; k < 60; k++)
+  {
+    for (auto i = 0; i < N; i++)
+    {
+      a[k][i] = a[k - 1][i] + a[k - 1][a[k - 1][i] % N];
+    }
+  }
+  ll sum = 0;
+  int now = 0;
+  while (true)
+  {
+    int ind = 0;
+    for (auto k = 0; k < 60; k++)
+    {
+      if (a[k][now] + sum >= C)
+      {
+        ind = k - 1;
+        break;
+      }
+    }
+    if (ind == -1)
+    {
+      break;
+    }
+    sum += a[ind][now];
+    now = sum % N;
+  }
+  deque<int> D;
+  vector<bool> stacked(200010, false);
+  for (auto i = now; i < N; i++)
+  {
+    if (!stacked[A[i]])
+    {
+      D.push_back(A[i]);
+      stacked[A[i]] = true;
+    }
+    else
+    {
+      while (true)
+      {
+        int x = *D.rbegin();
+        D.pop_back();
+        stacked[x] = false;
+        if (x == A[i])
+        {
+          break;
+        }
+      }
+    }
+  }
+  for (auto i = 0u; i < D.size(); i++)
+  {
+    cout << D[i];
+    if (i < D.size() - 1)
+    {
+      cout << " ";
+    }
+    else
+    {
+      cout << endl;
+    }
+  }
 }
