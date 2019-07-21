@@ -168,7 +168,7 @@ int main()
   {
     for (auto i = 0; i < N; i++)
     {
-      a[k][i] = a[k - 1][i] + a[k - 1][(a[k - 1][i] + i + 1) % N] + 1;
+      a[k][i] = a[k - 1][i] + a[k - 1][(a[k - 1][i] + i) % N];
 #if DEBUG == 1
       if (k < 5)
       {
@@ -195,7 +195,7 @@ int main()
       break;
     }
     sum += a[ind][now];
-    now = (sum + 1) % N;
+    now = sum % N;
   }
 #if DEBUG == 1
   cerr << "sum = " << sum << endl;
