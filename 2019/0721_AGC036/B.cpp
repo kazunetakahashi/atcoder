@@ -161,7 +161,7 @@ void test()
     }
     else
     {
-      while (*X.rbegin() == V[i])
+      while (*X.rbegin() != V[i])
       {
         assert(used[*X.rbegin()]);
         used[*X.rbegin()] = false;
