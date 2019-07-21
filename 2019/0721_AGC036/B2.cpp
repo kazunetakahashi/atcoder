@@ -153,7 +153,7 @@ int main()
     {
       if (used[A[i]] != -1)
       {
-        a[0][i] = k * N + i - used[A[i]];
+        a[0][i] = k * N + i - used[A[i]] + 1;
       }
       used[A[i]] = k * N + i;
     }
