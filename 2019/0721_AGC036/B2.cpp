@@ -129,19 +129,8 @@ void No()
   exit(0);
 }
 
-ll N, K;
-ll C;
-int A[200010];
-ll a[70][200010];
-
-int main()
+void doubling(ll N, const vector<int> &A, vector<vector<ll>> &a)
 {
-  cin >> N >> K;
-  C = N * K;
-  for (auto i = 0; i < N; i++)
-  {
-    cin >> A[i];
-  }
   vector<int> used(200010, -1);
   for (auto k = 0; k < 2; k++)
   {
@@ -154,27 +143,20 @@ int main()
       used[A[i]] = k * N + i;
     }
   }
-#if DEBUG == 1
-  for (auto i = 0; i < N; i++)
-  {
-    cerr << "a[0][" << i << "] = " << a[0][i] << endl;
-  }
-#endif
   for (auto k = 1; k < 60; k++)
   {
     for (auto i = 0; i < N; i++)
     {
       a[k][i] = a[k - 1][i] + a[k - 1][(a[k - 1][i] + i) % N];
-#if DEBUG == 1
-      if (k < 5)
-      {
-        cerr << "a[" << k << "][" << i << "] = " << a[k][i] << endl;
-      }
-#endif
     }
   }
+}
+
+ll calc_start(ll N, ll K, const vector<vector<ll>> &a)
+{
   ll sum = 0;
   ll now = 0;
+  const ll C = N * K;
   while (true)
   {
     int ind = 0;
@@ -193,13 +175,14 @@ int main()
     sum += a[ind][now];
     now = sum % N;
   }
-#if DEBUG == 1
-  cerr << "sum = " << sum << endl;
-  cerr << "now = " << now << endl;
-#endif
+  return now;
+}
+
+deque<int> last_state(ll start, ll N, const vector<int> &A)
+{
   deque<int> D;
   vector<bool> stacked(200010, false);
-  for (auto i = now; i < N; i++)
+  for (auto i = start; i < N; i++)
   {
     if (!stacked[A[i]])
     {
@@ -220,6 +203,11 @@ int main()
       }
     }
   }
+  return D;
+}
+
+void flush(const deque<int> &D)
+{
   for (auto i = 0u; i < D.size(); i++)
   {
     cout << D[i];
@@ -229,4 +217,20 @@ int main()
     }
   }
   cout << endl;
+}
+
+int main()
+{
+  ll N, K;
+  cin >> N >> K;
+  vector<int> A(N);
+  for (auto i = 0; i < N; i++)
+  {
+    cin >> A[i];
+  }
+  vector<vector<ll>> a(60, vector<ll>(N));
+  doubling(N, A, a);
+  ll start = calc_start(N, K, a);
+  deque<int> D = last_state(start, N, A);
+  flush(D);
 }
