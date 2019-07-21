@@ -135,7 +135,8 @@ int main()
 {
   cin >> S;
   ll C = 1e9;
-  ll x = (S + C - 1) / C;
-  ll y = C * x - S;
+  ll y = (S + C - 1) / C;
+  ll x = C * y - S;
+  assert(C * y - x == S);
   cout << "0 0 " << C << " 1 " << x << " " << y << endl;
 }
