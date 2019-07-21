@@ -132,6 +132,7 @@ void No()
 int N;
 ll K;
 int A[200010];
+int B[200010];
 
 void test()
 {
@@ -182,6 +183,29 @@ void test()
   }
 }
 
+void make_B()
+{
+  fill(B, B + N, -1);
+  vector<int> T(200010, -1);
+  for (auto k = 0; k < 2; k++)
+  {
+    for (auto i = 0; i < N; i++)
+    {
+      if (T[A[i]] != -1)
+      {
+        B[i] = T[A[i]];
+      }
+      T[A[i]] = i;
+    }
+  }
+#if DEBUG == 1
+  for (auto i = 0; i < N; i++)
+  {
+    cerr << "B[" << i << "] = " << B[i] << endl;
+  }
+#endif
+}
+
 int main()
 {
   cin >> N >> K;
@@ -189,5 +213,5 @@ int main()
   {
     cin >> A[i];
   }
-  test();
+  make_B();
 }
