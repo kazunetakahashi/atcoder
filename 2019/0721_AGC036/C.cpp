@@ -112,7 +112,7 @@ public:
     return 0;
   }
 };
-int combination::MAX_SIZE = 6000010;
+int combination::MAX_SIZE = 2000010;
 ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 // constexpr double epsilon = 1e-10;
 // constexpr ll infty = 1000000000000000LL;
@@ -139,6 +139,12 @@ int main()
   for (auto K = 2 * M + 1; K <= 3 * M; K++)
   {
     ans -= C(3 * M - K + N - 2, N - 2) * N;
+#if DEBUG == 1
+    if (ans == 572350597)
+    {
+      cerr << "K = " << K << endl;
+    }
+#endif
   }
   cout << ans << endl;
 }
