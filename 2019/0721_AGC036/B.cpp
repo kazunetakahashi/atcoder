@@ -135,6 +135,10 @@ int A[200010];
 
 void test()
 {
+  if (N * K > 100)
+  {
+    assert(false);
+  }
   vector<int> V(N * K);
   for (auto k = 0; k < K; k++)
   {
