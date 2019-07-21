@@ -153,7 +153,7 @@ int main()
     {
       if (used[A[i]] != -1)
       {
-        a[0][i] = k * N + i - used[A[i]] + 1;
+        a[0][i] = k * N + i - used[A[i]];
       }
       used[A[i]] = k * N + i;
     }
@@ -168,7 +168,7 @@ int main()
   {
     for (auto i = 0; i < N; i++)
     {
-      a[k][i] = a[k - 1][i] + a[k - 1][a[k - 1][i] % N];
+      a[k][i] = a[k - 1][i] + a[k - 1][(a[k - 1][i] + 1) % N];
     }
   }
   ll sum = 0;
@@ -189,11 +189,11 @@ int main()
       break;
     }
     sum += a[ind][now];
-    now = sum % N;
+    now = (sum + 1) % N;
   }
 #if DEBUG == 1
   cerr << "sum = " << sum << endl;
-  cerr << sum % N << endl;
+  cerr << "now = " << now << endl;
 #endif
   deque<int> D;
   vector<bool> stacked(200010, false);
