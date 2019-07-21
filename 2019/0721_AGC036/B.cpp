@@ -291,6 +291,10 @@ int main()
     cerr << "}" << endl;
 #endif
   }
+  if (X.empty())
+  {
+    return 0;
+  }
   for (auto i = 0u; i < X.size(); i++)
   {
     cout << X[i];
