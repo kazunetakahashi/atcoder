@@ -129,7 +129,8 @@ void No()
   exit(0);
 }
 
-int N, K;
+int N;
+ll K;
 int A[200010];
 
 void test()
