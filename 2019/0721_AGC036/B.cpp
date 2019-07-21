@@ -206,6 +206,29 @@ void make_B()
 #endif
 }
 
+int circ()
+{
+  int cnt = 1;
+  int now = N - 1;
+  while (true)
+  {
+    if (B[now] >= now)
+    {
+      ++cnt;
+    }
+    now = B[now];
+    if (now > 0)
+    {
+      --now;
+    }
+    else
+    {
+      break;
+    }
+  }
+  return cnt;
+}
+
 int main()
 {
   cin >> N >> K;
@@ -214,4 +237,9 @@ int main()
     cin >> A[i];
   }
   make_B();
+  int C = circ();
+#if DEBUG == 1
+  cerr << "circ() = " << C << endl;
+#endif
+  K %= C;
 }
