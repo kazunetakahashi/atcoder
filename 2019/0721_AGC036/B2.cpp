@@ -177,6 +177,7 @@ int main()
 #endif
     }
   }
+  return 0;
   ll sum = 0;
   ll now = 0;
   while (true)
