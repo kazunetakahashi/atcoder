@@ -140,7 +140,7 @@ int main()
   {
     ans -= C(3 * M - K + N - 2, N - 2) * N;
   }
-  for (auto K = min(3 * M, N); (3 * M - K) / 2 < M; K--)
+  for (auto K = 3 * M; (3 * M - K) / 2 < M; K--)
   {
     mint t = C(3 * M - K + N - K - 1, N - K - 1) * C(N, K);
     if (K % 2 == 0)
