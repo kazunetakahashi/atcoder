@@ -130,16 +130,15 @@ void No()
 }
 
 ll N, M;
-combination C;
 
 int main()
 {
   cin >> N >> M;
-  mint n{N};
+  combination C;
   mint ans = C(3 * M + N - 1, N - 1);
   for (auto K = 2 * M + 1; K <= 3 * M; K++)
   {
-    ans -= C(3 * M - K + N - 2, N - 2) * n;
+    ans -= C(3 * M - K + N - 2, N - 2) * N;
   }
   cout << ans << endl;
 }
