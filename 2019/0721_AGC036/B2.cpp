@@ -182,7 +182,7 @@ int main()
   while (true)
   {
     int ind = 0;
-    for (auto k = 0; k < 60; k++)
+    for (auto k = 0; k < 70; k++)
     {
       if (a[k][now] + sum >= C)
       {
