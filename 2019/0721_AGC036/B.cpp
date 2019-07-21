@@ -257,7 +257,11 @@ int main()
       break;
     }
   }
-  assert(start >= 0);
+  if (start == -1)
+  {
+    cout << endl;
+    return 0;
+  }
   deque<int> X;
   vector<bool> used(200010, false);
   for (auto i = start; i < N; i++)
