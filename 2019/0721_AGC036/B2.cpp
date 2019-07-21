@@ -142,10 +142,6 @@ int main()
   {
     cin >> A[i];
   }
-  for (auto i = 0; i < N; i++)
-  {
-    a[i][0] = -1;
-  }
   vector<int> used(200010, -1);
   for (auto k = 0; k < 10; k++)
   {
