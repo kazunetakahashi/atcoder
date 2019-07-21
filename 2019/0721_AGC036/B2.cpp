@@ -153,7 +153,7 @@ int main()
     {
       if (used[A[i]] != -1)
       {
-        a[0][used[A[i]]] = k * N + i - used[A[i]] + 1;
+        a[0][used[A[i]] % N] = k * N + i - used[A[i]] + 1;
       }
       used[A[i]] = k * N + i;
     }
@@ -177,7 +177,6 @@ int main()
 #endif
     }
   }
-  return 0;
   ll sum = 0;
   ll now = 0;
   while (true)
