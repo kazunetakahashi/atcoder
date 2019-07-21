@@ -133,6 +133,7 @@ int N;
 ll K;
 int A[200010];
 int B[200010];
+int T[200010];
 
 void test()
 {
@@ -217,6 +218,7 @@ int circ()
       ++cnt;
     }
     now = B[now];
+    T[now] = -cnt;
     if (now > 0)
     {
       --now;
@@ -242,4 +244,63 @@ int main()
   cerr << "circ() = " << C << endl;
 #endif
   K %= C;
+  for (auto i = 0; i < N; i++)
+  {
+    T[i] += C + 1;
+  }
+  int start = -1;
+  for (auto i = N - 1; i >= 0; i--)
+  {
+    if (T[i] == K)
+    {
+      start = i;
+      break;
+    }
+  }
+  assert(start >= 0);
+  deque<int> X;
+  vector<bool> used(200010, false);
+  for (auto i = start; i < N; i++)
+  {
+#if DEBUG == 1
+    cerr << "A[" << i << "] = " << A[i] << endl;
+#endif
+    if (!used[A[i]])
+    {
+      used[A[i]] = true;
+      X.push_back(A[i]);
+    }
+    else
+    {
+      while (*X.rbegin() != A[i])
+      {
+        assert(used[*X.rbegin()]);
+        used[*X.rbegin()] = false;
+        X.pop_back();
+      }
+      assert(*X.rbegin());
+      used[*X.rbegin()] = false;
+      X.pop_back();
+    }
+#if DEBUG == 1
+    cerr << "{ ";
+    for (auto x : X)
+    {
+      cerr << x << ", ";
+    }
+    cerr << "}" << endl;
+#endif
+  }
+  for (auto i = 0u; i < X.size(); i++)
+  {
+    cout << X[i];
+    if (i < X.size() - 1)
+    {
+      cout << " ";
+    }
+    else
+    {
+      cout << endl;
+    }
+  }
 }
