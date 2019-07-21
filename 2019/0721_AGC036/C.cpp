@@ -140,11 +140,7 @@ int main()
   {
     ans -= C(3 * M - K + N - 2, N - 2) * N;
 #if DEBUG == 1
-    if (K > 140000)
-    {
-      cerr << "K = " << K << endl;
-    }
-    if (ans == 572350597)
+    if (ans == 3463133)
     {
       cerr << "!!!K = " << K << endl;
     }
