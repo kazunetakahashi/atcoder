@@ -195,7 +195,7 @@ int main()
       break;
     }
     sum += a[ind][now];
-    now = sum % N;
+    now = (sum + 1) % N;
   }
 #if DEBUG == 1
   cerr << "sum = " << sum << endl;
