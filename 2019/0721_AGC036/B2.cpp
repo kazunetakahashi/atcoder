@@ -193,6 +193,7 @@ int main()
   }
 #if DEBUG == 1
   cerr << "sum = " << sum << endl;
+  cerr << sum % N << endl;
 #endif
   deque<int> D;
   vector<bool> stacked(200010, false);
