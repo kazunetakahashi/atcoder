@@ -132,7 +132,7 @@ void No()
 ll N, K;
 ll C;
 int A[200010];
-ll a[60][200010];
+ll a[70][200010];
 
 int main()
 {
@@ -164,7 +164,7 @@ int main()
     cerr << "a[0][" << i << "] = " << a[0][i] << endl;
   }
 #endif
-  for (auto k = 1; k < 60; k++)
+  for (auto k = 1; k < 70; k++)
   {
     for (auto i = 0; i < N; i++)
     {
@@ -178,7 +178,7 @@ int main()
     }
   }
   ll sum = 0;
-  int now = 0;
+  ll now = 0;
   while (true)
   {
     int ind = 0;
