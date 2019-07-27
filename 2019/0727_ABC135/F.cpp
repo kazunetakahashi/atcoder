@@ -200,7 +200,11 @@ int main()
     int j = (i + T.size()) % N;
     if (ok[i] && ok[j])
     {
-      if (!uf.merge(i, j))
+      if (!uf.is_same(i, j))
+      {
+        uf.merge(i, j);
+      }
+      else
       {
         No();
       }
