@@ -190,6 +190,7 @@ public:
     }
     assert(1 <= t && t <= static_cast<int>(s.size()));
     H = make_init_hash(t);
+    assert(static_cast<int>(size()) == t);
   }
 
   RollingHash(string s, size_t t)
@@ -211,9 +212,6 @@ mint RollingHash::B = 1234567;
 vector<mint> RollingHash::make_init_hash(int t)
 {
   vector<mint> res(S.size() + 1 - t);
-#if DEBUG == 1
-  cerr << "res.size() = " << res.size() << endl;
-#endif
   mint now = 0;
   const mint pb = B.power(t);
   for (auto i = 0; i < t; i++)
