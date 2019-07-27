@@ -189,7 +189,7 @@ int main()
   vector<bool> ok(N, false);
   for (int i = 0; i < N; i++)
   {
-    if (S.substr(i, N) == T)
+    if (S.substr(i, T.size()) == T)
     {
       ok[i] = true;
     }
@@ -200,11 +200,7 @@ int main()
     int j = (i + T.size()) % N;
     if (ok[i] && ok[j])
     {
-      if (!uf.is_same(i, j))
-      {
-        uf.merge(i, j);
-      }
-      else
+      if (!uf.merge(i, j))
       {
         No();
       }
