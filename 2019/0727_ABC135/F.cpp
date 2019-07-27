@@ -211,7 +211,8 @@ int main()
   {
     if (ok[i])
     {
-       maxs(ans, uf.size(i));
+      maxs(ans, uf.size(i));
     }
   }
+  cout << ans << endl;
 }
