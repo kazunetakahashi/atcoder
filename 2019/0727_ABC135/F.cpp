@@ -281,6 +281,9 @@ int main()
   vector<bool> ok(N, false);
   RollingHash rh_S{S, T.size()};
   RollingHash rh_T{T};
+#if DEBUG == 1
+  cerr << "rh_T.size() = " << rh_T.size() << endl;
+#endif
   const mint base = rh_T[0];
   for (auto i = 0; i < N; i++)
   {
