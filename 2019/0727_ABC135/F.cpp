@@ -282,12 +282,15 @@ int main()
   RollingHash rh_S{S, T.size()};
   RollingHash rh_T{T};
   const mint base = rh_T[0];
-#if DEBUG == 1
-  cerr << "base = " << base << endl;
-#endif
   for (auto i = 0; i < N; i++)
   {
     ok[i] = (rh_S[i] == base);
+#if DEBUG == 1
+    if (ok[i])
+    {
+      cerr << "ok[" << i << "]" << endl;
+    }
+#endif
   }
   UnionFind uf{N};
   for (auto i = 0; i < N; i++)
