@@ -178,8 +178,8 @@ private:
 int main()
 {
   string S, T;
-  int N = S.size();
   cin >> S >> T;
+  int N = S.size();
   stringstream U{};
   U << S << S << S;
   while (U.str().size() < T.size() * 2)
@@ -190,15 +190,9 @@ int main()
   vector<bool> ok(N, false);
   for (int i = 0; i < N; i++)
   {
-#if DEBUG == 1
-    cerr << S.substr(i, T.size()) << endl;
-#endif
     if (S.substr(i, T.size()) == T)
     {
       ok[i] = true;
-#if DEBUG == 1
-      cerr << "ok[" << i << "]" << endl;
-#endif
     }
   }
   UnionFind uf{N};
