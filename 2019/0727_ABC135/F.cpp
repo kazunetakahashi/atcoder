@@ -232,7 +232,7 @@ int main()
   int N = S.size();
   stringstream U{};
   U << S << S << S;
-  while (U.str().size() < T.size() * 2)
+  for (auto i = 0; i < 2 * T.size() / N; i++)
   {
     U << S;
   }
