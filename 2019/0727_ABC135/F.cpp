@@ -176,7 +176,7 @@ private:
 };
 
 class RollingHash
-{ // S の方を変更する処理はまだ書いていない。
+{
   string S;
   static mint B;
   vector<mint> H;
@@ -211,6 +211,9 @@ mint RollingHash::B = 1234567;
 vector<mint> RollingHash::make_init_hash(int t)
 {
   vector<mint> res(S.size() + 1 - t);
+#if DEBUG == 1
+  cerr << "res.size() = " << res.size() << endl;
+#endif
   mint now = 0;
   const mint pb = B.power(t);
   for (auto i = 0; i < t; i++)
