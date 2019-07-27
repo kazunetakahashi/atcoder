@@ -232,7 +232,7 @@ int main()
   int N = S.size();
   stringstream U{};
   U << S << S << S;
-  for (auto i = 0; i < 2 * T.size() / N; i++)
+  for (auto i = 0; i < 2 * static_cast<int>(T.size()) / N; i++)
   {
     U << S;
   }
