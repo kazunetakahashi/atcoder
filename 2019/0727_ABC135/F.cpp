@@ -175,11 +175,12 @@ private:
   }
 };
 
+template <typename T>
 class RollingHash
 {
   string S;
-  static mint B;
-  vector<mint> H;
+  static T B;
+  vector<T> H;
 
 public:
   RollingHash(string s, int t = -1) : S{s}
@@ -199,20 +200,22 @@ public:
     return S.size() + 1u - H.size();
   }
 
-  const mint operator[](size_t t) const { return H[t]; }
+  const T operator[](size_t t) const { return H[t]; }
 
 private:
-  mint Sm(size_t k) { return static_cast<mint>(S[k]); }
-  vector<mint> make_init_hash(int);
+  T Sm(size_t k) { return static_cast<T>(S[k]); }
+  vector<T> make_init_hash(int);
 };
 
-mint RollingHash::B = 1234567;
+template <typename T>
+T RollingHash<T>::B = 1234567;
 
-vector<mint> RollingHash::make_init_hash(int t)
+template <typename T>
+vector<T> RollingHash<T>::make_init_hash(int t)
 {
-  vector<mint> res(S.size() + 1 - t);
-  mint now = 0;
-  const mint pb = B.power(t);
+  vector<T> res(S.size() + 1 - t);
+  T now = 0;
+  const T pb = B.power(t);
   for (auto i = 0; i < t; i++)
   {
     now = now * B + Sm(i);
@@ -241,8 +244,8 @@ int main()
   cerr << "S = " << S << endl;
 #endif
   vector<bool> ok(N, false);
-  RollingHash rh_S{S, T.size()};
-  RollingHash rh_T{T};
+  RollingHash<mint> rh_S{S, T.size()};
+  RollingHash<mint> rh_T{T};
   const mint base = rh_T[0];
 #if DEBUG == 1
   cerr << "rh_S.size() = " << rh_S.size() << endl;
