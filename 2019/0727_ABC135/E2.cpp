@@ -160,6 +160,10 @@ vector<point> calc()
       {
         ans[i] = point(dist - Y - over, Y + over);
       }
+      else
+      {
+        ans[i] = point(X, Y + (N - (i + 1)) * K);
+      }
     }
   }
   return ans;
