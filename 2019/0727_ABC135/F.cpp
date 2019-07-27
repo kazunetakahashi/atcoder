@@ -192,17 +192,10 @@ public:
     H = make_init_hash(t);
   }
 
-  RollingHash(string s, size_t t)
-  {
-    RollingHash{s, static_cast<int>(t)};
-  }
+  RollingHash(string s, size_t t) : RollingHash{s, static_cast<int>(t)} {}
 
   size_t size()
   {
-#if DEBUG == 1
-    cerr << "S.size() = " << S.size() << endl;
-    cerr << "H.size() = " << H.size() << endl;
-#endif
     return S.size() + 1u - H.size();
   }
 
