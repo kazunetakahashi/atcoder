@@ -252,8 +252,8 @@ int main()
   RollingHash rh_T{T};
   const mint base = rh_T[0];
 #if DEBUG == 1
-  //  cerr << "rh_S.size() = " << rh_S.size() << endl;
-  //  cerr << "rh_T.size() = " << rh_T.size() << endl;
+  cerr << "rh_S.size() = " << rh_S.size() << endl;
+  cerr << "rh_T.size() = " << rh_T.size() << endl;
   cerr << "base = " << base << endl;
 #endif
   for (auto i = 0; i < N; i++)
