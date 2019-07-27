@@ -182,7 +182,7 @@ int main()
   cin >> S >> T;
   stringstream U{};
   U << S << S << S;
-  while (U.str().size() > T.size() * 2)
+  while (U.str().size() < T.size() * 2)
   {
     U << S;
   }
