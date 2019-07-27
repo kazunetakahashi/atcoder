@@ -195,10 +195,6 @@ public:
   RollingHash(string s, size_t t)
   {
     RollingHash{s, static_cast<int>(t)};
-#if DEBUG == 1
-    cerr << "t = " << t << endl;
-    cerr << "static_cast<int>(t) = " << static_cast<int>(t) << endl;
-#endif
   }
 
   size_t size() { return S.size() + 1u - H.size(); }
@@ -241,6 +237,9 @@ int main()
     U << S;
   }
   S = U.str();
+#if DEBUG == 1
+  cerr << "S = " << S << endl;
+#endif
   vector<bool> ok(N, false);
   RollingHash rh_S{S, T.size()};
   RollingHash rh_T{T};
