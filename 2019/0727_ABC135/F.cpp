@@ -175,6 +175,97 @@ private:
   }
 };
 
+class RollingHash
+{ // S の方を変更する処理はまだ書いていない。
+  string S;
+  static mint B;
+  vector<mint> H;
+
+public:
+  RollingHash(string s, int t = -1) : S{s}
+  {
+    if (t == -1)
+    {
+      t = s.size();
+    }
+    assert(1 <= t && t <= static_cast<int>(s.size()));
+    H = make_init_hash(t);
+  }
+
+  RollingHash(string s, size_t t)
+  {
+    RollingHash{s, static_cast<int>(t)};
+  }
+
+  void plus();
+  void minus();
+  void plus(int i)
+  {
+    while (i--)
+    {
+      plus();
+    }
+  }
+  void minus(int i)
+  {
+    while (i--)
+    {
+      minus();
+    }
+  }
+
+  size_t size() { return S.size() + 1u - H.size(); }
+
+  const mint operator[](size_t t) const { return H[t]; }
+
+private:
+  mint Sm(size_t k) { return static_cast<mint>(S[k]); }
+  vector<mint> make_init_hash(int);
+};
+
+mint RollingHash::B = 1234567;
+
+vector<mint> RollingHash::make_init_hash(int t)
+{
+  vector<mint> res(S.size() + 1 - t);
+  mint now = 0;
+  const mint pb = B.power(t);
+  for (auto i = 0; i < t; i++)
+  {
+    now = now * B + Sm(i);
+  }
+  res[0] = now;
+  for (auto i = 0u; i < res.size() - 1; i++)
+  {
+    res[i + 1] = res[i] * B - Sm(i) * pb + Sm(i + t);
+  }
+  return res;
+}
+
+void RollingHash::plus()
+{
+  assert(size() < S.size());
+  for (auto i = 0u; i < H.size() - 1; i++)
+  {
+    H[i] *= B;
+    H[i] += Sm(i + size());
+  }
+  H.resize(H.size() - 1);
+}
+
+void RollingHash::minus()
+{
+  assert(size() >= 2u);
+  H.resize(H.size() + 1);
+  const mint rev = mint{1} / B;
+  for (auto i = 0u; i < H.size() - 1; i++)
+  {
+    H[i] -= Sm(i + size());
+    H[i] *= rev;
+  }
+  H[H.size() - 1] = H[H.size() - 2] * B - Sm(H.size() - 2) * B.power(size()) + Sm(S.size() - 1);
+}
+
 int main()
 {
   string S, T;
@@ -188,12 +279,12 @@ int main()
   }
   S = U.str();
   vector<bool> ok(N, false);
-  for (int i = 0; i < N; i++)
+  RollingHash rh_S{S, T.size()};
+  RollingHash rh_T{T};
+  const mint base = rh_T[0];
+  for (auto i = 0; i < N; i++)
   {
-    if (S.substr(i, T.size()) == T)
-    {
-      ok[i] = true;
-    }
+    ok[i] = (rh_S[i] == base);
   }
   UnionFind uf{N};
   for (auto i = 0; i < N; i++)
