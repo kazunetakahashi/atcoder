@@ -197,23 +197,6 @@ public:
     RollingHash{s, static_cast<int>(t)};
   }
 
-  void plus();
-  void minus();
-  void plus(int i)
-  {
-    while (i--)
-    {
-      plus();
-    }
-  }
-  void minus(int i)
-  {
-    while (i--)
-    {
-      minus();
-    }
-  }
-
   size_t size() { return S.size() + 1u - H.size(); }
 
   const mint operator[](size_t t) const { return H[t]; }
@@ -242,30 +225,6 @@ vector<mint> RollingHash::make_init_hash(int t)
   return res;
 }
 
-void RollingHash::plus()
-{
-  assert(size() < S.size());
-  for (auto i = 0u; i < H.size() - 1; i++)
-  {
-    H[i] *= B;
-    H[i] += Sm(i + size());
-  }
-  H.resize(H.size() - 1);
-}
-
-void RollingHash::minus()
-{
-  assert(size() >= 2u);
-  H.resize(H.size() + 1);
-  const mint rev = mint{1} / B;
-  for (auto i = 0u; i < H.size() - 1; i++)
-  {
-    H[i] -= Sm(i + size());
-    H[i] *= rev;
-  }
-  H[H.size() - 1] = H[H.size() - 2] * B - Sm(H.size() - 2) * B.power(size()) + Sm(S.size() - 1);
-}
-
 int main()
 {
   string S, T;
@@ -286,6 +245,7 @@ int main()
   {
     ok[i] = (rh_S[i] == base);
 #if DEBUG == 1
+    cerr << "rh_S[" << i << "] = " << rh_S[i] << endl;
     if (ok[i])
     {
       cerr << "ok[" << i << "]" << endl;
