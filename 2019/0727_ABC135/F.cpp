@@ -187,6 +187,9 @@ int main()
     U << S;
   }
   S = U.str();
+#if DEBUG == 1
+  cerr << "S = " << S << endl;
+#endif
   vector<bool> ok(N, false);
   for (int i = 0; i < N; i++)
   {
