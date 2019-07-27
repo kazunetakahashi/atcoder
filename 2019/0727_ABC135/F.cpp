@@ -187,12 +187,12 @@ int main()
     U << S;
   }
   S = U.str();
-#if DEBUG == 1
-  cerr << "S = " << S << endl;
-#endif
   vector<bool> ok(N, false);
   for (int i = 0; i < N; i++)
   {
+#if DEBUG == 1
+    cerr << S.substr(i, T.size()) << endl;
+#endif
     if (S.substr(i, T.size()) == T)
     {
       ok[i] = true;
