@@ -195,6 +195,10 @@ public:
   RollingHash(string s, size_t t)
   {
     RollingHash{s, static_cast<int>(t)};
+#if DEBUG == 1
+    cerr << "t = " << t << endl;
+    cerr << "static_cast<int>(t) = " << static_cast<int>(t) << endl;
+#endif
   }
 
   size_t size() { return S.size() + 1u - H.size(); }
