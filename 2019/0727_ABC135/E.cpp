@@ -173,11 +173,11 @@ vector<point> make_vec()
 {
   vector<ll> A = make_cat(X + Y);
   vector<ll> B = make_cat(X - Y);
+  
 }
 
 void Yes()
 {
-  assert(false);
   vector<point> V = make_vec();
   cout << V.size() << endl;
   for (auto x : V)
