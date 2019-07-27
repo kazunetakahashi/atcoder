@@ -190,7 +190,9 @@ public:
     }
     assert(1 <= t && t <= static_cast<int>(s.size()));
     H = make_init_hash(t);
-    assert(static_cast<int>(size()) == t);
+#if DEBUG == 1
+    cerr << "H.size() = " << H.size() << endl;
+#endif
   }
 
   RollingHash(string s, size_t t)
