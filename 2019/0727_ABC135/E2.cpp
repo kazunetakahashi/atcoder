@@ -176,12 +176,12 @@ void Yes()
   bool swapped = false;
   if (X < 0)
   {
-    X = -X;
+    X *= -1;
     x_f = true;
   }
   if (Y < 0)
   {
-    Y = -Y;
+    Y *= -1;
     y_f = true;
   }
   if (Y > X)
@@ -190,6 +190,13 @@ void Yes()
     swapped = true;
   }
   vector<point> ans = calc();
+  if (swapped)
+  {
+    for (auto &e : ans)
+    {
+      swap(get<0>(e), get<1>(e));
+    }
+  }
   if (x_f)
   {
     for (auto &e : ans)
@@ -202,13 +209,6 @@ void Yes()
     for (auto &e : ans)
     {
       get<1>(e) *= -1;
-    }
-  }
-  if (swapped)
-  {
-    for (auto &e : ans)
-    {
-      swap(get<0>(e), get<1>(e));
     }
   }
   cout << ans.size() << endl;
