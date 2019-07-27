@@ -138,7 +138,7 @@ int main()
   cin >> S;
   reverse(S.begin(), S.end());
   vector<ll> C(M, 0);
-  vector<vector<mint>> DP(S.size(), vector<mint>(M, 0));
+  vector<vector<mint>> DP(S.size() + 1, vector<mint>(M, 0));
   DP[0][0] = 1;
   int p = 1;
   for (auto i = 0u; i < S.size(); i++)
