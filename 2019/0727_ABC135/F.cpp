@@ -190,9 +190,6 @@ public:
     }
     assert(1 <= t && t <= static_cast<int>(s.size()));
     H = make_init_hash(t);
-#if DEBUG == 1
-    cerr << "H.size() = " << H.size() << endl;
-#endif
   }
 
   RollingHash(string s, size_t t)
@@ -200,7 +197,14 @@ public:
     RollingHash{s, static_cast<int>(t)};
   }
 
-  size_t size() { return S.size() + 1u - H.size(); }
+  size_t size()
+  {
+#if DEBUG == 1
+    cerr << "S.size() = " << S.size() << endl;
+    cerr << "H.size() = " << H.size() << endl;
+#endif
+    return S.size() + 1u - H.size();
+  }
 
   const mint operator[](size_t t) const { return H[t]; }
 
