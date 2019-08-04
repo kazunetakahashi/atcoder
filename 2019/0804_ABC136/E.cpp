@@ -196,7 +196,7 @@ bool ok(int P)
       ng = t;
     }
   }
-  return good(ok, B, P) || good(ok + 1, B, P);
+  return good(ok, B, P) || (ok + 1 < static_cast<int>(B.size()) && good(ok + 1, B, P));
 }
 
 int main()
@@ -236,7 +236,7 @@ int main()
 #endif
     if (ok(x))
     {
-      cerr << x << endl;
+      cout << x << endl;
       return 0;
     }
   }
