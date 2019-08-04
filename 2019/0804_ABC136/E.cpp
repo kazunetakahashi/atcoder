@@ -133,32 +133,6 @@ int N, K;
 vector<int> A;
 int sum = 0;
 
-int pos_sum(int t, const vector<int> &B)
-{
-  auto it = B.begin() + t;
-  return accumulate(B.begin(), it, 0);
-}
-
-int neg_sum(int t, const vector<int> &B, int P)
-{
-  int ans = (static_cast<int>(B.size()) - t) * P;
-  auto it = B.begin() + t;
-  return ans - accumulate(it, B.end(), 0);
-}
-
-bool is_positive(int t, const vector<int> &B, int P)
-{
-  return pos_sum(t, B) - neg_sum(t, B, P) >= 0;
-}
-
-bool good(int t, const vector<int> &B, int P)
-{
-#if DEBUG == 1
-  cerr << "t = " << t << ", pos = " << pos_sum(t, B) << ", neg = " << neg_sum(t, B, P) << endl;
-#endif
-  return pos_sum(t, B) <= K && neg_sum(t, B, P) <= K;
-}
-
 bool ok(int P)
 {
   vector<int> B;
@@ -175,28 +149,22 @@ bool ok(int P)
     return true;
   }
   sort(B.begin(), B.end());
-#if DEBUG == 1
-  for (auto x : B)
+  int pos = accumulate(B.begin(), B.end(), 0);
+  int neg = 0;
+  if (pos % P == 0 && pos <= K)
   {
-    cerr << x << " ";
+    return true;
   }
-  cerr << endl;
-#endif
-  int ng = -1;
-  int ok = B.size();
-  while (abs(ok - ng) > 1)
+  for (auto i = (int)B.size() - 1; i >= 0; i--)
   {
-    int t = (ok + ng) / 2;
-    if (is_positive(t, B, P))
+    pos -= B[i];
+    neg += P - B[i];
+    if (pos % P == 0 && pos <= K && neg % P == 0 && neg <= K)
     {
-      ok = t;
-    }
-    else
-    {
-      ng = t;
+      return true;
     }
   }
-  return good(ok, B, P) || (ok - 1 >= 0 && good(ok - 1, B, P));
+  return false;
 }
 
 int main()
