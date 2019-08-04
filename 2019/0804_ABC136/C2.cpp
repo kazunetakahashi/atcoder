@@ -147,6 +147,10 @@ int main()
     }
     else if (pre <= a[i])
     {
+      pre = a[i];
+    }
+    else
+    {
       No();
     }
   }
