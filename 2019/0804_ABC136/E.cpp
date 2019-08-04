@@ -169,7 +169,7 @@ bool ok(int P)
 #if DEBUG == 1
     cerr << "pos = " << pos << ", neg = " << neg << endl;
 #endif
-    if (pos <= K && neg <= K && abs(pos - neg) % P == 0)
+    if (pos <= K && neg <= K)
     {
       return true;
     }
