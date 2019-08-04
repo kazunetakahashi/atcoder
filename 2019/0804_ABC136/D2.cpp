@@ -153,7 +153,7 @@ int main()
   }
   for (auto i = 0; i < N; i++)
   {
-    cout << ans[i] << " ";
+    cout << ans[i];
     if (i < N - 1)
     {
       cout << " ";
