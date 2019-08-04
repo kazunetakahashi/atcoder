@@ -266,6 +266,12 @@ int main()
     get<1>(V[i]) = map_y[get<0>(V[i])];
   }
   sort(V.begin(), V.end());
+#if DEBUG == 1
+  for (auto e : V)
+  {
+    cerr << "(" << get<0>(e) << ", " << get<1>(e) << ")" << endl;
+  }
+#endif
   {
     SegTree<ll> tree{N, 0};
     for (auto i = 0; i < N; i++)
