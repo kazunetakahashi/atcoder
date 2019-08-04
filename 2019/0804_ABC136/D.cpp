@@ -162,14 +162,14 @@ vector<info> make_info()
     {
       R = false;
       ++cnt;
-      cng = i - sum;
+      cng = i - sum - 1;
     }
   }
   res.emplace_back(cnt, cng);
   return res;
 }
 
-vector<int> make_ans(const vector<info>& I)
+vector<int> make_ans(const vector<info> &I)
 {
   vector<int> ans;
   for (auto x : I)
