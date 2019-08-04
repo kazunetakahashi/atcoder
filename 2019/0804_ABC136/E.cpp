@@ -133,7 +133,7 @@ int N, K;
 vector<int> A;
 int sum = 0;
 
-int pos_sum(int t, const vector<int>& B)
+int pos_sum(int t, const vector<int> &B)
 {
   auto it = B.begin() + t;
   return accumulate(B.begin(), it, 0);
@@ -215,8 +215,14 @@ int main()
   }
   sort(X.begin(), X.end());
   reverse(X.begin(), X.end());
+#if DEBUG == 1
+  cerr << "sum = " << sum << endl;
+#endif
   for (auto x : X)
   {
+#if DEBUG == 1
+    cerr << "x = " << x << endl;
+#endif
     if (ok(x))
     {
       cout << x << endl;
