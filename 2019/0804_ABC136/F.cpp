@@ -276,15 +276,15 @@ int main()
 #if DEBUG == 1
     cerr << "(" << a << ", " << b << ", " << c << ", " << d << ")" << endl;
 #endif
-    ans += mint{2}.power(N);
-    ans -= mint{2}.power(a + b) - 1;
-    ans -= mint{2}.power(a + c) - 1;
-    ans -= mint{2}.power(b + d) - 1;
-    ans -= mint{2}.power(c + d) - 1;
-    ans += mint{2}.power(a) - 1;
-    ans += mint{2}.power(b) - 1;
-    ans += mint{2}.power(c) - 1;
-    ans += mint{2}.power(d) - 1;
+    ans += mint{2}.power(N) - 1;
+    ans -= mint{2}.power(a + b);
+    ans -= mint{2}.power(a + c);
+    ans -= mint{2}.power(b + d);
+    ans -= mint{2}.power(c + d);
+    ans += mint{2}.power(a);
+    ans += mint{2}.power(b);
+    ans += mint{2}.power(c);
+    ans += mint{2}.power(d);
   }
   cout << ans << endl;
 }
