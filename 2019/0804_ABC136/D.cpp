@@ -144,6 +144,7 @@ vector<info> make_info()
   {
     if (S[i] == 'R' && !R)
     {
+      ++cnt;
       res.emplace_back(cnt, cng);
       sum += cnt;
       cnt = 1;
