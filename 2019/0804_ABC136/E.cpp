@@ -149,6 +149,13 @@ bool ok(int P)
     return true;
   }
   sort(B.begin(), B.end());
+#if DEBUG == 1
+  for (auto x : B)
+  {
+    cerr << x << " ";
+  }
+  cerr << endl;
+#endif
   int pos = accumulate(B.begin(), B.end(), 0);
   int neg = 0;
   if (pos % P == 0 && pos <= K)
