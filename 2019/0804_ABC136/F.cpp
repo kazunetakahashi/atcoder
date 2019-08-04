@@ -263,7 +263,7 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     get<0>(V[i]) = map_x[get<0>(V[i])];
-    get<1>(V[i]) = map_y[get<0>(V[i])];
+    get<1>(V[i]) = map_y[get<1>(V[i])];
   }
   sort(V.begin(), V.end());
 #if DEBUG == 1
