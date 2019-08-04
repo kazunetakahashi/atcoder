@@ -172,6 +172,13 @@ bool ok(int P)
     return true;
   }
   sort(B.begin(), B.end());
+#if DEBUG == 1
+  for (auto x : B)
+  {
+    cerr << x << " ";
+  }
+  cerr << endl;
+#endif
   int ng = -1;
   int ok = B.size();
   while (abs(ok - ng) > 1)
@@ -226,7 +233,7 @@ int main()
 #endif
     if (ok(x))
     {
-      cout << x << endl;
+      cerr << x << endl;
       return 0;
     }
   }
