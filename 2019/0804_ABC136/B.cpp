@@ -149,7 +149,7 @@ int main()
   {
     for (auto i = power(2 * k); i < min(power(1 + 2 * k), N); i++)
     {
-      sum += i;
+      sum++;
     }
   }
   cout << sum << endl;
