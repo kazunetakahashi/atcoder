@@ -273,6 +273,9 @@ int main()
   {
     ll a, b, c, d;
     tie(a, b, c, d) = I[i];
+#if DEBUG == 1
+    cerr << "(" << a << ", " << b << ", " << c << ", " << d << ")" << endl;
+#endif
     ans += mint{2}.power(N);
     ans -= mint{2}.power(a + b);
     ans -= mint{2}.power(a + c);
