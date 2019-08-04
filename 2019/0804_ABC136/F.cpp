@@ -203,12 +203,35 @@ public:
 using info = tuple<ll, ll, ll, ll>;
 using point = tuple<ll, ll, int>;
 
+int N;
 vector<point> V;
 vector<info> I;
 
+mint f(info x)
+{
+  ll a, b, c, d;
+  tie(a, b, c, d) = x;
+  mint res = 0;
+#if DEBUG == 1
+  cerr << "(" << a << ", " << b << ", " << c << ", " << d << ")" << endl;
+#endif
+  res += mint{2}.power(N) - 1;
+  res -= mint{2}.power(a + b);
+  res -= mint{2}.power(a + c);
+  res -= mint{2}.power(b + d);
+  res -= mint{2}.power(c + d);
+  res += mint{2}.power(a);
+  res += mint{2}.power(b);
+  res += mint{2}.power(c);
+  res += mint{2}.power(d);
+#if DEBUG == 1
+  cerr << res << endl;
+#endif
+  return res;
+}
+
 int main()
 {
-  int N;
   cin >> N;
   set<int> set_x, set_y;
   for (auto i = 0; i < N; i++)
@@ -271,20 +294,7 @@ int main()
   mint ans = 0;
   for (auto i = 0; i < N; i++)
   {
-    ll a, b, c, d;
-    tie(a, b, c, d) = I[i];
-#if DEBUG == 1
-    cerr << "(" << a << ", " << b << ", " << c << ", " << d << ")" << endl;
-#endif
-    ans += mint{2}.power(N) - 1;
-    ans -= mint{2}.power(a + b);
-    ans -= mint{2}.power(a + c);
-    ans -= mint{2}.power(b + d);
-    ans -= mint{2}.power(c + d);
-    ans += mint{2}.power(a);
-    ans += mint{2}.power(b);
-    ans += mint{2}.power(c);
-    ans += mint{2}.power(d);
+    ans += f(I[i]);
   }
   cout << ans << endl;
 }
