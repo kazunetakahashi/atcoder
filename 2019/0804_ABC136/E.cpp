@@ -159,6 +159,9 @@ bool ok(int P)
   {
     pos -= B[i];
     neg += P - B[i];
+#if DEBUG == 1
+    cerr << "pos = " << pos << ", neg = " << neg << endl;
+#endif
     if (pos % P == 0 && pos <= K && neg % P == 0 && neg <= K)
     {
       return true;
