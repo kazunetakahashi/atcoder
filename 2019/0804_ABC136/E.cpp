@@ -191,6 +191,7 @@ bool ok(int P)
 
 int main()
 {
+  cin >> N >> K;
   for (auto i = 0; i < N; i++)
   {
     int a;
