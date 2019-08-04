@@ -81,7 +81,7 @@ public:
     }
   }
 };
-ll mint::MOD = 1e9 + 7;
+ll mint::MOD = 998244353;
 istream &operator>>(istream &stream, mint &a) { return stream >> a.x; }
 ostream &operator<<(ostream &stream, const mint &a) { return stream << a.x; }
 class combination
