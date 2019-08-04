@@ -281,6 +281,10 @@ int main()
     ans -= mint{2}.power(a + c);
     ans -= mint{2}.power(b + d);
     ans -= mint{2}.power(c + d);
+    ans += mint{2}.power(a);
+    ans += mint{2}.power(b);
+    ans += mint{2}.power(c);
+    ans += mint{2}.power(d);
   }
   cout << ans << endl;
 }
