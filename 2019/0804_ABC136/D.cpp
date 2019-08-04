@@ -144,7 +144,6 @@ vector<info> make_info()
   {
     if (S[i] == 'R' && !R)
     {
-      ++cnt;
       res.emplace_back(cnt, cng);
       sum += cnt;
       cnt = 1;
@@ -196,6 +195,12 @@ int main()
   cin >> S;
   N = S.size();
   vector<info> I = make_info();
+#if DEBUG == 1
+  for (auto x : I)
+  {
+    cerr << get<0>(x) << " " << get<1>(x) << endl;
+  }
+#endif
   vector<int> V = make_ans(I);
   for (auto i = 0; i < N; i++)
   {
