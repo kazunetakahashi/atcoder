@@ -153,6 +153,9 @@ bool is_positive(int t, const vector<int> &B, int P)
 
 bool good(int t, const vector<int> &B, int P)
 {
+#if DEBUG == 1
+  cerr << "t = " << t << ", pos = " << pos_sum(t, B) << ", neg = " << neg_sum(t, B, P) << endl;
+#endif
   return pos_sum(t, B) <= K && neg_sum(t, B, P) <= K;
 }
 
