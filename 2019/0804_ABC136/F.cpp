@@ -210,7 +210,7 @@ vector<info> I;
 mint f(info x)
 {
   ll a, b, c, d;
-  tie(a, b, d, c) = x;
+  tie(a, b, c, d) = x;
   mint res = 0;
 #if DEBUG == 1
   cerr << "(" << a << ", " << b << ", " << c << ", " << d << ")" << endl;
