@@ -207,6 +207,8 @@ int N;
 vector<point> V;
 vector<info> I;
 
+mint base = 2;
+
 mint f(info x)
 {
   ll a, b, c, d;
@@ -215,15 +217,14 @@ mint f(info x)
 #if DEBUG == 1
   cerr << "(" << a << ", " << b << ", " << c << ", " << d << ")" << endl;
 #endif
-  res += mint{2}.power(N) - 1;
-  res -= mint{2}.power(a + b);
-  res -= mint{2}.power(a + c);
-  res -= mint{2}.power(b + d);
-  res -= mint{2}.power(c + d);
-  res += mint{2}.power(a);
-  res += mint{2}.power(b);
-  res += mint{2}.power(c);
-  res += mint{2}.power(d);
+  res += base.power(a + b);
+  res -= base.power(a + c);
+  res -= base.power(b + d);
+  res -= base.power(c + d);
+  res += base.power(a);
+  res += base.power(b);
+  res += base.power(c);
+  res += base.power(d);
 #if DEBUG == 1
   cerr << res << endl;
 #endif
