@@ -215,7 +215,8 @@ mint f(info x)
 #if DEBUG == 1
   cerr << "(" << a << ", " << b << ", " << c << ", " << d << ")" << endl;
 #endif
-  res += mint{2}.power(a + b);
+  res += mint{2}.power(N) - 1;
+  res -= mint{2}.power(a + b);
   res -= mint{2}.power(a + c);
   res -= mint{2}.power(b + d);
   res -= mint{2}.power(c + d);
