@@ -157,7 +157,7 @@ int main()
   ll P;
   cin >> N >> M >> P;
   vector<edge> E;
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < M; i++)
   {
     int A, B;
     ll C;
@@ -194,9 +194,6 @@ int main()
       int A, B;
       ll C;
       tie(A, B, C) = E[i];
-#if DEBUG == 1
-      cerr << "A = " << A << ", B = " << B << ", C = " << C << endl;
-#endif
       if (!ok[A] || !ok[B])
       {
         continue;
