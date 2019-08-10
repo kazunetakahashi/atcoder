@@ -141,7 +141,9 @@ int main()
     int A;
     ll B;
     cin >> A >> B;
-    V[M - A].push_back(B);
+    int t = M - A;
+    if (t >= 0)
+    V[t].push_back(B);
   }
   priority_queue<ll> Q;
   ll ans = 0;
