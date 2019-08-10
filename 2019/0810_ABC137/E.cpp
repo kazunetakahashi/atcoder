@@ -188,6 +188,9 @@ int main()
   int step{0};
   while (updated)
   {
+#if DEBUG == 1
+    cerr << "aaa" << endl;
+#endif
     updated = false;
     for (auto i = 0; i < M; i++)
     {
@@ -206,9 +209,6 @@ int main()
       }
     }
     ++step;
-#if DEBUG == 1
-    cerr << "step = " << step << endl;
-#endif
     if (step > N)
     {
       cout << -1 << endl;
