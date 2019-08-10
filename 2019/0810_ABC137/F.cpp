@@ -298,9 +298,14 @@ int main()
     }
   }
   Poly ans = {};
-  Poly base(mint::MOD + 1, 0);
-  base[mint::MOD] = 1;
-  base[1] = -1;
+  Poly base = {1};
+  for (auto i = 0LL; i < mint::MOD; ++i)
+  {
+    base = base * one(i);
+  }
+#if DEBUG == 1
+  cerr << base << endl;
+#endif
   reverse(base.begin(), base.end());
   for (auto e : W)
   {
@@ -316,5 +321,5 @@ int main()
 #endif
     ans = ans + base_e;
   }
-  flush(ans);
+  // flush(ans);
 }
