@@ -194,6 +194,9 @@ int main()
       int A, B;
       ll C;
       tie(A, B, C) = E[i];
+#if DEBUG == 1
+      cerr << "A = " << A << ", B = " << B << ", C = " << C << endl;
+#endif
       if (!ok[A] || !ok[B])
       {
         continue;
@@ -205,9 +208,6 @@ int main()
         d[B] = t;
       }
     }
-#if DEBUG == 1
-    cerr << "step = " << step << endl;
-#endif
     ++step;
     if (step > N)
     {
