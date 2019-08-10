@@ -296,6 +296,9 @@ int main()
     Poly base = {1};
     for (mint i = 0; i < mint::MOD; i += 1)
     {
+#if DEBUG == 1
+      cerr << "i = " << i << endl;
+#endif
       if (!(i == e))
       {
         base = base * one(i);
