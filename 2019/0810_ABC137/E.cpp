@@ -164,6 +164,7 @@ int main()
     cin >> A >> B >> C;
     --A;
     --B;
+    C = -(C - P);
     E.emplace_back(A, B, C);
     V[A].push_back(B);
     W[B].push_back(A);
