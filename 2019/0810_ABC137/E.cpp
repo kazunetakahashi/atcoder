@@ -212,5 +212,8 @@ int main()
       return 0;
     }
   }
+  #if DEBUG == 1
+  cerr << "step = " << step << endl;
+  #endif
   cout << max(0LL, -d[N - 1]) << endl;
 }
