@@ -175,6 +175,12 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     ok[i] = visit_zero[i] && visit_N[i];
+#if DEBUG == 1
+    if (ok[i])
+    {
+      cerr << "ok[" << i << "]" << endl;
+    }
+#endif
   }
   vector<ll> d(N, infty);
   d[0] = 0;
