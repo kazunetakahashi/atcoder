@@ -304,6 +304,9 @@ int main()
     rev = C.inv[rev.x];
     base = base * rev;
     base = base * one(e);
+#if DEBUG == 1
+    cerr << base << endl;
+#endif
     ans = ans + base;
   }
   flush(ans);
