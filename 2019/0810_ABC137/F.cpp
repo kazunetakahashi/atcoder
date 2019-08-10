@@ -270,9 +270,8 @@ Poly one(mint k)
   return {-k, 1};
 }
 
-Poly div(Poly p, mint k)
+Poly div(Poly const &p, mint k)
 { // p / (x - k)
-  reverse(p.begin(), p.end());
   vector<mint> ans(p.size() - 1, 0);
   ans[0] = 1;
   for (auto i = 1u; i < ans.size(); i++)
@@ -299,11 +298,10 @@ int main()
     }
   }
   Poly ans = {};
-  Poly base = {1};
-  for (auto i = 0LL; i < mint::MOD; ++i)
-  {
-    base = base * one(i);
-  }
+  Poly base(mint::MOD + 1, 0);
+  base[mint::MOD] = 1;
+  base[1] = -1;
+  reverse(base.begin(), base.end());
   for (auto e : W)
   {
 #if DEBUG == 1
