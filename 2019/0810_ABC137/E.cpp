@@ -206,14 +206,14 @@ int main()
       }
     }
     ++step;
+#if DEBUG == 1
+    cerr << "step = " << step << endl;
+#endif
     if (step > N)
     {
       cout << -1 << endl;
       return 0;
     }
   }
-  #if DEBUG == 1
-  cerr << "step = " << step << endl;
-  #endif
   cout << max(0LL, -d[N - 1]) << endl;
 }
