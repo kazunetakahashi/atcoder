@@ -239,6 +239,11 @@ void flush(Poly p)
   {
     p.push_back(0);
   }
+  if ((ll)p.size() == mint::MOD + 1)
+  {
+    mint k = p.back();
+    p.pop_back();
+  }
   for (auto i = 0; i < mint::MOD; i++)
   {
     cout << p[i];
@@ -303,7 +308,6 @@ int main()
     mint rev = eval(base, e);
     rev = C.inv[rev.x];
     base = base * rev;
-    base = base * one(e);
 #if DEBUG == 1
     cerr << base << endl;
 #endif
