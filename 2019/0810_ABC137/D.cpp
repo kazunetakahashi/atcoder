@@ -129,8 +129,6 @@ void No()
   exit(0);
 }
 
-using work = tuple<ll, ll>;
-
 int main()
 {
   int N, M;
@@ -143,7 +141,9 @@ int main()
     cin >> A >> B;
     int t = M - A;
     if (t >= 0)
-    V[t].push_back(B);
+    {
+      V[t].push_back(B);
+    }
   }
   priority_queue<ll> Q;
   ll ans = 0;
