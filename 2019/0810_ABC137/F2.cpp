@@ -143,6 +143,10 @@ int main()
   combination C{};
   for (auto i = 0; i < N; i++)
   {
+    if (A[i] == 0)
+    {
+      continue;
+    }
     // add (1 - (x - i)^{N - 1})
     B[0] += 1;
     mint p = 1;
