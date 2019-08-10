@@ -133,7 +133,7 @@ int main()
 {
   int N;
   cin >> N;
-  map<string, ll> M;
+  unordered_map<string, ll> M;
   vector<string> S(N);
   for (auto i = 0; i < N; i++)
   {
