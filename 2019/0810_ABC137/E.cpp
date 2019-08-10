@@ -170,7 +170,7 @@ int main()
     W[B].push_back(A);
   }
   dfs(0, visit_zero, V);
-  dfs(0, visit_N, W);
+  dfs(N - 1, visit_N, W);
   vector<bool> ok(N);
   for (auto i = 0; i < N; i++)
   {
