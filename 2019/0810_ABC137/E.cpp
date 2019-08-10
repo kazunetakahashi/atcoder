@@ -212,5 +212,5 @@ int main()
       return 0;
     }
   }
-  cout << d[N - 1] << endl;
+  cout << -d[N - 1] << endl;
 }
