@@ -298,11 +298,16 @@ int main()
     }
   }
   Poly ans = {};
+  /*
   Poly base = {1};
   for (auto i = 0LL; i < mint::MOD; ++i)
   {
     base = base * one(i);
   }
+  */
+  Poly base(mint::MOD + 1, 0);
+  base[mint::MOD] = 1;
+  base[1] = -1;
 #if DEBUG == 1
   cerr << base << endl;
 #endif
