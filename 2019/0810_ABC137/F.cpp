@@ -307,7 +307,7 @@ int main()
   */
   Poly base(mint::MOD + 1, 0);
   base[mint::MOD] = 1;
-  base[1] = -1;
+  base[1] = mint::MOD - 1;
 #if DEBUG == 1
   cerr << base << endl;
 #endif
