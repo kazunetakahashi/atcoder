@@ -235,7 +235,7 @@ Poly operator*(mint v, Poly p)
 
 void flush(Poly p)
 {
-  while (p.size() < mint::MOD)
+  while ((ll)p.size() < mint::MOD)
   {
     p.push_back(0);
   }
@@ -301,6 +301,10 @@ int main()
         base = base * one(i);
       }
     }
+#if DEBUG == 1
+    cerr << "e = " << e << endl;
+    cerr << base << endl;
+#endif
     mint rev = eval(base, e);
     rev = C.inv[rev.x];
     base = base * rev;
