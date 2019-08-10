@@ -308,8 +308,8 @@ int main()
   {
 #if DEBUG == 1
     cerr << "e = " << e << endl;
-    Poly base_e = div(base, e);
 #endif
+    Poly base_e = div(base, e);
     mint rev = eval(base_e, e);
     rev = C.inv[rev.x];
     base_e = base_e * rev;
