@@ -326,5 +326,5 @@ int main()
 #endif
     ans = ans + base_e;
   }
-  // flush(ans);
+  flush(ans);
 }
