@@ -169,7 +169,7 @@ Poly operator+(Poly p, Poly q)
   }
   else
   {
-    for (auto i = 0; i < (int)q.size(); i++)
+    for (auto i = 0u; i < q.size(); i++)
     {
       p[i] += q[i];
     }
@@ -239,11 +239,6 @@ void flush(Poly p)
   {
     p.push_back(0);
   }
-  if ((ll)p.size() == mint::MOD + 1)
-  {
-    mint k = p.back();
-    p.pop_back();
-  }
   for (auto i = 0; i < mint::MOD; i++)
   {
     cout << p[i];
@@ -258,9 +253,8 @@ void flush(Poly p)
   }
 }
 
-mint eval(Poly p, mint v)
+mint eval(Poly const &p, mint v)
 {
-  reduce(p);
   mint x = 1;
   mint ans = 0;
   for (auto b : p)
@@ -274,6 +268,20 @@ mint eval(Poly p, mint v)
 Poly one(mint k)
 {
   return {-k, 1};
+}
+
+Poly div(Poly p, mint k)
+{ // p / (x - k)
+  reverse(p.begin(), p.end());
+  vector<mint> ans(p.size() - 1, 0);
+  ans[0] = 1;
+  for (auto i = 1u; i < ans.size(); i++)
+  {
+    ans[i] = p[i] - (-k) * ans[i - 1];
+  }
+  reverse(ans.begin(), ans.end());
+  reduce(ans);
+  return ans;
 }
 
 int main()
@@ -291,27 +299,24 @@ int main()
     }
   }
   Poly ans = {};
+  Poly base = {1};
+  for (auto i = 0LL; i < mint::MOD; ++i)
+  {
+    base = base * one(i);
+  }
   for (auto e : W)
   {
-    Poly base = {1};
-    for (auto i = 0LL; i < mint::MOD; ++i)
-    {
-      if (i != e)
-      {
-        base = base * one(i);
-      }
-    }
 #if DEBUG == 1
     cerr << "e = " << e << endl;
-    cerr << base << endl;
+    Poly base_e = div(base, e);
 #endif
-    mint rev = eval(base, e);
+    mint rev = eval(base_e, e);
     rev = C.inv[rev.x];
-    base = base * rev;
+    base_e = base_e * rev;
 #if DEBUG == 1
-    cerr << base << endl;
+    cerr << base_e << endl;
 #endif
-    ans = ans + base;
+    ans = ans + base_e;
   }
   flush(ans);
 }
