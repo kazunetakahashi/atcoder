@@ -188,9 +188,6 @@ int main()
   int step{0};
   while (updated)
   {
-#if DEBUG == 1
-    cerr << "aaa" << endl;
-#endif
     updated = false;
     for (auto i = 0; i < M; i++)
     {
@@ -208,6 +205,9 @@ int main()
         d[B] = t;
       }
     }
+#if DEBUG == 1
+    cerr << "step = " << step << endl;
+#endif
     ++step;
     if (step > N)
     {
