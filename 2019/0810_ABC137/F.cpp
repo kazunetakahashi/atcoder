@@ -268,7 +268,7 @@ mint eval(Poly p, mint v)
 
 Poly one(mint k)
 {
-  return {k, 1};
+  return {-k, 1};
 }
 
 int main()
