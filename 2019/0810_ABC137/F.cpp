@@ -275,17 +275,12 @@ int main()
 {
   cin >> mint::MOD;
   combination C{};
-  vector<mint> V;
-  vector<mint> W;
-  for (auto i = 0; i < mint::MOD; i++)
+  vector<ll> W;
+  for (auto i = 0LL; i < mint::MOD; i++)
   {
     int a;
     cin >> a;
-    if (a == 0)
-    {
-      V.push_back(i);
-    }
-    else
+    if (a == 1)
     {
       W.push_back(i);
     }
@@ -294,12 +289,9 @@ int main()
   for (auto e : W)
   {
     Poly base = {1};
-    for (mint i = 0; i < mint::MOD; i += 1)
+    for (auto i = 0LL; i < mint::MOD; ++i)
     {
-#if DEBUG == 1
-      cerr << "i = " << i << endl;
-#endif
-      if (!(i == e))
+      if (i != e)
       {
         base = base * one(i);
       }
