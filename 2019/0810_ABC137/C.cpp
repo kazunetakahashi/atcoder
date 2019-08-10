@@ -133,7 +133,7 @@ int main()
 {
   int N;
   cin >> N;
-  map<string, int> M;
+  map<string, ll> M;
   vector<string> S(N);
   for (auto i = 0; i < N; i++)
   {
@@ -141,7 +141,7 @@ int main()
     sort(S[i].begin(), S[i].end());
     if (M.find(S[i]) == M.end())
     {
-      M[S[i]] = 1;
+      M[S[i]] = 1LL;
     }
     else
     {
