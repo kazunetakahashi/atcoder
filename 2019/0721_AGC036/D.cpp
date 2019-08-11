@@ -157,6 +157,9 @@ int main()
       {
         sum0[j][x] += A[y][x];
       }
+#if DEBUG == 1
+      cerr << "sum0[" << j << "][" << x << "] = " << sum0[j][x] << endl;
+#endif
     }
   }
   for (auto x = 0; x < N; x++)
@@ -167,6 +170,9 @@ int main()
       {
         sum1[i][x] += A[x][y];
       }
+#if DEBUG == 1
+      cerr << "sum1[" << i << "][" << x << "] = " << sum1[i][x] << endl;
+#endif
     }
   }
   fill(&dp[0][0], &dp[0][0] + 510 * 510, infty);
