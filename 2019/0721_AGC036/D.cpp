@@ -186,6 +186,9 @@ int main()
         tmp0 += sum0[j][k];
         tmp1 += sum1[i][k];
         ll t = dp[i][j] + tmp0 + tmp1;
+#if DEBUG == 1
+        cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << " -> dp[" << j << "][" << k << "] = " << t << endl;
+#endif
         mins(dp[j][k], t);
       }
     }
