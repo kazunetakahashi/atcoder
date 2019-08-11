@@ -138,9 +138,9 @@ ll sum1[510][510];
 int main()
 {
   cin >> N;
-  for (auto i = 0; i < N; i++)
+  for (auto i = 1; i <= N; i++)
   {
-    for (auto j = 0; j < N; j++)
+    for (auto j = 1; j <= N; j++)
     {
       if (i == j)
       {
@@ -149,9 +149,9 @@ int main()
       cin >> A[i][j];
     }
   }
-  for (auto j = 0; j < N; j++)
+  for (auto j = 0; j <= N; j++)
   {
-    for (auto x = 0; x < N; x++)
+    for (auto x = 0; x <= N; x++)
     {
       for (auto y = j + 1; y <= x - 1; y++)
       {
@@ -162,11 +162,11 @@ int main()
 #endif
     }
   }
-  for (auto x = 0; x < N; x++)
+  for (auto x = 0; x <= N; x++)
   {
     for (auto i = 0; i < x; i++)
     {
-      for (auto y = 0; y <= i; y++)
+      for (auto y = 1; y <= i; y++)
       {
         sum1[i][x] += A[x][y];
       }
