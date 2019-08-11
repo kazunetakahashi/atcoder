@@ -171,10 +171,14 @@ int main()
   }
   fill(&dp[0][0], &dp[0][0] + 510 * 510, infty);
   dp[0][0] = 0;
-  for (auto i = 0; i < N; i++)
+  for (auto j = 0; j < N; j++)
   {
-    for (auto j = i; j < N; j++)
+    for (auto i = 0; i <= j; i++)
     {
+      if (dp[i][j] == infty)
+      {
+        continue;
+      }
       ll tmp0 = 0;
       ll tmp1 = 0;
       for (auto k = j + 1; k <= N; k++)
