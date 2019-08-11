@@ -159,9 +159,9 @@ int main()
       }
     }
   }
-  for (auto i = 0; i < N; i++)
+  for (auto x = 0; x < N; x++)
   {
-    for (auto x = 0; x < N; x++)
+    for (auto i = 0; i < x; i++)
     {
       for (auto y = 0; y <= i; y++)
       {
