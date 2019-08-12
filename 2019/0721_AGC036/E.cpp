@@ -306,13 +306,14 @@ string erase_C(string const &S)
 {
   vector<int> cnt = count(S);
   stringstream SS{};
-  for (int i = 0; i < (int)S.size(); i++)
+  int S_size = S.size();
+  for (int i = 0; i < S_size; i++)
   {
     if (cnt[2] > cnt[1])
     {
       if (S[i] == 'C')
       {
-        if (i - 1 >= 0 && i + 1 < S.size())
+        if (i - 1 >= 0 && i + 1 < S_size)
         {
           if ((S[i - 1] == 'A' && S[i + 1] == 'B') || (S[i - 1] == 'B' && S[i + 1] == 'A'))
           {
