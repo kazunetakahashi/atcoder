@@ -234,6 +234,12 @@ string make_ans(string const &S)
       now[V[i][0] - 'A']++;
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i < 3; i++)
+  {
+    cerr << "now[" << i << "] = " << now[i] << endl;
+  }
+#endif
   assert(now[0] == 0 && now[1] == now[2]);
   // 2nd step
   for (auto i = 1u; i < V.size() - 1; i++)
@@ -270,9 +276,6 @@ string make_ans(string const &S)
     }
   }
   assert(now[0] == 0 && now[1] == now[2] && cnt[0] == now[1]);
-#if DEBUG == 1
-  cerr << now[1] << endl;
-#endif
   // make ans
   stringstream SS{};
   for (auto i = 0u; i < V.size(); i++)
