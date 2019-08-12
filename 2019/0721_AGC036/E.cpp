@@ -220,6 +220,12 @@ string make_ans(string const &S)
   vector<int> cnt = count(S);
   assert(cnt[0] <= cnt[1] && cnt[1] == cnt[2]);
   vector<string> V = split(S, 'A');
+#if DEBUG == 1
+  for (auto i = 0u; i < V.size(); i++)
+  {
+    cerr << "V[" << i << "] = " << V[i] << endl;
+  }
+#endif
   vector<int> now(3, 0);
   vector<vector<bool>> used(V.size());
   for (auto i = 0u; i < V.size(); i++)
