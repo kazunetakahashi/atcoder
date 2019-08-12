@@ -333,10 +333,10 @@ int main()
 {
   string S;
   cin >> S;
-  S = reduce(S);
 #if DEBUG == 1
   cerr << S << endl;
 #endif
+  S = reduce(S);
   map<char, char> M, R;
   M = make_map(S);
   R = make_rev(M);
