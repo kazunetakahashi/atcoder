@@ -338,6 +338,9 @@ int main()
   M = make_map(S);
   R = make_rev(M);
   S = convert(S, M);
+#if DEBUG == 1
+  cerr << "S = " << S << endl;
+#endif
   vector<int> cnt = count(S);
   if (cnt[1] < cnt[2])
   {
