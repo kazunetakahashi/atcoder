@@ -204,7 +204,7 @@ vector<string> split(string const &S, char c)
     if (x == c)
     {
       res.push_back(SS.str());
-      SS.clear();
+      SS.str({});
     }
     else
     {
