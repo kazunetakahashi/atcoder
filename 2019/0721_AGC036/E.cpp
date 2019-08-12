@@ -211,6 +211,7 @@ vector<string> split(string const &S, char c)
       SS << x;
     }
   }
+  res.push_back(SS.str());
   return res;
 }
 
