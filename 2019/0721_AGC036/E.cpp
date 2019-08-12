@@ -349,14 +349,23 @@ int main()
   M = make_map(S);
   R = make_rev(M);
   S = convert(S, M);
+#if DEBUG == 1
+  cerr << "S = " << S << endl;
+#endif
   vector<int> cnt = count(S);
   if (cnt[1] < cnt[2])
   {
     S = erase_C(S);
+#if DEBUG == 1
+    cerr << "S = " << S << endl;
+#endif
     cnt = count(S);
     if (cnt[1] < cnt[2])
     {
       S = erase_AC(S);
+#if DEBUG == 1
+      cerr << "S = " << S << endl;
+#endif
     }
   }
   string ans{make_ans(S)};
