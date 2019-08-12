@@ -166,7 +166,7 @@ map<char, char> make_map(string const &S)
   {
     V.emplace_back(cnt[i], 'A' + i);
   }
-  sort(V.rbegin(), V.rend());
+  sort(V.begin(), V.end());
   map<char, char> res;
   for (auto i = 0; i < 3; i++)
   {
