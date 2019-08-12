@@ -309,7 +309,7 @@ string erase_C(string const &S)
   for (auto i = 0u; i < S.size(); i++)
   {
 #if DEBUG == 1
-    cerr << "SS.str() = " << SS.str() << endl;
+    cerr << "i = " << i << endl;
 #endif
     if (cnt[2] > cnt[1])
     {
