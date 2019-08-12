@@ -369,6 +369,9 @@ int main()
     }
   }
   string ans{make_ans(S)};
+#if DEBUG == 1
+  cerr << "ans = " << ans << endl;
+#endif
   ans = convert(ans, R);
   cout << ans << endl;
 }
