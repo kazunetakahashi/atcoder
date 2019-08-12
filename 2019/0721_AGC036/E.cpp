@@ -328,6 +328,9 @@ string erase_C(string const &S)
       }
     }
     SS << S[i];
+#if DEBUG == 1
+    cerr << "SS.str() = " << SS.str() << endl;
+#endif
   }
   return SS.str();
 }
