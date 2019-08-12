@@ -170,6 +170,9 @@ map<char, char> make_map(string const &S)
   map<char, char> res;
   for (auto i = 0; i < 3; i++)
   {
+#if DEBUG == 1
+    cerr << get<0>(V[i]) << ", " << get<1>(V[i]) << endl;
+#endif
     res[get<1>(V[0])] = 'A' + i;
   }
   return res;
