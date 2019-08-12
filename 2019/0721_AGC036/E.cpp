@@ -333,9 +333,6 @@ int main()
 {
   string S;
   cin >> S;
-#if DEBUG == 1
-  cerr << S << endl;
-#endif
   S = reduce(S);
   map<char, char> M, R;
   M = make_map(S);
