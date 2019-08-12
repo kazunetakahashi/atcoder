@@ -254,9 +254,6 @@ string make_ans(string const &S)
       int num = V[i].size() - 1;
       while (num >= 1 && !used[i][num] && !used[i][num - 1])
       {
-#if DEBUG == 1
-        cerr << "num = " << num << endl;
-#endif
         used[i][num] = used[i][num - 1] = true;
         now[V[i][num] - 'A']++;
         now[V[i][num - 1] - 'A']++;
@@ -337,6 +334,9 @@ int main()
   string S;
   cin >> S;
   S = reduce(S);
+#if DEBUG == 1
+  cerr << S << endl;
+#endif
   map<char, char> M, R;
   M = make_map(S);
   R = make_rev(M);
