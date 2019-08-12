@@ -141,21 +141,21 @@ vector<int> count(string const &S)
 
 string reduce(string const &S)
 {
-  stringstream SS{S};
   stringstream res{};
-  for (char c = 'x';;)
+  char c{'x'};
+  for (auto x : S)
   {
-    char n = SS.get();
-    if (!n)
+    if (x == c)
     {
-      return res.str();
+      continue;
     }
-    if (c != n)
+    else
     {
-      res << n;
-      c = n;
+      res << x;
+      c = x;
     }
   }
+  return res.str();
 }
 
 map<char, char> make_map(string const &S)
