@@ -295,12 +295,23 @@ string erase_C(string const &S)
   stringstream SS{};
   for (auto i = 0u; i < S.size(); i++)
   {
-    if (cnt[2] > cnt[1] && i - 1 >= 0 && i + 1 < S.size() && S[i] == 'C')
+    if (cnt[2] > cnt[1])
     {
-      if ((S[i - 1] == 'A' && S[i + 1] == 'B') || (S[i - 1] == 'B' && S[i + 1] == 'A'))
+      if (S[i] == 'C')
       {
-        cnt[2]--;
-        continue;
+        if (i - 1 >= 0 && i + 1 < S.size())
+        {
+          if ((S[i - 1] == 'A' && S[i + 1] == 'B') || (S[i - 1] == 'B' && S[i + 1] == 'A'))
+          {
+            cnt[2]--;
+            continue;
+          }
+        }
+        else
+        {
+          cnt[2]--;
+          continue;
+        }
       }
     }
     SS << S[i];
@@ -338,9 +349,6 @@ int main()
   M = make_map(S);
   R = make_rev(M);
   S = convert(S, M);
-#if DEBUG == 1
-  cerr << "S = " << S << endl;
-#endif
   vector<int> cnt = count(S);
   if (cnt[1] < cnt[2])
   {
