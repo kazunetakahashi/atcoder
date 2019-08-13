@@ -164,7 +164,7 @@ vector<Element> make_elements(ll N)
   for (auto i = 0LL; i < N; i++)
   {
     ll X = sqrt(4 * N * N - i * i) + epsilon;
-    ll Y = sqrt(N * N - i * i) - epsilon;
+    ll Y = sqrt(N * N - i * i) + epsilon;
     res[i + N] = Element(N - 1 - i, Y + 1, X + 1);
   }
   sort(res.begin(), res.end());
