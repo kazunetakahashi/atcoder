@@ -212,6 +212,20 @@ int main()
   ll N;
   cin >> N >> mint::MOD;
   vector<Element> V{make_elements(N)};
+#if DEBUG == 1
+  for (auto i = 0; i < 2 * N; i++)
+  {
+    cerr << "V[" << i << "] = ";
+    if (V[i].is_a)
+    {
+      cerr << "a[" << V[i].ind << "] = " << V[i].val << endl;
+    }
+    else
+    {
+      cerr << "b[" << V[i].ind << "] = " << V[i].val << ", c[" << V[i].ind << "] = " << V[i].c << endl;
+    }
+  }
+#endif
   mint ans{0};
   for (auto k = 0LL; k <= N; k++)
   {
