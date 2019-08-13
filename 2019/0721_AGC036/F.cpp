@@ -183,7 +183,7 @@ vector<Element> make_elements(ll N)
 
 mint solve(ll N, vector<Element> const &V, ll k)
 {
-  vector<vector<mint>> dp(N + 1, vector<mint>(N + 1, 0));
+  vector<vector<mint>> dp(2 * N + 1, vector<mint>(2 * N + 1, 0));
   dp[0][0] = 1;
   for (auto x = 0; x < 2 * N; x++)
   {
