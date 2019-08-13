@@ -213,16 +213,20 @@ int main()
   cin >> N >> mint::MOD;
   vector<Element> V{make_elements(N)};
 #if DEBUG == 1
-  for (auto i = 0; i < 2 * N; i++)
+  if (N < 100)
   {
-    cerr << "V[" << i << "] = ";
-    if (V[i].is_a)
+    for (auto i = 0; i < 2 * N; i++)
     {
-      cerr << "a[" << V[i].ind << "] = " << V[i].val << endl;
-    }
-    else
-    {
-      cerr << "b[" << V[i].ind << "] = " << V[i].val << ", c[" << V[i].ind << "] = " << V[i].c << endl;
+      cerr << "V[" << i << "] = ";
+      if (V[i].is_a)
+      {
+        cerr << "a[" << V[i].ind << "] = " << V[i].val;
+      }
+      else
+      {
+        cerr << "b[" << V[i].ind << "] = " << V[i].val << ", c[" << V[i].ind << "] = " << V[i].c;
+      }
+      cerr << ", ind_a = " << V[i].ind_a << endl;
     }
   }
 #endif
