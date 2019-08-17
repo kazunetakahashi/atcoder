@@ -219,6 +219,12 @@ int main()
   ll N = S.size() / 3;
   vector<info> V{make_vec(S)};
   make_v(V);
+#if DEBUG == 1
+  for (auto e : V)
+  {
+    cerr << e.c << e.l << ": {" << e.v[0] << ", " << e.v[1] << ", " << e.v[2] << endl;
+  }
+#endif
   mint ans{calc(V) * C.fact[N]};
   cout << ans << endl;
 }
