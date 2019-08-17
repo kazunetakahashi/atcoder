@@ -196,6 +196,7 @@ void solve()
     {
       cerr << B[i] << " ";
     }
+    cerr << endl;
 #endif
     Q.pop();
   }
