@@ -157,10 +157,8 @@ int main()
     cerr << "V[" << i << "] = " << V[i] << endl;
   }
 #endif
-  auto it = S.end();
-  --it;
   int ans = V.size();
-  if (*it == *(it - 1))
+  if (ans >= 2 && V[ans - 1] == V[ans - 2])
   {
     --ans;
   }
