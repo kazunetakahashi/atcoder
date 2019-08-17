@@ -217,9 +217,10 @@ void make_v(vector<info> &V)
 
 int main()
 {
+  ll N;
+  cin >> N;
   string S;
   cin >> S;
-  ll N = S.size() / 3;
   vector<info> V{make_vec(S)};
   make_v(V);
 #if DEBUG == 1
