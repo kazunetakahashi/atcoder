@@ -123,7 +123,7 @@ ll ans{0};
 
 void Yes()
 {
-  cerr << ans << endl;
+  cout << ans << endl;
   exit(0);
 }
 void No()
