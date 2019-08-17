@@ -149,6 +149,9 @@ vector<info> make_vec(string const &S)
   ll now{0};
   for (auto x : S)
   {
+#if DEBUG == 1
+    cerr << "x = " << x << endl;
+#endif
     if (c == x)
     {
       ++now;
