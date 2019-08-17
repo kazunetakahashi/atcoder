@@ -222,7 +222,7 @@ int main()
 #if DEBUG == 1
   for (auto e : V)
   {
-    cerr << e.c << e.l << ": {" << e.v[0] << ", " << e.v[1] << ", " << e.v[2] << endl;
+    cerr << e.c << e.l << ": {" << e.v[0] << ", " << e.v[1] << ", " << e.v[2] << "}" << endl;
   }
 #endif
   mint ans{calc(V) * C.fact[N]};
