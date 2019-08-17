@@ -181,7 +181,7 @@ void make_v(vector<info> &V)
 {
   map<char, ll> M;
   M['R'] = M['G'] = M['B'] = 0;
-  for (auto e : V)
+  for (auto &e : V)
   {
     char c{e.c};
     ll now{M[c]};
