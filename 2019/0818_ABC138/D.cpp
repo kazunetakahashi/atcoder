@@ -138,9 +138,6 @@ ll ans[200010];
 
 void dfs(int v, int p = -1)
 {
-#if DEBUG == 1
-  cerr << "v = " << v << ", p = " << p << endl;
-#endif
   for (auto x : V[v])
   {
     if (x == p)
@@ -154,6 +151,9 @@ void dfs(int v, int p = -1)
 
 void dfs2(int v)
 {
+#if DEBUG == 1
+  cerr << "v = " << v << endl;
+#endif
   ans[v] = query[v];
   for (auto x : children[v])
   {
