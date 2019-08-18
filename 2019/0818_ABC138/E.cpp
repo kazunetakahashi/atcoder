@@ -138,20 +138,20 @@ int main()
   cin >> S >> T;
   N = S.size();
   fill(&X[0][0], &X[0][0] + 26 * 100010, infty);
-  vector<ll> T(26, infty);
+  vector<ll> F(26, infty);
   for (auto t = 0; t < 2; t++)
   {
     for (auto i = N - 1; i >= 0; i--)
     {
       for (auto k = 0; k < 26; k++)
       {
-        T[k]++;
+        F[k]++;
       }
       for (auto k = 0; k < 26; k++)
       {
-        X[i][k] = min(T[k], X[i][k]);
+        X[i][k] = min(F[k], X[i][k]);
       }
-      T[S[i] - 'a'] = 0;
+      F[S[i] - 'a'] = 0;
     }
   }
   ll ans{0};
