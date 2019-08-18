@@ -1,4 +1,10 @@
 auto-submitter/
+submitter.rb
+sample/
+screenshot/
+html/
+.vscode/
+info.txt
 
 ### https://raw.github.com/github/gitignore/f57304e9762876ae4c9b02867ed0cb887316387e/C++.gitignore
 
