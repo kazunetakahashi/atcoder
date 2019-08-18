@@ -151,14 +151,11 @@ void dfs(int v, int p = -1)
 
 void dfs2(int v)
 {
-#if DEBUG == 1
-  cerr << "v = " << v << endl;
-#endif
   ans[v] = query[v];
   for (auto x : children[v])
   {
     query[x] += query[v];
-    dfs2(v);
+    dfs2(x);
   }
 }
 
