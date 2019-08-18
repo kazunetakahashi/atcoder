@@ -143,5 +143,5 @@ int main()
   {
     X += 1 / A[i];
   }
-  cout << fixed << setprecision(12) << 1 / X << endl;
+  cout << scientific << setprecision(12) << 1 / X << endl;
 }
