@@ -154,6 +154,9 @@ constexpr ll C{63};
 mint solve(ll X)
 {
   mint ans{0};
+#if DEBUG == 1
+  cerr << "X = " << X << endl;
+#endif
   for (auto i = 0; i < C; i++)
   {
     if (X >> i == 0)
@@ -163,6 +166,9 @@ mint solve(ll X)
     if (X >> i & 1)
     {
       ans += mint{3}.power(i);
+#if DEBUG == 1
+      cerr << "3^{" << i << "}" << endl;
+#endif
     }
   }
   int one{0};
