@@ -138,6 +138,9 @@ ll ans[200010];
 
 void dfs(int v, int p = -1)
 {
+#if DEBUG == 1
+  cerr << "v = " << v << ", p = " << p << endl;
+#endif
   for (auto x : V[v])
   {
     if (x == p)
