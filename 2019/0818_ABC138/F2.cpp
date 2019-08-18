@@ -140,43 +140,43 @@ int main()
   {
     int lb = L >> i & 1;
     int rb = R >> i & 1;
-    for (auto j = 0; j < 2; j++) // j = 0 : x \geq L が未確定
+    for (auto j = 0; j < 2; j++) // j = 0: x \geq L が未確定。 j = 1: x > L が確定。
     {
-      for (auto k = 0; k < 2; k++) // k = 0 : k \leq R が未確定
+      for (auto k = 0; k < 2; k++) // k = 0 : k \leq R が未確定。 k = 1: y < R が確定。
       {
-        for (auto s = 0; s < 2; s++)
+        for (auto s = 0; s < 2; s++) // s = 0: 始まっていない。 s = 1: 始まっている。
         {
-          mint pre{dp[i + 1][j][k][s]}; // 前の状態
+          mint pre{dp[i + 1][j][k][s]}; // 前の状態。
           for (auto x = 0; x < 2; x++)
           {
             for (auto y = 0; y < 2; y++)
             {
-              if (x && !y) // x = 1, y = 0 はアウト
+              if (x && !y) // x = 1, y = 0 はアウト。
               {
                 continue;
               }
-              int nj{j}, nk{k}, ns{s}; // 次の状態を計算して足しこむ
-              if (!s && x != y)
+              int nj{j}, nk{k}, ns{s}; // 次の状態を計算して足しこむ。
+              if (!s && x != y)        // 始まっていないのに (1, 0) or (0, 1) はアウト。
               {
                 continue;
               }
-              if (x && y)
+              if (x && y) // (1, 1) の場合は、すでに始まっているか、ここから始まる。
               {
                 ns = 1;
               }
-              if (!j && !x && lb)
+              if (!j && !x && lb) // x \geq L が未確定なのに x = 0, lb = 1 はアウト。
               {
                 continue;
               }
-              if (x && !lb)
+              if (x && !lb) // x = 1, lb = 0 の場合は x < L が確定する。
               {
                 nj = 1;
               }
-              if (!k && y && !rb)
+              if (!k && y && !rb) // y \leq R が未確定なのに y = 1, rb = 0 はアウト。
               {
                 continue;
               }
-              if (!y && rb)
+              if (!y && rb) // y = 0, lb = 1 の場合は y < R が確定する。
               {
                 nk = 1;
               }
