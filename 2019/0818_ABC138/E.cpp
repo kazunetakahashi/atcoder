@@ -154,6 +154,9 @@ int main()
       T[S[i] - 'a'] = 0;
     }
   }
+#if DEBUG == 1
+  cerr << "aaaa" << endl;
+#endif
   ll ans{0};
   int M = T.size();
   int now{N - 1};
