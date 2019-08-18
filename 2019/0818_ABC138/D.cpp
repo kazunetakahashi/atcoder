@@ -138,24 +138,15 @@ ll ans[200010];
 
 void dfs(int v, int p = -1)
 {
+  ans[v] = query[v];
   for (auto x : V[v])
   {
     if (x == p)
     {
       continue;
     }
-    children[v].push_back(x);
-    dfs(x, v);
-  }
-}
-
-void dfs2(int v)
-{
-  ans[v] = query[v];
-  for (auto x : children[v])
-  {
     query[x] += query[v];
-    dfs2(x);
+    dfs(x, v);
   }
 }
 
@@ -180,7 +171,6 @@ int main()
     query[p] += x;
   }
   dfs(0);
-  dfs2(0);
   for (auto i = 0; i < N; i++)
   {
     cout << ans[i];
