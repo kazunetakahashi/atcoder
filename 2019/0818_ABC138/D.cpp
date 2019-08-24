@@ -160,7 +160,7 @@ int main()
     --a;
     --b;
     V[a].push_back(b);
-    // V[b].push_back(a); 嘘解法
+    V[b].push_back(a);
   }
   for (auto i = 0; i < Q; i++)
   {
