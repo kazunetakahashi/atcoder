@@ -143,11 +143,11 @@ int main()
       string S{SS.str()};
       int d0{S[1] - '0'};
       int d1{S[0] - '0'};
-#if DEBUG == 1
-      cerr << "d0 = " << d0 << ", d1 = " << d1 << endl;
-#endif
       if (M == d0 * d1)
       {
+#if DEBUG == 1
+        cerr << "d0 = " << d0 << ", d1 = " << d1 << endl;
+#endif
         ++ans;
       }
     }
