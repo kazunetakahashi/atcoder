@@ -139,7 +139,7 @@ int main()
     for (auto y = 2; y <= 9; y++)
     {
       int date{10 * x + y};
-      if (date <= M)
+      if (date <= D && x * y <= M)
       {
         ++ans;
       }
