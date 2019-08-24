@@ -168,6 +168,6 @@ int main()
   combination C{};
   mint X_sum{accumulate(X, X + N, mint{0})};
   mint Y_sum{accumulate(Y, Y + N, mint{0})};
-  mint ans{K * (K + 1) * (K + 2) * Y_sum * C.inv[6] + (K - 1) * K * (K + 1) * X_sum * C.inv[6]};
+  mint ans{K * (K + 1) * Y_sum * C.inv[2] + (K - 1) * K * X_sum * C.inv[2]};
   cout << ans << endl;
 }
