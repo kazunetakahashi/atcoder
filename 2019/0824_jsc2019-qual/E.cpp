@@ -164,6 +164,7 @@ public:
     return -par[root(x)];
   }
 
+private:
   int root(int x)
   {
     if (par[x] < 0)
@@ -174,15 +175,15 @@ public:
   }
 };
 
-int N, H, W;
+ll N, H, W;
 using info = tuple<ll, ll, ll>;
 vector<info> V;
-vector<info> X;
 
 int main()
 {
   cin >> N >> H >> W;
-  UnionFind UF(H + W);
+  UnionFind UF(H + W + 1);
+  const ll has_loop{H + W};
   for (auto i = 0; i < N; i++)
   {
     ll R, C, A;
@@ -202,20 +203,10 @@ int main()
       ans += A;
       UF.merge(R, C);
     }
-    else
+    else if (!UF.is_same(R, has_loop))
     {
-      X.push_back(V[i]);
-    }
-  }
-  vector<bool> used(H + W, false);
-  for (auto x : X)
-  {
-    ll R, C, A;
-    tie(A, R, C) = x;
-    if (!used[UF.root(R)])
-    {
-      used[UF.root(R)] = true;
       ans += A;
+      UF.merge(R, has_loop);
     }
   }
   cout << ans << endl;
