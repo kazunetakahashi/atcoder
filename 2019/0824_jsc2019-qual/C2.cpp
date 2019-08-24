@@ -170,5 +170,6 @@ int main()
       --c;
     }
   }
-  cout << ans << endl;
+  combination C{};
+  cout << ans * C.fact[N / 2] << endl;
 }
