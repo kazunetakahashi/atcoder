@@ -159,6 +159,12 @@ int main()
       }
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i < N; i++)
+  {
+    cerr << "A[" << i << "] = " << A[i] << ", X[" << i << "] = " << X[i] << ", Y[" << i << "] = " << Y[i] << endl;
+  }
+#endif
   combination C{};
   mint X_sum{accumulate(X, X + N, mint{0})};
   mint Y_sum{accumulate(Y, Y + N, mint{0})};
