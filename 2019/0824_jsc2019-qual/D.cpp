@@ -164,7 +164,7 @@ int main()
         {
           continue;
         }
-        if ((i >> l & 1) ^ (j >> l & 0))
+        if ((i >> l & 1) ^ (j >> l & 1))
         {
           V[i][j] = l;
         }
