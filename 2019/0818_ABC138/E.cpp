@@ -160,9 +160,6 @@ int main()
   for (auto i = 0; i < M; i++)
   {
     int n = T[i] - 'a';
-#if DEBUG == 1
-    cerr << "T[" << i << "] = " << T[i] << endl;
-#endif
     if (X[now][n] >= infty)
     {
       No();
