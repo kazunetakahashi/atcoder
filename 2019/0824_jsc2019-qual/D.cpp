@@ -138,7 +138,7 @@ void flush(vector<vector<int>> const &V)
     for (auto j = i + 1; j < N; j++)
     {
       cout << V[i][j] + 1;
-      if (j < i - 1)
+      if (j < N - 1)
       {
         cout << " ";
       }
