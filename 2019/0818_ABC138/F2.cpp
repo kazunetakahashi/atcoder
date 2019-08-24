@@ -168,7 +168,7 @@ int main()
               {
                 continue;
               }
-              if (x && !lb) // x = 1, lb = 0 の場合は x < L が確定する。
+              if (x && !lb) // x = 1, lb = 0 の場合は x > L が確定する。
               {
                 nj = 1;
               }
