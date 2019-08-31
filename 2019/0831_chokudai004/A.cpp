@@ -115,7 +115,7 @@ public:
 int combination::MAX_SIZE = 3000010;
 ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 // constexpr double epsilon = 1e-10;
-// constexpr ll infty = 1000000000000000LL;
+constexpr int infty = 1e9 + 7;
 // constexpr int dx[4] = {1, 0, -1, 0};
 // constexpr int dy[4] = {0, 1, 0, -1};
 void Yes()
@@ -131,7 +131,7 @@ void No()
 
 int N;
 vector<int> B;
-vector<vector<int>> L, R;
+vector<vector<int>> L, R, ans;
 
 void input()
 {
@@ -143,6 +143,7 @@ void input()
   }
   L = vector<vector<int>>(N, vector<int>(N));
   R = vector<vector<int>>(N, vector<int>(N));
+  ans = vector<vector<int>>(N, vector<int>(N, 0));
   for (auto i = 0; i < N; i++)
   {
     for (auto j = 0; j < N; j++)
@@ -175,12 +176,211 @@ void WA()
         cout << endl;
       }
     }
-    cout << endl;
   }
+  exit(0);
+}
+
+void must_do()
+{
+  for (auto i = 0; i < N; i++)
+  {
+    for (auto j = 0; j < N; j++)
+    {
+      if (L[i][j] == R[i][j])
+      {
+        ans[i][j] = L[i][j];
+      }
+    }
+  }
+}
+
+using P = tuple<int, int, int>;
+vector<P> V;
+
+void make_V()
+{
+  for (auto i = 0; i < N; i++)
+  {
+    for (auto j = 0; j < N; j++)
+    {
+      if (L[i][j] == R[i][j])
+      {
+        continue;
+      }
+      V.emplace_back(abs(L[i][j] - R[i][j]), i, j);
+    }
+  }
+  sort(V.begin(), V.end());
+}
+
+int calc(int x, int y, int v)
+{
+  ans[x][y] = v;
+  int res{0};
+  for (auto t = 0; t < 3; t++)
+  {
+    int sum{0};
+    int right{0};
+    for (auto i = 0; i < N; i++)
+    {
+      while (right < N && sum < B[t])
+      {
+        sum += ans[x][right++];
+      }
+      if (sum == B[t])
+      {
+        res += B[t];
+      }
+      sum -= ans[x][i];
+    }
+  }
+  for (auto t = 0; t < 3; t++)
+  {
+    int sum{0};
+    int right{0};
+    for (auto i = 0; i < N; i++)
+    {
+      while (right < N && sum < B[t])
+      {
+        sum += ans[right++][y];
+      }
+      if (sum == B[t])
+      {
+        res += B[t];
+      }
+      sum -= ans[i][y];
+    }
+  }
+  ans[x][y] = 0;
+  return res;
+}
+
+int calc_point()
+{
+  int res{0};
+  for (auto x = 0; x < N; x++)
+  {
+    for (auto i = 0; i < N; i++)
+    {
+      for (auto j = i + 1; j < N; j++)
+      {
+        int sum{0};
+        for (auto k = i; k < j; k++)
+        {
+          sum += ans[x][k];
+        }
+        for (auto t = 0; t < 3; t++)
+        {
+          if (sum == B[t])
+          {
+            res += sum;
+          }
+        }
+      }
+    }
+  }
+  for (auto y = 0; y < N; y++)
+  {
+    for (auto i = 0; i < N; i++)
+    {
+      for (auto j = i + 1; j < N; j++)
+      {
+        int sum{0};
+        for (auto k = i; k < j; k++)
+        {
+          sum += ans[k][y];
+        }
+        for (auto t = 0; t < 3; t++)
+        {
+          if (sum == B[t])
+          {
+            res += sum;
+          }
+        }
+      }
+    }
+  }
+  return res;
+}
+
+random_device seed_gen;
+mt19937 engine(seed_gen());
+
+int min_calc(int x, int y)
+{
+  int mini{infty};
+  int val{L[x][y]};
+  for (auto v = L[x][y]; v <= R[x][y]; v++)
+  {
+    int tmp{calc(x, y, v)};
+    if (mini > tmp)
+    {
+      mini = tmp;
+      val = v;
+    }
+  }
+  ans[x][y] = val;
+  return mini;
+}
+
+void make_min_ans()
+{
+  for (auto e : V)
+  {
+    int t, x, y;
+    tie(t, x, y) = e;
+    if (t == 0)
+    {
+      continue;
+    }
+    min_calc(x, y);
+  }
+}
+
+void flush()
+{
+  for (auto i = 0; i < N; i++)
+  {
+    for (auto j = 0; j < N; j++)
+    {
+      cout << ans[i][j];
+      if (j < N - 1)
+      {
+        cout << " ";
+      }
+      else
+      {
+        cout << endl;
+      }
+    }
+  }
+  cerr << calc_point() << endl;
 }
 
 int main()
 {
+  auto start{chrono::system_clock::now()};
+  auto goal{chrono::system_clock::now()};
+  double dif{0};
   input();
-  WA();
+  if (B[0] != 11 || B[1] != 21 || B[2] != 36)
+  {
+    WA();
+  }
+  must_do();
+  make_V();
+  make_min_ans();
+  while (true)
+  {
+    goal = chrono::system_clock::now();
+    dif = chrono::duration_cast<chrono::milliseconds>(goal - start).count();
+    // cerr << dif << endl;
+    if (dif >= 2950)
+    {
+      break;
+    }
+    shuffle(V.begin(), V.end(), engine);
+    make_min_ans();
+  }
+  flush();
 }
