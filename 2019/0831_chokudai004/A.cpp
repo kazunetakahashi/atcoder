@@ -223,7 +223,7 @@ int calc(int x, int y, int v)
     int right{0};
     for (auto i = 0; i < N; i++)
     {
-      while (right < N && sum < B[t])
+      while (right <= y || (right < N && sum < B[t]))
       {
         sum += ans[x][right++];
       }
@@ -240,7 +240,7 @@ int calc(int x, int y, int v)
     int right{0};
     for (auto i = 0; i < N; i++)
     {
-      while (right < N && sum < B[t])
+      while (right <= x || (right < N && sum < B[t]))
       {
         sum += ans[right++][y];
       }
