@@ -377,7 +377,7 @@ int main()
     goal = chrono::system_clock::now();
     dif = chrono::duration_cast<chrono::milliseconds>(goal - start).count();
     // cerr << dif << endl;
-    if (dif >= 2993)
+    if (dif >= 2994)
     {
       break;
     }
