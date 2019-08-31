@@ -363,10 +363,12 @@ int main()
   auto goal{chrono::system_clock::now()};
   double dif{0};
   input();
+  /*
   if (B[0] != 11 || B[1] != 21 || B[2] != 36)
   {
     WA();
   }
+  */
   must_do();
   make_V();
   make_min_ans();
@@ -375,7 +377,7 @@ int main()
     goal = chrono::system_clock::now();
     dif = chrono::duration_cast<chrono::milliseconds>(goal - start).count();
     // cerr << dif << endl;
-    if (dif >= 2950)
+    if (dif >= 2970)
     {
       break;
     }
