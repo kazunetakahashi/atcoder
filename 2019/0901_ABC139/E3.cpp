@@ -131,6 +131,11 @@ void No()
 
 using point = tuple<int, int>;
 
+ostream &operator<<(ostream &os, point p)
+{
+  return os << "{" << get<0>(p) << ", " << get<1>(p) << "}";
+}
+
 point make_point(int i, int j)
 {
   if (i > j)
@@ -146,6 +151,9 @@ set<point> Y;
 
 int dfs(point p)
 {
+#if DEBUG == 1
+  cerr << "p = " << p << endl;
+#endif
   if (DP.find(p) != DP.end())
   {
     return DP[p];
