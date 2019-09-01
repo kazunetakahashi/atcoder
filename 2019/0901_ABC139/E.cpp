@@ -145,6 +145,9 @@ int main()
       V[i].push(a);
     }
   }
+#if DEBUG == 1
+  cerr << "aaa" << endl;
+#endif
   vector<bool> used(N, false);
   int ans{0};
   while (true)
@@ -183,9 +186,6 @@ int main()
         ++emp;
       }
     }
-#if DEBUG == 1
-    cerr << "emp = " << emp << endl;
-#endif
     if (emp == N)
     {
       cout << ans << endl;
