@@ -155,7 +155,7 @@ int main()
     {
       if (V[i].empty())
       {
-        No();
+        continue;
       }
       int j = V[i].front();
       if (V[j].empty())
