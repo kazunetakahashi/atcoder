@@ -161,6 +161,7 @@ void solve()
     }
   }
   int cnt{0};
+  maxs(ans, norm(v));
   do
   {
     cnt = 0;
@@ -177,8 +178,8 @@ void solve()
         ++cnt;
       }
     }
+    maxs(ans, norm(v));
   } while (cnt > 0);
-  maxs(ans, norm(v));
 }
 
 int main()
