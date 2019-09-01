@@ -154,6 +154,18 @@ int main()
   {
     S += V[i];
   }
+  for (auto l = 0; l < N; l++)
+  {
+    int r{l};
+    point now{0, 0};
+    for (auto i = 0; i < N; i++)
+    {
+      now += V[r];
+      maxs(ans, norm(now));
+      r = (r + 1) % N;
+    }
+  }
+  /*
   for (auto i = 0; i < N; i++)
   {
     for (auto j = i; j <= N; j++)
@@ -167,5 +179,6 @@ int main()
       maxs(ans, norm(S - sum));
     }
   }
+  */
   cout << fixed << setprecision(30) << sqrt(ans) << endl;
 }
