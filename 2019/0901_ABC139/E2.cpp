@@ -141,6 +141,7 @@ int main()
     for (auto j = 0; j < N - 1; j++)
     {
       cin >> A[i][j];
+      A[i][j]--;
     }
     reverse(A[i].begin(), A[i].end());
   }
