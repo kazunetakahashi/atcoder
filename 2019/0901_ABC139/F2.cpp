@@ -165,20 +165,5 @@ int main()
       r = (r + 1) % N;
     }
   }
-  /*
-  for (auto i = 0; i < N; i++)
-  {
-    for (auto j = i; j <= N; j++)
-    {
-      point sum{0};
-      for (auto k = i; k < j; k++)
-      {
-        sum += V[k];
-      }
-      maxs(ans, norm(sum));
-      maxs(ans, norm(S - sum));
-    }
-  }
-  */
-  cout << fixed << setprecision(30) << sqrt(ans) << endl;
+  cout << fixed << setprecision(12) << sqrt(ans) << endl;
 }
