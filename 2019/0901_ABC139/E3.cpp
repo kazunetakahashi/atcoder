@@ -162,14 +162,14 @@ int dfs(point p)
   {
     No();
   }
-  DP[p] = 0;
   Y.insert(p);
+  int tmp{0};
   for (auto e : V[p])
   {
-    maxs(DP[p], dfs(e) + 1);
+    maxs(tmp, dfs(e) + 1);
   }
   Y.erase(p);
-  return DP[p];
+  return DP[p] = tmp;
 }
 
 int main()
