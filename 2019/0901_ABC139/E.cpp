@@ -169,6 +169,9 @@ int main()
       }
     }
     int cnt{0};
+#if DEBUG == 1
+    cerr << "cnt = " << cnt << endl;
+#endif
     for (auto i = 0; i < N; i++)
     {
       if (used[i])
