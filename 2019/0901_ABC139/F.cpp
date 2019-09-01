@@ -146,7 +146,6 @@ void solve2()
   {
     V[i] = point(X[i], Y[i]);
   }
-  shuffle(V.begin(), V.end(), engine);
   point v{};
   for (auto i = 0; i < N; i++)
   {
