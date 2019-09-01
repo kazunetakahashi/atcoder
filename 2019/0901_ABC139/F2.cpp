@@ -131,12 +131,6 @@ void No()
 
 using point = complex<double>;
 
-istream &operator>>(istream &stream, point &a)
-{
-  stream >> a.real >> a.imag;
-  return stream;
-}
-
 bool cmp(point x, point y)
 {
   return arg(x) < arg(y);
@@ -149,7 +143,9 @@ int main()
   vector<point> V(N);
   for (auto i = 0; i < N; i++)
   {
-    cin >> V[i];
+    double x, y;
+    cin >> x >> y;
+    V[i] = {x, y};
   }
   sort(V.begin(), V.end(), cmp);
   double ans{0};
