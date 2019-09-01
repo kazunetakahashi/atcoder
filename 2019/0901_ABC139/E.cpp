@@ -197,5 +197,9 @@ int main()
     {
       No();
     }
+    if (ans > N * N)
+    {
+      No();
+    }
   }
 }
