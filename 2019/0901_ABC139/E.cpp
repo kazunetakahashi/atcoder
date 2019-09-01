@@ -141,13 +141,13 @@ int main()
     {
       int a;
       cin >> a;
+#if DEBUG == 1
+      cerr << "a = " << a << endl;
+#endif
       --a;
       V[i].push(a);
     }
   }
-#if DEBUG == 1
-  cerr << "aaa" << endl;
-#endif
   vector<bool> used(N, false);
   int ans{0};
   while (true)
