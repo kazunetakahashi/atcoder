@@ -192,6 +192,9 @@ int main()
       point from{make_point(i, A[i][j - 1])};
       point to{make_point(i, A[i][j - 1])};
       V[to].push_back(from);
+#if DEBUG == 1
+      cerr << "to: " << to << ", from: " << from << endl;
+#endif
     }
   }
   for (auto i = 0; i < N; i++)
