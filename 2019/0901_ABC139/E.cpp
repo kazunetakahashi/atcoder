@@ -184,7 +184,7 @@ int main()
         Y.push_back(i);
       }
     }
-    X = Y;
+    swap(X, Y);
     int emp{0};
     for (auto i = 0; i < N; i++)
     {
