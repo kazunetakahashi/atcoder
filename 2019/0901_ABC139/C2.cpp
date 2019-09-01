@@ -138,13 +138,16 @@ int main()
   {
     cin >> H[i];
   }
-  int ans{0};
-  vector<int> DP(N);
+  vector<int> DP(N, 0);
   for (auto i = 1; i < N; i++)
   {
     if (H[i - 1] <= H[i])
     {
       DP[i] = DP[i - 1] + 1;
+    }
+    else
+    {
+      DP[i] = 0;
     }
   }
   cout << *max_element(DP.begin(), DP.end()) << endl;
