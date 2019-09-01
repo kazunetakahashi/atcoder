@@ -143,7 +143,7 @@ int main()
   vector<point> V(N);
   for (auto i = 0; i < N; i++)
   {
-    ll x, y;
+    double x, y;
     cin >> x >> y;
     if (x == 0 && y == 0)
     {
