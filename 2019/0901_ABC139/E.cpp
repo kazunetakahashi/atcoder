@@ -135,6 +135,9 @@ vector<queue<int>> V;
 int main()
 {
   cin >> N;
+#if DEBUG == 1
+  cerr << "aaa" << endl;
+#endif
   for (auto i = 0; i < N; i++)
   {
     for (auto j = 0; j < N - 1; j++)
@@ -145,9 +148,6 @@ int main()
       V[i].push(a);
     }
   }
-#if DEBUG == 1
-  cerr << "aaa" << endl;
-#endif
   vector<bool> used(N, false);
   int ans{0};
   while (true)
