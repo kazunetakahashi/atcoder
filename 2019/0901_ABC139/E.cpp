@@ -174,8 +174,8 @@ int main()
       if (used[i])
       {
         V[i].pop();
+        ++cnt;
       }
-      ++cnt;
     }
 #if DEBUG == 1
     cerr << "cnt = " << cnt << endl;
