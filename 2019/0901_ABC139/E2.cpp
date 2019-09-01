@@ -151,7 +151,7 @@ int main()
       return;
     }
     int j = A[i].back();
-    if (A[i].empty())
+    if (A[j].empty())
     {
       return;
     }
