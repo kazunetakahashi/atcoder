@@ -209,5 +209,5 @@ int main()
   {
     maxs(ans, e.second);
   }
-  cout << ans << endl;
+  cout << ans + 1 << endl;
 }
