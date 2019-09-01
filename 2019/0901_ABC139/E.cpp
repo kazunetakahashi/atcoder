@@ -183,6 +183,9 @@ int main()
         ++emp;
       }
     }
+#if DEBUG == 1
+    cerr << "emp = " << emp << endl;
+#endif
     if (emp == N)
     {
       cout << ans << endl;
