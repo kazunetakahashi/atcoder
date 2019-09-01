@@ -138,7 +138,7 @@ int main()
   vector<vector<int>> A(N, vector<int>(N - 1));
   for (auto i = 0; i < N; i++)
   {
-    for (auto j = 0; j < N - 2; j++)
+    for (auto j = 0; j < N - 1; j++)
     {
       cin >> A[i][j];
     }
