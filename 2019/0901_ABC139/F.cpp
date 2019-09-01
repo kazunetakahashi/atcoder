@@ -138,6 +138,50 @@ mt19937 engine(seed_gen());
 
 using point = complex<ll>;
 
+void solve2()
+{
+  vector<bool> used(N, false);
+  vector<point> V(N);
+  for (auto i = 0; i < N; i++)
+  {
+    V[i] = point(X[i], Y[i]);
+  }
+  shuffle(V.begin(), V.end(), engine);
+  point v{};
+  for (auto i = 0; i < N; i++)
+  {
+    if (X[i] >= 0 && Y[i] >= 0)
+    {
+      v += V[i];
+      used[i] = true;
+    }
+    if (X[i] < 0 && Y[i] < 0)
+    {
+      used[i] = true;
+    }
+  }
+  int cnt{0};
+  maxs(ans, norm(v));
+  do
+  {
+    cnt = 0;
+    for (auto i = 0; i < N; i++)
+    {
+      if (used[i])
+      {
+        continue;
+      }
+      if (norm(V[i] + v) >= norm(v))
+      {
+        v += V[i];
+        used[i] = true;
+        ++cnt;
+      }
+    }
+    maxs(ans, norm(v));
+  } while (cnt > 0);
+}
+
 void solve()
 {
   vector<bool> used(N, false);
@@ -192,6 +236,26 @@ int main()
   auto start{chrono::system_clock::now()};
   auto goal{chrono::system_clock::now()};
   double dif{0};
+  solve2();
+  for (auto i = 0; i < N; i++)
+  {
+    X[i] = -X[i];
+  }
+  solve2();
+  for (auto i = 0; i < N; i++)
+  {
+    Y[i] = -Y[i];
+  }
+  solve2();
+  for (auto i = 0; i < N; i++)
+  {
+    X[i] = -X[i];
+  }
+  solve2();
+  for (auto i = 0; i < N; i++)
+  {
+    Y[i] = -Y[i];
+  }
   while (true)
   {
     goal = chrono::system_clock::now();
@@ -216,6 +280,10 @@ int main()
       X[i] = -X[i];
     }
     solve();
+    for (auto i = 0; i < N; i++)
+    {
+      Y[i] = -Y[i];
+    }
   }
   cout << fixed << setprecision(18) << sqrt(ans) << endl;
 }
