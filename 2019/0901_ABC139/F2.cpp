@@ -151,7 +151,7 @@ int main()
   ll ans{0};
   for (auto i = 0; i < N; i++)
   {
-    for (auto j = i + 1; j < N; j++)
+    for (auto j = i + 1; j <= N; j++)
     {
       point sum{0};
       for (auto k = i; k < j; k++)
@@ -163,7 +163,7 @@ int main()
   }
   for (auto i = 0; i < N; i++)
   {
-    for (auto j = i + 1; j < N; j++)
+    for (auto j = i + 1; j <= N; j++)
     {
       point sum{0};
       for (auto k = 0; k < i; k++)
