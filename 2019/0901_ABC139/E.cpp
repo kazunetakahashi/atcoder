@@ -137,12 +137,14 @@ int main()
   cin >> N;
   for (auto i = 0; i < N; i++)
   {
-    V[i] = queue<int>{};
     for (auto j = 0; j < N - 1; j++)
     {
       int a;
       cin >> a;
       --a;
+#if DEBUG == 1
+      cerr << "a = " << a << endl;
+#endif
       V[i].push(a);
     }
   }
