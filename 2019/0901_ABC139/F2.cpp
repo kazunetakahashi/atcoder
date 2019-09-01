@@ -129,7 +129,7 @@ void No()
   exit(0);
 }
 
-using point = complex<ll>;
+using point = complex<double>;
 
 bool cmp(point x, point y)
 {
@@ -145,10 +145,14 @@ int main()
   {
     ll x, y;
     cin >> x >> y;
+    if (x == 0 && y == 0)
+    {
+      continue;
+    }
     V[i] = point{x, y};
   }
   sort(V.begin(), V.end(), cmp);
-  ll ans{0};
+  double ans{0};
   point S{};
   for (auto i = 0; i < N; i++)
   {
