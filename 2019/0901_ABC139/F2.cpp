@@ -149,6 +149,11 @@ int main()
   }
   sort(V.begin(), V.end(), cmp);
   ll ans{0};
+  point S{};
+  for (auto i = 0; i < N; i++)
+  {
+    S += V[i];
+  }
   for (auto i = 0; i < N; i++)
   {
     for (auto j = i + 1; j <= N; j++)
@@ -159,22 +164,7 @@ int main()
         sum += V[k];
       }
       maxs(ans, norm(sum));
-    }
-  }
-  for (auto i = 0; i < N; i++)
-  {
-    for (auto j = i + 1; j <= N; j++)
-    {
-      point sum{0};
-      for (auto k = 0; k < i; k++)
-      {
-        sum += V[k];
-      }
-      for (auto k = j; k < N; k++)
-      {
-        sum += V[k];
-      }
-      maxs(ans, norm(sum));
+      maxs(ans, norm(S - sum));
     }
   }
   cout << fixed << setprecision(30) << sqrt(ans) << endl;
