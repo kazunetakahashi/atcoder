@@ -138,6 +138,7 @@ int main()
   {
     cin >> H[i];
   }
+  reverse(H.begin(), H.end());
   vector<int> DP(N, 0);
   for (auto i = 1; i < N; i++)
   {
