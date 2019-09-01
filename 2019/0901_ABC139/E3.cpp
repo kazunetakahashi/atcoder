@@ -158,11 +158,11 @@ int dfs(point p)
 #if DEBUG == 1
   cerr << "p = " << p << endl;
 #endif
-  DP[p] = 0;
   if (Y.find(p) != Y.end())
   {
     No();
   }
+  DP[p] = 0;
   Y.insert(p);
   for (auto e : V[p])
   {
