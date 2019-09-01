@@ -150,6 +150,7 @@ int main()
   int ans{0};
   while (true)
   {
+    ++ans;
     fill(used.begin(), used.end(), false);
     for (auto i = 0; i < N; i++)
     {
@@ -165,9 +166,6 @@ int main()
       if (V[j].front() == i)
       {
         used[i] = used[j] = true;
-#if DEBUG == 1
-        cerr << "used: " << i << " and " << j << endl;
-#endif
       }
     }
     int cnt{0};
