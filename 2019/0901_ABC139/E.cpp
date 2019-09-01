@@ -148,11 +148,16 @@ int main()
   }
   vector<bool> used(N, false);
   int ans{0};
+  vector<int> X;
+  for (auto i = 0; i < N; i++)
+  {
+    X.push_back(i);
+  }
   while (true)
   {
     ++ans;
     fill(used.begin(), used.end(), false);
-    for (auto i = 0; i < N; i++)
+    for (auto i : X)
     {
       if (V[i].empty())
       {
@@ -169,17 +174,17 @@ int main()
       }
     }
     int cnt{0};
+    vector<int> Y;
     for (auto i = 0; i < N; i++)
     {
       if (used[i])
       {
         V[i].pop();
         ++cnt;
+        Y.push_back(i);
       }
     }
-#if DEBUG == 1
-    cerr << "cnt = " << cnt << endl;
-#endif
+    X = Y;
     int emp{0};
     for (auto i = 0; i < N; i++)
     {
@@ -194,10 +199,6 @@ int main()
       return 0;
     }
     if (cnt == 0)
-    {
-      No();
-    }
-    if (ans > N * N)
     {
       No();
     }
