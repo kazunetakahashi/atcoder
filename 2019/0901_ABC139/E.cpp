@@ -165,6 +165,9 @@ int main()
       if (V[j].front() == i)
       {
         used[i] = used[j] = true;
+#if DEBUG == 1
+        cerr << "used: " << i << " and " << j << endl;
+#endif
       }
     }
     int cnt{0};
@@ -176,9 +179,6 @@ int main()
       }
       ++cnt;
     }
-#if DEBUG == 1
-    cerr << "cnt = " << cnt << endl;
-#endif
     int emp{0};
     for (auto i = 0; i < N; i++)
     {
