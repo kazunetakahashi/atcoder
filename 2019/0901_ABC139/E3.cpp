@@ -151,13 +151,13 @@ set<point> Y;
 
 int dfs(point p)
 {
-#if DEBUG == 1
-  cerr << "p = " << p << endl;
-#endif
   if (DP.find(p) != DP.end())
   {
     return DP[p];
   }
+#if DEBUG == 1
+  cerr << "p = " << p << endl;
+#endif
   DP[p] = 0;
   if (Y.find(p) != Y.end())
   {
