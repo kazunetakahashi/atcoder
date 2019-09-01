@@ -133,6 +133,8 @@ int N;
 ll X[110];
 ll Y[110];
 ll ans{0};
+random_device seed_gen;
+mt19937 engine(seed_gen());
 
 using point = complex<ll>;
 
@@ -144,6 +146,7 @@ void solve()
   {
     V[i] = point(X[i], Y[i]);
   }
+  shuffle(V.begin(), V.end(), engine);
   point v{};
   for (auto i = 0; i < N; i++)
   {
@@ -185,21 +188,33 @@ int main()
   {
     cin >> X[i] >> Y[i];
   }
-  solve();
-  for (auto i = 0; i < N; i++)
+  auto start{chrono::system_clock::now()};
+  auto goal{chrono::system_clock::now()};
+  double dif{0};
+  while (true)
   {
-    X[i] = -X[i];
+    goal = chrono::system_clock::now();
+    dif = chrono::duration_cast<chrono::milliseconds>(goal - start).count();
+    if (dif >= 1990)
+    {
+      break;
+    }
+    solve();
+    for (auto i = 0; i < N; i++)
+    {
+      X[i] = -X[i];
+    }
+    solve();
+    for (auto i = 0; i < N; i++)
+    {
+      Y[i] = -Y[i];
+    }
+    solve();
+    for (auto i = 0; i < N; i++)
+    {
+      X[i] = -X[i];
+    }
+    solve();
   }
-  solve();
-  for (auto i = 0; i < N; i++)
-  {
-    Y[i] = -Y[i];
-  }
-  solve();
-  for (auto i = 0; i < N; i++)
-  {
-    X[i] = -X[i];
-  }
-  solve();
   cout << fixed << setprecision(18) << sqrt(ans) << endl;
 }
