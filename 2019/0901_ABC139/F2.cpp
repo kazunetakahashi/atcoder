@@ -177,5 +177,5 @@ int main()
       maxs(ans, norm(sum));
     }
   }
-  cout << fixed << setprecision(30) << ans << endl;
+  cout << fixed << setprecision(30) << sqrt(ans) << endl;
 }
