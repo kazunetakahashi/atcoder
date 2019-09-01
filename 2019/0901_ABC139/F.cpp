@@ -157,9 +157,6 @@ void solve()
       used[i] = true;
     }
   }
-#if DEBUG == 1
-  cerr << "norm: " << norm(v) << endl;
-#endif
   int cnt{0};
   do
   {
@@ -178,7 +175,7 @@ void solve()
       }
     }
   } while (cnt > 0);
-  ans = norm(v);
+  maxs(ans, norm(v));
 }
 
 int main()
