@@ -177,6 +177,9 @@ bool dfs(int N, vector<vector<int>> const &V, vector<int> &ans, int v)
     int v, e;
     tie(v, e) = S.top();
     S.pop();
+#if DEBUG == 1
+    cerr << "v = " << v << ", e = " << e << endl;
+#endif
     if (ans[v] == -1 && e == 0)
     {
       ans[v] = -2;
