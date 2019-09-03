@@ -148,6 +148,17 @@ vector<vector<int>> make_V(int N, vector<vector<int>> const &A)
       V[make_id(i, A[i][j], N)].push_back(make_id(i, A[i][j + 1], N));
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i < N * N; i++)
+  {
+    cerr << i << ": ";
+    for (auto x : V[i])
+    {
+      cerr << x << " ";
+    }
+    cerr << endl;
+  }
+#endif
   return V;
 }
 
