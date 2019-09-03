@@ -172,7 +172,7 @@ bool dfs(int N, vector<vector<int>> const &V, vector<int> &ans, int v)
       S.push(state(v, 1));
       for (auto x : V[v])
       {
-        dfs(N, V, ans, x);
+        S.push(state(x, 0));
       }
       return true;
     }
@@ -207,7 +207,6 @@ bool dfs(int N, vector<vector<int>> const &V, vector<int> &ans, int v)
 int calc_ans(int N, vector<vector<int>> const &V)
 {
   vector<int> ans(N * N, -1);
-  int maxi{0};
   for (auto i = 0; i < N * N; i++)
   {
     if (!dfs(N, V, ans, i))
