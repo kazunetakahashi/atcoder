@@ -207,7 +207,7 @@ bool dfs(int N, vector<vector<int>> const &V, vector<int> &ans, int v)
       }
       ans[v] = maxi + 1;
     }
-    else // if (ans[v] == -2 && e == 0)
+    else if (ans[v] == -2 && e == 0)
     {
       ans[v] = -1;
       return false;
