@@ -188,14 +188,12 @@ bool dfs(int N, vector<vector<int>> const &V, vector<int> &ans, int v)
       {
         S.push(state(x, 0));
       }
-      return true;
     }
     else if (ans[v] == -2 && e == 1)
     {
       if (V[v].empty())
       {
         ans[v] = 1;
-        return true;
       }
       int maxi{0};
       for (auto x : V[v])
@@ -208,7 +206,6 @@ bool dfs(int N, vector<vector<int>> const &V, vector<int> &ans, int v)
         maxi = max(maxi, ans[x]);
       }
       ans[v] = maxi + 1;
-      return true;
     }
     else // if (ans[v] == -2 && e == 0)
     {
@@ -216,6 +213,7 @@ bool dfs(int N, vector<vector<int>> const &V, vector<int> &ans, int v)
       return false;
     }
   }
+  return true;
 }
 
 int calc_ans(int N, vector<vector<int>> const &V)
