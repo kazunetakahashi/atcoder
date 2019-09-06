@@ -136,7 +136,7 @@ mint solve(ll N, ll K, ll R, ll x)
   mint ans{};
   for (auto l = K; l <= N; l++)
   {
-    if (R - l * x + N < 0)
+    if (R - l * x < 0)
     {
       break;
     }
