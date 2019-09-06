@@ -134,7 +134,7 @@ combination C{};
 mint solve(ll N, ll K, ll R, ll x)
 {
   mint ans{};
-  for (auto l = 0; l <= N; l++)
+  for (auto l = K; l <= N; l++)
   {
     if (R - l * x + N < 0)
     {
