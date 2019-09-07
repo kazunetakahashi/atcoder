@@ -144,14 +144,14 @@ vector<vector<ll>> solve(vector<ll> const &V)
       ll val, ind;
       tie(val, ind) = Q.top();
       Q.pop();
-      ans[1][ind] = i - ind - 1;
+      ans[1][ind] = i - ind;
     }
     while (!P.empty() && get<0>(P.top()) < V[i])
     {
       ll val, ind;
       tie(val, ind) = P.top();
       P.pop();
-      ans[0][ind] = i - ind - 1;
+      ans[0][ind] = i - ind;
       Q.push(point(val, ind));
     }
     P.push(point(V[i], i));
@@ -168,12 +168,12 @@ vector<vector<ll>> solve(vector<ll> const &V)
     if (ans[0][i] == -1)
     {
       assert(ans[1][i] == -1);
-      ans[0][i] = N - i - 1;
+      ans[0][i] = N - i;
       ans[1][i] = 0;
     }
     else if (ans[1][i] == -1)
     {
-      ans[1][i] = N - i - 1;
+      ans[1][i] = N - i;
     }
     else
     {
