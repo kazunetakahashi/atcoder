@@ -129,6 +129,8 @@ void No()
   // exit(0);
 }
 
+using info = tuple<int, int>;
+
 int main()
 {
   ll N;
@@ -146,27 +148,25 @@ int main()
   }
   sort(S.begin(), S.end());
   reverse(S.begin(), S.end());
-  vector<int> P{0};
   int child{1};
-  for (auto i = 0; i < N; i++)
+  queue<info> Q;
+  Q.push(info(0, N));
+  while (!Q.empty())
   {
-    vector<int> Q;
-    for (auto k = 0; k < (int)P.size(); k++)
+    int parent;
+    int product;
+    tie(parent, product) = Q.front();
+    Q.pop();
+    for (auto i = 0; i < product; i++)
     {
-      int parent = P[k];
-      for (auto j = 0; j < N - i - k; j++)
-      {
 #if DEBUG == 1
-        cerr << "parent: " << parent << ", child: " << child << endl;
+      cerr << "parent = " << parent << ", product = " << product << endl;
 #endif
-        if (S[parent] <= S[child])
-        {
-          No();
-        }
-        Q.push_back(child++);
+      if (S[parent] <= S[product])
+      {
+        No();
       }
+      Q.push(info(child++, product - 1 - i));
     }
-    swap(P, Q);
   }
-  Yes();
 }
