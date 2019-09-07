@@ -163,7 +163,6 @@ vector<vector<ll>> solve(vector<ll> const &V)
     cerr << "ans[1][" << i << "] = " << ans[1][i] << endl;
   }
 #endif
-
   for (auto i = 0; i < N; i++)
   {
     if (ans[0][i] == -1)
@@ -181,6 +180,14 @@ vector<vector<ll>> solve(vector<ll> const &V)
       ans[1][i] -= ans[0][i];
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i < N; i++)
+  {
+    cerr << "ans[0][" << i << "] = " << ans[0][i] << endl;
+    cerr << "ans[1][" << i << "] = " << ans[1][i] << endl;
+  }
+#endif
+
   return ans;
 }
 
