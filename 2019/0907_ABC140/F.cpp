@@ -153,7 +153,7 @@ int main()
     vector<int> Q;
     for (auto k = 0; k < (int)P.size(); k++)
     {
-      int parent = S[k];
+      int parent = P[k];
       for (auto j = 0; j < N - i - k; j++)
       {
 #if DEBUG == 1
