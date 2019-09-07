@@ -160,7 +160,14 @@ int main()
     }
   }
   priority_queue<int> Q;
-  Q.push(N + 1);
+  auto it = M.end();
+  it--;
+  if (it->second > 1)
+  {
+    No();
+  }
+  M.erase(it);
+  Q.push(N);
   for (auto it = M.rbegin(); it != M.rend(); it++)
   {
     int t{it->second};
