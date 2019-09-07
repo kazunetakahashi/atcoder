@@ -148,7 +148,7 @@ int main()
   reverse(S.begin(), S.end());
   int parent{0};
   int child{1};
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i < N - 1; i++)
   {
     for (auto j = 0; j < T[i]; j++)
     {
