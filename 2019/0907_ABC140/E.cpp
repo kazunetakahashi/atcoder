@@ -200,6 +200,7 @@ int main()
     cerr << "right[1][" << i << "] = " << right[1][i] << endl;
   }
 #endif
+  reverse(V.begin(), V.end());
   ll ans{0LL};
   for (auto i = 0; i < N; i++)
   {
