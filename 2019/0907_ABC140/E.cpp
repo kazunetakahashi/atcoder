@@ -187,7 +187,10 @@ int main()
   vector<vector<ll>> left{solve(V)};
   reverse(V.begin(), V.end());
   vector<vector<ll>> right{solve(V)};
-  reverse(right.begin(), right.end());
+  for (auto i = 0; i < 2; i++)
+  {
+    reverse(right[i].begin(), right[i].end());
+  }
   ll ans{0LL};
   for (auto i = 0; i < N; i++)
   {
