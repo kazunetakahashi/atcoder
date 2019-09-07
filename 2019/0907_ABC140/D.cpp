@@ -168,5 +168,9 @@ int main()
   {
     ans += B[i];
   }
+  if (ans == N)
+  {
+    ans = N - 1;
+  }
   cout << ans << endl;
 }
