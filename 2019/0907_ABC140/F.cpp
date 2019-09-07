@@ -165,8 +165,8 @@ int main()
         }
         Q.push_back(child++);
       }
-      swap(P, Q);
     }
+    swap(P, Q);
   }
   Yes();
 }
