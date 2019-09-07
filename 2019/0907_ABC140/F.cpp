@@ -149,23 +149,23 @@ int main()
   S[0] = A[0];
   for (auto i = 0LL; i < N; i++)
   {
-    ll sz{1LL << i};
+    ll const T{1LL << i};
     ll k{0};
     for (auto j = 0; j < M; j++)
     {
-      if (!B[j] && k < sz && A[j] < S[k])
+      if (!B[j] && k < T && A[j] < S[k])
       {
-        S[sz + k] = A[j];
+        S[T + k] = A[j];
         B[j] = true;
         ++k;
       }
-      if (k < sz)
-      {
-        No();
-      }
-      sort(S.begin(), S.begin() + sz * 2);
-      reverse(S.begin(), S.begin() + sz * 2);
     }
+    if (k < T)
+    {
+      No();
+    }
+    sort(S.begin(), S.begin() + T * 2);
+    reverse(S.begin(), S.begin() + T * 2);
   }
   Yes();
 }
