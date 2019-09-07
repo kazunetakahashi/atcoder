@@ -129,8 +129,6 @@ void No()
   exit(0);
 }
 
-using info = tuple<int, int>;
-
 int main()
 {
   ll N;
