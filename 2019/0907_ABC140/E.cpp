@@ -191,7 +191,7 @@ int main()
   ll ans{0LL};
   for (auto i = 0; i < N; i++)
   {
-    ans += left[0][i] * right[1][i] + left[1][i] * right[0][i];
+    ans += (left[0][i] * right[1][i] + left[1][i] * right[0][i]) * V[i];
   }
   cout << ans << endl;
 }
