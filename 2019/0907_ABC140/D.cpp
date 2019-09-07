@@ -149,6 +149,9 @@ int main()
     }
   }
   vector<int> B(b / 2);
+#if DEBUG == 1
+  cerr << "b = " << b << endl;
+#endif
   fill(B.begin(), B.end(), 2);
   if (b % 2 == 1)
   {
