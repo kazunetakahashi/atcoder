@@ -115,7 +115,7 @@ public:
 int combination::MAX_SIZE = 3000010;
 ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 // constexpr double epsilon = 1e-10;
-// constexpr ll infty = 1000000000000000LL;
+constexpr ll infty = 1000000000000000LL;
 // constexpr int dx[4] = {1, 0, -1, 0};
 // constexpr int dy[4] = {0, 1, 0, -1};
 void Yes()
@@ -141,32 +141,46 @@ int main()
   {
     T[i + 1] = 2 * T[i];
   }
-  vector<ll> S(T[N]);
+  ll K = T[N];
+  vector<int> S(K);
   for (auto i = 0; i < T[N]; i++)
   {
     cin >> S[i];
   }
-  sort(S.begin(), S.end());
-  reverse(S.begin(), S.end());
-  int child{1};
-  queue<info> Q;
-  Q.push(info(0, N));
-  while (!Q.empty())
+  map<ll, int> M;
+  for (auto x : S)
   {
-    int parent;
-    int product;
-    tie(parent, product) = Q.front();
-    Q.pop();
-    for (auto i = 0; i < product; i++)
+    if (M.find(x) == M.end())
     {
-#if DEBUG == 1
-      cerr << "parent = " << parent << ", child = " << child << endl;
-#endif
-      if (S[parent] <= S[child])
+      M[x] = 1;
+    }
+    else
+    {
+      M[x]++;
+    }
+  }
+  priority_queue<int> Q;
+  Q.push(N + 1);
+  for (auto it = M.rbegin(); it != M.rend(); it++)
+  {
+    int t{it->second};
+    vector<int> V(t);
+    for (auto i = 0; i < t; i++)
+    {
+      if (Q.empty())
       {
         No();
       }
-      Q.push(info(child++, product - 1 - i));
+      V[i] = Q.top() - 1;
+      Q.pop();
+    }
+    for (auto x : V)
+    {
+      if (x > 0)
+      {
+        Q.push(x);
+        Q.push(x);
+      }
     }
   }
   Yes();
