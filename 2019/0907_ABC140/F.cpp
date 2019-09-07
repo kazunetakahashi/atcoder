@@ -162,7 +162,7 @@ int main()
           No();
         }
         ++child;
-        if (child == N)
+        if (child == T[N])
         {
           Yes();
         }
