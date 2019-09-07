@@ -139,6 +139,13 @@ vector<vector<ll>> solve(vector<ll> const &V)
   priority_queue<point, vector<point>, greater<point>> P, Q;
   for (auto i = 0LL; i < N; i++)
   {
+    while (!Q.empty() && get<0>(Q.top()) < V[i])
+    {
+      ll val, ind;
+      tie(val, ind) = Q.top();
+      Q.pop();
+      ans[1][ind] = i - ind - 1;
+    }
     while (!P.empty() && get<0>(P.top()) < V[i])
     {
       ll val, ind;
@@ -146,13 +153,6 @@ vector<vector<ll>> solve(vector<ll> const &V)
       P.pop();
       ans[0][ind] = i - ind - 1;
       Q.push(point(val, ind));
-    }
-    while (!Q.empty() && get<0>(Q.top()) < V[i])
-    {
-      ll val, ind;
-      tie(val, ind) = Q.top();
-      Q.pop();
-      ans[1][ind] = i - ind - 1;
     }
     P.push(point(V[i], i));
   }
