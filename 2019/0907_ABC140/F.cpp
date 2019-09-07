@@ -146,14 +146,21 @@ int main()
   }
   sort(S.begin(), S.end());
   reverse(S.begin(), S.end());
+  int parent{0};
+  int child{1};
   for (auto i = 0; i < N; i++)
   {
     for (auto j = 0; j < T[i]; j++)
     {
-      if (S[j] <= S[j + T[i]])
+      for (auto k = 0; k < N - i - 1; k++)
       {
-        No();
+        if (S.at(parent) <= S.at(child))
+        {
+          No();
+        }
+        ++child;
       }
+      ++parent;
     }
   }
   Yes();
