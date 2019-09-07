@@ -126,7 +126,7 @@ void Yes()
 void No()
 {
   cout << "No" << endl;
-  // exit(0);
+  exit(0);
 }
 
 int main()
