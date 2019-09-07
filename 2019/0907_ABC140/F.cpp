@@ -162,6 +162,10 @@ int main()
           No();
         }
         ++child;
+        if (child == N)
+        {
+          Yes();
+        }
       }
       ++parent;
     }
