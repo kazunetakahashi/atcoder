@@ -126,7 +126,7 @@ void Yes()
 void No()
 {
   cout << "No" << endl;
-  // exit(0);
+  exit(0);
 }
 
 using info = tuple<int, int>;
@@ -169,4 +169,5 @@ int main()
       Q.push(info(child++, product - 1 - i));
     }
   }
+  Yes();
 }
