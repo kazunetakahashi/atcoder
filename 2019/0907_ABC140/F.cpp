@@ -160,9 +160,9 @@ int main()
     for (auto i = 0; i < product; i++)
     {
 #if DEBUG == 1
-      cerr << "parent = " << parent << ", product = " << product << endl;
+      cerr << "parent = " << parent << ", child = " << child << endl;
 #endif
-      if (S[parent] <= S[product])
+      if (S[parent] <= S[child])
       {
         No();
       }
