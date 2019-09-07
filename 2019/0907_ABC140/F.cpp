@@ -155,6 +155,9 @@ int main()
     {
       for (auto j = 0; j < N - i; j++)
       {
+#if DEBUG == 1
+        cerr << "parent: " << parent << ", child: " << child << endl;
+#endif
         if (S[parent] <= S[child])
         {
           No();
