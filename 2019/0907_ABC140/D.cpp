@@ -157,6 +157,12 @@ int main()
   {
     B.back() = 1;
   }
+#if DEBUG == 1
+  for (auto i = 0u; i < B.size(); i++)
+  {
+    cerr << "B[" << i << "] = " << B[i] << endl;
+  }
+#endif
   int X = min(b / 2, K);
   for (auto i = 0; i < X; i++)
   {
