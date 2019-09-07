@@ -133,20 +133,20 @@ int main()
 {
   ll N;
   cin >> N;
-  vector<ll> T(N);
+  vector<ll> T(N + 1);
   T[0] = 1;
-  for (auto i = 0; i < N - 1; i++)
+  for (auto i = 0; i < N; i++)
   {
     T[i + 1] = 2 * T[i];
   }
   vector<ll> S(T);
-  for (auto i = 0; i < T[N - 1]; i++)
+  for (auto i = 0; i < T[N]; i++)
   {
     cin >> S[i];
   }
   sort(S.begin(), S.end());
   reverse(S.begin(), S.end());
-  for (auto i = 0; i < N - 1; i++)
+  for (auto i = 0; i < N; i++)
   {
     for (auto j = 0; j < T[i]; j++)
     {
