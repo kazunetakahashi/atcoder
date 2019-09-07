@@ -191,6 +191,15 @@ int main()
   {
     reverse(right[i].begin(), right[i].end());
   }
+#if DEBUG == 1
+  for (auto i = 0; i < N; i++)
+  {
+    cerr << "left[0][" << i << "] = " << left[0][i] << endl;
+    cerr << "left[1][" << i << "] = " << left[1][i] << endl;
+    cerr << "right[0][" << i << "] = " << right[0][i] << endl;
+    cerr << "right[1][" << i << "] = " << right[1][i] << endl;
+  }
+#endif
   ll ans{0LL};
   for (auto i = 0; i < N; i++)
   {
