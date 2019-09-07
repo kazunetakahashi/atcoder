@@ -139,7 +139,7 @@ int main()
   {
     T[i + 1] = 2 * T[i];
   }
-  vector<ll> S(T);
+  vector<ll> S(T[N]);
   for (auto i = 0; i < T[N]; i++)
   {
     cin >> S[i];
