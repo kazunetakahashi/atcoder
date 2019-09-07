@@ -139,31 +139,33 @@ int main()
   {
     cin >> A[i];
   }
-  sort(A.begin(), A.end());
-  reverse(A.begin(), A.end());
+  sort(A.rbegin(), A.rend());
   vector<bool> B(M, false);
-  vector<int> S(M);
+  vector<int> S;
+  S.push_back(A[0]);
   B[0] = true;
-  S[0] = A[0];
   for (auto i = 0LL; i < N; i++)
   {
     ll const T{1LL << i};
     ll k{0};
     for (auto j = 0; j < M; j++)
     {
-      if (!B[j] && k < T && A[j] < S[k])
+      if (!B[j] && A[j] < S[k])
       {
-        S[T + k] = A[j];
+        S.push_back(A[j]);
         B[j] = true;
         ++k;
+        if (k == T)
+        {
+          break;
+        }
       }
     }
     if (k < T)
     {
       No();
     }
-    sort(S.begin(), S.begin() + T * 2);
-    reverse(S.begin(), S.begin() + T * 2);
+    sort(S.rbegin(), S.rend());
   }
   Yes();
 }
