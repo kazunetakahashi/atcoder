@@ -152,7 +152,7 @@ int main()
   {
     for (auto j = 0; j < T[i]; j++)
     {
-      for (auto k = 0; k < N - i - 1; k++)
+      for (auto k = 0; k < N - i; k++)
       {
         if (S.at(parent) <= S.at(child))
         {
