@@ -135,59 +135,36 @@ int main()
 {
   ll N;
   cin >> N;
-  vector<ll> T(N + 1);
-  T[0] = 1;
-  for (auto i = 0; i < N; i++)
+  ll const M{1LL << N};
+  vector<int> A(M);
+  for (auto i = 0LL; i < M; i++)
   {
-    T[i + 1] = 2 * T[i];
+    cin >> A[i];
   }
-  ll K = T[N];
-  vector<int> S(K);
-  for (auto i = 0; i < T[N]; i++)
+  sort(A.begin(), A.end());
+  reverse(A.begin(), A.end());
+  vector<bool> B(M, false);
+  vector<int> S(M);
+  B[0] = true;
+  S[0] = A[0];
+  for (auto i = 0LL; i < N; i++)
   {
-    cin >> S[i];
-  }
-  map<ll, int> M;
-  for (auto x : S)
-  {
-    if (M.find(x) == M.end())
+    ll sz{1LL << i};
+    ll k{0};
+    for (auto j = 0; j < M; j++)
     {
-      M[x] = 1;
-    }
-    else
-    {
-      M[x]++;
-    }
-  }
-  priority_queue<int> Q;
-  auto it = M.end();
-  it--;
-  if (it->second > 1)
-  {
-    No();
-  }
-  M.erase(it);
-  Q.push(N);
-  for (auto it = M.rbegin(); it != M.rend(); it++)
-  {
-    int t{it->second};
-    vector<int> V(t);
-    for (auto i = 0; i < t; i++)
-    {
-      if (Q.empty())
+      if (!B[j] && k < sz && A[j] < S[k])
+      {
+        S[sz + k] = A[j];
+        B[j] = true;
+        ++k;
+      }
+      if (k < sz)
       {
         No();
       }
-      V[i] = Q.top() - 1;
-      Q.pop();
-    }
-    for (auto x : V)
-    {
-      if (x > 0)
-      {
-        Q.push(x);
-        Q.push(x);
-      }
+      sort(S.begin(), S.begin() + sz * 2);
+      reverse(S.begin(), S.begin() + sz * 2);
     }
   }
   Yes();
