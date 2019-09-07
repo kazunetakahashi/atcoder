@@ -174,6 +174,7 @@ vector<vector<ll>> solve(vector<ll> const &V)
     else if (ans[1][i] == -1)
     {
       ans[1][i] = N - i;
+      ans[1][i] -= ans[0][i];
     }
     else
     {
