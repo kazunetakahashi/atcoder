@@ -146,29 +146,22 @@ int main()
   }
   sort(S.begin(), S.end());
   reverse(S.begin(), S.end());
-  int parent{0};
+  vector<int> P{0};
   int child{1};
   for (auto i = 0; i < N; i++)
   {
-    for (auto j = 0; j < T[i]; j++)
+    vector<int> Q;
+    for (auto parent : P)
     {
-      for (auto k = 0; k < N - i; k++)
+      for (auto j = 0; j < N - i; j++)
       {
-#if DEBUG == 1
-        cerr << "parent: " << parent << ", child: " << child << endl;
-#endif
-        if (S.at(parent) <= S.at(child))
+        if (S[parent] <= S[child])
         {
           No();
         }
-        ++child;
-        if (child == T[N])
-        {
-          Yes();
-        }
+        Q.push_back(child++);
       }
-      ++parent;
     }
+    swap(P, Q);
   }
-  Yes();
 }
