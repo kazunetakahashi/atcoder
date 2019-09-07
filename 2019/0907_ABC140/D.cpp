@@ -153,7 +153,7 @@ int main()
   cerr << "b = " << b << endl;
 #endif
   fill(B.begin(), B.end(), 2);
-  if (b > 1 && b % 2 == 1)
+  if (b >= 4 && b % 2 == 0)
   {
     B.back() = 1;
   }
