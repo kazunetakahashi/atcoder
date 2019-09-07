@@ -126,7 +126,7 @@ void Yes()
 void No()
 {
   cout << "No" << endl;
-  exit(0);
+  // exit(0);
 }
 
 int main()
@@ -151,9 +151,10 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     vector<int> Q;
-    for (auto parent : P)
+    for (auto k = 0; k < (int)P.size(); k++)
     {
-      for (auto j = 0; j < N - i; j++)
+      int parent = S[k];
+      for (auto j = 0; j < N - i - k; j++)
       {
 #if DEBUG == 1
         cerr << "parent: " << parent << ", child: " << child << endl;
@@ -164,8 +165,8 @@ int main()
         }
         Q.push_back(child++);
       }
+      swap(P, Q);
     }
-    swap(P, Q);
   }
   Yes();
 }
