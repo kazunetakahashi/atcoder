@@ -156,13 +156,6 @@ vector<vector<ll>> solve(vector<ll> const &V)
     }
     P.push(point(V[i], i));
   }
-#if DEBUG == 1
-  for (auto i = 0; i < N; i++)
-  {
-    cerr << "ans[0][" << i << "] = " << ans[0][i] << endl;
-    cerr << "ans[1][" << i << "] = " << ans[1][i] << endl;
-  }
-#endif
   for (auto i = 0; i < N; i++)
   {
     if (ans[0][i] == -1)
@@ -180,13 +173,6 @@ vector<vector<ll>> solve(vector<ll> const &V)
       ans[1][i] -= ans[0][i];
     }
   }
-#if DEBUG == 1
-  for (auto i = 0; i < N; i++)
-  {
-    cerr << "ans[0][" << i << "] = " << ans[0][i] << endl;
-    cerr << "ans[1][" << i << "] = " << ans[1][i] << endl;
-  }
-#endif
   return ans;
 }
 
@@ -218,6 +204,9 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     ans += (left[0][i] * right[1][i] + left[1][i] * right[0][i]) * V[i];
+#if DEBUG == 1
+    cerr << "V[" << i << "] = " << V[i] << ", " << (left[0][i] * right[1][i] + left[1][i] * right[0][i]) << endl;
+#endif
   }
   cout << ans << endl;
 }
