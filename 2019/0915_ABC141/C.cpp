@@ -146,7 +146,7 @@ int main()
   }
   for (auto i = 0; i < N; i++)
   {
-    if (K - (N - A[i]) > 0)
+    if (K - (N - P[i]) > 0)
     {
       cout << "Yes" << endl;
     }
