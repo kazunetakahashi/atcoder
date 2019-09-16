@@ -177,7 +177,7 @@ ll make_maxi(vector<ll> &A, ll mask)
   {
     ans ^= A[i];
   }
-  return ans;
+  return ans & rev;
 }
 
 ll calc_ans(ll mask, ll maxi)
