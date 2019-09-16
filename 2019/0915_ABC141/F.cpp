@@ -165,7 +165,7 @@ ll make_maxi(vector<ll> &A, ll mask)
       }
       for (auto i = 0; i < N; i++)
       {
-        if (i != R)
+        if (i != R && A[i] >> k & 1)
         {
           A[i] ^= A[R];
         }
