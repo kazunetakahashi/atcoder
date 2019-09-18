@@ -150,7 +150,7 @@ int dp[5010][5010];
 
 int calc(int i, int j)
 {
-  if (dp[i][j] < 0)
+  if (dp[i][j] >= 0)
   {
     return dp[i][j];
   }
