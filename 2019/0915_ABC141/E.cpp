@@ -164,7 +164,7 @@ int calc(int i, int j)
   }
   else
   {
-    ch_max(dp[i][j], dp[i + 1][j + 1] + 1);
+    ch_max(dp[i][j], calc(i + 1, j + 1) + 1);
   }
   return dp[i][j];
 }
