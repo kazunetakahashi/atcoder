@@ -183,6 +183,9 @@ int main()
         continue;
       }
       ch_max(ans, min(calc(i, j), abs(i - j)));
+#if DEBUG == 1
+      cerr << "calc(" << i << ", " << j << ") = " << calc(i, j) << endl;
+#endif
     }
   }
   cout << ans << endl;
