@@ -168,8 +168,8 @@ int main()
       V[i][j] = (i + j) % 2;
     }
   }
-  int K = H / 2 - A;
-  int L = W / 2 - B;
+  int K = H / 2 - B;
+  int L = W / 2 - A;
   for (auto i = 1; i < 2 * K; i += 2)
   {
     for (auto j = 0; j < W; j++)
