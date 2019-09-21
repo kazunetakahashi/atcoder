@@ -253,10 +253,18 @@ int main()
   {
     uf.merge(get<0>(e), get<1>(e));
   }
+  for (auto const &e : S[1])
+  {
+    if (uf.is_same(get<0>(e), get<1>(e)))
+    {
+      No();
+    }
+  }
   uf.all_root();
 #if DEBUG == 1
   uf.view();
 #endif
+
   ll K{0};
   ll X{0};
   for (auto i = 0; i < N; i++)
