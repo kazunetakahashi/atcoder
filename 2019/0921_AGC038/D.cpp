@@ -216,7 +216,7 @@ int main()
   {
     cin >> A[i] >> B[i] >> C[i];
   }
-  if (N == M - 1)
+  if (M == N - 1)
   {
     for (auto i = 0; i < Q; i++)
     {
