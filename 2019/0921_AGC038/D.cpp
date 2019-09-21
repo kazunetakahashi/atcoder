@@ -235,6 +235,9 @@ int main()
     }
     Yes();
   }
+#if DEBUG == 1
+  cerr << "aaa" << endl;
+#endif
   for (auto i = 0; i < Q; i++)
   {
     if (A[i] > B[i])
