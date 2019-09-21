@@ -162,7 +162,7 @@ int main()
     }
   }
   ll same{0};
-  for (auto i = K - 1; i < N; i++)
+  for (auto i = 0; i < N; i++)
   {
     if (DP[i] >= K)
     {
