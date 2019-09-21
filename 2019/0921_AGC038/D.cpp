@@ -259,7 +259,7 @@ int main()
   ll mini{X + K};
   ll maxi{X + K * (K - 1) / 2};
   assert(mini == N);
-  if (mini <= M && M <= maxi)
+  if (K >= 3 && mini <= M && M <= maxi)
   {
     Yes();
   }
