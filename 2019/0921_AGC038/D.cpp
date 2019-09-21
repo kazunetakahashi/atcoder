@@ -235,24 +235,18 @@ int main()
     }
     Yes();
   }
-#if DEBUG == 1
-  cerr << "aaa" << endl;
-#endif
   for (auto i = 0; i < Q; i++)
   {
     if (A[i] > B[i])
     {
       swap(A[i], B[i]);
-      edge e{A[i], B[i]};
-      if (S[1 - C[i]].find(e) != S[1 - C[i]].end())
-      {
-        No();
-      }
-      S[C[i]].insert(e);
-#if DEBUG == 1
-      cerr << get<0>(e) << ", " << get<1>(e) << endl;
-#endif
     }
+    edge e{A[i], B[i]};
+    if (S[1 - C[i]].find(e) != S[1 - C[i]].end())
+    {
+      No();
+    }
+    S[C[i]].insert(e);
   }
   UnionFind uf(N);
   for (auto const &e : S[0])
