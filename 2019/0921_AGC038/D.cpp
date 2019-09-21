@@ -246,15 +246,15 @@ int main()
         No();
       }
       S[C[i]].insert(e);
+#if DEBUG == 1
+      cerr << get<0>(e) << ", " << get<1>(e) << endl;
+#endif
     }
   }
   UnionFind uf(N);
-  for (auto e : S[0])
+  for (auto const &e : S[0])
   {
     uf.merge(get<0>(e), get<1>(e));
-#if DEBUG == 1
-    cerr << get<0>(e) << ", " << get<1>(e) << endl;
-#endif
   }
   uf.all_root();
 #if DEBUG == 1
