@@ -191,6 +191,14 @@ public:
     }
   }
 
+  void view()
+  {
+    for (auto i = 0u; i < par.size(); i++)
+    {
+      cerr << "par[" << i << "] = " << par[i] << endl;
+    }
+  }
+
 private:
   int root(int x)
   {
@@ -246,6 +254,9 @@ int main()
     uf.merge(get<0>(e), get<1>(e));
   }
   uf.all_root();
+#if DEBUG == 1
+  uf.view();
+#endif
   ll K{0};
   ll X{0};
   for (auto i = 0; i < N; i++)
@@ -259,9 +270,6 @@ int main()
   ll mini{X + K};
   ll maxi{X + K * (K - 1) / 2};
   assert(mini == N);
-#if DEBUG == 1
-  cerr << "K = " << K << endl;
-#endif
   if (K >= 3 && mini <= M && M <= maxi)
   {
     Yes();
