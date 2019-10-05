@@ -163,7 +163,43 @@ int main()
   string S;
   ll K;
   cin >> S >> K;
-  ll B{calc(S)};
-  ll A{calc(S + S) - B};
-  cout << A * (K - 1) + B << endl;
+  if (*S.begin() != S.back())
+  {
+    cout << K * calc(S) << endl;
+    return 0;
+  }
+  ll N = S.size();
+  bool same{true};
+  for (auto i = 0; i < N - 1; i++)
+  {
+    if (S[i] != S[i + 1])
+    {
+      same = false;
+      break;
+    }
+  }
+  if (same)
+  {
+    cout << N * K / 2 << endl;
+    return 0;
+  }
+  string T{S[0]}, U{""};
+  bool repeat{true};
+  for (auto i = 1; i < N; i++)
+  {
+    if (S[i - 1] != S[i])
+    {
+      repeat = false;
+    }
+    if (repeat)
+    {
+      T += S[i];
+    }
+    else
+    {
+      U += S[i];
+    }
+  }
+  ll ans{calc(T) + calc(U + T) * (K - 1) + calc(U)};
+  cout << ans << endl;
 }
