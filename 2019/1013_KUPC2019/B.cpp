@@ -198,15 +198,15 @@ int main()
       K.push_back(info(v, w));
     }
   }
-  vector<int> DP(A, -1);
+  vector<int> DP(A + 1, -1);
   DP[0] = 0;
   for (auto f : K)
   {
     int v{get<0>(f)};
     int w{get<1>(f)};
-    for (auto i = A - 1; i >= 0; i--)
+    for (auto i = A; i >= 0; i--)
     {
-      if (DP[i] == -1 || i + w >= A)
+      if (DP[i] == -1 || i + w > A)
       {
         continue;
       }
