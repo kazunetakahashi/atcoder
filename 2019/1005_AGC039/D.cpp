@@ -177,8 +177,8 @@ int main()
       sum_X += X(h) * cnt;
       sum_Y += Y(h) * cnt;
       ll cnt_2{N - 2 - cnt};
-      sum_X += X(h + pi) * cnt_2;
-      sum_Y += Y(h + pi) * cnt_2;
+      sum_X -= X(h) * cnt_2;
+      sum_Y -= Y(h) * cnt_2;
     }
   }
   ll C{N * (N - 1) * (N - 2) / 6};
