@@ -171,6 +171,9 @@ int main()
     {
       double h{(T[i] + T[j]) / 2};
       ll cnt{N - (j - i - 1) - 2};
+#if DEBUG == 1
+      cerr << "cnt = " << cnt << ", h = " << h << endl;
+#endif
       sum_X += X(h) * cnt;
       sum_Y += Y(h) * cnt;
       ll cnt_2{N - 2 - cnt};
