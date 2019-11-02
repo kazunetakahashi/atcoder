@@ -139,13 +139,11 @@ void Field::solve()
   {
     good_place();
     other_place();
-    fill_empty();
   }
   else
   {
     good_place();
     other_place();
-    fill_empty();
   }
 }
 
