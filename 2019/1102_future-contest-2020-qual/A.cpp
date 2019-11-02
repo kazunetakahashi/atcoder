@@ -66,7 +66,7 @@ public:
   {
     good_place();
     other_place();
-    fill_empty();
+    // fill_empty();
   }
   void flush();
 
@@ -205,14 +205,26 @@ void Field::fill_empty()
 
 void Field::flush()
 {
-  int K{N * N};
+  int K{0};
+  for (auto x = 0; x < N; x++)
+  {
+    for (auto y = 0; y < N; y++)
+    {
+      if (0 <= D[x][y] && D[x][y] < 4)
+      {
+        ++K;
+      }
+    }
+  }
   cout << K << endl;
   for (auto x = 0; x < N; x++)
   {
     for (auto y = 0; y < N; y++)
     {
-      assert(0 <= D[x][y] && D[x][y] < 4);
-      cout << x << " " << y << " " << direction[D[x][y]] << endl;
+      if (0 <= D[x][y] && D[x][y] < 4)
+      {
+        cout << x << " " << y << " " << direction[D[x][y]] << endl;
+      }
     }
   }
 }
