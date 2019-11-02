@@ -196,8 +196,7 @@ void Field::solve()
 {
   if (is_sample_one)
   {
-    Tools::TLE();
-    /*
+    // Tools::TLE();
     vector<int> goals(GOAL_NUMBER);
     for (auto i = 0; i < GOAL_NUMBER; i++)
     {
@@ -208,7 +207,6 @@ void Field::solve()
     reduce_score();
     // Tools::flush_all(goals);
     assert(score() == TARGET_SCORE);
-    */
   }
   else
   {
