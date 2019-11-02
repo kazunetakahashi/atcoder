@@ -34,12 +34,19 @@ constexpr int dx[4] = {-1, 1, 0, 0};
 constexpr int dy[4] = {0, 0, -1, 1};
 constexpr char direction[4] = {'U', 'D', 'L', 'R'};
 constexpr int reverse_direction[4] = {1, 0, 3, 2};
+constexpr int TARGET_SCORE{55792};
+constexpr int OBTAIN_SCORE{58212};
+constexpr int GOAL_NUMBER{45};
+constexpr int TARGET_ROBOTS[GOAL_NUMBER] = {0, 1, 6, 8, 12, 13, 16, 20, 22, 24, 25, 26, 29, 31, 33, 34, 36, 37, 38, 39, 40, 42, 45, 46, 52, 56, 59, 62, 65, 66, 67, 68, 73, 74, 76, 77, 79, 82, 85, 88, 89, 91, 92, 93, 94};
 
 using Point = tuple<int, int>;
 Point operator+(Point const &lhs, Point const &rhs)
 {
   return Point((get<0>(lhs) + get<0>(rhs) + MOD) % MOD, (get<1>(lhs) + get<1>(rhs) + MOD) % MOD);
 }
+
+namespace Tools
+{
 
 void TLE()
 {
@@ -48,9 +55,6 @@ void TLE()
     cout << "";
   }
 }
-
-namespace Tools
-{
 
 template <typename T>
 T get(Point const &p, vector<vector<T>> const &X)
@@ -62,6 +66,53 @@ template <typename T>
 void set(Point const &p, T val, vector<vector<T>> &X)
 {
   X[get<0>(p)][get<1>(p)] = val;
+}
+
+vector<int> random_vector(int M, int K) // [0, M) から K 個
+{
+  vector<bool> V(M, false);
+  fill(V.begin(), V.begin() + K, true);
+  random_device seed_gen;
+  mt19937 engine(seed_gen());
+  shuffle(V.begin(), V.end(), engine);
+  vector<int> ans;
+  for (auto i = 0; i < M; i++)
+  {
+    if (V[i])
+    {
+      ans.push_back(i);
+    }
+  }
+  return ans;
+}
+
+vector<int> setminus(int M, vector<int> const &V)
+{
+  vector<bool> tmp(M, false);
+  vector<int> ans;
+  for (auto x : V)
+  {
+    tmp[x] = true;
+  }
+  for (auto i = 0; i < M; i++)
+  {
+    if (!tmp[i])
+    {
+      ans.push_back(i);
+    }
+  }
+  return ans;
+}
+
+template <typename Cont>
+void flush_all(Cont const &V)
+{
+  cerr << "{";
+  for (auto x : V)
+  {
+    cerr << x << ", ";
+  }
+  cerr << "}" << endl;
 }
 
 }; // namespace Tools
@@ -85,6 +136,7 @@ public:
   vector<vector<int>> D;
   vector<vector<State>> S;
   vector<Point> robots;
+  Point goal;
   bool is_sample_one;
 
   Field();
@@ -100,9 +152,15 @@ public:
 
 private:
   bool reach(Point const &p, vector<vector<bool>> &used);
+
   void good_place();
   void other_place();
   void fill_empty();
+
+  vector<vector<int>> shortest_path();
+  void short_goals(vector<int> const &goals);
+  void other_place_2(vector<int> const &goals);
+  void reduce_score();
 };
 
 int Field::N;
@@ -130,20 +188,147 @@ Field::Field()
     S[x][y] = State::Block;
   }
   S[gx][gy] = State::Goal;
+  goal = Point(gx, gy);
   is_sample_one = (gx == 32 && gy == 8); // これで十分のようだ。
 }
 
 void Field::solve()
 {
-  if (!is_sample_one)
+  if (is_sample_one)
   {
-    good_place();
-    other_place();
+    Tools::TLE();
+    /*
+    vector<int> goals(GOAL_NUMBER);
+    for (auto i = 0; i < GOAL_NUMBER; i++)
+    {
+      goals[i] = TARGET_ROBOTS[i];
+    }
+    short_goals(goals);
+    other_place_2(goals);
+    reduce_score();
+    // Tools::flush_all(goals);
+    assert(score() == TARGET_SCORE);
+    */
   }
   else
   {
     good_place();
     other_place();
+  }
+}
+
+vector<vector<int>> Field::shortest_path()
+{
+  vector<vector<int>> ans(N, vector<int>(N, -1));
+  queue<Point> st;
+  st.push(goal);
+  while (!st.empty())
+  {
+    Point p{st.front()};
+    st.pop();
+    for (auto k = 0; k < 4; k++)
+    {
+      Point q{p + V[k]};
+      if (Tools::get(q, ans) == -1 && get_state(q) != State::Block && get_state(q) != State::Goal)
+      {
+        Tools::set(q, reverse_direction[k], ans);
+        st.push(q);
+      }
+    }
+  }
+  return ans;
+}
+
+void Field::short_goals(vector<int> const &goals)
+{
+  vector<vector<int>> sp{shortest_path()};
+  for (auto x : goals)
+  {
+    Point now{robots[x]};
+    while (now != goal)
+    {
+      set_direction(now, Tools::get(now, sp));
+      now = now + V[get_direction(now)];
+    }
+  }
+}
+
+void Field::other_place_2(vector<int> const &goals)
+{
+  vector<int> non_goals{Tools::setminus(M, goals)};
+  vector<vector<int>> old{D};
+  set<Point> dead_robots;
+  for (auto x : non_goals)
+  {
+    Point p{robots[x]};
+    if (get_direction(p) != -1) // 通り道の上にある
+    {
+      continue;
+    }
+    dead_robots.insert(p);
+  }
+  for (auto const &p : dead_robots)
+  {
+    for (auto k = 0; k < 4; k++)
+    {
+      Point q{p + V[k]};
+      State s{get_state(q)};
+      if (s == State::Block)
+      { // 確実に潰せる
+        set_direction(p, k);
+        break;
+      }
+      else if (dead_robots.find(q) != dead_robots.end())
+      { // 確実に潰せる
+        set_direction(p, k);
+        break;
+      }
+    }
+  }
+  for (auto const &p : dead_robots)
+  {
+    if (get_direction(p) != -1)
+    {
+      continue;
+    }
+    for (auto k = 0; k < 4; k++)
+    {
+      Point q{p + V[k]};
+      int d{Tools::get(q, old)};
+      if (d == -1)
+      { // ここと繋ぐ
+        set_direction(p, k);
+        if (get_direction(q) == -1)
+        {
+          set_direction(q, reverse_direction[k]);
+        }
+        break;
+      }
+    }
+    if (get_direction(p) == -1)
+    {
+      set_direction(p, 0);
+    }
+  }
+}
+
+void Field::reduce_score()
+{
+  int K{(OBTAIN_SCORE - TARGET_SCORE) / 10};
+  for (auto i = 0; i < N; i++)
+  {
+    for (auto j = 0; j < N; j++)
+    {
+      if (D[i][j] == -1 && S[i][j] == State::Empty)
+      {
+        D[i][j] = 0;
+        --K;
+        if (K == 0)
+        {
+          return;
+        }
+      }
+    }
   }
 }
 
