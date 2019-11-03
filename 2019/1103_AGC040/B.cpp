@@ -157,6 +157,10 @@ int main()
     V[i] = contest(R, L);
   }
   sort(V.begin(), V.end());
+  for (auto i = 0; i < N; i++)
+  {
+    cerr << get<0>(V[i]) << " " << get<1>(V[i]) << endl;
+  }
   vector<ll> maxi_L(N), maxi_R(N);
   maxi_L[0] = get<1>(V[0]);
   for (auto i = 1; i < N; i++)
