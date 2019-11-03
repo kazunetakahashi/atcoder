@@ -190,6 +190,10 @@ ll solve_two(int N, vector<contest> &V)
   {
     maxi_ex[i] = max(maxi_L[i - 1], maxi_R[i + 1]);
   }
+  for (auto i = 0; i < N; i++)
+  {
+    cerr << "maxi_ex[" << i << "] = " << maxi_ex[i] << endl;
+  }
   vector<ll> length(N);
   for (auto i = 0; i < N; i++)
   {
@@ -216,5 +220,5 @@ int main()
   }
   ll ans{solve_one(N, V)};
   ch_max(ans, solve_two(N, V));
-  cout << ans << endl;
+  // cout << ans << endl;
 }
