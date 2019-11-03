@@ -171,7 +171,7 @@ int main()
   ll ans{0LL};
   for (auto i = 0; i < N - 1; i++)
   {
-    ll first{max(0LL, get<0>(V[i]) - maxi_L[i])};
+    ll first{max(0LL, get<0>(V[0]) - maxi_L[i])};
     ll second{max(0LL, get<0>(V[i + 1]) - maxi_R[i + 1])};
     ch_max(ans, first + second);
   }
