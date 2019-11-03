@@ -203,10 +203,10 @@ ll solve_two(int N, vector<contest> &V)
   {
     length[i] = get<0>(V[i]) - get<1>(V[i]) + 1;
   }
-  ll ans{length[0] + max(0LL, 1 + maxi_ex[0] - get<0>(V[1]))};
+  ll ans{length[0] + max(0LL, 1 + get<0>(V[1]) - maxi_ex[0])};
   for (auto i = 1; i < N; i++)
   {
-    ch_max(ans, length[i] + max(0LL, 1 + maxi_ex[i] - get<0>(V[0])));
+    ch_max(ans, length[i] + max(0LL, 1 + get<0>(V[0]) - maxi_ex[i]));
   }
   return ans;
 }
@@ -224,5 +224,5 @@ int main()
   }
   ll ans{solve_one(N, V)};
   ch_max(ans, solve_two(N, V));
-  // cout << ans << endl;
+  cout << ans << endl;
 }
