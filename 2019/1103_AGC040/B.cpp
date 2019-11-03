@@ -154,19 +154,19 @@ int main()
   {
     ll L, R;
     cin >> L >> R;
-    V[i] = contest(R, L);
+    V[i] = contest(R, -L);
   }
   sort(V.begin(), V.end());
   vector<ll> maxi_L(N), maxi_R(N);
-  maxi_L[0] = get<1>(V[0]);
+  maxi_L[0] = -get<1>(V[0]);
   for (auto i = 1; i < N; i++)
   {
-    maxi_L[i] = max(maxi_L[i - 1], get<1>(V[i]));
+    maxi_L[i] = max(maxi_L[i - 1], -get<1>(V[i]));
   }
-  maxi_R[N - 1] = get<1>(V[N - 1]);
+  maxi_R[N - 1] = -get<1>(V[N - 1]);
   for (auto i = N - 2; i >= 0; i--)
   {
-    maxi_R[i] = max(maxi_R[i + 1], get<1>(V[i]));
+    maxi_R[i] = max(maxi_R[i + 1], -get<1>(V[i]));
   }
   ll ans{0LL};
   for (auto i = 0; i < N - 1; i++)
