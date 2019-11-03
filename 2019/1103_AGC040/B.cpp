@@ -192,6 +192,10 @@ ll solve_two(int N, vector<contest> &V)
   }
   for (auto i = 0; i < N; i++)
   {
+    cerr << get<0>(V[i]) << " " << get<1>(V[i]) << endl;
+  }
+  for (auto i = 0; i < N; i++)
+  {
     cerr << "maxi_ex[" << i << "] = " << maxi_ex[i] << endl;
   }
   vector<ll> length(N);
