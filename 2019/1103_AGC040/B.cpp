@@ -157,10 +157,6 @@ int main()
     V[i] = contest(R, L);
   }
   sort(V.begin(), V.end());
-  for (auto i = 0; i < N; i++)
-  {
-    cerr << get<0>(V[i]) << " " << get<1>(V[i]) << endl;
-  }
   vector<ll> maxi_L(N), maxi_R(N);
   maxi_L[0] = get<1>(V[0]);
   for (auto i = 1; i < N; i++)
@@ -175,8 +171,8 @@ int main()
   ll ans{0LL};
   for (auto i = 0; i < N - 1; i++)
   {
-    ll first{max(0LL, get<0>(V[0]) - maxi_L[i])};
-    ll second{max(0LL, get<0>(V[i + 1]) - maxi_R[i + 1])};
+    ll first{max(0LL, get<0>(V[0]) - maxi_L[i] + 1)};
+    ll second{max(0LL, get<0>(V[i + 1]) - maxi_R[i + 1] + 1)};
     ch_max(ans, first + second);
   }
   cout << ans << endl;
