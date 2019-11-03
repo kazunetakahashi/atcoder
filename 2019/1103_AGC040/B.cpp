@@ -145,6 +145,64 @@ void No()
 
 using contest = tuple<ll, ll>;
 
+ll solve_one(int N, vector<contest> &V)
+{
+  sort(V.begin(), V.end());
+  vector<ll> maxi_L(N), maxi_R(N);
+  maxi_L[0] = get<1>(V[0]);
+  for (auto i = 1; i < N; i++)
+  {
+    maxi_L[i] = max(maxi_L[i - 1], get<1>(V[i]));
+  }
+  maxi_R[N - 1] = get<1>(V[N - 1]);
+  for (auto i = N - 2; i >= 0; i--)
+  {
+    maxi_R[i] = max(maxi_R[i + 1], get<1>(V[i]));
+  }
+  ll ans{0LL};
+  for (auto i = 0; i < N - 1; i++)
+  {
+    ll first{max(0LL, get<0>(V[0]) - maxi_L[i] + 1)};
+    ll second{max(0LL, get<0>(V[i + 1]) - maxi_R[i + 1] + 1)};
+    ch_max(ans, first + second);
+  }
+  return ans;
+}
+
+ll solve_two(int N, vector<contest> &V)
+{
+  sort(V.begin(), V.end());
+  vector<ll> maxi_L(N), maxi_R(N);
+  maxi_L[0] = get<1>(V[0]);
+  for (auto i = 1; i < N; i++)
+  {
+    maxi_L[i] = max(maxi_L[i - 1], get<1>(V[i]));
+  }
+  maxi_R[N - 1] = get<1>(V[N - 1]);
+  for (auto i = N - 2; i >= 0; i--)
+  {
+    maxi_R[i] = max(maxi_R[i + 1], get<1>(V[i]));
+  }
+  vector<ll> maxi_ex(N);
+  maxi_ex[0] = maxi_R[1];
+  maxi_ex[N - 1] = maxi_L[N - 2];
+  for (auto i = 1; i < N - 1; i++)
+  {
+    maxi_ex[i] = max(maxi_L[i - 1], maxi_R[i + 1]);
+  }
+  vector<ll> length(N);
+  for (auto i = 0; i < N; i++)
+  {
+    length[i] = get<0>(V[i]) - get<1>(V[i]) + 1;
+  }
+  ll ans{length[0] + max(0LL, 1 + maxi_ex[0] - get<0>(V[1]))};
+  for (auto i = 1; i < N; i++)
+  {
+    ch_max(ans, length[i] + max(0LL, 1 + maxi_ex[i] - get<0>(V[0])));
+  }
+  return ans;
+}
+
 int main()
 {
   ll N;
@@ -154,26 +212,9 @@ int main()
   {
     ll L, R;
     cin >> L >> R;
-    V[i] = contest(R, -L);
+    V[i] = contest(R, L);
   }
-  sort(V.begin(), V.end());
-  vector<ll> maxi_L(N), maxi_R(N);
-  maxi_L[0] = -get<1>(V[0]);
-  for (auto i = 1; i < N; i++)
-  {
-    maxi_L[i] = max(maxi_L[i - 1], -get<1>(V[i]));
-  }
-  maxi_R[N - 1] = -get<1>(V[N - 1]);
-  for (auto i = N - 2; i >= 0; i--)
-  {
-    maxi_R[i] = max(maxi_R[i + 1], -get<1>(V[i]));
-  }
-  ll ans{0LL};
-  for (auto i = 0; i < N - 1; i++)
-  {
-    ll first{max(0LL, get<0>(V[0]) - maxi_L[i] + 1)};
-    ll second{max(0LL, get<0>(V[i + 1]) - maxi_R[i + 1] + 1)};
-    ch_max(ans, first + second);
-  }
+  ll ans{solve_one(N, V)};
+  ch_max(ans, solve_two(N, V));
   cout << ans << endl;
 }
