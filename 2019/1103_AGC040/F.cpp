@@ -156,6 +156,11 @@ int main()
   cin >> N >> A >> B;
   ll M{min({A, N - B, B - 1})};
   mint ans{0};
+  if (B == 0)
+  {
+    cout << 1 << endl;
+    return 0;
+  }
   for (auto i = 0; i <= M; i++)
   {
     mint tmp{catalan(B - 1, i)};
