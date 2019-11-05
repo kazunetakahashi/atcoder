@@ -156,7 +156,7 @@ int main()
   cin >> N >> A >> B;
   ll M{min({A, N - B, B - 1})};
   mint ans{0};
-  for (auto i = 0; i < M; i++)
+  for (auto i = 0; i <= M; i++)
   {
     mint tmp{catalan(B - 1, i)};
     if (i + B == N && A == i)
