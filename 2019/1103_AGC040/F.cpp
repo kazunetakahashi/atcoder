@@ -126,7 +126,7 @@ public:
     return 0;
   }
 };
-int combination::MAX_SIZE = 30000010;
+int combination::MAX_SIZE = 20000010;
 ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 // constexpr double epsilon = 1e-10;
 // constexpr ll infty = 1000000000000000LL;
