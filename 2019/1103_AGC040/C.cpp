@@ -159,6 +159,8 @@ public:
     return (*this)(x + y, y) - (*this)(x + y, y - 1);
   }
 };
+using mint = Mint<MOD>;
+using combination = Combination<MOD, MAX_SIZE>;
 ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 // constexpr double epsilon = 1e-10;
 // constexpr ll infty = 1000000000000000LL;
@@ -179,12 +181,12 @@ int main()
 {
   ll N;
   cin >> N;
-  Mint ans{Mint{3}.power(N)};
-  Mint X{0};
-  Combination C;
+  mint ans{mint{3}.power(N)};
+  mint X{0};
+  combination C;
   for (auto k = N / 2 + 1; k <= N; k++)
   {
-    X += C(N, k) * Mint{2}.power(N - k);
+    X += C(N, k) * mint{2}.power(N - k);
   }
   ans -= X * 2;
   cout << ans << endl;
