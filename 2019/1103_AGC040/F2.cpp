@@ -45,8 +45,8 @@ void ch_min(T &left, T right)
   }
 }
 using ll = long long;
-constexpr ll MOD{1000000007LL};
-constexpr ll MAX_SIZE{3000010LL};
+constexpr ll MOD{998244353LL};
+constexpr ll MAX_SIZE{20000010LL};
 template <ll MOD = MOD>
 class Mint
 {
