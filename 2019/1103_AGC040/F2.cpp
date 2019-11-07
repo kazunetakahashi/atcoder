@@ -194,8 +194,16 @@ int main()
   ll D{B - A};
   for (auto Y = 0LL; Y <= M; Y++)
   {
+    mint tmp{C.catalan(X - 1, Y)};
     ll Z{N - X - Y};
-    ans += C.catalan(X - 1, Y) * C((X - Y - D + 1) - 1 + (Z - 1), (X - Y - D + 1) - 1);
+    if (Z == 0 && X - Y == D)
+    {
+      ans += tmp;
+    }
+    else
+    {
+      ans += tmp * C((X - Y - D + 1) - 1 + (Z - 1), (X - Y - D + 1) - 1);
+    }
   }
   cout << ans << endl;
 }
