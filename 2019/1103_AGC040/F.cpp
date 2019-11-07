@@ -166,8 +166,15 @@ int main()
   for (auto Y = 0LL; Y <= M; Y++)
   {
     mint tmp{catalan(X - 1, Y)};
-    ll Z{N - X - Y};
-    ans += tmp * C(X - Y - D + Z - 1 - 1, X - Y - D - 1);
+    if (X + Y == N && Y == A)
+    {
+      ans += tmp;
+    }
+    else
+    {
+      ll Z{N - X - Y};
+      ans += tmp * C(X - Y - D + Z - 1 - 1, X - Y - D - 1);
+    }
   }
   cout << ans << endl;
 }
