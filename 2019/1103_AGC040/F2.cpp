@@ -195,15 +195,8 @@ int main()
   for (auto Y = 0LL; Y <= M; Y++)
   {
     mint tmp{C.catalan(X - 1, Y)};
-    if (X + Y == N && Y == A)
-    {
-      ans += tmp;
-    }
-    else
-    {
-      ll Z{N - X - Y};
-      ans += tmp * C(X - Y - D + Z - 1 - 1, X - Y - D - 1);
-    }
+    ll Z{N - X - Y};
+    ans += tmp * C(X - Y - D + Z - 1 - 1, X - Y - D - 1);
   }
   cout << ans << endl;
 }
