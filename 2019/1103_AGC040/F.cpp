@@ -161,19 +161,13 @@ int main()
     cout << 1 << endl;
     return 0;
   }
-  for (auto i = 0; i <= M; i++)
+  ll X{B};
+  ll D{B - A};
+  for (auto Y = 0LL; Y <= M; Y++)
   {
-    mint tmp{catalan(B - 1, i)};
-    if (i + B == N && A == i)
-    {
-      ans += tmp;
-    }
-    else
-    {
-      ll x{N - B - i - 1};
-      ll y{A - i + 1};
-      ans += tmp * C(x + y - 1, x);
-    }
+    mint tmp{catalan(X - 1, Y)};
+    ll Z{N - X - Y};
+    ans += tmp * C(X - Y - D + Z - 1 - 1, X - Y - D - 1);
   }
   cout << ans << endl;
 }
