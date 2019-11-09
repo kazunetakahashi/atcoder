@@ -207,7 +207,6 @@ int main()
       No();
     }
   }
-  assert(false);
   vector<bool> C(N, true);
   for (auto i = 1; i < N; i++)
   {
@@ -255,5 +254,6 @@ int main()
       }
     }
   }
+  assert(false);
   No();
 }
