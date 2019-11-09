@@ -220,56 +220,6 @@ int main()
       Yes();
     }
   }
-  assert(false);
-  vector<bool> C(N, true);
-  for (auto i = 1; i < N; i++)
-  {
-    C[i] = (A[i] <= B[i - 1]);
-  }
-  for (auto k = 0; k < N; k++)
-  {
-    int x{old_A[k]};
-    int y{old_B[k]};
-    if (x > y)
-    {
-      continue;
-    }
-    auto it_a{upper_bound(A.begin(), A.end(), x)};
-    --it_a;
-    assert(*it_a == x);
-    auto it_b{lower_bound(B.begin(), B.end(), y)};
-    assert(*it_b == y);
-    int num_a(it_a - A.begin());
-    int num_b(it_b - B.begin());
-    if (num_b <= num_a)
-    {
-      Yes();
-    }
-    else
-    {
-      bool ok{true};
-      for (auto i = num_a + 1; i <= num_b; i++)
-      {
-        if (!C[i])
-        {
-          ok = false;
-          break;
-        }
-      }
-      if (ok)
-      {
-        Yes();
-      }
-    }
-  }
-  for (auto i = 0; i < N; i++)
-  {
-    if (old_A[i] == A[i])
-    {
-      Yes();
-    }
-  }
-  assert(false);
   vector<int> V(N, -1);
   for (auto i = 0; i < N; i++)
   {
