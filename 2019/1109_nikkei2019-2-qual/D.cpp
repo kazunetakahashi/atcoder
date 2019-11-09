@@ -262,32 +262,18 @@ int main()
   constexpr ll unit{1LL << 60};
   SegTree<ll> tree{N, unit, func, _update};
   tree.update(0, 0);
-  int now{0};
   for (auto i = 0; i < M; i++)
   {
     int l, r;
     ll c;
     tie(l, r, c) = I[i];
-    if (now < l)
-    {
-      No();
-    }
-    ch_max(now, r);
-  }
-  if (now < N - 1)
-  {
-    No();
-  }
-  for (auto i = 0; i < M; i++)
-  {
-    int l, r;
-    ll c;
-    tie(l, r, c) = I[i];
-#if DEBUG == 1
-    cerr << "l = " << l << ", r = " << r << ", c = " << c << endl;
-#endif
     ll mini{tree.find(l, r)};
     tree.update(r, mini + c);
   }
-  cout << tree.find(N - 1, N) << endl;
+  ll ans{tree.find(N - 1, N)};
+  if (ans == unit)
+  {
+    No();
+  }
+  cout << ans << endl;
 }
