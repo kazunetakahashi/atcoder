@@ -242,7 +242,6 @@ int main()
       }
     }
   }
-  assert(false);
   for (auto i = 0; i < N; i++)
   {
     if (old_A[i] == A[i])
@@ -250,6 +249,7 @@ int main()
       Yes();
     }
   }
+  assert(false);
   vector<int> V(N, -1);
   for (auto i = 0; i < N; i++)
   {
