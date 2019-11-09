@@ -239,7 +239,16 @@ int main()
     }
     else
     {
-      if (sum[num_b + 1] - sum[num_a] == 0)
+      bool ok{true};
+      for (auto i = num_a + 1; i <= num_b; i++)
+      {
+        if (!C[i])
+        {
+          ok = false;
+          break;
+        }
+      }
+      if (ok)
       {
         Yes();
       }
