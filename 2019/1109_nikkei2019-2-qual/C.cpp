@@ -256,6 +256,7 @@ int main()
     int num(it - A.begin());
     V[num] = i;
   }
+  assert(false);
   for (auto i = 0; i < N; i++)
   {
     if (V[i] == -1)
