@@ -178,6 +178,8 @@ void No()
   exit(0);
 }
 
+using Info = tuple<int, int>;
+
 int main()
 {
   int N;
@@ -190,6 +192,16 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     cin >> B[i];
+  }
+  vector<Info> I(N);
+  for (auto i = 0; i < N; i++)
+  {
+    I[i] = Info(B[i], A[i]);
+  }
+  sort(I.begin(), I.end());
+  for (auto i = 0; i < N; i++)
+  {
+    A[i] = get<1>(I[i]);
   }
   vector<int> old_A{A}, old_B{B};
   sort(A.begin(), A.end());
@@ -208,7 +220,6 @@ int main()
       Yes();
     }
   }
-  assert(false);
   vector<bool> C(N, true);
   for (auto i = 1; i < N; i++)
   {
@@ -250,7 +261,6 @@ int main()
       }
     }
   }
-
   vector<int> V(N, -1);
   for (auto i = 0; i < N; i++)
   {
