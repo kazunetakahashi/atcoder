@@ -227,13 +227,6 @@ int main()
     int num(it - A.begin());
     V[num] = i;
   }
-  for (auto i = 0; i < N; i++)
-  {
-    if (V[i] == -1)
-    {
-      Yes();
-    }
-  }
   vector<bool> used(N, false);
   int now{0};
   int cnt{0};
