@@ -181,6 +181,7 @@ void No()
 int main()
 {
   ll N;
+  cin >> N;
   vector<ll> D(N);
   for (auto i = 0; i < N; i++)
   {
