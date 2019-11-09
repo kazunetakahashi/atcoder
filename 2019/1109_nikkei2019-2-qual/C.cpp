@@ -208,18 +208,43 @@ int main()
       No();
     }
   }
-  bool ok{false};
+  vector<bool> C(N, true);
+  for (auto i = 1; i < N; i++)
+  {
+    C[i] = (A[i] <= B[i - 1]);
+  }
+  vector<int> sum(N + 1, 0);
   for (auto i = 0; i < N; i++)
   {
-    if (A[i] == get<1>(V[i]))
-    {
-      ok = true;
-      break;
-    }
+    int t{C[i] ? 0 : 1};
+    sum[i + 1] = sum[i] + t;
   }
-  if (ok)
+  for (auto k = 0; k < N; k++)
   {
-    Yes();
+    int x{get<0>(V[k])};
+    int y{get<1>(V[k])};
+    if (x > y)
+    {
+      continue;
+    }
+    auto it_a{lower_bound(A.begin(), A.end(), x + 1)};
+    --it_a;
+    assert(*it_a == x);
+    auto it_b{lower_bound(B.begin(), B.end(), y)};
+    assert(*it_b == y);
+    int num_a(it_a - A.begin());
+    int num_b(it_b - B.begin());
+    if (num_b <= num_a)
+    {
+      Yes();
+    }
+    else
+    {
+      if (sum[num_b + 1] - sum[num_a + 2] == 0)
+      {
+        Yes();
+      }
+    }
   }
   No();
 }
