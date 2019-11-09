@@ -178,8 +178,6 @@ void No()
   exit(0);
 }
 
-using Info = tuple<int, int>;
-
 int main()
 {
   int N;
@@ -193,11 +191,7 @@ int main()
   {
     cin >> B[i];
   }
-  vector<Info> V(N);
-  for (auto i = 0; i < N; i++)
-  {
-    V[i] = Info(B[i], A[i]);
-  }
+  vector<int> old_A{A}, old_B{B};
   sort(A.begin(), A.end());
   sort(B.begin(), B.end());
   for (auto i = 0; i < N; i++)
@@ -212,16 +206,10 @@ int main()
   {
     C[i] = (A[i] <= B[i - 1]);
   }
-  vector<int> sum(N, 0);
-  for (auto i = 1; i < N; i++)
-  {
-    int t{C[i] ? 0 : 1};
-    sum[i] = sum[i - 1] + t;
-  }
   for (auto k = 0; k < N; k++)
   {
-    int x{get<1>(V[k])};
-    int y{get<0>(V[k])};
+    int x{old_A[k]};
+    int y{old_B[k]};
     if (x > y)
     {
       continue;
@@ -254,6 +242,39 @@ int main()
       }
     }
   }
-  assert(false);
+  for (auto i = 0; i < N; i++)
+  {
+    if (old_A[i] == A[i])
+    {
+      Yes();
+    }
+  }
+  vector<int> V(N, -1);
+  for (auto i = 0; i < N; i++)
+  {
+    auto it{lower_bound(A.begin(), A.end(), old_A[i])};
+    int num(it - A.begin());
+    V[num] = i;
+  }
+  for (auto i = 0; i < N; i++)
+  {
+    if (V[i] == -1)
+    {
+      Yes();
+    }
+  }
+  vector<bool> used(N, false);
+  int now{0};
+  int cnt{0};
+  while (cnt < N)
+  {
+    if (used[now])
+    {
+      Yes();
+    }
+    used[now] = true;
+    cnt++;
+    now = V[now];
+  }
   No();
 }
