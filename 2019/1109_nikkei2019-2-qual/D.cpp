@@ -283,6 +283,9 @@ int main()
     int l, r;
     ll c;
     tie(l, r, c) = I[i];
+#if DEBUG == 1
+    cerr << "l = " << l << ", r = " << r << ", c = " << c << endl;
+#endif
     ll mini{tree.find(0, l + 1)};
     tree.update(r, mini + c);
   }
