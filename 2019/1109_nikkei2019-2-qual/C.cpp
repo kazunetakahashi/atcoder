@@ -213,13 +213,6 @@ int main()
       No();
     }
   }
-  for (auto i = 0; i < N; i++)
-  {
-    if (old_A[i] == A[i])
-    {
-      Yes();
-    }
-  }
   vector<bool> C(N, true);
   for (auto i = 1; i < N; i++)
   {
@@ -261,6 +254,15 @@ int main()
       }
     }
   }
+
+  for (auto i = 0; i < N; i++)
+  {
+    if (old_A[i] == A[i])
+    {
+      Yes();
+    }
+  }
+  assert(false);
   vector<int> V(N, -1);
   for (auto i = 0; i < N; i++)
   {
