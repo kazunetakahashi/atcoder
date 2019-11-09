@@ -246,10 +246,10 @@ int main()
   for (auto i = 0; i < M; i++)
   {
     int l, r;
-    l--;
-    r--;
     ll c;
     cin >> l >> r >> c;
+    l--;
+    r--;
     I[i] = Info(l, r, c);
   }
   sort(I.begin(), I.end());
