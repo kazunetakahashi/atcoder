@@ -256,7 +256,6 @@ int main()
     int num(it - A.begin());
     V[num] = i;
   }
-  assert(false);
   for (auto i = 0; i < N; i++)
   {
     if (V[i] == -1)
@@ -264,6 +263,7 @@ int main()
       Yes();
     }
   }
+  assert(false);
   vector<bool> used(N, false);
   int now{0};
   int cnt{0};
