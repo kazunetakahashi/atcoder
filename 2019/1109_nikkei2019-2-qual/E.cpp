@@ -196,16 +196,28 @@ vector<vector<ll>> best_solution(ll N)
   {
     assert(static_cast<int>(V[i].size()) == 2);
   }
+#if DEBUG == 1
+  for (auto i = 0; i < N; i++)
+  {
+    cerr << V[i][0] << " + " << V[i][1] << " = " << V[i][0] + V[i][1] << endl;
+  }
+#endif
   return V;
 }
 
 vector<vector<ll>> best_solution_odd(ll N)
 {
   vector<vector<ll>> V(N);
-  for (auto i = 0LL; i < 2 * N; i++)
+  ll M{(N - 1) / 2};
+  for (auto i = 0LL; i < M; i++)
   {
     V[(i * 2) % N].push_back(i);
+    V[(i * 2) % N].push_back(3 * M + 1 + i);
+    V[(i * 2) % N + 1].push_back(M + 1 + i);
+    V[(i * 2) % N + 1].push_back(2 * M + 1 + i);
   }
+  V[N - 1].push_back(M);
+  V[N - 1].push_back(2 * M + N);
   return V;
 }
 
