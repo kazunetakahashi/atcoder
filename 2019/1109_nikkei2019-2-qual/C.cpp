@@ -221,8 +221,8 @@ int main()
   }
   for (auto k = 0; k < N; k++)
   {
-    int x{get<0>(V[k])};
-    int y{get<1>(V[k])};
+    int x{get<1>(V[k])};
+    int y{get<0>(V[k])};
     if (x > y)
     {
       continue;
