@@ -240,7 +240,7 @@ int main()
     }
     else
     {
-      if (sum[num_b + 1] - sum[num_a + 2] == 0)
+      if (sum[num_b + 1] - sum[num_a + 1] == 0)
       {
         Yes();
       }
