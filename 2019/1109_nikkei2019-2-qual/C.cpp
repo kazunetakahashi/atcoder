@@ -198,7 +198,6 @@ int main()
   {
     V[i] = Info(B[i], A[i]);
   }
-  sort(V.begin(), V.end());
   sort(A.begin(), A.end());
   sort(B.begin(), B.end());
   for (auto i = 0; i < N; i++)
@@ -213,11 +212,11 @@ int main()
   {
     C[i] = (A[i] <= B[i - 1]);
   }
-  vector<int> sum(N + 1, 0);
-  for (auto i = 0; i < N; i++)
+  vector<int> sum(N, 0);
+  for (auto i = 1; i < N; i++)
   {
     int t{C[i] ? 0 : 1};
-    sum[i + 1] = sum[i] + t;
+    sum[i] = sum[i - 1] + t;
   }
   for (auto k = 0; k < N; k++)
   {
@@ -240,7 +239,7 @@ int main()
     }
     else
     {
-      if (sum[num_b + 1] - sum[num_a + 1] == 0)
+      if (sum[num_b + 1] - sum[num_a] == 0)
       {
         Yes();
       }
