@@ -286,7 +286,7 @@ int main()
 #if DEBUG == 1
     cerr << "l = " << l << ", r = " << r << ", c = " << c << endl;
 #endif
-    ll mini{tree.find(0, l + 1)};
+    ll mini{tree.find(l, r)};
     tree.update(r, mini + c);
   }
   cout << tree.find(N - 1, N) << endl;
