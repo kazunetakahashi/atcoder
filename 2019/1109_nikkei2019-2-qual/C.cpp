@@ -227,7 +227,7 @@ int main()
     {
       continue;
     }
-    auto it_a{lower_bound(A.begin(), A.end(), x + 1)};
+    auto it_a{upper_bound(A.begin(), A.end(), x)};
     --it_a;
     assert(*it_a == x);
     auto it_b{lower_bound(B.begin(), B.end(), y)};
