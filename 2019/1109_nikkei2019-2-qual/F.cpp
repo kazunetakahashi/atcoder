@@ -259,6 +259,9 @@ vector<vector<State>> make_states(int N, vector<string> const &A)
       char c{A[i - 1][j - 1]};
       int a{abs(i - j)};
       int b{min(2 * N - i - j, i + j)};
+#if DEBUG == 1
+      cerr << "(" << i << ", " << j << ") = " << a << ", " << b << endl;
+#endif
       assert(a != b);
       State s;
       if (c == 'o')
