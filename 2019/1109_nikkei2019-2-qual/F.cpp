@@ -252,9 +252,9 @@ enum class State
 vector<vector<State>> make_states(int N, vector<string> const &A)
 {
   vector<vector<State>> V(N + 1, vector<State>(N + 1, State::empty));
-  for (auto i = 1; i <= N; i++)
+  for (auto i = 1; i < N; i++)
   {
-    for (auto j = 1; j <= N; j++)
+    for (auto j = 1; j < N; j++)
     {
       char c{A[i - 1][j - 1]};
       int a{abs(i - j)};
