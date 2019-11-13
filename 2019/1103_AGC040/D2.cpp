@@ -248,6 +248,9 @@ int main()
       continue;
     }
     rational<ll> tmp_ans = (N - M - r) / N;
+#if DEBUG == 1
+    cerr << "tmp_ans = " << tmp_ans << endl;
+#endif
     ch_max(ans, tmp_ans);
   }
   cout << ans.numerator() << " " << ans.denominator() << endl;
