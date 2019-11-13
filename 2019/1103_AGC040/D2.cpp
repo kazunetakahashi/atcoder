@@ -192,7 +192,7 @@ int main()
   {
     ll A, B;
     cin >> A >> B;
-    V[i] = Info(A + B, B);
+    V[i] = Info(max(A, B), B);
     A_sum += A;
   }
   sort(V.rbegin(), V.rend());
@@ -201,9 +201,6 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     C_sum[i + 1] = C_sum[i] + get<0>(V[i]);
-#if DEBUG == 1
-    cerr << "C_sum[" << i << "] = " << C_sum[i] << endl;
-#endif
   }
   if (C_sum[N] == A_sum)
   {
