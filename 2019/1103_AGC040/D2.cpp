@@ -239,14 +239,14 @@ int main()
 #if DEBUG == 1
     cerr << "k = " << k << ", B_k = " << B_k << ", tmp_sum = " << tmp_sum << ", r = " << r << endl;
 #endif
-    if (r < 0)
-    {
-      r = rational<ll>(0);
-    }
     ll M{included ? ok - 1 : ok};
 #if DEBUG == 1
     cerr << "ok = " << ok << ", included = " << included << ", M = " << M << ", r = " << r << endl;
 #endif
+    if (r < 0)
+    {
+      continue;
+    }
     rational<ll> tmp_ans = (N - M - r) / N;
     ch_max(ans, tmp_ans);
   }
