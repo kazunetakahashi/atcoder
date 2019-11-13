@@ -243,14 +243,14 @@ int main()
 #if DEBUG == 1
     cerr << "ok = " << ok << ", included = " << included << ", M = " << M << ", r = " << r << endl;
 #endif
-    if (r < 0)
-    {
-      continue;
-    }
     rational<ll> tmp_ans = (N - M - r) / N;
 #if DEBUG == 1
     cerr << "tmp_ans = " << tmp_ans << endl;
 #endif
+    if (r < 0)
+    {
+      continue;
+    }
     ch_max(ans, tmp_ans);
   }
   cout << ans.numerator() << " " << ans.denominator() << endl;
