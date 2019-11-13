@@ -210,7 +210,7 @@ int main()
   for (auto k = 0; k < N; k++)
   {
     ll B_k{get<1>(V[k])};
-    ll ok{N}, ng{-1};
+    ll ok{-1}, ng{N};
     ll tmp_sum{0};
     while (abs(ok - ng) > 1)
     {
@@ -220,7 +220,7 @@ int main()
       {
         tmp -= C_sum[t];
       }
-      if (tmp + B_k >= A_sum)
+      if (tmp + B_k < A_sum)
       {
         ok = t;
         tmp_sum = tmp;
