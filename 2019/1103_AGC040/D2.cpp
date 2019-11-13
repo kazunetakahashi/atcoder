@@ -231,10 +231,10 @@ int main()
       }
     }
     rational<ll> r{A_sum - tmp_sum, B_k};
-    rational<ll> tmp_ans = (N - ok - r) / N;
-    if (boost::rational_cast<double>(ans) < boost::rational_cast<double>(tmp_ans))
+    if (0 <= r && r <= 1)
     {
-      ans = tmp_ans;
+      rational<ll> tmp_ans = (N - ok - r) / N;
+      ch_max(ans, tmp_ans);
     }
   }
   cout << ans.numerator() << " " << ans.denominator() << endl;
