@@ -231,6 +231,7 @@ int main()
       }
     }
     rational<ll> r{A_sum - tmp_sum, B_k};
+    assert(0 <= r && r <= 1);
     rational<ll> tmp_ans = (N - ok - r) / N;
     ch_max(ans, tmp_ans);
   }
