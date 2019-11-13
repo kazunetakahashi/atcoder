@@ -232,7 +232,7 @@ int main()
     }
     rational<ll> r{A_sum - tmp_sum, B_k};
 #if DEBUG == 1
-    cerr << "k = " << k << ", B_k = " << B_k << ", r = " << r << endl;
+    cerr << "k = " << k << ", tmp_sum = " << tmp_sum << ", B_k = " << B_k << ", r = " << r << endl;
 #endif
     rational<ll> tmp_ans = (N - ok - r) / N;
     ch_max(ans, tmp_ans);
