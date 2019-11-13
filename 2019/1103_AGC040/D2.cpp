@@ -230,6 +230,9 @@ int main()
         ng = t;
       }
     }
+#if DEBUG == 1
+    cerr << "ok = " << ok << endl;
+#endif
     rational<ll> r{A_sum - tmp_sum, B_k};
     assert(0 <= r && r <= 1);
     rational<ll> tmp_ans = (N - ok - r) / N;
