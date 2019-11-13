@@ -240,7 +240,7 @@ int main()
     {
       r = rational<ll>(0);
     }
-    ll M{included ? ok : ok};
+    ll M{included ? ok - 1 : ok};
     rational<ll> tmp_ans = (N - M - r) / N;
     ch_max(ans, tmp_ans);
   }
