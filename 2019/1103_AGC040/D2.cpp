@@ -241,6 +241,9 @@ int main()
       r = rational<ll>(0);
     }
     ll M{included ? ok - 1 : ok};
+#if DEBUG == 1
+    cerr << "M = " << M << ", r = " << r << endl;
+#endif
     rational<ll> tmp_ans = (N - M - r) / N;
     ch_max(ans, tmp_ans);
   }
