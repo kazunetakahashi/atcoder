@@ -202,6 +202,9 @@ int main()
   {
     C_sum[i + 1] = C_sum[i] + get<0>(V[i]);
   }
+#if DEBUG == 1
+  cerr << "A_sum = " << A_sum << ", C_sum[N] = " << C_sum[N] << endl;
+#endif
   if (C_sum[N] == A_sum)
   {
     No();
