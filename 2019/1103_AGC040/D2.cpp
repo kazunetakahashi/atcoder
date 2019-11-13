@@ -212,6 +212,7 @@ int main()
     ll B_k{get<1>(V[k])};
     ll ok{N}, ng{-1};
     ll tmp_sum{0};
+    bool included{false};
     while (abs(ok - ng) > 1)
     {
       ll t{(ok + ng) / 2};
@@ -223,6 +224,7 @@ int main()
       if (tmp + B_k >= A_sum)
       {
         ok = t;
+        included = k < t;
         tmp_sum = tmp;
       }
       else
@@ -235,7 +237,8 @@ int main()
     {
       r = rational<ll>(0);
     }
-    rational<ll> tmp_ans = (N - ok - r) / N;
+    ll M{included ? ok - 1 : ok};
+    rational<ll> tmp_ans = (N - M - r) / N;
     ch_max(ans, tmp_ans);
   }
   cout << ans.numerator() << " " << ans.denominator() << endl;
