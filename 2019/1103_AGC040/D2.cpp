@@ -201,21 +201,16 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     C_sum[i + 1] = C_sum[i] + get<0>(V[i]);
-#if DEBUG == 1
-    cerr << "C_sum[" << i + 1 << "] = " << C_sum[i + 1] << endl;
-#endif
   }
   if (C_sum[N] == A_sum)
   {
     No();
   }
   rational<ll> ans{0, 1};
-#if DEBUG == 1
-  cerr << "A_sum = " << A_sum << endl;
-#endif
   for (auto k = 0; k < N; k++)
   {
-    ll B_k{get<1>(V[k])};
+    ll B, C;
+    tie(C, B) = V[k];
     ll ok{N}, ng{-1};
     ll tmp_sum{0};
     bool included{false};
@@ -225,9 +220,9 @@ int main()
       ll tmp{C_sum[t]};
       if (k < t)
       {
-        tmp -= B_k;
+        tmp -= C;
       }
-      if (tmp + B_k >= A_sum)
+      if (tmp + B >= A_sum)
       {
         ok = t;
         included = k < t;
@@ -238,22 +233,13 @@ int main()
         ng = t;
       }
     }
-    rational<ll> r{A_sum - tmp_sum, B_k};
-#if DEBUG == 1
-    cerr << "k = " << k << ", B_k = " << B_k << ", tmp_sum = " << tmp_sum << ", r = " << r << endl;
-#endif
-    ll M{included ? ok - 1 : ok};
-#if DEBUG == 1
-    cerr << "ok = " << ok << ", included = " << included << ", M = " << M << ", r = " << r << endl;
-#endif
-    rational<ll> tmp_ans = (N - M - r) / N;
-#if DEBUG == 1
-    cerr << "tmp_ans = " << tmp_ans << endl;
-#endif
+    rational<ll> r{A_sum - tmp_sum, B};
     if (r < 0)
     {
-      continue;
+      r = 0;
     }
+    ll M{included ? ok - 1 : ok};
+    rational<ll> tmp_ans = (N - M - r) / N;
     ch_max(ans, tmp_ans);
   }
   cout << ans.numerator() << " " << ans.denominator() << endl;
