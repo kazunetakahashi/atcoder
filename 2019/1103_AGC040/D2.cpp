@@ -218,9 +218,9 @@ int main()
       ll tmp{C_sum[t]};
       if (k < t)
       {
-        tmp -= C_sum[t];
+        tmp -= B_k;
       }
-      if (tmp + B_k < A_sum)
+      if (tmp + B_k >= A_sum)
       {
         ok = t;
         tmp_sum = tmp;
