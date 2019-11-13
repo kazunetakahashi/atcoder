@@ -234,5 +234,9 @@ int main()
     rational<ll> tmp_ans = (N - ok - r) / N;
     ch_max(ans, tmp_ans);
   }
+  ll g{gcd(ans.numerator(), ans.denominator())};
+  #if DEBUG == 1
+  cerr << g << endl;
+  #endif
   cout << ans.numerator() << " " << ans.denominator() << endl;
 }
