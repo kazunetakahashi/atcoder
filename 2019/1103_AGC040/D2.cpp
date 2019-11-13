@@ -200,10 +200,10 @@ int main()
   C_sum[0] = 0;
   for (auto i = 0; i < N; i++)
   {
-#if DEBUG == 1
-    cerr << "C_sum[" << i + 1 << " = " << C_sum[i + 1] << endl;
-#endif
     C_sum[i + 1] = C_sum[i] + get<0>(V[i]);
+#if DEBUG == 1
+    cerr << "C_sum[" << i + 1 << "] = " << C_sum[i + 1] << endl;
+#endif
   }
   if (C_sum[N] == A_sum)
   {
