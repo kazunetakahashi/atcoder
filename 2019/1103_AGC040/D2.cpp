@@ -233,6 +233,9 @@ int main()
       }
     }
     rational<ll> r{A_sum - tmp_sum, B_k};
+#if DEBUG == 1
+    cerr << "k = " << k << ", B_k = " << B_k << ", tmp_sum = " << tmp_sum << ", r = " << r << endl;
+#endif
     if (r < 0)
     {
       r = rational<ll>(0);
