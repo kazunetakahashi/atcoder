@@ -207,6 +207,9 @@ int main()
     No();
   }
   rational<ll> ans{0, 1};
+#if DEBUG == 1
+  cerr << "A_sum = " << A_sum << endl;
+#endif
   for (auto k = 0; k < N; k++)
   {
     ll B_k{get<1>(V[k])};
