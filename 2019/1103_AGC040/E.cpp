@@ -224,7 +224,7 @@ void eliminate(map<int, int> &m)
 {
   int now{m[0]};
   auto k{make_unique<map<int, int>>()};
-  for (auto const &x : m)
+  for (auto x : m)
   {
     if (x.second == now)
     {
