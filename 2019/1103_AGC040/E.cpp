@@ -250,6 +250,7 @@ void calc(vector<int> const &A, vector<map<int, int>> &M, int i, pair<int, int> 
 int main()
 {
   int N;
+  cin >> N;
   vector<int> A(N + 1, 0);
   for (auto i = 1; i <= N; i++)
   {
