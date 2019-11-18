@@ -223,22 +223,16 @@ void calc_low(vector<int> const &A, vector<map<int, int>> &M, int i, int h, int 
 void eliminate(map<int, int> &m)
 {
   int now{m[0]};
-  map<int, int> k;
+  auto k{make_unique<map<int, int>>()};
   for (auto const &x : m)
   {
     if (x.second == now)
     {
-      k.insert(x);
+      k->insert(x);
       --now;
     }
   }
-#if DEBUG == 1
-  for (auto const &x : k)
-  {
-    cerr << "k[" << x.first << "] = " << x.second << endl;
-  }
-#endif
-  swap(m, k);
+  swap(m, *k);
 }
 
 void calc(vector<int> const &A, vector<map<int, int>> &M, int i, pair<int, int> const &x)
