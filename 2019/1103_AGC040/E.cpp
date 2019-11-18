@@ -244,7 +244,7 @@ void calc(vector<int> const &A, vector<map<int, int>> &M, int i, pair<int, int> 
   {
     calc_low(A, M, i, h, d);
   }
-  eliminate(M[i]);
+  eliminate(M[i + 1]);
 }
 
 int main()
