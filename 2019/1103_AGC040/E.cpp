@@ -260,12 +260,12 @@ int main()
 {
   int N;
   cin >> N;
-  vector<int> A(N + 1, 0);
+  vector<int> A(N + 2, 0);
   for (auto i = 1; i <= N; i++)
   {
     cin >> A[i];
   }
-  vector<map<int, int>> M(N + 1);
+  vector<map<int, int>> M(N + 2);
   M[0][0] = 0;
   for (auto i = 0; i <= N; i++)
   {
@@ -274,5 +274,5 @@ int main()
       calc(A, M, i, x);
     }
   }
-  cout << M[N].end()->second << endl;
+  cout << M[N + 1].end()->second << endl;
 }
