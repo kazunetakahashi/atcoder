@@ -247,13 +247,13 @@ void calc(vector<int> const &A, vector<map<int, int>> &M, int i, pair<int, int> 
   {
     calc_low(A, M, i, h, d);
   }
-  eliminate(M[i + 1]);
 #if DEBUG == 1
   for (auto const &x : M[i + 1])
   {
     cerr << "M[" << i + 1 << "][" << x.first << "] = " << x.second << endl;
   }
 #endif
+  eliminate(M[i + 1]);
 }
 
 int main()
