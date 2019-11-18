@@ -267,12 +267,6 @@ int main()
       calc(A, M, i, x);
     }
     eliminate(M[i + 1]);
-#if DEBUG == 1
-    for (auto const &x : M[i + 1])
-    {
-      cerr << "M[" << i + 1 << "][" << x.first << "] = " << x.second << endl;
-    }
-#endif
   }
-  cout << M[N + 1].end()->second << endl;
+  cout << M[N + 1][0] << endl;
 }
