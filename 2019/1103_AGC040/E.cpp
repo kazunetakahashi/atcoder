@@ -220,6 +220,20 @@ void calc_low(vector<int> const &A, vector<map<int, int>> &M, int i, int h, int 
   add_edge(M[i + 1], 0, d + 2);
 }
 
+void calc(vector<int> const &A, vector<map<int, int>> &M, int i, pair<int, int> const &x)
+{
+  int h{x.first};
+  int d{x.second};
+  if (A[i] <= A[i + 1])
+  {
+    calc_high(A, M, i, h, d);
+  }
+  else
+  {
+    calc_low(A, M, i, h, d);
+  }
+}
+
 void eliminate(map<int, int> &m)
 {
   int now{m[0]};
@@ -233,39 +247,6 @@ void eliminate(map<int, int> &m)
     }
   }
   swap(m, *k);
-}
-
-void calc(vector<int> const &A, vector<map<int, int>> &M, int i, pair<int, int> const &x)
-{
-  int h{x.first};
-  int d{x.second};
-#if DEBUG == 1
-  for (auto const &x : M[i + 1])
-  {
-    cerr << "M[" << i + 1 << "][" << x.first << "] = " << x.second << endl;
-  }
-#endif
-  if (A[i] <= A[i + 1])
-  {
-    calc_high(A, M, i, h, d);
-  }
-  else
-  {
-    calc_low(A, M, i, h, d);
-  }
-#if DEBUG == 1
-  for (auto const &x : M[i + 1])
-  {
-    cerr << "M[" << i + 1 << "][" << x.first << "] = " << x.second << endl;
-  }
-#endif
-  eliminate(M[i + 1]);
-#if DEBUG == 1
-  for (auto const &x : M[i + 1])
-  {
-    cerr << "M[" << i + 1 << "][" << x.first << "] = " << x.second << endl;
-  }
-#endif
 }
 
 int main()
@@ -285,6 +266,7 @@ int main()
     {
       calc(A, M, i, x);
     }
+    eliminate(M[i + 1]);
   }
   cout << M[N + 1].end()->second << endl;
 }
