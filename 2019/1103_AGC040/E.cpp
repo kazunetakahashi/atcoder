@@ -237,16 +237,16 @@ void calc(vector<int> const &A, vector<map<int, int>> &M, int i, pair<int, int> 
 void eliminate(map<int, int> &m)
 {
   int now{m[0]};
-  auto k{make_unique<map<int, int>>()};
+  map<int, int> k;
   for (auto const &x : m)
   {
     if (x.second == now)
     {
-      k->insert(x);
+      k.insert(x);
       --now;
     }
   }
-  swap(m, *k);
+  swap(m, k);
 }
 
 int main()
@@ -267,6 +267,12 @@ int main()
       calc(A, M, i, x);
     }
     eliminate(M[i + 1]);
+#if DEBUG == 1
+    for (auto const &x : M[i + 1])
+    {
+      cerr << "M[" << i + 1 << "][" << x.first << "] = " << x.second << endl;
+    }
+#endif
   }
   cout << M[N + 1].end()->second << endl;
 }
