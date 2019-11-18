@@ -239,6 +239,12 @@ void calc(vector<int> const &A, vector<map<int, int>> &M, int i, pair<int, int> 
 {
   int h{x.first};
   int d{x.second};
+#if DEBUG == 1
+  for (auto const &x : M[i + 1])
+  {
+    cerr << "M[" << i + 1 << "][" << x.first << "] = " << x.second << endl;
+  }
+#endif
   if (A[i] <= A[i + 1])
   {
     calc_high(A, M, i, h, d);
