@@ -199,7 +199,7 @@ void add_edge(map<int, int> &m, int h, int d)
   }
   else
   {
-    ch_max(m[h], d);
+    ch_min(m[h], d);
   }
 }
 
