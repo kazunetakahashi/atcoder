@@ -267,7 +267,7 @@ int main()
   }
   vector<map<int, int>> M(N + 1);
   M[0][0] = 0;
-  for (auto i = 0; i < N; i++)
+  for (auto i = 0; i <= N; i++)
   {
     for (auto const &x : M[i])
     {
