@@ -212,7 +212,10 @@ void calc_high(vector<int> const &A, vector<map<int, int>> &M, int i, int h, int
 
 void calc_low(vector<int> const &A, vector<map<int, int>> &M, int i, int h, int d)
 {
-  add_edge(M[i + 1], h, d);
+  if (h <= A[i + 1])
+  {
+    add_edge(M[i + 1], h, d);
+  }
   add_edge(M[i + 1], max(0, A[i + 1] - (A[i] - h)), d + 1);
   add_edge(M[i + 1], 0, d + 2);
 }
