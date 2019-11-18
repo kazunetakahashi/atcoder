@@ -232,6 +232,12 @@ void eliminate(map<int, int> &m)
       --now;
     }
   }
+#if DEBUG == 1
+  for (auto const &x : k)
+  {
+    cerr << "k[" << x.first << "] = " << x.second << endl;
+  }
+#endif
   swap(m, k);
 }
 
