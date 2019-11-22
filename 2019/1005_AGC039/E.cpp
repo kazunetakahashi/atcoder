@@ -285,7 +285,6 @@ ll calc_unit(int A, int B, int C, int D)
 int main()
 {
   cin >> N;
-  cerr << "N = " << N << endl;
   S.resize(2 * N);
   for (auto i = 0; i < 2 * N; i++)
   {
@@ -293,5 +292,6 @@ int main()
   }
   fill(&dp[0][0][0][0], &dp[0][0][0][0] + 40 * 40 * 40 * 40, -1);
   fill(&dp2[0][0][0][0], &dp2[0][0][0][0] + 40 * 40 * 40 * 40, -1);
+  cerr << "aaa" << endl;
   cout << ans() << endl;
 }
