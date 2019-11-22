@@ -238,13 +238,13 @@ ll calc(int A, int B, int C, int D)
   {
     return 0;
   }
-  else if (A == B && C == D)
-  {
-    return 1;
-  }
   else if (dp[A][B][C][D] >= 0)
   {
     return dp[A][B][C][D];
+  }
+  else if (A == B || C == D)
+  {
+    return dp[A][B][C][D] = calc_unit(A, B, C, D);
   }
   ll res{0};
   for (auto i = A; i <= B; i++)
@@ -266,26 +266,29 @@ ll calc_unit(int A, int B, int C, int D)
   {
     return 0;
   }
-  else if (A == B && C == D)
-  {
-    return 1;
-  }
   else if (dp2[A][B][C][D] >= 0)
   {
     return dp2[A][B][C][D];
   }
   ll res{0};
-  for (auto i = A; i <= B; i++)
+  if (A == B && C == D)
   {
-    for (auto j = C; j <= D; j++)
+    res = connectable(A, C) ? 1 : 0;
+  }
+  else
+  {
+    for (auto i = A; i <= B; i++)
     {
-      if (connectable(i, j))
+      for (auto j = C; j <= D; j++)
       {
-        res += calc(A, i - 1, i + 1, B) * calc(C, j - 1, j + 1, D);
+        if (connectable(i, j))
+        {
+          res += calc(A, i - 1, i + 1, B) * calc(C, j - 1, j + 1, D);
+        }
       }
     }
+    return dp2[A][B][C][D] = res;
   }
-  return dp2[A][B][C][D] = res;
 }
 
 int main()
