@@ -231,9 +231,6 @@ ll ans()
 
 ll calc(int A, int B, int C, int D)
 {
-#if DEBUG == 1
-  cerr << "calc(" << A << ", " << B << ", " << C << ", " << D << ")" << endl;
-#endif
   if (!(A <= B && B < C && C <= D))
   {
     return 0;
@@ -259,9 +256,6 @@ ll calc(int A, int B, int C, int D)
 
 ll calc_unit(int A, int B, int C, int D)
 {
-#if DEBUG == 1
-  cerr << "calc_unit(" << A << ", " << B << ", " << C << ", " << D << ")" << endl;
-#endif
   if (!(A <= B && B < C && C <= D))
   {
     return 0;
