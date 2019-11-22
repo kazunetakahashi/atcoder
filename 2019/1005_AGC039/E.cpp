@@ -217,6 +217,7 @@ ll ans()
         res += calc(1, i - 1, i + 1, 2 * N - 1);
       }
     }
+    cerr << res << endl;
     return res;
   }
   else if (connectable(0, 1))
