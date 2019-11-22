@@ -217,7 +217,6 @@ ll ans()
         res += calc(1, i - 1, i + 1, 2 * N - 1);
       }
     }
-    cerr << res << endl;
     return res;
   }
   else if (connectable(0, 1))
@@ -286,6 +285,7 @@ ll calc_unit(int A, int B, int C, int D)
 int main()
 {
   cin >> N;
+  cerr << "N = " << N << endl;
   S.resize(2 * N);
   for (auto i = 0; i < 2 * N; i++)
   {
