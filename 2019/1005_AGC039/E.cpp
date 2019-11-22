@@ -287,8 +287,8 @@ ll calc_unit(int A, int B, int C, int D)
         }
       }
     }
-    return dp2[A][B][C][D] = res;
   }
+  return dp2[A][B][C][D] = res;
 }
 
 int main()
