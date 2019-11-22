@@ -212,6 +212,7 @@ ll ans()
     ll res{0LL};
     for (auto i = 1; i <= 2 * N - 1; i++)
     {
+      cerr << "i = " << i << endl;
       if (connectable(0, i))
       {
         res += calc(1, i - 1, i + 1, 2 * N - 1);
