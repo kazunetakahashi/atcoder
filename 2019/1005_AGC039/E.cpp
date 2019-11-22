@@ -212,7 +212,6 @@ ll ans()
     ll res{0LL};
     for (auto i = 1; i <= 2 * N - 1; i++)
     {
-      cerr << "i = " << i << endl;
       if (connectable(0, i))
       {
         res += calc(1, i - 1, i + 1, 2 * N - 1);
@@ -232,6 +231,9 @@ ll ans()
 
 ll calc(int A, int B, int C, int D)
 {
+#if DEBUG == 1
+  cerr << "calc(" << A << ", " << B << ", " << C << ", " << D << ")" << endl;
+#endif
   if (!(A <= B && B < C && C <= D))
   {
     return 0;
@@ -257,6 +259,9 @@ ll calc(int A, int B, int C, int D)
 
 ll calc_unit(int A, int B, int C, int D)
 {
+#if DEBUG == 1
+  cerr << "calc_unit(" << A << ", " << B << ", " << C << ", " << D << ")" << endl;
+#endif
   if (!(A <= B && B < C && C <= D))
   {
     return 0;
