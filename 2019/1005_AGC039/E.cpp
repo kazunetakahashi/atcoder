@@ -203,77 +203,90 @@ bool connectable(int i, int j)
 
 ll calc(int A, int B, int C, int D);
 ll calc_unit(int A, int B, int C, int D);
-ll ans();
+void flush();
 
-ll ans()
+void flush()
 {
+  ll res{0LL};
   if (N >= 2)
   {
-    ll res{0LL};
-    for (auto i = 1; i <= 2 * N - 1; i++)
+    for (auto i = 2; i <= 2 * N - 2; i++)
     {
       if (connectable(0, i))
       {
         res += calc(1, i - 1, i + 1, 2 * N - 1);
       }
     }
-    return res;
   }
   else if (connectable(0, 1))
   {
-    return 1;
+    res = 1;
   }
   else
   {
-    return 0;
+    res = 0;
   }
+  cout << res << endl;
 }
 
 ll calc(int A, int B, int C, int D)
 {
-  if (!(A <= B && B < C && C <= D))
+  if (dp2[A][B][C][D] >= 0)
   {
-    return 0;
+    return dp2[A][B][C][D];
   }
-  else if (dp[A][B][C][D] >= 0)
+  if (A == B || C == D)
   {
-    return dp[A][B][C][D];
+    return dp2[A][B][C][D] = calc_unit(A, B, C, D);
   }
-  else if (A == B || C == D)
+  ll res{0LL};
+  for (auto i = A + 1; i <= B; i++)
   {
-    return dp[A][B][C][D] = calc_unit(A, B, C, D);
-  }
-  ll res{0};
-  for (auto i = A; i <= B; i++)
-  {
-    for (auto j = C; j <= D; j++)
+    for (auto j = C; j <= D - 1; j++)
     {
-      res += calc(A, i, j, D) * calc_unit(i + 1, B, C, j - 1);
+      res += calc(A, i - 1, j + 1, D) * calc_unit(i, B, C, j);
     }
   }
-  return dp[A][B][C][D] = res;
+  res += calc_unit(A, B, C, D);
+  return dp2[A][B][C][D] = res;
 }
 
 ll calc_unit(int A, int B, int C, int D)
 {
-  if (!(A <= B && B < C && C <= D))
+  if (dp[A][B][C][D] >= 0)
   {
-    return 0;
+    return dp[A][B][C][D];
   }
-  else if (dp2[A][B][C][D] >= 0)
-  {
-    return dp2[A][B][C][D];
-  }
-  ll res{0};
   if (A == B && C == D)
   {
-    res = connectable(A, C) ? 1 : 0;
+    return dp[A][B][C][D] = (connectable(A, C) ? 1 : 0);
+  }
+  ll res{0LL};
+  if (A == B)
+  {
+    for (auto j = C + 1; j <= D - 1; j++)
+    {
+      if (connectable(A, j))
+      {
+        res += calc(C, j - 1, j + 1, D);
+      }
+    }
+  }
+  else if (C == D)
+  {
+    for (auto i = A + 1; i <= B - 1; i++)
+    {
+      if (connectable(i, C))
+      {
+        res += calc(A, i - 1, i + 1, B);
+      }
+    }
   }
   else
   {
-    for (auto i = A; i <= B; i++)
+    for (auto i = A + 1; i <= B - 1; i++)
     {
-      for (auto j = C; j <= D; j++)
+      for (auto j = C + 1; j <= D - 1; j++)
       {
         if (connectable(i, j))
         {
@@ -282,7 +295,7 @@ ll calc_unit(int A, int B, int C, int D)
       }
     }
   }
-  return dp2[A][B][C][D] = res;
+  return dp[A][B][C][D] = res;
 }
 
 int main()
@@ -295,5 +308,5 @@ int main()
   }
   fill(&dp[0][0][0][0], &dp[0][0][0][0] + 40 * 40 * 40 * 40, -1);
   fill(&dp2[0][0][0][0], &dp2[0][0][0][0] + 40 * 40 * 40 * 40, -1);
-  cout << ans() << endl;
+  flush();
 }
