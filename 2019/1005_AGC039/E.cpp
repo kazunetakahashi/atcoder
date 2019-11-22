@@ -212,6 +212,7 @@ ll ans()
     ll res{0LL};
     for (auto i = 1; i <= 2 * N - 1; i++)
     {
+      cerr << "i = " << i << endl;
       if (connectable(0, i))
       {
         res += calc(1, i - 1, i + 1, 2 * N - 1);
@@ -292,6 +293,5 @@ int main()
   }
   fill(&dp[0][0][0][0], &dp[0][0][0][0] + 40 * 40 * 40 * 40, -1);
   fill(&dp2[0][0][0][0], &dp2[0][0][0][0] + 40 * 40 * 40 * 40, -1);
-  cerr << "aaa" << endl;
   cout << ans() << endl;
 }
