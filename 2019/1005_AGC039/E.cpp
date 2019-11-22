@@ -212,7 +212,6 @@ ll ans()
     ll res{0LL};
     for (auto i = 1; i <= 2 * N - 1; i++)
     {
-      cerr << "i = " << i << endl;
       if (connectable(0, i))
       {
         res += calc(1, i - 1, i + 1, 2 * N - 1);
@@ -232,17 +231,17 @@ ll ans()
 
 ll calc(int A, int B, int C, int D)
 {
-  if (dp[A][B][C][D] >= 0)
+  if (!(A <= B && B < C && C <= D))
   {
-    return dp[A][B][C][D];
-  }
-  else if (!(A <= B && B < C && C <= D))
-  {
-    return dp[A][B][C][D] = 0;
+    return 0;
   }
   else if (A == B && C == D)
   {
-    return dp[A][B][C][D] = 1;
+    return 1;
+  }
+  else if (dp[A][B][C][D] >= 0)
+  {
+    return dp[A][B][C][D];
   }
   ll res{0};
   for (auto i = A; i <= B; i++)
@@ -257,17 +256,17 @@ ll calc(int A, int B, int C, int D)
 
 ll calc_unit(int A, int B, int C, int D)
 {
-  if (dp2[A][B][C][D] >= 0)
+  if (!(A <= B && B < C && C <= D))
   {
-    return dp2[A][B][C][D];
-  }
-  else if (!(A <= B && B < C && C <= D))
-  {
-    return dp2[A][B][C][D] = 0;
+    return 0;
   }
   else if (A == B && C == D)
   {
-    return dp2[A][B][C][D] = 1;
+    return 1;
+  }
+  else if (dp2[A][B][C][D] >= 0)
+  {
+    return dp2[A][B][C][D];
   }
   ll res{0};
   for (auto i = A; i <= B; i++)
