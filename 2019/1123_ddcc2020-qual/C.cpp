@@ -235,6 +235,7 @@ int main()
           ans[i][j] = now;
         }
       }
+      ++now;
     }
   }
   vector<int> X(W);
