@@ -203,18 +203,12 @@ info calc(info X, ll &ans)
   {
     sum += d[i] * c[i];
   }
-  ll add_up{sum / 10};
 #if DEBUG == 1
-  cerr << "manipulation = " << manipulation << ", add_up = " << add_up << endl;
+  cerr << "manipulation = " << manipulation << endl;
 #endif
-  ans += manipulation + add_up;
-  vector<ll> nd, nc;
-  while (sum > 0)
-  {
-    nd.push_back(sum % 10);
-    nc.push_back(1);
-    sum /= 10;
-  }
+  ans += manipulation;
+  vector<ll> nd{1, sum % 10};
+  vector<ll> nc{sum / 10, 1};
   return info{nd, nc};
 }
 
