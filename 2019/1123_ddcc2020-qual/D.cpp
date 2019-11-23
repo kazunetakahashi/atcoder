@@ -204,6 +204,9 @@ info calc(info X, ll &ans)
     sum += d[i] * c[i];
   }
   ll add_up{sum / 10};
+#if DEBUG == 1
+  cerr << "manipulation = " << manipulation << ", add_up = " << add_up << endl;
+#endif
   ans += manipulation + add_up;
   vector<ll> nd, nc;
   while (sum > 0)
