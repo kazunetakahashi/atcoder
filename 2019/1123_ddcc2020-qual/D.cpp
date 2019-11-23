@@ -207,9 +207,16 @@ info calc(info X, ll &ans)
   cerr << "manipulation = " << manipulation << endl;
 #endif
   ans += manipulation;
-  vector<ll> nd{1, sum % 10};
-  vector<ll> nc{sum / 10, 1};
-  return info{nd, nc};
+  if (sum / 10 >= 1)
+  {
+    vector<ll> nd{1, sum % 10};
+    vector<ll> nc{sum / 10, 1};
+    return info{nd, nc};
+  }
+  else
+  {
+    info{{sum % 10}, {1}};
+  }
 }
 
 int main()
