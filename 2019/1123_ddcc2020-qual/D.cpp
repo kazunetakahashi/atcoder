@@ -215,7 +215,7 @@ info calc(info X, ll &ans)
   }
   else
   {
-    info{{sum % 10}, {1}};
+    return info{{sum % 10}, {1}};
   }
 }
 
