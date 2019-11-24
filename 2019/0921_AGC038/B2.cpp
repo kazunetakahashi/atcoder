@@ -220,6 +220,9 @@ public:
     }
     par[x] += par[y];
     par[y] = x;
+    #if DEBUG == 1
+    cerr << "merge(" << x << ", " << y << ")" << endl;
+    #endif
     return true;
   }
 
@@ -294,12 +297,6 @@ vector<int> ascend_sum(int N, int K, vector<int> const &P)
 void connect_origin(int N, int K, vector<int> const &P, UnionFind &uf)
 {
   vector<int> A{ascend_sum(N, K, P)};
-#if DEBUG == 1
-  for (auto i = 0; i < N; i++)
-  {
-    cerr << "A[" << i << "] = " << A[i] << endl;
-  }
-#endif
   for (auto i = 0; i <= N - K; i++)
   {
     if (A[i + K] - A[i] == 0)
