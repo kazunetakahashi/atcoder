@@ -310,7 +310,7 @@ vector<bool> is_mini(int N, int K, vector<int> const &Q)
   for (auto e : Q)
   {
     S.insert(e);
-    if (0 <= e <= N - K - 1)
+    if (0 <= e && e <= N - K - 1)
     {
       auto it{S.find(e)};
       ++it;
@@ -330,7 +330,7 @@ vector<bool> is_maxi(int N, int K, vector<int> const &Q)
   for (auto e : Q)
   {
     S.insert(e);
-    if (K <= e <= N - 1)
+    if (K <= e && e <= N - 1)
     {
       auto it{S.find(e)};
       auto it0{it};
@@ -354,13 +354,13 @@ void connect_adjacent(int N, int K, vector<int> const &P, UnionFind &uf)
   cerr << "is_mini ";
   for (auto x : mini)
   {
-    cerr << x ? "true " : "false ";
+    cerr << (x ? "true " : "false ");
   }
   cerr << endl;
   cerr << "is_maxi ";
   for (auto x : maxi)
   {
-    cerr << x ? "true " : "false ";
+    cerr << (x ? "true " : "false ");
   }
   cerr << endl;
 #endif
