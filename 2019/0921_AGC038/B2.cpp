@@ -220,9 +220,9 @@ public:
     }
     par[x] += par[y];
     par[y] = x;
-    #if DEBUG == 1
+#if DEBUG == 1
     cerr << "merge(" << x << ", " << y << ")" << endl;
-    #endif
+#endif
     return true;
   }
 
@@ -236,7 +236,7 @@ public:
     int ans{0};
     for (auto i = 0; i < N; i++)
     {
-      if (root(i) < 0)
+      if (par[i] < 0)
       {
         ++ans;
       }
