@@ -354,13 +354,13 @@ void connect_adjacent(int N, int K, vector<int> const &P, UnionFind &uf)
   cerr << "is_mini ";
   for (auto x : mini)
   {
-    cerr << (x ? "true " : "false ");
+    cerr << x;
   }
   cerr << endl;
   cerr << "is_maxi ";
   for (auto x : maxi)
   {
-    cerr << (x ? "true " : "false ");
+    cerr << x;
   }
   cerr << endl;
 #endif
