@@ -297,7 +297,7 @@ vector<int> ascend_sum(int N, int K, vector<int> const &P)
 void connect_origin(int N, int K, vector<int> const &P, UnionFind &uf)
 {
   vector<int> A{ascend_sum(N, K, P)};
-  #if DEBUG == 1
+#if DEBUG == 1
   cerr << "A: ";
   for (auto x : A)
   {
@@ -307,7 +307,7 @@ void connect_origin(int N, int K, vector<int> const &P, UnionFind &uf)
 #endif
   for (auto i = 0; i <= N - K; i++)
   {
-    if (A[i + K] - A[i] == 0)
+    if (A[i + K - 1] - A[i] == 0)
     {
       uf.merge(i, N - K + 1);
     }
