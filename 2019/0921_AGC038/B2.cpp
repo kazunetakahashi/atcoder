@@ -208,6 +208,9 @@ public:
 
   bool merge(int x, int y)
   {
+#if DEBUG == 1
+    cerr << "merge(" << x << ", " << y << ")" << endl;
+#endif
     x = root(x);
     y = root(y);
     if (x == y)
@@ -220,9 +223,6 @@ public:
     }
     par[x] += par[y];
     par[y] = x;
-#if DEBUG == 1
-    cerr << "merge(" << x << ", " << y << ")" << endl;
-#endif
     return true;
   }
 
