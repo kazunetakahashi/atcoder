@@ -294,6 +294,12 @@ vector<int> ascend_sum(int N, int K, vector<int> const &P)
 void connect_origin(int N, int K, vector<int> const &P, UnionFind &uf)
 {
   vector<int> A{ascend_sum(N, K, P)};
+#if DEBUG == 1
+  for (auto i = 0; i < N; i++)
+  {
+    cerr << "A[" << i << "] = " << A[i] << endl;
+  }
+#endif
   for (auto i = 0; i <= N - K; i++)
   {
     if (A[i + K] - A[i] == 0)
@@ -350,20 +356,6 @@ void connect_adjacent(int N, int K, vector<int> const &P, UnionFind &uf)
   vector<int> R(Q);
   reverse(R.begin(), R.end());
   vector<bool> mini{is_mini(N, K, Q)}, maxi{is_maxi(N, K, R)};
-#if DEBUG == 1
-  cerr << "is_mini ";
-  for (auto x : mini)
-  {
-    cerr << x;
-  }
-  cerr << endl;
-  cerr << "is_maxi ";
-  for (auto x : maxi)
-  {
-    cerr << x;
-  }
-  cerr << endl;
-#endif
   for (auto i = 0; i < N - K; i++)
   {
     if (mini[i] && maxi[i + K])
