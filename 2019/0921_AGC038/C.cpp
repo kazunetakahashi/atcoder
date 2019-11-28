@@ -209,18 +209,9 @@ mint solve(vector<ll> const &A)
     {
       sum += i * B[i];
     }
-#if DEBUG == 1
-    if (sum != 0)
-    {
-      cerr << "d = " << d << ", sum = " << sum << endl;
-    }
-#endif
     ans += C[d] * sum * sum;
   }
-  for (auto x : A)
-  {
-    ans -= x * x;
-  }
+  ans -= accumulate(A.begin(), A.end(), mint{0});
   ans /= 2;
   return ans;
 }
