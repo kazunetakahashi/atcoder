@@ -89,6 +89,7 @@ public:
   Mint operator/(const Mint &a) const { return Mint(*this) /= a; }
   bool operator<(const Mint &a) const { return x < a.x; }
   bool operator==(const Mint &a) const { return x == a.x; }
+  bool operator!=(const Mint &a) const { return !(*this == a); }
   const Mint power(ll N)
   {
     if (N == 0)
@@ -208,6 +209,12 @@ mint solve(vector<ll> const &A)
     {
       sum += i * B[i];
     }
+#if DEBUG == 1
+    if (sum != 0)
+    {
+      cout << "d = " << d << ", sum = " << sum << endl;
+    }
+#endif
     ans += C[d] * sum * sum;
   }
   for (auto x : A)
