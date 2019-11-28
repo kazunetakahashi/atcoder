@@ -212,7 +212,7 @@ mint solve(vector<ll> const &A)
 #if DEBUG == 1
     if (sum != 0)
     {
-      cout << "d = " << d << ", sum = " << sum << endl;
+      cerr << "d = " << d << ", sum = " << sum << endl;
     }
 #endif
     ans += C[d] * sum * sum;
