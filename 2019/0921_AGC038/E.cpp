@@ -198,6 +198,10 @@ void No()
 int main()
 {
   combination comb;
+  for (auto i = 0; i < MAX_SIZE; i++)
+  {
+    assert(comb.inv[i] == 1 / i);
+  }
   int N;
   cin >> N;
   vector<ll> A(N), B(N);
@@ -207,14 +211,14 @@ int main()
   }
   vector<mint> p(N);
   mint sum{accumulate(A.begin(), A.end(), mint{0})};
-  ll MAX{accumulate(B.begin(), B.end(), 1LL)};
   for (auto i = 0; i < N; i++)
   {
     p[i] = A[i] / sum;
   }
+  ll MAX{accumulate(B.begin(), B.end(), 1LL)};
   vector<vector<map<mint, mint>>> dp(N + 1);
   dp[0].resize(MAX);
-  dp[0][0][0] = -1;
+  dp[0][0][0] = 1;
   for (auto k = 0; k < N; k++)
   {
     dp[k + 1] = dp[k];
