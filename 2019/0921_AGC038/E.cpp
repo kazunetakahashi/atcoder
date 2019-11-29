@@ -198,9 +198,9 @@ void No()
 int main()
 {
   combination comb;
-  for (auto i = 0; i < MAX_SIZE; i++)
+  for (auto i = 1; i < MAX_SIZE; i++)
   {
-    assert(comb.inv[i] == 1 / i);
+    assert(comb.inv[i] == 1 / mint{i});
   }
   int N;
   cin >> N;
