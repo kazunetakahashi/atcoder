@@ -198,10 +198,6 @@ void No()
 int main()
 {
   combination comb;
-  for (auto i = 1; i < MAX_SIZE; i++)
-  {
-    assert(comb.inv[i] == 1 / mint{i});
-  }
   int N;
   cin >> N;
   vector<ll> A(N), B(N);
@@ -240,7 +236,7 @@ int main()
     for (auto const &key : dp[N][X])
     {
       mint Y{get<0>(key)};
-      ans += dp[N][X][Y] * comb.fact[X] / Y.power(X);
+      ans += dp[N][X][Y] * comb.fact[X] / Y.power(X + 1);
     }
   }
   cout << ans << endl;
