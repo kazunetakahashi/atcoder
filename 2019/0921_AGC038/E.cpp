@@ -214,7 +214,7 @@ int main()
   ll MAX{accumulate(B.begin(), B.end(), 1LL)};
   vector<vector<map<mint, mint>>> dp(N + 1);
   dp[0].resize(MAX);
-  dp[0][0][0] = 1;
+  dp[0][0][0] = -1;
   for (auto k = 0; k < N; k++)
   {
     dp[k + 1] = dp[k];
