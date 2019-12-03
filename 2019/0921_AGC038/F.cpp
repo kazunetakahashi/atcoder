@@ -354,8 +354,8 @@ int main()
   constexpr int C{2};
   constexpr int src{0};
   constexpr int dst{1};
-  Dinic dinic(C + 2 * N);
-  ll ans(N);
+  Dinic dinic{C + 2 * N};
+  ll ans{N};
   for (auto i = 0; i < N; i++)
   {
     if (A.isolated(i) && B.isolated(i))
@@ -372,10 +372,10 @@ int main()
     }
     else
     {
-      dinic.add_edge(A.composed(i) + C, B.composed(i) + N + C);
+      dinic.add_edge(B.composed(i) + N + C, A.composed(i) + C);
       if (A.per(i) == B.per(i))
       {
-        dinic.add_edge(B.composed(i) + N + C, A.composed(i) + C);
+        dinic.add_edge(A.composed(i) + C, B.composed(i) + N + C);
       }
     }
   }
