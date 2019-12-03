@@ -302,7 +302,7 @@ public:
 
   bool isolated(int v)
   {
-    return V[v] == v;
+    return P[v] == v;
   }
 
   int composed(int v)
