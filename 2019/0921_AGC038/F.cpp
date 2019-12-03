@@ -310,6 +310,11 @@ public:
     return V[v];
   }
 
+  int per(int v)
+  {
+    return P[v];
+  }
+
 private:
   void make_V()
   {
@@ -359,18 +364,19 @@ int main()
     }
     else if (A.isolated(i))
     {
-      dinic.add_edge(src, B.composed(i) + N + C);
       dinic.add_edge(B.composed(i) + N + C, dst);
     }
     else if (B.isolated(i))
     {
       dinic.add_edge(src, A.composed(i) + C);
-      dinic.add_edge(A.composed(i) + C, dst);
     }
     else
     {
       dinic.add_edge(A.composed(i) + C, B.composed(i) + N + C);
-      dinic.add_edge(B.composed(i) + N + C, A.composed(i) + C);
+      if (A.per(i) == B.per(i))
+      {
+        dinic.add_edge(B.composed(i) + N + C, A.composed(i) + C);
+      }
     }
   }
   cout << N - dinic.max_flow(src, dst) << endl;
