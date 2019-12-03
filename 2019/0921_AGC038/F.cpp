@@ -355,12 +355,12 @@ int main()
   constexpr int src{0};
   constexpr int dst{1};
   Dinic dinic(C + 2 * N);
-  ll ans{0LL};
+  ll ans(N);
   for (auto i = 0; i < N; i++)
   {
     if (A.isolated(i) && B.isolated(i))
     {
-      ++ans;
+      --ans;
     }
     else if (A.isolated(i))
     {
@@ -379,5 +379,6 @@ int main()
       }
     }
   }
-  cout << N - dinic.max_flow(src, dst) << endl;
+  ans -= dinic.max_flow(src, dst);
+  cout << ans << endl;
 }
