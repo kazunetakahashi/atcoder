@@ -243,6 +243,7 @@ public:
       }
     }
 #if DEBUG == 1
+    cerr << "aaa" << endl;
     for (auto e : collection)
     {
       cerr << "(" << e->from << ", " << e->to << "): id = " << e->id << endl;
