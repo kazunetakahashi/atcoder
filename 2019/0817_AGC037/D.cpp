@@ -242,6 +242,12 @@ public:
         }
       }
     }
+#if DEBUG == 1
+    for (auto e : collection)
+    {
+      cerr << "(" << e->from << ", " << e->to << "): id = " << e->id << endl;
+    }
+#endif
     for (auto e : collection)
     {
       e->used = true;
