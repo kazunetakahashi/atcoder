@@ -240,6 +240,10 @@ public:
         }
       }
     }
+    for (auto &e : match)
+    {
+      e->used = true;
+    }
     return res;
   }
 
