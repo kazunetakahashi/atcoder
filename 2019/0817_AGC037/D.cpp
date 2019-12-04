@@ -196,6 +196,9 @@ void No()
 
 // ----- Bipartite -----
 
+// for C++14
+// Bipartite<> graph(N);
+
 template <typename T = int>
 class Bipartite
 {
