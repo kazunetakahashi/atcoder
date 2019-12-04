@@ -213,9 +213,8 @@ public:
 private:
   int N;
   vector<vector<edge>> G;
-  vector<int> match;
+  vector<edge *> match;
   vector<bool> used;
-  vector<edge *> collection;
 
 public:
   Bipartite(int N) : N{N}, G(N), match(N), used(N) {}
@@ -229,11 +228,10 @@ public:
   int bipartite_matching()
   {
     int res{0};
-    fill(match.begin(), match.end(), -1);
-    collection.clear();
+    fill(match.begin(), match.end(), nullptr);
     for (auto v = 0; v < N; v++)
     {
-      if (match[v] < 0)
+      if (!match[v])
       {
         fill(used.begin(), used.end(), false);
         if (dfs(v))
@@ -242,28 +240,12 @@ public:
         }
       }
     }
-#if DEBUG == 1
-    cerr << "aaa" << endl;
-    for (auto e : collection)
-    {
-      cerr << "(" << e->from << ", " << e->to << "): id = " << e->id << endl;
-    }
-#endif
-    for (auto e : collection)
-    {
-      e->used = true;
-      auto &f{G[e->to][e->rev]};
-      if (!f.used)
-      {
-        collection.push_back(&f);
-      }
-    }
     return res;
   }
 
-  vector<edge *> const &collect() const
+  vector<edge *> const &matching() const
   {
-    return collection;
+    return match;
   }
 
 private:
@@ -277,12 +259,12 @@ private:
         continue;
       }
       auto u{e.to};
+      // for C++14
       auto w{match[u]};
-      if (w < 0 || (!used[w] && dfs(w)))
+      if (!w || (!used[w->to] && dfs(w->to)))
       {
-        match[v] = u;
-        match[u] = v;
-        collection.push_back(&e);
+        match[v] = &e;
+        match[u] = &G[u][e.rev];
         return true;
       }
     }
@@ -337,8 +319,7 @@ int main()
   for (auto i = 0; i < M; i++)
   {
     assert(graph.bipartite_matching() == N);
-    assert(static_cast<int>(graph.collect().size()) == 2 * N);
-    for (auto ptr : graph.collect())
+    for (auto ptr : graph.matching())
     {
       if (ptr->from < N)
       {
