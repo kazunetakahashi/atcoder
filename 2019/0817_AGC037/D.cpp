@@ -311,7 +311,7 @@ int main()
       A[i][j]--;
     }
   }
-  Bipartite graph(2 * N);
+  Bipartite<> graph(2 * N);
   for (auto i = 0; i < N; i++)
   {
     for (auto j = 0; j < M; j++)
