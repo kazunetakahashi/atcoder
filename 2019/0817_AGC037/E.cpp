@@ -259,7 +259,7 @@ string make_ans(ll N, ll K, char c, ll L, string T)
     L *= 2;
   }
   T = connect_rev(T);
-  return T.substr(N - L / 2, N);
+  return T.substr(N - L, N);
 }
 
 string solve(ll N, ll K, string const &S, char c)
