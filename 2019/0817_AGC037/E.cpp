@@ -245,10 +245,17 @@ string make_ans(ll N, ll K, char c, ll L, string T)
   {
     return T;
   }
+#if DEBUG == 1
+  cerr << "-----" << endl;
+  cerr << "T = " << T << endl;
+#endif
   for (auto i = 1LL; i < K - 1; i++)
   {
     T = connect_rev(T);
     T = T.substr(L, N);
+#if DEBUG == 1
+    cerr << "T = " << T << endl;
+#endif
     L *= 2;
   }
   T = connect_rev(T);
@@ -272,6 +279,9 @@ string solve(ll N, ll K, string const &S, char c)
   for (auto i = 0u; i <= N; i++)
   {
     W[i] = make_ans(N, K, c, L, U.substr(i, N));
+#if DEBUG == 1
+    cerr << "W[" << i << "] = " << W[i] << endl;
+#endif
   }
   return *min_element(W.begin(), W.end());
 }
