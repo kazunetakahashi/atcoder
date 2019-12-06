@@ -266,6 +266,9 @@ string solve(ll N, ll K, string const &S, char c)
 {
   string U{connect_rev(S)};
   ll L{initial_length(N, U, c)};
+#if DEBUG == 1
+  cerr << "L = " << L << endl;
+#endif
   ll M{L};
   for (auto i = 0LL; i < K - 1; i++)
   {
