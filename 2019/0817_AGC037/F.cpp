@@ -267,6 +267,7 @@ public:
         else if (!tmp.empty())
         {
           update(ans, T, tmp);
+          T.push_back(e);
         }
         else
         {
