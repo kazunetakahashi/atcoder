@@ -260,6 +260,9 @@ public:
       vector<Element> tmp;
       for (auto const &e : A)
       {
+#if DEBUG == 1
+        cerr << *e.value << endl;
+#endif
         if (e.value == M)
         {
           tmp.push_back(e);
