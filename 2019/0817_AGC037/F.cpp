@@ -199,17 +199,16 @@ void No()
 struct Element
 {
   ll left, right;
-  boost::optional<ll> value; // for C++14
+  boost::optional<int> value; // for C++14
 };
 
 class Solve
 {
-  ll N;
-  ll L;
+  int N, L;
   vector<Element> A;
 
 public:
-  Solve(ll N, ll L, vector<ll> input) : N{N}, L{L}, A(N)
+  Solve(int N, int L, vector<int> input) : N{N}, L{L}, A(N)
   {
     for (auto i = 0; i < N; i++)
     {
@@ -224,32 +223,32 @@ public:
     ll ans{N};
     while (true)
     {
-      boost::optional<ll> M{min_value()};
+      auto M{min_value()};
       if (!M)
       {
         break;
       }
       vector<Element> T;
       vector<Element> tmp;
-      for (auto &&e : A)
+      for (auto const &e : A)
       {
         if (e.value == M)
         {
-          tmp.push_back(move(e));
+          tmp.push_back(e);
         }
         else if (!tmp.empty())
         {
-          update(ans, T, move(tmp));
-          T.push_back(move(e));
+          update(ans, T, tmp);
+          T.push_back(e);
         }
         else
         {
-          T.push_back(move(e));
+          T.push_back(e);
         }
       }
       if (!tmp.empty())
       {
-        update(ans, T, move(tmp));
+        update(ans, T, tmp);
       }
       swap(A, T);
     }
@@ -257,9 +256,9 @@ public:
   }
 
 private:
-  boost::optional<ll> min_value()
+  boost::optional<int> min_value()
   {
-    boost::optional<ll> ans;
+    boost::optional<int> ans;
     for (auto const &e : A)
     {
       if (e.value)
@@ -277,12 +276,12 @@ private:
     return ans;
   }
 
-  void update(ll &ans, vector<Element> &T, vector<Element> &&tmp)
+  void update(ll &ans, vector<Element> &T, vector<Element> &tmp)
   {
     ans += calc(tmp);
-    tmp = press(move(tmp));
+    tmp = press(tmp);
     ans -= calc(tmp);
-    copy(move(tmp).begin(), move(tmp).end(), back_inserter(T));
+    copy(tmp.begin(), tmp.end(), back_inserter(T));
     tmp.clear();
   }
 
@@ -304,14 +303,14 @@ private:
     return ans;
   }
 
-  vector<Element> press(vector<Element> &&V)
+  vector<Element> press(vector<Element> &V)
   {
-    ll S{static_cast<ll>(V.size())};
+    int S{static_cast<int>(V.size())};
     if (S < L)
     {
       return {{0, 0, boost::none}};
     }
-    ll K{*V[0].value + 1};
+    int K{*V[0].value + 1};
     vector<Element> ans(S / L);
     for (auto &e : ans)
     {
@@ -321,41 +320,24 @@ private:
     {
       ans[(i - L + 1) / L].right += V[i].right;
     }
-    reverse(V.begin(), V.end());
-    reverse(ans.begin(), ans.end());
-    for (auto i = L - 1; i < S; i++)
+    int mod{S % L};
+    for (auto i = 0; i < S - L + 1; i++)
     {
-      ans[(i - L + 1) / L].left += V[i].left;
+      ans[(i + L - mod - 1) / L].left += V[i].left;
     }
-    reverse(ans.begin(), ans.end());
     return ans;
-  }
-
-  void delete_none()
-  {
-    vector<Element> T;
-    int S{static_cast<int>(A.size())};
-    for (auto i = 0; i < S; i++)
-    {
-      if (i < S - 1 && !A[i].value && !A[i + 1].value)
-      {
-        continue;
-      }
-      T.push_back(move(A[i]));
-    }
-    swap(A, T);
   }
 };
 
 int main()
 {
-  ll N, L;
+  int N, L;
   cin >> N >> L;
-  vector<ll> A(N);
+  vector<int> A(N);
   for (auto i = 0; i < N; i++)
   {
     cin >> A[i];
   }
-  Solve solve(N, L, move(A));
+  Solve solve(N, L, A);
   cout << solve.count() << endl;
 }
