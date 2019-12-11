@@ -271,9 +271,6 @@ public:
         }
         else
         {
-#if DEBUG == 1
-          cerr << *e.value << endl;
-#endif
           T.push_back(e);
         }
       }
@@ -365,9 +362,10 @@ private:
   void delete_none()
   {
     vector<Element> T;
-    for (auto i = 0; i < static_cast<int>(A.size()) - 1; i++)
+    int S{static_cast<int>(A.size())};
+    for (auto i = 0; i < S; i++)
     {
-      if (!A[i].value && !A[i + 1].value)
+      if (i < S - 1 && !A[i].value && !A[i + 1].value)
       {
         continue;
       }
