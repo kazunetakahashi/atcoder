@@ -224,33 +224,6 @@ public:
     ll ans{N};
     while (true)
     {
-#if DEBUG == 1
-      cerr << "A = {";
-      for (auto const &e : A)
-      {
-        if (e.value)
-        {
-          cerr << *e.value << ", ";
-        }
-        else
-        {
-          cerr << "n, ";
-        }
-      }
-      cerr << "}" << endl;
-      cerr << "L = {";
-      for (auto const &e : A)
-      {
-        cerr << e.left << ", ";
-      }
-      cerr << "}" << endl;
-      cerr << "R = {";
-      for (auto const &e : A)
-      {
-        cerr << e.right << ", ";
-      }
-      cerr << "}" << endl;
-#endif
       boost::optional<ll> M{min_value()};
       if (!M)
       {
@@ -258,28 +231,27 @@ public:
       }
       vector<Element> T;
       vector<Element> tmp;
-      for (auto const &e : A)
+      for (auto &&e : A)
       {
         if (e.value == M)
         {
-          tmp.push_back(e);
+          tmp.push_back(move(e));
         }
         else if (!tmp.empty())
         {
-          update(ans, T, tmp);
-          T.push_back(e);
+          update(ans, T, move(tmp));
+          T.push_back(move(e));
         }
         else
         {
-          T.push_back(e);
+          T.push_back(move(e));
         }
       }
       if (!tmp.empty())
       {
-        update(ans, T, tmp);
+        update(ans, T, move(tmp));
       }
       swap(A, T);
-      // delete_none();
     }
     return ans;
   }
@@ -305,12 +277,12 @@ private:
     return ans;
   }
 
-  void update(ll &ans, vector<Element> &T, vector<Element> &tmp)
+  void update(ll &ans, vector<Element> &T, vector<Element> &&tmp)
   {
     ans += calc(tmp);
-    tmp = press(tmp);
+    tmp = press(move(tmp));
     ans -= calc(tmp);
-    copy(tmp.begin(), tmp.end(), back_inserter(T));
+    copy(move(tmp).begin(), move(tmp).end(), back_inserter(T));
     tmp.clear();
   }
 
@@ -332,7 +304,7 @@ private:
     return ans;
   }
 
-  vector<Element> press(vector<Element> &V)
+  vector<Element> press(vector<Element> &&V)
   {
     ll S{static_cast<ll>(V.size())};
     if (S < L)
