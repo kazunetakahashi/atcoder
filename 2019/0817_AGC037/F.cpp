@@ -264,7 +264,14 @@ private:
     {
       if (e.value)
       {
-        ch_min(*ans, *e.value);
+        if (ans)
+        {
+          ch_min(*ans, *e.value);
+        }
+        else
+        {
+          ans = e.value;
+        }
       }
     }
     return ans;
