@@ -198,23 +198,26 @@ void No()
 
 struct Element
 {
+  int ind;
   ll left, right;
   boost::optional<int> value; // for C++14
+  bool operator<(Element const &rhs) const
+  {
+    return ind < rhs.ind;
+  }
 };
 
 class Solve
 {
   int N, L;
-  vector<Element> A;
+  set<Element> A;
 
 public:
-  Solve(int N, int L, vector<int> input) : N{N}, L{L}, A(N)
+  Solve(int N, int L, vector<int> input) : N{N}, L{L}
   {
     for (auto i = 0; i < N; i++)
     {
-      A[i].value = input[i];
-      A[i].left = 1;
-      A[i].right = 1;
+      A.insert({i, 1, 1, input[i]});
     }
   }
 
@@ -223,12 +226,17 @@ public:
     ll ans{N};
     while (true)
     {
+#if DEBUG == 1
+      for (auto const &e : A)
+      {
+        cout << "A[" << e.ind << "] = (" << (e.value ? to_string(*e.value) : "n") << ", " << e.left << ", " << e.right << ")" << endl;
+      }
+#endif
       auto M{min_value()};
       if (!M)
       {
         break;
       }
-      vector<Element> T;
       vector<Element> tmp;
       for (auto const &e : A)
       {
@@ -238,19 +246,13 @@ public:
         }
         else if (!tmp.empty())
         {
-          update(ans, T, tmp);
-          T.push_back(e);
-        }
-        else
-        {
-          T.push_back(e);
+          update(ans, tmp);
         }
       }
       if (!tmp.empty())
       {
-        update(ans, T, tmp);
+        update(ans, tmp);
       }
-      swap(A, T);
     }
     return ans;
   }
@@ -276,12 +278,19 @@ private:
     return ans;
   }
 
-  void update(ll &ans, vector<Element> &T, vector<Element> &tmp)
+  void update(ll &ans, vector<Element> &tmp)
   {
+    for (auto const &e : tmp)
+    {
+      A.erase(A.find(e));
+    }
     ans += calc(tmp);
     tmp = press(tmp);
     ans -= calc(tmp);
-    copy(tmp.begin(), tmp.end(), back_inserter(T));
+    for (auto &&e : tmp)
+    {
+      A.insert(move(e));
+    }
     tmp.clear();
   }
 
@@ -305,15 +314,18 @@ private:
 
   vector<Element> press(vector<Element> const &V)
   {
+    assert(!V.empty());
     int S{static_cast<int>(V.size())};
     if (S < L)
     {
-      return {{0, 0, boost::none}};
+      return {{V[0].ind, 0, 0, boost::none}};
     }
+    int index{V[0].ind};
     int K{*V[0].value + 1};
     vector<Element> ans(S / L);
     for (auto &e : ans)
     {
+      e.ind = index++;
       e.value = K;
     }
     for (auto i = L - 1; i < S; i++)
