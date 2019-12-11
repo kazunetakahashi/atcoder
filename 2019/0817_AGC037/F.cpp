@@ -369,7 +369,29 @@ private:
       {
         continue;
       }
-      T.push_back(move(A[i]));
+      if (A[i].value)
+      {
+        ll l{1};
+        for (auto j = i + 1; j < S; j++)
+        {
+          if (A[i].value == A[j].value)
+          {
+            ++l;
+          }
+          else
+          {
+            break;
+          }
+        }
+        if (l >= L)
+        {
+          for (auto j = i; j < i + L; j++)
+          {
+            T.push_back(move(A[i]));
+          }
+        }
+        i += L - 1;
+      }
     }
     swap(A, T);
   }
