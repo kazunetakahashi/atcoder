@@ -205,12 +205,22 @@ struct Element
   {
     return ind < rhs.ind;
   }
+  bool operator==(Element const &rhs) const
+  {
+    return ind == rhs.ind;
+  }
 };
+
+Element make_element(int ind)
+{
+  return Element{ind, 0, 0, boost::none};
+}
 
 class Solve
 {
   int N, L;
   set<Element> A;
+  map<int, vector<int>> indexes; // value -> inds
 
 public:
   Solve(int N, int L, vector<int> input) : N{N}, L{L}
@@ -218,72 +228,51 @@ public:
     for (auto i = 0; i < N; i++)
     {
       A.insert({i, 1, 1, input[i]});
+      indexes[input[i]];
+      indexes[input[i]].push_back(i);
     }
   }
 
   ll count()
   {
     ll ans{N};
-    while (true)
+    while (!indexes.empty())
     {
-#if DEBUG == 1
-      for (auto const &e : A)
-      {
-        cerr << "A[" << e.ind << "] = (" << (e.value ? to_string(*e.value) : "n") << ", " << e.left << ", " << e.right << ")" << endl;
-      }
-#endif
-      auto M{min_value()};
-      if (!M)
-      {
-        break;
-      }
       vector<Element> tmp;
-      for (auto const &e : A)
+      auto &vec{indexes.begin()->second};
+      sort(vec.begin(), vec.end());
+      int min_value{indexes.begin()->first};
+#if DEBUG == 1
+      cerr << "min_value = " << min_value << endl;
+#endif
+      for (auto ind : indexes[min_value])
       {
-        if (e.value == M)
-        {
-          tmp.push_back(e);
-        }
-        else if (!tmp.empty())
+        auto it{A.find(make_element(ind))};
+#if DEBUG == 1
+        cerr << "A[" << it->ind << "] = (" << (it->value ? to_string(*it->value) : "n") << ", " << it->right << ", " << it->left << ")" << endl;
+#endif
+        assert(it != A.end());
+        tmp.push_back(*it);
+        auto old{it};
+        ++it;
+        if (it == A.end() || it->value != min_value)
         {
           update(ans, tmp);
         }
+        A.erase(old);
       }
       if (!tmp.empty())
       {
         update(ans, tmp);
       }
+      indexes.erase(indexes.begin());
     }
     return ans;
   }
 
 private:
-  boost::optional<int> min_value()
-  {
-    boost::optional<int> ans;
-    for (auto const &e : A)
-    {
-      if (e.value)
-      {
-        if (ans)
-        {
-          ch_min(*ans, *e.value);
-        }
-        else
-        {
-          ans = e.value;
-        }
-      }
-    }
-    return ans;
-  }
-
   void update(ll &ans, vector<Element> &tmp)
   {
-    for (auto const &e : tmp)
-    {
-      A.erase(A.find(e));
-    }
     ans += calc(tmp);
     tmp = press(tmp);
     ans -= calc(tmp);
@@ -292,6 +281,9 @@ private:
       A.insert(move(e));
     }
     tmp.clear();
+#if DEBUG == 1
+    cerr << "updated." << endl;
+#endif
   }
 
   ll calc(vector<Element> const &X)
@@ -325,8 +317,11 @@ private:
     vector<Element> ans(S / L);
     for (auto &e : ans)
     {
-      e.ind = index++;
+      e.ind = index;
       e.value = K;
+      indexes[K];
+      indexes[K].push_back(index);
+      ++index;
     }
     for (auto i = L - 1; i < S; i++)
     {
