@@ -303,7 +303,7 @@ private:
     return ans;
   }
 
-  vector<Element> press(vector<Element> &V)
+  vector<Element> press(vector<Element> const &V)
   {
     int S{static_cast<int>(V.size())};
     if (S < L)
