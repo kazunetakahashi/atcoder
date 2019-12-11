@@ -224,6 +224,33 @@ public:
     ll ans{N};
     while (true)
     {
+#if DEBUG == 1
+      cerr << "A = {";
+      for (auto const &e : A)
+      {
+        if (e.value)
+        {
+          cerr << *e.value << ", ";
+        }
+        else
+        {
+          cerr << "n, ";
+        }
+      }
+      cerr << "}" << endl;
+      cerr << "L = {";
+      for (auto const &e : A)
+      {
+        cerr << e.left << ", ";
+      }
+      cerr << "}" << endl;
+      cerr << "R = {";
+      for (auto const &e : A)
+      {
+        cerr << e.right << ", ";
+      }
+      cerr << "}" << endl;
+#endif
       boost::optional<ll> M{min_value()};
       if (!M)
       {
