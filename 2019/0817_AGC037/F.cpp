@@ -229,7 +229,7 @@ public:
 #if DEBUG == 1
       for (auto const &e : A)
       {
-        cout << "A[" << e.ind << "] = (" << (e.value ? to_string(*e.value) : "n") << ", " << e.left << ", " << e.right << ")" << endl;
+        cerr << "A[" << e.ind << "] = (" << (e.value ? to_string(*e.value) : "n") << ", " << e.left << ", " << e.right << ")" << endl;
       }
 #endif
       auto M{min_value()};
