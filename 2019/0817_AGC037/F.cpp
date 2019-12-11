@@ -211,7 +211,7 @@ struct Element
   }
 };
 
-Element make_element(int ind)
+Element make_element(int ind) // helper function avoiding contaminating the default constructor.
 {
   return Element{ind, 0, 0, boost::none};
 }
@@ -242,18 +242,12 @@ public:
       auto &vec{indexes.begin()->second};
       sort(vec.begin(), vec.end());
       int min_value{indexes.begin()->first};
-#if DEBUG == 1
-      cerr << "min_value = " << min_value << endl;
-#endif
-      for (auto ind : indexes[min_value])
+      for (auto ind : indexes[min_value]) // in order not to touch all elements of A.
       {
         auto it{A.find(make_element(ind))};
-#if DEBUG == 1
-        cerr << "A[" << it->ind << "] = (" << (it->value ? to_string(*it->value) : "n") << ", " << it->right << ", " << it->left << ")" << endl;
-#endif
-        assert(it != A.end());
+        assert(it != A.end()); // it must be found.
         tmp.push_back(*it);
-        it = A.erase(it);
+        it = A.erase(it); // We must erase elements before inserting pressed elements. Fortunately `erase` returns the next iterator.
         if (it == A.end() || it->value != min_value)
         {
           update(ans, tmp);
@@ -269,8 +263,7 @@ public:
   }
 
 private:
-  void
-  update(ll &ans, vector<Element> &tmp)
+  void update(ll &ans, vector<Element> &tmp)
   {
     ans += calc(tmp);
     tmp = press(tmp);
@@ -280,9 +273,6 @@ private:
       A.insert(e);
     }
     tmp.clear();
-#if DEBUG == 1
-    cerr << "updated." << endl;
-#endif
   }
 
   ll calc(vector<Element> const &X)
