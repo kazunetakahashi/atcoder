@@ -180,7 +180,7 @@ using combination = Combination<MOD, MAX_SIZE>;
 ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
 // ----- frequently used constexpr -----
 // constexpr double epsilon{1e-10};
-constexpr ll infty{1000000000000000LL};
+// constexpr ll infty{1000000000000000LL};
 // constexpr int dx[4] = {1, 0, -1, 0};
 // constexpr int dy[4] = {0, 1, 0, -1};
 // ----- Yes() and No() -----
@@ -253,13 +253,11 @@ public:
 #endif
         assert(it != A.end());
         tmp.push_back(*it);
-        auto old{it};
-        ++it;
+        it = A.erase(it);
         if (it == A.end() || it->value != min_value)
         {
           update(ans, tmp);
         }
-        A.erase(old);
       }
       if (!tmp.empty())
       {
@@ -271,14 +269,15 @@ public:
   }
 
 private:
-  void update(ll &ans, vector<Element> &tmp)
+  void
+  update(ll &ans, vector<Element> &tmp)
   {
     ans += calc(tmp);
     tmp = press(tmp);
     ans -= calc(tmp);
-    for (auto &&e : tmp)
+    for (auto e : tmp)
     {
-      A.insert(move(e));
+      A.insert(e);
     }
     tmp.clear();
 #if DEBUG == 1
