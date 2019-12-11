@@ -279,7 +279,7 @@ public:
         update(ans, T, tmp);
       }
       swap(A, T);
-      delete_none();
+      // delete_none();
     }
     return ans;
   }
@@ -369,29 +369,7 @@ private:
       {
         continue;
       }
-      if (A[i].value)
-      {
-        ll l{1};
-        for (auto j = i + 1; j < S; j++)
-        {
-          if (A[i].value == A[j].value)
-          {
-            ++l;
-          }
-          else
-          {
-            break;
-          }
-        }
-        if (l >= L)
-        {
-          for (auto j = i; j < i + L; j++)
-          {
-            T.push_back(move(A[i]));
-          }
-        }
-        i += L - 1;
-      }
+      T.push_back(move(A[i]));
     }
     swap(A, T);
   }
