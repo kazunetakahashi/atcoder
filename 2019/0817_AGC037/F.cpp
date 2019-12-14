@@ -233,34 +233,7 @@ public:
     }
   }
 
-  ll count()
-  {
-    ll ans{N};
-    while (!indexes.empty())
-    {
-      vector<Element> tmp;
-      auto &vec{indexes.begin()->second};
-      sort(vec.begin(), vec.end());
-      int min_value{indexes.begin()->first};
-      for (auto ind : indexes[min_value]) // in order not to touch all elements of A.
-      {
-        auto it{A.find(make_element(ind))};
-        assert(it != A.end()); // it must be found.
-        tmp.push_back(*it);
-        it = A.erase(it); // We must erase elements before inserting pressed elements. Fortunately `erase` returns the next iterator.
-        if (it == A.end() || it->value != min_value)
-        {
-          update(ans, tmp);
-        }
-      }
-      if (!tmp.empty())
-      {
-        update(ans, tmp);
-      }
-      indexes.erase(indexes.begin());
-    }
-    return ans;
-  }
+  ll count();
 
 private:
   void update(ll &ans, vector<Element> &tmp)
@@ -324,6 +297,35 @@ private:
     return ans;
   }
 };
+
+ll Solve::count()
+{
+  ll ans{N};
+  while (!indexes.empty())
+  {
+    vector<Element> tmp;
+    auto &vec{indexes.begin()->second};
+    sort(vec.begin(), vec.end());
+    int min_value{indexes.begin()->first};
+    for (auto ind : indexes[min_value]) // in order not to touch all elements of A.
+    {
+      auto it{A.find(make_element(ind))};
+      assert(it != A.end()); // it must be found.
+      tmp.push_back(*it);
+      it = A.erase(it); // We must erase elements before inserting pressed elements. Fortunately `erase` returns the next iterator.
+      if (it == A.end() || it->value != min_value)
+      {
+        update(ans, tmp);
+      }
+    }
+    if (!tmp.empty())
+    {
+      update(ans, tmp);
+    }
+    indexes.erase(indexes.begin());
+  }
+  return ans;
+}
 
 int main()
 {
