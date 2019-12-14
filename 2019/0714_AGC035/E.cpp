@@ -107,12 +107,7 @@ ostream &operator<<(ostream &stream, const Mint &a) { return stream << a.x; }
 // I wrote this code referring to yataka1999-san's solution
 // https://atcoder.jp/contests/agc035/submissions/6380939
 
-constexpr int MAX_SIZE{160};
-
-Mint dp[MAX_SIZE][MAX_SIZE];
 Mint solve_even(ll N, ll K);
-
-Mint DP[MAX_SIZE][MAX_SIZE][MAX_SIZE][MAX_SIZE];
 Mint solve_odd(ll N, ll K);
 
 Mint solve_even(ll N, ll K)
@@ -121,24 +116,26 @@ Mint solve_even(ll N, ll K)
   for (auto t = 0LL; t < 2; t++)
   {
     auto L{(N - t + 1) / 2};
-    fill(&dp[0][0], &dp[0][0] + MAX_SIZE * MAX_SIZE, Mint{0});
-    dp[0][0] = 1;
+    vector<Mint> to(L + 1), from(L + 1);
+    to[0] = 1;
     for (auto i = 0LL; i < L; i++)
     {
+      swap(to, from);
+      to = vector<Mint>(L + 1);
       for (auto j = 0LL; j <= i; j++)
       {
-        dp[i + 1][j + 1] += dp[i][j];
-        dp[i + 1][0] += dp[i][j];
+        to[j + 1] += from[j];
+        to[0] += from[j];
       }
       for (auto j = K / 2 + 1; j <= i + 1; j++)
       {
-        dp[i + 1][j] = 0;
+        to[j] = 0;
       }
     }
     Mint sum{0};
     for (auto j = 0LL; j <= L; j++)
     {
-      sum += dp[L][j];
+      sum += to[j];
     }
     ans *= sum;
   }
@@ -147,9 +144,13 @@ Mint solve_even(ll N, ll K)
 
 Mint solve_odd(ll N, ll K)
 {
-  DP[0][0][0][N] = 1;
+  vector<vector<vector<Mint>>> from(N + 1, vector<vector<Mint>>(N + 1, vector<Mint>(N + 1)));
+  vector<vector<vector<Mint>>> to(N + 1, vector<vector<Mint>>(N + 1, vector<Mint>(N + 1)));
+  to[0][0][N] = 1;
   for (auto i = 0LL; i < N; i++)
   {
+    swap(to, from);
+    to = vector<vector<vector<Mint>>>(N + 1, vector<vector<Mint>>(N + 1, vector<Mint>(N + 1)));
     auto even{i / 2 + 1};
     auto odd{(i + 1) / 2};
     for (auto j = 0LL; j <= even; j++)
@@ -158,16 +159,16 @@ Mint solve_odd(ll N, ll K)
       {
         for (auto t = i; t <= N; t++)
         {
-          if (DP[i][j][k][t] == 0)
+          if (from[j][k][t] == 0)
           {
             continue;
           }
           auto dst{(t % 2 == i % 2) ? N : t};
-          DP[i + 1][0][j][dst] += DP[i][j][k][t];
+          to[0][j][dst] += from[j][k][t];
           if (t != i)
           {
             dst = j >= K / 2 + 1 ? min(t, i - 2 * k + K) : t;
-            DP[i + 1][k + 1][j][dst] += DP[i][j][k][t];
+            to[k + 1][j][dst] += from[j][k][t];
           }
         }
       }
@@ -178,7 +179,7 @@ Mint solve_odd(ll N, ll K)
   {
     for (auto k = 0LL; k <= N; k++)
     {
-      ans += DP[N][j][k][N];
+      ans += to[j][k][N];
     }
   }
   return ans;
