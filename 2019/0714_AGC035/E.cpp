@@ -138,7 +138,7 @@ Mint solve_even(ll N, ll K)
     Mint sum{0};
     for (auto j = 0LL; j <= L; j++)
     {
-      sum += dp[N][j];
+      sum += dp[L][j];
     }
     ans *= sum;
   }
