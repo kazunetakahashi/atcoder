@@ -127,7 +127,7 @@ Mint solve_even(ll N, ll K)
       for (auto j = 0LL; j <= i; j++)
       {
         dp[i + 1][j + 1] += dp[i][j];
-        dp[i][0] += dp[i][j];
+        dp[i + 1][0] += dp[i][j];
       }
       for (auto j = K / 2 + 1; j <= i + 1; j++)
       {
