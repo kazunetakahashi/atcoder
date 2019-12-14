@@ -121,6 +121,7 @@ Mint solve_even(ll N, ll K)
   for (auto t = 0LL; t < 2; t++)
   {
     auto L{(N - t + 1) / 2};
+    fill(&dp[0][0], &dp[0][0] + MAX_SIZE * MAX_SIZE, Mint{0});
     dp[0][0] = 1;
     for (auto i = 0LL; i < L; i++)
     {
@@ -135,7 +136,7 @@ Mint solve_even(ll N, ll K)
       }
     }
     Mint sum{0};
-    for (int j = 0LL; j <= L; j++)
+    for (auto j = 0LL; j <= L; j++)
     {
       sum += dp[N][j];
     }
@@ -173,9 +174,9 @@ Mint solve_odd(ll N, ll K)
     }
   }
   Mint ans{0};
-  for (int j = 0; j <= N; j++)
+  for (auto j = 0LL; j <= N; j++)
   {
-    for (int k = 0; k <= N; k++)
+    for (auto k = 0LL; k <= N; k++)
     {
       ans += DP[N][j][k][N];
     }
