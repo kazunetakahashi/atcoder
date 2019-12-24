@@ -198,6 +198,17 @@ void No()
 int H, W;
 vector<string> S;
 
+void stamp(int x, int y)
+{
+  for (auto i = x; i < min(H, x + H / 2); i++)
+  {
+    for (auto j = y; j < min(W, y + W / 2); j++)
+    {
+      S[i][j] = '#';
+    }
+  }
+}
+
 int main()
 {
   cin >> H >> W;
@@ -246,5 +257,18 @@ int main()
   {
     Yes(2);
   }
-  assert(false);
+  int cnt{0};
+  for (auto k = 0; k < H + W - 1; k++)
+  {
+    for (auto i = 0; i <= k; i++)
+    {
+      auto j = k - i;
+      if (i < H && j < W && S[i][j] == '.')
+      {
+        ++cnt;
+        stamp(i, j);
+      }
+    }
+  }
+  cout << cnt << endl;
 }
