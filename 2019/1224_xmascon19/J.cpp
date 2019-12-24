@@ -205,8 +205,8 @@ int main()
   }
   for (auto i = 0; i < N; i++)
   {
-    int ind{0};
-    for (auto j = 0u; j < A[i].size() && ind < B[i].size() && j++)
+    size_t ind{0};
+    for (auto j = 0u; j < A[i].size() && ind < B[i].size(); j++)
     {
       if (A[i][j] == B[i][ind])
       {
