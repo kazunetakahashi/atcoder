@@ -200,11 +200,17 @@ vector<string> S;
 
 void stamp(int x, int y)
 {
+#if DEBUG == 1
+  cerr << "stamp(" << x << ", " << y << ")" << endl;
+#endif
   for (auto i = x; i < min(H, x + H / 2); i++)
   {
     for (auto j = y; j < min(W, y + W / 2); j++)
     {
       S[i][j] = '#';
+#if DEBUG == 1
+      cerr << "S[" << i << "][" << j << "]" << endl;
+#endif
     }
   }
 }
