@@ -270,5 +270,9 @@ int main()
       }
     }
   }
+  if (cnt > 4)
+  {
+    assert(false);
+  }
   cout << cnt << endl;
 }
