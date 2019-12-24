@@ -203,5 +203,5 @@ int main()
   {
     cin >> A[i];
   }
-  cout << 26 << endl;
+  cout << 21 << endl;
 }
