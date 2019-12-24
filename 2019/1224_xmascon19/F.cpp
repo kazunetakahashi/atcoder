@@ -200,17 +200,11 @@ vector<string> S;
 
 void stamp(int x, int y)
 {
-#if DEBUG == 1
-  cerr << "stamp(" << x << ", " << y << ")" << endl;
-#endif
   for (auto i = x; i < min(H, x + H / 2); i++)
   {
     for (auto j = y; j < min(W, y + W / 2); j++)
     {
       S[i][j] = '#';
-#if DEBUG == 1
-      cerr << "S[" << i << "][" << j << "]" << endl;
-#endif
     }
   }
 }
@@ -273,6 +267,23 @@ int main()
       {
         ++cnt;
         stamp(i, j);
+      }
+      auto ni = H - 1 - i;
+      auto nj = W - 1 - j;
+      if (ni < H && j < W && S[ni][j] == '.')
+      {
+        ++cnt;
+        stamp(ni - H / 2 + 1, j);
+      }
+      if (i < H && nj < W && S[i][nj] == '.')
+      {
+        ++cnt;
+        stamp(i, nj - W / 2 + 1);
+      }
+      if (ni < H && nj < W && S[ni][nj] == '.')
+      {
+        ++cnt;
+        stamp(ni - H / 2 + 1, nj - W / 2 + 1);
       }
     }
   }
