@@ -270,24 +270,28 @@ int main()
     for (auto i = 0; i <= k; i++)
     {
       auto j = k - i;
-      if (i < H && j < W && S[i][j] == '.')
+      if (!(i < H && j < W))
+      {
+        continue;
+      }
+      if (0 <= i && i < H && 0 <= j && j < W && S[i][j] == '.')
       {
         ++cnt;
         stamp(i, j);
       }
       auto ni = H - 1 - i;
       auto nj = W - 1 - j;
-      if (ni < H && j < W && S[ni][j] == '.')
+      if (0 <= ni && ni < H && 0 <= j && j < W && S[ni][j] == '.')
       {
         ++cnt;
         stamp(ni - H / 2 + 1, j);
       }
-      if (i < H && nj < W && S[i][nj] == '.')
+      if (0 <= i && i < H && 0 <= nj && nj < W && S[i][nj] == '.')
       {
         ++cnt;
         stamp(i, nj - W / 2 + 1);
       }
-      if (ni < H && nj < W && S[ni][nj] == '.')
+      if (0 <= ni && ni < H && 0 <= nj && nj < W && S[ni][nj] == '.')
       {
         ++cnt;
         stamp(ni - H / 2 + 1, nj - W / 2 + 1);
