@@ -311,6 +311,10 @@ public:
       {
         if (!G[x][y])
         {
+#if DEBUG == 1
+          cerr << "(" << x << ", " << y << ")" << endl;
+          cerr << "add_edge(" << calc_k_A(x, y) << ", " << calc_k_B(x, y) << ")" << endl;
+#endif
           graph.add_edge(calc_k_A(x, y), calc_k_B(x, y));
         }
       }
