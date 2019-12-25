@@ -283,10 +283,7 @@ private:
 
   vector<string> stump(vector<string> const &A, int x, int y)
   {
-#if DEBUG == 1
-    cerr << "x = " << x << ", y = " << y << endl;
-#endif
-    assert(0 <= x && x + H / 2 < H && 0 <= y && y + W / 2 < W);
+    assert(0 <= x && x + H / 2 <= H && 0 <= y && y + W / 2 <= W);
     vector<string> B(A);
     for (auto i = x; i < x + H / 2; i++)
     {
