@@ -247,6 +247,9 @@ public:
     {
       e->used = true;
     }
+#if DEBUG == 1
+    cerr << "res = " << res << endl;
+#endif
     return res;
   }
 
@@ -301,9 +304,6 @@ public:
       {
         if (S[i][j] == '.')
         {
-#if DEBUG == 1
-          cerr << "G[" << i % C << "][" << j % C << "] = false." << endl;
-#endif
           G[i % C][j % C] = false;
         }
       }
@@ -314,10 +314,6 @@ public:
       {
         if (!G[x][y])
         {
-#if DEBUG == 1
-          cerr << "(" << x << ", " << y << ")" << endl;
-          cerr << "add_edge(" << calc_k_A(x, y) << ", " << calc_k_B(x, y) << ")" << endl;
-#endif
           graph.add_edge(calc_k_A(x, y), calc_k_B(x, y));
         }
       }
