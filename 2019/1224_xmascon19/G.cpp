@@ -231,6 +231,9 @@ public:
   int bipartite_matching()
   {
     int res{0};
+#if DEBUG == 1
+    cerr << "res = " << res << endl;
+#endif
     fill(match.begin(), match.end(), nullptr);
     for (auto v = 0; v < N; v++)
     {
@@ -247,9 +250,6 @@ public:
     {
       e->used = true;
     }
-#if DEBUG == 1
-    cerr << "res = " << res << endl;
-#endif
     return res;
   }
 
