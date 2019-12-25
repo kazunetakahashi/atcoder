@@ -234,9 +234,6 @@ public:
     fill(match.begin(), match.end(), nullptr);
     for (auto v = 0; v < N; v++)
     {
-#if DEBUG == 1
-      cerr << "v = " << v << endl;
-#endif
       if (!match[v])
       {
         fill(used.begin(), used.end(), false);
@@ -246,6 +243,9 @@ public:
         }
       }
     }
+#if DEBUG == 1
+    cerr << "res = " << res << endl;
+#endif
     for (auto &e : match)
     {
       e->used = true;
