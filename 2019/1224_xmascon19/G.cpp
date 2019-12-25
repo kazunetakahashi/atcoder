@@ -245,10 +245,10 @@ public:
     }
     for (auto &e : match)
     {
-#if DEBUG == 1
-      cerr << "e->id = " << e->id << endl;
-#endif
-      e->used = true;
+      if (e)
+      {
+        e->used = true;
+      }
     }
     return res;
   }
