@@ -301,6 +301,9 @@ public:
       {
         if (S[i][j] == '.')
         {
+#if DEBUG == 1
+          cerr << "G[" << i % C << "][" << j % C << "] = false." << endl;
+#endif
           G[i % C][j % C] = false;
         }
       }
