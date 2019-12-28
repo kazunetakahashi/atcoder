@@ -199,19 +199,27 @@ class Solve
 {
   ll N, M, V, P;
   vector<ll> A;
+  vector<ll> sum;
 
 public:
-  Solve(ll N, ll M, ll V, ll P, vector<ll> A) : N{N}, M{M}, V{V}, P{P}, A(A) {}
+  Solve(ll N, ll M, ll V, ll P, vector<ll> A) : N{N}, M{M}, V{V}, P{P}, A(A), sum(N + 1, 0LL)
+  {
+    sum[P - 1] = A[P - 1];
+    for (auto i = P; i < N; i++)
+    {
+      sum[P] = A[P] + sum[P - 1];
+    }
+  }
 
   ll answer()
   {
     if (V <= P)
     {
-      return answer0() + P;
+      return answer0();
     }
     else
     {
-      return answer1() + P;
+      return answer1();
     }
   }
 
@@ -226,25 +234,36 @@ private:
         ans++;
       }
     }
-    return ans;
+    return ans + P;
   }
 
   ll answer1()
   {
-    ll S{0};
-    ll ans{0};
-    for (auto i = P - 1; i < N; i++)
+    ll ok{P - 1};
+    ll ng{N};
+    if (abs(ok - ng) > 1)
     {
-      S += A[i];
-    }
-    for (auto i = P; i < N; i++)
-    {
-      if ((N - (P - 1)) * (A[i] + M) >= S + M + (V - P) * M)
+      ll t{(ok + ng) / 2};
+      if (test(t))
       {
-        ans++;
+        ok = t;
+      }
+      else
+      {
+        ng = t;
       }
     }
-    return ans;
+    return ok + 1;
+  }
+
+  bool test(ll i)
+  {
+    ll K{V - (P - 1) - (N - i)};
+    if (K <= 0)
+    {
+      return A[i] + M >= A[P - 1];
+    }
+    return (A[i] + M) * (i - (P - 1)) >= sum[i - 1] + K * M;
   }
 };
 
