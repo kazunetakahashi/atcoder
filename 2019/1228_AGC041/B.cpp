@@ -244,9 +244,6 @@ private:
     while (abs(ok - ng) > 1)
     {
       ll t{(ok + ng) / 2};
-#if DEBUG == 1
-      cerr << "t = " << t << endl;
-#endif
       if (test(t))
       {
         ok = t;
@@ -262,6 +259,9 @@ private:
   bool test(ll i)
   {
     ll K{V - (P - 1) - (N - i)};
+#if DEBUG == 1
+    cerr << "i = " << i << ", K = " << K << endl;
+#endif
     if (K <= 0)
     {
 #if DEBUG == 1
