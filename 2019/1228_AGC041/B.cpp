@@ -261,6 +261,13 @@ private:
     ll K{V - (P - 1) - (N - i)};
     if (K <= 0)
     {
+#if DEBUG == 1
+      cerr << "i = " << i << endl;
+      cerr << "A[" << i << "] = " << A[i] << endl;
+      cerr << "M = " << M << endl;
+      cerr << "P - 1 = " << P - 1 << endl;
+      cerr << "A[" << P - 1 << "] = " << A[P - 1] << endl;
+#endif
       return A[i] + M >= A[P - 1];
     }
     return (A[i] + M) * (i - (P - 1)) >= sum[i - 1] + K * M;
