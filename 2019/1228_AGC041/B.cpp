@@ -239,6 +239,7 @@ private:
 
   ll answer1()
   {
+    assert(false);
     ll ok{P - 1};
     ll ng{N};
     while (abs(ok - ng) > 1)
@@ -265,10 +266,6 @@ private:
     if (K <= 0)
     {
       return A[i] + M >= A[P - 1];
-    }
-    else if (i - (P - 1) <= K)
-    {
-      return false;
     }
 #if DEBUG == 1
     cerr << "A[" << i << "] = " << A[i] << endl;
