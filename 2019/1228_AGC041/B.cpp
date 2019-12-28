@@ -207,7 +207,7 @@ public:
     sum[P - 1] = A[P - 1];
     for (auto i = P; i < N; i++)
     {
-      sum[P] = A[P] + sum[P - 1];
+      sum[i] = A[i] + sum[i - 1];
     }
   }
 
