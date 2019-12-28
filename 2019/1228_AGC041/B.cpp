@@ -245,7 +245,8 @@ private:
 #if DEBUG == 1
     for (auto i = P - 1; i < N; i++)
     {
-      cerr << "text(" << i << ") = " << test(i) << endl;
+      bool x = test(i);
+      cerr << "text(" << i << ") = " << x << endl;
     }
 #endif
     while (abs(ok - ng) > 1)
