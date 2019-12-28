@@ -273,7 +273,7 @@ private:
     cerr << "i - (P - 1) = " << i - (P - 1) << endl;
     cerr << "sum[" << i - 1 << "] = " << sum[i - 1] << endl;
     cerr << "K * M = " << K * M << endl;
-    cerr << (A[i] + M) * (i - (P - 1)) << " >=? " << sum[i - 1] + K * M;
+    cerr << (A[i] + M) * (i - (P - 1)) << " >=? " << sum[i - 1] + K * M << endl;
 #endif
     return (A[i] + M) * (i - (P - 1)) >= sum[i - 1] + K * M;
   }
