@@ -190,7 +190,7 @@ void Yes()
 }
 void No()
 {
-  cout << "No" << endl;
+  cout << "-1" << endl;
   exit(0);
 }
 
@@ -269,10 +269,30 @@ int main()
     cin >> x >> y;
     V[i] = point(x, y);
   }
-  reverse(V.begin(), V.end());
   assert(T == 1);
+  // decide
+  UnionFind tree(N + 1);
+  tree.merge(0, 1);
+  int finale{0};
+  for (auto i = 0; i < M; i++)
+  {
+    int x, y;
+    tie(x, y) = V[i];
+    tree.merge(x, y);
+    if (tree.size(0) == N + 1)
+    {
+      finale = x;
+      break;
+    }
+  }
+  if (finale == 0)
+  {
+    No();
+  }
+  // create
+  reverse(V.begin(), V.end());
   UnionFind uf(N + 1);
-  uf.merge(0, get<0>(V[0]));
+  uf.merge(0, finale);
   stringstream SS;
   for (auto i = 0; i < M; i++)
   {
@@ -290,17 +310,11 @@ int main()
     }
     else
     {
+
       SS << 'v';
     }
   }
-  if (uf.size(0) == N + 1)
-  {
-    string T{SS.str()};
-    reverse(T.begin(), T.end());
-    cout << T << endl;
-  }
-  else
-  {
-    cout << -1 << endl;
-  }
+  string S{SS.str()};
+  reverse(S.begin(), S.end());
+  cout << S << endl;
 }
