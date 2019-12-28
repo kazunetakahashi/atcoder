@@ -241,7 +241,7 @@ private:
   {
     ll ok{P - 1};
     ll ng{N};
-    if (abs(ok - ng) > 1)
+    while (abs(ok - ng) > 1)
     {
       ll t{(ok + ng) / 2};
 #if DEBUG == 1
