@@ -226,7 +226,7 @@ public:
         ng = t;
       }
     }
-    return ok;
+    return ok + 1;
   }
 
   ll test(int X)
