@@ -258,7 +258,7 @@ private:
 
   bool test(ll i)
   {
-    ll K{V - (P - 1) - (N - i)};
+    ll K{V - (P - 1) - (N - i + 1)};
 #if DEBUG == 1
     cerr << "i = " << i << ", K = " << K << endl;
 #endif
