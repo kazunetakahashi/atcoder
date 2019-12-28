@@ -226,6 +226,7 @@ public:
 private:
   ll answer0()
   {
+    // correct
     ll ans{0};
     for (auto i = P; i < N; i++)
     {
@@ -239,7 +240,6 @@ private:
 
   ll answer1()
   {
-    assert(false);
     ll ok{P - 1};
     ll ng{N};
     while (abs(ok - ng) > 1)
@@ -273,6 +273,7 @@ private:
     cerr << "i - (P - 1) = " << i - (P - 1) << endl;
     cerr << "sum[" << i - 1 << "] = " << sum[i - 1] << endl;
     cerr << "K * M = " << K * M << endl;
+    cerr << (A[i] + M) * (i - (P - 1)) << " >=? " << sum[i - 1] + K * M;
 #endif
     return (A[i] + M) * (i - (P - 1)) >= sum[i - 1] + K * M;
   }
@@ -289,5 +290,5 @@ int main()
   }
   sort(A.rbegin(), A.rend());
   Solve solve(N, M, V, P, A);
-  cout << solve.answer() << endl;
+  cerr << solve.answer() << endl;
 }
