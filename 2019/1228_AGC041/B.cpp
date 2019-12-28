@@ -257,7 +257,7 @@ int main()
   {
     cin >> A[i];
   }
-  sort(A.begin(), A.end());
+  sort(A.rbegin(), A.rend());
   Solve solve(N, M, V, P, A);
   cout << solve.answer() << endl;
 }
