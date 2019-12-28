@@ -242,6 +242,12 @@ private:
   {
     ll ok{P - 1};
     ll ng{N};
+#if DEBUG == 1
+    for (auto i = P - 1; i < N; i++)
+    {
+      cerr << "text(" << i << ") = " << test(i) << endl;
+    }
+#endif
     while (abs(ok - ng) > 1)
     {
       ll t{(ok + ng) / 2};
