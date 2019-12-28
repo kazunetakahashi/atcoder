@@ -266,7 +266,7 @@ private:
     {
       return A[i] + M >= A[P - 1];
     }
-    else if (i - (P - 1) >= K)
+    else if (i - (P - 1) > K)
     {
       return false;
     }
