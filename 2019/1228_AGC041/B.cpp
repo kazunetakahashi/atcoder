@@ -213,42 +213,7 @@ public:
 
   ll answer()
   {
-    if (V <= P)
-    {
-      return answer0();
-    }
-    else
-    {
-      return answer1();
-    }
-  }
-
-private:
-  ll answer0()
-  {
-    // correct
-    ll ans{0};
-    for (auto i = P; i < N; i++)
-    {
-      if (A[P - 1] <= A[i] + M)
-      {
-        ans++;
-      }
-    }
-    return ans + P;
-  }
-
-  ll answer1()
-  {
-    ll ok{P - 1};
-    ll ng{N};
-#if DEBUG == 1
-    for (auto i = P - 1; i < N; i++)
-    {
-      bool x = test(i);
-      cerr << "text(" << i << ") = " << x << endl;
-    }
-#endif
+    ll ok{-1}, ng{N};
     while (abs(ok - ng) > 1)
     {
       ll t{(ok + ng) / 2};
@@ -261,28 +226,40 @@ private:
         ng = t;
       }
     }
-    return ok + 1;
+    return ok;
   }
 
-  bool test(ll i)
+  ll test(int X)
   {
-    ll K{V - (P - 1) - (N - i)};
-#if DEBUG == 1
-    cerr << "i = " << i << ", K = " << K << endl;
-#endif
-    if (K <= 0)
+    if (X < P)
     {
-      return A[i] + M >= A[P - 1];
+      return true;
     }
-#if DEBUG == 1
-    cerr << "A[" << i << "] = " << A[i] << endl;
-    cerr << "M = " << M << endl;
-    cerr << "i - (P - 1) = " << i - (P - 1) << endl;
-    cerr << "sum[" << i - 1 << "] = " << sum[i - 1] << endl;
-    cerr << "K * M = " << K * M << endl;
-    cerr << (A[i] + M) * (i - (P - 1)) << " >=? " << sum[i - 1] + K * M << endl;
-#endif
-    return (A[i] + M) * (i - (P - 1)) >= sum[i - 1] + K * M;
+    if (A[X] + M < A[P - 1])
+    {
+      return false;
+    }
+    ll sum{0LL};
+    for (auto i = 0; i < N; i++)
+    {
+      if (i < P - 1)
+      {
+        sum += M;
+      }
+      else if (i == X)
+      {
+        sum += M;
+      }
+      else if (i > X)
+      {
+        sum += M;
+      }
+      else
+      {
+        sum += A[X] + M - A[i];
+      }
+    }
+    return (sum >= M * V);
   }
 };
 
