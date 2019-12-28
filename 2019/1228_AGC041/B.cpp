@@ -274,5 +274,5 @@ int main()
   }
   sort(A.rbegin(), A.rend());
   Solve solve(N, M, V, P, A);
-  cerr << solve.answer() << endl;
+  cout << solve.answer() << endl;
 }
