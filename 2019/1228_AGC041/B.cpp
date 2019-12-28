@@ -253,6 +253,10 @@ private:
         ng = t;
       }
     }
+    while (ok + 1 < N && A[ok] == A[ok + 1])
+    {
+      ++ok;
+    }
     return ok + 1;
   }
 
