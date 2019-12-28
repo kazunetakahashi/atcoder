@@ -244,6 +244,9 @@ private:
     if (abs(ok - ng) > 1)
     {
       ll t{(ok + ng) / 2};
+#if DEBUG == 1
+      cerr << "t = " << t << endl;
+#endif
       if (test(t))
       {
         ok = t;
