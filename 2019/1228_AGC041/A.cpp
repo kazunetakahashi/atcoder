@@ -210,5 +210,5 @@ int main()
   cin >> N >> A >> B;
   A--;
   B--;
-  cout << min(calc(A, B), calc(B, A)) << endl;
+  cout << min(calc(A, B), calc(N - 1 - B, N - 1 - A)) << endl;
 }
