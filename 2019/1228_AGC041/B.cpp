@@ -199,17 +199,9 @@ class Solve
 {
   ll N, M, V, P;
   vector<ll> A;
-  vector<ll> sum;
 
 public:
-  Solve(ll N, ll M, ll V, ll P, vector<ll> A) : N{N}, M{M}, V{V}, P{P}, A(A), sum(N + 1, 0LL)
-  {
-    sum[P - 1] = A[P - 1];
-    for (auto i = P; i < N; i++)
-    {
-      sum[i] = A[i] + sum[i - 1];
-    }
-  }
+  Solve(ll N, ll M, ll V, ll P, vector<ll> A) : N{N}, M{M}, V{V}, P{P}, A(A) {}
 
   ll answer()
   {
