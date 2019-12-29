@@ -198,12 +198,12 @@ int main()
 {
   int N, K, R, S, P;
   cin >> N >> K >> R >> S >> P;
+#if DEBUG == 1
+  cerr << "N = " << N << endl;
+#endif
   string T;
   cin >> T;
   int ans{0};
-#if DEBUG == 1
-  cerr << "AAA" << endl;
-#endif
   for (auto i = 0; i < N; i++)
   {
     if (i - K >= 0 && T[i - K] == T[i])
