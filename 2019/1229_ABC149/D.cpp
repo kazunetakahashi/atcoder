@@ -197,10 +197,10 @@ void No()
 int main()
 {
   int N, K, R, S, P;
-  cin >> N >> K >> R >> S >> P;
 #if DEBUG == 1
-  cerr << "N = " << N << endl;
+  cerr << "aaa" << endl;
 #endif
+  cin >> N >> K >> R >> S >> P;
   string T;
   cin >> T;
   int ans{0};
