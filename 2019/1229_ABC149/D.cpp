@@ -201,6 +201,9 @@ int main()
   string T;
   cin >> T;
   int ans{0};
+#if DEBUG == 1
+  cerr << "AAA" << endl;
+#endif
   for (auto i = 0; i < N; i++)
   {
     if (i - K >= 0 && T[i - K] == T[i])
