@@ -215,7 +215,7 @@ public:
   {
     if (M == N * N)
     {
-      return 2 * sum[N];
+      return 2 * N * sum[N];
     }
     ll b{binary_mark()};
     ll ans{calc_sum(b)};
