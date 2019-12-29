@@ -205,6 +205,10 @@ int main()
   {
     if (i - K >= 0 && T[i - K] == T[i])
     {
+#if DEBUG == 1
+      cerr << "T[" << i << "] = " << T[i] << endl;
+      cerr << "T[" << i - K << "] = " << T[i - K] << endl;
+#endif
       continue;
     }
     else if (T[i] == 'r')
