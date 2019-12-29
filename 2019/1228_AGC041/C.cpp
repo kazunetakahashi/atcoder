@@ -301,7 +301,7 @@ int main()
 {
   int N;
   cin >> N;
-  assert(N != 8);
+  assert(N != 9);
   Domino domino{N};
   domino.flush();
 }
