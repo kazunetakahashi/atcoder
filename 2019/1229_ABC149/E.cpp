@@ -219,6 +219,10 @@ public:
     }
     ll b{binary_mark()};
     ll ans{calc_sum(b)};
+#if DEBUG == 1
+    cerr << "b = " << b << endl;
+    cerr << "ans = " << ans << endl;
+#endif
     ans += (M - count(b)) * (b - 1);
     return ans;
   }
