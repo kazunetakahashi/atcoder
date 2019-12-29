@@ -223,7 +223,7 @@ public:
     cerr << "b = " << b << endl;
     cerr << "ans = " << ans << endl;
 #endif
-    if (M - count(b) >= 0)
+    if (M - count(b) > 0)
     {
       assert(false);
     }
