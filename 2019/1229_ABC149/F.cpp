@@ -215,6 +215,7 @@ public:
     {
       ans += tmp[i];
     }
+    ans /= two.power(N);
   }
 
   mint answer()
