@@ -196,9 +196,6 @@ void No()
 // ----- main() -----
 int main()
 {
-#if DEBUG == 1
-  cerr << "aaa" << endl;
-#endif
   int N, K, R, S, P;
   cin >> N >> K >> R >> S >> P;
   string T;
