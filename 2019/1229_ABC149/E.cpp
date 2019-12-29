@@ -215,6 +215,7 @@ public:
   {
     if (M == N * N)
     {
+      assert(false);
       return sum[N] * sum[N];
     }
     ll b{binary_mark()};
@@ -223,10 +224,6 @@ public:
     cerr << "b = " << b << endl;
     cerr << "ans = " << ans << endl;
 #endif
-    if (M - count(b) > 0)
-    {
-      assert(false);
-    }
     ans += (M - count(b)) * (b - 1);
     return ans;
   }
