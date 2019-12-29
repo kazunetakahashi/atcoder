@@ -287,7 +287,6 @@ private:
         }
       }
     }
-    assert(S != 6);
     for (auto i = x * 4; i < N; i++)
     {
       for (auto j = x * 4; j < N; j++)
