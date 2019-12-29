@@ -204,5 +204,5 @@ int main()
   ll y{min(B, K)};
   B -= y;
   K -= y;
-  cout << A << " " << endl;
+  cout << A << " " << B << endl;
 }
