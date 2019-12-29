@@ -251,12 +251,12 @@ public:
         "a..cb",
         "abbaa"};
     seed[6] = {
-        "aabb..",
-        "b..zz.",
-        "ba....",
-        ".a..aa",
-        "..a..b",
-        "..a..b"};
+        "aabc..",
+        "ddbc..",
+        "..aabc",
+        "..ddbc",
+        "bc..aa",
+        "bc..dd"};
     seed[7] = {
         "aabbcc.",
         "dd.dd.a",
