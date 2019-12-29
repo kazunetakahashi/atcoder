@@ -239,19 +239,17 @@ public:
         "aa.",
         "..a",
         "..a"};
-    // snuke-san's solution
-    // https://atcoder.jp/contests/agc041/submissions/9180689
     seed[4] = {
-        "aacd",
-        "bbcd",
-        "efgg",
-        "efhh"};
+        "aabc",
+        "ddbc",
+        "bcaa",
+        "bcdd"};
     seed[5] = {
-        "abc..",
-        "abc..",
-        "gghdd",
-        "i.hee",
-        "ijjff"};
+        "aabba",
+        "bcc.a",
+        "b..cb",
+        "a..cb",
+        "abbaa"};
     seed[6] = {
         "aabb..",
         "b..zz.",
@@ -260,13 +258,13 @@ public:
         "..a..b",
         "..a..b"};
     seed[7] = {
-        "abc....",
-        "abc....",
-        "...deff",
-        "...degg",
-        "kkl..hh",
-        "m.lii..",
-        "mnnjj.."};
+        "aabbcc.",
+        "dd.dd.a",
+        "..d..da",
+        "..d..db",
+        "dd.dd.b",
+        "..d..dc",
+        "..d..dc"};
   }
 
 private:
@@ -303,6 +301,7 @@ int main()
 {
   int N;
   cin >> N;
+  assert(N != 8);
   Domino domino{N};
   domino.flush();
 }
