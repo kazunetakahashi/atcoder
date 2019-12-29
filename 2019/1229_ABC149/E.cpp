@@ -216,7 +216,7 @@ public:
     if (M == N * N)
     {
       ll S{accumulate(A.begin(), A.end(), 0LL)};
-      return S * S;
+      return S + S;
     }
     ll b{binary_mark()};
     ll ans{calc_sum(b)};
