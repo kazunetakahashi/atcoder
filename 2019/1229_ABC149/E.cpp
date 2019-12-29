@@ -283,7 +283,8 @@ private:
 
   ll calc_sum(ll T, int ind)
   {
-    return sum[calc(T, ind)];
+    ll cnt{calc(T, ind)};
+    return sum[cnt] + cnt * A[ind];
   }
 
   ll calc_sum(ll T)
