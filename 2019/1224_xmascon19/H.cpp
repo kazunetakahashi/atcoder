@@ -268,14 +268,6 @@ private:
       return 0;
     }
     auto V{make_vec(T)};
-#if DEBUG == 1
-    cerr << "V = {";
-    for (auto x : V)
-    {
-      cerr << x << ", ";
-    }
-    cerr << "}" << endl;
-#endif
     if (is_one(V))
     {
       return 1;
@@ -329,9 +321,6 @@ private:
     {
       g = gcd(g, *it);
     }
-#if DEBUG == 1
-    cerr << "g = " << g << endl;
-#endif
     for (auto i = 0; i < 20; i++)
     {
       if (g == 1 << i)
@@ -348,7 +337,7 @@ private:
     {
       int p{static_cast<int>(*it)};
       int X{static_cast<int>(V.size())};
-      if (W / p < X / 2)
+      if (W / p < X)
       {
         return false;
       }
@@ -369,15 +358,6 @@ private:
           }
           W.push_back(x - first);
         }
-#if DEBUG == 1
-        cerr << "p = " << p << ", m = " << m << endl;
-        cerr << "W = {";
-        for (auto x : W)
-        {
-          cerr << x << ", ";
-        }
-        cerr << "}" << endl;
-#endif
         if (is_one(W))
         {
           return true;
