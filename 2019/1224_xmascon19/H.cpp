@@ -288,6 +288,7 @@ private:
         return false;
       }
     }
+    return true;
   }
 
   vector<int> make_vec(string const &T)
