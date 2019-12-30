@@ -401,7 +401,7 @@ private:
           }
           W.push_back(x - first);
         }
-        if (is_one(W))
+        if (static_cast<int>(W.size()) <= X / 2 && is_one(W))
         {
           return true;
         }
