@@ -268,6 +268,14 @@ private:
       return 0;
     }
     auto V{make_vec(T)};
+#if DEBUG == 1
+    cerr << "V = {";
+    for (auto x : V)
+    {
+      cerr << x << ", ";
+    }
+    cerr << "}" << endl;
+#endif
     if (is_one(V))
     {
       return 1;
