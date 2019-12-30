@@ -345,7 +345,22 @@ private:
     }
     if (X == 3)
     {
-      assert(false);
+      for (auto k = 0; k < 3; k++)
+      {
+        vector<int> W;
+        for (auto i = 0; i < 3; i++)
+        {
+          if (i != k)
+          {
+            W.push_back(V[i]);
+          }
+        }
+        if (is_one(W))
+        {
+          return true;
+        }
+      }
+      return false;
     }
     for (auto it = pn.primes().begin() + 1; it != pn.primes().end(); it++)
     {
