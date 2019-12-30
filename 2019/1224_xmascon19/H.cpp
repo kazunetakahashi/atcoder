@@ -334,7 +334,7 @@ private:
 #endif
     for (auto i = 0; i < 20; i++)
     {
-      if ((g >> i) == 1)
+      if (g == 1 << i)
       {
         return false;
       }
