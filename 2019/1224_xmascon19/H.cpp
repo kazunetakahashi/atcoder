@@ -384,7 +384,6 @@ private:
         }
       }
     }
-    assert(false);
     return false;
   }
 };
