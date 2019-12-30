@@ -1,4 +1,4 @@
-#define DEBUG 1
+#define DEBUG 0
 /**
  * File    : H.cpp
  * Author  : Kazune Takahashi
@@ -333,11 +333,20 @@ private:
 
   bool is_two(vector<int> const &V)
   {
+    int X{static_cast<int>(V.size())};
+    if (X <= 1)
+    {
+      assert(false);
+      return false;
+    }
+    if (X == 2)
+    {
+      return true;
+    }
     for (auto it = pn.primes().begin() + 1; it != pn.primes().end(); it++)
     {
       int p{static_cast<int>(*it)};
-      int X{static_cast<int>(V.size())};
-      if (2 * W < X * p)
+      if (W / p < X / 2)
       {
         return false;
       }
