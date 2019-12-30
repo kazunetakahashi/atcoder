@@ -268,6 +268,14 @@ private:
       return 0;
     }
     auto V{make_vec(T)};
+#if DEBUG == 1
+    cerr << "V = {";
+    for (auto x : V)
+    {
+      cerr << x << ", ";
+    }
+    cerr << "}" << endl;
+#endif
     if (is_one(V))
     {
       return 1;
@@ -321,6 +329,9 @@ private:
     {
       g = gcd(g, *it);
     }
+#if DEBUG == 1
+    cerr << "g = " << g << endl;
+#endif
     for (auto i = 0; i < 20; i++)
     {
       if (g == 1 << i)
@@ -333,39 +344,22 @@ private:
 
   bool is_two(vector<int> const &V)
   {
-    int X{static_cast<int>(V.size())};
-    if (X <= 1)
-    {
-      assert(false);
-      return false;
-    }
-    if (X == 2)
-    {
-      return true;
-    }
     for (auto it = pn.primes().begin() + 1; it != pn.primes().end(); it++)
     {
       int p{static_cast<int>(*it)};
-      if (2 * W < p * X)
+      int X{static_cast<int>(V.size())};
+      if (W * 2 < X * 2 || (H > 900 && W * 2 + 2 < X * 2))
       {
         return false;
       }
-      vector<set<int>> E(p);
-      for (auto x : V)
+      for (auto k = 0; k < 2; k++)
       {
-        E[x % p].insert(x);
-      }
-      for (auto k = 0; k < p; k++)
-      {
-        if (static_cast<int>(E[k].size()) < X / 2)
-        {
-          continue;
-        }
+        int m{V[k]};
         int first{-1};
         vector<int> W;
         for (auto x : V)
         {
-          if (E[k].find(x) != E[k].end())
+          if ((x - m) % p == 0)
           {
             continue;
           }
@@ -375,12 +369,22 @@ private:
           }
           W.push_back(x - first);
         }
+#if DEBUG == 1
+        cerr << "p = " << p << ", m = " << m << endl;
+        cerr << "W = {";
+        for (auto x : W)
+        {
+          cerr << x << ", ";
+        }
+        cerr << "}" << endl;
+#endif
         if (is_one(W))
         {
           return true;
         }
       }
     }
+    assert(false);
     return false;
   }
 };
