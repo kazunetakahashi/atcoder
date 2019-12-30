@@ -341,13 +341,12 @@ private:
     }
     if (X == 2)
     {
-      assert(false);
       return true;
     }
     for (auto it = pn.primes().begin() + 1; it != pn.primes().end(); it++)
     {
       int p{static_cast<int>(*it)};
-      if (W / p < X / 2)
+      if (W / p + 1 < X / 2)
       {
         return false;
       }
