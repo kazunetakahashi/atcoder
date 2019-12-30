@@ -337,7 +337,7 @@ private:
     {
       int p{static_cast<int>(*it)};
       int X{static_cast<int>(V.size())};
-      if (2 * W + 1 < X * p)
+      if (2 * W < X * p)
       {
         return false;
       }
