@@ -348,7 +348,7 @@ private:
     {
       int p{static_cast<int>(*it)};
       int X{static_cast<int>(V.size())};
-      if (W * 2 < X * 2 || (H > 900 && W * 2 + 2 < X * 2))
+      if (W * 2 < X * p || (H > 900 && W * 2 + 2 < X * p))
       {
         return false;
       }
