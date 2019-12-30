@@ -356,7 +356,7 @@ private:
         vector<int> W;
         for (auto x : V)
         {
-          if (x - m >= 0 && (x - m) % p == 0)
+          if ((x - m) % p == 0)
           {
             continue;
           }
@@ -366,6 +366,15 @@ private:
           }
           W.push_back(x - first);
         }
+#if DEBUG == 1
+        cerr << "p = " << p << ", m = " << m << endl;
+        cerr << "W = {";
+        for (auto x : W)
+        {
+          cerr << x << ", ";
+        }
+        cerr << "}" << endl;
+#endif
         if (is_one(W))
         {
           return true;
