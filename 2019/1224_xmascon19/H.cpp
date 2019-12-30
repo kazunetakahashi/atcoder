@@ -346,7 +346,7 @@ private:
     for (auto it = pn.primes().begin() + 1; it != pn.primes().end(); it++)
     {
       int p{static_cast<int>(*it)};
-      if (2 * W + 1 < p * X)
+      if ((W + p - 1) / p < X / 2)
       {
         return false;
       }
