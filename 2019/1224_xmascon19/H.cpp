@@ -350,13 +350,22 @@ private:
       {
         return false;
       }
-      for (auto m : V)
+      vector<set<int>> E(p);
+      for (auto x : V)
       {
+        E[x % p].insert(x);
+      }
+      for (auto k = 0; k < p; k++)
+      {
+        if (E[k].size() < X / 2)
+        {
+          continue;
+        }
         int first{-1};
         vector<int> W;
         for (auto x : V)
         {
-          if ((x - m) % p == 0)
+          if (E[k].find(x) != E[k].end())
           {
             continue;
           }
