@@ -343,6 +343,10 @@ private:
     {
       return true;
     }
+    if (X == 3)
+    {
+      assert(false);
+    }
     for (auto it = pn.primes().begin() + 1; it != pn.primes().end(); it++)
     {
       int p{static_cast<int>(*it)};
