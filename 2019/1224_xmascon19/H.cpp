@@ -343,29 +343,55 @@ private:
     {
       return true;
     }
+    if (X == 3)
+    {
+      for (auto k = 0; k < 3; k++)
+      {
+        int first = -1;
+        vector<int> W;
+        for (auto i = 0; i < 3; i++)
+        {
+          if (i != k)
+          {
+            if (first == -1)
+            {
+              first = V[i];
+            }
+            W.push_back(V[i] - first);
+          }
+        }
+        if (is_one(W))
+        {
+          return true;
+        }
+      }
+      return false;
+    }
     for (auto it = pn.primes().begin() + 1; it != pn.primes().end(); it++)
     {
       int p{static_cast<int>(*it)};
-      if (W * 2 + 3 < X * p)
+      if (2 * W + 3 < p * X)
       {
         return false;
       }
-      vector<set<int>> E(p);
-      for (auto x : V)
+      vector<int> M;
+      M.push_back(0);
+      for (auto i = 1; i < X; i++)
       {
-        E[x % p].insert(x);
-      }
-      for (auto k = 0; k < p; k++)
-      {
-        if (E[k].size() < X / 2)
+        if (V[i] % p == 0)
         {
           continue;
         }
+        M.push_back(V[i]);
+        break;
+      }
+      for (auto m : M)
+      {
         int first{-1};
         vector<int> W;
         for (auto x : V)
         {
-          if (E[k].find(x) != E[k].end())
+          if ((x - m) % p == 0)
           {
             continue;
           }
