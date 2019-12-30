@@ -329,6 +329,9 @@ private:
     {
       g = gcd(g, *it);
     }
+#if DEBUG == 1
+    cerr << "g = " << g << endl;
+#endif
     for (auto i = 0; i < 20; i++)
     {
       if ((g >> i) == 1)
