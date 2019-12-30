@@ -347,12 +347,17 @@ private:
     {
       for (auto k = 0; k < 3; k++)
       {
+        int first = -1;
         vector<int> W;
         for (auto i = 0; i < 3; i++)
         {
           if (i != k)
           {
-            W.push_back(V[i]);
+            if (first == -1)
+            {
+              first = V[i];
+            }
+            W.push_back(V[i] - first);
           }
         }
         if (is_one(W))
