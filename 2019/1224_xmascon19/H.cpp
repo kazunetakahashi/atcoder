@@ -337,7 +337,7 @@ private:
     {
       int p{static_cast<int>(*it)};
       int X{static_cast<int>(V.size())};
-      if (W / p < X / 2 + 1)
+      if (W / p - 1 < X / 2)
       {
         return false;
       }
@@ -358,7 +358,7 @@ private:
           }
           W.push_back(x - first);
         }
-        if (is_one(W))
+        if (static_cast<int>(W.size()) <= X / 2 && is_one(W))
         {
           return true;
         }
