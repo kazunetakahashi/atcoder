@@ -346,13 +346,24 @@ private:
     for (auto it = pn.primes().begin() + 1; it != pn.primes().end(); it++)
     {
       int p{static_cast<int>(*it)};
-      if ((W + p - 1) / p < X / 2)
+      if (W / p < X / 2)
       {
         return false;
       }
+      vector<int> M;
+      M.push_back(0);
+      for (auto i = 1; i < X; i++)
+      {
+        if (V[i] % p == 0)
+        {
+          continue;
+        }
+        M.push_back(V[i]);
+        break;
+      }
       for (auto k = 0; k < 2; k++)
       {
-        int m{V[k]};
+        int m{M[k]};
         int first{-1};
         vector<int> W;
         for (auto x : V)
