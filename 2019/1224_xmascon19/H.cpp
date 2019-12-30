@@ -357,7 +357,7 @@ private:
       }
       for (auto k = 0; k < p; k++)
       {
-        if (E[k].size() < X / 2)
+        if (static_cast<int>(E[k].size()) < X / 2)
         {
           continue;
         }
