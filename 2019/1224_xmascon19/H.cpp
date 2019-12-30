@@ -346,7 +346,7 @@ private:
     for (auto it = pn.primes().begin() + 1; it != pn.primes().end(); it++)
     {
       int p{static_cast<int>(*it)};
-      if (2 * W + 1 < p * X)
+      if (W * 2 + 3 < X * p)
       {
         return false;
       }
@@ -357,7 +357,7 @@ private:
       }
       for (auto k = 0; k < p; k++)
       {
-        if (static_cast<int>(E[k].size()) < X / 2)
+        if (E[k].size() < X / 2)
         {
           continue;
         }
@@ -381,6 +381,7 @@ private:
         }
       }
     }
+    assert(false);
     return false;
   }
 };
