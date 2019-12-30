@@ -361,9 +361,8 @@ private:
         M.push_back(V[i]);
         break;
       }
-      for (auto k = 0; k < 2; k++)
+      for (auto m : M)
       {
-        int m{M[k]};
         int first{-1};
         vector<int> W;
         for (auto x : V)
