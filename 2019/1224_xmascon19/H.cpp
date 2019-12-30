@@ -341,6 +341,7 @@ private:
     }
     if (X == 2)
     {
+      assert(false);
       return true;
     }
     for (auto it = pn.primes().begin() + 1; it != pn.primes().end(); it++)
