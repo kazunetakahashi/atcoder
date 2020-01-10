@@ -241,10 +241,10 @@ int main()
     {
       No();
     }
-    if (L == 0)
-    {
-      No();
-    }
+  }
+  if (L == 0)
+  {
+    No();
   }
   ll X{M / L};
   cout << (X + 1) / 2 << endl;
