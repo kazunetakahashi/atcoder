@@ -235,6 +235,7 @@ public:
         j = A[j];
       }
       ++j;
+      cerr << "i = " << i << ", j = " << j << endl;
       if (j == N)
       {
         res.push_back(i - j + 1);
