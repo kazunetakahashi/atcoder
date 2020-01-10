@@ -234,6 +234,10 @@ int main()
       No();
     }
   }
+  if (L == 0)
+  {
+    sleep(100);
+  }
   for (auto i = 0; i < k; i++)
   {
     L <<= 1;
