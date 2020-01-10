@@ -233,18 +233,18 @@ int main()
     {
       No();
     }
-    if (L == 0)
-    {
-      sleep(100);
-    }
   }
   ll p{L};
   for (auto i = 0; i < k; i++)
   {
-    p *= 2;
+    p <<= 1;
     if (p > M)
     {
       No();
+    }
+    if (p == 0)
+    {
+      sleep(100);
     }
   }
   ll X{M / p};
