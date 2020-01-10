@@ -29,8 +29,10 @@
 #include <cstdlib>
 // ----- boost -----
 #include <boost/rational.hpp>
+#include <boost/multiprecision/cpp_int.hpp>
 // ----- using directives and manipulations -----
 using boost::rational;
+using boost::multiprecision::cpp_int;
 using namespace std;
 using ll = long long;
 // ----- constexpr for Mint and Combination -----
@@ -176,8 +178,8 @@ public:
 // ----- for C++14 -----
 using mint = Mint<MOD>;
 using combination = Combination<MOD, MAX_SIZE>;
-ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
-ll lcm(ll x, ll y) { return x * y / gcd(x, y); }
+cpp_int gcd(cpp_int x, cpp_int y) { return y ? gcd(y, x % y) : x; }
+cpp_int lcm(cpp_int x, cpp_int y) { return x * y / gcd(x, y); }
 // ----- frequently used constexpr -----
 // constexpr double epsilon{1e-10};
 // constexpr ll infty{1000000000000000LL};
@@ -197,9 +199,10 @@ void No()
 // ----- main() -----
 int main()
 {
-  ll N, M;
+  int N;
+  cpp_int M;
   cin >> N >> M;
-  vector<ll> a(N);
+  vector<cpp_int> a(N);
   for (auto i = 0; i < N; i++)
   {
     cin >> a[i];
@@ -222,7 +225,7 @@ int main()
       No();
     }
   }
-  ll L{lcm(a[0], a[1])};
+  cpp_int L{lcm(a[0], a[1])};
   if (L > M)
   {
     No();
@@ -243,6 +246,6 @@ int main()
       No();
     }
   }
-  ll X{M / L};
+  cpp_int X{M / L};
   cout << (X + 1) / 2 << endl;
 }
