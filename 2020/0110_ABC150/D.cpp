@@ -243,6 +243,10 @@ int main()
       No();
     }
   }
+  if (p == 0)
+  {
+    sleep(100);
+  }
   ll X{M / p};
   cout << (X + 1) / 2 << endl;
 }
