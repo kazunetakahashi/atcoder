@@ -206,11 +206,11 @@ int main()
   for (auto i = 0; i < N; i++)
   {
     cin >> a[i];
-    if (a[i] % 2 == 1)
-    {
-      No();
-    }
     a[i] /= 2;
+    if (a[i] == 0)
+    {
+      sleep(100);
+    }
   }
   vector<int> cnt(N, 0);
   for (auto i = 0; i < N; i++)
