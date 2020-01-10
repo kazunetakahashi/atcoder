@@ -234,19 +234,18 @@ int main()
       No();
     }
   }
-  ll p{L};
   for (auto i = 0; i < k; i++)
   {
-    p <<= 1;
-    if (p > M)
+    L <<= 1;
+    if (L > M)
     {
       No();
     }
-    if (p == 0)
+    if (L == 0)
     {
       sleep(100);
     }
   }
-  ll X{M / p};
+  ll X{M / L};
   cout << (X + 1) / 2 << endl;
 }
