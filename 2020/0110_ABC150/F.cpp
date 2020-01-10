@@ -239,6 +239,7 @@ public:
       if (j == N)
       {
         res.push_back(i - j + 1);
+        j = A[j];
       }
     }
     return res;
