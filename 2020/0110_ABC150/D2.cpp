@@ -201,7 +201,7 @@ void No()
 int f(cpp_int x)
 {
   int res{0};
-  while (x & 1 == 0)
+  while ((x & 1) == 0)
   {
     x >>= 1;
     ++res;
