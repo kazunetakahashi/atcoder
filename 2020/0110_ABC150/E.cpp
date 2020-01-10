@@ -207,7 +207,7 @@ int main()
   mint ans{0};
   for (auto k = 0; k < N; k++)
   {
-    ans += mint{4}.power(N - 1) * (N - 1 - k) * C[k];
+    ans += mint{4}.power(N - 1) * (N - k) * C[k];
   }
   cout << ans << endl;
 }
