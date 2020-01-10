@@ -177,6 +177,7 @@ public:
 using mint = Mint<MOD>;
 using combination = Combination<MOD, MAX_SIZE>;
 ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
+ll lcm(ll x, ll y) { return x * y / gcd(x, y); }
 // ----- frequently used constexpr -----
 // constexpr double epsilon{1e-10};
 // constexpr ll infty{1000000000000000LL};
@@ -221,22 +222,18 @@ int main()
       No();
     }
   }
-  ll L{a[0] * a[1] / gcd(a[0], a[1])};
+  ll L{lcm(a[0], a[1])};
   if (L > M)
   {
     No();
   }
   for (auto i = 2; i < N; i++)
   {
-    L = L * a[i] / gcd(L, a[i]);
+    L = lcm(L, a[i]);
     if (L > M)
     {
       No();
     }
-  }
-  if (L == 0)
-  {
-    sleep(100);
   }
   for (auto i = 0; i < k; i++)
   {
@@ -245,10 +242,6 @@ int main()
     {
       No();
     }
-  }
-  if (L == 0)
-  {
-    No();
   }
   ll X{M / L};
   cout << (X + 1) / 2 << endl;
