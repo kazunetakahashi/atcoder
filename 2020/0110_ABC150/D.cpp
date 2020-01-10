@@ -243,7 +243,7 @@ int main()
     }
     if (L == 0)
     {
-      sleep(100);
+      No();
     }
   }
   ll X{M / L};
