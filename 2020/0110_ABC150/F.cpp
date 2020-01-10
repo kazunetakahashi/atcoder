@@ -273,6 +273,14 @@ int main()
   vector<int> xa{f(A)}, xb{f(B)};
   MP<vector<int>> mp(xa);
   xb.insert(xb.end(), xb.begin(), xb.end());
+  for (auto i = 0; i < N; i++)
+  {
+    cerr << "xa[" << i << "] = " << xa[i] << endl;
+  }
+  for (auto i = 0; i < 2 * N; i++)
+  {
+    cerr << "xb[" << i << "] = " << xb[i] << endl;
+  }
   auto res{mp.find_all(xb)};
   vector<int> ks;
   for (int p : res)
