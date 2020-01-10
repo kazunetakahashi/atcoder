@@ -233,6 +233,10 @@ int main()
     {
       No();
     }
+    if (L == 0)
+    {
+      sleep(100);
+    }
   }
   ll p{L};
   for (auto i = 0; i < k; i++)
@@ -242,10 +246,6 @@ int main()
     {
       No();
     }
-  }
-  if (p == 0)
-  {
-    sleep(100);
   }
   ll X{M / p};
   cout << (X + 1) / 2 << endl;
