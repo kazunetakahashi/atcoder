@@ -228,12 +228,18 @@ int main()
     S.erase(it);
   }
   vector<int> V;
-  copy(S.begin(), S.end(), back_inserter(V));
+  for (auto x : S)
+  {
+    V.push_back(x);
+  }
   do
   {
     if ((B.empty() || A[B.back()] != V[0]) && A[V[0]] != V[1] && A[V[1]] != V[2])
     {
-      copy(V.begin(), V.end(), back_inserter(B));
+      for (auto x : V)
+      {
+        B.push_back(x);
+      }
       break;
     }
   } while (next_permutation(V.begin(), V.end()));
