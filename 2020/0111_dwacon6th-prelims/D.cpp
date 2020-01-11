@@ -224,13 +224,10 @@ int main()
     {
       ++it;
     }
-    if (it == S.end())
-    {
-      sleep(100);
-    }
     B.push_back(*it);
     S.erase(it);
   }
+  assert(static_cast<int>(B.size()) == N - 3);
   vector<int> V;
   for (auto x : S)
   {
@@ -247,7 +244,7 @@ int main()
       break;
     }
   } while (next_permutation(V.begin(), V.end()));
-  assert(static_cast<int>(B.size()) == N);
+  // assert(static_cast<int>(B.size()) == N);
   for (auto i = 0; i < N; i++)
   {
     cout << B[i] + 1;
