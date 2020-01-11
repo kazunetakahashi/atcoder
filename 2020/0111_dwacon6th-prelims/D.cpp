@@ -220,33 +220,21 @@ int main()
   while (S.size() > 3)
   {
     auto it{S.begin()};
-    if (B.empty())
+    if (!B.empty() && A[B.back()] == *it)
     {
-      B.push_back(*it);
-      S.erase(it);
+      ++it;
     }
-    else
-    {
-      if (A[B.back()] == *it)
-      {
-        ++it;
-      }
-      B.push_back(*it);
-      S.erase(it);
-    }
+    B.push_back(*it);
+    S.erase(it);
   }
   vector<int> V;
-  while (!S.empty())
-  {
-    V.push_back(*S.begin());
-    S.erase(S.begin());
-  }
+  copy(S.begin(), S.end(), back_inserter(V));
   assert(static_cast<int>(V.size()) == 3);
   do
   {
     if (A[B.back()] != V[0] && A[V[0]] != V[1] && A[V[1]] != V[2])
     {
-      B.insert(B.end(), V.begin(), V.end());
+      copy(V.begin(), V.end(), back_inserter(B));
       break;
     }
   } while (next_permutation(V.begin(), V.end()));
