@@ -216,7 +216,7 @@ int main()
   for (auto i = 0; i < N - 1; i++)
   {
     mint tmp{ans * (i + 1)};
-    tmp += C.fact[i] * (i + 2) * (i + 1) / 2 * y[i];
+    tmp += C.fact[i] * (i) * (i + 1) / 2 * y[i];
     ans = tmp;
   }
   cout << ans << endl;
