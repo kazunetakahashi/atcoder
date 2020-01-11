@@ -217,7 +217,7 @@ int main()
     S.insert(i);
   }
   vector<int> B;
-  while (S.size() > 8)
+  while (S.size() > 12)
   {
     auto it{S.begin()};
     while (!B.empty() && A[B.back()] == *it && it != S.end())
