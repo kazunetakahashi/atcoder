@@ -229,7 +229,7 @@ int main()
   }
   vector<int> V;
   copy(S.begin(), S.end(), back_inserter(V));
-  assert(static_cast<int>(V.size()) == 3);
+  // assert(static_cast<int>(V.size()) == 3);
   do
   {
     if (A[B.back()] != V[0] && A[V[0]] != V[1] && A[V[1]] != V[2])
