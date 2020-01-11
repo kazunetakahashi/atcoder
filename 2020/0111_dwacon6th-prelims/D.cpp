@@ -220,9 +220,13 @@ int main()
   while (S.size() > 3)
   {
     auto it{S.begin()};
-    if (!B.empty() && A[B.back()] == *it)
+    while (!B.empty() && A[B.back()] == *it && it != S.end())
     {
       ++it;
+    }
+    if (it == S.end())
+    {
+      sleep(100);
     }
     B.push_back(*it);
     S.erase(it);
