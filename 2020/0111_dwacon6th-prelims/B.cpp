@@ -212,12 +212,12 @@ int main()
     y[i] = x[i + 1] - x[i];
   }
   mint ans{0};
+  mint harmonic{0};
   combination C;
   for (auto i = 0; i < N - 1; i++)
   {
-    mint tmp{ans * (i + 1)};
-    tmp += C.fact[i] * mint{i + 2} * mint{i + 1} * y[i] / 2;
-    ans = tmp;
+    harmonic += C.inv[i + 1];
+    ans += harmonic * y[i];
   }
-  cout << ans << endl;
+  cout << ans * C.fact[N - 1] << endl;
 }
