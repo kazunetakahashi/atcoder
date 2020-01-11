@@ -202,14 +202,14 @@ int main()
   int N;
   cin >> N;
   vector<int> A(N);
-  if (N == 2)
-  {
-    No();
-  }
   for (auto i = 0; i < N; i++)
   {
     cin >> A[i];
     A[i]--;
+  }
+  if (N == 2)
+  {
+    No();
   }
   set<int> S;
   for (auto i = 0; i < N; i++)
@@ -229,7 +229,6 @@ int main()
   }
   vector<int> V;
   copy(S.begin(), S.end(), back_inserter(V));
-  assert(static_cast<int>(V.size()) == 3);
   do
   {
     if (A[B.back()] != V[0] && A[V[0]] != V[1] && A[V[1]] != V[2])
@@ -238,10 +237,6 @@ int main()
       break;
     }
   } while (next_permutation(V.begin(), V.end()));
-  if (static_cast<int>(B.size()) != N)
-  {
-    sleep(100);
-  }
   for (auto i = 0; i < N; i++)
   {
     cout << B[i] + 1;
