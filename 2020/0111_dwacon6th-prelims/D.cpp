@@ -217,7 +217,7 @@ int main()
     S.insert(i);
   }
   vector<int> B;
-  while (S.size() > 3)
+  while (S.size() > 4)
   {
     auto it{S.begin()};
     while (!B.empty() && A[B.back()] == *it && it != S.end())
@@ -227,7 +227,6 @@ int main()
     B.push_back(*it);
     S.erase(it);
   }
-  assert(static_cast<int>(B.size()) == N - 3);
   vector<int> V;
   for (auto x : S)
   {
@@ -235,7 +234,19 @@ int main()
   }
   do
   {
-    if ((B.empty() || A[B.back()] != V[0]) && A[V[0]] != V[1] && A[V[1]] != V[2])
+    bool ok = (B.empty() || A[B.back()] != V[0]);
+    if (ok)
+    {
+      for (auto i = 0; i < static_cast<int>(V.size()) - 1; i++)
+      {
+        if (A[V[i]] == V[i + 1])
+        {
+          ok = false;
+          break;
+        }
+      }
+    }
+    if (ok)
     {
       for (auto x : V)
       {
@@ -244,7 +255,7 @@ int main()
       break;
     }
   } while (next_permutation(V.begin(), V.end()));
-  // assert(static_cast<int>(B.size()) == N);
+  assert(static_cast<int>(B.size()) == N);
   for (auto i = 0; i < N; i++)
   {
     cout << B[i] + 1;
