@@ -252,7 +252,7 @@ int main()
   } while (next_permutation(V.begin(), V.end()));
   for (auto i = 0; i < N; i++)
   {
-    cout << B[i];
+    cout << B[i] + 1;
     if (i < N - 1)
     {
       cout << " ";
