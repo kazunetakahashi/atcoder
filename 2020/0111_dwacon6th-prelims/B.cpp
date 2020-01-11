@@ -38,7 +38,7 @@ using ll = long long;
 // ----- constexpr for Mint and Combination -----
 constexpr ll MOD{1000000007LL};
 // constexpr ll MOD{998244353LL}; // be careful
-constexpr ll MAX_SIZE{3000010LL};
+constexpr ll MAX_SIZE{300010LL};
 // constexpr ll MAX_SIZE{30000010LL}; // if 10^7 is needed
 // ----- ch_max and ch_min -----
 template <typename T>
