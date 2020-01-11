@@ -206,7 +206,7 @@ int main()
   {
     cin >> x[i];
   }
-  vector<ll> y(N - 1);
+  vector<mint> y(N - 1);
   for (auto i = 0; i < N; i++)
   {
     y[i] = x[i + 1] - x[i];
@@ -216,7 +216,7 @@ int main()
   for (auto i = 0; i < N - 1; i++)
   {
     mint tmp{ans * (i + 1)};
-    tmp += C.fact[i] * (i) * (i + 1) / 2 * y[i];
+    tmp += C.fact[i] * mint{i + 2} * mint{i + 1} * y[i] / 2;
     ans = tmp;
   }
   cout << ans << endl;
