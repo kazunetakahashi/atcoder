@@ -231,12 +231,13 @@ int main()
   copy(S.begin(), S.end(), back_inserter(V));
   do
   {
-    if (A[B.back()] != V[0] && A[V[0]] != V[1] && A[V[1]] != V[2])
+    if ((B.empty() || A[B.back()] != V[0]) && A[V[0]] != V[1] && A[V[1]] != V[2])
     {
       copy(V.begin(), V.end(), back_inserter(B));
       break;
     }
   } while (next_permutation(V.begin(), V.end()));
+  assert(static_cast<int>(B.size()) == N);
   for (auto i = 0; i < N; i++)
   {
     cout << B[i] + 1;
