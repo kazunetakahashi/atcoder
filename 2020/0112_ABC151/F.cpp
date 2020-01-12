@@ -64,7 +64,7 @@ class Mint
 public:
   ll x;
   Mint() : x{0LL} {}
-  Mint(ll x) : x{x % MOD} {}
+  Mint(ll x) : x{(x % MOD + MOD) % MOD} {}
   Mint operator-() const { return x ? MOD - x : 0; }
   Mint &operator+=(const Mint &a)
   {
@@ -212,9 +212,9 @@ double cross_product(point const &x, point const &y)
 
 point outer(point const &a, point const &b, point const &c)
 {
-  double A{dot_product(b - c, b - c)};
-  double B{dot_product(c - a, c - a)};
-  double C{dot_product(a - b, a - b)};
+  double A{norm(b - c)};
+  double B{norm(c - a)};
+  double C{norm(a - b)};
   double T{A * (B + C - A)};
   double U{B * (C + A - B)};
   double W{C * (A + B - C)};
