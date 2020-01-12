@@ -219,5 +219,7 @@ int main()
   {
     tmp1 += C(N - 1 - i, K - 1) * A[i];
   }
-  cout << tmp1 - tmp0 << endl;
+  cerr << "tmp0 = " << tmp0 << endl;
+  cerr << "tmp1 = " << tmp1 << endl;
+  // cout << tmp1 - tmp0 << endl;
 }
