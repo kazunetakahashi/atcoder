@@ -214,6 +214,10 @@ int main()
   {
     for (auto j = 0; j < W; j++)
     {
+      if (S[i][j] == '#')
+      {
+        continue;
+      }
       vector<vector<int>> visited(H, vector<int>(W, -1));
       queue<info> Q;
       Q.push(info(i, j, 0));
