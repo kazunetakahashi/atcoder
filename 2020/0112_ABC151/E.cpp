@@ -211,13 +211,13 @@ int main()
   mint tmp0{0};
   for (auto i = 0; i < N; i++)
   {
-    tmp0 += C(N - 1 - i, K - 1) * A[i];
+    tmp0 += C(N - 1 - i, K - 1) * (MOD + A[i]);
   }
   reverse(A.begin(), A.end());
   mint tmp1{0};
   for (auto i = 0; i < N; i++)
   {
-    tmp1 += C(N - 1 - i, K - 1) * A[i];
+    tmp1 += C(N - 1 - i, K - 1) * (MOD + A[i]);
   }
   cerr << "tmp0 = " << tmp0 << endl;
   cerr << "tmp1 = " << tmp1 << endl;
