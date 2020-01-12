@@ -221,5 +221,5 @@ int main()
   }
   cerr << "tmp0 = " << tmp0 << endl;
   cerr << "tmp1 = " << tmp1 << endl;
-  // cout << tmp1 - tmp0 << endl;
+  cout << tmp1 - tmp0 << endl;
 }
