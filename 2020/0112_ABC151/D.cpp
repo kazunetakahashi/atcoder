@@ -217,7 +217,7 @@ int main()
       vector<vector<int>> visited(H, vector<int>(W, -1));
       queue<info> Q;
       Q.push(info(i, j, 0));
-      while (!S.empty())
+      while (!Q.empty())
       {
         int x, y, c;
         tie(x, y, c) = Q.front();
