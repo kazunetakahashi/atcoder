@@ -264,6 +264,10 @@ int main()
     {
       for (auto k = j + 1; k < N; k++)
       {
+        if (abs(cross_product(V[j] - V[i], V[k] - V[i])) < epsilon)
+        {
+          continue;
+        }
         point p{outer(V[i], V[j], V[k])};
         double d{abs(V[i] - p)};
         if (ok(N, V, p, d))
