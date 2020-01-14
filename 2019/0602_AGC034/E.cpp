@@ -203,7 +203,6 @@ struct Vertex
 
   void upper()
   {
-    c += h;
     l += c;
     r += c;
   }
