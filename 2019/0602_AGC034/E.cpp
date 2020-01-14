@@ -280,6 +280,7 @@ private:
         sum_R += A[e].r;
       }
     }
+    A[v].r = sum_R;
     A[v].l = sum_R;
     for (auto e : V[v])
     {
