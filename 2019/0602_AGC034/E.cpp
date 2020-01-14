@@ -276,7 +276,9 @@ private:
         dfs(e, v);
       }
     }
+    ll sum_L{0};
     ll sum_R{0};
+    ll maxi_L{0};
     A[v].c += A[v].h;
     for (auto e : V[v])
     {
@@ -284,25 +286,33 @@ private:
       {
         A[e].upper();
         A[v].c += A[e].c;
+        sum_L += A[e].l;
         sum_R += A[e].r;
+        ch_max(maxi_L, A[e].l);
       }
     }
     A[v].r = sum_R;
-    A[v].l = sum_R;
-    for (auto e : V[v])
+    if (maxi_L > sum_L - maxi_L)
     {
-      if (e != parent)
+      A[v].l = sum_R;
+      for (auto e : V[v])
       {
-        ll tmp_R{sum_R - A[e].r};
-        if (tmp_R < A[e].l)
+        if (e != parent && A[e].l == maxi_L)
         {
-          ch_min(A[v].l, A[e].l - tmp_R);
-        }
-        else
-        {
-          ch_min(A[v].l, sum_R % 2);
+          if (A[e].l > sum_R - A[e].r)
+          {
+            ch_min(A[v].l, A[e].l - (sum_R - A[e].r));
+          }
+          else
+          {
+            ch_min(A[v].l, sum_L % 2);
+          }
         }
       }
+    }
+    else
+    {
+      A[v].l = sum_L % 2;
     }
 #if DEBUG == 1
     cerr << "A[" << v << "] = " << A[v] << endl;
