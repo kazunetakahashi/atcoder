@@ -231,7 +231,7 @@ public:
     ll ans{infty};
     for (auto i = 0; i < N; i++)
     {
-      ch_max(ans, solve(i));
+      ch_min(ans, solve(i));
     }
     return ans;
   }
