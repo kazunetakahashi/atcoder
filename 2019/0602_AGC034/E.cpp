@@ -209,6 +209,11 @@ struct Vertex
   }
 };
 
+ostream &operator<<(ostream &os, Vertex const &v)
+{
+  return os << "{h: " << v.h << ", c:" << v.c << ", l:" << v.l << ", r = " << v.r;
+}
+
 class Solve
 {
   // tree construction
@@ -239,6 +244,9 @@ public:
 private:
   ll solve(int root)
   {
+#if DEBUG == 1
+    cerr << "root = " << root << endl;
+#endif
     init(root);
     dfs(root);
     if (A[root].l == 0)
@@ -297,6 +305,9 @@ private:
         }
       }
     }
+#if DEBUG == 1
+    cerr << "A[" << v << "] = " << A[v] << endl;
+#endif
   }
 };
 
