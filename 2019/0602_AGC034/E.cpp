@@ -211,7 +211,7 @@ struct Vertex
 
 ostream &operator<<(ostream &os, Vertex const &v)
 {
-  return os << "{h: " << v.h << ", c:" << v.c << ", l:" << v.l << ", r:" << v.r << "}";
+  return os << "{h:" << v.h << ", c:" << v.c << ", l:" << v.l << ", r:" << v.r << "}";
 }
 
 class Solve
