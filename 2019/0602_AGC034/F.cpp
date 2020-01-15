@@ -295,24 +295,36 @@ int main()
   b[0].push_back(P);
   b[0][0][0] -= 1;
   c[0].push_back(X);
+#if DEBUG == 1
   cerr << "b[" << 0 << "] = " << b[0] << endl;
+#endif
   for (auto k = 0; k < N; k++)
   {
     b[k + 1] = next_line(b[k]);
+#if DEBUG == 1
     cerr << "b[" << k + 1 << "] = " << b[k + 1] << endl;
+#endif
   }
+#if DEBUG == 1
   cerr << "c[" << 0 << "] = " << c[0] << endl;
+#endif
   for (auto k = 0; k < N; k++)
   {
     c[k + 1] = next_line(c[k]);
+#if DEBUG == 1
     cerr << "c[" << k + 1 << "] = " << c[k + 1] << endl;
+#endif
   }
   a[0] = divide(b[N], c[N]);
+#if DEBUG == 1
   cerr << "a[" << 0 << "] = " << a[0] << endl;
+#endif
   for (auto k = 0; k < N; k++)
   {
     a[k + 1] = prev_line(a[k]);
+#if DEBUG == 1
     cerr << "a[" << k + 1 << "] = " << a[k + 1] << endl;
+#endif
   }
   auto &v{a[N][0]};
   auto C{v[0]};
