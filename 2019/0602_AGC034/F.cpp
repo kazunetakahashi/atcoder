@@ -308,9 +308,11 @@ int main()
     cerr << "c[" << k + 1 << "] = " << c[k + 1] << endl;
   }
   a[0] = divide(b[N], c[N]);
+  cerr << "a[" << 0 << "] = " << a[0] << endl;
   for (auto k = 0; k < N; k++)
   {
     a[k + 1] = prev_line(a[k]);
+    cerr << "a[" << k + 1 << "] = " << a[k + 1] << endl;
   }
   auto &v{a[N][0]};
   for (auto &x : v)
