@@ -315,9 +315,10 @@ int main()
     cerr << "a[" << k + 1 << "] = " << a[k + 1] << endl;
   }
   auto &v{a[N][0]};
+  auto C{v[0]};
   for (auto &x : v)
   {
-    x -= v[0];
+    x -= C;
   }
   for (auto x : v)
   {
