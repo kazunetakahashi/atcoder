@@ -64,7 +64,7 @@ class Mint
 public:
   ll x;
   Mint() : x{0LL} {}
-  Mint(ll x) : x{x % MOD} {}
+  Mint(ll x) : x{(x % MOD + MOD) % MOD} {}
   Mint operator-() const { return x ? MOD - x : 0; }
   Mint &operator+=(const Mint &a)
   {
