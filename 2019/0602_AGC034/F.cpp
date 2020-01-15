@@ -198,6 +198,22 @@ void No()
 }
 // ----- main() -----
 
+template <typename T>
+ostream &operator<<(ostream &os, vector<vector<T>> const &V)
+{
+  os << "{";
+  for (auto const &v : V)
+  {
+    os << "{";
+    for (auto x : v)
+    {
+      os << x << ", ";
+    }
+    os << "}, ";
+  }
+  return os << "}";
+}
+
 vector<vector<mint>> next_line(vector<vector<mint>> const &V)
 {
   vector<vector<mint>> W;
@@ -279,10 +295,17 @@ int main()
   b[0].push_back(P);
   b[0][0][0] -= 1;
   c[0].push_back(X);
+  cerr << "b[" << 0 << "] = " << b[0] << endl;
   for (auto k = 0; k < N; k++)
   {
     b[k + 1] = next_line(b[k]);
+    cerr << "b[" << k + 1 << "] = " << b[k + 1] << endl;
+  }
+  cerr << "c[" << 0 << "] = " << c[0] << endl;
+  for (auto k = 0; k < N; k++)
+  {
     c[k + 1] = next_line(c[k]);
+    cerr << "c[" << k + 1 << "] = " << c[k + 1] << endl;
   }
   a[0] = divide(b[N], c[N]);
   for (auto k = 0; k < N; k++)
