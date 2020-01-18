@@ -249,6 +249,9 @@ private:
       Q.pop();
       if (!visited[mask][index])
       {
+#if DEBUG == 1
+        cerr << "mask = " << mask << ", index = " << index << endl;
+#endif
         visited[mask][index] = true;
         int cnt{count_one(mask)};
         for (auto i = 0; i < N; ++i)
