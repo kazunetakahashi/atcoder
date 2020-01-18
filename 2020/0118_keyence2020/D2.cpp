@@ -244,8 +244,8 @@ private:
   {
     while (!Q.empty())
     {
-      auto mask{get<0>(Q.front())};
-      auto index{get<1>(Q.front())};
+      int mask, index;
+      tie(mask, index) = Q.front();
       Q.pop();
       if (!visited[mask][index])
       {
