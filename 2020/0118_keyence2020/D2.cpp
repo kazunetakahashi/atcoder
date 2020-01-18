@@ -267,8 +267,8 @@ private:
             }
             else
             {
-              int now_number{cnt % 2 == 0 ? V[index].A : V[index].B};
-              int next_number{(cnt + 1) % 2 == 0 ? V[i].A : V[i].B};
+              int now_number{cnt % 2 == 1 ? V[index].A : V[index].B};
+              int next_number{(cnt + 1) % 2 == 1 ? V[i].A : V[i].B};
               if (now_number <= next_number)
               {
 #if DEBUG == 1
