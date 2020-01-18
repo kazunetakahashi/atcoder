@@ -263,6 +263,7 @@ private:
             if (index == N)
             {
               ch_min(DP[n_mask][i], DP[mask][index]);
+              Q.push(Info(n_mask, i));
             }
             else
             {
