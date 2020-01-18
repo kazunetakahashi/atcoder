@@ -291,6 +291,10 @@ int main()
   {
     cin >> V[i].B;
   }
+  for (auto i = 1; i < N; i += 2)
+  {
+    swap(V[i].A, V[i].B);
+  }
   if (N == 1)
   {
     cout << 0 << endl;
