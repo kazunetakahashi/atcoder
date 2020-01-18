@@ -208,7 +208,7 @@ struct Robot
 bool booked(Robot x, Robot y)
 {
   assert(x.X < y.X);
-  return (x.X + x.L >= y.X - y.L);
+  return (x.X + x.L > y.X - y.L);
 }
 
 bool operator<(Robot const &x, Robot const &y)
