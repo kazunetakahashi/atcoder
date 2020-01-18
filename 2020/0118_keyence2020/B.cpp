@@ -233,11 +233,17 @@ int main()
   sort(V.begin(), V.end());
   int now{0};
   int R{V[0].X + V[0].L};
-  int ans{0};
+  int ans{1};
   for (auto i = 1; i < N; ++i)
   {
+#if DEBUG == 1
+    cerr << "i = " << i << endl;
+#endif
     if (booked(V[now], V[i]))
     {
+#if DEBUG == 1
+      cerr << "booked." << endl;
+#endif
       R = right(V[now], V[i]);
     }
     else
@@ -246,6 +252,9 @@ int main()
       R = V[i].X + V[i].L;
       now = i;
     }
+#if DEBUG == 1
+    cerr << "R = " << R << endl;
+#endif
   }
   cout << ans << endl;
 }
