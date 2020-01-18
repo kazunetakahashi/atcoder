@@ -350,6 +350,12 @@ int main()
       {
         continue;
       }
+#if DEBUG == 1
+      for (auto i = 0; i < N; ++i)
+      {
+        cerr << "Z[" << i << "] = (" << get<0>(Z[i]) << ", " << get<1>(Z[i]) << ")" << endl;
+      }
+#endif
       SegTree<ll> tree{N, unit2, func2, _update2};
       int tmp{0};
       for (auto i = 0; i < N; ++i)
