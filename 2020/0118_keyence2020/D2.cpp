@@ -271,6 +271,9 @@ private:
               int next_number{(cnt + 1) % 2 == 0 ? V[i].A : V[i].B};
               if (now_number <= next_number)
               {
+#if DEBUG == 1
+                cerr << index << "(" << now_number << ") -> " << i << "(" << next_number << ")" << endl;
+#endif
                 int dist{0};
                 for (auto j = i; j < N; ++j)
                 {
