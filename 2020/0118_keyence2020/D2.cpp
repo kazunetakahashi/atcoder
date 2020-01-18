@@ -246,6 +246,7 @@ private:
     {
       auto mask{get<0>(Q.front())};
       auto index{get<1>(Q.front())};
+      Q.pop();
       if (!visited[mask][index])
       {
         visited[mask][index] = true;
