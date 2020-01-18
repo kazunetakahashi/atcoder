@@ -249,9 +249,6 @@ private:
       Q.pop();
       if (!visited[mask][index])
       {
-#if DEBUG == 1
-        cerr << "mask = " << mask << ", index = " << index << endl;
-#endif
         visited[mask][index] = true;
         int cnt{count_one(mask)};
         for (auto i = 0; i < N; ++i)
@@ -271,9 +268,6 @@ private:
               int next_number{(cnt + 1) % 2 == 1 ? V[i].A : V[i].B};
               if (now_number <= next_number)
               {
-#if DEBUG == 1
-                cerr << index << "(" << now_number << ") -> " << i << "(" << next_number << ")" << endl;
-#endif
                 int dist{0};
                 for (auto j = i; j < N; ++j)
                 {
