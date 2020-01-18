@@ -308,7 +308,11 @@ int main()
   vector<Card> V(N);
   for (auto i = 0; i < N; ++i)
   {
-    cin >> V[i].A >> V[i].B;
+    cin >> V[i].A;
+  }
+  for (auto i = 0; i < N; ++i)
+  {
+    cin >> V[i].B;
   }
   for (auto i = 1; i < N; i += 2)
   {
