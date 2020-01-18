@@ -234,7 +234,7 @@ public:
     int ans{infty};
     for (auto i = 0; i < N; ++i)
     {
-      ch_min(ans, DP[1 << N - 1][i]);
+      ch_min(ans, DP[(1 << N) - 1][i]);
     }
     return ans;
   }
