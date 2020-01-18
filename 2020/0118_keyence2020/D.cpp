@@ -361,7 +361,7 @@ int main()
       for (auto i = 0; i < N; ++i)
       {
         int v{get<1>(Z[i])};
-        tmp += tree.find(0, v);
+        tmp += tree.find(v, N);
         tree.update(v, 1);
       }
       ch_min(ans, tmp);
