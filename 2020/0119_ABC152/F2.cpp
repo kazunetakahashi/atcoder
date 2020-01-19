@@ -187,6 +187,17 @@ template <typename T>
 T gcd(T x, T y) { return y ? gcd(y, x % y) : x; }
 template <typename T>
 T lcm(T x, T y) { return x / gcd(x, y) * y; }
+template <typename T>
+int popcount(T x) // C++20
+{
+  int ans{0};
+  while (x != 0)
+  {
+    ans += x & 1;
+    x >>= 1;
+  }
+  return ans;
+}
 // ----- frequently used constexpr -----
 // constexpr double epsilon{1e-10};
 // constexpr ll infty{1000000000000000LL};
@@ -248,9 +259,9 @@ public:
         {
           mask |= E_set[j];
         }
-        int white{__builtin_popcountll(mask)};
+        int white{popcount(mask)};
         ll now{1LL << (N - 1 - white)}; // 2^(n-1-white)
-        if (__builtin_popcountll(i) % 2 == 0)
+        if (popcount(i) % 2 == 0)
         {
           ans += now;
         }
