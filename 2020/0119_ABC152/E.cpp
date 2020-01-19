@@ -183,7 +183,7 @@ public:
 // ----- for C++14 -----
 using mint = Mint<MOD>;
 using combination = Combination<MOD, MAX_SIZE>;
-ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
+cpp_int gcd(cpp_int x, cpp_int y) { return y ? gcd(y, x % y) : x; }
 cpp_int lcm(cpp_int x, cpp_int y) { return x / gcd(x, y) * y; }
 // ----- frequently used constexpr -----
 // constexpr double epsilon{1e-10};
