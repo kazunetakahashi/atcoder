@@ -229,7 +229,7 @@ public:
     }
   }
 
-  bool is_prime(ll x)
+  bool is_prime(ll x) const
   { // 2 \leq x \leq MAX_SIZE^2
     if (x < N)
     {
@@ -248,8 +248,9 @@ public:
     return prime_nums;
   }
 
-  vector<ll> factor_list(ll x)
+  vector<ll> factor_list(ll x) const
   {
+    assert(x >= 2);
     vector<ll> res;
     auto it{prime_nums.begin()};
     while (x != 1 && it != prime_nums.end())
@@ -271,7 +272,7 @@ public:
     return res;
   }
 
-  vector<tuple<ll, ll>> factor(ll x)
+  vector<tuple<ll, ll>> factor(ll x) const
   {
     auto factors{factor_list(x)};
     vector<tuple<ll, ll>> res{make_tuple(factors[0], 0)};
@@ -290,7 +291,7 @@ public:
   }
 };
 
-int main()
+void solve()
 {
   Sieve sieve;
   int N;
@@ -306,7 +307,14 @@ int main()
     auto f{sieve.factor(A[i])};
     for (auto p : f)
     {
-      ch_max(M[get<0>(p)], get<1>(p));
+      if (M.find(get<0>(p)) == M.end())
+      {
+        M[get<0>(p)] = get<1>(p);
+      }
+      else
+      {
+        ch_max(M[get<0>(p)], get<1>(p));
+      }
     }
   }
   mint lcm{1};
@@ -324,4 +332,9 @@ int main()
     ans += B;
   }
   cout << ans << endl;
+}
+
+int main()
+{
+  solve();
 }
