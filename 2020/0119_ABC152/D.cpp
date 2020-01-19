@@ -207,7 +207,7 @@ int main()
 {
   ll N;
   cin >> N;
-  vector<vector<int>> C(10, vector<int>(10, 0));
+  vector<vector<ll>> C(10, vector<ll>(10, 0));
   for (auto i = 1; i <= N; ++i)
   {
     string S{to_string(i)};
@@ -216,12 +216,12 @@ int main()
     C[t][b]++;
   }
   ll ans{0};
-  for (auto i = 1; i <= N; ++i)
+  for (auto i = 1; i <= 9; ++i)
   {
-    string S{to_string(i)};
-    int t{S[0] - '0'};
-    int b{S.back() - '0'};
-    ans += C[b][t];
+    for (auto j = 0; j <= 9; ++j)
+    {
+      ans += C[i][j] * C[j][i];
+    }
   }
   cout << ans << endl;
 }
