@@ -330,6 +330,9 @@ int main()
         ++free;
       }
     }
+#if DEBUG == 1
+    cerr << "k = " << k << ", free = " << free << endl;
+#endif
     ans += K * power(free);
   }
   cout << ans << endl;
