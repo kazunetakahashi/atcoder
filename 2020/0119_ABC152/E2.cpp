@@ -221,7 +221,7 @@ public:
       if (isprime[i])
       {
         prime_nums.push_back(i);
-        for (auto j = 2 * i; j < N; j += i)
+        for (auto j = i * i; j < N; j += i)
         {
           isprime[j] = false;
         }
@@ -250,7 +250,10 @@ public:
 
   vector<ll> factor_list(ll x) const
   {
-    assert(x >= 2);
+    if (x < 2)
+    {
+      return {};
+    }
     vector<ll> res;
     auto it{prime_nums.begin()};
     while (x != 1 && it != prime_nums.end())
