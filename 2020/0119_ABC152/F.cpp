@@ -208,8 +208,13 @@ struct C
   int u, w;
 };
 
+struct Edge
+{
+  int to, num;
+};
+
 int N;
-vector<vector<int>> V;
+vector<vector<Edge>> V;
 
 ll power(ll x)
 {
@@ -238,10 +243,10 @@ vector<int> count(C c)
     S.pop();
     for (auto x : V[now])
     {
-      if (x != parent[now])
+      if (x.to != parent[now])
       {
-        parent[x] = now;
-        S.push(x);
+        parent[x.to] = now;
+        S.push(x.to);
       }
     }
   }
@@ -249,7 +254,14 @@ vector<int> count(C c)
   int temp{w};
   while (temp != -1)
   {
-    res.push_back(temp);
+    for (auto x : V[temp])
+    {
+      if (x.to == parent[temp])
+      {
+        res.push_back(x.num);
+        break;
+      }
+    }
     temp = parent[temp];
   }
   return res;
@@ -265,8 +277,8 @@ int main()
     cin >> a >> b;
     --a;
     --b;
-    V[a].push_back(b);
-    V[b].push_back(a);
+    V[a].push_back((Edge){b, i});
+    V[b].push_back((Edge){a, i});
   }
   int M;
   cin >> M;
@@ -282,7 +294,7 @@ int main()
   {
     visited[i] = count(W[i]);
   }
-  ll ans{power(N)};
+  ll ans{power(N - 1)};
   for (auto k = 0; k < (1 << M); ++k)
   {
     int cnt{0};
@@ -291,7 +303,7 @@ int main()
       cnt += (k >> i) & 1;
     }
     ll K{cnt % 2 ? 1 : -1};
-    vector<bool> white(N, false);
+    vector<bool> white(N - 1, false);
     for (auto i = 0; i < M; ++i)
     {
       if ((k >> i) & 1)
@@ -303,7 +315,7 @@ int main()
       }
     }
     int free{0};
-    for (auto i = 0; i < N; ++i)
+    for (auto i = 0; i < N - 1; ++i)
     {
       if (!white[i])
       {
