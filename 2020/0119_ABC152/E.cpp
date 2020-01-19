@@ -222,11 +222,12 @@ int main()
   {
     L = lcm(L, A[i]);
   }
-  vector<cpp_int> B(N);
+  mint l{static_cast<ll>(L % MOD)};
+  vector<mint> B(N);
   for (auto i = 0; i < N; ++i)
   {
-    B[i] = L / A[i];
+    B[i] = l / static_cast<ll>(A[i]);
   }
-  cpp_int sum{accumulate(B.begin(), B.end(), cpp_int{0})};
-  cout << sum % MOD << endl;
+  mint sum{accumulate(B.begin(), B.end(), mint{0})};
+  cout << sum << endl;
 }
