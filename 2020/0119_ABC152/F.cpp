@@ -310,7 +310,7 @@ int main()
     {
       cnt += (k >> i) & 1;
     }
-    ll K{cnt % 2 ? 1 : -1};
+    ll K{cnt % 2 ? -1 : 1};
     vector<bool> white(N - 1, false);
     for (auto i = 0; i < M; ++i)
     {
