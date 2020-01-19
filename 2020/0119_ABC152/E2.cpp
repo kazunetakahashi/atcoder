@@ -325,6 +325,7 @@ void solve()
       lcm *= get<0>(p);
     }
   }
+  sleep(10);
   mint ans{0};
   for (auto i = 0; i < N; ++i)
   {
