@@ -209,21 +209,26 @@ class Sieve
 {
   static constexpr ll MAX_SIZE{1000010LL};
   ll N;
-  vector<bool> isprime;
+  vector<ll> f;
   vector<ll> prime_nums;
 
 public:
-  Sieve(ll N = MAX_SIZE) : N{N}, isprime(N, true), prime_nums{}
+  Sieve(ll N = MAX_SIZE) : N{N}, f(N, 0), prime_nums{}
   {
-    isprime[0] = isprime[1] = false;
+    f[0] = f[1] = -1;
     for (auto i = 2; i < N; i++)
     {
-      if (isprime[i])
+      if (f[i])
       {
-        prime_nums.push_back(i);
-        for (auto j = i * i; j < N; j += i)
+        continue;
+      }
+      prime_nums.push_back(i);
+      f[i] = i;
+      for (auto j = 2 * i; j < N; j += i)
+      {
+        if (!f[j])
         {
-          isprime[j] = false;
+          f[j] = i;
         }
       }
     }
@@ -233,12 +238,14 @@ public:
   { // 2 \leq x \leq MAX_SIZE^2
     if (x < N)
     {
-      return isprime[x];
+      return f[x];
     }
     for (auto e : prime_nums)
     {
       if (x % e == 0)
+      {
         return false;
+      }
     }
     return true;
   }
@@ -256,21 +263,32 @@ public:
     }
     vector<ll> res;
     auto it{prime_nums.begin()};
-    while (x != 1 && it != prime_nums.end())
+    if (x < N)
     {
-      if (x % *it == 0)
+      while (x != 1)
       {
-        res.push_back(*it);
-        x /= *it;
-      }
-      else
-      {
-        ++it;
+        res.push_back(f[x]);
+        x /= f[x];
       }
     }
-    if (x != 1)
+    else
     {
-      res.push_back(x);
+      while (x != 1 && it != prime_nums.end())
+      {
+        if (x % *it == 0)
+        {
+          res.push_back(*it);
+          x /= *it;
+        }
+        else
+        {
+          ++it;
+        }
+      }
+      if (x != 1)
+      {
+        res.push_back(x);
+      }
     }
     return res;
   }
