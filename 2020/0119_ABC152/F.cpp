@@ -302,7 +302,7 @@ int main()
     cerr << endl;
 #endif
   }
-  ll ans{power(N - 1)};
+  ll ans{0};
   for (auto k = 0; k < (1 << M); ++k)
   {
     int cnt{0};
