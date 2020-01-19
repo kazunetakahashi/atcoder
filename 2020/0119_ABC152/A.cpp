@@ -209,10 +209,10 @@ int main()
   cin >> N >> M;
   if (N == M)
   {
-    cout << "AC" << endl;
+    Yes();
   }
   else
   {
-    cout << "WA" << endl;
+    No();
   }
 }
