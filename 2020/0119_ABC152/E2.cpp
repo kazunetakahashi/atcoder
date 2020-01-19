@@ -274,6 +274,10 @@ public:
 
   vector<tuple<ll, ll>> factor(ll x) const
   {
+    if (x < 2)
+    {
+      return {};
+    }
     auto factors{factor_list(x)};
     vector<tuple<ll, ll>> res{make_tuple(factors[0], 0)};
     for (auto x : factors)
@@ -317,7 +321,6 @@ void solve()
       }
     }
   }
-  sleep(10);
   mint lcm{1};
   for (auto p : M)
   {
