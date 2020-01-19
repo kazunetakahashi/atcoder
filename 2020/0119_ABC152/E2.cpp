@@ -221,7 +221,7 @@ public:
       if (isprime[i])
       {
         prime_nums.push_back(i);
-        for (auto j = 2 * i; j < N; j += i)
+        for (auto j = i * i; j < N; j += i)
         {
           isprime[j] = false;
         }
