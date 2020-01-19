@@ -293,6 +293,14 @@ int main()
   for (auto i = 0; i < M; ++i)
   {
     visited[i] = count(W[i]);
+#if DEBUG == 1
+    cerr << "visited[" << i << "] = ";
+    for (auto x : visited[i])
+    {
+      cerr << x << ", ";
+    }
+    cerr << endl;
+#endif
   }
   ll ans{power(N - 1)};
   for (auto k = 0; k < (1 << M); ++k)
