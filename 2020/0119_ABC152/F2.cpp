@@ -248,8 +248,8 @@ public:
         {
           mask |= E_set[j];
         }
-        int white = __builtin_popcountll(mask);
-        ll now = 1ll << (N - 1 - white); // 2^(n-1-white)
+        int white{__builtin_popcountll(mask)};
+        ll now{1LL << (N - 1 - white)}; // 2^(n-1-white)
         if (__builtin_popcountll(i) % 2 == 0)
         {
           ans += now;
@@ -291,7 +291,7 @@ private:
 int main()
 {
   int N, M;
-  cin >> N >> M;
+  cin >> N;
   vector<vector<Edge>> T(N);
   vector<Info> X;
   for (auto i = 0; i < N - 1; ++i)
@@ -303,6 +303,7 @@ int main()
     T[A].push_back((Edge){B, i});
     T[B].push_back((Edge){A, i});
   }
+  cin >> M;
   for (auto i = 0; i < M; ++i)
   {
     int A, B;
