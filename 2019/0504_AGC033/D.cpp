@@ -416,20 +416,20 @@ int main()
     fill_dp1(k);
     fill_dp2(k);
   }
-  I ans_X{-1}, ans_Y{-1};
+  I ans_X{X}, ans_Y{X};
   for (I k = 0; k <= 16; ++k)
   {
     if (dp1[k][0][H][0] >= W)
     {
-      ch_max(ans_X, k);
+      ch_min(ans_X, k);
     }
     if (dp2[k][0][W][0] >= H)
     {
-      ch_max(ans_Y, k);
+      ch_min(ans_Y, k);
     }
   }
-  assert(ans_X >= 0);
-  assert(ans_Y >= 0);
+  assert(ans_X < X);
+  assert(ans_Y < X);
   assert(ans_X == ans_Y);
   cout << ans_X << endl;
 }
