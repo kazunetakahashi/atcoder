@@ -219,7 +219,7 @@ Color operator|(Color L, Color R)
 }
 
 constexpr I C{186};
-constexpr I X{16};
+constexpr I X{17};
 
 // The memory limit is strict.
 I dp1[X][C][C][C];
