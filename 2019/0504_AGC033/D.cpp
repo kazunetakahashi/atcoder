@@ -417,7 +417,7 @@ int main()
     fill_dp2(k);
   }
   I ans_X{-1}, ans_Y{-1};
-  for (I k = 16; k >= 0; --k)
+  for (I k = 0; k <= 16; ++k)
   {
     if (dp1[k][0][H][0] >= W)
     {
