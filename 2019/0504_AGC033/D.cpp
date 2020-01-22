@@ -353,6 +353,9 @@ void fill_dp1(int k)
         if (dp1[k - 1][X0][X1][dp1[k - 1][X0][X1][Y0]] >= Y1 || dp2[k - 1][Y0][Y1][dp2[k - 1][Y0][Y1][X0]] >= X1)
         {
           dp1[k][X0][X1][Y0] = Y1;
+#if DEBUG == 1
+          cerr << "dp1[" << k << "][" << X0 << "][" << X1 << "][" << Y0 << "] =" << Y1 << endl;
+#endif
           Y0--;
         }
         else
