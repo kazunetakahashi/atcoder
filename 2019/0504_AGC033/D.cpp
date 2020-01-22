@@ -354,7 +354,7 @@ void fill_dp1(int k)
         {
           dp1[k][X0][X1][Y0] = Y1;
 #if DEBUG == 1
-          cerr << "dp1[" << k << "][" << X0 << "][" << X1 << "][" << Y0 << "] =" << Y1 << endl;
+          cerr << "dp1[" << k << "][" << X0 << "][" << X1 << "][" << Y0 << "] = " << Y1 << endl;
 #endif
           Y0--;
         }
