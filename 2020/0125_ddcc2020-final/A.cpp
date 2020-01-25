@@ -258,7 +258,7 @@ public:
     {
       ans ^= A[i];
     }
-    if (ans == 0)
+    if (ans != 0)
     {
       Yes();
     }
