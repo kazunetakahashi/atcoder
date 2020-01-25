@@ -247,6 +247,9 @@ public:
           break;
         }
       }
+#if DEBUG == 1
+      cerr << "G[" << i << "] = " << G[i] << endl;
+#endif
     }
   }
 
