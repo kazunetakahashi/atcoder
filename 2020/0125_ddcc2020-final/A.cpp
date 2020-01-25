@@ -206,12 +206,12 @@ int popcount(T x) // C++20
 // ----- Yes() and No() -----
 void Yes()
 {
-  cerr << "Yes" << endl;
+  cout << "Yes" << endl;
   exit(0);
 }
 void No()
 {
-  cerr << "No" << endl;
+  cout << "No" << endl;
   exit(0);
 }
 // ----- main() -----
@@ -247,9 +247,6 @@ public:
           break;
         }
       }
-#if DEBUG == 1
-      cerr << "G[" << i << "] = " << G[i] << endl;
-#endif
     }
   }
 
