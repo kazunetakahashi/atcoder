@@ -398,7 +398,7 @@ private:
 
   void flush_simple(ld X, ld Sx, ld Ax, ld Dx, ld Y, ld Sy, ld Ay, ld Dy, ld Ta, ld Wa, ld Wb, ld Wc, ld We)
   {
-    cout << fixed << setprecision(0) << X << " " << Sx << " " << Ax << " " << Dx << " " << Y << " " << Sy << " " << Ay << " " << Dy << " " << Ta << " " << Wa << " " << Wb << " " << Wc << " " << We << endl;
+    cout << fixed << setprecision(0) << X << ", " << Sx << ", " << Ax << ", " << Dx << ", " << Y << ", " << Sy << ", " << Ay << ", " << Dy << ", " << Ta << ", " << Wa << ", " << Wb << ", " << Wc << ", " << We << endl;
   }
 
   void flush_A(ld W)
