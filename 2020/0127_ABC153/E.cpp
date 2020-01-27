@@ -225,17 +225,17 @@ int main()
   {
     cin >> A[i] >> B[i];
   }
-  vector<int> dp(H + 1, infty);
+  vector<int> dp(H + 2000, infty);
   dp[0] = 0;
-  for (auto i = 0; i < H; ++i)
+  for (auto i = 0; i < H + 2000; ++i)
   {
     for (auto j = 0; j < N; ++j)
     {
-      if (i + A[j] <= H)
+      if (i + A[j] < H + 2000)
       {
         ch_min(dp[i + A[j]], dp[i] + B[i]);
       }
     }
   }
-  cout << dp[H] << endl;
+  cout << *min_element(dp.begin() + H, dp.end()) << endl;
 }
