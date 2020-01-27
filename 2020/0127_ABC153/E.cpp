@@ -237,5 +237,11 @@ int main()
       }
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i < 3000; ++i)
+  {
+    cerr << "dp[" << i << "] = " << dp[i] << endl;
+  }
+#endif
   cout << *min_element(dp.begin() + H, dp.end()) << endl;
 }
