@@ -272,7 +272,7 @@ int main()
     V[i] = Monster(X, H);
   }
   sort(V.begin(), V.end());
-  BIT<ll> bit{N};
+  BIT<ll> bit(N);
   int j{0};
   ll ans{0};
   for (auto i = 0; i < N; ++i)
