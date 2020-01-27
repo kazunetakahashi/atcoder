@@ -219,8 +219,8 @@ void No()
 int main()
 {
   int H, N;
-  vector<int> A(N), B(N);
   cin >> H >> N;
+  vector<int> A(N), B(N);
   for (auto i = 0; i < N; ++i)
   {
     cin >> A[i] >> B[i];
