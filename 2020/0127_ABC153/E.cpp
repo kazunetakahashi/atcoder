@@ -229,16 +229,14 @@ int main()
   dp[0] = 0;
   for (auto i = 0; i < H; ++i)
   {
+    if (dp[i] == infty)
+    {
+      continue;
+    }
     for (auto j = 0; j < N; ++j)
     {
       ch_min(dp[min(H, i + A[j])], dp[i] + B[j]);
     }
   }
-#if DEBUG == 1
-  for (auto i = 0; i <= min(H, 100); ++i)
-  {
-    cerr << "dp[" << i << "] = " << dp[i] << endl;
-  }
-#endif
-  // cout << dp[H] << endl;
+  cout << dp[H] << endl;
 }
