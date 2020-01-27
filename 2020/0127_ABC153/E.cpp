@@ -225,23 +225,14 @@ int main()
   {
     cin >> A[i] >> B[i];
   }
-  vector<int> dp(30000, infty);
+  vector<int> dp(H + 1, infty);
   dp[0] = 0;
-  for (auto i = 0; i < 30000; ++i)
+  for (auto i = 0; i < H; ++i)
   {
-    for (auto j = 0; j < H; ++j)
+    for (auto j = 0; j < N; ++j)
     {
-      if (i + A[j] < 30000)
-      {
-        ch_min(dp[i + A[j]], dp[i] + B[j]);
-      }
+      ch_min(dp[min(H, i + A[j])], dp[i] + B[j]);
     }
   }
-#if DEBUG == 1
-  for (auto i = 0; i < 30000; ++i)
-  {
-    cerr << "dp[" << i << "] = " << dp[i] << endl;
-  }
-#endif
-  cout << *min_element(dp.begin() + H, dp.end()) << endl;
+  cout << dp[H] << endl;
 }
