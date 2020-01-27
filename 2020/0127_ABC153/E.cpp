@@ -226,6 +226,7 @@ int main()
     cin >> A[i] >> B[i];
   }
   vector<int> dp(H + 1, infty);
+  dp[0] = 0;
   for (auto i = 0; i < H; ++i)
   {
     for (auto j = 0; j < N; ++j)
