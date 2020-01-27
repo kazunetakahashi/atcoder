@@ -235,7 +235,7 @@ int main()
     }
   }
 #if DEBUG == 1
-  for (auto i = 0; i <= H; ++i)
+  for (auto i = 0; i <= min(H, 100); ++i)
   {
     cerr << "dp[" << i << "] = " << dp[i] << endl;
   }
