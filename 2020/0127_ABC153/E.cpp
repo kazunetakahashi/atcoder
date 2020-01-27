@@ -227,9 +227,9 @@ int main()
   }
   vector<int> dp(H + 1, infty);
   dp[0] = 0;
-  for (auto i = 0; i < H; ++i)
+  for (auto j = 0; j < N; ++j)
   {
-    for (auto j = 0; j < N; ++j)
+    for (auto i = 0; i < H; ++i)
     {
       ch_min(dp[min(H, i + A[j])], dp[i] + B[j]);
     }
