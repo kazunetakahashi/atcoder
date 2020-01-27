@@ -272,7 +272,7 @@ int main()
     V[i] = Monster(X, H);
   }
   sort(V.begin(), V.end());
-  BIT<ll> bit(N);
+  BIT<ll> bit{N};
   int j{0};
   ll ans{0};
   for (auto i = 0; i < N; ++i)
@@ -283,8 +283,11 @@ int main()
     }
     // [i, j)
     ll tmp{(get<1>(V[i]) - bit.get(i) + A - 1) / A};
-    bit.add(i, j, tmp * A);
-    ans += tmp;
+    if (tmp > 0)
+    {
+      bit.add(i, j, tmp * A);
+      ans += tmp;
+    }
   }
   cout << ans << endl;
 }
