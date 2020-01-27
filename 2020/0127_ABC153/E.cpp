@@ -229,7 +229,7 @@ int main()
   dp[0] = 0;
   for (auto i = 0; i < 30000; ++i)
   {
-    for (auto j = 0; j < N; ++j)
+    for (auto j = 0; j < H; ++j)
     {
       if (i + A[j] < 30000)
       {
