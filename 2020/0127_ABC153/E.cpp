@@ -200,7 +200,7 @@ int popcount(T x) // C++20
 }
 // ----- frequently used constexpr -----
 // constexpr double epsilon{1e-10};
-constexpr int infty{10000000};
+constexpr int infty{100'000'000};
 // constexpr int dx[4] = {1, 0, -1, 0};
 // constexpr int dy[4] = {0, 1, 0, -1};
 // ----- Yes() and No() -----
@@ -227,12 +227,18 @@ int main()
   }
   vector<int> dp(H + 1, infty);
   dp[0] = 0;
-  for (auto j = 0; j < N; ++j)
+  for (auto i = 0; i < H; ++i)
   {
-    for (auto i = 0; i < H; ++i)
+    for (auto j = 0; j < N; ++j)
     {
       ch_min(dp[min(H, i + A[j])], dp[i] + B[j]);
     }
   }
-  cout << dp[H] << endl;
+#if DEBUG == 1
+  for (auto i = 0; i <= H; ++i)
+  {
+    cerr << "dp[" << i << "] = " << dp[i] << endl;
+  }
+#endif
+  // cout << dp[H] << endl;
 }
