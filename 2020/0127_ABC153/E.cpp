@@ -225,13 +225,13 @@ int main()
   {
     cin >> A[i] >> B[i];
   }
-  vector<int> dp(H + 2000, infty);
+  vector<int> dp(3000, infty);
   dp[0] = 0;
-  for (auto i = 0; i < H + 2000; ++i)
+  for (auto i = 0; i < 3000; ++i)
   {
     for (auto j = 0; j < N; ++j)
     {
-      if (i + A[j] < H + 2000)
+      if (i + A[j] < 3000)
       {
         ch_min(dp[i + A[j]], dp[i] + B[i]);
       }
