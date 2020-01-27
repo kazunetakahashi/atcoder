@@ -218,28 +218,28 @@ void No()
 
 template <typename T = ll>
 class BIT
-{ // index starts at 1.
+{ // index starts at 0.
 public:
   int N;
-  vector<ll> data;
+  vector<T> data;
 
   BIT(int N) : N{N}, data(N + 1, T{0}) {}
 
-  ll get(int i)
+  T get(int i)
   {
-    return _sum(i);
+    return _sum(i + 1);
   }
 
-  void add(int a, int b, ll x)
+  void add(int a, int b, T x)
   { // [a, b)
-    _add(a, x);
-    _add(b, -x);
+    _add(a + 1, x);
+    _add(b + 1, -x);
   }
 
 private:
-  ll _sum(int i)
+  T _sum(int i)
   { // [1, i]
-    ll s = 0;
+    T s{0};
     while (i > 0)
     {
       s += data[i];
@@ -271,20 +271,19 @@ int main()
     cin >> X >> H;
     V[i] = Monster(X, H);
   }
-  V.push_back(Monster(infty, infty));
   sort(V.begin(), V.end());
-  BIT<ll> bit(N + 1);
+  BIT<ll> bit(N);
   int j{0};
   ll ans{0};
   for (auto i = 0; i < N; ++i)
   {
-    while (get<0>(V[j]) - get<0>(V[i]) <= 2 * D)
+    while (j < N && get<0>(V[j]) - get<0>(V[i]) <= 2 * D)
     {
       ++j;
     }
     // [i, j)
-    ll tmp{(get<1>(V[i]) - bit.get(i + 1) + A - 1) / A};
-    bit.add(i + 1, j + 1, tmp * A);
+    ll tmp{(get<1>(V[i]) - bit.get(i) + A - 1) / A};
+    bit.add(i, j, tmp * A);
     ans += tmp;
   }
   cout << ans << endl;
