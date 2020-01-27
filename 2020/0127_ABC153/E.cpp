@@ -233,7 +233,7 @@ int main()
     {
       if (i + A[j] < 3000)
       {
-        ch_min(dp[i + A[j]], dp[i] + B[i]);
+        ch_min(dp[i + A[j]], dp[i] + B[j]);
       }
     }
   }
