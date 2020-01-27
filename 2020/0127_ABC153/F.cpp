@@ -273,7 +273,7 @@ int main()
   }
   V.push_back(Monster(infty, infty));
   sort(V.begin(), V.end());
-  BIT bit(N + 1);
+  BIT<ll> bit(N + 1);
   int j{0};
   ll ans{0};
   for (auto i = 0; i < N; ++i)
