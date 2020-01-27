@@ -225,20 +225,20 @@ int main()
   {
     cin >> A[i] >> B[i];
   }
-  vector<int> dp(3000, infty);
+  vector<int> dp(30000, infty);
   dp[0] = 0;
-  for (auto i = 0; i < 3000; ++i)
+  for (auto i = 0; i < 30000; ++i)
   {
     for (auto j = 0; j < N; ++j)
     {
-      if (i + A[j] < 3000)
+      if (i + A[j] < 30000)
       {
         ch_min(dp[i + A[j]], dp[i] + B[j]);
       }
     }
   }
 #if DEBUG == 1
-  for (auto i = 0; i < 3000; ++i)
+  for (auto i = 0; i < 30000; ++i)
   {
     cerr << "dp[" << i << "] = " << dp[i] << endl;
   }
