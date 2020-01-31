@@ -213,6 +213,7 @@ void No()
 int main()
 {
   int A, B, C, X;
+  cin >> A >> B >> C >> X;
   int ans{0};
   for (auto i = 0; i <= A; ++i)
   {
