@@ -255,8 +255,11 @@ private:
     {
       for (auto y : V[x])
       {
-        dist[y] = dist[x] + 1;
-        dfs(dist, y, x);
+        if (y != -1)
+        {
+          dist[y] = dist[x] + 1;
+          dfs(dist, y, x);
+        }
       }
     }
   }
