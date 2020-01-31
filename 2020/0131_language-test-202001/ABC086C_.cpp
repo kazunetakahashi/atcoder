@@ -225,7 +225,7 @@ int main()
   };
   auto ok = [&](int k) {
     int T{t[k + 1] - t[k]};
-    int d{dist(x[k], x[k + 1], y[k], y[k + 1])};
+    int d{dist(x[k], y[k], x[k + 1], y[k + 1])};
 #if DEBUG == 1
     cerr << "T = " << T << ", d = " << d << endl;
 #endif
