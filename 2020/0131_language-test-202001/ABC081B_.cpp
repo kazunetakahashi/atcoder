@@ -221,7 +221,7 @@ int main()
   }
   auto count = [](int x) {
     int cnt{0};
-    while (x & 1 == 0)
+    while ((x & 1) == 0)
     {
       x >>= 1;
       ++cnt;
