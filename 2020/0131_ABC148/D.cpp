@@ -235,5 +235,9 @@ int main()
       ++now;
     }
   }
+  if (ans == N)
+  {
+    ans = N + 1;
+  }
   cout << N - ans << endl;
 }
