@@ -233,10 +233,7 @@ int main()
   int ans{0};
   for (auto i = 1; i <= N; ++i)
   {
-    if (ok(i))
-    {
-      ++ans;
-    }
+    ans += ok(i);
   }
   cout << ans << endl;
 }
