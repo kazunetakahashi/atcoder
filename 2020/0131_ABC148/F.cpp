@@ -249,7 +249,7 @@ public:
         ch_max(ans, from_v[i]);
       }
     }
-    cout << ans << endl;
+    cout << ans - 1 << endl;
   }
 
 private:
