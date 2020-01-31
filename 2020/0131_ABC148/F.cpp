@@ -255,15 +255,12 @@ public:
 private:
   void dfs(vector<int> &dist, int x, int p = -1)
   {
-    if (dist[x] == -1)
+    for (auto y : V[x])
     {
-      for (auto y : V[x])
+      if (y != p)
       {
-        if (y != p)
-        {
-          dist[y] = dist[x] + 1;
-          dfs(dist, y, x);
-        }
+        dist[y] = dist[x] + 1;
+        dfs(dist, y, x);
       }
     }
   }
