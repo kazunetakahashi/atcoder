@@ -246,7 +246,7 @@ public:
 #endif
       if (from_u[i] < from_v[i])
       {
-        ch_max(ans, from_u[i]);
+        ch_max(ans, from_v[i]);
       }
     }
     cout << ans << endl;
