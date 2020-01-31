@@ -235,5 +235,5 @@ int main()
       ++now;
     }
   }
-  cout << ans << endl;
+  cout << N - ans << endl;
 }
