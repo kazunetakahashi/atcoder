@@ -221,7 +221,14 @@ int main()
     {
       sum += x - '0';
     }
-    return A <= sum && sum <= B;
+    if (A <= sum && sum <= B)
+    {
+      return n;
+    }
+    else
+    {
+      return 0;
+    }
   };
   int ans{0};
   for (auto i = 1; i <= N; ++i)
