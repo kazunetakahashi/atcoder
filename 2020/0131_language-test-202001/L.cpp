@@ -240,7 +240,7 @@ void merge_sort(Iter begin, Iter end, Comp cmp)
   auto mid{begin + N / 2};
   merge_sort(begin, mid, cmp);
   merge_sort(mid, end, cmp);
-  vector<typename Iter::value_type> temp;
+  vector<typename Iter::value_type> temp(N);
   merge(begin, mid, mid, end, temp.begin(), cmp);
   copy(temp.begin(), temp.end(), begin);
 }
@@ -293,11 +293,6 @@ int main()
   }
   else
   {
-    vector<int> V;
-    for (auto i = 0; i < N; ++i)
-    {
-      V.push_back(i);
-    }
     vector<vector<int>> W;
     do
     {
