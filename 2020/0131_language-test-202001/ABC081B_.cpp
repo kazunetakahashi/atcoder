@@ -228,10 +228,10 @@ int main()
     }
     return cnt;
   };
-  int ans{0};
+  int ans{100};
   for (auto i = 0; i < N; ++i)
   {
-    ans += count(A[i]);
+    ch_min(ans, count(A[i]));
   }
   cout << ans << endl;
 }
