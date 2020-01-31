@@ -216,9 +216,14 @@ void No()
 }
 // ----- main() -----
 
-bool query(int x, int y)
+char to_char(int x)
 {
-  cout << "? " << (char)(x + 'A') << " " << (char)(y + 'A') << endl;
+  return x + 'A';
+}
+
+bool query(int const &x, int const &y)
+{
+  cout << "? " << to_char(x) << " " << to_char(y) << endl;
   char a;
   cin >> a;
   return a == '<';
@@ -233,57 +238,11 @@ int main()
   {
     V[i] = i;
   }
-  vector<vector<int>> W = {V};
-  while (static_cast<int>(W.size()) < N)
-  {
-    vector<vector<int>> tmp;
-    for (auto const &v : W)
-    {
-      vector<int> L, G;
-      for (auto it = v.begin(); it != v.end(); it += 2)
-      {
-        if (it + 1 == v.end())
-        {
-          L.push_back(*it);
-          break;
-        }
-        auto x{*it}, y{*(it + 1)};
-        if (!query(x, y))
-        {
-          swap(x, y);
-        }
-        L.push_back(x);
-        G.push_back(y);
-      }
-#if DEBUG == 1
-      cerr << "L = {";
-      for (auto x : L)
-      {
-        cerr << x << ", ";
-      }
-      cerr << endl;
-      cerr << "G = {";
-      for (auto x : G)
-      {
-        cerr << x << ", ";
-      }
-      cerr << endl;
-#endif
-      if (!L.empty())
-      {
-        tmp.push_back(L);
-      }
-      if (!G.empty())
-      {
-        tmp.push_back(G);
-      }
-    }
-    swap(W, tmp);
-  }
+  sort(V.begin(), V.end(), query);
   cout << "! ";
-  for (auto const &v : W)
+  for (auto i = 0; i < N; ++i)
   {
-    cout << (char)(v[0] + 'A');
+    cout << to_char(V[i]);
   }
   cout << endl;
 }
