@@ -226,6 +226,9 @@ int main()
   auto ok = [&](int k) {
     int T{t[k + 1] - t[k]};
     int d{dist(x[k], x[k + 1], y[k], y[k + 1])};
+#if DEBUG == 1
+    cerr << "T = " << T << ", d = " << d << endl;
+#endif
     return (T >= d && abs(T - d) % 2 == 0);
   };
   for (auto i = 0; i < N; ++i)
