@@ -235,7 +235,7 @@ int main()
       ++now;
     }
   }
-  if (ans == N)
+  if (ans == 0)
   {
     ans = N + 1;
   }
