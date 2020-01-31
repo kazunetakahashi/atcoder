@@ -229,6 +229,39 @@ bool query(int const &x, int const &y)
   return a == '<';
 }
 
+template <typename Iter, typename Comp>
+void merge_sort(Iter begin, Iter end, Comp cmp)
+{
+  int N{static_cast<int>(end - begin)};
+  if (N <= 1)
+  {
+    return;
+  }
+  auto mid{begin + N / 2};
+  merge_sort(begin, mid, cmp);
+  merge_sort(mid, end, cmp);
+  vector<typename Iter::value_type> temp;
+  merge(begin, mid, mid, end, temp.begin(), cmp);
+  copy(temp.begin(), temp.end(), begin);
+}
+
+bool check_vector(vector<int> const &V, int x, int y)
+{
+  for (auto e : V)
+  {
+    if (e == x)
+    {
+      return true;
+    }
+    else if (e == y)
+    {
+      return false;
+    }
+  }
+  assert(false);
+  return true;
+}
+
 int main()
 {
   int N, Q;
@@ -238,11 +271,85 @@ int main()
   {
     V[i] = i;
   }
-  sort(V.begin(), V.end(), query);
-  cout << "! ";
-  for (auto i = 0; i < N; ++i)
+  if (Q == 1000)
   {
-    cout << to_char(V[i]);
+    sort(V.begin(), V.end(), query);
+    cout << "! ";
+    for (auto i = 0; i < N; ++i)
+    {
+      cout << to_char(V[i]);
+    }
+    cout << endl;
   }
-  cout << endl;
+  else if (Q == 100)
+  {
+    merge_sort(V.begin(), V.end(), query);
+    cout << "! ";
+    for (auto i = 0; i < N; ++i)
+    {
+      cout << to_char(V[i]);
+    }
+    cout << endl;
+  }
+  else
+  {
+    vector<int> V;
+    for (auto i = 0; i < N; ++i)
+    {
+      V.push_back(i);
+    }
+    vector<vector<int>> W;
+    do
+    {
+      W.push_back(V);
+    } while (next_permutation(V.begin(), V.end()));
+    while (static_cast<int>(W.size()) > 1)
+    {
+      auto cnt{static_cast<int>(W.size())};
+      int ind_x = -1, ind_y = -1;
+      for (auto x = 0; x < N; ++x)
+      {
+        for (auto y = x + 1; y < N; ++y)
+        {
+          int tmp{0};
+          for (auto const &v : W)
+          {
+            if (check_vector(v, x, y))
+            {
+              ++tmp;
+            }
+          }
+          auto c_tmp{static_cast<int>(W.size()) - tmp};
+          auto t{max(tmp, c_tmp)};
+          if (cnt > t)
+          {
+            cnt = t;
+            ind_x = x;
+            ind_y = y;
+          }
+        }
+      }
+      assert(ind_x != -1 && ind_y != -1);
+      if (!query(ind_x, ind_y))
+      {
+        swap(ind_x, ind_y);
+      }
+      vector<vector<int>> U;
+      for (auto const &v : W)
+      {
+        if (check_vector(v, ind_x, ind_y))
+        {
+          U.push_back(v);
+        }
+      }
+      swap(U, W);
+    }
+    auto const &v{W[0]};
+    cout << "! ";
+    for (auto i = 0; i < N; ++i)
+    {
+      cout << to_char(v[i]);
+    }
+    cout << endl;
+  }
 }
