@@ -214,8 +214,9 @@ int main()
 {
   int N;
   cin >> N;
-  vector<int> t(N), x(N), y(N);
-  for (auto i = 0; i < N; ++i)
+  vector<int> t(N + 1), x(N + 1), y(N + 1);
+  t[0] = x[0] = y[0] = 0;
+  for (auto i = 1; i <= N; ++i)
   {
     cin >> t[i] >> x[i] >> y[i];
   }
@@ -227,7 +228,7 @@ int main()
     int d{dist(x[k], x[k + 1], y[k], y[k + 1])};
     return (T <= d && abs(T - d) % 2 == 0);
   };
-  for (auto i = 0; i < N - 1; ++i)
+  for (auto i = 0; i < N; ++i)
   {
     if (!ok(i))
     {
