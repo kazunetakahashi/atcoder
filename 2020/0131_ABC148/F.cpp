@@ -240,6 +240,10 @@ public:
     int ans{0};
     for (auto i = 0; i < N; ++i)
     {
+#if DEBUG == 1
+      cerr << "from_u[" << i << "] = " << from_u[i] << endl;
+      cerr << "from_v[" << i << "] = " << from_v[i] << endl;
+#endif
       if (from_u[i] > from_v[i])
       {
         ch_max(ans, from_u[i]);
