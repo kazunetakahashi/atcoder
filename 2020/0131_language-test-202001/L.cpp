@@ -230,7 +230,10 @@ bool query(int const &x, int const &y)
 }
 
 template <typename Iter, typename Comp>
-void merge_sort(Iter begin, Iter end, Comp cmp)
+void merge_sort(Iter begin, Iter end, Comp cmp);
+
+template <typename Iter, typename Comp>
+void merge_sort_impl(Iter begin, Iter end, Comp cmp, random_access_iterator_tag)
 {
   int N{static_cast<int>(end - begin)};
   if (N <= 1)
@@ -243,6 +246,12 @@ void merge_sort(Iter begin, Iter end, Comp cmp)
   vector<typename Iter::value_type> temp(N);
   merge(begin, mid, mid, end, temp.begin(), cmp);
   copy(temp.begin(), temp.end(), begin);
+}
+
+template <typename Iter, typename Comp>
+void merge_sort(Iter begin, Iter end, Comp cmp)
+{
+  merge_sort_impl(begin, end, cmp, typename std::iterator_traits<Iter>::iterator_category());
 }
 
 bool check_vector(vector<int> const &V, int x, int y)
