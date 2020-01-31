@@ -259,7 +259,7 @@ private:
     {
       for (auto y : V[x])
       {
-        if (y != -1)
+        if (y != p)
         {
           dist[y] = dist[x] + 1;
           dfs(dist, y, x);
