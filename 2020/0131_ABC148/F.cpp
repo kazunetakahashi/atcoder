@@ -244,7 +244,7 @@ public:
       cerr << "from_u[" << i << "] = " << from_u[i] << endl;
       cerr << "from_v[" << i << "] = " << from_v[i] << endl;
 #endif
-      if (from_u[i] > from_v[i])
+      if (from_u[i] < from_v[i])
       {
         ch_max(ans, from_u[i]);
       }
