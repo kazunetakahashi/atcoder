@@ -231,34 +231,42 @@ int main()
       G[i][j] = abs(G[i][j] - t);
     }
   }
-  vector<vector<set<int>>> DP(H, vector<set<int>>(W, set<int>()));
-  DP[0][0].insert(G[0][0]);
+  vector<vector<vector<bool>>> DP(H, vector<vector<bool>>(W, vector<bool>(10000, false)));
+  DP[0][0][G[0][0]] = false;
   for (auto i = 0; i < H; ++i)
   {
     for (auto j = 0; j < W; ++j)
     {
       if (i + 1 < H)
       {
-        for (auto x : DP[i][j])
+        for (auto k = 0; k < 10000; ++k)
         {
-          DP[i + 1][j].insert(abs(x + G[i + 1][j]));
-          DP[i + 1][j].insert(abs(x - G[i + 1][j]));
+          if (DP[i][j][k])
+          {
+            DP[i + 1][j][abs(k + G[i + 1][j])] = true;
+            DP[i + 1][j][abs(k - G[i + 1][j])] = true;
+          }
         }
       }
       if (j + 1 < W)
       {
-        for (auto x : DP[i][j])
+        for (auto k = 0; k < 10000; ++k)
         {
-          DP[i][j + 1].insert(abs(x + G[i][j + 1]));
-          DP[i][j + 1].insert(abs(x - G[i][j + 1]));
+          if (DP[i][j][k])
+          {
+            DP[i][j + 1][abs(k + G[i][j + 1])] = true;
+            DP[i][j + 1][abs(k - G[i][j + 1])] = true;
+          }
         }
       }
     }
   }
-  int ans{1 << 30};
-  for (auto x : DP[H - 1][W - 1])
+  for (auto k = 0; k < 10000; ++k)
   {
-    ch_min(ans, abs(x));
+    if (DP[H - 1][W - 1][k])
+    {
+      cout << k << endl;
+      return 0;
+    }
   }
-  cout << ans << endl;
 }
