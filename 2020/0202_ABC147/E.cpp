@@ -231,7 +231,7 @@ int main()
       G[i][j] = abs(G[i][j] - t);
     }
   }
-  vector<vector<vector<bool>>> DP(H, vector<vector<bool>>(W, vector<bool>(10000, false)));
+  vector<vector<vector<bool>>> DP(H, vector<vector<bool>>(W, vector<bool>(100000, false)));
   DP[0][0][G[0][0]] = true;
   for (auto i = 0; i < H; ++i)
   {
@@ -239,7 +239,7 @@ int main()
     {
       if (i + 1 < H)
       {
-        for (auto k = 0; k < 10000; ++k)
+        for (auto k = 0; k < 100000; ++k)
         {
           if (DP[i][j][k])
           {
@@ -250,7 +250,7 @@ int main()
       }
       if (j + 1 < W)
       {
-        for (auto k = 0; k < 10000; ++k)
+        for (auto k = 0; k < 100000; ++k)
         {
           if (DP[i][j][k])
           {
@@ -266,7 +266,7 @@ int main()
   {
     for (auto j = 0; j < W; ++j)
     {
-      for (auto k = 0; k < 10000; ++k)
+      for (auto k = 0; k < 100000; ++k)
       {
         if (DP[i][j][k])
         {
@@ -277,7 +277,7 @@ int main()
     }
   }
 #endif
-  for (auto k = 0; k < 10000; ++k)
+  for (auto k = 0; k < 100000; ++k)
   {
     if (DP[H - 1][W - 1][k])
     {
