@@ -241,16 +241,16 @@ int main()
       {
         for (auto x : DP[i][j])
         {
-          DP[i + 1][j].insert(x + G[i + 1][j]);
-          DP[i + 1][j].insert(x - G[i + 1][j]);
+          DP[i + 1][j].insert(abs(x + G[i + 1][j]));
+          DP[i + 1][j].insert(abs(x - G[i + 1][j]));
         }
       }
       if (j + 1 < W)
       {
         for (auto x : DP[i][j])
         {
-          DP[i][j + 1].insert(x + G[i][j + 1]);
-          DP[i][j + 1].insert(x - G[i][j + 1]);
+          DP[i][j + 1].insert(abs(x + G[i][j + 1]));
+          DP[i][j + 1].insert(abs(x - G[i][j + 1]));
         }
       }
     }
