@@ -232,7 +232,7 @@ int main()
     }
   }
   vector<vector<vector<bool>>> DP(H, vector<vector<bool>>(W, vector<bool>(10000, false)));
-  DP[0][0][G[0][0]] = false;
+  DP[0][0][G[0][0]] = true;
   for (auto i = 0; i < H; ++i)
   {
     for (auto j = 0; j < W; ++j)
