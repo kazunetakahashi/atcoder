@@ -261,6 +261,22 @@ int main()
       }
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i < H; ++i)
+  {
+    for (auto j = 0; j < W; ++j)
+    {
+      for (auto k = 0; k < 10000; ++k)
+      {
+        if (DP[i][j][k])
+        {
+          cout << "DP[" << i << "][" << j << "] = " << k << endl;
+          break;
+        }
+      }
+    }
+  }
+#endif
   for (auto k = 0; k < 10000; ++k)
   {
     if (DP[H - 1][W - 1][k])
