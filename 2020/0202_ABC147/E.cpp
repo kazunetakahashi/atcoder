@@ -270,7 +270,7 @@ int main()
       {
         if (DP[i][j][k])
         {
-          cout << "DP[" << i << "][" << j << "] = " << k << endl;
+          cerr << "DP[" << i << "][" << j << "] = " << k << endl;
           break;
         }
       }
