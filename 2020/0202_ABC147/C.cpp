@@ -245,16 +245,18 @@ int main()
       {
         for (auto x : L[j])
         {
-          if (!(i >> x & 1))
+          if (i >> x & 1)
           {
             ok = false;
+            goto EXIT;
           }
         }
         for (auto x : H[j])
         {
-          if (i >> x & 1)
+          if (!(i >> x & 1))
           {
             ok = false;
+            goto EXIT;
           }
         }
       }
