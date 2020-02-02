@@ -231,52 +231,24 @@ int main()
       G[i][j] = abs(G[i][j] - t);
     }
   }
-  vector<vector<vector<bool>>> DP(H, vector<vector<bool>>(W, vector<bool>(100000, false)));
-  DP[0][0][G[0][0]] = true;
+  vector<vector<bitset<100000>>> DP(H, vector<bitset<100000>>(W, 0));
+  DP[0][0][G[0][0]] = 1;
   for (auto i = 0; i < H; ++i)
   {
     for (auto j = 0; j < W; ++j)
     {
       if (i + 1 < H)
       {
-        for (auto k = 0; k < 100000; ++k)
-        {
-          if (DP[i][j][k])
-          {
-            DP[i + 1][j][abs(k + G[i + 1][j])] = true;
-            DP[i + 1][j][abs(k - G[i + 1][j])] = true;
-          }
-        }
+        DP[i + 1][j] |= DP[i][j] << G[i + 1][j];
+        DP[i + 1][j] |= DP[i][j] >> G[i + 1][j];
       }
       if (j + 1 < W)
       {
-        for (auto k = 0; k < 100000; ++k)
-        {
-          if (DP[i][j][k])
-          {
-            DP[i][j + 1][abs(k + G[i][j + 1])] = true;
-            DP[i][j + 1][abs(k - G[i][j + 1])] = true;
-          }
-        }
+        DP[i][j + 1] |= DP[i][j] << G[i][j + 1];
+        DP[i][j + 1] |= DP[i][j] >> G[i][j + 1];
       }
     }
   }
-#if DEBUG == 1
-  for (auto i = 0; i < H; ++i)
-  {
-    for (auto j = 0; j < W; ++j)
-    {
-      for (auto k = 0; k < 100000; ++k)
-      {
-        if (DP[i][j][k])
-        {
-          cerr << "DP[" << i << "][" << j << "] = " << k << endl;
-          break;
-        }
-      }
-    }
-  }
-#endif
   for (auto k = 0; k < 100000; ++k)
   {
     if (DP[H - 1][W - 1][k])
