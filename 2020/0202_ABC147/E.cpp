@@ -210,6 +210,9 @@ void No()
 }
 // ----- main() -----
 
+constexpr int C{100000};
+constexpr int D{50000};
+
 int main()
 {
   int H, W;
@@ -231,8 +234,8 @@ int main()
       G[i][j] = abs(G[i][j] - t);
     }
   }
-  vector<vector<bitset<100000>>> DP(H, vector<bitset<100000>>(W, 0));
-  DP[0][0][G[0][0]] = 1;
+  vector<vector<bitset<C>>> DP(H, vector<bitset<C>>(W, 0));
+  DP[0][0][G[0][0] + D] = 1;
   for (auto i = 0; i < H; ++i)
   {
     for (auto j = 0; j < W; ++j)
@@ -249,12 +252,13 @@ int main()
       }
     }
   }
-  for (auto k = 0; k < 100000; ++k)
+  int ans{C};
+  for (auto k = 0; k < C; ++k)
   {
     if (DP[H - 1][W - 1][k])
     {
-      cout << k << endl;
-      return 0;
+      ch_min(ans, abs(k - D));
     }
   }
+  cout << ans << endl;
 }
