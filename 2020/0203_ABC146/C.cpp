@@ -233,15 +233,15 @@ void No()
 
 int main()
 {
-  ll A, B, X;
+  cpp_int A, B, X;
   cin >> A >> B >> X;
   auto buy = [&](ll N) {
-    return A * N + B * static_cast<int>(to_string(N).size()) <= X;
+    return A * N + B * static_cast<cpp_int>(to_string(N).size()) <= X;
   };
-  ll lb{0}, ub{X + 1};
+  cpp_int lb{0}, ub{X + 1};
   while (abs(ub - lb) > 1)
   {
-    auto t{(lb + ub) / 2};
+    ll t = static_cast<ll>((lb + ub) / 2);
     if (buy(t))
     {
       lb = t;
