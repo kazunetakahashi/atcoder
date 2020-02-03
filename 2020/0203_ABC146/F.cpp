@@ -278,7 +278,7 @@ int main()
     cerr << "V[" << i << "] = " << V[i] << endl;
   }
 #endif
-  auto K{V[N]};
+  auto K{V[0]};
   int now{0};
   for (auto k = 1; k <= K; ++k)
   {
