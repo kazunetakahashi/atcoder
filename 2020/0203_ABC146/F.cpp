@@ -256,7 +256,7 @@ int main()
       }
     }
     I.insert(V[i]);
-    if (i - M + 1 >= 0 && V[i - M + 1] < infty)
+    if (i - M + 1 >= 0)
     {
       I.erase(V[i - M + 1]);
     }
