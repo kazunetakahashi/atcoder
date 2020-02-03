@@ -262,6 +262,12 @@ int main()
     }
   }
   reverse(V.begin(), V.end());
+#if DEBUG == 1
+  for (auto i = 0; i <= N; ++i)
+  {
+    cerr << "V[" << i << "] = " << V[i] << endl;
+  }
+#endif
   auto K{V[N]};
   int now{0};
   for (auto k = 1; k <= K; ++k)
