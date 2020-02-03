@@ -243,6 +243,13 @@ int main()
   I.insert(V[0]);
   for (auto i = 1; i < N + 1; ++i)
   {
+#if DEBUG == 1
+    for (auto x : I)
+    {
+      cerr << x << " ";
+    }
+    cerr << endl;
+#endif
     if (S[i] == '1')
     {
       V[i] = infty;
