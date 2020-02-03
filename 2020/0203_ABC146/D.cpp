@@ -240,6 +240,10 @@ vector<int> color;
 void dfs(int v, int c = -1, int p = -1)
 {
   int num{0};
+  if (num == c)
+  {
+    ++num;
+  }
   for (auto e : V[v])
   {
     int x, id;
