@@ -238,9 +238,9 @@ int main()
   string S;
   cin >> S;
   auto adv = [&](char x) {
-    int l{x - 'a'};
+    int l{x - 'A'};
     int r{(l + N) % 26};
-    return static_cast<char>('a' + r);
+    return static_cast<char>('A' + r);
   };
   for (auto x : S)
   {
