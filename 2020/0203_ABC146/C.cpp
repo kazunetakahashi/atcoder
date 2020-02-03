@@ -238,27 +238,18 @@ int main()
   auto buy = [&](ll N) {
     return A * N + B * static_cast<int>(to_string(N).size()) <= X;
   };
-  auto buy_max = [&](ll d) {
-    return max((X - B * d) / A, 0LL);
-  };
-  vector<ll> V;
-  ll base{1};
-  for (auto i = 0; i < 11; ++i)
+  ll lb{0}, ub{X + 1};
+  while (abs(ub - lb) > 1)
   {
-    V.push_back(base - 1);
-    base *= 10;
-  }
-  for (auto i = 1; i < 11; ++i)
-  {
-    V.push_back(buy_max(i));
-  }
-  ll ans{0};
-  for (auto x : V)
-  {
-    if (buy(x))
+    auto t{(lb + ub) / 2};
+    if (buy(t))
     {
-      ch_max(ans, x);
+      lb = t;
+    }
+    else
+    {
+      ub = t;
     }
   }
-  cout << ans << endl;
+  cout << lb << endl;
 }
