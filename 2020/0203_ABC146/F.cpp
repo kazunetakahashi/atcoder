@@ -235,7 +235,7 @@ int main()
 {
   ll N, M;
   string S;
-  cin >> N >> M;
+  cin >> N >> M >> S;
   reverse(S.begin(), S.end());
   vector<int> V(N + 1, -1);
   V[0] = 0;
@@ -256,7 +256,7 @@ int main()
       }
     }
     I.insert(V[i]);
-    if (i - M + 1 >= 0)
+    if (i - M + 1 >= 0 && V[i - M + 1] < infty)
     {
       I.erase(V[i - M + 1]);
     }
