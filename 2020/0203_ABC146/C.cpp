@@ -238,7 +238,7 @@ int main()
   auto buy = [&](ll N) {
     return A * N + B * static_cast<cpp_int>(to_string(N).size()) <= X;
   };
-  cpp_int lb{0}, ub{X + 1};
+  cpp_int lb{0}, ub{1'000'000'001};
   while (abs(ub - lb) > 1)
   {
     ll t = static_cast<ll>((lb + ub) / 2);
