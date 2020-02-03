@@ -268,7 +268,7 @@ int main()
     I.insert(V[i]);
     if (i - M >= 0)
     {
-      I.erase(V[i - M]);
+      I.erase(I.find(V[i - M]));
     }
   }
   reverse(V.begin(), V.end());
