@@ -282,7 +282,7 @@ int main()
   {
     for (auto m = now + 1; m <= min(now + M, N); ++m)
     {
-      if (V[m] == k)
+      if (V[m] == K - k)
       {
         cout << m - now << endl;
         now = m;
