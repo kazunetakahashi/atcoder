@@ -242,7 +242,7 @@ int main()
     cin >> A[i];
     --A[i];
   }
-  vector<ll> imos;
+  vector<ll> imos(N + 1);
   map<ll, ll> M;
   partial_sum(A.begin(), A.end(), imos.begin());
 #if DEBUG == 1
