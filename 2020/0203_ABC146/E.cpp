@@ -245,16 +245,17 @@ int main()
   vector<ll> imos(N + 1, 0);
   map<ll, ll> M;
   partial_sum(A.begin(), A.end(), imos.begin() + 1);
+  for_each(imos.begin(), imos.end(), [&](auto &x) {
+    x %= K;
+    M[x];
+    M[x]++;
+  });
 #if DEBUG == 1
   for (auto i = 0; i < N + 1; ++i)
   {
     cerr << "imos[" << i << "] = " << imos[i] << endl;
   }
 #endif
-  for_each(imos.begin(), imos.end(), [&](ll x) {
-    M[x % K];
-    M[x % K]++;
-  });
 #if DEBUG == 1
   for (auto x : M)
   {
