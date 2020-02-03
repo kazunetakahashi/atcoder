@@ -257,12 +257,14 @@ int main()
     else
     {
       V[i] = *I.begin() + 1;
-      cerr << "V[" << i << "] = " << V[i] << endl;
       if (V[i] > infty)
       {
         No();
       }
     }
+#if DEBUG == 1
+    cerr << "V[" << i << "] = " << V[i] << endl;
+#endif
     I.insert(V[i]);
     if (i - M >= 0)
     {
