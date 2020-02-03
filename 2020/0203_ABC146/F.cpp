@@ -250,6 +250,7 @@ int main()
     else
     {
       V[i] = *I.begin() + 1;
+      cerr << "V[" << i << "] = " << V[i] << endl;
       if (V[i] > infty)
       {
         No();
