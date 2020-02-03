@@ -243,29 +243,21 @@ int main()
     --A[i];
   }
   vector<ll> imos(N + 1, 0);
-  map<ll, ll> M;
   partial_sum(A.begin(), A.end(), imos.begin() + 1);
   for_each(imos.begin(), imos.end(), [&](auto &x) {
     x %= K;
-    M[x];
-    M[x]++;
   });
-#if DEBUG == 1
+  ll ans{0};
+  map<ll, ll> M;
   for (auto i = 0; i < N + 1; ++i)
   {
-    cerr << "imos[" << i << "] = " << imos[i] << endl;
+    auto c{M[imos[i]]};
+    ans += c;
+    M[imos[i]]++;
+    if (i - K + 1 >= 0)
+    {
+      M[imos[i - K + 1]]--;
+    }
   }
-#endif
-#if DEBUG == 1
-  for (auto x : M)
-  {
-    cerr << "M[" << x.first << "] = " << x.second << endl;
-  }
-#endif
-  ll ans{0};
-  for_each(M.begin(), M.end(), [&](auto x) {
-    auto y{x.second};
-    ans += y * (y - 1) / 2;
-  });
   cout << ans << endl;
 }
