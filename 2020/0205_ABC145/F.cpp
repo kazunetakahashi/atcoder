@@ -253,7 +253,7 @@ int main()
     }
   }
   ll ans{infty};
-  for (auto i = 1; i <= N; ++i)
+  for (auto i = 0; i <= N; ++i)
   {
     ch_min(ans, DP[i][N - K]);
   }
