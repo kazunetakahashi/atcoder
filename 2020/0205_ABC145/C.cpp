@@ -244,25 +244,13 @@ int main()
     double dx{x[k] - x[l]}, dy{y[k] - y[l]};
     return sqrt(dx * dx + dy * dy);
   };
-  vector<int> V(N);
+  double ans{0.0};
   for (auto i = 0; i < N; ++i)
   {
-    V[i] = i;
-  }
-  double ans{0.0};
-  do
-  {
-    double tmp{0.0};
-    for (auto k = 0; k < N - 1; ++k)
+    for (auto j = i + 1; j < N; ++j)
     {
-      tmp += dist(V[k], V[k + 1]);
+      ans += dist(i, j);
     }
-    ans += tmp;
-  } while (next_permutation(V.begin(), V.end()));
-  ll X{1LL};
-  for (auto i = 1LL; i <= N; ++i)
-  {
-    X *= i;
   }
-  cout << fixed << setprecision(10) << ans / X << endl;
+  cout << fixed << setprecision(10) << ans * 2 / N << endl;
 }
