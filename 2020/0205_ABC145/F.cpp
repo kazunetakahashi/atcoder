@@ -252,5 +252,10 @@ int main()
       }
     }
   }
-  cout << DP[N][N - K] << endl;
+  ll ans{infty};
+  for (auto i = 1; i <= N; ++i)
+  {
+    ch_min(ans, DP[i][N - K]);
+  }
+  cout << ans << endl;
 }
