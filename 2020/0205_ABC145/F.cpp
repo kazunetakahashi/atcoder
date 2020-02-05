@@ -244,7 +244,7 @@ int main()
   DP[0][0] = 0;
   for (auto i = 1; i <= N; ++i)
   {
-    for (auto j = 0; j <= N - K; ++j)
+    for (auto j = 1; j <= N - K; ++j)
     {
       for (auto k = 0; k < i; ++k)
       {
