@@ -237,7 +237,7 @@ int main()
 {
   int N, T;
   cin >> N >> T;
-  vector<Food> V(N);
+  vector<Food> V;
   for (auto i = 0; i < N; ++i)
   {
     int A, B;
