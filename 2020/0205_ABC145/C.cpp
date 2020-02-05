@@ -264,5 +264,5 @@ int main()
   {
     X *= i;
   }
-  cout << fixed << setprecision(12) << ans / X << endl;
+  cout << fixed << setprecision(10) << ans / X << endl;
 }
