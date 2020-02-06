@@ -318,7 +318,7 @@ private:
   void calc_alpha()
   {
     alpha[0] = 1.0;
-    for (auto i = 0; i < N - 2; ++i)
+    for (auto i = 0; i < N - 1; ++i)
     {
       for (auto j : V[i])
       {
@@ -346,7 +346,7 @@ private:
 
   void calc_S()
   {
-    for (auto i = 0; i < N - 2; ++i)
+    for (auto i = 0; i < N - 1; ++i)
     {
       for (auto j : V[i])
       {
