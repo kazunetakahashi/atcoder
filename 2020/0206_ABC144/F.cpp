@@ -287,7 +287,7 @@ public:
       for (auto j : V[i])
       {
 #if DEBUG == 1
-        cerr << "(" << i << ", " << j << "): " << delta(i, j, delta_zero(i)) << endl;
+        cerr << "(" << i << ", " << j << "): " << delta(i, j) << endl;
 #endif
         ch_min(ans, Delta + delta(i, j, delta_zero(i)));
       }
@@ -314,7 +314,7 @@ private:
     return -1.0 / (V[i].size() - 1);
   }
 
-  double delta(int u, int v, double d)
+  double delta(int u, int v, double d = 1.0)
   {
     return d * (beta[v] * S[u] + alpha[u] * T[v] + alpha[u] * beta[v]);
   }
