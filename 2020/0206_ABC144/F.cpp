@@ -287,7 +287,7 @@ public:
       for (auto j : V[i])
       {
 #if DEBUG == 1
-        cerr << "(" << i << ", " << j << "): " << delta(i, j) << endl;
+        cerr << "(" << i << ", " << j << "): " << Delta + delta(i, j, delta_zero(i)) << endl;
 #endif
         ch_min(ans, Delta + delta(i, j, delta_zero(i)));
       }
