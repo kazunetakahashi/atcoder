@@ -338,7 +338,7 @@ private:
     {
       for (auto j : V[i])
       {
-        S[j] += alpha[i] * prob(i) * (S[i] + 1.0);
+        S[j] += alpha[i] * prob(i) * 1.0 + prob(i) * S[i];
       }
     }
   }
