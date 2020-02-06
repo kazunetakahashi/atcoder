@@ -250,6 +250,9 @@ public:
 
   void flush()
   {
+#if DEBUG == 1
+    cerr << "total = " << total << endl;
+#endif
     double ans{0.0};
     for (auto i = 0; i < N; ++i)
     {
