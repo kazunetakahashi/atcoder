@@ -235,36 +235,16 @@ class Solve
 {
   int N;
   vector<vector<int>> V;
-  vector<double> alpha, beta, S, T;
+  vector<double> alpha, S, T;
   double total;
 
 public:
-  Solve(int N, vector<vector<int>> const &V) : N{N}, V(V), alpha(N, 0.0), beta(N, 0.0), S(N, 0.0), T(N, 0.0)
+  Solve(int N, vector<vector<int>> const &V) : N{N}, V(V), alpha(N, 0.0), S(N, 0.0), T(N, 0.0)
   {
     calc_alpha();
-    calc_beta();
     calc_S();
     calc_T();
     total = S[N - 1];
-#if DEBUG == 1
-    cerr << fixed << setprecision(4);
-    for (auto i = 0; i < N; ++i)
-    {
-      cerr << "alpha[" << i << "] = " << alpha[i] << endl;
-    }
-    for (auto i = 0; i < N; ++i)
-    {
-      cerr << "beta[" << i << "] = " << beta[i] << endl;
-    }
-    for (auto i = 0; i < N; ++i)
-    {
-      cerr << "S[" << i << "] = " << S[i] << endl;
-    }
-    for (auto i = 0; i < N; ++i)
-    {
-      cerr << "T[" << i << "] = " << T[i] << endl;
-    }
-#endif
   }
 
   void flush()
@@ -272,9 +252,6 @@ public:
     double ans{0.0};
     for (auto i = 0; i < N; ++i)
     {
-#if DEBUG == 1
-      cerr << "i = " << i << endl;
-#endif
       if (V[i].size() <= 1)
       {
         continue;
@@ -286,9 +263,6 @@ public:
       }
       for (auto j : V[i])
       {
-#if DEBUG == 1
-        cerr << "(" << i << ", " << j << "): " << Delta + delta(i, j, delta_zero(i)) << endl;
-#endif
         ch_min(ans, Delta + delta(i, j, delta_zero(i)));
       }
     }
@@ -316,7 +290,7 @@ private:
 
   double delta(int u, int v, double d = 1.0)
   {
-    return d * (beta[v] * S[u] + alpha[u] * T[v] + alpha[u] * beta[v]);
+    return d * (S[u] + alpha[u] * T[v] + alpha[u]);
   }
 
   void calc_alpha()
@@ -327,18 +301,6 @@ private:
       for (auto j : V[i])
       {
         alpha[j] += prob(i) * alpha[i];
-      }
-    }
-  }
-
-  void calc_beta()
-  {
-    beta[N - 1] = 1.0;
-    for (auto i = N - 2; i >= 0; --i)
-    {
-      for (auto j : V[i])
-      {
-        beta[i] += prob(i) * beta[j];
       }
     }
   }
