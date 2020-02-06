@@ -333,7 +333,14 @@ private:
 
   void calc_beta()
   {
-    beta = alpha;
+    beta[N - 1] = 1.0;
+    for (auto i = N - 2; i >= 0; --i)
+    {
+      for (auto j : V[i])
+      {
+        beta[i] += prob(i) * T[j];
+      }
+    }
   }
 
   void calc_S()
@@ -351,12 +358,10 @@ private:
   {
     for (auto i = N - 2; i >= 0; --i)
     {
-      double sum{0.0};
       for (auto j : V[i])
       {
-        sum += T[j];
+        T[i] += prob(i) * (1.0 + T[j]);
       }
-      T[i] = 1.0 + prob(i) * sum;
     }
   }
 };
