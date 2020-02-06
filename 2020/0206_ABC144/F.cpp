@@ -323,25 +323,13 @@ private:
       for (auto j : V[i])
       {
         alpha[j] += prob(i) * alpha[i];
-#if DEBUG == 1
-        cerr << "i = " << i << ", j = " << j << ", alpha[" << i << "] = " << alpha[i] << ", prob(" << i << ") = " << prob(i) << endl;
-#endif
       }
     }
   }
 
   void calc_beta()
   {
-    beta[N - 1] = 1.0;
-    for (auto i = N - 2; i >= 0; --i)
-    {
-      double sum{0.0};
-      for (auto j : V[i])
-      {
-        sum += beta[j];
-      }
-      beta[i] = prob(i) * sum;
-    }
+    beta = alpha;
   }
 
   void calc_S()
