@@ -243,5 +243,5 @@ int main()
       ch_min(ans, i + N / i);
     }
   }
-  cout << ans << endl;
+  cout << ans - 2 << endl;
 }
