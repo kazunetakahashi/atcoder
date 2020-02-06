@@ -323,6 +323,9 @@ private:
       for (auto j : V[i])
       {
         alpha[j] += prob(i) * alpha[i];
+#if DEBUG == 1
+        cerr << "i = " << i << ", j = " << j << ", alpha[" << i << "] = " << alpha[i] << ", prob(" << i << ") = " << prob(i) << endl;
+#endif
       }
     }
   }
