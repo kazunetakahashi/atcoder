@@ -246,13 +246,29 @@ public:
     calc_S();
     calc_T();
     total = S[N - 1];
+#if DEBUG == 1
+    cerr << fixed << setprecision(4);
+    for (auto i = 0; i < N; ++i)
+    {
+      cerr << "alpha[" << i << "] = " << alpha[i] << endl;
+    }
+    for (auto i = 0; i < N; ++i)
+    {
+      cerr << "beta[" << i << "] = " << beta[i] << endl;
+    }
+    for (auto i = 0; i < N; ++i)
+    {
+      cerr << "S[" << i << "] = " << S[i] << endl;
+    }
+    for (auto i = 0; i < N; ++i)
+    {
+      cerr << "T[" << i << "] = " << T[i] << endl;
+    }
+#endif
   }
 
   void flush()
   {
-#if DEBUG == 1
-    cerr << "total = " << total << endl;
-#endif
     double ans{0.0};
     for (auto i = 0; i < N; ++i)
     {
