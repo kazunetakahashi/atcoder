@@ -255,7 +255,7 @@ int main()
     return cnt <= K;
   };
   ll ok{1'000'000'000'010LL};
-  ll ng{0LL};
+  ll ng{-1LL};
   while (abs(ok - ng) > 1)
   {
     ll t{(ok + ng) / 2};
