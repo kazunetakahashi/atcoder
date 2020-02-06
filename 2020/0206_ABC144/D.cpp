@@ -256,10 +256,16 @@ int main()
     if (flag)
     {
       res = area_less(tmp) < y;
+#if DEBUG == 1
+      cerr << "area_less(" << tmp << ") = " << area_less(tmp) << endl;
+#endif
     }
     else
     {
       res = area_greater(tmp) < y;
+#if DEBUG == 1
+      cerr << "area_greater(" << tmp << ") = " << area_greater(tmp) << endl;
+#endif
     }
     if (res)
     {
