@@ -272,29 +272,24 @@ public:
     double ans{0.0};
     for (auto i = 0; i < N; ++i)
     {
-      #if DEBUG == 1
+#if DEBUG == 1
       cerr << "i = " << i << endl;
-      #endif
+#endif
       if (V[i].size() <= 1)
       {
         continue;
       }
       double Delta{0.0};
-      double d{delta(i)};
-#if DEBUG == 1
-      cerr << "d = " << d << endl;
-#endif
       for (auto j : V[i])
       {
-        Delta += delta(i, j, d);
+        Delta += delta(i, j, delta(i));
       }
-      d = delta_zero(i);
-#if DEBUG == 1
-      cerr << "d = " << d << endl;
-#endif
       for (auto j : V[i])
       {
-        ch_min(ans, Delta + delta(i, j, d));
+#if DEBUG == 1
+        cerr << "(" << i << ", " << j << "): " << Delta + delta(i, j, delta_zero(i)) << endl;
+#endif
+        ch_min(ans, Delta + delta(i, j, delta_zero(i)));
       }
     }
     cout << fixed << setprecision(10) << ans + total << endl;
