@@ -269,11 +269,11 @@ int main()
     }
     if (res)
     {
-      lb = tmp;
+      ub = tmp;
     }
     else
     {
-      ub = tmp;
+      lb = tmp;
     }
   }
   cout << fixed << setprecision(10) << to_degree(lb) << endl;
