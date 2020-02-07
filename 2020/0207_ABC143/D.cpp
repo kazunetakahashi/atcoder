@@ -267,6 +267,9 @@ int main()
     for (auto j = i + 1; j < N; ++j)
     {
       ans += calc_ans(L[i], L[j]);
+#if DEBUG == 1
+      cerr << "calc_ans(" << L[i] << ", " << L[j] << ") = " << calc_ans(L[i], L[j]) << endl;
+#endif
     }
   }
   cout << ans << endl;
