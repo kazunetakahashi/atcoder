@@ -246,11 +246,11 @@ int main()
   }
   vector<ll> S(100010, 0);
   partial_sum(V.begin(), V.end(), S.begin());
-  int ok{0}, ng{100001};
+  int ok{100001}, ng{0};
   while (abs(ok - ng) > 1)
   {
     int t{(ok + ng) / 2};
-    if (S[t] < K)
+    if (S[t] >= K)
     {
       ok = t;
     }
