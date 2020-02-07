@@ -267,6 +267,9 @@ int main()
         {
           D[E[i].dst] = tmp;
           updated[E[i].dst] = true;
+#if DEBUG == 1
+          cerr << "D[" << E[i].dst << "] = " << D[E[i].dst] << endl;
+#endif
         }
       }
     }
