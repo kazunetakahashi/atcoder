@@ -278,6 +278,7 @@ int main()
   {
     T[x + 1] = T[x] - C[x + 1];
   }
+  flush_cerr(C, "C");
   auto f = [&](ll x) {
     return (S[x] + x * T[x]) / x;
   };
