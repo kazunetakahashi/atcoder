@@ -251,36 +251,39 @@ int main()
     --b;
     E[i] = Edge{a, b, -c};
   }
-  vector<bool> updated(N, false);
-  updated[0] = true;
   vector<ll> D(N, infty);
   D[0] = 0;
-  for (auto k = 0; k < N; ++k)
+  for (auto k = 0; k < N - 1; ++k)
   {
     for (auto i = 0; i < M; ++i)
     {
+      ch_min(D[E[i].dst], D[E[i].src] + E[i].cost);
+    }
+  }
+  vector<bool> updated(N, false);
+  updated[0] = true;
+  for (auto k = 0; k < N - 1; ++k)
+  {
+    for (auto i = 0; i < M; ++i)
+    {
+      ll tmp{D[E[i].src] + E[i].cost};
+      if (D[E[i].dst] > tmp)
+      {
+        updated[E[i].dst] = true;
+        D[E[i].dst] = tmp;
+      }
       if (updated[E[i].src])
       {
-        updated[E[i].src] = false;
-        ll tmp{D[E[i].src] + E[i].cost};
-        if (D[E[i].dst] > tmp)
-        {
-          D[E[i].dst] = tmp;
-          updated[E[i].dst] = true;
-#if DEBUG == 1
-          cerr << "D[" << E[i].dst << "] = " << D[E[i].dst] << endl;
-#endif
-        }
+        updated[E[i].dst] = true;
       }
     }
   }
-  for (auto i = 0; i < N; ++i)
+  if (updated[N - 1])
   {
-    if (updated[i])
-    {
-      cout << "inf" << endl;
-      return 0;
-    }
+    cout << "inf" << endl;
   }
-  cout << -D[N - 1] << endl;
+  else
+  {
+    cout << -D[N - 1] << endl;
+  }
 }
