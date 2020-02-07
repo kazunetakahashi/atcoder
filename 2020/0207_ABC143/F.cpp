@@ -231,18 +231,6 @@ void No()
 }
 // ----- main() -----
 
-template <typename T>
-void flush_cerr(vector<T> const &V, string const &name)
-{
-#if DEBUG == 1
-  int now{0};
-  for (auto it = V.begin(); it != V.end(); ++it)
-  {
-    cerr << name << "[" << now++ << "] = " << *it << endl;
-  }
-#endif
-}
-
 int main()
 {
   ll N;
@@ -258,27 +246,23 @@ int main()
   {
     H[A[i]]++;
   }
-  flush_cerr(H, "H");
   vector<ll> C(N + 1);
   for (auto i = 0; i < N; ++i)
   {
     C[H[i]]++;
   }
-  flush_cerr(C, "C");
   vector<ll> S(N + 1);
   S[0] = 0;
   for (auto x = 0LL; x < N; ++x)
   {
     S[x + 1] = S[x] + (x + 1) * C[x + 1];
   }
-  flush_cerr(S, "S");
   vector<ll> T(N + 1);
   T[0] = accumulate(C.begin() + 1, C.end(), 0LL);
   for (auto x = 0LL; x < N; ++x)
   {
     T[x + 1] = T[x] - C[x + 1];
   }
-  flush_cerr(T, "T");
   auto f = [&](ll x) {
     return (S[x] + x * T[x]) / x;
   };
@@ -287,7 +271,6 @@ int main()
   {
     F[i] = f(i);
   }
-  flush_cerr(F, "F");
   for (auto k = 1; k <= N; ++k)
   {
     ll ok{0}, ng{N + 1};
