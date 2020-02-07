@@ -253,10 +253,10 @@ int main()
     K = gcd(K, A[i]);
     R[i] = K;
   }
-  ll ans{min(L[1], R[N - 2])};
+  ll ans{max(L[1], R[N - 2])};
   for (auto i = 1; i < N - 1; ++i)
   {
-    ch_min(ans, gcd(L[i - 1], R[i + 1]));
+    ch_max(ans, gcd(L[i - 1], R[i + 1]));
   }
   cout << ans << endl;
 }
