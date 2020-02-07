@@ -250,6 +250,9 @@ int main()
   while (abs(ok - ng) > 1)
   {
     int t{(ok + ng) / 2};
+#if DEBUG == 1
+    cerr << "t = " << t << endl;
+#endif
     if (S[t] >= K)
     {
       ok = t;
