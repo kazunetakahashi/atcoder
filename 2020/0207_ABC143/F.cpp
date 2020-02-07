@@ -231,6 +231,18 @@ void No()
 }
 // ----- main() -----
 
+template <typename T>
+void flush_cerr(vector<T> const &V)
+{
+#if DEBUG == 1
+  int now{0};
+  for (auto it = V.begin(); it != V.end(); ++it)
+  {
+    cerr << "V[" << now++ << "] = " << *it << endl;
+  }
+#endif
+}
+
 int main()
 {
   ll N;
@@ -246,11 +258,13 @@ int main()
   {
     H[A[i]]++;
   }
+  flush_cerr(H);
   vector<ll> C(N + 1);
   for (auto i = 0; i < N; ++i)
   {
     C[H[i]]++;
   }
+  flush_cerr(C);
   vector<ll> S(N + 1);
   S[0] = 0;
   for (auto x = 1LL; x < N; ++x)
