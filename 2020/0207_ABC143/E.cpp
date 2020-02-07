@@ -276,6 +276,15 @@ int main()
       }
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i < N; ++i)
+  {
+    for (auto j = 0; j < N; ++j)
+    {
+      cerr << "D[" << i << "][" << j << "] = " << D[i][j] << endl;
+    }
+  }
+#endif
   vector<vector<ll>> E(N, vector<ll>(N, infty));
   for (auto i = 0; i < N; ++i)
   {
@@ -287,7 +296,6 @@ int main()
       }
     }
   }
-
   for (auto k = 0; k < N; ++k)
   {
     for (auto i = 0; i < N; ++i)
