@@ -296,6 +296,16 @@ int main()
       }
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i < N; ++i)
+  {
+    for (auto j = 0; j < N; ++j)
+    {
+      cerr << "E[" << i << "][" << j << "] = " << E[i][j] << endl;
+    }
+  }
+#endif
+
   for (auto k = 0; k < N; ++k)
   {
     for (auto i = 0; i < N; ++i)
