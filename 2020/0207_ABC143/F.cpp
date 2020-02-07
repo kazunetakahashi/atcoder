@@ -232,7 +232,7 @@ void No()
 // ----- main() -----
 
 template <typename T>
-void flush_cerr(vector<T> const &V)
+void flush_cerr(vector<T> const &V, string const &name)
 {
 #if DEBUG == 1
   int now{0};
@@ -258,13 +258,13 @@ int main()
   {
     H[A[i]]++;
   }
-  flush_cerr(H);
+  flush_cerr(H, "H");
   vector<ll> C(N + 1);
   for (auto i = 0; i < N; ++i)
   {
     C[H[i]]++;
   }
-  flush_cerr(C);
+  flush_cerr(C, "C");
   vector<ll> S(N + 1);
   S[0] = 0;
   for (auto x = 1LL; x < N; ++x)
