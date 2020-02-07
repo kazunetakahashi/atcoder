@@ -246,5 +246,5 @@ int main()
   {
     T += A[i] * A[i];
   }
-  cout << S * S - T << endl;
+  cout << (S * S - T) / 2 << endl;
 }
