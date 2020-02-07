@@ -288,9 +288,9 @@ int main()
     F[i] = f(i);
   }
   flush_cerr(F, "F");
-  ll ok{0}, ng{N + 1};
   for (auto k = 1; k <= N; ++k)
   {
+    ll ok{0}, ng{N + 1};
     while (abs(ok - ng) > 1)
     {
       ll t{(ok + ng) / 2};
