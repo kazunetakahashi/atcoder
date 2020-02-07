@@ -236,5 +236,5 @@ int main()
   int A, B, T;
   cin >> A >> B >> T;
   int N{T / A};
-  cout << B * N * (N + 1) / 2 << endl;
+  cout << B * N << endl;
 }
