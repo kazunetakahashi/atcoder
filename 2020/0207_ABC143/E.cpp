@@ -256,7 +256,7 @@ int main()
     cin >> s >> t;
     --s;
     --t;
-    W.push_back(Query(s, t));
+    W[i] = Query(s, t);
   }
   for (auto k = 0; k < N; ++k)
   {
@@ -336,9 +336,6 @@ int main()
   {
     ll s, t;
     tie(s, t) = W[i];
-#if DEBUG == 1
-    cerr << "E[" << s << "][" << t << "] = " << E[s][t] << endl;
-#endif
     cout << (E[s][t] < infty ? E[s][t] : -1) << endl;
   }
 }
