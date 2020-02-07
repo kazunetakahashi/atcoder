@@ -262,18 +262,24 @@ int main()
   }
   vector<bool> updated(N, false);
   updated[0] = true;
-  for (auto k = 0; k < N - 1; ++k)
+  for (auto k = 0; k < N; ++k)
   {
     for (auto i = 0; i < M; ++i)
     {
       ll tmp{D[E[i].src] + E[i].cost};
       if (D[E[i].dst] > tmp)
       {
+#if DEBUG == 1
+        cerr << "updated[" << E[i].dst << "]" << endl;
+#endif
         updated[E[i].dst] = true;
         D[E[i].dst] = tmp;
       }
       if (updated[E[i].src])
       {
+#if DEBUG == 1
+        cerr << "updated[" << E[i].dst << "]" << endl;
+#endif
         updated[E[i].dst] = true;
       }
     }
