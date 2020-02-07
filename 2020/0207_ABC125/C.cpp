@@ -258,4 +258,5 @@ int main()
   {
     ch_min(ans, gcd(L[i - 1], R[i + 1]));
   }
+  cout << ans << endl;
 }
