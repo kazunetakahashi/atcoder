@@ -336,6 +336,6 @@ int main()
   {
     ll s, t;
     tie(s, t) = W[i];
-    cout << (E[s][t] < infty ? E[s][t] : -1) << endl;
+    cout << (E[s][t] < infty ? E[s][t] - 1 : -1) << endl;
   }
 }
