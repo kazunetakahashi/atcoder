@@ -271,6 +271,7 @@ int main()
   {
     S[x + 1] = S[x] + (x + 1) * C[x + 1];
   }
+  flush_cerr(S, "S");
   vector<ll> T(N + 1);
   T[0] = accumulate(C.begin() + 1, C.end(), 0LL);
   for (auto x = 1LL; x < N; ++x)
