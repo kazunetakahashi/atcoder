@@ -253,7 +253,7 @@ int main()
     K = gcd(K, A[i]);
     R[i] = K;
   }
-  ll ans{max(L[1], R[N - 2])};
+  ll ans{max(L[N - 2], R[1])};
   for (auto i = 1; i < N - 1; ++i)
   {
     ch_max(ans, gcd(L[i - 1], R[i + 1]));
