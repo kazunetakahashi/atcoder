@@ -238,7 +238,7 @@ void flush_cerr(vector<T> const &V, string const &name)
   int now{0};
   for (auto it = V.begin(); it != V.end(); ++it)
   {
-    cerr << "V[" << now++ << "] = " << *it << endl;
+    cerr << name << "[" << now++ << "] = " << *it << endl;
   }
 #endif
 }
