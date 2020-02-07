@@ -296,11 +296,11 @@ int main()
       ll t{(ok + ng) / 2};
       if (F[t] >= k)
       {
-        ok = k;
+        ok = t;
       }
       else
       {
-        ng = k;
+        ng = t;
       }
     }
     cout << ok << endl;
