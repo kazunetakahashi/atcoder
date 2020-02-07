@@ -240,12 +240,12 @@ int main()
   {
     cin >> L[i];
   }
-  vector<int> H(1010);
+  vector<int> H(3010);
   for (auto i = 0; i < N; ++i)
   {
     H[L[i]]++;
   }
-  vector<int> sum(1010);
+  vector<int> sum(3010);
   partial_sum(H.begin(), H.end(), sum.begin());
   auto calc_ans = [&](int x, int y) {
     int lb{abs(x - y)};
@@ -272,5 +272,5 @@ int main()
 #endif
     }
   }
-  cout << ans << endl;
+  cout << ans / 3 << endl;
 }
