@@ -261,7 +261,6 @@ int main()
     }
   }
   vector<bool> updated(N, false);
-  updated[0] = true;
   for (auto k = 0; k < N; ++k)
   {
     for (auto i = 0; i < M; ++i)
