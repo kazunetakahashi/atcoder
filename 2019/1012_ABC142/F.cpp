@@ -307,7 +307,7 @@ private:
       return res;
     }
     int now{A};
-    while (now == B)
+    while (now != B)
     {
       res.push_back(now);
       now = P[now];
