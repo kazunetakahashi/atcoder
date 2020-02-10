@@ -261,6 +261,7 @@ public:
     else
     {
       cout << ans.size() << endl;
+      sort(ans.begin(), ans.end());
       for (auto x : ans)
       {
         cout << x + 1 << endl;
