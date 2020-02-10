@@ -236,6 +236,6 @@ int main()
 {
   string S;
   cin >> S;
-  string T('x', S.size());
+  string T(S.size(), 'x');
   cout << T << endl;
 }
