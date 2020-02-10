@@ -240,10 +240,8 @@ int main()
   for (auto i = 0; i < N; ++i)
   {
     cin >> p[i];
+    p[i]++;
   }
-  auto expect = [](ll x) {
-    return static_cast<double>(x + 1) / 2;
-  };
   vector<ll> sum(N + 1);
   partial_sum(p.begin(), p.end(), sum.begin() + 1);
   ll maxi{0};
@@ -251,5 +249,5 @@ int main()
   {
     ch_max(maxi, sum[i] - sum[i - K]);
   }
-  cout << expect(maxi) + 0.5 * (K - 1) << endl;
+  cout << static_cast<double>(maxi) / 2 << endl;
 }
