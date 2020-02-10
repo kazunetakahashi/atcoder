@@ -271,5 +271,17 @@ int main()
       }
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i < N; ++i)
+  {
+    for (auto k = 0; k <= K; ++k)
+    {
+      for (auto j = 0; j < 2; ++j)
+      {
+        cerr << "DP[" << i + 1 << "][" << k << "][" << j << "] = " << DP[i + 1][k][j] << endl;
+      }
+    }
+  }
+#endif
   cout << DP[N][K][0] + DP[N][K][1] << endl;
 }
