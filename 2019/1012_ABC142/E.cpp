@@ -258,12 +258,10 @@ int main()
   {
     int a, k;
     tie(a, k) = V[i];
-#if DEBUG == 1
-    cerr << "DP[" << (i | k) << "] = " << DP[i | k] << endl;
-    cerr << "DP[" << i << "] = " << DP[i] << endl;
-    cerr << "a = " << a << endl;
-#endif
-    ch_min(DP[i | k], DP[i] + a);
+    for (auto j = 0; j < (1 << N); ++j)
+    {
+      ch_min(DP[j | k], DP[j] + a);
+    }
   }
   if (DP[(1 << N) - 1] == infty)
   {
