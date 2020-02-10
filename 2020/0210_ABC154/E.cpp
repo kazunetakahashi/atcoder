@@ -262,9 +262,9 @@ int main()
           {
             continue;
           }
-          else if (k == 0 && d < num)
+          if (k == 0 && d < num)
           {
-            nk = 1;
+            nj = 1;
           }
           DP[ni][nk][nj] += DP[i][k][j];
         }
