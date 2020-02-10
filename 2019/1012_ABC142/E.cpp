@@ -261,7 +261,7 @@ int main()
 #if DEBUG == 1
     cerr << "DP[" << (i | k) << "] = " << DP[i | k] << endl;
     cerr << "DP[" << i << "] = " << DP[i] << endl;
-    cerr << "a = " << endl;
+    cerr << "a = " << a << endl;
 #endif
     ch_min(DP[i | k], DP[i] + a);
   }
