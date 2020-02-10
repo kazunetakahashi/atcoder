@@ -249,5 +249,5 @@ int main()
   {
     ch_max(maxi, sum[i] - sum[i - K]);
   }
-  cout << static_cast<double>(maxi) / 2 << endl;
+  cout << fixed << setprecision(10) << static_cast<double>(maxi) / 2 << endl;
 }
