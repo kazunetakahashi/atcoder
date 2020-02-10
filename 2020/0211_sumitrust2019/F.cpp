@@ -255,8 +255,8 @@ int main()
   }
   else
   {
-    ll N{X / (X + Y)};
-    ll M{X % (X + Y)};
+    ll N{-X / (X + Y)};
+    ll M{-X % (X + Y)};
     cout << 2 * N + (M == 0 ? 0 : 1) << endl;
   }
 }
