@@ -236,8 +236,8 @@ int main()
 {
   string S;
   int K;
-  int N{static_cast<int>(S.size())};
   cin >> S >> K;
+  int N{static_cast<int>(S.size())};
   vector<vector<vector<ll>>> DP(N + 1, vector<vector<ll>>(K + 1, vector<ll>(2, 0)));
   DP[0][0][0] = 1;
   for (auto i = 0; i < N; ++i)
