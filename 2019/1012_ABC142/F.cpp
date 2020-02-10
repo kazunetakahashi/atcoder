@@ -297,6 +297,7 @@ private:
     vector<int> res;
     if (P[A] == -1)
     {
+      res.resize(N + 1);
       return res;
     }
     int now{A};
