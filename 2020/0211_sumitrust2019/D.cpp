@@ -269,6 +269,9 @@ int main()
       {
         if (f[k] > 0 && g[k] > 0)
         {
+#if DEBUG == 1
+          cerr << 100 * k + 10 * (S[i] - '0') + l << endl;
+#endif
           A.insert(100 * k + 10 * (S[i] - '0') + l);
         }
       }
