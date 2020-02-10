@@ -251,9 +251,9 @@ int main()
           int ni{i + 1}, nk{k}, nj{j};
           if (d > 0)
           {
-            ++nj;
+            ++nk;
           }
-          if (nj > K)
+          if (nk > K)
           {
             continue;
           }
