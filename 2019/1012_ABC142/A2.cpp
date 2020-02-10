@@ -237,5 +237,5 @@ int main()
   int N;
   cin >> N;
   int M{(N + 1) / 2};
-  cout << static_cast<double>(M) / N << endl;
+  cout << fixed << setprecision(12) << static_cast<double>(M) / N << endl;
 }
