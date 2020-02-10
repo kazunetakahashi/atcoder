@@ -267,7 +267,11 @@ int main()
             nj = 1;
           }
 #if DEBUG == 1
-          cerr << "i = " << i << ", k = " << k << ", j = " << j << ", d = " << d << ", ni = " << ni << ", nk = " << nk << ", nj = " << nj << endl;
+          if (N == 3)
+          {
+            cerr << "i = " << i << ", k = " << k << ", j = " << j << ", d = " << d << ", ni = " << ni << ", nk = " << nk << ", nj = " << nj << endl;
+          }
+
 #endif
           DP[ni][nk][nj] += DP[i][k][j];
         }
