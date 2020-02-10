@@ -353,5 +353,5 @@ int main()
   cin >> A >> B;
   ll M{gcd(A, B)};
   auto V{sieve.factor(M)};
-  cout << V.size() << endl;
+  cout << V.size() + 1 << endl;
 }
