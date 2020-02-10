@@ -251,5 +251,5 @@ int main()
   {
     ch_max(maxi, sum[i] - sum[i - K]);
   }
-  cout << expect(maxi) << endl;
+  cout << expect(maxi) + 0.5 * (N - 1) << endl;
 }
