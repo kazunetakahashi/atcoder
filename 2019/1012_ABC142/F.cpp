@@ -273,6 +273,9 @@ private:
   {
     int A, B;
     tie(A, B) = W[k];
+#if DEBUG == 1
+    cerr << "A = " << A << ", B = " << B << endl;
+#endif
     vector<int> P(N, -1);
     using Info = tuple<int, int>;
     queue<Info> Q;
@@ -285,6 +288,9 @@ private:
       if (P[now] == -1)
       {
         P[now] = par;
+#if DEBUG == 1
+        cerr << "P[" << now << "] = " << P[now] << endl;
+#endif
         for (auto x : V[now])
         {
           if (P[x] == -1)
