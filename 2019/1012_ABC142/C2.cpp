@@ -247,6 +247,6 @@ int main()
   sort(V.begin(), V.end());
   for (auto x : V)
   {
-    cout << get<1>(x) << endl;
+    cout << get<1>(x) + 1 << endl;
   }
 }
