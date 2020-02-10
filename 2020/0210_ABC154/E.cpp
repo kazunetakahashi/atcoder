@@ -258,11 +258,11 @@ int main()
             continue;
           }
           int num{S[i] - '0'};
-          if (k == 0 && d > num)
+          if (j == 0 && d > num)
           {
             continue;
           }
-          if (k == 0 && d < num)
+          if (j == 0 && d < num)
           {
             nj = 1;
           }
@@ -271,7 +271,6 @@ int main()
           {
             cerr << "i = " << i << ", k = " << k << ", j = " << j << ", d = " << d << ", ni = " << ni << ", nk = " << nk << ", nj = " << nj << endl;
           }
-
 #endif
           DP[ni][nk][nj] += DP[i][k][j];
         }
