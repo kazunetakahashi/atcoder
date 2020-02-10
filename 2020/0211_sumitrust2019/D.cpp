@@ -252,6 +252,17 @@ int main()
     {
       g[j] -= T[i + 1][j];
     }
+#if DEBUG == 1
+    cerr << "i = " << i << endl;
+    for (auto k = 0; k < 10; ++k)
+    {
+      cerr << "f[" << k << "] = " << f[k] << endl;
+    }
+    for (auto k = 0; k < 10; ++k)
+    {
+      cerr << "g[" << k << "] = " << g[k] << endl;
+    }
+#endif
     for (auto k = 0; k < 10; ++k)
     {
       for (auto l = 0; l < 10; ++l)
