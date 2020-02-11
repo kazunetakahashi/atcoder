@@ -260,7 +260,7 @@ int main()
     ll cnt{max(0LL, (H - total + A - 1) / A)};
     ans += cnt;
     total += A * cnt;
-    Q.emplace(X + 2 * D + 2, A * cnt);
+    Q.emplace(X + 2 * D + 1, A * cnt);
   }
   cout << ans << endl;
 }
