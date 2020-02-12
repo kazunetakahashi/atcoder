@@ -304,6 +304,10 @@ private:
       {
         ans += (K + 1) * DP[N - K - 2];
       }
+      else if (N - K - 1 == 0)
+      {
+        ans += N;
+      }
     }
     return ans * 2;
   }
