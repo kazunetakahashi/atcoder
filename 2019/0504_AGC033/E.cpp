@@ -244,9 +244,9 @@ public:
 
   void flush()
   {
-    #if DEBUG == 1
+#if DEBUG == 1
     cerr << "X = " << X << endl;
-    #endif
+#endif
     if (all_red)
     {
       cout << solve_all_red() << endl;
@@ -287,6 +287,12 @@ private:
         DP[i] -= DP[i - 2 - X];
       }
     }
+#if DEBUG == 1
+    for (auto i = 0; i <= N; ++i)
+    {
+      cerr << "DP[" << i << "] = " << DP[i] << endl;
+    }
+#endif
     mint ans{0};
     for (auto K = 0; K <= X; ++K)
     {
