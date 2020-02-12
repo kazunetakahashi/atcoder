@@ -244,6 +244,9 @@ public:
 
   void flush()
   {
+    #if DEBUG == 1
+    cerr << "X = " << X << endl;
+    #endif
     if (all_red)
     {
       cout << solve_all_red() << endl;
