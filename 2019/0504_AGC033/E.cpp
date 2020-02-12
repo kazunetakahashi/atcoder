@@ -301,7 +301,7 @@ private:
         ans += (K + 1) * DP[N - K - 2];
       }
     }
-    return ans;
+    return ans * 2;
   }
 
   int max_length()
