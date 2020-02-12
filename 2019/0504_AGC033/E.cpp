@@ -282,9 +282,9 @@ private:
     for (auto i = 1; i <= N; ++i)
     {
       DP[i] = 2 * DP[i - 1];
-      if (i - 2 - X >= 0)
+      if (i - 1 - X >= 0)
       {
-        DP[i] -= DP[i - 2 - X];
+        DP[i] -= DP[i - 1 - X];
       }
     }
 #if DEBUG == 1
