@@ -259,6 +259,9 @@ private:
     for (auto i = 0; i < N; ++i)
     {
       ans += dfs_count(i, i);
+#if DEBUG == 1
+      cerr << "dfs_count(" << i << ", " << i << ")" << endl;
+#endif
     }
     return ans / 2;
   }
