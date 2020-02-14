@@ -294,7 +294,7 @@ private:
 
   void add_edge(int v, int w)
   {
-    assert(0 <= v && v < N && 0 <= w && w < N);
+    assert(0 <= v && v < N && 0 <= w && w < N && v != w);
     if (G[v][w] == w)
     {
       assert(G[w][v] == v);
@@ -304,6 +304,7 @@ private:
     {
       add_edge(G[v][w], v);
       add_edge(G[v][w], w);
+      return;
     }
 #if DEBUG == 1
     cerr << "add_edge(" << v << ", " << w << ")" << endl;
