@@ -300,6 +300,11 @@ private:
       assert(G[w][v] == v);
       return;
     }
+    else if (G[v][w] != -1)
+    {
+      add_edge(G[v][w], v);
+      add_edge(G[v][w], w);
+    }
 #if DEBUG == 1
     cerr << "add_edge(" << v << ", " << w << ")" << endl;
 #endif
