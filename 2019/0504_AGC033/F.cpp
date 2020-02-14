@@ -300,11 +300,6 @@ private:
       assert(G[w][v] == v);
       return;
     }
-    if (G[v][w] != -1)
-    {
-      assert(G[v][w] == G[w][v]);
-      return;
-    }
 #if DEBUG == 1
     cerr << "add_edge(" << v << ", " << w << ")" << endl;
 #endif
@@ -321,9 +316,9 @@ private:
         {
           if (dst != parent[y][src])
           {
-            if (G[y][dst] != -1)
+            if (G[y][dst] == dst)
             {
-              assert(G[dst][y] != -1);
+              assert(G[dst][y] == y);
               add_edge(x, dst);
             }
             else
