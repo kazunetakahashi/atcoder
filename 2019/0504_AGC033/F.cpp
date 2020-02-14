@@ -260,7 +260,7 @@ private:
     {
       ans += dfs_count(i, i);
 #if DEBUG == 1
-      cerr << "dfs_count(" << i << ", " << i << ")" << endl;
+      cerr << "dfs_count(" << i << ", " << i << ") = " << dfs_count(i, i) << endl;
 #endif
     }
     return ans / 2;
