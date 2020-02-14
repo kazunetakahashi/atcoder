@@ -294,7 +294,7 @@ private:
 
   void add_edge(int v, int w)
   {
-    assert(0 <= v && v < N && 0 <= w && w < N && v != w);
+    assert(0 <= v && v < N && 0 <= w && w < N);
     if (G[v][w] == w)
     {
       assert(G[w][v] == v);
