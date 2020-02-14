@@ -300,6 +300,9 @@ private:
       assert(G[w][v] == v);
       return;
     }
+#if DEBUG == 1
+    cerr << "add_edge(" << v << ", " << w << ")" << endl;
+#endif
     G[v][w] = w;
     G[w][v] = v;
     auto BFS = [&](int x, int y) {
