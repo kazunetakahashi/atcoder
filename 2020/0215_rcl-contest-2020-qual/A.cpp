@@ -248,11 +248,19 @@ int N, W, K, V;
 vector<int> c, v;
 vector<int> ans;
 
+void zero()
+{
+  for (auto i = 0; i < N; ++i)
+  {
+    cout << 0 << endl;
+  }
+}
+
 void AC()
 {
   for (auto i = 0; i < N; ++i)
   {
-    cout << ans[i] + 1 << endl;
+    cout << ans[i] << endl;
   }
 }
 
@@ -262,7 +270,7 @@ bool check()
   {
     return false;
   }
-  if (c[0] == 0)
+  if (c[0] != 0)
   {
     return false;
   }
@@ -277,16 +285,15 @@ int main()
   {
     int x, y;
     cin >> x >> y;
-    x--;
     c.push_back(x);
     v.push_back(y);
   }
   if (check())
   {
-    RE();
+    TLE();
   }
   else
   {
-    TLE();
+    RE();
   }
 }
