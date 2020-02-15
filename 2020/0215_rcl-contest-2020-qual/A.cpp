@@ -258,6 +258,17 @@ void zero()
 
 void AC()
 {
+  vector<int> rem(K, 2);
+  int now{0};
+  for (auto i = 0; i < N; ++i)
+  {
+    if (v[i] == 1 && rem[c[i]] >= 0 && now < W)
+    {
+      rem[c[i]]--;
+      ans[i] = now;
+      ++now;
+    }
+  }
   for (auto i = 0; i < N; ++i)
   {
     cout << ans[i] << endl;
@@ -280,7 +291,7 @@ bool check()
 int main()
 {
   cin >> N >> W >> K >> V;
-  ans.resize(N);
+  ans.assign(N, 0);
   for (auto i = 0; i < N; ++i)
   {
     int x, y;
@@ -290,10 +301,10 @@ int main()
   }
   if (check())
   {
-    TLE();
+    AC();
   }
   else
   {
-    RE();
+    zero();
   }
 }
