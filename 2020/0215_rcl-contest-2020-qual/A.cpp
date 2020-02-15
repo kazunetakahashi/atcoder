@@ -246,10 +246,20 @@ void RE() { assert(false); }
 
 int N, W, K, V;
 vector<int> c, v;
+vector<int> ans;
+
+void AC()
+{
+  for (auto i = 0; i < N; ++i)
+  {
+    cout << ans[i] + 1 << endl;
+  }
+}
 
 int main()
 {
   cin >> N >> W >> K >> V;
+  ans.resize(N);
   for (auto i = 0; i < N; ++i)
   {
     int x, y;
@@ -257,5 +267,12 @@ int main()
     c.push_back(x);
     v.push_back(y);
   }
-  RE();
+  if (v[0] == 1)
+  {
+    RE();
+  }
+  else
+  {
+    TLE();
+  }
 }
