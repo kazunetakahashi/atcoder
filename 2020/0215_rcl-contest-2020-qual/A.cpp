@@ -256,6 +256,19 @@ void AC()
   }
 }
 
+bool check()
+{
+  if (v[0] != 1)
+  {
+    return false;
+  }
+  if (c[0] == 0)
+  {
+    return false;
+  }
+  return true;
+}
+
 int main()
 {
   cin >> N >> W >> K >> V;
@@ -264,10 +277,11 @@ int main()
   {
     int x, y;
     cin >> x >> y;
+    x--;
     c.push_back(x);
     v.push_back(y);
   }
-  if (v[0] == 1)
+  if (check())
   {
     RE();
   }
