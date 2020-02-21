@@ -257,7 +257,7 @@ private:
   void make_C()
   {
     make_DP();
-    for (auto k = 0; k <= N; ++k)
+    for (auto k = 1; k <= N; ++k)
     {
       C[k] = comb(N - 1, N - k) * DP[k][1];
     }
@@ -266,7 +266,7 @@ private:
   void make_DP()
   {
     DP[0][0] = 1;
-    for (auto i = 1; i < N; ++i)
+    for (auto i = 1; i <= N; ++i)
     {
       for (auto j = 0; j < 3; ++j)
       {
