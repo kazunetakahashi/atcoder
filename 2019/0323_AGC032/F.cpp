@@ -259,7 +259,7 @@ private:
     make_DP();
     for (auto k = 1; k <= N; ++k)
     {
-      C[k] = comb(N - 1, k - 1) * DP[k][1];
+      C[k] = comb(N, N - k) * DP[k][1];
     }
   }
 
