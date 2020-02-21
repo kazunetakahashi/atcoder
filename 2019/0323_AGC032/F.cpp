@@ -251,6 +251,9 @@ public:
     for (auto k = 1; k <= N; ++k)
     {
       ans += C[k] * E[k];
+#if DEBUG == 1
+      cerr << "k = " << k << endl;
+#endif
     }
     ans /= mint{3}.power(N - 1);
     cout << ans << endl;
