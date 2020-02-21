@@ -240,20 +240,14 @@ class Solve
   combination comb;
 
 public:
-  Solve(ll N) : N{N}, C(N + 1), E(N + 1), DP(N, vector<mint>(3, 0))
+  Solve(ll N) : N{N}, C(N + 1), E(N + 1), DP(N + 1, vector<mint>(3, 0))
   {
-#if DEBUG == 1
-    cerr << "N = " << N << endl;
-#endif
     make_C();
     make_E();
     mint ans{0};
     for (auto k = 1; k <= N; ++k)
     {
       ans += C[k] * E[k];
-#if DEBUG == 1
-      cerr << "k = " << k << endl;
-#endif
     }
     ans /= mint{3}.power(N - 1);
     cout << ans << endl;
