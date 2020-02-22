@@ -259,6 +259,7 @@ ll solve(ll n, ll x, ll m)
   ll U{(n - 1) % k};
   ll A{S * T + x};
 #if DEBUG == 1
+  cerr << "S = " << S << endl;
   cerr << "T = " << T << endl;
   cerr << "U = " << U << endl;
   cerr << "A = " << A << endl;
