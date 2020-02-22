@@ -258,6 +258,12 @@ ll solve(ll n, ll x, ll m)
   ll T{n / k};
   ll U{n % k};
   ll A{S * T + x};
+#if DEBUG == 1
+  cerr << "T = " << T << endl;
+  cerr << "U = " << U << endl;
+  cerr << "A = " << A << endl;
+#endif
+
   ll Y{cnt * T};
   for (auto i = 0; i < U; ++i)
   {
@@ -272,7 +278,7 @@ ll solve(ll n, ll x, ll m)
   cerr << "Y = " << Y << endl;
   cerr << "Z = " << Z << endl;
 #endif
-  return n - Y - Z;
+  return n - 1 - Y - Z;
 }
 
 int main()
