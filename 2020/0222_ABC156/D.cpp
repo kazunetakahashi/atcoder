@@ -232,13 +232,24 @@ void No()
 }
 // ----- main() -----
 
+combination C;
+
+mint comb(ll N, ll A)
+{
+  mint ans{1};
+  for (auto i = N; i >= N - A + 1; --i)
+  {
+    ans *= i;
+  }
+  return ans * C.factinv[A];
+}
+
 int main()
 {
   ll N, A, B;
   cin >> N >> A >> B;
-  combination C;
   mint ans{mint{2}.power(N) - 1};
-  ans -= C(N, A);
-  ans -= C(N, B);
+  ans -= comb(N, A);
+  ans -= comb(N, B);
   cout << ans << endl;
 }
