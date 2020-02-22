@@ -242,6 +242,6 @@ int main()
   }
   else
   {
-    cout << R - 100 * (10 - N) << endl;
+    cout << R + 100 * (10 - N) << endl;
   }
 }
