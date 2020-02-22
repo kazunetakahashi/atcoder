@@ -246,27 +246,30 @@ ll solve(ll n, ll x, ll m)
     cerr << "e[" << i << "] = " << e[i] << endl;
 #endif
   }
-  ll Y{0};
+  ll cnt{0};
   for (auto i = 0; i < k; ++i)
   {
+    if (e[i] == 0)
+    {
+      ++cnt;
+    }
+  }
+  ll S{accumulate(e.begin(), e.end(), 0LL)};
+  ll T{n / k};
+  ll U{n % k};
+  ll A{S * T + x};
+  ll Y{cnt * T};
+  for (auto i = 0; i < U; ++i)
+  {
+    A += e[i];
     if (e[i] == 0)
     {
       ++Y;
     }
   }
-#if DEBUG == 1
-  cerr << "Y = " << Y << endl;
-#endif
-  ll S{accumulate(e.begin(), e.end(), 0LL)};
-  ll T{n / k};
-  ll U{n % k};
-  ll A{S * T + x};
-  for (auto i = 0; i < U; ++i)
-  {
-    A += e[i];
-  }
   ll Z{A / m};
 #if DEBUG == 1
+  cerr << "Y = " << Y << endl;
   cerr << "Z = " << Z << endl;
 #endif
   return n - Y - Z;
