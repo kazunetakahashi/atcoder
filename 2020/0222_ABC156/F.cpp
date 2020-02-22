@@ -257,7 +257,7 @@ ll solve(ll n, ll x, ll m)
   ll S{accumulate(e.begin(), e.end(), 0LL)};
   ll T{(n - 1) / k};
   ll U{(n - 1) % k};
-  ll A{S * T + x};
+  ll A{S * T + (x % m)};
 #if DEBUG == 1
   cerr << "S = " << S << endl;
   cerr << "T = " << T << endl;
