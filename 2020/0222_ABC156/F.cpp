@@ -251,6 +251,7 @@ ll solve(ll n, ll x, ll m)
       ++Y;
     }
   }
+  cerr << "Y = " << Y << endl;
   ll S{accumulate(e.begin(), e.end(), 0LL)};
   ll T{n / k};
   ll U{n % k};
@@ -260,6 +261,7 @@ ll solve(ll n, ll x, ll m)
     A += e[i];
   }
   ll Z{A / m};
+  cerr << "Z = " << Z << endl;
   return n - Y - Z;
 }
 
