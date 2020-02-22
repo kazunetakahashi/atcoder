@@ -262,9 +262,7 @@ ll solve(ll n, ll x, ll m)
   cerr << "S = " << S << endl;
   cerr << "T = " << T << endl;
   cerr << "U = " << U << endl;
-  cerr << "A = " << A << endl;
 #endif
-
   ll Y{cnt * T};
   for (auto i = 0; i < U; ++i)
   {
@@ -276,6 +274,7 @@ ll solve(ll n, ll x, ll m)
   }
   ll Z{A / m};
 #if DEBUG == 1
+  cerr << "A = " << A << endl;
   cerr << "Y = " << Y << endl;
   cerr << "Z = " << Z << endl;
 #endif
