@@ -312,6 +312,45 @@ ll solve_positive(ll K)
   }
   sort(V.begin(), V.end());
   sort(W.begin(), W.end());
+  auto binary = [](auto const &V, auto i, auto X) {
+    ll ok{i - 1}, ng{static_cast<ll>(V.size())};
+    while (abs(ok - ng) > 1)
+    {
+      ll t{(ok + ng) / 2};
+      if (V[t] <= X)
+      {
+        ok = t;
+      }
+      else
+      {
+        ng = t;
+      }
+    }
+    return ng - (i - 1);
+  };
+  ll ok{0}, ng{infty};
+  while (abs(ok - ng) > 1)
+  {
+    ll t{(ok + ng) / 2};
+    ll cnt{0};
+    for (auto i = 0; i < static_cast<int>(V.size()); ++i)
+    {
+      cnt += binary(V, i + 1, t / V[i]);
+    }
+    for (auto i = 0; i < static_cast<int>(W.size()); ++i)
+    {
+      cnt += binary(W, i + 1, t / W[i]);
+    }
+    if (cnt <= K)
+    {
+      ok = t;
+    }
+    else
+    {
+      ng = t;
+    }
+  }
+  return ng;
 }
 
 int main()
