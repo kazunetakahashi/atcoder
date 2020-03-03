@@ -237,6 +237,9 @@ vector<ll> A;
 
 ll solve_negative(ll K)
 {
+#if DEBUG == 1
+  cerr << "K = " << K << endl;
+#endif
   vector<ll> V, W;
   for (auto i = 0; i < N; ++i)
   {
