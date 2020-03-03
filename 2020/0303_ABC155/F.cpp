@@ -305,7 +305,7 @@ private:
     cout << ans.size() << endl;
     for (auto it = ans.begin(); it != ans.end(); ++it)
     {
-      cout << *it;
+      cout << *it + 1;
       if (it + 1 != ans.end())
       {
         cout << " ";
