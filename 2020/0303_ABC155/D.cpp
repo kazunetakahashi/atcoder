@@ -215,7 +215,7 @@ int popcount(T x) // C++20
 }
 // ----- frequently used constexpr -----
 // constexpr double epsilon{1e-10};
-constexpr ll infty{1000000000000000LL}; // or
+constexpr ll infty{1'000'000'000'000'000'010}; // or
 // constexpr int infty{1'000'000'010};
 // constexpr int dx[4] = {1, 0, -1, 0};
 // constexpr int dy[4] = {0, 1, 0, -1};
@@ -341,6 +341,9 @@ ll solve_positive(ll K)
     {
       cnt += binary(W, i + 1, t / W[i]);
     }
+#if DEBUG == 1
+    cerr << "t = " << t << ", cnt = " << cnt << endl;
+#endif
     if (cnt <= K)
     {
       ok = t;
