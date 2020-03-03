@@ -390,7 +390,7 @@ int main()
   }
   else if (negative + zero <= K)
   {
-    cout << solve_positive(K - (negative + zero) + 1) << endl;
+    cout << solve_positive(K - (negative + zero)) << endl;
   }
   else
   {
