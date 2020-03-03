@@ -236,7 +236,6 @@ int main()
 {
   string S;
   cin >> S;
-  reverse(S.begin(), S.end());
   int N{static_cast<int>(S.size())};
   vector<vector<int>> DP(N + 1, vector<int>(2, infty));
   DP[0][0] = 0;
