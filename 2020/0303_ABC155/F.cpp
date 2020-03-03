@@ -317,6 +317,9 @@ private:
 
   void dfs(int v)
   {
+#if DEBUG == 1
+    cerr << "v = " << v << endl;
+#endif
     visited[v] = true;
     for (auto const &e : E[v])
     {
