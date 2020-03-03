@@ -257,7 +257,8 @@ public:
 private:
   void init()
   {
-    sort(V.begin(), V.end());
+    sort(V.begin(), V.begin());
+    V.resize(N + 1);
     vector<int> X(N);
     for (auto i = 0; i < N; ++i)
     {
@@ -344,7 +345,7 @@ int main()
 {
   int N, M;
   cin >> N >> M;
-  vector<bomb> V(N + 1);
+  vector<bomb> V(N);
   for (auto i = 0; i < N; ++i)
   {
     cin >> get<0>(V[i]) >> get<1>(V[i]);
