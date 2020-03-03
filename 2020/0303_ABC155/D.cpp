@@ -331,7 +331,7 @@ int main()
 #endif
   if (K < negative)
   {
-    cout << -solve_negative(negative - K) << endl;
+    cout << -solve_negative(negative - K - 1) << endl;
   }
   else if (negative + zero <= K)
   {
