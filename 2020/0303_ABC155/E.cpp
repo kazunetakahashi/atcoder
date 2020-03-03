@@ -273,6 +273,9 @@ int main()
         {
           b = 1;
         }
+#if DEBUG == 1
+        cerr << "i = " << i << ", j = " << j << ", nj = " << nj << ", a = " << a << ", b = " << b << endl;
+#endif
         ch_min(DP[ni][nj], DP[i][j] + a + b);
       }
     }
