@@ -295,6 +295,9 @@ ll solve_negative(ll K)
 
 ll solve_positive(ll K)
 {
+#if DEBUG == 1
+  cerr << "K = " << K << endl;
+#endif
   return -1;
 }
 
