@@ -236,6 +236,7 @@ int main()
 {
   string S;
   cin >> S;
+  S = "0" + S;
   int N{static_cast<int>(S.size())};
   vector<vector<int>> DP(N + 1, vector<int>(2, infty));
   DP[0][0] = 0;
