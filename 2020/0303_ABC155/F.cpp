@@ -257,6 +257,7 @@ public:
 private:
   void init()
   {
+    sort(V.begin(), V.end());
     vector<int> X(N);
     for (auto i = 0; i < N; ++i)
     {
@@ -348,12 +349,11 @@ int main()
   {
     cin >> get<0>(V[i]) >> get<1>(V[i]);
   }
-  vector<sw> W;
+  vector<sw> W(M);
   for (auto i = 0; i < M; ++i)
   {
     cin >> get<0>(W[i]) >> get<1>(W[i]);
     get<1>(W[i])++;
   }
-  sort(V.begin(), V.end());
   Solve solve(N, M, V, W);
 }
