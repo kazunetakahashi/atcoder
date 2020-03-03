@@ -298,7 +298,36 @@ ll solve_positive(ll K)
 #if DEBUG == 1
   cerr << "K = " << K << endl;
 #endif
-  return -1;
+  vector<ll> V, W;
+  for (auto i = 0; i < N; ++i)
+  {
+    if (A[i] > 0)
+    {
+      V.push_back(A[i]);
+    }
+    else if (A[i] < 0)
+    {
+      W.push_back(-A[i]);
+    }
+  }
+  sort(V.begin(), V.end());
+  sort(W.begin(), W.end());
+  auto binary = [](auto const &V, auto i, auto X) {
+    ll ok{i - 1}, ng{static_cast<ll>(V.size())};
+    while (abs(ok - ng) > 1)
+    {
+      ll t{(ok + ng) / 2};
+      if (V[t] <= X)
+      {
+        ok = t;
+      }
+      else
+      {
+        ng = t;
+      }
+    }
+    return ng - (i - 1);
+  };
 }
 
 int main()
