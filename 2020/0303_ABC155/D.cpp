@@ -326,7 +326,7 @@ ll solve_positive(ll K)
         ng = t;
       }
     }
-    return ng - (i - 1);
+    return ng - i;
   };
   ll ok{0}, ng{infty};
   while (abs(ok - ng) > 1)
