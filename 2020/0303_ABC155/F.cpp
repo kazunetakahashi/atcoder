@@ -257,7 +257,7 @@ public:
 private:
   void init()
   {
-    sort(V.begin(), V.begin());
+    sort(V.begin(), V.end());
     V.resize(N + 1);
     vector<int> X(N);
     for (auto i = 0; i < N; ++i)
