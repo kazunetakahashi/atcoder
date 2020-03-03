@@ -290,7 +290,7 @@ ll solve_negative(ll K)
       ng = t;
     }
   }
-  return ok;
+  return ng;
 }
 
 ll solve_positive(ll K)
