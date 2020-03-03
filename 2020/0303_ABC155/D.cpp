@@ -322,9 +322,13 @@ int main()
   }
   ll negative{p * n};
   ll zero{z * (n + p) + z * (z - 1) / 2};
-  if (K <= negative)
+#if DEBUG == 1
+  cerr << "negative = " << negative << endl;
+  cerr << "zero = " << zero << endl;
+#endif
+  if (K < negative)
   {
-    cout << solve_negative(negative - K) << endl;
+    cout << -solve_negative(negative - K) << endl;
   }
   else if (negative + zero <= K)
   {
