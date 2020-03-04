@@ -266,7 +266,7 @@ private:
 
   bool does_include(int k, point p)
   {
-    return abs(P[k] - p) < R(k);
+    return abs(P[k] - p) <= R(k) + epsilon;
   }
 
   bool valid_point(point p)
