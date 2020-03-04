@@ -276,9 +276,6 @@ private:
     {
       if (does_include(k, p))
       {
-#if DEBUG == 1
-        cerr << "k = " << k << ", p = " << p << endl;
-#endif
         ++cnt;
       }
     }
