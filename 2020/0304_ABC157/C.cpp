@@ -247,7 +247,6 @@ int main()
   for (auto k = mini[N]; k < maxi[N]; ++k)
   {
     string S{to_string(k)};
-    reverse(S.begin(), S.end());
     bool ok{true};
     for (auto j = 0; j < M; ++j)
     {
