@@ -297,7 +297,7 @@ private:
     auto x{(d * d + r * r - s * s) / (2 * d)};
     auto w{v * point(0, 1)};
 #if DEBUG == 1
-    cerr << "w = " << v << endl;
+    cerr << "w = " << w << endl;
 #endif
     auto y{sqrt(max(lld{0.0}, r * r - x * x))};
     V.push_back(v * x + w * y);
