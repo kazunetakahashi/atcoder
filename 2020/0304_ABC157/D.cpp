@@ -326,6 +326,14 @@ int main()
       uf.merge(i, x);
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i < N; ++i)
+  {
+    cerr << "uf.size(" << i << ") = " << uf.size(i) << endl;
+    cerr << "F[" << i << "].size() = " << F[i].size() << endl;
+    cerr << "B[" << i << "].size() = " << B[i].size() << endl;
+  }
+#endif
   for (auto i = 0; i < N; ++i)
   {
     cout << uf.size(i) - 1 - static_cast<int>(F[i].size() + B[i].size());
