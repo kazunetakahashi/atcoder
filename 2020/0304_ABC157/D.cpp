@@ -336,7 +336,15 @@ int main()
 #endif
   for (auto i = 0; i < N; ++i)
   {
-    cout << uf.size(i) - 1 - static_cast<int>(F[i].size() + B[i].size());
+    int ans{uf.size(i) - 1 - static_cast<int>(F[i].size())};
+    for (auto x : B[i])
+    {
+      if (uf.is_same(i, x))
+      {
+        --ans;
+      }
+    }
+    cout << ans;
     if (i < N - 1)
     {
       cout << " ";
