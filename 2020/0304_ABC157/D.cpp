@@ -328,6 +328,14 @@ int main()
   }
   for (auto i = 0; i < N; ++i)
   {
-    cout << uf.size(i) - 1 - static_cast<int>(F[i].size() + B[i].size()) << endl;
+    cout << uf.size(i) - 1 - static_cast<int>(F[i].size() + B[i].size());
+    if (i < N - 1)
+    {
+      cout << " ";
+    }
+    else
+    {
+      cout << endl;
+    }
   }
 }
