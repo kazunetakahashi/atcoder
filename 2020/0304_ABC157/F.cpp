@@ -286,11 +286,14 @@ private:
   {
     auto v{b - a};
     auto d{abs(v)};
-    v /= d;
     if (d + epsilon > r + s)
     {
       return;
     }
+    v /= d;
+#if DEBUG == 1
+    cerr << "v = " << v << endl;
+#endif
     auto x{(d * d + r * r - s * s) / (2 * d)};
     auto w{v * point(0, 1)};
     auto y{sqrt(max(lld{0.0}, r * r - x * x))};
