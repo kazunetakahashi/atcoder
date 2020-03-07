@@ -249,6 +249,7 @@ int main()
       }
     }
     cout << ans << endl;
+    return 0;
   }
   reverse(S.begin(), S.end());
   vector<int> X(N);
