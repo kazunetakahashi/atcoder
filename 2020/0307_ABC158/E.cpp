@@ -250,4 +250,26 @@ int main()
     cout << ans << endl;
     return 0;
   }
+  reverse(S.begin(), S.end());
+  vector<int> X(N);
+  int pw{1};
+  int now{0};
+  for (auto i = 0; i < N; ++i)
+  {
+    int c{S[i] - '0'};
+    now += (c * pw) % P;
+    now %= P;
+    X[i] = now;
+    pw *= 10;
+    pw %= P;
+  }
+  vector<int> R(P, 0);
+  R[0] = 1;
+  int ans{0};
+  for (auto i = 0; i < N; ++i)
+  {
+    ans += R[X[i]];
+    R[X[i]]++;
+  }
+  cout << ans << endl;
 }
