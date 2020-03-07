@@ -329,6 +329,9 @@ int main()
     tie(l, r) = V[i];
     S.insert(info(l, i));
     auto finish{get<1>(*S.lower_bound(info(r, i)))};
+#if DEBUG == 1
+    cerr << "l = " << l << ", r = " << r << ", finish = " << finish << endl;
+#endif
     auto mini{tree.find(finish + 1, i)};
     ch_min(mini, i - 1);
     I[i] = mini;
