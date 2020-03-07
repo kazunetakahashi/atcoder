@@ -237,6 +237,7 @@ int main()
   int N, P;
   cin >> N >> P;
   string S;
+  cin >> S;
   if (P == 2 || P == 5)
   {
     int ans{0};
