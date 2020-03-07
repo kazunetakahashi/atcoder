@@ -272,7 +272,9 @@ int main()
       }
     }
   }
-  S = pre.str() + S + suf.str();
+  auto P{pre.str()};
+  reverse(P.begin(), P.end());
+  S = P + S + suf.str();
   if (reversed)
   {
     reverse(S.begin(), S.end());
