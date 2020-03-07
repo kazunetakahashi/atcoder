@@ -248,8 +248,8 @@ int main()
         ans += i + 1;
       }
     }
-    cout << ans << endl;
-    return 0;
+    // cout << ans << endl;
+    return 1;
   }
   reverse(S.begin(), S.end());
   vector<int> X(N);
