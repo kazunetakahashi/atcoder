@@ -261,6 +261,7 @@ int main()
     now %= P;
     X[i] = now;
 #if DEBUG == 1
+    cerr << "c = " << c << endl;
     cerr << "X[" << i << "] = " << X[i] << endl;
 #endif
     pw *= 10;
