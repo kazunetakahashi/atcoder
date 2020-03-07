@@ -251,33 +251,23 @@ int main()
     {
       int F;
       cin >> F;
-      string C;
+      char C;
       cin >> C;
       if (!reversed && F == 1)
       {
-        stringstream SS;
-        SS << C << S;
-        S = SS.str();
+        S = C + S;
       }
       else if (!reversed && F == 2)
       {
-        stringstream SS;
-        SS << S << C;
-        S = SS.str();
+        S = S + C;
       }
       else if (reversed && F == 1)
       {
-        reverse(C.begin(), C.end());
-        stringstream SS;
-        SS << S << C;
-        S = SS.str();
+        S = S + C;
       }
       else
       {
-        reverse(C.begin(), C.end());
-        stringstream SS;
-        SS << C << S;
-        S = SS.str();
+        S = C + S;
       }
     }
   }
