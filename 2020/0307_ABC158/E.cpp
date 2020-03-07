@@ -260,6 +260,9 @@ int main()
     now += (c * pw) % P;
     now %= P;
     X[i] = now;
+#if DEBUG == 1
+    cerr << "X[" << i << "] = " << X[i] << endl;
+#endif
     pw *= 10;
     pw %= P;
   }
