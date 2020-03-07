@@ -215,7 +215,7 @@ int popcount(T x) // C++20
 }
 // ----- frequently used constexpr -----
 // constexpr double epsilon{1e-10};
-// constexpr ll infty{1000000000000000LL}; // or
+constexpr ll infty{1000000000000000LL}; // or
 // constexpr int infty{1'000'000'010};
 // constexpr int dx[4] = {1, 0, -1, 0};
 // constexpr int dy[4] = {0, 1, 0, -1};
@@ -230,9 +230,81 @@ void No()
   cout << "No" << endl;
   exit(0);
 }
+
+// ----- SegTree -----
+
+template <typename T>
+class SegTree
+{ // 0-indexed, [0, N).
+private:
+  int N;
+  vector<T> dat;
+  T unit;  // モノイドの単位元
+  T(*func) // モノイドの演算
+  (T, T);
+  T(*_update) // update で値をどうするか書く
+  (T, T);
+
+public:
+  SegTree() {}
+
+  SegTree(int n, T unit, T (*func)(T, T), T (*_update)(T, T)) : N{1}, unit{unit}, func{func}, _update{_update}
+  {
+    while (N < n)
+    {
+      N *= 2;
+    }
+    dat = vector<T>(2 * N - 1, unit);
+  }
+
+  void update(int k, T a)
+  {
+    k += N - 1;
+    dat[k] = _update(dat[k], a);
+    while (k > 0)
+    {
+      k = (k - 1) / 2;
+      dat[k] = func(dat[k * 2 + 1], dat[k * 2 + 2]);
+    }
+  }
+
+private:
+  T find(int a, int b, int k, int l, int r)
+  {
+    if (r <= a || b <= l)
+    {
+      return unit;
+    }
+    if (a <= l && r <= b)
+    {
+      return dat[k];
+    }
+    T vl = find(a, b, k * 2 + 1, l, (l + r) / 2);
+    T vr = find(a, b, k * 2 + 2, (l + r) / 2, r);
+    return func(vl, vr);
+  }
+
+public:
+  T find(int a, int b)
+  { // [a, b) の find をする。
+    return find(a, b, 0, 0, N);
+  }
+};
+
+// ----- frequently used examples -----
+
+auto func = [](auto x, auto y) {
+  return min(x, y);
+};
+auto _update = [](auto x, auto y) {
+  return min(x, y);
+};
+constexpr int unit{1 << 30};
+
 // ----- main() -----
 
 using robot = tuple<ll, ll>;
+using info = tuple<ll, int>;
 
 int main()
 {
@@ -245,9 +317,22 @@ int main()
     cin >> X >> D;
     V[i] = robot(X, X + D);
   }
+  sort(V.rbegin(), V.rend());
   // make I part
   vector<int> I(N);
-  
+  SegTree<int> tree{N, unit, func, _update};
+  set<info> S;
+  S.insert(info(infty, -1));
+  for (auto i = 0; i < N; ++i)
+  {
+    int l, r;
+    tie(l, r) = V[i];
+    S.insert(info(l, i));
+    auto finish{get<1>(*S.lower_bound(info(r, i)))};
+    auto mini{tree.find(finish + 1, i)};
+    ch_min(mini, i - 1);
+    I[i] = mini;
+  }
   // DP part
   vector<mint> DP(N + 1);
   DP[0] = 1;
