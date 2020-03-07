@@ -240,12 +240,12 @@ int main()
   cin >> S;
   if (P == 2 || P == 5)
   {
-    int ans{0};
+    ll ans{0};
     for (auto i = 0; i < N; ++i)
     {
       if ((S[i] - '0') % P == 0)
       {
-        ans += i + 1;
+        ans += static_cast<ll>(i + 1);
       }
     }
     cout << ans << endl;
