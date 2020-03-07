@@ -330,7 +330,7 @@ int main()
     S.insert(info(l, i));
     auto finish{get<1>(*S.lower_bound(info(r, -1)))};
     auto mini{tree.find(finish + 1, i)};
-    ch_min(mini, i - 1);
+    ch_min(mini, i);
     I[i] = mini;
 #if DEBUG == 1
     cerr << "l = " << l << ", r = " << r << ", finish = " << finish << endl;
@@ -343,7 +343,7 @@ int main()
   DP[0] = 1;
   for (auto i = 0; i < N; ++i)
   {
-    DP[i + 1] = DP[i] + DP[I[i]];
+    DP[i + 1] = DP[i] + DP[I[i] - 1];
   }
   cout << DP[N] << endl;
 }
