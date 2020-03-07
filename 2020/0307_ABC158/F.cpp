@@ -328,7 +328,7 @@ int main()
     int l, r;
     tie(l, r) = V[i];
     S.insert(info(l, i));
-    auto finish{get<1>(*S.lower_bound(info(r, i)))};
+    auto finish{get<1>(*S.lower_bound(info(r, -1)))};
 #if DEBUG == 1
     cerr << "l = " << l << ", r = " << r << ", finish = " << finish << endl;
 #endif
