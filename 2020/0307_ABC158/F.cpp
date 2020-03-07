@@ -335,6 +335,7 @@ int main()
     auto mini{tree.find(finish + 1, i)};
     ch_min(mini, i - 1);
     I[i] = mini;
+    tree.update(i, mini);
   }
   // DP part
   vector<mint> DP(N + 1);
