@@ -249,7 +249,6 @@ int main()
       }
     }
     cout << ans << endl;
-    return 1;
   }
   reverse(S.begin(), S.end());
   vector<int> X(N);
@@ -261,10 +260,6 @@ int main()
     now += (c * pw) % P;
     now %= P;
     X[i] = now;
-#if DEBUG == 1
-    cerr << "c = " << c << endl;
-    cerr << "X[" << i << "] = " << X[i] << endl;
-#endif
     pw *= 10;
     pw %= P;
   }
