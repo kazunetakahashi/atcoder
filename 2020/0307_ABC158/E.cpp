@@ -248,7 +248,7 @@ int main()
         ans += i + 1;
       }
     }
-    // cout << ans << endl;
+    cout << ans << endl;
     return 1;
   }
   reverse(S.begin(), S.end());
@@ -268,9 +268,9 @@ int main()
     pw *= 10;
     pw %= P;
   }
-  vector<int> R(P, 0);
+  vector<ll> R(P, 0);
   R[0] = 1;
-  int ans{0};
+  ll ans{0};
   for (auto i = 0; i < N; ++i)
   {
     ans += R[X[i]];
