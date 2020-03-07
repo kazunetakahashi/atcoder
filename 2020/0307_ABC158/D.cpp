@@ -239,6 +239,7 @@ int main()
   int Q;
   cin >> Q;
   bool reversed{false};
+  stringstream pre, suf;
   for (auto q = 0; q < Q; ++q)
   {
     int T;
@@ -255,22 +256,23 @@ int main()
       cin >> C;
       if (!reversed && F == 1)
       {
-        S = C + S;
+        pre << C;
       }
       else if (!reversed && F == 2)
       {
-        S = S + C;
+        suf << C;
       }
       else if (reversed && F == 1)
       {
-        S = S + C;
+        suf << C;
       }
       else
       {
-        S = C + S;
+        pre << C;
       }
     }
   }
+  S = pre.str() + S + suf.str();
   if (reversed)
   {
     reverse(S.begin(), S.end());
