@@ -245,12 +245,11 @@ public:
   {
     R = (1 << N) - 1;
     C = (1 << M) - 1;
-    /*
     all();
     int maxi{max_score()};
     cerr << "maxi = " << maxi << endl;
     flush_score_ban(maxi);
-    */
+    /*
     if (R == 1 && C == 1)
     {
       cout << 1 << endl;
@@ -271,6 +270,7 @@ public:
       }
       cout << endl;
     }
+    */
   }
 
 private:
@@ -337,15 +337,15 @@ private:
     {
       if (score(ban) == s)
       {
-        cerr << "----" << endl;
         for (auto i = 0; i < R; ++i)
         {
           for (auto j = 0; j < C; ++j)
           {
-            cerr << ban[i][j];
+            cout << ban[i][j];
           }
-          cerr << endl;
+          cout << endl;
         }
+        return;
       }
     }
   }
