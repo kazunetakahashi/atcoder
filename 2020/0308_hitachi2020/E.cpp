@@ -245,6 +245,10 @@ public:
   {
     R = (1 << N) - 1;
     C = (1 << M) - 1;
+    if (R * C > 60)
+    {
+      return;
+    }
     all();
     int maxi{max_score()};
     cerr << "maxi = " << maxi << endl;
