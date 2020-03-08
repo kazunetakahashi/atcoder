@@ -297,7 +297,8 @@ ll get_min(int x)
   cerr << "f(" << *(Q.begin()) << ", "
        << x << ") = " << f(*(Q.begin()), x) + x * x << endl;
 #endif
-  return f(*(Q.begin()), x);
+  auto ans{f(*(Q.begin()), x)};
+  Q.pop_front();
 }
 
 int main()
