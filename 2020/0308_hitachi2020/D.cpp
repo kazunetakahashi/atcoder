@@ -330,6 +330,9 @@ int main()
     ++now;
     ll t{get_min(now)};
     now += t;
+#if DEBUG == 1
+    cerr << "now = " << now << endl;
+#endif
     if (now <= T)
     {
       ++ans;
