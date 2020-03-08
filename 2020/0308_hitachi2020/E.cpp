@@ -247,7 +247,7 @@ public:
     C = (1 << M) - 1;
     if (R * C > 60)
     {
-      return;
+      exit(1);
     }
     all();
     int maxi{max_score()};
