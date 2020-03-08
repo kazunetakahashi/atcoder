@@ -299,6 +299,7 @@ ll get_min(int x)
 #endif
   auto ans{f(*(Q.begin()), x)};
   Q.pop_front();
+  return ans;
 }
 
 int main()
@@ -326,7 +327,7 @@ int main()
   }
   ll now{0};
   ll ans{0};
-  while (true)
+  while (now < N)
   {
     ++now;
     ll t{get_min(now)};
