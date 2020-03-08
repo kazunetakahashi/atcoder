@@ -254,7 +254,7 @@ public:
     if (R == 1 && C == 1)
     {
       cout << 1 << endl;
-      return 0;
+      return;
     }
     for (auto i = 0; i < R; ++i)
     {
