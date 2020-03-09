@@ -311,15 +311,12 @@ private:
     int ans{0};
     for (auto i = 0; i < C; ++i)
     {
-#if DEBUG == 1
-      cerr << "dp[" << M << "][" << i << "] = " << dp[M][i] << endl;
-#endif
       ll remain{T - dp[M][i]};
       if (remain < 0)
       {
         continue;
       }
-      int z{static_cast<int>(lower_bound(sum.begin(), sum.end(), remain) - sum.begin())};
+      int z{static_cast<int>(upper_bound(sum.begin(), sum.end(), remain) - sum.begin()) - 1};
       ch_max(ans, z + i);
     }
     return ans;
