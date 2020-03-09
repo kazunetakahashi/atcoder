@@ -321,6 +321,12 @@ private:
         dp[i + 1][j] = min(dp[i][j], f(i, dp[i][j - 1]));
       }
     }
+#if DEBUG == 1
+    for (auto i = 0; i < C; ++i)
+    {
+      cerr << "dp[" << M << "][" << i << "] = " << dp[M][i] << endl;
+    }
+#endif
   }
 
   int calc_ans()
