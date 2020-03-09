@@ -253,8 +253,8 @@ public:
   Solve(int N, ll T, vector<shop> V) : N{N}, T{T}, V(V)
   {
     make_normal_zero();
-    execute_dp();
     return;
+    execute_dp();
     cout << calc_ans() << endl;
   }
 
