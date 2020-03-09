@@ -252,9 +252,6 @@ private:
   void dfs(int v, bool color = true, int parent = -1)
   {
     B[color].push_back(v);
-#if DEBUG == 1
-    cerr << "B[" << color << "].push_back(" << v << ");" << endl;
-#endif
     for (auto x : V[v])
     {
       if (x != parent)
