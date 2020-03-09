@@ -323,7 +323,7 @@ private:
 #if DEBUG == 1
       for (auto j = 0; j < C; ++j)
       {
-        cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
+        cerr << "dp[" << i + 1 << "][" << j << "] = " << dp[i + 1][j] << endl;
       }
 #endif
     }
