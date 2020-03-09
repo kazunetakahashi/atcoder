@@ -236,7 +236,7 @@ using shop = tuple<ll, ll>;
 
 ostream &operator<<(ostream &os, shop const &s)
 {
-  return os << "(" << get<0>(s) << ", " << get<1>(s) << ")" << endl;
+  return os << "(" << get<0>(s) << ", " << get<1>(s) << ")";
 }
 
 class Solve
