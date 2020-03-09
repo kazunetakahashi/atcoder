@@ -243,13 +243,13 @@ class Solve
 public:
   Solve(int N, vector<vector<int>> V) : N{N}, V(V), B(2), ans(N), nums{3, 1, 2}
   {
-    dfs(0, true);
+    dfs(0);
     numbering();
     flush();
   }
 
 private:
-  void dfs(int v, bool color, int parent = -1)
+  void dfs(int v, bool color = true, int parent = -1)
   {
     B[color].push_back(v);
 #if DEBUG == 1
@@ -259,7 +259,7 @@ private:
     {
       if (x != parent)
       {
-        dfs(x, !color, x);
+        dfs(x, !color, v);
       }
     }
   }
