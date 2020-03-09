@@ -286,11 +286,11 @@ private:
         zero.push_back(V[i]);
       }
     }
+    return;
     M = normal.size();
     L = zero.size();
     sort(normal.begin(), normal.end(), compare_normal);
     sort(zero.begin(), zero.end(), compare_zero);
-    return;
     sum = vector<ll>(L + 1, 0);
     for (auto i = 0; i < L; ++i)
     {
