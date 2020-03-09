@@ -234,6 +234,11 @@ void No()
 
 using shop = tuple<ll, ll>;
 
+ostream &operator<<(ostream &os, shop const &s)
+{
+  return os << "(" << get<0>(s) << ", " << get<1>(s) << ")" << endl;
+}
+
 class Solve
 {
   static constexpr int C{32};
@@ -285,6 +290,18 @@ private:
     L = zero.size();
     sort(normal.begin(), normal.end(), compare_normal);
     sort(zero.begin(), zero.end(), compare_zero);
+#if DEBUG == 1
+    cerr << "normal" << endl;
+    for (auto &s : normal)
+    {
+      cerr << s << endl;
+    }
+    cerr << "zero" << endl;
+    for (auto &s : zero)
+    {
+      cerr << s << endl;
+    }
+#endif
     sum = vector<ll>(L + 1, 0);
     for (auto i = 0; i < L; ++i)
     {
