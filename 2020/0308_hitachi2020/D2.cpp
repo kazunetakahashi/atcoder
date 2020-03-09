@@ -311,6 +311,9 @@ private:
     int ans{0};
     for (auto i = 0; i < C; ++i)
     {
+#if DEBUG == 1
+      cerr << "dp[" << M << "][" << i << "] = " << dp[M][i] << endl;
+#endif
       ll remain{T - dp[M][i]};
       if (remain < 0)
       {
