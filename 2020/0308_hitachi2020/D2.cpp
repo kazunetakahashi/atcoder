@@ -260,12 +260,12 @@ public:
 private:
   static bool compare_normal(shop const &left, shop const &right)
   {
-    return (get<0>(right) - 1) * get<1>(left) - (get<0>(left) - 1) * get<1>(right) <= 0;
+    return (get<0>(right) - 1) * get<1>(left) - (get<0>(left) - 1) * get<1>(right) < 0;
   }
 
   static bool compare_zero(shop const &left, shop const &right)
   {
-    return get<1>(left) <= get<1>(right);
+    return get<1>(left) < get<1>(right);
   }
 
   ll f(int i, ll x)
