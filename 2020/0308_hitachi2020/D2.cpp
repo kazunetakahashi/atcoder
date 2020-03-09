@@ -253,7 +253,6 @@ public:
   Solve(int N, ll T, vector<shop> V) : N{N}, T{T}, V(V)
   {
     make_normal_zero();
-    return;
     execute_dp();
     cout << calc_ans() << endl;
   }
@@ -287,6 +286,7 @@ private:
         zero.push_back(V[i]);
       }
     }
+    exit(0);
     M = normal.size();
     L = zero.size();
     sort(normal.begin(), normal.end(), compare_normal);
