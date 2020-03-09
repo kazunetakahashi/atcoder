@@ -270,7 +270,7 @@ private:
 
   ll f(int i, ll x)
   {
-    return get<0>(V[i]) * x + get<1>(V[i]);
+    return get<0>(normal[i]) * x + get<1>(normal[i]);
   }
 
   void make_normal_zero()
