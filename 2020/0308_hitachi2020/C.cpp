@@ -244,6 +244,7 @@ public:
   Solve(int N, vector<vector<int>> V) : N{N}, V(V), B(2), ans(N), nums{3, 1, 2}
   {
     dfs(0, true);
+    numbering();
     flush();
   }
 
@@ -264,7 +265,15 @@ private:
   {
     for (auto i = 0; i < N; ++i)
     {
-      cout << ans[i] << endl;
+      cout << ans[i];
+      if (i < N - 1)
+      {
+        cout << " ";
+      }
+      else
+      {
+        cout << endl;
+      }
     }
   }
 
