@@ -288,14 +288,9 @@ private:
     }
     M = normal.size();
     L = zero.size();
-    if (M >= 2)
-    {
-      sort(normal.begin(), normal.end(), compare_normal);
-    }
-    if (L >= 2)
-    {
-      sort(zero.begin(), zero.end(), compare_zero);
-    }
+    sort(normal.begin(), normal.end(), compare_normal);
+    return;
+    sort(zero.begin(), zero.end(), compare_zero);
     sum = vector<ll>(L + 1, 0);
     for (auto i = 0; i < L; ++i)
     {
