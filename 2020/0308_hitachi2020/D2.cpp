@@ -294,7 +294,7 @@ private:
     cerr << "normal" << endl;
     for (auto &s : normal)
     {
-      cerr << s << ": " << static_cast<double>((get<0>(s) - 1) / get<1>(s)) << endl;
+      cerr << s << ": " << static_cast<double>((get<0>(s) - 1)) / get<1>(s) << endl;
     }
     cerr << "zero" << endl;
     for (auto &s : zero)
