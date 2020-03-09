@@ -254,6 +254,7 @@ public:
   {
     make_normal_zero();
     execute_dp();
+    return;
     cout << calc_ans() << endl;
   }
 
@@ -290,18 +291,6 @@ private:
     L = zero.size();
     sort(normal.begin(), normal.end(), compare_normal);
     sort(zero.begin(), zero.end(), compare_zero);
-#if DEBUG == 1
-    cerr << "normal" << endl;
-    for (auto &s : normal)
-    {
-      cerr << s << ": " << static_cast<double>((get<0>(s) - 1)) / get<1>(s) << endl;
-    }
-    cerr << "zero" << endl;
-    for (auto &s : zero)
-    {
-      cerr << s << endl;
-    }
-#endif
     sum = vector<ll>(L + 1, 0);
     for (auto i = 0; i < L; ++i)
     {
@@ -320,12 +309,6 @@ private:
       {
         dp[i + 1][j] = min(dp[i][j], f(i, dp[i][j - 1]));
       }
-#if DEBUG == 1
-      for (auto j = 0; j < C; ++j)
-      {
-        cerr << "dp[" << i + 1 << "][" << j << "] = " << dp[i + 1][j] << endl;
-      }
-#endif
     }
   }
 
