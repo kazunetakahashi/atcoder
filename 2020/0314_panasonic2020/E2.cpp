@@ -232,7 +232,7 @@ void No()
 }
 // ----- main() -----
 
-constexpr int D{2010};
+constexpr int D{10};
 
 class Solve
 {
@@ -244,6 +244,23 @@ public:
   {
     int ans{10000};
     make_diff();
+#if DEBUG == 1
+    cerr << A << ", " << B << endl;
+    for (auto x : diff_AB)
+    {
+      cerr << x << endl;
+    }
+    cerr << B << ", " << C << endl;
+    for (auto x : diff_BC)
+    {
+      cerr << x << endl;
+    }
+    cerr << C << ", " << A << endl;
+    for (auto x : diff_CA)
+    {
+      cerr << x << endl;
+    }
+#endif
     for (auto x : diff_AB)
     {
       for (auto y : diff_BC)
