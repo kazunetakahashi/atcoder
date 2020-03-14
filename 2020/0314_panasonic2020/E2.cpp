@@ -237,7 +237,7 @@ constexpr int D{4010};
 class Solve
 {
   string A, B, C;
-  set<int> diff_AB, diff_BC, diff_CA;
+  unordered_set<int> diff_AB, diff_BC, diff_CA;
 
 public:
   Solve(string A, string B, string C) : A{A}, B{B}, C{C}
@@ -279,7 +279,7 @@ private:
     return true;
   }
 
-  static void make_diff(string const &S, string const &T, set<int> &diff)
+  static void make_diff(string const &S, string const &T, unordered_set<int> &diff)
   {
     for (auto K = -D; K < D; ++K)
     {
