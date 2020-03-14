@@ -234,9 +234,13 @@ void No()
 
 int main()
 {
-  double A, B, C;
+  ll A, B, C;
   cin >> A >> B >> C;
-  if (sqrt(A) + sqrt(B) + epsilon < sqrt(C))
+  if (A + B >= C)
+  {
+    No();
+  }
+  if (4 * A * B < (C - A + B) * (C - A + B))
   {
     Yes();
   }
