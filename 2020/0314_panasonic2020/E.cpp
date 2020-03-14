@@ -232,9 +232,10 @@ void No()
 }
 // ----- main() -----
 
-string concat(string A, string B)
+vector<string> concat(string A, string B)
 {
   int N{static_cast<int>(A.size())};
+  vector<string> ans;
   for (auto i = 0; i <= N; ++i)
   {
     bool ok{true};
@@ -272,20 +273,47 @@ string concat(string A, string B)
       {
         SS << B[j];
       }
-      return SS.str();
+      ans.push_back(SS.str());
     }
   }
   assert(false);
-  return "";
+  return ans;
+}
+
+int concat(vector<string> const &V, string B)
+{
+  int ans{10000};
+  for (auto const &A : V)
+  {
+    int N{static_cast<int>(A.size())};
+    for (auto i = 0; i <= N; ++i)
+    {
+      bool ok{true};
+      for (auto j = i; j < N; ++j)
+      {
+        if (A[j] == B[j - i] || A[j] == '?' || B[j - i] == '?')
+        {
+          continue;
+        }
+        else
+        {
+          ok = false;
+          break;
+        }
+      }
+      if (ok)
+      {
+        ch_max(ans, N + static_cast<int>(B.size()) - i);
+        break;
+      }
+    }
+  }
+  return ans;
 }
 
 int solve(vector<string> W)
 {
-  string S{concat(concat(W[0], W[1]), W[2])};
-#if DEBUG == 1
-  cerr << "S = " << S << endl;
-#endif
-  return static_cast<int>(S.size());
+  return concat(concat(W[0], W[1]), W[2]);
 }
 
 int main()
