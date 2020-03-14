@@ -240,7 +240,7 @@ int main()
   {
     No();
   }
-  if (4 * A * B < (C - A + B) * (C - A + B))
+  if (4 * A * B < (C - A - B) * (C - A - B))
   {
     Yes();
   }
