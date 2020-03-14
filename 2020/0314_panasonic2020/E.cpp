@@ -302,7 +302,7 @@ int concat(vector<string> const &V, string B)
       }
       if (ok)
       {
-        ch_max(ans, N + static_cast<int>(B.size()) - i);
+        ch_min(ans, N + static_cast<int>(B.size()) - i);
         break;
       }
     }
