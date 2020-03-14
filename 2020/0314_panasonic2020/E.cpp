@@ -276,7 +276,6 @@ vector<string> concat(string A, string B)
       ans.push_back(SS.str());
     }
   }
-  assert(false);
   return ans;
 }
 
