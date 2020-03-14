@@ -277,7 +277,7 @@ vector<string> concat(string A, string B)
     }
   }
 #if DEBUG == 1
-  cerr << "aaa" << endl;
+  cerr << "------" << endl;
   for (auto x : ans)
   {
     cerr << x << endl;
