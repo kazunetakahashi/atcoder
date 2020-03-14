@@ -276,6 +276,13 @@ vector<string> concat(string A, string B)
       ans.push_back(SS.str());
     }
   }
+#if DEBUG == 1
+  cerr << "aaa" << endl;
+  for (auto x : ans)
+  {
+    cerr << x << endl;
+  }
+#endif
   return ans;
 }
 
