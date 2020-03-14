@@ -266,7 +266,7 @@ public:
       for (auto y : diff_BC)
       {
         auto z{-(x + y)};
-        if (diff_CA.find(z) == diff_CA.end())
+        if (diff_CA.find(z) != diff_CA.end())
         {
           int start{min({0, -x, -x - y})};
           int finish{max({static_cast<int>(A.size()), static_cast<int>(B.size()) - x, static_cast<int>(C.size()) - x - y})};
