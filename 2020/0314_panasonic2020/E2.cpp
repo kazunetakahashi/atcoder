@@ -270,6 +270,13 @@ public:
         {
           int start{min({0, -x, -x - y})};
           int finish{max({static_cast<int>(A.size()), static_cast<int>(B.size()) - x, static_cast<int>(C.size()) - x - y})};
+#if DEBUG == 1
+          if (x == -4 && y == 2)
+          {
+            cerr << "start = " << start << endl;
+            cerr << "finish = " << finish << endl;
+          }
+#endif
           ch_min(ans, finish - start);
         }
       }
