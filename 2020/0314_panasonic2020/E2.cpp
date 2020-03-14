@@ -232,7 +232,7 @@ void No()
 }
 // ----- main() -----
 
-constexpr int D{4010};
+constexpr int D{3010};
 
 class Solve
 {
