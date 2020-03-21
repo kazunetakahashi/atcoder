@@ -270,6 +270,13 @@ private:
         V[i] = 0;
       }
     }
+#if DEBUG == 1
+    for (auto x : V)
+    {
+      cerr << x;
+    }
+    cerr << endl;
+#endif
   }
 
   void calc_ans()
