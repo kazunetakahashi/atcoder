@@ -292,6 +292,9 @@ private:
     for (auto i = 0; i < N; ++i)
     {
       ans += C[i] * V[i];
+#if DEBUG == 1
+      cerr << "C[" << i << "] = " << C[i] << endl;
+#endif
     }
   }
 
