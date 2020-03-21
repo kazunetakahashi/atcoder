@@ -266,7 +266,7 @@ public:
           int ny{y + dy[k]};
           if (valid(nx, ny))
           {
-            if (V[nx][ny] == '#')
+            if (V[x][y] == '.' && V[nx][ny] == '#')
             {
               Q.push(info(d + 1, nx, ny));
             }
