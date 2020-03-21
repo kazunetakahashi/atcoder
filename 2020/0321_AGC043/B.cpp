@@ -281,20 +281,11 @@ private:
 
   void calc_ans()
   {
-    vector<mint> C(N);
-    C[0] = 1;
-    for (auto i = 1LL; i < (ll)N; ++i)
-    {
-      C[i] *= (N - i);
-      C[i] /= i;
-    }
+    combination C;
     ans = 0;
     for (auto i = 0; i < N; ++i)
     {
-      ans += C[i] * V[i];
-#if DEBUG == 1
-      cerr << "C[" << i << "] = " << C[i] << endl;
-#endif
+      ans += C((N - 1) % MOD, i % MOD) * V[i];
     }
   }
 
