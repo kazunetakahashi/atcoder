@@ -285,7 +285,8 @@ private:
     C[0] = 1;
     for (auto i = 1; i < N; ++i)
     {
-      C[i] = C[i - 1] * (N - i) / i;
+      C[i] = C[i - 1] * (N - i);
+      C[i] /= i;
 #if DEBUG == 1
       cerr << "C[" << i << "] = " << C[i] << endl;
 #endif
