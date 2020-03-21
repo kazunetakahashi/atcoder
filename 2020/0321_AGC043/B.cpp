@@ -41,7 +41,7 @@ using max_heap = priority_queue<T>;
 template <typename T>
 using min_heap = priority_queue<T, vector<T>, greater<T>>;
 // ----- constexpr for Mint and Combination -----
-constexpr ll MOD{2LL};
+constexpr ll MOD{998244353LL};
 // constexpr ll MOD{998244353LL}; // be careful
 constexpr ll MAX_SIZE{3000010LL};
 // constexpr ll MAX_SIZE{30000010LL}; // if 10^7 is needed
