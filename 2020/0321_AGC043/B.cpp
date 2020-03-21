@@ -281,7 +281,7 @@ private:
 
   void calc_ans()
   {
-    vector<mint> C(N);
+    vector<cpp_int> C(N);
     C[0] = 1;
     for (auto i = 1; i < N; ++i)
     {
@@ -294,7 +294,10 @@ private:
     ans = 0;
     for (auto i = 0; i < N; ++i)
     {
-      ans += C[i] * V[i];
+      if (C[i] % 2 == 1)
+      {
+        ans += V[i];
+      }
     }
   }
 
