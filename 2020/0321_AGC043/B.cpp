@@ -287,6 +287,7 @@ private:
     {
       C[i] *= C[i - 1] * ((N - i) % 2);
 #if DEBUG == 1
+      cerr << "C[" << i - 1 << "] = " << C[i - 1] << endl;
       cerr << "C[" << i << "] = " << C[i] << endl;
 #endif
       C[i] /= i;
