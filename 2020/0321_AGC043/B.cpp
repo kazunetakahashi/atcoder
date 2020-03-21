@@ -286,6 +286,9 @@ private:
     for (auto i = 0; i < N; ++i)
     {
       ans += C(N - 1, i) * V[i];
+#if DEBUG == 1
+      cerr << "C(" << N - 1 << ", " << i << ") = " << C(N - 1, i) << endl;
+#endif
     }
   }
 
