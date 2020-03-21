@@ -311,9 +311,11 @@ int main()
   int N;
   cin >> N;
   vector<int> A(N);
+  string S;
+  cin >> S;
   for (auto i = 0; i < N; ++i)
   {
-    cin >> A[i];
+    A[i] = S[i] - '0';
     A[i]--;
   }
   Solve solve(N, A);
