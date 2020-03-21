@@ -288,7 +288,7 @@ public:
       cerr << endl;
     }
 #endif
-    // cout << D[H - 1][W - 1] << endl;
+    cout << D[H - 1][W - 1] << endl;
   }
 
 private:
