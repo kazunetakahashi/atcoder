@@ -278,7 +278,17 @@ public:
         }
       }
     }
-    cout << D[H - 1][W - 1] << endl;
+#if DEBUG == 1
+    for (auto i = 0; i < H; ++i)
+    {
+      for (auto j = 0; j < W; ++j)
+      {
+        cerr << D[i][j];
+      }
+      cerr << endl;
+    }
+#endif
+    // cout << D[H - 1][W - 1] << endl;
   }
 
 private:
