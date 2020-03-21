@@ -281,20 +281,10 @@ private:
 
   void calc_ans()
   {
-    vector<cpp_int> C(N);
-    C[0] = 1;
-    for (auto i = 1; i < N; ++i)
-    {
-      C[i] = C[i - 1] * (N - i);
-      C[i] /= i;
-#if DEBUG == 1
-      cerr << "C[" << i << "] = " << C[i] << endl;
-#endif
-    }
     ans = 0;
     for (auto i = 0; i < N; ++i)
     {
-      if (C[i] % 2 == 1)
+      if ((N - 1) ^ i ^ (N - 1 - i))
       {
         ans += V[i];
       }
