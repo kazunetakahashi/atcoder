@@ -287,7 +287,7 @@ private:
 #if DEBUG == 1
       cerr << "i = " << i << ": " << ((N - 1) ^ i ^ (N - 1 - i)) << endl;
 #endif
-      if ((N - 1) ^ i ^ (N - 1 - i))
+      if ((N - 1) ^ i ^ (N - 1 - i) == 0)
       {
         ans += V[i];
       }
