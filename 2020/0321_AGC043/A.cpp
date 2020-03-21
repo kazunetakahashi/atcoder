@@ -244,7 +244,14 @@ public:
   Solve(int H, int W, vector<string> V) : H{H}, W{W}, V{V}, D(H, vector<int>(W, infty))
   {
     min_heap<info> Q;
-    Q.push(info(0, 0, 0));
+    if (V[0][0] == '#')
+    {
+      Q.push(info(1, 0, 0));
+    }
+    else
+    {
+      Q.push(info(0, 0, 0));
+    }
     while (!Q.empty())
     {
       int d, x, y;
