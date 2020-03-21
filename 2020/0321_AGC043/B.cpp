@@ -41,7 +41,7 @@ using max_heap = priority_queue<T>;
 template <typename T>
 using min_heap = priority_queue<T, vector<T>, greater<T>>;
 // ----- constexpr for Mint and Combination -----
-constexpr ll MOD{998244353LL};
+constexpr ll MOD{2LL};
 // constexpr ll MOD{998244353LL}; // be careful
 constexpr ll MAX_SIZE{3000010LL};
 // constexpr ll MAX_SIZE{30000010LL}; // if 10^7 is needed
@@ -251,13 +251,13 @@ public:
 private:
   void flush()
   {
-    if (zero_two && ans.x % 2 == 1)
+    if (zero_two && ans == 1)
     {
       cout << 2 << endl;
     }
     else
     {
-      cout << ans.x % 2 << endl;
+      cout << ans << endl;
     }
   }
 
@@ -281,11 +281,20 @@ private:
 
   void calc_ans()
   {
-    combination C;
+    vector<cpp_int> C(N);
+    C[0] = 1;
+    for (auto i = 1; i < N; ++i)
+    {
+      C[i] *= N - i;
+      C[i] /= i;
+    }
     ans = 0;
     for (auto i = 0; i < N; ++i)
     {
-      ans += C(N - 1, i) * V[i];
+      if (C[i] % 2 == 1)
+      {
+        ans += V[i];
+      }
     }
   }
 
