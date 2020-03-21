@@ -281,14 +281,17 @@ private:
 
   void calc_ans()
   {
-    combination C;
+    vector<mint> C(N);
+    C[0] = 1;
+    for (auto i = 1LL; i < (ll)N; ++i)
+    {
+      C[i] *= (N - i);
+      C[i] /= i;
+    }
     ans = 0;
     for (auto i = 0; i < N; ++i)
     {
-      ans += C(N - 1, i) * V[i];
-#if DEBUG == 1
-      cerr << "C(" << N - 1 << ", " << i << ") = " << C(N - 1, i) << endl;
-#endif
+      ans += C[i] * V[i];
     }
   }
 
