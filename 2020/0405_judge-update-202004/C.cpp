@@ -254,7 +254,8 @@ int main()
     {
       for (auto j = 0; j < a[i]; ++j)
       {
-        X[i][j] = *V.begin();
+        X[i][j] = *it;
+        it++;
       }
     }
     bool ok{true};
