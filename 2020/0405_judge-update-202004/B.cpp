@@ -237,7 +237,7 @@ int main()
   int N;
   cin >> N;
   using ball = tuple<int, int>;
-  vector<ball> V(N);
+  vector<ball> V;
   for (auto i = 0; i < N; ++i)
   {
     char c;
