@@ -294,7 +294,17 @@ int main()
     if (ok)
     {
       ++ans;
+#if DEBUG == 1
+      for (auto i = 0; i < 3; ++i)
+      {
+        for (auto j = 0; j < 3; ++j)
+        {
+          cerr << X[i][j] << " ";
+        }
+        cerr << endl;
+      }
+#endif
     }
   } while (next_permutation(V.begin(), V.end()));
-  cout << ans << endl;
+  // cout << ans << endl;
 }
