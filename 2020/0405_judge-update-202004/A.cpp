@@ -238,10 +238,14 @@ int main()
   cin >> S >> L >> R;
   if (L <= S && S <= R)
   {
-    cout << 0 << endl;
+    cout << S << endl;
+  }
+  else if (S <= L)
+  {
+    cout << L << endl;
   }
   else
   {
-    cout << min(abs(S - L), abs(S - R)) << endl;
+    cout << R << endl;
   }
 }
