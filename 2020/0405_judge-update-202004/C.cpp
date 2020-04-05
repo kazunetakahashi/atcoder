@@ -304,5 +304,5 @@ int main()
 #endif
     }
   } while (next_permutation(V.begin(), V.end()));
-  // cout << ans << endl;
+  cout << ans << endl;
 }
