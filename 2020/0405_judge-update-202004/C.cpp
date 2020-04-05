@@ -271,9 +271,8 @@ int main()
         {
           if (X[i + 1][j] == -1)
           {
-            continue;
           }
-          if (X[i][j] >= X[i + 1][j])
+          else if (X[i][j] >= X[i + 1][j])
           {
             ok = false;
           }
@@ -282,9 +281,8 @@ int main()
         {
           if (X[i][j + 1] == -1)
           {
-            continue;
           }
-          if (X[i][j] >= X[i][j + 1])
+          else if (X[i][j] >= X[i][j + 1])
           {
             ok = false;
           }
