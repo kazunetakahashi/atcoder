@@ -253,7 +253,7 @@ private:
     {
       return;
     }
-    if (!(a <= b && b <= c))
+    if (!(a >= b && b >= c))
     {
       return;
     }
