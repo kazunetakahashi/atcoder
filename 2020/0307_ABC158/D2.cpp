@@ -263,7 +263,10 @@ int main()
       }
     }
   }
-  string ans{prefix.str() + S + suffix.str()};
+  string pre{prefix.str()};
+  string suf{suffix.str()};
+  reverse(pre.begin(), pre.end());
+  string ans{pre + S + suf};
   if (reversed)
   {
     reverse(ans.begin(), ans.end());
