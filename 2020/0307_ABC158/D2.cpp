@@ -255,17 +255,11 @@ int main()
       cin >> f >> c;
       if ((f == 1) ^ reversed)
       {
-#if DEBUG == 1
-        cerr << "suffix" << endl;
-#endif
-        suffix << c;
+        prefix << c;
       }
       else
       {
-#if DEBUG == 1
-        cerr << "prefix" << endl;
-#endif
-        prefix << c;
+        suffix << c;
       }
     }
   }
