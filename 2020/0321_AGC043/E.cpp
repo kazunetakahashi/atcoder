@@ -293,6 +293,9 @@ public:
 
   Chain(int mask)
   {
+#if DEBUG == 1
+    cerr << "mask = " << mask << endl;
+#endif
     int cnt{0};
     while ((mask >> cnt) != 0)
     {
@@ -421,7 +424,7 @@ private:
       }
       if (create)
       {
-        C += Chain(i);
+        C += Chain{i};
       }
     }
   }
