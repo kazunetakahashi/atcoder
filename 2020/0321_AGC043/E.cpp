@@ -293,9 +293,6 @@ public:
 
   Chain(int mask)
   {
-#if DEBUG == 1
-    cerr << "mask = " << mask << endl;
-#endif
     int cnt{0};
     while ((mask >> cnt) != 0)
     {
@@ -417,9 +414,6 @@ private:
       {
         continue;
       }
-#if DEBUG == 1
-      cerr << "i = " << i << endl;
-#endif
       bool create{true};
       for (auto j = 0; j < 1 << N; ++j)
       {
