@@ -389,6 +389,10 @@ public:
 private:
   bool check() const
   {
+    if (!V[0])
+    {
+      return false;
+    }
     for (auto i = 0; i < 1 << N; ++i)
     {
       for (auto j = 0; j < 1 << N; ++j)
@@ -445,6 +449,7 @@ private:
     }
     auto tmp{C.path()};
     cout << tmp.size() << endl;
+    tmp.push_back(Point(0, 0));
     for (auto const &e : tmp)
     {
       cout << e << endl;
