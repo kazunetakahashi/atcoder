@@ -413,6 +413,9 @@ private:
       {
         continue;
       }
+#if DEBUG == 1
+      cerr << "i = " << i << endl;
+#endif
       bool create{true};
       for (auto j = 0; j < 1 << N; ++j)
       {
