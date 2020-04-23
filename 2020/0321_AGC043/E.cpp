@@ -425,6 +425,9 @@ private:
       {
         if ((i & j) == j && !V[j])
         {
+#if DEBUG == 1
+          cerr << "j = " << j << endl;
+#endif
           create = false;
           break;
         }
