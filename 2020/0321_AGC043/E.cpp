@@ -443,7 +443,9 @@ private:
       cout << "Impossible" << endl;
       return;
     }
-    for (auto const &e : C.path())
+    auto tmp{C.path()};
+    cout << tmp.size() << endl;
+    for (auto const &e : tmp)
     {
       cout << e << endl;
     }
