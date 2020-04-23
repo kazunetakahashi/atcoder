@@ -397,7 +397,7 @@ private:
     {
       for (auto j = 0; j < 1 << N; ++j)
       {
-        if ((i & j) == j)
+        if (i != j && (i & j) == j)
         {
           if (!V[j] && V[i])
           {
@@ -423,11 +423,8 @@ private:
       bool create{true};
       for (auto j = 0; j < 1 << N; ++j)
       {
-        if ((i & j) == j && !V[j])
+        if (i != j && (i & j) == j && !V[j])
         {
-#if DEBUG == 1
-          cerr << "j = " << j << endl;
-#endif
           create = false;
           break;
         }
