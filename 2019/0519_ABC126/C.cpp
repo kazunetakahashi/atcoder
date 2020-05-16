@@ -254,7 +254,7 @@ int main()
   double ans{0};
   for (auto i = 0; i < 50; ++i)
   {
-    ll D{0};
+    ll D{1};
     for (auto t = 0; t < i; ++t)
     {
       D *= 2;
