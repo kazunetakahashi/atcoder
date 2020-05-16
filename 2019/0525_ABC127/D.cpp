@@ -245,7 +245,7 @@ int main()
     cin >> a;
     V.push_back(card{a, 1});
   }
-  for (auto i = 0; i < N; ++i)
+  for (auto i = 0; i < M; ++i)
   {
     ll b, c;
     cin >> b >> c;
@@ -260,7 +260,7 @@ int main()
     ll score, cnt;
     tie(score, cnt) = *it;
     ++it;
-    int obtain{min(rem, cnt)};
+    ll obtain{min(rem, cnt)};
     rem -= obtain;
     sum += obtain * score;
   }
