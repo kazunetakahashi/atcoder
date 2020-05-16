@@ -251,6 +251,10 @@ int main()
       cout << "-1" << endl;
     }
   }
+  else if (K >= (1 << M))
+  {
+    cout << "-1" << endl;
+  }
   else
   {
     vector<int> A;
