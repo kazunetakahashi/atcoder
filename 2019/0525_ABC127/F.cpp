@@ -263,7 +263,7 @@ int main()
     }
     else
     {
-      cout << A + B << endl;
+      cout << R.top() << " " << A + B << endl;
     }
   }
 }
