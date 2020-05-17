@@ -244,13 +244,16 @@ int main()
   ll ans{0};
   for (auto C = 1LL; C < N; ++C)
   {
+    #if DEBUG == 1
+    cerr << "C = " << C << endl;
+    #endif
     ll score{0};
     set<int> S;
     for (auto x = 0LL; x < N; ++x)
     {
-      int A{N - 1 - x * C};
-      int L{x * C};
-      int B{A - C};
+      ll A{N - 1 - x * C};
+      ll L{x * C};
+      ll B{A - C};
       if (!(0 <= A && A < N && 0 <= L && L < N))
       {
         break;
