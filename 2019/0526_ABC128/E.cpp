@@ -261,11 +261,11 @@ int main()
     tie(t, num, x) = e;
     if (num == 0)
     {
-      M.insert(t);
+      M.insert(x);
     }
     else if (num == 1)
     {
-      M.erase(M.find(t));
+      M.erase(M.find(x));
     }
     else
     {
