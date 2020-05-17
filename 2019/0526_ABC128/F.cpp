@@ -234,7 +234,7 @@ void No()
 
 int main()
 {
-  int N;
+  ll N;
   cin >> N;
   vector<ll> s(N);
   for (auto i = 0; i < N; ++i)
@@ -242,11 +242,11 @@ int main()
     cin >> s[i];
   }
   ll ans{0};
-  for (auto C = 1; C < N; ++C)
+  for (auto C = 1LL; C < N; ++C)
   {
     ll score{0};
     set<int> S;
-    for (auto x = 0; x < N; ++x)
+    for (auto x = 0LL; x < N; ++x)
     {
       int A{N - 1 - x * C};
       int L{x * C};
@@ -264,6 +264,10 @@ int main()
         break;
       }
       score += s[A] + s[L];
+#if DEBUG == 1
+      cerr << "s[" << A << "] = " << s[A] << endl;
+      cerr << "s[" << L << "] = " << s[L] << endl;
+#endif
       ch_max(ans, score);
       S.insert(A);
       S.insert(L);
