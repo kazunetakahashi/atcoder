@@ -511,7 +511,7 @@ int main()
   {
     auto &P{M[i]};
     P[0][0] = 1;
-    for (auto k = 0; k < i; ++k)
+    for (auto k = 0; k <= i; ++k)
     {
       P[0][0] *= 10;
     }
