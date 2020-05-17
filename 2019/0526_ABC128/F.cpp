@@ -244,9 +244,9 @@ int main()
   ll ans{0};
   for (auto C = 1LL; C < N; ++C)
   {
-    #if DEBUG == 1
+#if DEBUG == 1
     cerr << "C = " << C << endl;
-    #endif
+#endif
     ll score{0};
     set<int> S;
     for (auto x = 0LL; x < N; ++x)
@@ -258,7 +258,7 @@ int main()
       {
         break;
       }
-      if (S.find(A) != S.end() || S.find(L) != S.end())
+      if (A == L || S.find(A) != S.end() || S.find(L) != S.end())
       {
         break;
       }
