@@ -246,9 +246,6 @@ int main()
   {
     for (auto r = 0; r + l <= min(N, K); ++r)
     {
-#if DEBUG == 1
-      cerr << "l = " << l << ", r = " << r << endl;
-#endif
       int X{K - l - r};
       vector<int> W;
       for (auto i = 0; i < l; ++i)
@@ -260,6 +257,11 @@ int main()
         W.push_back(V[N - 1 - i]);
       }
       sort(W.rbegin(), W.rend());
+#if DEBUG == 1
+      cerr << "l = " << l << ", r = " << r << endl;
+      cerr << "K = " << K << endl;
+#endif
+
       for (auto i = 0; i < X; ++i)
       {
         if (*W.rbegin() < 0)
