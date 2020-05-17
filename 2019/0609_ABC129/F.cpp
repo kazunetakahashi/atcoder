@@ -461,7 +461,7 @@ Mat<T> power(Mat<T> const &A, ll N)
   {
     return unit_matrix<T>(A.size());
   }
-  if (N & 1 == 1)
+  if ((N & 1) == 1)
   {
     return A * power(A, N - 1);
   }
