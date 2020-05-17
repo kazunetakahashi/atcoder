@@ -259,7 +259,7 @@ int main()
       sort(W.rbegin(), W.rend());
 #if DEBUG == 1
       cerr << "l = " << l << ", r = " << r << endl;
-      cerr << "K = " << K << endl;
+      cerr << "X = " << X << endl;
 #endif
 
       for (auto i = 0; i < X; ++i)
