@@ -307,7 +307,7 @@ int main()
   {
     for (auto j = 0; j < W; ++j)
     {
-      ch_max(ans, TX[i][j] + TY[j][i]);
+      ch_max(ans, TX[i][j] + TY[j][i] - 1);
     }
   }
   cout << ans << endl;
