@@ -246,6 +246,9 @@ int main()
   {
     for (auto r = 0; r + l <= min(N, K); ++r)
     {
+#if DEBUG == 1
+      cerr << "l = " << l << ", r = " << r << endl;
+#endif
       int X{K - l - r};
       vector<int> W;
       for (auto i = 0; i < l; ++i)
