@@ -259,11 +259,13 @@ int main()
       sort(W.rbegin(), W.rend());
 #if DEBUG == 1
       cerr << "l = " << l << ", r = " << r << endl;
-      cerr << "X = " << X << endl;
 #endif
-
       for (auto i = 0; i < X; ++i)
       {
+        if (W.empty())
+        {
+          break;
+        }
         if (*W.rbegin() < 0)
         {
           auto it{W.end()};
