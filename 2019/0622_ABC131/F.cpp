@@ -256,15 +256,9 @@ public:
   {
     for (auto i = 0; i < C; ++i)
     {
-      if (!visited[i])
+      if (visited[i] == -1)
       {
         Info X{dfs(i)};
-#if DEBUG == 1
-        if (get<1>(X) != 0)
-        {
-          cerr << get<0>(X) << " " << get<1>(X) << endl;
-        }
-#endif
         cnt += get<0>(X) * get<1>(X);
       }
     }
