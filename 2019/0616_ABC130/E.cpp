@@ -237,6 +237,14 @@ int main()
   int N, M;
   cin >> N >> M;
   vector<int> S(N), T(M);
+  for (auto i = 0; i < N; ++i)
+  {
+    cin >> S[i];
+  }
+  for (auto i = 0; i < M; ++i)
+  {
+    cin >> T[i];
+  }
   vector<vector<mint>> DP0(N + 1, vector<mint>(M + 1, 0));
   vector<vector<mint>> DP1(N + 1, vector<mint>(M + 1, 0));
   DP0[0][0] = 1;
