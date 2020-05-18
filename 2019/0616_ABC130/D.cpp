@@ -251,6 +251,7 @@ int main()
       sum += A[right++];
     }
 #if DEBUG == 1
+    cerr << "sum = " << sum << endl;
     cerr << "left = " << left << ", right = " << right << endl;
 #endif
     cnt += right - left;
