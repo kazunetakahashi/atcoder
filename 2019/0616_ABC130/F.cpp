@@ -214,7 +214,7 @@ int popcount(T x) // C++20
   return ans;
 }
 // ----- frequently used constexpr -----
-// constexpr double epsilon{1e-10};
+// constexpr long double epsilon{1e-10};
 // constexpr ll infty{1000000000000000LL}; // or
 // constexpr int infty{1'000'000'010};
 // constexpr int dx[4] = {1, 0, -1, 0};
@@ -241,16 +241,16 @@ public:
   Point() {}
   Point(ll x, ll v) : x{x}, v{v} {}
 
-  double now(double t) const { return x + v * t; }
+  long double now(long double t) const { return x + v * t; }
 };
 
-double cross(Point const &p, Point const &q)
+long double cross(Point const &p, Point const &q)
 {
   if (q.v == p.v)
   {
     return 0.0;
   }
-  return (static_cast<double>(p.x) - q.x) / (q.v - p.v);
+  return (static_cast<long double>(p.x) - q.x) / (q.v - p.v);
 }
 
 bool operator<(Point const &p, Point const &q)
@@ -265,7 +265,7 @@ class Axis
 {
   vector<vector<Point>> points;
   vector<Point> candidates;
-  vector<double> snapshots;
+  vector<long double> snapshots;
 
 public:
   Axis(vector<Point> const &V) : points(3)
@@ -287,7 +287,7 @@ public:
     {
       for (auto it2 = it + 1; it2 != candidates.end(); ++it2)
       {
-        double tmp{cross(*it, *it2)};
+        long double tmp{cross(*it, *it2)};
         if (tmp > 0)
         {
           snapshots.push_back(tmp);
@@ -296,14 +296,14 @@ public:
     }
   }
 
-  double delta(double t) const;
+  long double delta(long double t) const;
 
-  vector<double> const &timer() const { return snapshots; }
+  vector<long double> const &timer() const { return snapshots; }
 };
 
-double Axis::delta(double t) const
+long double Axis::delta(long double t) const
 {
-  vector<double> V;
+  vector<long double> V;
   for (auto const &p : candidates)
   {
     V.push_back(p.now(t));
@@ -345,10 +345,10 @@ int main()
     }
   }
   Axis X(PX), Y(PY);
-  vector<double> timer;
+  vector<long double> timer;
   copy(X.timer().begin(), X.timer().end(), back_inserter(timer));
   copy(Y.timer().begin(), Y.timer().end(), back_inserter(timer));
-  double ans{X.delta(0) * Y.delta(0)};
+  long double ans{X.delta(0) * Y.delta(0)};
   for (auto t : timer)
   {
     ch_min(ans, X.delta(t) * Y.delta(t));
