@@ -240,10 +240,10 @@ int main()
   cout << fixed << setprecision(6) << A << " " << setprecision(0);
   if (W % 2 == 0 && x == W / 2 && H % 2 == 0 && y == H / 2)
   {
-    cout << 0 << endl;
+    cout << 1 << endl;
   }
   else
   {
-    cout << 1 << endl;
+    cout << 0 << endl;
   }
 }
