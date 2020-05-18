@@ -242,7 +242,7 @@ int f(int i)
 int main()
 {
   cin >> N >> L;
-  int S{N * (L - 1) + N * (N - 1) / 2};
+  int S{N * (L - 1) + N * (N + 1) / 2};
   int X;
   if (L + N - 1 <= 0)
   {
