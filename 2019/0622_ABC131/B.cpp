@@ -260,7 +260,7 @@ int main()
       }
       sum += f(i);
     }
-    if (absolute > abs(sum - f(i)))
+    if (absolute > abs(sum - before))
     {
       absolute = abs(sum - before);
       ans = sum;
