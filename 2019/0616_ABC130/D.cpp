@@ -246,7 +246,7 @@ int main()
   int right{0};
   for (auto left = 0; left < N; ++left)
   {
-    while (right < N && sum < K)
+    while (right < N && sum + A[right] < K)
     {
       sum += A[right++];
     }
