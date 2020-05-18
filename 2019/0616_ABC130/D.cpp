@@ -246,14 +246,14 @@ int main()
   int right{0};
   for (auto left = 0; left < N; ++left)
   {
-    while (right < N && sum + A[right] < K)
+    while (right < N && sum < K)
     {
       sum += A[right++];
     }
 #if DEBUG == 1
     cerr << "left = " << left << ", right = " << right << endl;
 #endif
-    sum += right - left + 1;
+    sum += right - left;
   }
   cout << N * (N - 1) / 2 - cnt << endl;
 }
