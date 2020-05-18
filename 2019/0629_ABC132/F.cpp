@@ -239,8 +239,8 @@ int main()
   ll X{static_cast<ll>(sqrt(N)) + 10};
   vector<vector<mint>> DP(K + 1, vector<mint>(X + 1, 0));
   vector<vector<mint>> DP2(K + 1, vector<mint>(X + 1, 0));
-  vector<vector<mint>> DP_sum(K + 1, vector<mint>(X + 1, 0));
-  vector<vector<mint>> DP2_sum(K + 1, vector<mint>(X + 1, 0));
+  vector<vector<mint>> SUM(K + 1, vector<mint>(X + 1, 0));
+  vector<vector<mint>> SUM2(K + 1, vector<mint>(X + 1, 0));
   vector<mint> cnt(X + 1);
   for (auto j = 1; j <= X; ++j)
   {
@@ -249,17 +249,17 @@ int main()
   DP[0][1] = 1;
   for (auto j = 1; j <= X; ++j)
   {
-    DP_sum[0][j] = 1;
+    SUM[0][j] = 1;
   }
   for (auto i = 1; i <= K; ++i)
   {
     for (auto j = 1; j <= X; ++j)
     {
-      DP[i][j] = DP_sum[i - 1][min(X, N / j)] + DP2_sum[i - 1][X - 1] - DP2_sum[i - 1][j - 1];
-      DP2[i][j] = cnt[j] * DP_sum[i - 1][j];
-      DP_sum[i][j] = DP_sum[i][j - 1] + DP[i][j];
-      DP2_sum[i][j] = DP2_sum[i][j - 1] + DP2[i][j];
+      DP[i][j] = SUM[i - 1][min(X, N / j)] + SUM2[i - 1][X - 1] - SUM2[i - 1][j - 1];
+      DP2[i][j] = cnt[j] * SUM[i - 1][j];
+      SUM[i][j] = SUM[i][j - 1] + DP[i][j];
+      SUM2[i][j] = SUM2[i][j - 1] + DP2[i][j];
     }
   }
-  cout << DP_sum[K][X] + DP2_sum[K][X] << endl;
+  cout << SUM[K][X] + SUM2[K][X] << endl;
 }
