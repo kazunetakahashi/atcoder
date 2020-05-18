@@ -246,7 +246,7 @@ public:
 
 double cross(Point const &p, Point const &q)
 {
-  if (q.v != p.v)
+  if (q.v == p.v)
   {
     return 0.0;
   }
