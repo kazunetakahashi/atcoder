@@ -233,16 +233,24 @@ void No()
 // ----- main() -----
 
 constexpr int C{200010};
+using Info = tuple<ll, ll>;
+
+Info &operator+=(Info &left, Info const &right)
+{
+  get<0>(left) += get<0>(right);
+  get<1>(left) += get<1>(right);
+  return left;
+}
 
 class Solve
 {
   ll N;
   vector<vector<int>> V;
   ll cnt;
-  vector<bool> visited;
+  vector<int> visited;
 
 public:
-  Solve(ll N, vector<vector<int>> V) : N{N}, V{V}, cnt{-N}, visited(N, false) {}
+  Solve(ll N, vector<vector<int>> V) : N{N}, V{V}, cnt{-N}, visited(N, -1) {}
 
   void flush()
   {
@@ -250,24 +258,32 @@ public:
     {
       if (!visited[i])
       {
-        ll X{dfs(i)};
-        cnt += X * (X - 1) / 2;
+        Info X{dfs(i)};
+        cnt += get<0>(X) * get<1>(X);
       }
     }
     cout << cnt << endl;
   }
 
 private:
-  ll dfs(int v)
+  Info dfs(int v, int c = 0)
   {
-    assert(!visited[v]);
-    visited[v] = true;
-    ll ans{1};
+    assert(visited[v] == -1);
+    visited[v] = c;
+    Info ans{0, 0};
+    if (c == 0)
+    {
+      get<0>(ans) = 1;
+    }
+    else
+    {
+      get<1>(ans) = 1;
+    }
     for (auto u : V[v])
     {
       if (!visited[u])
       {
-        ans += dfs(u);
+        ans += dfs(u, 1 - c);
       }
     }
     return ans;
