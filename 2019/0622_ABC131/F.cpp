@@ -281,7 +281,7 @@ private:
     }
     for (auto u : V[v])
     {
-      if (!visited[u])
+      if (visited[u] == -1)
       {
         ans += dfs(u, 1 - c);
       }
