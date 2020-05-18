@@ -255,7 +255,7 @@ int main()
   {
     for (auto j = 1; j <= X; ++j)
     {
-      DP[i][j] = SUM[i - 1][min(X, N / j)] + SUM2[i - 1][X - 1] - SUM2[i - 1][j - 1];
+      DP[i][j] = SUM[i - 1][min(X, N / j)] + SUM2[i - 1][X] - SUM2[i - 1][j - 1];
       DP2[i][j] = cnt[j] * SUM[i - 1][j];
       SUM[i][j] = SUM[i][j - 1] + DP[i][j];
       SUM2[i][j] = SUM2[i][j - 1] + DP2[i][j];
