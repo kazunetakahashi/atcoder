@@ -250,6 +250,9 @@ int main()
     {
       sum += A[right++];
     }
+#if DEBUG == 1
+    cerr << "left = " << left << ", right = " << right << endl;
+#endif
     sum += right - left + 1;
   }
   cout << N * (N - 1) / 2 - cnt << endl;
