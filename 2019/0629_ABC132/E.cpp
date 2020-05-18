@@ -267,6 +267,9 @@ int main()
     if (D[src] == -1)
     {
       D[src] = d;
+#if DEBUG == 1
+      cerr << "D[" << src << "] = " << D[src] << endl;
+#endif
       for (auto dst : V[src])
       {
         if (D[dst] == -1)
