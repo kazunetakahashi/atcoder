@@ -242,30 +242,19 @@ int f(int i)
 int main()
 {
   cin >> N >> L;
-  int absolute{infty};
-  int ans{0};
-  int before{0};
-  for (auto i = 0; i < N; ++i)
+  int S{N * (L - 1) + N * (N - 1) / 2};
+  int X;
+  if (L + N - 1 <= 0)
   {
-    before += f(i);
+    X = L + N - 1;
   }
-  for (auto i = 0; i < N; ++i)
+  else if (L >= 0)
   {
-    int sum{0};
-    for (auto j = 0; j < N; ++j)
-    {
-      if (i != j)
-      {
-        continue;
-      }
-      sum += f(i);
-    }
-    int diff{abs(sum - before)};
-    if (absolute > diff)
-    {
-      absolute = diff;
-      ans = sum;
-    }
+    X = L;
   }
-  cout << ans << endl;
+  else
+  {
+    X = 0;
+  }
+  cout << S - X << endl;
 }
