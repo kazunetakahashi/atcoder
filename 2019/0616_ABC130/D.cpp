@@ -253,7 +253,7 @@ int main()
 #if DEBUG == 1
     cerr << "left = " << left << ", right = " << right << endl;
 #endif
-    sum += right - left;
+    cnt += right - left;
   }
   cout << N * (N - 1) / 2 - cnt << endl;
 }
