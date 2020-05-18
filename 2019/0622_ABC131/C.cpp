@@ -236,7 +236,7 @@ ll A, B, C, D;
 
 ll f(ll x)
 {
-  return x - x / C - x / D + x / (C * D);
+  return x - x / C - x / D + x / lcm(C, D);
 }
 
 int main()
