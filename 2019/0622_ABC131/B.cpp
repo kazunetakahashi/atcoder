@@ -259,11 +259,11 @@ int main()
         continue;
       }
       sum += f(i);
-      if (absolute > abs(sum - f(i)))
-      {
-        absolute = abs(sum - before);
-        ans = sum;
-      }
+    }
+    if (absolute > abs(sum - f(i)))
+    {
+      absolute = abs(sum - before);
+      ans = sum;
     }
   }
   cout << ans << endl;
