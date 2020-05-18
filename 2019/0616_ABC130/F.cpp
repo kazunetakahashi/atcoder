@@ -341,7 +341,7 @@ int main()
     }
   }
   Axis X(PX), Y(PY);
-  vector<double> timer;
+  vector<double> timer = {0};
   copy(X.timer().begin(), X.timer().end(), back_inserter(timer));
   copy(Y.timer().begin(), Y.timer().end(), back_inserter(timer));
   double ans{infty};
