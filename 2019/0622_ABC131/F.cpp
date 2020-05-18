@@ -254,7 +254,7 @@ public:
 
   void flush()
   {
-    for (auto i = 0; i < N; ++i)
+    for (auto i = 0; i < C; ++i)
     {
       if (!visited[i])
       {
