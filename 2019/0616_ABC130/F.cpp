@@ -348,6 +348,9 @@ int main()
   for (auto t : timer)
   {
     ch_min(ans, X.delta(t) * Y.delta(t));
+#if DEBUG == 1
+    cerr << "t = " << t << ", X.delta = " << X.delta(t) << ", Y.delta = " << Y.delta(t) << endl;
+#endif
   }
   cout << fixed << setprecision(15) << ans << endl;
 }
