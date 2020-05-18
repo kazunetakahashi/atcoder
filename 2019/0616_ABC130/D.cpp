@@ -254,7 +254,7 @@ int main()
     cerr << "sum = " << sum << endl;
     cerr << "left = " << left << ", right = " << right << endl;
 #endif
-    cnt += right - left + 1;
+    cnt += right - left - 1;
     sum -= A[left];
   }
   cout << N * (N - 1) / 2 - cnt << endl;
