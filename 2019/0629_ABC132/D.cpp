@@ -250,7 +250,7 @@ mint solve(int i)
 
 int main()
 {
-  cin >> K >> N;
+  cin >> N >> K;
   for (auto i = 1; i <= K; ++i)
   {
     cout << solve(i) << endl;
