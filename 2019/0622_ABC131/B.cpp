@@ -244,6 +244,11 @@ int main()
   cin >> N >> L;
   int absolute{infty};
   int ans{0};
+  int before{0};
+  for (auto i = 0; i < N; ++i)
+  {
+    before += f(i);
+  }
   for (auto i = 0; i < N; ++i)
   {
     int sum{0};
@@ -256,7 +261,7 @@ int main()
       sum += f(i);
       if (absolute > abs(sum - f(i)))
       {
-        absolute = abs(sum - f(i));
+        absolute = abs(sum - before);
         ans = sum;
       }
     }
