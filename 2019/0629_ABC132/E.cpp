@@ -249,7 +249,6 @@ int main()
     --u;
     --v;
     add_edge(u, v);
-    add_edge(v, u);
   }
   int S, T;
   cin >> S >> T;
