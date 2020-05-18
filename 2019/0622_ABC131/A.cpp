@@ -235,6 +235,7 @@ void No()
 int main()
 {
   string S;
+  cin >> S;
   for (auto i = 0; i < 3; ++i)
   {
     if (S[i] == S[i + 1])
