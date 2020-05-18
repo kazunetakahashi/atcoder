@@ -287,7 +287,11 @@ public:
     {
       for (auto it2 = it + 1; it2 != candidates.end(); ++it2)
       {
-        snapshots.push_back(cross(*it, *it2));
+        double tmp{cross(*it, *it2)};
+        if (tmp >= 0)
+        {
+          snapshots.push_back(tmp);
+        }
       }
     }
   }
