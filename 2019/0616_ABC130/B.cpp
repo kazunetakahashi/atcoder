@@ -235,6 +235,7 @@ void No()
 int main()
 {
   int N, X;
+  cin >> N >> X;
   vector<int> L(N);
   for (auto i = 0; i < N; ++i)
   {
