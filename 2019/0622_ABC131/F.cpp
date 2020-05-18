@@ -250,7 +250,7 @@ class Solve
   vector<int> visited;
 
 public:
-  Solve(ll N, vector<vector<int>> V) : N{N}, V{V}, cnt{-N}, visited(N, -1) {}
+  Solve(ll N, vector<vector<int>> V) : N{N}, V{V}, cnt{-N}, visited(C, -1) {}
 
   void flush()
   {
