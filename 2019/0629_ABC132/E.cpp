@@ -256,7 +256,7 @@ int main()
   --T;
   using State = tuple<int, int>;
   min_heap<State> H;
-  H.push(State{S, 0});
+  H.push(State{0, S});
   vector<int> D(3 * N, -1);
   while (!H.empty())
   {
