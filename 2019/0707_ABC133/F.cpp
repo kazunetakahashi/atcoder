@@ -412,10 +412,10 @@ private:
     for (auto const &q : W[u])
     {
       ans[q.id] += q.coefficient * (-sum[q.color] + cnt[q.color] * q.y);
-    }
 #if DEBUG == 1
-    cerr << "aaa" << endl;
+      cerr << "ans[" << q.id << "] += " << q.coefficient << " * (-" << sum[q.color] << " + " << cnt[q.color] << " * " << q.y << endl;
 #endif
+    }
     for (auto const &e : V[u])
     {
       if (e.dst == p)
