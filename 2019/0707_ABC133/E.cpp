@@ -264,9 +264,9 @@ private:
     }
     if (depth == 0)
     {
-      return K * C(K - 1, child) * C.fact[child];
+      return K * C(K - 1, child) * C.fact[child] * ans;
     }
-    return C(K - 2, child) * C.fact[child];
+    return C(K - 2, child) * C.fact[child] * ans;
   }
 };
 
