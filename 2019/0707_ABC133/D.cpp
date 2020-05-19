@@ -255,7 +255,7 @@ int main()
   }
   for (auto i = 0; i < N; ++i)
   {
-    cout << x[i];
+    cout << 2 * x[i];
     if (i < N - 1)
     {
       cout << " ";
