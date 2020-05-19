@@ -244,6 +244,9 @@ int main()
   vector<int> B(N + 1, 0);
   for (auto i = N; i >= 1; --i)
   {
+#if DEBUG == 1
+    cerr << "i = " << i << endl;
+#endif
     int sum{0};
     for (auto j = 1; i * j <= N; ++j)
     {
