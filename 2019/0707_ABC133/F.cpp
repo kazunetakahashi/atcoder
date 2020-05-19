@@ -366,7 +366,7 @@ class Solve
   vector<int> sum, cnt;
 
 public:
-  Solve(int N, int Q) : N{N}, Q{Q}, V(N), W(Q), lca{N}, ans(Q), sum(N, 0), cnt(N, 0)
+  Solve(int N, int Q) : N{N}, Q{Q}, V(N), W(Q), lca{N}, ans(Q), sum(N - 1, 0), cnt(N - 1, 0)
   {
     for (auto i = 0; i < N - 1; ++i)
     {
@@ -391,6 +391,9 @@ public:
       W[v].push_back({i, x, y, 1});
       W[lca(u, v)].push_back({i, x, y, -2});
       ans[i] = lca.cost(u, v);
+#if DEBUG == 1
+      cerr << "ans[" << i << "] = " << ans[i] << endl;
+#endif
     }
   }
 
