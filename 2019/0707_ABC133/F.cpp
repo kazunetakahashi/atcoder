@@ -366,7 +366,7 @@ class Solve
   vector<int> sum, cnt;
 
 public:
-  Solve(int N, int Q) : N{N}, Q{Q}, V(N), W(Q), lca{N}, ans(Q), sum(N - 1, 0), cnt(N - 1, 0)
+  Solve(int N, int Q) : N{N}, Q{Q}, V(N), W(N), lca{N}, ans(Q), sum(N - 1, 0), cnt(N - 1, 0)
   {
     for (auto i = 0; i < N - 1; ++i)
     {
