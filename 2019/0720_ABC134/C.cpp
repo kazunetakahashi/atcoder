@@ -254,6 +254,6 @@ int main()
   }
   for (auto i = 1; i <= N; ++i)
   {
-    cout << max(R[i - 1], L[i + 1]) << endl;
+    cout << max(L[i - 1], R[i + 1]) << endl;
   }
 }
