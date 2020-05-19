@@ -244,9 +244,6 @@ int main()
   vector<int> B(N + 1, 0);
   for (auto i = N; i >= 1; --i)
   {
-#if DEBUG == 1
-    cerr << "i = " << i << endl;
-#endif
     int sum{0};
     for (auto j = 1; i * j <= N; ++j)
     {
@@ -259,6 +256,7 @@ int main()
     }
   }
   int M{accumulate(B.begin(), B.end(), 0)};
+  cout << M << endl;
   for (auto i = 1; i <= N; ++i)
   {
     if (B[i] == 1)
