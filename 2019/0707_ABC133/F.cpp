@@ -391,17 +391,11 @@ public:
       W[v].push_back({i, x, y, 1});
       W[lca(u, v)].push_back({i, x, y, -2});
       ans[i] = lca.cost(u, v);
-#if DEBUG == 1
-      cerr << "ans[" << i << "] = " << ans[i] << endl;
-#endif
     }
   }
 
   void flush()
   {
-#if DEBUG == 1
-    cerr << "aaa" << endl;
-#endif
     dfs();
     for (auto i = 0; i < Q; ++i)
     {
@@ -413,7 +407,7 @@ private:
   void dfs(int u = 0, int p = -1)
   {
 #if DEBUG == 1
-    cerr << "u = " << u << endl;
+    cerr << "u = " << u << ", p = " << p << endl;
 #endif
     for (auto const &q : W[u])
     {
