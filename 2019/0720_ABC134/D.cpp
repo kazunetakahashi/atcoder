@@ -236,8 +236,8 @@ int main()
 {
   int N;
   cin >> N;
-  vector<int> A(N);
-  for (auto i = 0; i < N; ++i)
+  vector<int> A(N + 1);
+  for (auto i = 1; i <= N; ++i)
   {
     cin >> A[i];
   }
