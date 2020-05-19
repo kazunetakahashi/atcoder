@@ -413,6 +413,9 @@ private:
     {
       ans[q.id] += q.coefficient * (-sum[q.color] + cnt[q.color] * q.y);
     }
+#if DEBUG == 1
+    cerr << "aaa" << endl;
+#endif
     for (auto const &e : V[u])
     {
       if (e.dst == p)
