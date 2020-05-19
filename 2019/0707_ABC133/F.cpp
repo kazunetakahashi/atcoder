@@ -384,7 +384,6 @@ public:
       int x, y, u, v;
       cin >> x >> y >> u >> v;
       --x;
-      --y;
       --u;
       --v;
       W[u].push_back({i, x, y, 1});
@@ -413,7 +412,7 @@ private:
     {
       ans[q.id] += q.coefficient * (-sum[q.color] + cnt[q.color] * q.y);
 #if DEBUG == 1
-      cerr << "ans[" << q.id << "] += " << q.coefficient << " * (-" << sum[q.color] << " + " << cnt[q.color] << " * " << q.y << endl;
+      cerr << "ans[" << q.id << "] += " << q.coefficient << " * (-" << sum[q.color] << " + " << cnt[q.color] << " * " << q.y << ")" << endl;
 #endif
     }
     for (auto const &e : V[u])
