@@ -396,6 +396,9 @@ public:
 
   void flush()
   {
+#if DEBUG == 1
+    cerr << "aaa" << endl;
+#endif
     dfs();
     for (auto i = 0; i < Q; ++i)
     {
@@ -406,6 +409,9 @@ public:
 private:
   void dfs(int u = 0, int p = -1)
   {
+#if DEBUG == 1
+    cerr << "u = " << u << endl;
+#endif
     for (auto const &q : W[u])
     {
       ans[q.id] += q.coefficient * (-sum[q.color] + cnt[q.color] * q.y);
