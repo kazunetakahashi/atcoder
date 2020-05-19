@@ -374,6 +374,7 @@ public:
       cin >> a >> b >> c >> d;
       --a;
       --b;
+      --c;
       V[a].push_back({a, b, c, d});
       V[b].push_back({b, a, c, d});
       lca.add_edge(a, b, d);
