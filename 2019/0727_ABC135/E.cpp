@@ -278,7 +278,7 @@ public:
 
   void flush()
   {
-    if ((G.x + G.y) % 2 == 1 && K % 2 == 0)
+    if ((abs(G.x) + abs(G.y)) % 2 == 1 && K % 2 == 0)
     {
       No();
     }
