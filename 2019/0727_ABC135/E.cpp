@@ -304,9 +304,6 @@ private:
 
   Point shot(Point const &q)
   {
-#if DEBUG == 1
-    cerr << q << endl;
-#endif
     auto const &x{q.x};
     auto const &y{q.y};
     if (x < 0)
@@ -323,7 +320,7 @@ private:
     }
     if (x > y)
     {
-      Point p{shot({x, y})};
+      Point p{shot({y, x})};
       swap(p.x, p.y);
       return p;
     }
