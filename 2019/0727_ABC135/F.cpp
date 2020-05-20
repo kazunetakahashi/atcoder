@@ -370,6 +370,9 @@ int main()
         No();
       }
       uf.merge(i, j);
+#if DEBUG == 1
+      cerr << "uf.merge(" << i << ", " << j << ")" << endl;
+#endif
     }
   }
   int ans{0};
