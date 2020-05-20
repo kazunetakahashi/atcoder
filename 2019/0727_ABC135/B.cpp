@@ -222,12 +222,12 @@ int popcount(T x) // C++20
 // ----- Yes() and No() -----
 void Yes()
 {
-  cout << "Yes" << endl;
+  cout << "YES" << endl;
   exit(0);
 }
 void No()
 {
-  cout << "No" << endl;
+  cout << "NO" << endl;
   exit(0);
 }
 // ----- main() -----
