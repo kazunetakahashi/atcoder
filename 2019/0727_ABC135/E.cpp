@@ -297,6 +297,7 @@ private:
 #if DEBUG == 1
     cerr << now << endl;
     cerr << G << endl;
+    cerr << ((now != G) ? "not equal" : "equal") << endl;
 #endif
     while (now != G)
     {
