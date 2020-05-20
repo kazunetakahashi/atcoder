@@ -283,6 +283,9 @@ public:
       No();
     }
     golf();
+#if DEBUG == 1
+    cerr << "here" << endl;
+#endif
     cout << V.size() << endl;
     for (auto const &p : V)
     {
@@ -296,11 +299,6 @@ private:
     Point now({0, 0});
     while (now != G)
     {
-#if DEBUG == 1
-      cerr << now << endl;
-      cerr << G << endl;
-      cerr << ((now != G) ? "not equal" : "equal") << endl;
-#endif
       auto delta{shot(G - now)};
       now += delta;
       V.push_back(now);
