@@ -298,35 +298,32 @@ private:
     {
       auto delta{shot(G - now)};
       now += delta;
-      #if DEBUG == 1
-      cerr << now << endl;
-      #endif
       V.push_back(now);
     }
   }
 
-  Point shot(Point p)
+  Point shot(Point const &q)
   {
-    return shot(p.x, p.y);
-  }
-
-  Point shot(ll x, ll y)
-  {
+#if DEBUG == 1
+    cerr << q << endl;
+#endif
+    auto const &x{q.x};
+    auto const &y{q.y};
     if (x < 0)
     {
-      Point p{shot(-x, y)};
+      Point p{shot({-x, y})};
       p.x *= -1;
       return p;
     }
     if (y < 0)
     {
-      Point p{shot(x, -y)};
+      Point p{shot({x, -y})};
       p.y *= -1;
       return p;
     }
     if (x > y)
     {
-      Point p{shot(x, y)};
+      Point p{shot({x, y})};
       swap(p.x, p.y);
       return p;
     }
