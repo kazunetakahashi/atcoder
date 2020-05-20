@@ -306,11 +306,6 @@ private:
   {
     auto const &x{q.x};
     auto const &y{q.y};
-    auto sum{x + y};
-    if (sum == K)
-    {
-      return q;
-    }
     if (x < 0)
     {
       q.x *= -1;
@@ -331,6 +326,11 @@ private:
       Point p{shot(q)};
       swap(p.x, p.y);
       return p;
+    }
+    auto sum{x + y};
+    if (sum == K)
+    {
+      return q;
     }
     if (sum > 2 * K || sum % 2 == 1)
     {
