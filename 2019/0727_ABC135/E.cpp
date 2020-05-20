@@ -330,7 +330,7 @@ private:
     auto sum{x + y};
     if (sum == K)
     {
-      return {x, y};
+      return q;
     }
     if (sum > 2 * K || sum % 2 == 1)
     {
@@ -338,7 +338,9 @@ private:
       return {t, K - t};
     }
     auto Z{K - sum / 2};
-    return {x - (K - Z), y + Z};
+    return {
+        y + Z,
+        x - (K - Z)};
   }
 };
 
