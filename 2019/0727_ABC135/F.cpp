@@ -320,7 +320,7 @@ public:
 
   int operator[](int i) { return A[i]; }
 
-  vector<int> find_all(Type const &T)
+  vector<int> place(Type const &T)
   {
     vector<int> res;
     int j{0};
@@ -336,6 +336,16 @@ public:
         res.push_back(i - j + 1);
         j = A[j];
       }
+    }
+    return res;
+  }
+
+  vector<bool> table(Type const &T)
+  {
+    vector<bool> res(T.size(), false);
+    for (auto e : place(T))
+    {
+      res[e] = true;
     }
     return res;
   }
@@ -357,25 +367,23 @@ int main()
   }
   S = SS.str();
   MP<string> mp(T);
-  auto V{mp.find_all(S)};
-  set<int> X(V.begin(), V.end());
+  auto ok{mp.table(S)};
   UnionFind uf{M};
   for (auto i = 0; i < M; ++i)
   {
     auto j{(i + N) % M};
-    if (X.find(i) != X.end() && X.find(j) != X.end())
+    if (ok[i] && ok[j])
     {
-      if (uf.is_same(i, j))
+      if (!uf.merge(i, j))
       {
         No();
       }
-      uf.merge(i, j);
     }
   }
   int ans{0};
   for (auto i = 0; i < M; ++i)
   {
-    if (X.find(i) != X.end())
+    if (ok[i])
     {
       ch_max(ans, uf.size(i));
     }
