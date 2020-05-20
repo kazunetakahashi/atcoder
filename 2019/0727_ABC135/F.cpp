@@ -359,7 +359,7 @@ int main()
   cin >> S >> T;
   int M{static_cast<int>(S.size())};
   int N{static_cast<int>(T.size())};
-  int times{(3 * N + M - 1) / M};
+  int times{(3 * N) / M + 3};
   stringstream SS;
   for (auto t = 0; t < times; ++t)
   {
