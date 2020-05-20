@@ -294,16 +294,16 @@ private:
   void golf()
   {
     Point now({0, 0});
-#if DEBUG == 1
-    cerr << now << endl;
-    cerr << G << endl;
-#endif
     while (now != G)
     {
       auto delta{shot(G - now)};
       now += delta;
       V.push_back(now);
     }
+#if DEBUG == 1
+    cerr << now << endl;
+    cerr << G << endl;
+#endif
   }
 
   Point shot(Point p)
