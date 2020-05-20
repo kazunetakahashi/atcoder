@@ -283,9 +283,6 @@ public:
       No();
     }
     golf();
-#if DEBUG == 1
-    cerr << "here" << endl;
-#endif
     cout << V.size() << endl;
     for (auto const &p : V)
     {
@@ -301,6 +298,9 @@ private:
     {
       auto delta{shot(G - now)};
       now += delta;
+      #if DEBUG == 1
+      cerr << now << endl;
+      #endif
       V.push_back(now);
     }
   }
