@@ -359,12 +359,7 @@ int main()
   MP<string> mp(T);
   auto V{mp.find_all(S)};
   set<int> X(V.begin(), V.end());
-  if (X.empty())
-  {
-    cout << 0 << endl;
-    return 0;
-  }
-  UnionFind uf(M);
+  UnionFind uf{M};
   for (auto i = 0; i < M; ++i)
   {
     auto j{(i + N) % M};
@@ -375,15 +370,15 @@ int main()
         No();
       }
       uf.merge(i, j);
-#if DEBUG == 1
-      cerr << "uf.merge(" << i << ", " << j << ")" << endl;
-#endif
     }
   }
   int ans{0};
   for (auto i = 0; i < M; ++i)
   {
-    ch_max(ans, uf.size(i));
+    if (X.find(i) != X.end())
+    {
+      ch_max(ans, uf.size(i));
+    }
   }
   cout << ans << endl;
 }
