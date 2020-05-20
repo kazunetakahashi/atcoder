@@ -325,7 +325,7 @@ private:
       p.y *= -1;
       return p;
     }
-    if (x > y)
+    if (x < y)
     {
       swap(q.x, q.y);
       Point p{shot(q)};
