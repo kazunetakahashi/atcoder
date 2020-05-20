@@ -294,13 +294,13 @@ private:
   void golf()
   {
     Point now({0, 0});
-#if DEBUG == 1
-    cerr << now << endl;
-    cerr << G << endl;
-    cerr << ((now != G) ? "not equal" : "equal") << endl;
-#endif
     while (now != G)
     {
+#if DEBUG == 1
+      cerr << now << endl;
+      cerr << G << endl;
+      cerr << ((now != G) ? "not equal" : "equal") << endl;
+#endif
       auto delta{shot(G - now)};
       now += delta;
       V.push_back(now);
