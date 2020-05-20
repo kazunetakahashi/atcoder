@@ -302,25 +302,28 @@ private:
     }
   }
 
-  Point shot(Point const &q)
+  Point shot(Point q)
   {
     auto const &x{q.x};
     auto const &y{q.y};
     if (x < 0)
     {
-      Point p{shot({-x, y})};
+      q.x *= -1;
+      Point p{shot(q)};
       p.x *= -1;
       return p;
     }
     if (y < 0)
     {
-      Point p{shot({x, -y})};
+      q.y *= -1;
+      Point p{shot(q)};
       p.y *= -1;
       return p;
     }
     if (x > y)
     {
-      Point p{shot({y, x})};
+      swap(q.x, q.y);
+      Point p{shot(q)};
       swap(p.x, p.y);
       return p;
     }
