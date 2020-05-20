@@ -227,7 +227,7 @@ void Yes()
 }
 void No()
 {
-  cout << "No" << endl;
+  cout << "-1" << endl;
   exit(0);
 }
 // ----- main() -----
@@ -274,11 +274,15 @@ public:
   Solve()
   {
     cin >> K >> G.x >> G.y;
-    golf();
   }
 
   void flush()
   {
+    if ((G.x + G.y) % 2 == 1 && K % 2 == 0)
+    {
+      No();
+    }
+    golf();
     cout << V.size() << endl;
     for (auto const &p : V)
     {
@@ -295,6 +299,9 @@ private:
       auto delta{shot(G - now)};
       now += delta;
       V.push_back(now);
+#if DEBUG == 1
+      cerr << now << endl;
+#endif
     }
   }
 
