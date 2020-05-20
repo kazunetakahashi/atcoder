@@ -359,6 +359,11 @@ int main()
   MP<string> mp(T);
   auto V{mp.find_all(S)};
   set<int> X(V.begin(), V.end());
+  if (X.empty())
+  {
+    cout << 0 << endl;
+    return 0;
+  }
   UnionFind uf(M);
   for (auto i = 0; i < M; ++i)
   {
