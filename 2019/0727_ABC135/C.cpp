@@ -255,7 +255,7 @@ int main()
     B[i] -= left;
     ll right{min(A[i + 1], B[i])};
     ans += right;
-    A[i] -= right;
+    A[i + 1] -= right;
     B[i] -= right;
   }
   cout << ans << endl;
