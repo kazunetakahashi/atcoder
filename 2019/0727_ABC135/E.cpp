@@ -299,14 +299,14 @@ private:
       auto delta{shot(G - now)};
       now += delta;
       V.push_back(now);
-#if DEBUG == 1
-      cerr << now << endl;
-#endif
     }
   }
 
   Point shot(Point p)
   {
+#if DEBUG == 1
+    cerr << p << endl;
+#endif
     return shot(p.x, p.y);
   }
 
