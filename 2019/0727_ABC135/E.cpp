@@ -282,6 +282,9 @@ public:
     {
       No();
     }
+#if DEBUG == 1
+    cerr << "aaa" << endl;
+#endif
     golf();
     cout << V.size() << endl;
     for (auto const &p : V)
@@ -304,9 +307,6 @@ private:
 
   Point shot(Point p)
   {
-#if DEBUG == 1
-    cerr << p << endl;
-#endif
     return shot(p.x, p.y);
   }
 
