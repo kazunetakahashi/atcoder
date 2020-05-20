@@ -256,7 +256,7 @@ Point operator-(Point const &p, Point const &q)
 
 bool operator==(Point const &p, Point const &q)
 {
-  return p.x == q.x && p.y == q.y;
+  return (p.x == q.x && p.y == q.y);
 }
 
 bool operator!=(Point const &p, Point const &q)
