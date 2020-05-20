@@ -334,7 +334,7 @@ private:
       auto t{min(x, K)};
       return {t, K - t};
     }
-    auto Z{K - (x + y) / 2};
+    auto Z{K - sum / 2};
     return {x - (K - Z), y + Z};
   }
 };
