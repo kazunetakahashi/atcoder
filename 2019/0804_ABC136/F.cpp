@@ -376,7 +376,7 @@ int main()
     ll b{i - a};
     ll c{I[i] - a};
     ll d{N - a - b - c - 1};
-#if DEBUG == 0
+#if DEBUG == 1
     cerr << "I[" << i << "] = " << I[i] << endl;
     cerr << "a = " << a << ", b = " << b << ", c = " << c << ", d = " << d << endl;
 #endif
