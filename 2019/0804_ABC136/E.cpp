@@ -274,6 +274,9 @@ private:
       tmp += R[i];
       ch_min(need, max(tmp, sum - tmp));
     }
+#if DEBUG == 1
+    cerr << "x = " << x << ", need = " << need << endl;
+#endif
     return need <= K;
   }
 
