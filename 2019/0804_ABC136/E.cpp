@@ -264,6 +264,9 @@ private:
     for (auto i = 0; i < N; ++i)
     {
       R[i] = A[i] % x;
+#if DEBUG == 1
+      cerr << "R[" << i << "] = " << R[i] << endl;
+#endif
     }
     sort(R.begin(), R.end());
     ll sum{accumulate(R.begin(), R.end(), 0LL)};
