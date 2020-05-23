@@ -271,11 +271,12 @@ private:
     sort(R.begin(), R.end());
     ll sum{accumulate(R.begin(), R.end(), 0LL)};
     ll tmp{0};
-    ll need{max(tmp, sum - tmp)};
+    ll need{max(tmp, sum)};
     for (auto i = 0; i < N; ++i)
     {
       tmp += (x - R[N - 1 - i]) % x;
-      ch_min(need, max(tmp, sum - tmp));
+      sum -= R[N - 1 - i];
+      ch_min(need, max(tmp, sum));
     }
 #if DEBUG == 1
     cerr << "x = " << x << ", sum = " << sum << ", need = " << need << endl;
