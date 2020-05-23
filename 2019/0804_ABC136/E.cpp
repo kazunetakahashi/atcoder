@@ -274,7 +274,7 @@ private:
     ll need{max(tmp, sum - tmp)};
     for (auto i = 0; i < N; ++i)
     {
-      tmp += R[i];
+      tmp += (x - R[N - 1 - i]) % x;
       ch_min(need, max(tmp, sum - tmp));
     }
 #if DEBUG == 1
