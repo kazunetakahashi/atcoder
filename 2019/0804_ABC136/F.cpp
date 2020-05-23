@@ -372,7 +372,7 @@ int main()
   mint ans{0};
   for (auto i = 0LL; i < N; ++i)
   {
-    ll a{tree.find(0, i)};
+    ll a{tree.find(0, I[i])};
     ll b{i - a};
     ll c{I[i] - a};
     ll d{N - a - b - c - 1};
