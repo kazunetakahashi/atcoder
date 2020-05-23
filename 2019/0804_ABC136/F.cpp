@@ -368,7 +368,7 @@ int main()
     tie(x, y) = P[i];
     I[X.to_index(x)] = Y.to_index(y);
   }
-  SegTree<ll> tree{N, unit2, func2, _update2};
+  SegTree<ll> tree{static_cast<int>(N), unit2, func2, _update2};
   mint ans{0};
   for (auto i = 0LL; i < N; ++i)
   {
@@ -376,6 +376,10 @@ int main()
     ll b{i - a};
     ll c{I[i] - a};
     ll d{N - a - b - c - 1};
+#if DEBUG == 0
+    cerr << "I[" << i << "] = " << I[i] << endl;
+    cerr << "a = " << a << ", b = " << b << ", c = " << c << ", d = " << d << endl;
+#endif
     ans += two.power(N) - 1 - two.power(a + b) - two.power(a + c) - two.power(b + d) - two.power(c + d) + two.power(a) + two.power(b) + two.power(c) + two.power(d);
     tree.update(I[i], 1);
   }
