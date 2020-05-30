@@ -283,7 +283,7 @@ int main()
         V[k] -= cnt;
         ans += cnt;
       }
-      ans += i - S;
+      ans += cnt * (i - S);
       A[i] -= cnt;
     }
 #if DEBUG == 1
