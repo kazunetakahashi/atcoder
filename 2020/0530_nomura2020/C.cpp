@@ -295,5 +295,5 @@ int main()
     cerr << "}" << endl;
 #endif
   }
-  cerr << ans << endl;
+  cout << ans << endl;
 }
