@@ -245,7 +245,7 @@ int main()
   ll ans{0};
   vector<ll> V = {1LL};
   // auto S{8};
-  auto S{min(N, 32LL)};
+  auto S{min(N, 60LL)};
   for (auto i = 0LL; i < S; ++i)
   {
     for (auto j = size_t{0}; j < V.size(); ++j)
