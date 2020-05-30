@@ -215,7 +215,7 @@ int popcount(T x) // C++20
 }
 // ----- frequently used constexpr -----
 // constexpr double epsilon{1e-10};
-// constexpr ll infty{1000000000000000LL}; // or
+constexpr ll infty{100'000'000'000'000LL}; // or
 // constexpr int infty{1'000'000'010};
 // constexpr int dx[4] = {1, 0, -1, 0};
 // constexpr int dy[4] = {0, 1, 0, -1};
@@ -230,6 +230,78 @@ void No()
   cout << "-1" << endl;
   exit(0);
 }
+
+// ----- SegTree -----
+
+template <typename T>
+class SegTree
+{ // 0-indexed, [0, N).
+private:
+  int N;
+  vector<T> dat;
+  T unit;  // モノイドの単位元
+  T(*func) // モノイドの演算
+  (T, T);
+  T(*_update) // update で値をどうするか書く
+  (T, T);
+
+public:
+  SegTree() {}
+
+  SegTree(int n, T unit, T (*func)(T, T), T (*_update)(T, T)) : N{1}, unit{unit}, func{func}, _update{_update}
+  {
+    while (N < n)
+    {
+      N *= 2;
+    }
+    dat = vector<T>(2 * N - 1, unit);
+  }
+
+  void update(int k, T a)
+  {
+    k += N - 1;
+    dat[k] = _update(dat[k], a);
+    while (k > 0)
+    {
+      k = (k - 1) / 2;
+      dat[k] = func(dat[k * 2 + 1], dat[k * 2 + 2]);
+    }
+  }
+
+private:
+  T find(int a, int b, int k, int l, int r)
+  {
+    if (r <= a || b <= l)
+    {
+      return unit;
+    }
+    if (a <= l && r <= b)
+    {
+      return dat[k];
+    }
+    T vl = find(a, b, k * 2 + 1, l, (l + r) / 2);
+    T vr = find(a, b, k * 2 + 2, (l + r) / 2, r);
+    return func(vl, vr);
+  }
+
+public:
+  T find(int a, int b)
+  { // [a, b) の find をする。
+    return find(a, b, 0, 0, N);
+  }
+};
+
+// ----- frequently used examples -----
+
+// for +
+auto func2 = [](auto x, auto y) {
+  return x + y;
+};
+auto _update2 = [](auto x, auto y) {
+  return y;
+};
+constexpr ll unit2{0LL};
+
 // ----- main() -----
 
 int main()
@@ -242,58 +314,24 @@ int main()
   {
     cin >> A[i];
   }
-  ll ans{0};
-  vector<ll> V = {1LL};
-  // auto S{8};
-  auto S{min(N, 60LL)};
-  for (auto i = 0LL; i < S; ++i)
+  vector<ll> B = A;
+  for (auto i = N - 1; i >= 1; --i)
   {
-    for (auto j = size_t{0}; j < V.size(); ++j)
-    {
-      ll cnt{min(A[i], V[j])};
-      for (auto k = j; k < V.size(); ++k)
-      {
-        V[k] -= cnt;
-        ans += cnt;
-      }
-      A[i] -= cnt;
-    }
-    if (A[i] > 0)
-    {
-      No();
-    }
-    auto y{V.back() * 2};
-    V.push_back(y);
-#if DEBUG == 1
-    cerr << "{";
-    for (auto e : V)
-    {
-      cerr << e << ", ";
-    }
-    cerr << "}" << endl;
-#endif
+    B[i - 1] += B[i];
   }
-  for (auto i = S; i < N; ++i)
+  ll now{1};
+  ll ans{0};
+  for (auto i = 0; i < N; ++i)
   {
-    for (auto j = size_t{0}; j < V.size(); ++j)
+    ans += min(now, B[i]);
+    if (now < infty)
     {
-      ll cnt{min(A[i], V[j])};
-      for (auto k = j; k < V.size(); ++k)
+      if (now < A[i])
       {
-        V[k] -= cnt;
-        ans += cnt;
+        No();
       }
-      ans += cnt * (i - S);
-      A[i] -= cnt;
+      now = 2 * (now - A[i]);
     }
-#if DEBUG == 1
-    cerr << "{";
-    for (auto e : V)
-    {
-      cerr << e << ", ";
-    }
-    cerr << "}" << endl;
-#endif
   }
   cout << ans << endl;
 }
