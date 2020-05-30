@@ -364,7 +364,7 @@ int main()
   mint M{N - 1};
   for (auto it0 = T.begin(); it0 != T.end(); ++it0)
   {
-    ans += (it0->x) * M.power(K);
+    ans += (it0->x - 1) * M.power(K);
   }
   for (auto it0 = T.begin(); it0 != T.end(); ++it0)
   {
