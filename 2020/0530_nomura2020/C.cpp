@@ -244,7 +244,7 @@ int main()
   }
   ll ans{0};
   vector<ll> V = {1LL};
-  auto S{3};
+  auto S{8};
   // auto S{min(N, 32LL)};
   for (auto i = 0LL; i < S; ++i)
   {
