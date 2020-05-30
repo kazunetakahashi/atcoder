@@ -227,7 +227,7 @@ void Yes()
 }
 void No()
 {
-  cout << "No" << endl;
+  cout << "-1" << endl;
   exit(0);
 }
 // ----- main() -----
