@@ -356,6 +356,9 @@ int main()
     }
     T.push_back(Town{x, y});
     K += y;
+#if DEBUG == 1
+    cerr << "x = " << x << ", y = " << y << endl;
+#endif
   }
   mint ans{0};
   mint M{N - 1};
