@@ -244,7 +244,8 @@ int main()
   }
   ll ans{0};
   vector<ll> V = {1LL};
-  for (auto i = 0LL; i < min(N, 32LL); ++i)
+  auto S{min(N, 32LL)};
+  for (auto i = 0LL; i < S; ++i)
   {
     for (auto j = size_t{0}; j < V.size(); ++j)
     {
@@ -271,7 +272,7 @@ int main()
     cerr << "}" << endl;
 #endif
   }
-  for (auto i = min(N, 32LL); i < N; ++i)
+  for (auto i = S; i < N; ++i)
   {
     for (auto j = size_t{0}; j < V.size(); ++j)
     {
@@ -281,6 +282,7 @@ int main()
         V[k] -= cnt;
         ans += cnt;
       }
+      ans += i - S;
       A[i] -= cnt;
     }
   }
