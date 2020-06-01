@@ -245,7 +245,7 @@ int main()
   dp[0][0] = 1;
   for (auto i = 0; i < N; ++i)
   {
-    for (auto j = 0; j < S; ++j)
+    for (auto j = 0; j <= S; ++j)
     {
       if (int t{j + A[i]}; j <= S)
       {
