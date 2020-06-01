@@ -249,7 +249,10 @@ int main()
       cout << 0 << endl;
       return 0;
     }
-    if (static_cast<long double>(ans) * static_cast<long double>(A[i]) >= infty)
+  }
+  for (auto i = 0; i < N; ++i)
+  {
+    if (static_cast<long double>(ans) * static_cast<long double>(A[i]) > infty)
     {
       No();
     }
