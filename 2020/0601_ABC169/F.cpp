@@ -254,5 +254,14 @@ int main()
       dp[i + 1][j] += 2 * dp[i][j];
     }
   }
+#if DEBUG == 1
+  for (auto i = 0; i <= N; ++i)
+  {
+    for (auto j = 0; j <= S; ++j)
+    {
+      cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
+    }
+  }
+#endif
   cout << dp[N][S] << endl;
 }
