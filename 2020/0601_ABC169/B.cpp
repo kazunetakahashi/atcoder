@@ -237,6 +237,10 @@ int main()
   int N;
   cin >> N;
   vector<ll> A(N);
+  for (auto i = 0; i < N; ++i)
+  {
+    cin >> A[i];
+  }
   ll ans{1};
   for (auto i = 0; i < N; ++i)
   {
