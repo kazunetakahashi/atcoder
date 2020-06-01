@@ -249,9 +249,9 @@ int main()
     {
       if (int t{j + A[i]}; j <= S)
       {
-        dp[i + 1][t] += 2 * dp[i][j];
+        dp[i + 1][t] += dp[i][j];
       }
-      dp[i + 1][j] += dp[i][j];
+      dp[i + 1][j] += 2 * dp[i][j];
     }
   }
   cout << dp[N][S] << endl;
