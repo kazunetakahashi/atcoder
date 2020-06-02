@@ -283,7 +283,7 @@ int main()
                 {
                   continue;
                 }
-                if ((R >> i & 1) && n == 0)
+                if ((R >> i & 1) && m == 0)
                 {
                   nl = 1;
                 }
@@ -294,12 +294,9 @@ int main()
                 {
                   nk = 1;
                 }
-                else
+                else if (!(m == 0 && n == 0))
                 {
-                  if (!(m == 0 && n == 0))
-                  {
-                    continue;
-                  }
+                  continue;
                 }
               }
               dp[ni][nj][nk][nl] += pre;
