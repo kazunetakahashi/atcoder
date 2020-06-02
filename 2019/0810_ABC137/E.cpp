@@ -347,7 +347,7 @@ private:
       E[i].added_rev(W);
     }
     vector<bool> Y(N, false);
-    dfs(V, Y, N - 1);
+    dfs(W, Y, N - 1);
     vector<bool> res(N, false);
     for (auto i = 0; i < N; ++i)
     {
