@@ -245,7 +245,7 @@ int main()
   {
     for (auto j = 0; j < 2; ++j) // L \leq x
     {
-      for (auto k = 0; k < 2; ++k) // x \leq y
+      for (auto k = 0; k < 2; ++k) // started or not
       {
         for (auto l = 0; l < 2; ++l) // y \leq R
         {
@@ -290,13 +290,16 @@ int main()
               }
               if (k == 0)
               {
-                if (m == 0 && n == 1)
-                {
-                  continue;
-                }
                 if (m == 1 && n == 1)
                 {
                   nk = 1;
+                }
+                else
+                {
+                  if (!(m == 0 && n == 0))
+                  {
+                    continue;
+                  }
                 }
               }
               dp[ni][nj][nk][nl] += pre;
