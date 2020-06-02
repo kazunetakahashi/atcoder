@@ -254,6 +254,7 @@ int main()
     while (it != V.end() && get<0>(*it) == i)
     {
       H.push(get<1>(*it));
+      ++it;
     }
     ans += H.top();
     H.pop();
