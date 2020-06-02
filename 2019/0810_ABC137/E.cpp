@@ -275,7 +275,13 @@ public:
 
   void flush()
   {
+#if DEBUG == 1
+    cerr << "Here" << endl;
+#endif
     determine_validness();
+#if DEBUG == 1
+    cerr << "Here" << endl;
+#endif
     cout << bf() << endl;
   }
 
