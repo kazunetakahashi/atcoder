@@ -250,6 +250,9 @@ int main()
   vector<mint> B(MOD, 0);
   for (auto i = 0; i < MOD; ++i)
   {
+#if DEBUG == 1
+    cerr << "i = " << i << endl;
+#endif
     auto V{delta(i)};
     for (auto j = 0; j < MOD; ++j)
     {
