@@ -258,7 +258,7 @@ int main()
     {
       No();
     }
-    ans += next;
+    ans += next - now;
     now = next % N;
   }
   cout << ans + 1 << endl;
