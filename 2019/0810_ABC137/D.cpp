@@ -265,8 +265,11 @@ int main()
 #if DEBUG == 1
     cerr << "Today: " << H.top() << endl;
 #endif
-    ans += H.top();
-    H.pop();
+    if (!H.empty())
+    {
+      ans += H.top();
+      H.pop();
+    }
   }
   cout << ans << endl;
 }
