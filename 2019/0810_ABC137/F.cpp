@@ -164,9 +164,15 @@ public:
     inv[1] = 1;
     for (auto i = 2LL; i < MAX_SIZE; i++)
     {
+#if DEBUG == 1
+      cerr << "i = " << i << endl;
+#endif
       inv[i] = (-inv[MOD % i]) * (MOD / i);
     }
     fact[0] = factinv[0] = 1;
+#if DEBUG == 1
+    cerr << "here" << endl;
+#endif
     for (auto i = 1LL; i < MAX_SIZE; i++)
     {
       fact[i] = Mint(i) * fact[i - 1];
