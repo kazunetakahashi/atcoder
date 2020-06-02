@@ -290,6 +290,10 @@ private:
       updated = false;
       for (auto const &e : E)
       {
+        if (!e.valid)
+        {
+          continue;
+        }
         auto tmp{D[e.src] + e.cost};
         if (D[e.dst] > tmp)
         {
