@@ -241,11 +241,14 @@ vector<mint> delta(int i)
 int main()
 {
   cin >> MOD;
-  C = Combination();
-  vector<mint> A(MOD);
 #if DEBUG == 1
   cerr << "Here" << endl;
 #endif
+  C = Combination();
+#if DEBUG == 1
+  cerr << "Here" << endl;
+#endif
+  vector<mint> A(MOD);
   for (auto i = 0; i < MOD; ++i)
   {
     cin >> A[i];
