@@ -305,4 +305,5 @@ int main()
   int N;
   cin >> N;
   Solve solve(N);
+  solve.flush();
 }
