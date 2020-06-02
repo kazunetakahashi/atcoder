@@ -303,7 +303,7 @@ private:
       }
       if (!updated)
       {
-        return -D[N - 1];
+        return max(0LL, -D[N - 1]);
       }
       if (t == N + 1)
       {
