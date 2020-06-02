@@ -43,7 +43,7 @@ using min_heap = priority_queue<T, vector<T>, greater<T>>;
 // ----- constexpr for Mint and Combination -----
 ll MOD;
 // constexpr ll MOD{998244353LL}; // be careful
-constexpr ll MAX_SIZE{3000010LL};
+ll MAX_SIZE;
 // constexpr ll MAX_SIZE{30000010LL}; // if 10^7 is needed
 // ----- ch_max and ch_min -----
 template <typename T>
@@ -172,9 +172,6 @@ public:
       fact[i] = Mint(i) * fact[i - 1];
       factinv[i] = inv[i] * factinv[i - 1];
     }
-#if DEBUG == 1
-    cerr << "Here" << endl;
-#endif
   }
   Mint operator()(int n, int k)
   {
@@ -244,6 +241,7 @@ vector<mint> delta(int i)
 int main()
 {
   cin >> MOD;
+  MAX_SIZE = MOD;
   C = combination();
   vector<mint> A(MOD);
   for (auto i = 0; i < MOD; ++i)
