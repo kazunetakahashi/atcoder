@@ -233,24 +233,68 @@ void No()
 }
 // ----- main() -----
 
+struct Edge
+{
+  int src, dst;
+  // ll cost;
+  Edge() {}
+  Edge(int src, int dst) : src{src}, dst{dst} {}
+  // Edge(int src, int dst, ll cost) : src{src}, dst{dst}, cost{cost} {}
+
+  void added_edge(vector<vector<Edge>> &V)
+  {
+    V[src].push_back(*this);
+  }
+
+  void added_rev(vector<vector<Edge>> &V)
+  {
+    V[dst].push_back(rev());
+  }
+
+  Edge rev()
+  {
+    Edge edge{*this};
+    swap(edge.src, edge.dst);
+    return edge;
+  }
+};
+
+vector<vector<Edge>> ReadGraph(int N, int M, bool is_undirected = true, bool is_one_indexed = true)
+{
+  vector<vector<Edge>> V(N);
+  for (auto i = 0; i < M; ++i)
+  {
+    int v, w;
+    cin >> v >> w;
+    if (is_one_indexed)
+    {
+      --v;
+      --w;
+    }
+    Edge edge{v, w};
+    edge.added_edge(V);
+    if (is_undirected)
+    {
+      edge.added_rev(V);
+    }
+  }
+  return V;
+}
+
+vector<vector<Edge>> ReadTree(int N)
+{
+  return ReadGraph(N, N - 1);
+}
+
 class Solve
 {
   int N, Q;
-  vector<vector<int>> V;
+  vector<vector<Edge>> V;
   vector<int> score, sum;
 
 public:
-  Solve(int N, int Q) : N{N}, Q{Q}, V(N), score(N, 0), sum(N, 0)
+  Solve(int N, int Q) : N{N}, Q{Q}, V{ReadTree(N)}, score(N, 0), sum(N, 0)
   {
-    for (auto i = 0; i < N - 1; ++i)
-    {
-      int a, b;
-      cin >> a >> b;
-      --a;
-      --b;
-      V[a].push_back(b);
-      V[b].push_back(a);
-    }
     for (auto i = 0; i < Q; ++i)
     {
       int p, x;
@@ -281,12 +325,12 @@ private:
   void dfs(int src = 0, int parent = -1)
   {
     sum[src] += score[src];
-    for (auto dst : V[src])
+    for (auto const &e : V[src])
     {
-      if (dst != parent)
+      if (e.dst != parent)
       {
-        sum[dst] += sum[src];
-        dfs(dst, src);
+        sum[e.dst] += sum[src];
+        dfs(e.dst, src);
       }
     }
   }
