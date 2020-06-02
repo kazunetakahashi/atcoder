@@ -239,7 +239,7 @@ int main()
 {
   ll L, R;
   cin >> L >> R;
-  vector<vector<vector<vector<mint>>>> dp(C, vector<vector<vector<mint>>>(2, vector<vector<mint>>(2, vector<mint>(2, 0))));
+  vector<vector<vector<vector<mint>>>> dp(C + 1, vector<vector<vector<mint>>>(2, vector<vector<mint>>(2, vector<mint>(2, 0))));
   dp[C][0][0][0] = 1;
   for (auto i = C - 1; i >= 0; --i)
   {
