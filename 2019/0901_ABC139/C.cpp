@@ -247,7 +247,7 @@ int main()
   {
     if (H[i - 1] >= H[i])
     {
-      A[i] = A[i] + 1;
+      A[i] = A[i - 1] + 1;
     }
   }
   cout << *max_element(A.begin(), A.end()) << endl;
