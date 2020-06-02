@@ -224,7 +224,7 @@ void No()
 }
 // ----- main() -----
 
-Combination C;
+combination C;
 
 vector<mint> delta(int i)
 {
@@ -244,7 +244,7 @@ int main()
 #if DEBUG == 1
   cerr << "Here" << endl;
 #endif
-  C = Combination();
+  C = combination();
 #if DEBUG == 1
   cerr << "Here" << endl;
 #endif
