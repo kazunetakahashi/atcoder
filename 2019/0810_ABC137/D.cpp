@@ -251,11 +251,20 @@ int main()
   auto it{V.begin()};
   for (auto i = 1; i <= M; ++i)
   {
+#if DEBUG == 1
+    cerr << "M = " << M << endl;
+#endif
     while (it != V.end() && get<0>(*it) == i)
     {
       H.push(get<1>(*it));
+#if DEBUG == 1
+      cerr << "Work: " << get<1>(*it) << endl;
+#endif
       ++it;
     }
+#if DEBUG == 1
+    cerr << "Today: " << H.top() << endl;
+#endif
     ans += H.top();
     H.pop();
   }
