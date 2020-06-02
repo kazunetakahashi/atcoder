@@ -297,4 +297,5 @@ int main()
   int N, Q;
   cin >> N >> Q;
   Solve solve(N, Q);
+  solve.flush();
 }
