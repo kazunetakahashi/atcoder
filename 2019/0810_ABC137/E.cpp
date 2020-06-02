@@ -275,13 +275,7 @@ public:
 
   void flush()
   {
-#if DEBUG == 1
-    cerr << "Here" << endl;
-#endif
     determine_validness();
-#if DEBUG == 1
-    cerr << "Here" << endl;
-#endif
     cout << bf() << endl;
   }
 
@@ -293,6 +287,7 @@ private:
     bool updated{false};
     for (auto t = 0; t < N + 2; ++t)
     {
+      updated = false;
       for (auto const &e : E)
       {
         auto tmp{D[e.src] + e.cost};
