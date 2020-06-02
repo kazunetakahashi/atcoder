@@ -240,6 +240,7 @@ vector<mint> delta(int i)
 
 int main()
 {
+  cout << "aaa" << endl;
   cin >> MOD;
 #if DEBUG == 1
   cerr << "Here" << endl;
