@@ -161,6 +161,9 @@ public:
   vector<Mint> inv, fact, factinv;
   Combination() : inv(MAX_SIZE), fact(MAX_SIZE), factinv(MAX_SIZE)
   {
+#if DEBUG == 1
+    cerr << "here" << endl;
+#endif
     inv[1] = 1;
     for (auto i = 2LL; i < MAX_SIZE; i++)
     {
