@@ -262,11 +262,11 @@ int main()
 #endif
       ++it;
     }
-#if DEBUG == 1
-    cerr << "Today: " << H.top() << endl;
-#endif
     if (!H.empty())
     {
+#if DEBUG == 1
+      cerr << "Today: " << H.top() << endl;
+#endif
       ans += H.top();
       H.pop();
     }
