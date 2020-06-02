@@ -233,10 +233,11 @@ vector<mint> delta(int i)
 {
   vector<mint> ans(MOD, 0);
   ans[0] = 1;
-  mint base{-i};
-  for (auto j = 0; j < MOD; ++j)
+  mint base{1};
+  for (auto j = MOD - 1; j >= 0; j--)
   {
-    ans[MOD - 1 - j] -= C(MOD - 1, j) * base.power(j);
+    ans[j] -= base * C(MOD - 1, j);
+    base *= -i;
   }
   return ans;
 }
@@ -245,7 +246,7 @@ int main()
 {
   cin >> MOD;
   C = combination();
-  vector<mint> A(MOD);
+  vector<int> A(MOD);
   for (auto i = 0; i < MOD; ++i)
   {
     cin >> A[i];
@@ -253,10 +254,14 @@ int main()
   vector<mint> B(MOD, 0);
   for (auto i = 0; i < MOD; ++i)
   {
+    if (A[i] == 0)
+    {
+      continue;
+    }
     auto V{delta(i)};
     for (auto j = 0; j < MOD; ++j)
     {
-      B[j] += A[i] * V[j];
+      B[j] += V[j];
     }
   }
   for (auto i = 0; i < MOD; ++i)
