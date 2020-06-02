@@ -161,6 +161,10 @@ public:
   vector<Mint> inv, fact, factinv;
   Combination() : inv(MAX_SIZE), fact(MAX_SIZE), factinv(MAX_SIZE)
   {
+#if DEBUG == 1
+    cerr << "Here" << endl;
+#endif
+
     inv[1] = 1;
     for (auto i = 2LL; i < MAX_SIZE; i++)
     {
@@ -240,15 +244,8 @@ vector<mint> delta(int i)
 
 int main()
 {
-  cout << "aaa" << endl;
   cin >> MOD;
-#if DEBUG == 1
-  cerr << "Here" << endl;
-#endif
   C = combination();
-#if DEBUG == 1
-  cerr << "Here" << endl;
-#endif
   vector<mint> A(MOD);
   for (auto i = 0; i < MOD; ++i)
   {
