@@ -264,7 +264,7 @@ public:
         ch_max(ans, abs(sum));
       }
     }
-    cout << fixed << setprecision(12) << ans << endl;
+    cout << fixed << setprecision(30) << ans << endl;
   }
 
 private:
