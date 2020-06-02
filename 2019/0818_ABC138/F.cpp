@@ -231,6 +231,25 @@ void No()
   cout << "No" << endl;
   exit(0);
 }
+
+template <typename T>
+vector<vector<T>> Make2DVector(size_t d0, size_t d1, T v = T{})
+{
+  return vector<vector<T>>(d0, vector<T>(d1, v));
+}
+
+template <typename T>
+vector<vector<vector<T>>> Make3DVector(size_t d0, size_t d1, size_t d2, T v = T{})
+{
+  return vector<vector<vector<T>>>(d0, Make2DVector(d1, d2, v));
+}
+
+template <typename T>
+vector<vector<vector<vector<T>>>> Make4DVector(size_t d0, size_t d1, size_t d2, size_t d3, T v = T{})
+{
+  return vector<vector<vector<vector<T>>>>(d0, Make3DVector(d1, d2, d3, v));
+}
+
 // ----- main() -----
 
 constexpr int C{62};
@@ -239,7 +258,7 @@ int main()
 {
   ll L, R;
   cin >> L >> R;
-  vector<vector<vector<vector<mint>>>> dp(C + 1, vector<vector<vector<mint>>>(2, vector<vector<mint>>(2, vector<mint>(2, 0))));
+  auto dp{Make4DVector<mint>(C + 1, 2, 2, 2, 0)};
   dp[C][0][0][0] = 1;
   for (auto i = C - 1; i >= 0; --i)
   {
