@@ -41,9 +41,9 @@ using max_heap = priority_queue<T>;
 template <typename T>
 using min_heap = priority_queue<T, vector<T>, greater<T>>;
 // ----- constexpr for Mint and Combination -----
-ll MOD;
+ll MOD{998244353LL};
 // constexpr ll MOD{998244353LL}; // be careful
-ll MAX_SIZE;
+ll MAX_SIZE{300010LL};
 // constexpr ll MAX_SIZE{30000010LL}; // if 10^7 is needed
 // ----- ch_max and ch_min -----
 template <typename T>
@@ -161,9 +161,6 @@ public:
   vector<Mint> inv, fact, factinv;
   Combination() : inv(MAX_SIZE), fact(MAX_SIZE), factinv(MAX_SIZE)
   {
-#if DEBUG == 1
-    cerr << "here" << endl;
-#endif
     inv[1] = 1;
     for (auto i = 2LL; i < MAX_SIZE; i++)
     {
@@ -250,7 +247,6 @@ vector<mint> delta(int i)
 int main()
 {
   cin >> MOD;
-  MAX_SIZE = MOD;
   C = combination();
   vector<mint> A(MOD);
   for (auto i = 0; i < MOD; ++i)
