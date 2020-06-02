@@ -240,11 +240,8 @@ int main()
   ll N{static_cast<ll>(S.size())};
   S = S + S;
   vector<vector<ll>> V(S.size(), vector<ll>(26, -1));
-  for (auto i = S.size() - 2; i >= size_t{0}; --i)
+  for (auto i = 2 * N - 2; i >= 0; --i)
   {
-#if DEBUG == 1
-    cerr << "i = " << i << endl;
-#endif
     V[i] = V[i + 1];
     V[i][S[i + 1] - 'a'] = i + 1;
   }
