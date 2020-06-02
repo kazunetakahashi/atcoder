@@ -251,6 +251,9 @@ int main()
   {
     T.erase(T.begin());
   }
+#if DEBUG == 1
+  cerr << "aaa" << endl;
+#endif
   for (auto e : T)
   {
     ll next{V[now][e - 'a']};
