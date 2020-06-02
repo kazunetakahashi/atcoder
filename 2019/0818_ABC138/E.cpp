@@ -240,6 +240,9 @@ int main()
   ll N{static_cast<ll>(S.size())};
   S = S + S;
   vector<vector<ll>> V(S.size(), vector<ll>(26, -1));
+#if DEBUG == 1
+  cerr << "aaa" << endl;
+#endif
   for (auto i = S.size() - 2; i >= size_t{0}; --i)
   {
     V[i] = V[i + 1];
@@ -251,9 +254,6 @@ int main()
   {
     T.erase(T.begin());
   }
-#if DEBUG == 1
-  cerr << "aaa" << endl;
-#endif
   for (auto e : T)
   {
     ll next{V[now][e - 'a']};
