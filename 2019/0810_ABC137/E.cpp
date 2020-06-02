@@ -323,6 +323,12 @@ private:
       {
         e.valid = false;
       }
+#if DEBUG == 1
+      else
+      {
+        cerr << "src: " << e.src << ", dst: " << e.dst << ", cost: " << e.cost << endl;
+      }
+#endif
     }
   }
 
