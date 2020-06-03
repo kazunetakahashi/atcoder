@@ -2,44 +2,77 @@
 /**
  * File    : A.cpp
  * Author  : Kazune Takahashi
- * Created : 2019/9/7 20:25:19
+ * Created : 6/3/2020, 10:30:27 PM
  * Powered by Visual Studio Code
  */
-#include <iostream>
-#include <iomanip>
 #include <algorithm>
-#include <vector>
-#include <string>
-#include <complex>
-#include <tuple>
-#include <queue>
-#include <stack>
-#include <map>
-#include <set>
-#include <unordered_map>
-#include <unordered_set>
 #include <bitset>
-#include <functional>
-#include <random>
-#include <chrono>
-#include <cctype>
 #include <cassert>
+#include <cctype>
+#include <chrono>
 #include <cmath>
+#include <complex>
+#include <cstdint>
 #include <cstdio>
 #include <cstdlib>
+#include <functional>
+#include <iomanip>
+#include <iostream>
+#include <map>
+#include <queue>
+#include <random>
+#include <set>
+#include <stack>
+#include <string>
+#include <tuple>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
+// ----- boost -----
+#include <boost/rational.hpp>
+#include <boost/multiprecision/cpp_int.hpp>
+// ----- using directives and manipulations -----
 using namespace std;
-#define maxs(x, y) (x = max(x, y))
-#define mins(x, y) (x = min(x, y))
+using boost::rational;
+using boost::multiprecision::cpp_int;
 using ll = long long;
-class mint
+using ld = long double;
+template <typename T>
+using max_heap = priority_queue<T>;
+template <typename T>
+using min_heap = priority_queue<T, vector<T>, greater<T>>;
+// ----- constexpr for Mint and Combination -----
+constexpr ll MOD{1000000007LL};
+// constexpr ll MOD{998244353LL}; // be careful
+constexpr ll MAX_SIZE{3000010LL};
+// constexpr ll MAX_SIZE{30000010LL}; // if 10^7 is needed
+// ----- ch_max and ch_min -----
+template <typename T>
+void ch_max(T &left, T right)
+{
+  if (left < right)
+  {
+    left = right;
+  }
+}
+template <typename T>
+void ch_min(T &left, T right)
+{
+  if (left > right)
+  {
+    left = right;
+  }
+}
+// ----- Mint -----
+template <ll MOD = MOD>
+class Mint
 {
 public:
-  static ll MOD;
   ll x;
-  mint() : x(0) {}
-  mint(ll x) : x(x % MOD) {}
-  mint operator-() const { return x ? MOD - x : 0; }
-  mint &operator+=(const mint &a)
+  Mint() : x{0LL} {}
+  Mint(ll x) : x{(x % MOD + MOD) % MOD} {}
+  Mint operator-() const { return x ? MOD - x : 0; }
+  Mint &operator+=(Mint const &a)
   {
     if ((x += a.x) >= MOD)
     {
@@ -47,24 +80,42 @@ public:
     }
     return *this;
   }
-  mint &operator-=(const mint &a) { return *this += -a; }
-  mint &operator*=(const mint &a)
+  Mint &operator-=(Mint const &a) { return *this += -a; }
+  Mint &operator++() { return *this += 1; }
+  Mint operator++(int)
+  {
+    Mint tmp{*this};
+    ++*this;
+    return tmp;
+  }
+  Mint &operator--() { return *this -= 1; }
+  Mint operator--(int)
+  {
+    Mint tmp{*this};
+    --*this;
+    return tmp;
+  }
+  Mint &operator*=(Mint const &a)
   {
     (x *= a.x) %= MOD;
     return *this;
   }
-  mint &operator/=(const mint &a)
+  Mint &operator/=(Mint const &a)
   {
-    mint b{a};
+    Mint b{a};
     return *this *= b.power(MOD - 2);
   }
-  mint operator+(const mint &a) const { return mint(*this) += a; }
-  mint operator-(const mint &a) const { return mint(*this) -= a; }
-  mint operator*(const mint &a) const { return mint(*this) *= a; }
-  mint operator/(const mint &a) const { return mint(*this) /= a; }
-  bool operator<(const mint &a) const { return x < a.x; }
-  bool operator==(const mint &a) const { return x == a.x; }
-  const mint power(ll N)
+  Mint operator+(Mint const &a) const { return Mint(*this) += a; }
+  Mint operator-(Mint const &a) const { return Mint(*this) -= a; }
+  Mint operator*(Mint const &a) const { return Mint(*this) *= a; }
+  Mint operator/(Mint const &a) const { return Mint(*this) /= a; }
+  bool operator<(Mint const &a) const { return x < a.x; }
+  bool operator<=(Mint const &a) const { return x <= a.x; }
+  bool operator>(Mint const &a) const { return x > a.x; }
+  bool operator>=(Mint const &a) const { return x >= a.x; }
+  bool operator==(Mint const &a) const { return x == a.x; }
+  bool operator!=(Mint const &a) const { return !(*this == a); }
+  Mint power(ll N) const
   {
     if (N == 0)
     {
@@ -76,34 +127,62 @@ public:
     }
     else
     {
-      mint half = power(N / 2);
+      Mint half = power(N / 2);
       return half * half;
     }
   }
 };
-ll mint::MOD = 1e9 + 7;
-istream &operator>>(istream &stream, mint &a) { return stream >> a.x; }
-ostream &operator<<(ostream &stream, const mint &a) { return stream << a.x; }
-class combination
+template <ll MOD>
+Mint<MOD> operator+(ll lhs, Mint<MOD> const &rhs)
+{
+  return rhs + lhs;
+}
+template <ll MOD>
+Mint<MOD> operator-(ll lhs, Mint<MOD> const &rhs)
+{
+  return -rhs + lhs;
+}
+template <ll MOD>
+Mint<MOD> operator*(ll lhs, Mint<MOD> const &rhs)
+{
+  return rhs * lhs;
+}
+template <ll MOD>
+Mint<MOD> operator/(ll lhs, Mint<MOD> const &rhs)
+{
+  return Mint<MOD>{lhs} / rhs;
+}
+template <ll MOD>
+istream &operator>>(istream &stream, Mint<MOD> &a)
+{
+  return stream >> a.x;
+}
+template <ll MOD>
+ostream &operator<<(ostream &stream, Mint<MOD> const &a)
+{
+  return stream << a.x;
+}
+// ----- Combination -----
+template <ll MOD = MOD, ll MAX_SIZE = MAX_SIZE>
+class Combination
 {
 public:
-  vector<mint> inv, fact, factinv;
-  static int MAX_SIZE;
-  combination() : inv(MAX_SIZE), fact(MAX_SIZE), factinv(MAX_SIZE)
+  vector<Mint<MOD>> inv, fact, factinv;
+  Combination() : inv(MAX_SIZE), fact(MAX_SIZE), factinv(MAX_SIZE)
   {
     inv[1] = 1;
-    for (auto i = 2; i < MAX_SIZE; i++)
+    for (auto i = 2LL; i < MAX_SIZE; i++)
     {
-      inv[i] = (-inv[mint::MOD % i]) * (mint::MOD / i);
+      inv[i] = (-inv[MOD % i]) * (MOD / i);
     }
     fact[0] = factinv[0] = 1;
-    for (auto i = 1; i < MAX_SIZE; i++)
+    for (auto i = 1LL; i < MAX_SIZE; i++)
     {
-      fact[i] = mint(i) * fact[i - 1];
+      fact[i] = Mint<MOD>(i) * fact[i - 1];
       factinv[i] = inv[i] * factinv[i - 1];
     }
   }
-  mint operator()(int n, int k)
+  Mint<MOD> operator()(int n, int k)
   {
     if (n >= 0 && k >= 0 && n - k >= 0)
     {
@@ -111,13 +190,37 @@ public:
     }
     return 0;
   }
+  Mint<MOD> catalan(int x, int y)
+  {
+    return (*this)(x + y, y) - (*this)(x + y, y - 1);
+  }
 };
-int combination::MAX_SIZE = 3000010;
-ll gcd(ll x, ll y) { return y ? gcd(y, x % y) : x; }
-// constexpr double epsilon = 1e-10;
-// constexpr ll infty = 1000000000000000LL;
+// ----- for C++14 -----
+using mint = Mint<MOD>;
+using combination = Combination<MOD, MAX_SIZE>;
+template <typename T>
+T gcd(T x, T y) { return y ? gcd(y, x % y) : x; }
+template <typename T>
+T lcm(T x, T y) { return x / gcd(x, y) * y; }
+// ----- for C++17 -----
+template <typename T>
+int popcount(T x) // C++20
+{
+  int ans{0};
+  while (x != 0)
+  {
+    ans += x & 1;
+    x >>= 1;
+  }
+  return ans;
+}
+// ----- frequently used constexpr -----
+// constexpr double epsilon{1e-10};
+// constexpr ll infty{1'000'000'000'000'010LL}; // or
+// constexpr int infty{1'000'000'010};
 // constexpr int dx[4] = {1, 0, -1, 0};
 // constexpr int dy[4] = {0, 1, 0, -1};
+// ----- Yes() and No() -----
 void Yes()
 {
   cout << "Yes" << endl;
@@ -128,6 +231,7 @@ void No()
   cout << "No" << endl;
   exit(0);
 }
+// ----- main() -----
 
 int main()
 {
