@@ -238,7 +238,7 @@ int main()
   int N;
   cin >> N;
   vector<int> V(1 << N);
-  for (auto i = 0; i < N; ++i)
+  for (auto i = 0; i < 1 << N; ++i)
   {
     cin >> V[i];
   }
@@ -257,9 +257,6 @@ int main()
       {
         ++ind;
       }
-#if DEBUG == 1
-      cerr << "e = " << e << ", V[" << ind << "] = " << V[ind] << endl;
-#endif
       if (ind == 1 << N)
       {
         No();
