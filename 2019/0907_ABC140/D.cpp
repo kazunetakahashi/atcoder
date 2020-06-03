@@ -233,10 +233,11 @@ void No()
 }
 // ----- main() -----
 
-vector<tuple<char, int>> RunLengthCompress(string const &S)
+template <typename T>
+auto RunLengthCompress(T const &S) -> vector<tuple<decltype(S[0]), int>>
 {
-  vector<tuple<char, int>> res;
-  char c{S[0]};
+  vector<tuple<decltype(S[0]), int>> res;
+  auto c{S[0]};
   int x{0};
   for (auto e : S)
   {
