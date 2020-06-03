@@ -253,12 +253,12 @@ int main()
     vector<int> X;
     for (auto e : W)
     {
-      while (ind < 1 << N && (used[ind] || V[ind] >= e))
+      while (ind < 1 << N && !(!used[ind] && V[ind] < e))
       {
         ++ind;
       }
 #if DEBUG == 1
-      cerr << "e = " << e << ", ind = " << ind << endl;
+      cerr << "e = " << e << ", V[" << ind << "] = " << V[ind] << endl;
 #endif
       if (ind == 1 << N)
       {
