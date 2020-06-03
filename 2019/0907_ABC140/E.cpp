@@ -233,72 +233,104 @@ void No()
 }
 // ----- main() -----
 
-vector<int> InversePermutation(vector<int> const &P) // 0-indexed
+// ----- Permutation -----
+
+struct Permutation
 {
-  vector<int> Q(P.size());
-  for (auto i = 0; i < static_cast<int>(P.size()); ++i)
+  vector<int> V;
+
+  Permutation() {}
+  Permutation(vector<int> const &V) : V{V} {}
+
+  static Permutation unit(size_t N)
   {
-    Q.at(P[i]) = i;
+    vector<int> X(N);
+    for (auto i = 0; i < static_cast<int>(N); ++i)
+    {
+      X[i] = i;
+    }
+    return Permutation{X};
   }
-  return Q;
-}
+
+  size_t size() const { return V.size(); }
+  int operator[](size_t i) const { return V[i]; }
+
+  Permutation inverse() const
+  {
+    vector<int> Q(size());
+    for (auto i = 0; i < static_cast<int>(size()); ++i)
+    {
+      Q[(*this)[i]] = i;
+    }
+    return Permutation{Q};
+  }
+
+  Permutation operator*(Permutation const &Q) const
+  {
+    assert(size() == Q.size());
+    vector<int> R(size());
+    for (auto i = 0; i < static_cast<int>(size()); ++i)
+    {
+      R[i] = (*this)[Q[i]];
+    }
+    return Permutation{R};
+  }
+
+  Permutation &operator*=(Permutation const &Q)
+  {
+    return *this = *this * Q;
+  }
+
+  Permutation power(int n)
+  {
+    if (n == 0)
+    {
+      return unit(size());
+    }
+    else if (n % 2 == 0)
+    {
+      auto W{power(n / 2)};
+      return W * W;
+    }
+    else
+    {
+      return *this * power(n - 1);
+    }
+  }
+};
 
 int main()
 {
   int N;
   cin >> N;
-  vector<int> P(N);
+  vector<int> V(N);
   for (auto i = 0; i < N; ++i)
   {
-    cin >> P[i];
-    P[i]--;
+    cin >> V[i];
+    V[i]--;
   }
-  auto to_ind{InversePermutation(P)};
-  set<int> S;
+  Permutation P{V};
+  auto to_ind{P.inverse()};
+  multiset<ll> S;
+  S.insert(-1);
+  S.insert(-1);
+  S.insert(N);
+  S.insert(N);
   ll ans{0};
   for (auto x = N - 1; x >= 0; --x)
   {
     ll ind{to_ind[x]};
     S.insert(ind);
-    ll l0, l1, r0, r1;
     auto it{S.find(ind)};
-    if (it == S.begin())
-    {
-      l0 = l1 = -1;
-    }
-    else
-    {
-      --it;
-      l0 = *it;
-      if (it == S.begin())
-      {
-        l1 = -1;
-      }
-      else
-      {
-        --it;
-        l1 = *it;
-      }
-    }
+    --it;
+    auto l0{*it};
+    --it;
+    auto l1{*it};
     it = S.find(ind);
     ++it;
-    if (it == S.end())
-    {
-      r0 = r1 = N;
-    }
-    else
-    {
-      r0 = *it;
-      ++it;
-      if (it == S.end())
-      {
-        r1 = N;
-      }
-      else
-      {
-        r1 = *it;
-      }
-    }
+    auto r0{*it};
+    ++it;
+    auto r1{*it};
     ans += (x + 1) * ((l0 - l1) * (r0 - ind) + (r1 - r0) * (ind - l0));
   }
   cout << ans << endl;
