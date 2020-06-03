@@ -257,6 +257,9 @@ int main()
       {
         ++ind;
       }
+#if DEBUG == 1
+      cerr << "e = " << e << ", ind = " << ind << endl;
+#endif
       if (ind == 1 << N)
       {
         No();
