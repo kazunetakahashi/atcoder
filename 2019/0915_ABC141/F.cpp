@@ -233,7 +233,7 @@ void No()
 }
 // ----- main() -----
 
-constexpr int C{62};
+constexpr int C{60};
 
 int main()
 {
@@ -262,7 +262,6 @@ int main()
       }
     }
   }
-  int res{0};
   int row{0};
   for (auto j = C - 1; j >= 0; --j)
   {
@@ -279,7 +278,6 @@ int main()
     {
       continue;
     }
-    res |= 1LL << j;
     for (auto i = 0; i < N; ++i)
     {
       if (i == row)
@@ -292,6 +290,11 @@ int main()
       }
     }
     ++row;
+  }
+  int res{0};
+  for (auto i = 0; i < N; ++i)
+  {
+    res ^= A[i];
   }
 #if DEBUG == 1
   cerr << "X = " << X << endl;
