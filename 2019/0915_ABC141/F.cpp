@@ -283,7 +283,7 @@ int main()
     }
     ++row;
   }
-  int res{0};
+  ll res{0};
   for (auto i = 0; i < row; ++i)
   {
 #if DEBUG == 1
