@@ -352,9 +352,6 @@ int main()
   ll A, B;
   cin >> A >> B;
   Sieve sieve;
-  auto V{sieve.factor_list(gcd(A, B))};
-#if DEBUG == 1
-  cerr << gcd(A, B) << endl;
-#endif
+  auto V{sieve.factor(gcd(A, B))};
   cout << V.size() + 1 << endl;
 }
