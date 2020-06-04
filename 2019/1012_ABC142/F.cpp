@@ -343,4 +343,5 @@ int main()
   int N, M;
   cin >> N >> M;
   Solve solve(N, M);
+  solve.flush();
 }
