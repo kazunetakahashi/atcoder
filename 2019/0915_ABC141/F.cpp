@@ -249,7 +249,7 @@ int main()
   {
     X ^= A[i];
   }
-  ll Y{(1LL << (C + 1)) - 1LL - X};
+  ll Y{(1LL << (C + 1)) - 1 - X};
   for (auto i = 0; i < N; ++i)
   {
     A[i] &= Y;
@@ -284,7 +284,7 @@ int main()
     ++row;
   }
   int res{0};
-  for (auto i = 0; i < N; ++i)
+  for (auto i = 0; i < row; ++i)
   {
     res ^= A[i];
   }
