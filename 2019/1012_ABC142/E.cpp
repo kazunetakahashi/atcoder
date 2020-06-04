@@ -258,8 +258,20 @@ int main()
     dp[i + 1] = dp[i];
     for (auto j = 0; j < 1 << N; ++j)
     {
+      if (dp[i][j] == INT32_MAX)
+      {
+        continue;
+      }
       ch_min(dp[i + 1][j | S[i]], dp[i][j] + A[i]);
     }
   }
-  cout << dp[M][(1 << N) - 1] << endl;
+  ll ans{dp[M][(1 << N) - 1]};
+  if (ans == INT32_MAX)
+  {
+    cout << -1 << endl;
+  }
+  else
+  {
+    cout << ans << endl;
+  }
 }
