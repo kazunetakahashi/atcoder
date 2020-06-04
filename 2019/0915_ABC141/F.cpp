@@ -267,7 +267,7 @@ int main()
   for (auto j = C - 1; j >= 0; --j)
   {
     bool ok{false};
-    for (auto i = 0; i < N; ++i)
+    for (auto i = row; i < N; ++i)
     {
       if (A[i] >> j & 1)
       {
