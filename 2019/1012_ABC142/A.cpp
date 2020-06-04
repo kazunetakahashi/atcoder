@@ -245,5 +245,5 @@ int main()
       ++cnt;
     }
   }
-  cout << fixed << setprecision(12) << static_cast<double>(cnt) / N << endl;
+  cout << fixed << setprecision(10) << static_cast<double>(cnt) / N << endl;
 }
