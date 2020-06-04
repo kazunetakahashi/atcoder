@@ -243,14 +243,14 @@ int main()
     cin >> A[i];
     A[i]--;
   }
-  vector<int> S(N, -K);
+  vector<int> S(N, K - Q);
   for (auto i = 0; i < Q; ++i)
   {
     S[A[i]]++;
   }
   for (auto i = 0; i < N; ++i)
   {
-    if (S[i] >= 0)
+    if (S[i] > 0)
     {
       cout << "Yes" << endl;
     }
