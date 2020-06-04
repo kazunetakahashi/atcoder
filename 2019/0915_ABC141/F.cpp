@@ -286,6 +286,9 @@ int main()
   int res{0};
   for (auto i = 0; i < row; ++i)
   {
+#if DEBUG == 1
+    cerr << "A[" << i << "] = " << A[i] << endl;
+#endif
     res ^= A[i];
   }
 #if DEBUG == 1
