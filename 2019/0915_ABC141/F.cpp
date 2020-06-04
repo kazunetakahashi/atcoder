@@ -263,33 +263,35 @@ int main()
     }
   }
   int res{0};
+  int row{0};
   for (auto j = C - 1; j >= 0; --j)
   {
-    int r{-1};
+    bool ok{false};
     for (auto i = 0; i < N; ++i)
     {
       if (A[i] >> j & 1)
       {
-        r = i;
-        break;
+        swap(A[i], A[row]);
+        ok = true;
       }
     }
-    if (r == -1)
+    if (!ok)
     {
       continue;
     }
     res |= 1LL << j;
     for (auto i = 0; i < N; ++i)
     {
-      if (i == r)
+      if (i == row)
       {
         continue;
       }
       if (A[i] >> j & 1)
       {
-        A[i] ^= A[r];
+        A[i] ^= A[row];
       }
     }
+    ++row;
   }
 #if DEBUG == 1
   cerr << "X = " << X << endl;
