@@ -243,12 +243,11 @@ int main()
     cin >> A[i];
     A[i]--;
   }
-  vector<int> S(N, -Q);
+  vector<int> S(N, -K);
   for (auto i = 0; i < Q; ++i)
   {
     S[A[i]]++;
   }
-  int ans{0};
   for (auto i = 0; i < N; ++i)
   {
     if (S[i] >= 0)
