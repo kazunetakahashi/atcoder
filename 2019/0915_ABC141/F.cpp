@@ -249,18 +249,10 @@ int main()
   {
     X ^= A[i];
   }
-  for (auto j = 0; j < C; ++j)
+  ll Y{(1LL << (C + 1)) - 1 - X};
+  for (auto i = 0; i < N; ++i)
   {
-    if (X >> j & 1)
-    {
-      for (auto i = 0; i < N; ++i)
-      {
-        if (A[i] >> j & 1)
-        {
-          A[i] -= 1LL << j;
-        }
-      }
-    }
+    A[i] &= Y;
   }
   int row{0};
   for (auto j = C - 1; j >= 0; --j)
