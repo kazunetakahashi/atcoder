@@ -233,7 +233,7 @@ void No()
 }
 // ----- main() -----
 
-constexpr int C{62};
+constexpr int C{60};
 
 int main()
 {
@@ -249,7 +249,7 @@ int main()
   {
     X ^= A[i];
   }
-  ll Y{(1LL << (C + 1)) - 1 - X};
+  ll Y{(1LL << (C + 1)) - 1LL - X};
   for (auto i = 0; i < N; ++i)
   {
     A[i] &= Y;
