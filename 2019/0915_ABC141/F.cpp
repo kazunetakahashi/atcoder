@@ -291,5 +291,9 @@ int main()
       }
     }
   }
+#if DEBUG == 1
+  cerr << "X = " << X << endl;
+  cerr << "res = " << res << endl;
+#endif
   cout << X + res * 2 << endl;
 }
