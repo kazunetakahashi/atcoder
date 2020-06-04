@@ -261,5 +261,5 @@ int main()
       ch_min(dp[i + 1][j | S[i]], dp[i][j] + A[i]);
     }
   }
-  cout << dp[M][1 << N - 1] << endl;
+  cout << dp[M][(1 << N) - 1] << endl;
 }
