@@ -271,7 +271,7 @@ public:
         cout << vertexes.size() << endl;
         for (auto v : vertexes)
         {
-          cout << v << endl;
+          cout << v + 1 << endl;
         }
         exit(0);
       }
