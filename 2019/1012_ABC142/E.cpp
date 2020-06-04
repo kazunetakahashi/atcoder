@@ -255,6 +255,9 @@ int main()
   dp[0][0] = 0;
   for (auto i = 0; i < M; ++i)
   {
+#if DEBUG == 1
+    cerr << "i = " << i << endl;
+#endif
     dp[i + 1] = dp[i];
     for (auto j = 0; j < 1 << N; ++j)
     {
