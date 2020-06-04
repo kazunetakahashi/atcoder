@@ -238,7 +238,7 @@ int main()
   int N, M;
   cin >> N >> M;
   vector<int> A(M), S(M, 0);
-  for (auto i = 0; i < N; ++i)
+  for (auto i = 0; i < M; ++i)
   {
     int a, b;
     cin >> a >> b;
@@ -255,9 +255,6 @@ int main()
   dp[0][0] = 0;
   for (auto i = 0; i < M; ++i)
   {
-#if DEBUG == 1
-    cerr << "i = " << i << endl;
-#endif
     dp[i + 1] = dp[i];
     for (auto j = 0; j < 1 << N; ++j)
     {
