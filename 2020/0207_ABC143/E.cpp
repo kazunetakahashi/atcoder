@@ -299,6 +299,6 @@ int main()
     --s;
     --t;
     ll ans{H[s][t]};
-    cout << (ans == INT64_MAX ? -1 : ans) << endl;
+    cout << (ans == INT64_MAX ? -1 : ans + 1) << endl;
   }
 }
