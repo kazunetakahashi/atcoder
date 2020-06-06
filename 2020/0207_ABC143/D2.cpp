@@ -245,16 +245,16 @@ int main()
   }
   sort(L.begin(), L.end());
   ll ans{0};
-  for (auto i{0}; i < N; ++i)
+  for (auto i{1}; i < N - 1; ++i)
   {
-    int k{N - 2};
-    for (auto j{N - 1}; j >= 0; --j)
+    int k{i + 1};
+    for (auto j{0}; j < i; ++j)
     {
-      while (L[j] < L[i] + L[k] && k > i)
+      while (k < N && L[k] < L[i] + L[j])
       {
-        --k;
+        ++k;
       }
-      ans += j - k - 1;
+      ans += k - i - 1;
     }
   }
   cout << ans << endl;
