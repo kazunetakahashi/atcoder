@@ -244,10 +244,18 @@ int main()
     cin >> L[i];
   }
   sort(L.begin(), L.end());
-  for (auto it{L.begin()}; it != L.end(); ++it)
+  ll ans{0};
+  for (auto i{0}; i < N; ++i)
   {
-    for (auto it{L.end() - 1}; it != L.begin() - 1; --it)
+    int k{N - 2};
+    for (auto j{N - 1}; j >= 0; --j)
     {
+      while (L[j] < L[i] + L[k] && k > i)
+      {
+        --k;
+      }
+      ans += j - k - 1;
     }
   }
+  cout << ans << endl;
 }
