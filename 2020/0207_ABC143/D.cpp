@@ -317,7 +317,7 @@ int main()
   SegTree<int> tree{N, unit2, func2, _update2};
   for (auto i{0}; i < N; ++i)
   {
-    tree.update(L[i], 1);
+    tree.update(L[i], tree.find(L[i], L[i]) + 1);
   }
   int ans{0};
   for (auto i{0}; i < N; ++i)
