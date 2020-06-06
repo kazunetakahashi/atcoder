@@ -18,6 +18,7 @@
 #include <functional>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include <map>
 #include <queue>
 #include <random>
@@ -232,6 +233,26 @@ void No()
   exit(0);
 }
 
+template <typename T>
+void WarshallFloyd(vector<vector<T>> &V, T infinity = numeric_limits<T>::max())
+{
+  auto N{static_cast<int>(V.size())};
+  for (auto k{0}; k < N; ++k)
+  {
+    for (auto i{0}; i < N; ++i)
+    {
+      for (auto j{0}; j < N; ++j)
+      {
+        if (V[i][k] == infinity || V[k][j] == infinity)
+        {
+          continue;
+        }
+        ch_min(V[i][j], V[i][k] + V[k][j]);
+      }
+    }
+  }
+}
+
 // ----- main() -----
 
 int main()
@@ -250,24 +271,7 @@ int main()
     T[A][B] = C;
     T[B][A] = C;
   }
-  for (auto i{0}; i < N; ++i)
-  {
-    T[i][i] = 0;
-  }
-  for (auto k{0}; k < N; ++k)
-  {
-    for (auto i{0}; i < N; ++i)
-    {
-      for (auto j{0}; j < N; ++j)
-      {
-        if (T[i][k] == INT64_MAX || T[k][j] == INT64_MAX)
-        {
-          continue;
-        }
-        ch_min(T[i][j], T[i][k] + T[k][j]);
-      }
-    }
-  }
+  WarshallFloyd(T);
   vector<vector<ll>> H(N, vector<ll>(N, INT64_MAX));
   for (auto i{0}; i < N; ++i)
   {
@@ -276,20 +280,7 @@ int main()
       H[i][j] = (T[i][j] <= L ? 1 : INT64_MAX);
     }
   }
-  for (auto k{0}; k < N; ++k)
-  {
-    for (auto i{0}; i < N; ++i)
-    {
-      for (auto j{0}; j < N; ++j)
-      {
-        if (H[i][k] == INT64_MAX || H[k][j] == INT64_MAX)
-        {
-          continue;
-        }
-        ch_min(H[i][j], H[i][k] + H[k][j]);
-      }
-    }
-  }
+  WarshallFloyd(H);
   int Q;
   cin >> Q;
   for (auto q{0}; q < Q; ++q)
