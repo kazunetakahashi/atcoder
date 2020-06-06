@@ -326,10 +326,16 @@ int main()
     {
       int b{L[i]};
       int c{L[j]};
-      ans += tree.find(abs(b - c) + 1, b + c) - 2;
-#if DEBUG == 1
-      cerr << "tree.find(" << abs(b - c) + 1 << ", " << b + c << ") = " << tree.find(abs(b - c) + 1, b + c) << endl;
-#endif
+      int t{tree.find(abs(b - c) + 1, b + c)};
+      if (abs(b - c) < b && b < b + c)
+      {
+        --t;
+      }
+      if (abs(b - c) < c && c < b + c)
+      {
+        --t;
+      }
+      ans += t;
     }
   }
   cout << ans / 3 << endl;
