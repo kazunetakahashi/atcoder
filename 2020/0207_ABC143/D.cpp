@@ -314,7 +314,7 @@ int main()
   {
     cin >> L[i];
   }
-  SegTree<int> tree{N, unit2, func2, _update2};
+  SegTree<int> tree{1010, unit2, func2, _update2};
   for (auto i{0}; i < N; ++i)
   {
     tree.update(L[i], tree.find(L[i], L[i] + 1) + 1);
