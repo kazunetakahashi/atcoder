@@ -326,7 +326,7 @@ int main()
     {
       int b{L[i]};
       int c{L[j]};
-      int t{tree.find(abs(b - c) + 1, b + c)};
+      ll t{tree.find(abs(b - c) + 1, b + c)};
       if (abs(b - c) < b && b < b + c)
       {
         --t;
