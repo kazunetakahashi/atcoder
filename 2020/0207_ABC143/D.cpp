@@ -318,9 +318,6 @@ int main()
   for (auto i{0}; i < N; ++i)
   {
     tree.update(L[i], tree.find(L[i], L[i] + 1) + 1);
-#if DEBUG == 1
-    cerr << "tree.find(" << L[i] << ", L[" << i << "] + 1) = " << tree.find(L[i], L[i] + 1) << endl;
-#endif
   }
   int ans{0};
   for (auto i{0}; i < N; ++i)
@@ -330,6 +327,9 @@ int main()
       int b{L[i]};
       int c{L[j]};
       ans += tree.find(abs(b - c) + 1, b + c) - 2;
+#if DEBUG == 1
+      cerr << "tree.find(" << abs(b - c) + 1 << ", " << b + c << ") = " << tree.find(abs(b - c) + 1, b + c) << endl;
+#endif
     }
   }
   cout << ans / 3 << endl;
