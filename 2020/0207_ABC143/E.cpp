@@ -10,6 +10,7 @@
 #include <cassert>
 #include <cctype>
 #include <chrono>
+#include <climits>
 #include <cmath>
 #include <complex>
 #include <cstdint>
@@ -215,6 +216,11 @@ int popcount(T x) // C++20
   }
   return ans;
 }
+// ----- Infty -----
+template <typename T>
+constexpr T Infty() { return numeric_limits<T>::max(); }
+template <typename T>
+constexpr T mInfty() { return numeric_limits<T>::min(); }
 // ----- frequently used constexpr -----
 // constexpr double epsilon{1e-10};
 // constexpr ll infty{1'000'000'000'000'010LL}; // or
@@ -232,6 +238,8 @@ void No()
   cout << "No" << endl;
   exit(0);
 }
+
+// ----- WarshallFloyd -----
 
 template <typename T>
 void WarshallFloyd(vector<vector<T>> &V, T infinity = numeric_limits<T>::max())
@@ -260,7 +268,7 @@ int main()
   int N, M;
   ll L;
   cin >> N >> M >> L;
-  vector<vector<ll>> T(N, vector<ll>(N, INT64_MAX));
+  vector<vector<ll>> T(N, vector<ll>(N, Infty<ll>()));
   for (auto i{0}; i < M; ++i)
   {
     int A, B;
@@ -272,12 +280,12 @@ int main()
     T[B][A] = C;
   }
   WarshallFloyd(T);
-  vector<vector<ll>> H(N, vector<ll>(N, INT64_MAX));
+  vector<vector<ll>> H(N, vector<ll>(N, Infty<ll>()));
   for (auto i{0}; i < N; ++i)
   {
     for (auto j{0}; j < N; ++j)
     {
-      H[i][j] = (T[i][j] <= L ? 1 : INT64_MAX);
+      H[i][j] = (T[i][j] <= L ? 1 : Infty<ll>());
     }
   }
   WarshallFloyd(H);
@@ -290,6 +298,6 @@ int main()
     --s;
     --t;
     ll ans{H[s][t]};
-    cout << (ans == INT64_MAX ? -1 : ans - 1) << endl;
+    cout << (ans == Infty<ll>() ? -1 : ans - 1) << endl;
   }
 }
