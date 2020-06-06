@@ -314,12 +314,12 @@ int main()
   {
     cin >> L[i];
   }
-  SegTree<int> tree{100010, unit2, func2, _update2};
+  SegTree<ll> tree{100010, unit2, func2, _update2};
   for (auto i{0}; i < N; ++i)
   {
     tree.update(L[i], tree.find(L[i], L[i] + 1) + 1);
   }
-  int ans{0};
+  ll ans{0};
   for (auto i{0}; i < N; ++i)
   {
     for (auto j{i + 1}; j < N; ++j)
