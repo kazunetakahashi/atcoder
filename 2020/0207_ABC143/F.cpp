@@ -261,7 +261,7 @@ int main()
   {
     T[1] += C[i];
   }
-  for (auto x{1LL}; x <= N; ++x)
+  for (auto x{1LL}; x < N; ++x)
   {
     S[x + 1] = S[x] + (x + 1) * C[x + 1];
     T[x + 1] = T[x] - C[x + 1];
