@@ -242,23 +242,11 @@ public:
     }
     E[N - 1] = 0;
     calc_E(0);
-#if DEBUG == 1
-    for (auto i{0}; i < N; ++i)
-    {
-      cerr << "E[" << i << "] = " << fixed << setprecision(10) << E[i] << endl;
-    }
-#endif
     P[0] = 1;
     for (auto i{0}; i < N; ++i)
     {
       spread_P(i);
     }
-#if DEBUG == 1
-    for (auto i{0}; i < N; ++i)
-    {
-      cerr << "P[" << i << "] = " << fixed << setprecision(10) << P[i] << endl;
-    }
-#endif
   }
 
   void flush()
@@ -281,10 +269,9 @@ private:
     ld ans{0};
     for (auto e : V[v])
     {
-      ans += calc_E(e);
+      ans += calc_E(e) + 1;
     }
     ans /= V[v].size();
-    ans += 1;
     return E[v] = ans;
   }
 
@@ -309,11 +296,6 @@ private:
       sum += E[e] + 1;
       ch_max(maxi, E[e] + 1);
     }
-#if DEBUG == 1
-    cerr << "dif " << v << " : " << (sum - maxi) / (V[v].size() - 1) << endl;
-    cerr << "sum = " << sum << endl;
-    cerr << "maxi = " << maxi << endl;
-#endif
     return (sum - maxi) / (V[v].size() - 1) - E[v];
   }
 
