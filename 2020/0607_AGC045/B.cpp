@@ -240,6 +240,9 @@ auto RunLengthCompress(T const &S) -> vector<tuple<decltype(S[0]), int>>
       res.emplace_back(c, x);
       c = e;
       x = 1;
+#if DEBUG == 1
+      cerr << "c = " << c << endl;
+#endif
     }
   }
   res.emplace_back(c, x);
