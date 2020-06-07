@@ -240,6 +240,8 @@ public:
       cin >> A[i];
     }
     cin >> S;
+    reverse(A.begin(), A.end());
+    reverse(S.begin(), S.end());
   }
 
   void flush()
@@ -256,22 +258,21 @@ private:
       if (S[i] == '1')
       {
         P.push_back(A[i]);
+        if (i == N - 1 || S[i + 1] == '0')
+        {
+          reduce(Q);
+          for (auto e : P)
+          {
+            if (e != 0)
+            {
+              return 1;
+            }
+          }
+        }
       }
       else
       {
         Q.push_back(A[i]);
-        if (i == N - 1 || S[i + 1] == '1')
-        {
-          reduce(Q);
-          Q.clear();
-        }
-      }
-    }
-    for (auto e : P)
-    {
-      if (e != 0)
-      {
-        return 1;
       }
     }
     return 0;
