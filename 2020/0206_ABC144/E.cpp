@@ -205,7 +205,7 @@ template <typename T>
 constexpr T mInfty() { return numeric_limits<T>::min(); }
 // ----- frequently used constexpr -----
 // constexpr double epsilon{1e-10};
-// constexpr ll infty{1'000'000'000'000'010LL}; // or
+constexpr ll infty{1'000'000'000'000'010LL}; // or
 // constexpr int infty{1'000'000'010};
 // constexpr int dx[4] = {1, 0, -1, 0};
 // constexpr int dy[4] = {0, 1, 0, -1};
@@ -247,7 +247,7 @@ int main()
     }
     return C <= K;
   };
-  auto ok{Infty<ll>() / 4}, ng{-1LL};
+  auto ok{infty}, ng{-1LL};
   while (abs(ok - ng) > 1)
   {
     auto t{(ok + ng) / 2};
