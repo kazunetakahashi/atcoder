@@ -277,6 +277,7 @@ int main()
   {
     T.insert(e);
   }
+  T.erase(0);
   int now{0};
   int ub{0}, lb{0};
   for (auto i{0}; i < N; ++i)
@@ -294,9 +295,9 @@ int main()
     }
     else
     {
-      auto it{S.begin()};
+      auto it{T.begin()};
       auto minus{abs(*it - mini)};
-      it = S.end();
+      it = T.end();
       --it;
       auto plus{abs(*it - maxi)};
       auto gain = [&]() {
@@ -325,8 +326,8 @@ int main()
         ch_max(ub, now);
         ch_min(lb, now);
       }
-      S.erase(S.find(sum[i + 1]));
     }
+    T.erase(T.find(sum[i + 1]));
   }
   cout << ub - lb << endl;
 }
