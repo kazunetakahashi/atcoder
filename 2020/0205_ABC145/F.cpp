@@ -240,6 +240,10 @@ int main()
     {
       for (auto k{0}; k < i; ++k)
       {
+        if (dp[k][j - 1] == Infty<ll>())
+        {
+          continue;
+        }
         ch_min(dp[i][j], dp[k][j - 1] + max(0LL, H[i] - H[k]));
       }
     }
