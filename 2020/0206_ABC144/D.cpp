@@ -247,12 +247,12 @@ int main()
     auto tmp{(ok + ng) / 2};
     if (f(t) >= x)
     {
-      ng = tmp;
+      ok = tmp;
     }
     else
     {
-      ok = tmp;
+      ng = tmp;
     }
   }
-  cout << fixed << setprecision(12) << ok / M_PI * 180 << endl;
+  cout << fixed << setprecision(11) << ok / M_PI * 180 << endl;
 }
