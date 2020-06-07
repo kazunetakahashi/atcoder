@@ -255,5 +255,5 @@ int main()
       ng = tmp;
     }
   }
-  cout << fixed << setprecision(11) << ok / M_PI * 180 << endl;
+  cout << fixed << setprecision(10) << ok / M_PI * 180 << endl;
 }
