@@ -249,7 +249,7 @@ int main()
     }
   }
   ll ans{Infty<ll>()};
-  for (auto i{0}; i < N; ++i)
+  for (auto i{0}; i <= N; ++i)
   {
     ch_min(ans, dp[i][N - K]);
   }
