@@ -240,9 +240,17 @@ ld f(ld theta)
 
 int main()
 {
+  static const double pi = 3.141592653589793;
+  std::cout << std::fixed;
+  std::cout << "tan(0.0)  = " << std::tan(0.0) << std::endl;
+  std::cout << "tan(pi/6) = " << std::tan(pi / 6) << std::endl;
+  std::cout << "tan(pi/4) = " << std::tan(pi / 4) << std::endl;
+  std::cout << "tan(pi/3) = " << std::tan(pi / 3) << std::endl;
+  std::cout << "tan(pi/2) = " << std::tan(pi / 2) << std::endl;
+
   cin >> a >> b >> x;
   x /= a;
-  ld ok{epsilon}, ng{M_PI / 2 - epsilon};
+  ld ok{0}, ng{M_PI / 2 - epsilon};
   for (auto t{0}; t < 100; ++t)
   {
     auto tmp{(ok + ng) / 2};
