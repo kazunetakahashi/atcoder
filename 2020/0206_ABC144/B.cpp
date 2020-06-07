@@ -229,7 +229,7 @@ int main()
   cin >> N;
   for (auto i{1}; i < 10; ++i)
   {
-    if (N % i == 0)
+    if (N % i == 0 && N / i < 10)
     {
       Yes();
     }
