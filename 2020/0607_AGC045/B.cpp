@@ -284,7 +284,7 @@ int main()
   {
     T.insert(e);
   }
-  T.erase(0);
+  T.erase(T.find(0));
   int now{0};
   int ub{0}, lb{0};
   for (auto i{0}; i < N; ++i)
