@@ -253,12 +253,6 @@ int main()
   string S;
   cin >> S;
   auto V{RunLengthCompress(S)};
-#if DEBUG == 1
-  for (auto [x, y] : V)
-  {
-    cerr << x << ", " << y << endl;
-  }
-#endif
   int N{static_cast<int>(V.size())};
   vector<int> sum(N + 1, 0);
   for (auto i{0}; i < N; ++i)
@@ -340,6 +334,13 @@ int main()
         ch_min(lb, now);
       }
     }
+#if DEBUG == 1
+    for (auto e : T)
+    {
+      cerr << e << ", ";
+    }
+    cerr << endl;
+#endif
     T.erase(T.find(sum[i + 1]));
   }
   cout << ub - lb << endl;
