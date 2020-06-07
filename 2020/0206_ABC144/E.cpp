@@ -239,11 +239,11 @@ int main()
   }
   sort(A.begin(), A.end());
   sort(F.rbegin(), F.rend());
-  auto f = [&](ll K) {
+  auto f = [&](ll x) {
     ll C{0};
     for (auto i{0}; i < N; ++i)
     {
-      C += max(0LL, A[i] - K / F[i]);
+      C += max(0LL, A[i] - x / F[i]);
     }
     return C <= K;
   };
