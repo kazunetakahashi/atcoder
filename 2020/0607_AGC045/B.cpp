@@ -240,9 +240,6 @@ auto RunLengthCompress(T const &S) -> vector<tuple<decltype(S[0]), int>>
       res.emplace_back(c, x);
       c = e;
       x = 1;
-#if DEBUG == 1
-      cerr << "c = " << c << endl;
-#endif
     }
   }
   res.emplace_back(c, x);
@@ -260,7 +257,9 @@ int main()
   vector<int> sum(N + 1, 0);
   for (auto i{0}; i < N; ++i)
   {
-    auto [x, y]{V[i]};
+    char x;
+    int y;
+    tie(x, y) = V[i];
 #if DEBUG == 1
     cerr << "x = " << x << ", y = " << y << endl;
 #endif
