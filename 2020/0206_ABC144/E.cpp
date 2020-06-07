@@ -247,7 +247,7 @@ int main()
     }
     return C <= K;
   };
-  auto ok{Infty<ll>()}, ng{-1LL};
+  auto ok{Infty<ll>() / 4}, ng{-1LL};
   while (abs(ok - ng) > 1)
   {
     auto t{(ok + ng) / 2};
