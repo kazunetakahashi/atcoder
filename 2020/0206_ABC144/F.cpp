@@ -242,6 +242,12 @@ public:
     }
     E[N - 1] = 0;
     calc_E(0);
+#if DEBUG == 1
+    for (auto i{0}; i < N; ++i)
+    {
+      cerr << "E[" << i << "] = " << fixed << setprecision(10) << E[i] << endl;
+    }
+#endif
     P[0] = 1;
     for (auto i{0}; i < N; ++i)
     {
