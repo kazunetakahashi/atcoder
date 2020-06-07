@@ -309,6 +309,9 @@ private:
       sum += E[e];
       ch_max(maxi, E[e]);
     }
+#if DEBUG == 1
+    cerr << "dif " << v << " : " << (sum - maxi) / (V[v].size() - 1) << endl;
+#endif
     return (sum - maxi) / (V[v].size() - 1) - E[v];
   }
 
