@@ -262,7 +262,7 @@ int main()
   {
     for (auto i{0}; i < N - 1; ++i)
     {
-      sum += dist(V[I[i]], V[I[i]]);
+      sum += dist(V[I[i]], V[I[i + 1]]);
     }
   } while (next_permutation(I.begin(), I.end()));
   cout << fixed << setprecision(10) << sum / b << endl;
