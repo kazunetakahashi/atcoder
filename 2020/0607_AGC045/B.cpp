@@ -253,16 +253,17 @@ int main()
   string S;
   cin >> S;
   auto V{RunLengthCompress(S)};
+#if DEBUG == 1
+  for (auto [x, y] : V)
+  {
+    cerr << x << ", " << y << endl;
+  }
+#endif
   int N{static_cast<int>(V.size())};
   vector<int> sum(N + 1, 0);
   for (auto i{0}; i < N; ++i)
   {
-    char x;
-    int y;
-    tie(x, y) = V[i];
-#if DEBUG == 1
-    cerr << "x = " << x << ", y = " << y << endl;
-#endif
+    auto [x, y]{V[i]};
     if (x == '?')
     {
       sum[i + 1] = sum[i];
