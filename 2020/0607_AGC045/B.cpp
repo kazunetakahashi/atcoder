@@ -258,6 +258,9 @@ int main()
   for (auto i{0}; i < N; ++i)
   {
     auto [x, y]{V[i]};
+#if DEBUG == 1
+    cerr << "x = " << x << ", y = " << y << endl;
+#endif
     if (x == '?')
     {
       sum[i + 1] = sum[i];
@@ -271,6 +274,12 @@ int main()
       sum[i + 1] = sum[i] - y;
     }
   }
+#if DEBUG == 1
+  for (auto i{0}; i < N; ++i)
+  {
+    cerr << "sum[" << i + 1 << "] = " << sum[i + 1] << endl;
+  }
+#endif
   int maxi{*max_element(sum.begin(), sum.end())};
   int mini{*min_element(sum.begin(), sum.end())};
   multiset<int> T;
