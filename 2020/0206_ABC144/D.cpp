@@ -241,6 +241,7 @@ ld f(ld theta)
 int main()
 {
   cin >> a >> b >> x;
+  x /= a;
   ld ok{epsilon}, ng{M_PI / 2 - epsilon};
   for (auto t{0}; t < 100; ++t)
   {
