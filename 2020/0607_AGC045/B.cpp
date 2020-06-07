@@ -251,6 +251,7 @@ auto RunLengthCompress(T const &S) -> vector<tuple<decltype(S[0]), int>>
 int main()
 {
   string S;
+  cin >> S;
   auto V{RunLengthCompress(S)};
   int N{static_cast<int>(V.size())};
   vector<int> sum(N + 1, 0);
