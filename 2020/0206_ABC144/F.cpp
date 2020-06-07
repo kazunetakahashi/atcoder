@@ -269,7 +269,7 @@ private:
     ld ans{0};
     for (auto e : V[v])
     {
-      ans += calc_E(v);
+      ans += calc_E(e);
     }
     ans /= V[v].size();
     return E[v] = ans;
