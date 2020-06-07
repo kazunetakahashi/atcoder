@@ -253,6 +253,12 @@ public:
     {
       spread_P(i);
     }
+#if DEBUG == 1
+    for (auto i{0}; i < N; ++i)
+    {
+      cerr << "P[" << i << "] = " << fixed << setprecision(10) << P[i] << endl;
+    }
+#endif
   }
 
   void flush()
