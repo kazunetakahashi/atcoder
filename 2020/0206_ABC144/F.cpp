@@ -311,6 +311,8 @@ private:
     }
 #if DEBUG == 1
     cerr << "dif " << v << " : " << (sum - maxi) / (V[v].size() - 1) << endl;
+    cerr << "sum = " << sum << endl;
+    cerr << "maxi = " << maxi << endl;
 #endif
     return (sum - maxi) / (V[v].size() - 1) - E[v];
   }
