@@ -306,8 +306,8 @@ private:
     ld sum{0}, maxi{0};
     for (auto e : V[v])
     {
-      sum += E[e];
-      ch_max(maxi, E[e]);
+      sum += E[e] + 1;
+      ch_max(maxi, E[e] + 1);
     }
 #if DEBUG == 1
     cerr << "dif " << v << " : " << (sum - maxi) / (V[v].size() - 1) << endl;
