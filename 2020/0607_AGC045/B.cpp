@@ -252,7 +252,7 @@ int main()
 {
   string S;
   auto V{RunLengthCompress(S)};
-  int N{static_cast<int>(S.size())};
+  int N{static_cast<int>(V.size())};
   vector<int> sum(N + 1, 0);
   for (auto i{0}; i < N; ++i)
   {
@@ -322,6 +322,8 @@ int main()
           continue;
         }
         gain();
+        ch_max(ub, now);
+        ch_min(lb, now);
       }
       S.erase(S.find(sum[i + 1]));
     }
