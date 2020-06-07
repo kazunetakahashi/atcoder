@@ -278,6 +278,7 @@ private:
       ans += calc_E(e);
     }
     ans /= V[v].size();
+    ans += 1;
     return E[v] = ans;
   }
 
