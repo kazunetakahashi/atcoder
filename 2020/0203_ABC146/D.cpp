@@ -287,7 +287,7 @@ class Solve
   vector<int> C;
 
 public:
-  Solve(int N) : N{N}, V{ReadTree(N)}, K{0}
+  Solve(int N) : N{N}, V{ReadTree(N)}, K{0}, C(N - 1)
   {
   }
 
