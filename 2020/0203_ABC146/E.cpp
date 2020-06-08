@@ -237,25 +237,16 @@ int main()
   for (auto i{0}; i < N; ++i)
   {
     sum[i + 1] = A[i] + sum[i];
-    sum[i + 1] %= K;
   }
   map<ll, ll> M;
-  for (auto e : sum)
-  {
-    if (M.find(e) == M.end())
-    {
-      M[e] = 1;
-    }
-    else
-    {
-      M[e]++;
-    }
-  }
   ll ans{0};
-  for (auto const &e : M)
+  for (auto i{0}; i < N + 1; ++i)
   {
-    auto c{e.second};
-    ans += c * (c - 1) / 2;
+    ans += M[sum[i]];
+    if (i - K >= 0)
+    {
+      M[sum[i - K]]--;
+    }
   }
   cout << ans << endl;
 }
