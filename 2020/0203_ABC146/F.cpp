@@ -290,7 +290,7 @@ auto func = [](auto x, auto y) {
 auto _update = [](auto x, auto y) {
   return min(x, y);
 };
-constexpr ll unit{Infty<ll>()};
+constexpr ll unit{Infty<ll>() / 2};
 
 // ----- main() -----
 
@@ -320,12 +320,15 @@ int main()
   int now{0};
   while (now < N)
   {
+#if DEBUG == 1
+    cerr << "now = " << now << endl;
+#endif
     auto score{tree.find(now, now + 1)};
     for (auto i{now + 1}; i <= now + N; ++i)
     {
       if (tree.find(i, i + 1) == score + 1)
       {
-        ans.push_back(now - i);
+        ans.push_back(i - now);
         now = i;
         break;
       }
