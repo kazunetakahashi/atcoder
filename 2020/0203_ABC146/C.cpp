@@ -234,7 +234,7 @@ int main()
 {
   ll X;
   cin >> A >> B >> X;
-  ll ok{0}, ng{X + 1};
+  ll ok{0}, ng{1'000'000'000 + 1};
   while (abs(ok - ng) > 1)
   {
     auto t{(ok + ng) / 2};
