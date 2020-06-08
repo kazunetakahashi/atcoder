@@ -238,7 +238,7 @@ int main()
   while (abs(ok - ng) > 1)
   {
     auto t{(ok + ng) / 2};
-    if (X < t)
+    if (X < money(t))
     {
       ng = t;
     }
