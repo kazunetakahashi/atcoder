@@ -306,6 +306,9 @@ int main()
     if (S[i] == '0')
     {
       tree.update(i, tree.find(i + 1, min(N + 1, i + M + 1)) + 1);
+#if DEBUG == 1
+      cerr << "i = " << i << ", score = " << tree.find(i + 1, min(N + 1, i + M + 1)) + 1 << endl;
+#endif
     }
   }
   if (tree.find(0, 1) == Infty<ll>())
