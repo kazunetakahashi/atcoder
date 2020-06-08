@@ -326,7 +326,7 @@ int main()
     auto score{tree.find(now, now + 1)};
     for (auto i{now + 1}; i <= now + N; ++i)
     {
-      if (tree.find(i, i + 1) == score + 1)
+      if (tree.find(i, i + 1) == score - 1)
       {
         ans.push_back(i - now);
         now = i;
