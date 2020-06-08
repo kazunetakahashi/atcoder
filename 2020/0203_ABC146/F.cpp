@@ -305,7 +305,7 @@ int main()
   {
     if (S[i] == '0')
     {
-      tree.update(i, tree.find(i + 1, min(N, i + M)) + 1);
+      tree.update(i, tree.find(i + 1, min(N + 1, i + M + 1)) + 1);
     }
   }
   if (tree.find(0, 1) == Infty<ll>())
