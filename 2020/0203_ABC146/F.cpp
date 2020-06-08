@@ -320,9 +320,6 @@ int main()
   int now{0};
   while (now < N)
   {
-#if DEBUG == 1
-    cerr << "now = " << now << endl;
-#endif
     auto score{tree.find(now, now + 1)};
     for (auto i{now + 1}; i <= now + N; ++i)
     {
