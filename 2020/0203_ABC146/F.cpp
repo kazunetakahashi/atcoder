@@ -290,7 +290,7 @@ auto func = [](auto x, auto y) {
 auto _update = [](auto x, auto y) {
   return min(x, y);
 };
-constexpr ll unit{Infty<ll>() / 2};
+constexpr ll unit{Infty<ll>()};
 
 // ----- main() -----
 
@@ -306,7 +306,12 @@ int main()
   {
     if (S[i] == '0')
     {
-      tree.update(i, tree.find(i + 1, min(N + 1, i + M + 1)) + 1);
+      auto t{tree.find(i + 1, min(N + 1, i + M + 1))};
+      if (t == Infty<ll>())
+      {
+        continue;
+      }
+      tree.update(i, t + 1);
 #if DEBUG == 1
       cerr << "i = " << i << ", score = " << tree.find(i + 1, min(N + 1, i + M + 1)) + 1 << endl;
 #endif
