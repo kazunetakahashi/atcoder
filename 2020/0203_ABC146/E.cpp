@@ -237,6 +237,7 @@ int main()
   for (auto i{0}; i < N; ++i)
   {
     sum[i + 1] = A[i] + sum[i];
+    sum[i + 1] %= K;
   }
   map<ll, ll> M;
   ll ans{0};
