@@ -243,12 +243,12 @@ int main()
   ll ans{0};
   for (auto i{0}; i < N + 1; ++i)
   {
-    ans += M[sum[i]];
-    M[sum[i]]++;
     if (i - K >= 0)
     {
       M[sum[i - K]]--;
     }
+    ans += M[sum[i]];
+    M[sum[i]]++;
   }
   cout << ans << endl;
 }
