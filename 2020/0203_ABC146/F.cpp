@@ -299,6 +299,7 @@ int main()
   int N, M;
   cin >> N >> M;
   string S;
+  cin >> S;
   SegTree<ll> tree{N + 1, unit, func, _update};
   tree.update(N, 0);
   for (auto i{N - 1}; i >= 0; --i)
