@@ -252,8 +252,11 @@ int main()
       }
     }
   }
+#if DEBUG == 1
+  cerr << "N = " << N << endl;
+#endif
   int ans{0};
-  for (auto i{0}; i < (1 << N); ++i)
+  for (auto i{0}; i < 1 << N; ++i)
   {
 #if DEBUG == 1
     cerr << "i = " << i << endl;
