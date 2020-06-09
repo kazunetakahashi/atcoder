@@ -252,9 +252,6 @@ int main()
       }
     }
   }
-#if DEBUG == 1
-  cerr << "N = " << N << endl;
-#endif
   int ans{0};
   for (auto i{0}; i < 1 << N; ++i)
   {
@@ -267,13 +264,13 @@ int main()
       vector<int> *honest, *unkind;
       if (i >> j & 1)
       {
-        honest = &V[i].honest;
-        unkind = &V[i].unkind;
+        honest = &(V[i].honest);
+        unkind = &(V[i].unkind);
       }
       else
       {
-        unkind = &V[i].honest;
-        honest = &V[i].unkind;
+        unkind = &(V[i].honest);
+        honest = &(V[i].unkind);
       }
       for (auto e : *honest)
       {
