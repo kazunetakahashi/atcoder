@@ -265,7 +265,7 @@ int main()
       cerr << "j = " << j << endl;
 #endif
       vector<int> *honest, *unkind;
-      if (i >> j & 1)
+      if ((i >> j) & 1)
       {
         honest = &(V[i].honest);
         unkind = &(V[i].unkind);
@@ -280,14 +280,14 @@ int main()
 #if DEBUG == 1
         cerr << "e = " << e << endl;
 #endif
-        if (!(i >> e & 1))
+        if (!((i >> e) & 1))
         {
           ok = false;
         }
       }
       for (auto e : *unkind)
       {
-        if (i >> e & 1)
+        if ((i >> e) & 1)
         {
           ok = false;
         }
