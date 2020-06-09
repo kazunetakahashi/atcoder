@@ -236,7 +236,7 @@ public:
     cin >> N >> X >> D;
     if (D == 0 && X == 0)
     {
-      cout << 0 << endl;
+      cout << 1 << endl;
       exit(0);
     }
     if (D == 0 && X != 0)
