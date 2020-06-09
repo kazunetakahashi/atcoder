@@ -253,7 +253,7 @@ public:
 
   void flush()
   {
-    for (auto i{0}; i <= N; ++i)
+    for (auto i{0LL}; i <= N; ++i)
     {
       set_schedule(i);
     }
@@ -311,9 +311,9 @@ private:
       r += D;
     }
     ll m{(K * X - r) / D};
-    V[m];
-    V[m].push_back(Schedule{m + L, true});
-    V[m].push_back(Schedule{m + R + 1, false});
+    V[r];
+    V[r].push_back(Schedule{m + L, true});
+    V[r].push_back(Schedule{m + R + 1, false});
   }
 };
 
