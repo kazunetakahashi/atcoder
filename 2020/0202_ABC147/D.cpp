@@ -225,7 +225,7 @@ void No()
 
 int main()
 {
-  int N;
+  ll N;
   cin >> N;
   vector<ll> A(N);
   for (auto i{0}; i < N; ++i)
@@ -235,20 +235,15 @@ int main()
   mint ans{0};
   for (auto j{0}; j < 60; ++j)
   {
-    ll zero{0}, one{0};
+    mint one{0};
     for (auto i{0}; i < N; ++i)
     {
       if (A[i] >> j & 1)
       {
-        ans += (1LL << j) * zero;
         ++one;
       }
-      else
-      {
-        ans += (1LL << j) * one;
-        ++zero;
-      }
     }
+    ans += one * (N - one) * (1LL << j);
   }
   cout << ans << endl;
 }
