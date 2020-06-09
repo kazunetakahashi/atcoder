@@ -264,25 +264,18 @@ int main()
 #if DEBUG == 1
       cerr << "j = " << j << endl;
 #endif
-      vector<int> *honest, *unkind;
-      if (i >> j & 1)
+      if (!(i >> j & 1))
       {
-        honest = &(V[i].honest);
-        unkind = &(V[i].unkind);
+        continue;
       }
-      else
-      {
-        unkind = &(V[i].honest);
-        honest = &(V[i].unkind);
-      }
-      for (auto e : *honest)
+      for (auto e : V[j].honest)
       {
         if (!(i >> e & 1))
         {
           ok = false;
         }
       }
-      for (auto e : *unkind)
+      for (auto e : V[j].honest)
       {
         if (i >> e & 1)
         {
@@ -290,9 +283,6 @@ int main()
         }
       }
     }
-#if DEBUG == 1
-    cerr << "popcount(" << i << ") = " << popcount(i) << endl;
-#endif
     if (ok)
     {
       ch_max(ans, popcount(i));
