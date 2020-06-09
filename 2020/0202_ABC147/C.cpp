@@ -255,15 +255,9 @@ int main()
   int ans{0};
   for (auto i{0}; i < 1 << N; ++i)
   {
-#if DEBUG == 1
-    cerr << "i = " << i << endl;
-#endif
     bool ok{true};
     for (auto j{0}; j < N; ++j)
     {
-#if DEBUG == 1
-      cerr << "j = " << j << endl;
-#endif
       if (!(i >> j & 1))
       {
         continue;
@@ -275,7 +269,7 @@ int main()
           ok = false;
         }
       }
-      for (auto e : V[j].honest)
+      for (auto e : V[j].unkind)
       {
         if (i >> e & 1)
         {
