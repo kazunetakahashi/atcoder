@@ -267,13 +267,13 @@ int main()
       G[i][j] = abs(G[i][j] - t);
     }
   }
-  auto dp{Make3DVector<bool>(H, W, C, false)};
-  dp[0][0][G[0][0]] = true;
+  auto dp{Make3DVector<bool>(H, W, 2 * C, false)};
+  dp[0][0][G[0][0] + C] = true;
   for (auto i{0}; i < H; ++i)
   {
     for (auto j{0}; j < W; ++j)
     {
-      for (auto k{0}; k < C; ++k)
+      for (auto k{0}; k < 2 * C; ++k)
       {
         if (!dp[i][j][k])
         {
@@ -282,28 +282,23 @@ int main()
         if (i < H - 1)
         {
           dp[i + 1][j][k + G[i + 1][j]] = true;
-          if (k - G[i + 1][j] >= 0)
-          {
-            dp[i + 1][j][k - G[i + 1][j]] = true;
-          }
+          dp[i + 1][j][k - G[i + 1][j]] = true;
         }
         if (j < W - 1)
         {
           dp[i][j + 1][k + G[i][j + 1]] = true;
-          if (k - G[i][j + 1] >= 0)
-          {
-            dp[i][j + 1][k - G[i][j + 1]] = true;
-          }
+          dp[i][j + 1][k - G[i][j + 1]] = true;
         }
       }
     }
   }
-  for (auto k{0}; k < C; ++k)
+  int ans{2 * C};
+  for (auto k{0}; k < 2 * C; ++k)
   {
     if (dp[H - 1][W - 1][k])
     {
-      cout << k << endl;
-      return 0;
+      ch_min(ans, abs(k - C));
     }
   }
+  cout << ans << endl;
 }
