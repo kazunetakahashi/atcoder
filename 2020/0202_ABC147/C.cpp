@@ -261,6 +261,9 @@ int main()
     bool ok{true};
     for (auto j{0}; j < N; ++j)
     {
+#if DEBUG == 1
+      cerr << "j = " << j << endl;
+#endif
       vector<int> *honest, *unkind;
       if (i >> j & 1)
       {
@@ -274,6 +277,9 @@ int main()
       }
       for (auto e : *honest)
       {
+#if DEBUG == 1
+        cerr << "e = " << e << endl;
+#endif
         if (!(i >> e & 1))
         {
           ok = false;
