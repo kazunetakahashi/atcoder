@@ -290,11 +290,11 @@ int main()
         }
       }
     }
+#if DEBUG == 1
+    cerr << "popcount(" << i << ") = " << popcount(i) << endl;
+#endif
     if (ok)
     {
-#if DEBUG == 1
-      cerr << "popcount(" << i << ") = " << popcount(i) << endl;
-#endif
       ch_max(ans, popcount(i));
     }
   }
