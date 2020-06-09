@@ -255,6 +255,9 @@ int main()
   int ans{0};
   for (auto i{0}; i < 1 << N; ++i)
   {
+#if DEBUG == 1
+    cerr << "i = " << i << endl;
+#endif
     bool ok{true};
     for (auto j{0}; j < N; ++j)
     {
