@@ -304,6 +304,9 @@ private:
     {
       info += shake(i, K);
     }
+#if DEBUG == 1
+    cerr << "K = " << K << ", num = " << info.num << ", score = " << info.score << endl;
+#endif
     if (info.num > M)
     {
       return -1;
