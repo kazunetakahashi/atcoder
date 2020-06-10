@@ -243,7 +243,7 @@ int main()
   M = N;
   while (M >= 10)
   {
-    two += M / 10;
+    five += M / 10;
     M /= 10;
   }
   cout << min(two, five) << endl;
