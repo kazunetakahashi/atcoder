@@ -232,19 +232,12 @@ int main()
     cout << 0 << endl;
     return 0;
   }
-  ll two{0};
   ll M{N};
-  while (M >= 2)
-  {
-    two += M / 2;
-    M /= 2;
-  }
   ll five{0};
-  M = N;
   while (M >= 5)
   {
     five += M / 10;
     M /= 5;
   }
-  cout << min(two, five) << endl;
+  cout << five << endl;
 }
