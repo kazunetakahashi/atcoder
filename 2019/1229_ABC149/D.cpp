@@ -232,10 +232,12 @@ int main()
   string T;
   cin >> T;
   int ans{0};
+  vector<bool> win(N, true);
   for (auto i{0}; i < N; ++i)
   {
-    if (i - K >= 0 && T[i] == T[i - K])
+    if (i - K >= 0 && T[i] == T[i - K] && win[i - K])
     {
+      win[i] = false;
       continue;
     }
     if (T[i] == 'r')
