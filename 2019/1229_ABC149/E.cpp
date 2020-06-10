@@ -259,22 +259,22 @@ public:
   void flush()
   {
     ll ok{200'010}, ng{-1};
-    ll ans{0};
+    Info res;
     while (abs(ok - ng) > 1)
     {
       ll t{(ok + ng) / 2};
-      ll s{shake(t)};
-      if (s >= 0)
+      Info info{shake(t)};
+      if (info.num <= M)
       {
         ok = t;
-        ch_max(ans, s);
+        res = info;
       }
       else
       {
         ng = t;
       }
     }
-    cout << ans << endl;
+    cout << res.score + (M - res.num) * (ok - 1) << endl;
   }
 
 private:
@@ -297,7 +297,7 @@ private:
     return Info{ok + 1, sum[ok + 1] + A[p] * (ok + 1)};
   }
 
-  ll shake(ll K)
+  Info shake(ll K)
   {
     Info info{0, 0};
     for (auto i{0}; i < N; ++i)
@@ -307,14 +307,7 @@ private:
 #if DEBUG == 1
     cerr << "K = " << K << ", num = " << info.num << ", score = " << info.score << endl;
 #endif
-    if (info.num > M)
-    {
-      return -1;
-    }
-    else
-    {
-      return info.score;
-    }
+    return info;
   }
 };
 
