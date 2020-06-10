@@ -227,7 +227,7 @@ int main()
 {
   ll N;
   cin >> N;
-  if (N & 1 == 0)
+  if (N & 1)
   {
     cout << 0 << endl;
     return 0;
