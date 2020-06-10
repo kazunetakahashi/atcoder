@@ -237,12 +237,12 @@ Info &operator+=(Info &x, Info const &y)
 
 class Solve
 {
-  int N, M;
+  ll N, M;
   vector<ll> A;
   vector<ll> sum;
 
 public:
-  Solve(int N) : N{N}, A(N), sum(N + 1, 0)
+  Solve(ll N) : N{N}, A(N), sum(N + 1, 0)
   {
     cin >> M;
     for (auto i{0}; i < N; ++i)
@@ -281,10 +281,10 @@ private:
   Info shake(int p, ll K)
   {
     K -= A[p];
-    int ok{-1}, ng{N};
+    ll ok{-1}, ng{N};
     while (abs(ok - ng) > 1)
     {
-      int t{(ok + ng) / 2};
+      ll t{(ok + ng) / 2};
       if (A[t] >= K)
       {
         ok = t;
@@ -313,7 +313,7 @@ private:
 
 int main()
 {
-  int N;
+  ll N;
   cin >> N;
   Solve solve(N);
   solve.flush();
