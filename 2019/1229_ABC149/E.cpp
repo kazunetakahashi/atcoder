@@ -250,10 +250,7 @@ public:
       cin >> A[i];
     }
     sort(A.rbegin(), A.rend());
-    for (auto i{0}; i < N; ++i)
-    {
-      sum[i + 1] = sum[i] + A[i];
-    }
+    partial_sum(A.begin(), A.end(), sum.begin() + 1);
   }
 
   void flush()
