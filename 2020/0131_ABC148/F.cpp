@@ -306,7 +306,7 @@ public:
         ch_max(ans, DAoki[i]);
       }
     }
-    cout << ans << endl;
+    cout << ans - 1 << endl;
   }
 
 private:
