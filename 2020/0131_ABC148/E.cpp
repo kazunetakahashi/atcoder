@@ -241,10 +241,10 @@ int main()
   }
   ll five{0};
   M = N;
-  while (M >= 10)
+  while (M >= 5)
   {
     five += M / 10;
-    M /= 10;
+    M /= 5;
   }
   cout << min(two, five) << endl;
 }
