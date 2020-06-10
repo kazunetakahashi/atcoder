@@ -225,4 +225,27 @@ void No()
 
 int main()
 {
+  int N;
+  cin >> N;
+  vector<int> A(N);
+  for (auto i{0}; i < N; ++i)
+  {
+    cin >> A[i];
+  }
+  int now{1};
+  for (auto e : A)
+  {
+    if (e == now)
+    {
+      ++now;
+    }
+  }
+  if (now > 1)
+  {
+    cout << N - (now - 1) << endl;
+  }
+  else
+  {
+    cout << -1 << endl;
+  }
 }
