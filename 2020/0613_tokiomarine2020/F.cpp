@@ -237,7 +237,7 @@ public:
     {
       ans += calc(0, y);
     }
-    for (auto s{1LL}; s < W; ++s)
+    for (auto s{1LL}; s < W - 1; ++s)
     {
       for (auto y{1LL}; (H - y) * s <= 2 * K + H - 1 && y < H; ++y)
       {
