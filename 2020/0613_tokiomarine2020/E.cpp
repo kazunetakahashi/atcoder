@@ -333,7 +333,7 @@ private:
 #if DEBUG == 1
     cerr << "B.size() = " << B.size() << endl;
 #endif
-    for (auto i{0}; i < C; ++i)
+    for (auto i{0}; i < N; ++i)
     {
       if (ok[i])
       {
