@@ -285,6 +285,10 @@ private:
   int calc_ans(int v, int l)
   {
     vector<Info> T{Info{0, 0}};
+#if DEBUG == 1
+    cerr << "Here" << endl;
+#endif
+
     while (v >= 1 << D)
     {
       vector<Info> U;
@@ -305,9 +309,6 @@ private:
       }
       ch_max(ans, DP[v][l - e.weight] + e.value);
     }
-#if DEBUG == 1
-    cerr << "Here" << endl;
-#endif
     return ans;
   }
 
