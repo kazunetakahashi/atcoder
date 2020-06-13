@@ -244,7 +244,7 @@ class Solve
   vector<vector<int>> DP;
 
 public:
-  Solve() : V(1), W(1), DP(1 << D)
+  Solve() : V(1), W(1), X{}, L{}, DP(1 << D)
   {
     cin >> N;
     for (auto i{0}; i < N; ++i)
