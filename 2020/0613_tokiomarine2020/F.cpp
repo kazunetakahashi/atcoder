@@ -264,18 +264,18 @@ private:
     }
     ll ans{min(W - s - 1, R / H)};
     ll x{R / H + 1};
+#if DEBUG == 1
+    cerr << "ans = " << ans << endl;
+    cerr << "x = " << x << endl;
+#endif
     if (x + s < W && H * x - gcd(H - y, x) + gcd(y, x + s) <= R)
     {
-#if DEBUG == 1
-      cerr << "true" << endl;
-#endif
       ++ans;
     }
 #if DEBUG == 1
     if (H < 10)
     {
       cerr << "calc(" << s << ", " << y << ") = " << ans << endl;
-      cerr << "R = " << R << endl;
     }
 #endif
     return ans;
