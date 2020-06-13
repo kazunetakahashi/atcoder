@@ -285,6 +285,6 @@ int main()
   ll W, H, K;
   cin >> W >> H >> K;
   Solve solve(W, H, K), solve2(H, W, K);
-  ll ans{solve.answer() + solve2.answer()};
+  ll ans{2 * solve.answer() + 2 * solve2.answer()};
   cout << ans << endl;
 }
