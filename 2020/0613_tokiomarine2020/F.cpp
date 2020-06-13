@@ -241,12 +241,6 @@ public:
       for (auto y{1LL}; (H - y) * s <= 2 * K + H - 2 && y < H; ++y)
       {
         ll tmp{calc(s, y)};
-#if DEBUG == 1
-        if (H < 10)
-        {
-          cerr << "calc(" << s << ", " << y << ") = " << calc(s, y) << endl;
-        }
-#endif
         if (s == 0)
         {
           ans += tmp;
@@ -274,6 +268,13 @@ private:
     {
       ++ans;
     }
+#if DEBUG == 1
+    if (H < 10)
+    {
+      cerr << "calc(" << s << ", " << y << ") = " << ans << endl;
+      cerr << "R = " << R << endl;
+    }
+#endif
     return ans;
   }
 };
