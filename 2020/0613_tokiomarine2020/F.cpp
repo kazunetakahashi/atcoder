@@ -241,6 +241,12 @@ public:
       for (auto y{1LL}; (H - y) * s <= 2 * K + H - 2 && y < H; ++y)
       {
         ll tmp{calc(s, y)};
+#if DEBUG == 1
+        if (H < 10)
+        {
+          cerr << "calc(" << s << ", " << y << ") = " << calc(s, y) << endl;
+        }
+#endif
         if (s == 0)
         {
           ans += tmp;
@@ -258,36 +264,16 @@ private:
   ll calc(ll s, ll y)
   {
     ll R{2 * K - (H - y) * s + gcd(H, s) - 2};
-#if DEBUG == 1
-    if (H < 10)
-    {
-      cerr << "s = " << s << ", y = " << y << endl;
-      cerr << "R = " << R << endl;
-    }
-#endif
     if (R < 0)
     {
       return 0;
     }
     ll ans{min(W - s - 1, R / H)};
     ll x{R / H + 1};
-#if DEBUG == 1
-    if (H < 10)
-    {
-      cerr << "ans = " << ans << endl;
-      cerr << "x = " << x << endl;
-    }
-#endif
     if (x + s < W && H * x - gcd(H - y, x) + gcd(y, x + s) <= R)
     {
       ++ans;
     }
-#if DEBUG == 1
-    if (H < 10)
-    {
-      cerr << "ans = " << ans << endl;
-    }
-#endif
     return ans;
   }
 };
