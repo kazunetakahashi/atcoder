@@ -296,9 +296,6 @@ private:
       copy(U.begin(), U.end(), back_inserter(T));
       v >>= 1;
     }
-#if DEBUG == 1
-    cerr << "Here" << endl;
-#endif
     int ans{0};
     for (auto const &e : T)
     {
@@ -306,6 +303,10 @@ private:
       {
         continue;
       }
+#if DEBUG == 1
+      cerr << "e.weight = " << e.weight << endl;
+      cerr << "e.value = " << e.value << endl;
+#endif
       ch_max(ans, DP[v][l - e.weight] + e.value);
     }
     return ans;
