@@ -250,7 +250,7 @@ public:
 private:
   ll calc(ll s, ll y)
   {
-    ll R{2 * K - H * s + s * y + gcd(s, H) + 1};
+    ll R{2 * K - (H - y) * s + gcd(H, s) - 1};
     if (R < 0)
     {
       return 0;
