@@ -277,7 +277,7 @@ public:
       cerr << "X[" << i << "] = " << X[i] << endl;
       cerr << "L[" << i << "] = " << L[i] << endl;
 #endif
-      cerr << calc_ans(X[i], L[i]) << endl;
+      cout << calc_ans(X[i], L[i]) << endl;
     }
   }
 
