@@ -337,6 +337,9 @@ private:
         B.push_back(A[i]);
       }
     }
+#if DEBUG == 1
+    cerr << "B.size() = " << B.size() << endl;
+#endif
     swap(A, B);
     N = static_cast<int>(A.size());
     int k{0};
