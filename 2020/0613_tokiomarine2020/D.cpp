@@ -289,6 +289,7 @@ private:
         U.push_back(tmp + e);
       }
       copy(U.begin(), U.end(), back_inserter(T));
+      v >>= 1;
     }
     int ans{0};
     for (auto const &e : T)
