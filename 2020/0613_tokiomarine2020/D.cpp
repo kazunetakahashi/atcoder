@@ -272,6 +272,9 @@ public:
     }
     for (auto i{0}; i < Q; ++i)
     {
+#if DEBUG == 1
+      cerr << "i = " << i << endl;
+#endif
       cerr << calc_ans(X[i], L[i]) << endl;
     }
   }
