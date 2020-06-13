@@ -250,14 +250,14 @@ int main()
 
 int main()
 {
-  int N;
-  cin >> N;
+  int N, K;
+  cin >> N >> K;
   vector<int> A(N + 1);
   for (auto i{0}; i < N; ++i)
   {
     cin >> A[i];
   }
-  for (auto k{0}; k < N; ++k)
+  for (auto k{0}; k < K; ++k)
   {
     vector<int> B(N, 0);
     for (auto i{0}; i < N; ++i)
@@ -268,6 +268,10 @@ int main()
     for (auto i{0}; i < N; ++i)
     {
       B[i + 1] += B[i];
+    }
+    if (A == B)
+    {
+      break;
     }
     swap(A, B);
   }
