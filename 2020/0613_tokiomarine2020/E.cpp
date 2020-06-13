@@ -252,13 +252,6 @@ public:
       cin >> A[i];
     }
     normalize();
-#if DEBUG == 1
-    cerr << "N = " << N << endl;
-    for (auto i{0}; i < N; ++i)
-    {
-      cerr << "A[" << i << "] = " << A[i] << endl;
-    }
-#endif
   }
 
   void flush()
@@ -347,6 +340,7 @@ private:
       }
       ++k;
     }
+    swap(A, B);
     M = k;
   }
 };
