@@ -257,15 +257,13 @@ public:
 private:
   ll calc(ll s, ll y)
   {
+    ll R{2 * K - (H - y) * s + gcd(H, s) + 2};
 #if DEBUG == 1
     if (H < 10)
     {
       cerr << "s = " << s << ", y = " << y << endl;
+      cerr << "R = " << R << endl;
     }
-#endif
-    ll R{2 * K - (H - y) * s + gcd(H, s) + 2};
-#if DEBUG == 1
-    cerr << "R = " << R << endl;
 #endif
     if (R < 0)
     {
