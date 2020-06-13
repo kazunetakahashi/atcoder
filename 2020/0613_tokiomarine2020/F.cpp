@@ -270,6 +270,7 @@ private:
       cerr << "ans = " << ans << endl;
       cerr << "x = " << x << endl;
       cerr << "R = " << R << endl;
+      cerr << H << " * " << x << " - gcd(" << H - y << ", " << x << ") + gcd(" << y << ", " << x + s << ")" << endl;
     }
 #endif
     if (x + s < W && H * x - gcd(H - y, x) + gcd(y, x + s) <= R)
