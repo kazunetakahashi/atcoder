@@ -262,8 +262,8 @@ int main()
     vector<int> B(N + 1, 0);
     for (auto i{0}; i < N; ++i)
     {
-      B[min(0, i - A[i])]++;
-      B[max(N, i + A[i] + 1)]--;
+      B[max(0, i - A[i])]++;
+      B[min(N, i + A[i] + 1)]--;
     }
     for (auto i{0}; i < N; ++i)
     {
