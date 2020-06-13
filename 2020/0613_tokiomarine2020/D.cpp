@@ -285,10 +285,6 @@ private:
   int calc_ans(int v, int l)
   {
     vector<Info> T{Info{0, 0}};
-#if DEBUG == 1
-    cerr << "Here" << endl;
-#endif
-
     while (v >= 1 << D)
     {
       vector<Info> U;
@@ -300,6 +296,9 @@ private:
       copy(U.begin(), U.end(), back_inserter(T));
       v >>= 1;
     }
+#if DEBUG == 1
+    cerr << "Here" << endl;
+#endif
     int ans{0};
     for (auto const &e : T)
     {
