@@ -282,6 +282,12 @@ private:
     {
       ++ans;
     }
+#if DEBUG == 1
+    if (H < 10)
+    {
+      cerr << "ans = " << ans << endl;
+    }
+#endif
     return ans;
   }
 };
