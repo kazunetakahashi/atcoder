@@ -239,7 +239,7 @@ public:
     }
     for (auto s{1LL}; s < W; ++s)
     {
-      for (auto y{1LL}; (H - s) * y <= 2 * K + H - 2 && y < H; ++y)
+      for (auto y{1LL}; (H - y) * s <= 2 * K + H - 1 && y < H; ++y)
       {
         ans += calc(s, y);
       }
