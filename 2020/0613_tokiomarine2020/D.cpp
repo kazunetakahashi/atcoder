@@ -255,7 +255,7 @@ public:
       W.push_back(y);
     }
     cin >> Q;
-    for (auto i{0}; i < N; ++i)
+    for (auto i{0}; i < Q; ++i)
     {
       int x, y;
       cin >> x >> y;
