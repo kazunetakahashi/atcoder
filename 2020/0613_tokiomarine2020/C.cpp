@@ -252,14 +252,14 @@ int main()
 {
   int N, K;
   cin >> N >> K;
-  vector<int> A(N + 1);
+  vector<int> A(N + 1, 0);
   for (auto i{0}; i < N; ++i)
   {
     cin >> A[i];
   }
   for (auto k{0}; k < K; ++k)
   {
-    vector<int> B(N, 0);
+    vector<int> B(N + 1, 0);
     for (auto i{0}; i < N; ++i)
     {
       B[min(0, i - A[i])]++;
