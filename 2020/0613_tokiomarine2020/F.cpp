@@ -266,6 +266,9 @@ private:
     ll x{R / H + 1};
     if (x + s < W && H * x - gcd(H - y, x) + gcd(y, x + s) <= R)
     {
+#if DEBUG == 1
+      cerr << "true" << endl;
+#endif
       ++ans;
     }
 #if DEBUG == 1
