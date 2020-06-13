@@ -235,7 +235,7 @@ public:
     ll ans{0};
     for (auto s{0LL}; s < W - 1; ++s)
     {
-      for (auto y{H - 1}; 2 * K - (H - y) * s + H - 2 >= 0 && y >= 0LL; --y)
+      for (auto y{H - 1}; rhs_bound(s, y) >= 0 && y >= 0LL; --y)
       {
         ll tmp{calc(s, y)};
         if (s == 0)
@@ -252,16 +252,31 @@ public:
   }
 
 private:
+  ll rhs(ll s, ll y)
+  {
+    return 2 * K - s * (H - y) + gcd(s, H) - 2;
+  }
+
+  ll rhs_bound(ll s, ll y)
+  {
+    return 2 * K - s * (H - y) + H - 2;
+  }
+
+  ll lhs(ll x, ll s, ll y)
+  {
+    return H * x - gcd(H - y, x) - gcd(y, x + s);
+  }
+
   ll calc(ll s, ll y)
   {
-    ll R{2 * K - (H - y) * s + gcd(H, s) - 2};
+    ll R{rhs(s, y)};
     if (R < 0)
     {
       return 0;
     }
     ll ans{min(W - s - 1, R / H)};
     ll x{R / H + 1};
-    if (x + s < W && H * x - gcd(H - y, x) - gcd(y, x + s) <= R)
+    if (x + s < W && lhs(x, s, y) <= R)
     {
       ++ans;
     }
