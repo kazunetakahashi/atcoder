@@ -235,7 +235,7 @@ public:
     ll ans{0};
     for (auto s{0LL}; s < W - 1; ++s)
     {
-      for (auto y{0LL}; rhs_bound(s, y) >= 0 && y < H - 1; ++y)
+      for (auto y{1LL}; rhs_bound(s, y) >= 0 && y < H - 1; ++y)
       {
         ll tmp{calc(s, y)};
         if (s == 0)
