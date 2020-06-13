@@ -239,7 +239,7 @@ public:
     }
     for (auto s{1LL}; s < W - 1; ++s)
     {
-      for (auto y{1LL}; (H - y) * s <= 2 * K + H - 1 && y < H; ++y)
+      for (auto y{1LL}; (H - y) * s <= 2 * K + H + 2 && y < H; ++y)
       {
         ans += calc(s, y);
       }
@@ -250,7 +250,7 @@ public:
 private:
   ll calc(ll s, ll y)
   {
-    ll R{2 * K - (H - y) * s + gcd(H, s) - 1};
+    ll R{2 * K - (H - y) * s + gcd(H, s) + 2};
     if (R < 0)
     {
       return 0;
