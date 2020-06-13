@@ -251,7 +251,21 @@ public:
     {
       cin >> A[i];
     }
+#if DEBUG == 1
+    cerr << "N = " << N << endl;
+    for (auto i{0}; i < N; ++i)
+    {
+      cerr << "A[" << i << "] = " << A[i] << endl;
+    }
+#endif
     normalize();
+#if DEBUG == 1
+    cerr << "N = " << N << endl;
+    for (auto i{0}; i < N; ++i)
+    {
+      cerr << "A[" << i << "] = " << A[i] << endl;
+    }
+#endif
   }
 
   void flush()
