@@ -255,9 +255,9 @@ private:
     {
       return 0;
     }
-    ll ans{min(W - 1, R / H)};
+    ll ans{min(W - s - 1, R / H)};
     ll x{R / H + 1};
-    if (x <= W - 1 && H * x - gcd(H - y, x) + gcd(y, x + s) <= R)
+    if (x + s < W && H * x - gcd(H - y, x) + gcd(y, x + s) <= R)
     {
       ++ans;
     }
