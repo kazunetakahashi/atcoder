@@ -238,7 +238,7 @@ public:
     ll ans{0};
     for (auto s{0LL}; s < W - 1; ++s)
     {
-      for (auto y{1LL}; (H - y) * s <= 2 * K + H + 2 && y < H; ++y)
+      for (auto y{1LL}; (H - y) * s <= 2 * K + H - 2 && y < H; ++y)
       {
         ll tmp{calc(s, y)};
         if (s == 0)
@@ -257,7 +257,7 @@ public:
 private:
   ll calc(ll s, ll y)
   {
-    ll R{2 * K - (H - y) * s + gcd(H, s) + 2};
+    ll R{2 * K - (H - y) * s + gcd(H, s) - 2};
 #if DEBUG == 1
     if (H < 10)
     {
