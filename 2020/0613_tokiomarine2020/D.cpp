@@ -274,6 +274,8 @@ public:
     {
 #if DEBUG == 1
       cerr << "i = " << i << endl;
+      cerr << "X[" << i << "] = " << X[i] << endl;
+      cerr << "L[" << i << "] = " << L[i] << endl;
 #endif
       cerr << calc_ans(X[i], L[i]) << endl;
     }
