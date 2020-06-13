@@ -223,7 +223,7 @@ void No()
 
 // ----- Solve -----
 
-constexpr int D{12};
+constexpr int D{4};
 constexpr int M{100010};
 
 struct Info
@@ -271,18 +271,13 @@ public:
 
   void flush()
   {
-    for (auto i{0}; i < min(N, 1 << D); ++i)
+    for (auto i{0}; i < min(N + 1, 1 << D); ++i)
     {
       DP[i] = make_knapsack(i);
     }
     for (auto i{0}; i < Q; ++i)
     {
-#if DEBUG == 1
-      cerr << "i = " << i << endl;
-      cerr << "X[" << i << "] = " << X[i] << endl;
-      cerr << "L[" << i << "] = " << L[i] << endl;
-#endif
-      cout << calc_ans(X[i], L[i]) << endl;
+      cerr << calc_ans(X[i], L[i]) << endl;
     }
   }
 
