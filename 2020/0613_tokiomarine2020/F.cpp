@@ -232,16 +232,26 @@ public:
 
   ll answer()
   {
+#if DEBUG == 1
+    cerr << "W = " << W << ", H = " << H << endl;
+#endif
     ll ans{0};
-    for (auto y{1LL}; y < H; ++y)
-    {
-      ans += calc(0, y);
-    }
-    for (auto s{1LL}; s < W - 1; ++s)
+    for (auto s{0LL}; s < W - 1; ++s)
     {
       for (auto y{1LL}; (H - y) * s <= 2 * K + H + 2 && y < H; ++y)
       {
-        ans += 2 * calc(s, y);
+        ll tmp{calc(s, y)};
+#if DEBUG == 1
+        cerr << "calc(" << s << ", " << y << ") = " << tmp << endl;
+#endif
+        if (s == 0)
+        {
+          ans += tmp;
+        }
+        else
+        {
+          ans += 2 * tmp;
+        }
       }
     }
     return ans;
