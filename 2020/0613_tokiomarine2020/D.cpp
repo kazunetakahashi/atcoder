@@ -223,7 +223,7 @@ void No()
 
 // ----- Solve -----
 
-constexpr int D{2};
+constexpr int D{12};
 constexpr int M{100010};
 
 struct Info
@@ -277,7 +277,7 @@ public:
     }
     for (auto i{0}; i < Q; ++i)
     {
-      cerr << calc_ans(X[i], L[i]) << endl;
+      cout << calc_ans(X[i], L[i]) << endl;
     }
   }
 
@@ -303,15 +303,8 @@ private:
       {
         continue;
       }
-#if DEBUG == 1
-      cerr << "e.weight = " << e.weight << endl;
-      cerr << "e.value = " << e.value << endl;
-#endif
       ch_max(ans, DP[v][l - e.weight] + e.value);
     }
-#if DEBUG == 1
-    cerr << "ans = " << ans << endl;
-#endif
     return ans;
   }
 
