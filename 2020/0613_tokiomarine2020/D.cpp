@@ -236,6 +236,11 @@ Info operator+(Info const &l, Info const &r)
   return Info{l.value + r.value, l.weight + r.weight};
 }
 
+ostream &operator<<(ostream &os, Info const &x)
+{
+  return os << "(" << x.value << ", " << x.weight << ")";
+}
+
 class Solve
 {
   int N, Q;
@@ -309,6 +314,9 @@ private:
 #endif
       ch_max(ans, DP[v][l - e.weight] + e.value);
     }
+#if DEBUG == 1
+    cerr << "ans = " << ans << endl;
+#endif
     return ans;
   }
 
