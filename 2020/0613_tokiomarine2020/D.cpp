@@ -266,7 +266,7 @@ public:
 
   void flush()
   {
-    for (auto i{0}; i < 1 << D; ++i)
+    for (auto i{0}; i < min(N, 1 << D); ++i)
     {
       DP[i] = make_knapsack(i);
     }
