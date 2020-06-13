@@ -235,7 +235,7 @@ public:
     ll ans{0};
     for (auto s{0LL}; s < W - 1; ++s)
     {
-      for (auto y{1LL}; (H - y) * s <= 2 * K + 2 * H - 2 && y < H; ++y)
+      for (auto y{1LL}; 2 * K - (H - y) * s + H - 2 >= 0 && y < H; ++y)
       {
         ll tmp{calc(s, y)};
         if (s == 0)
