@@ -223,7 +223,7 @@ void No()
 
 // ----- Solve -----
 
-constexpr int D{2};
+constexpr int D{12};
 constexpr int M{100010};
 
 struct Info
