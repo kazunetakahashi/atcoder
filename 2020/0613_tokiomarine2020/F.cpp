@@ -241,7 +241,7 @@ public:
     {
       for (auto y{1LL}; (H - y) * s <= 2 * K + H + 2 && y < H; ++y)
       {
-        ans += calc(s, y);
+        ans += 2 * calc(s, y);
       }
     }
     return ans;
@@ -272,6 +272,6 @@ int main()
   ll W, H, K;
   cin >> W >> H >> K;
   Solve solve(W, H, K), solve2(H, W, K);
-  ll ans{2 * (solve.answer() + solve2.answer())};
+  ll ans{solve.answer() + solve2.answer()};
   cout << ans << endl;
 }
