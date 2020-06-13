@@ -265,6 +265,7 @@ public:
     {
       cerr << "A[" << i << "] = " << A[i] << endl;
     }
+    cerr << "M = " << M << endl;
 #endif
   }
 
