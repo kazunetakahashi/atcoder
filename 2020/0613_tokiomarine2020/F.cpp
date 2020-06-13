@@ -242,7 +242,10 @@ public:
       {
         ll tmp{calc(s, y)};
 #if DEBUG == 1
-        cerr << "calc(" << s << ", " << y << ") = " << tmp << endl;
+        if (H < 10)
+        {
+          cerr << "calc(" << s << ", " << y << ") = " << tmp << endl;
+        }
 #endif
         if (s == 0)
         {
