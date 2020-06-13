@@ -273,7 +273,7 @@ private:
       cerr << H << " * " << x << " - gcd(" << H - y << ", " << x << ") + gcd(" << y << ", " << x + s << ")" << endl;
     }
 #endif
-    if (x + s < W && H * x - gcd(H - y, x) + gcd(y, x + s) <= R)
+    if (x + s < W && H * x - gcd(H - y, x) - gcd(y, x + s) <= R)
     {
       ++ans;
     }
