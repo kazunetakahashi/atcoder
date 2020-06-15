@@ -256,14 +256,22 @@ int main()
 {
   int N;
   cin >> N;
-  vector<int> P(N), Q(N);
+  string P{""}, Q{""};
   for (auto i{0}; i < N; ++i)
   {
-    cin >> P[i];
+    string s;
+    cin >> s;
+    P += s;
   }
   for (auto i{0}; i < N; ++i)
   {
-    cin >> Q[i];
+    string s;
+    cin >> s;
+    Q += s;
+  }
+  if (P > Q)
+  {
+    swap(P, Q);
   }
   int ans{0};
   while (P != Q)
