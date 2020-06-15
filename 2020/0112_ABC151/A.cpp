@@ -256,5 +256,5 @@ int main()
 {
   char x;
   cin >> x;
-  cout << x + 1 << endl;
+  cout << static_cast<char>(x + 1) << endl;
 }
