@@ -256,15 +256,21 @@ int main()
 {
   int X, N;
   cin >> X >> N;
-  vector<int> p(N);
+  set<int> S;
   for (auto i{0}; i < N; ++i)
   {
-    cin >> p[i];
+    int p;
+    cin >> p;
+    S.insert(p);
   }
   int ans{mInfty<int>()};
   int dif{Infty<int>()};
   for (auto i{-100}; i < 200; ++i)
   {
+    if (S.find(i) != S.end())
+    {
+      continue;
+    }
     if (ch_min(dif, abs(i - X)))
     {
       ans = i;
