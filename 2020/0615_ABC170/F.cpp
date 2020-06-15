@@ -308,18 +308,36 @@ public:
       V[src_x][src_y][src_k] = Score{score, mini_score};
       for (auto dst_k{0}; dst_k < 4; ++dst_k)
       {
-        auto dst_x{src_x + dx[dst_k]};
-        auto dst_y{src_y + dy[dst_k]};
+        if (src_k == dst_k)
+        {
+          continue;
+        }
+        auto dst_x{src_x};
+        auto dst_y{src_y};
         if (valid(dst_x, dst_y) && V[dst_x][dst_y][dst_k] == Empty)
         {
-          if (src_k == dst_k && mini_score < K - 1)
+          if (mini_score == 0)
           {
-            H.push(Info{score, mini_score + 1, dst_x, dst_y, dst_k});
+            H.push(Info{score, 0, dst_x, dst_y, dst_k});
           }
           else
           {
             H.push(Info{score + 1, 0, dst_x, dst_y, dst_k});
           }
+        }
+      }
+      auto dst_x{src_x + dx[src_k]};
+      auto dst_y{src_y + dy[src_k]};
+      auto dst_k{src_k};
+      if (valid(dst_x, dst_y) && V[dst_x][dst_y][dst_k] == Empty)
+      {
+        if (mini_score < K - 1)
+        {
+          H.push(Info{score, mini_score + 1, dst_x, dst_y, dst_k});
+        }
+        else
+        {
+          H.push(Info{score + 1, 0, dst_x, dst_y, dst_k});
         }
       }
     }
