@@ -211,8 +211,8 @@ constexpr T mInfty() { return numeric_limits<T>::min(); }
 // constexpr double epsilon{1e-10};
 // constexpr ll infty{1'000'000'000'000'010LL}; // or
 // constexpr int infty{1'000'000'010};
-// constexpr int dx[4] = {1, 0, -1, 0};
-// constexpr int dy[4] = {0, 1, 0, -1};
+constexpr int dx[4] = {1, 0, -1, 0};
+constexpr int dy[4] = {0, 1, 0, -1};
 // ----- Yes() and No() -----
 void Yes()
 {
@@ -254,11 +254,10 @@ class Solve
 {
   int H, W, K;
   vector<vector<int>> V;
-  vector<set<Point>> Sx, Sy;
   int sx, sy, gx, gy;
 
 public:
-  Solve(int H, int W) : H{H}, W{W}, V{Make2DVector(H, W, Infty<int>())}, Sx(H), Sy(W)
+  Solve(int H, int W) : H{H}, W{W}, V{Make2DVector(H, W, Infty<int>())}
   {
     cin >> K;
     cin >> sx >> sy >> gx >> gy;
@@ -276,8 +275,6 @@ public:
         {
           V[i][j] = -1;
         }
-        Sx[i].insert(Point{i, j});
-        Sy[j].insert(Point{i, j});
       }
     }
   }
@@ -286,56 +283,28 @@ public:
   {
     queue<Point> Q;
     Q.push(Point{sx, sy});
-    ErasePoint(Point{sx, sy});
     V[sx][sy] = 0;
     while (!Q.empty())
     {
       auto p{Q.front()};
-      int x, y;
-      tie(x, y) = p;
+      auto [x, y] = p;
       Q.pop();
-#if DEBUG == 1
-      cerr << "visiting: (" << x << ", " << y << ")" << endl;
-#endif
-      auto bfs = [&](auto b, auto e, bool const plus) {
-        for (auto it{b}; it != e; (plus ? it++ : it--))
+      for (auto k{0}; k < 4; ++k)
+      {
+        for (auto i{1}; i <= K; ++i)
         {
-          auto [nx, ny] = *it;
-#if DEBUG == 1
-          cerr << "considering: (" << nx << ", " << ny << ")" << endl;
-#endif
-          if (V[nx][ny] == -1)
+          auto nx{x + dx[k] * i};
+          auto ny{y + dy[k] * i};
+          if (valid(nx, ny) && V[nx][ny] == Infty<int>())
           {
-            e = b;
+            V[nx][ny] = V[x][y] + 1;
+            Q.push(Point{nx, ny});
+          }
+          else
+          {
             break;
           }
-          V[nx][ny] = V[x][y] + 1;
-          Q.push(*it);
         }
-        for (auto it{b}; it != e; ++it)
-        {
-          ErasePoint(*it);
-        }
-      };
-      {
-        auto b{Sx[x].lower_bound(Point{x, y})};
-        auto e{Sx[x].upper_bound(Point{x + K + 1, y})};
-        bfs(b, e, true);
-      }
-      {
-        auto b{Sx[x].lower_bound(Point{x - K, y})};
-        auto e{Sx[x].upper_bound(Point{x, y})};
-        bfs(b, e, false);
-      }
-      {
-        auto b{Sy[y].lower_bound(Point{x, y})};
-        auto e{Sy[y].upper_bound(Point{x, y + K + 1})};
-        bfs(b, e, true);
-      }
-      {
-        auto b{Sy[y].lower_bound(Point{x, y - K})};
-        auto e{Sy[y].upper_bound(Point{x, y})};
-        bfs(b, e, false);
       }
     }
     auto ans{V[gx][gy]};
@@ -350,11 +319,9 @@ public:
   }
 
 private:
-  void ErasePoint(Point const &p)
+  bool valid(int x, int y)
   {
-    auto [x, y] = p;
-    Sx[x].erase(Sx[x].find(p));
-    Sy[y].erase(Sy[y].find(p));
+    return 0 <= x && x < H && 0 <= y && y < W && V[x][y] != -1;
   }
 };
 
