@@ -281,6 +281,9 @@ int main()
       {
         if (dp[i * j] >= 1)
         {
+#if DEBUG == 1
+          cerr << "i * j = " << i * j << endl;
+#endif
           ok = false;
           break;
         }
