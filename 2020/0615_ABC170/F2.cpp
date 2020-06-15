@@ -300,6 +300,9 @@ public:
           for (auto it{b}; it != e; (plus ? it++ : it--))
           {
             auto [nx, ny] = *it;
+#if DEBUG == 1
+            cerr << "visiting: (" << nx << ", " << ny << ")" << endl;
+#endif
             if (V[nx][ny] == -1)
             {
               e = b;
