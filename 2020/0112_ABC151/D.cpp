@@ -324,6 +324,7 @@ private:
 int main()
 {
   int H, W;
+  cin >> H >> W;
   Solve solve(H, W);
   solve.flush();
 }
