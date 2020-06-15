@@ -304,7 +304,7 @@ public:
             V[nx][ny] = V[x][y] + 1;
             Q.push(Point{nx, ny});
           }
-          else if (V[nx][ny] == V[x][y])
+          else if (V[nx][ny] <= V[x][y] + 1)
           {
             continue;
           }
