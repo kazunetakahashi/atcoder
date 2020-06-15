@@ -264,34 +264,27 @@ int main()
     cin >> A[i];
   }
   vector<int> dp(C, 0);
+  vector<bool> valid(C, true);
   for (auto i{0}; i < N; ++i)
   {
     dp[A[i]]++;
   }
-  int ans{0};
-  for (auto i{2}; i < C; ++i)
+  for (auto i{1}; i < C; ++i)
   {
     if (dp[i] == 1)
     {
-#if DEBUG == 1
-      cerr << "i = " << i << endl;
-#endif
-      bool ok{true};
       for (auto j{2}; i * j < C; ++j)
       {
-        if (dp[i * j] >= 1)
-        {
-#if DEBUG == 1
-          cerr << "i * j = " << i * j << endl;
-#endif
-          ok = false;
-          break;
-        }
+        valid[i * j] = false;
       }
-      if (ok)
-      {
-        ++ans;
-      }
+    }
+  }
+  int ans{0};
+  for (auto i{1}; i < C; ++i)
+  {
+    if (valid[i])
+    {
+      ans += dp[i];
     }
   }
   cout << ans << endl;
