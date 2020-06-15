@@ -256,6 +256,7 @@ int main()
 {
   int N;
   ll M;
+  cin >> N >> M;
   vector<ll> A(N);
   for (auto i{0}; i < N; ++i)
   {
