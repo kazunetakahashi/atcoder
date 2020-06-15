@@ -292,10 +292,10 @@ private:
 
   ld f(ld x, ld y)
   {
-    auto ans{Infty<ld>()};
+    auto ans{mInfty<ld>()};
     for (auto i{0}; i < N; ++i)
     {
-      ch_min(ans, dist(x, y, X[i], Y[i]));
+      ch_max(ans, dist(x, y, X[i], Y[i]));
     }
     return ans;
   }
