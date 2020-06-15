@@ -282,7 +282,7 @@ int main()
   int ans{0};
   for (auto i{1}; i < C; ++i)
   {
-    if (valid[i])
+    if (valid[i] && dp[i] == 1)
     {
       ans += dp[i];
     }
