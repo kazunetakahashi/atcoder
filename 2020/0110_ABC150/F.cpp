@@ -338,10 +338,12 @@ int main()
   {
     cerr << e << " ";
   }
+  cerr << endl;
   for (auto e : B)
   {
     cerr << e << " ";
   }
+  cerr << endl;
 #endif
   MP mp(AA);
   for (auto k : mp.place(B))
