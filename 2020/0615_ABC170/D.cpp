@@ -273,6 +273,9 @@ int main()
   {
     if (dp[i] == 1)
     {
+#if DEBUG == 1
+      cerr << "i = " << i << endl;
+#endif
       bool ok{true};
       for (auto j{2}; i * j < C; ++j)
       {
