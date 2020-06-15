@@ -287,7 +287,6 @@ public:
     queue<Point> Q;
     Q.push(Point{sx, sy});
     ErasePoint(Point{sx, sy});
-    V[sx][sy] = 0;
     while (!Q.empty())
     {
       auto p{Q.front()};
