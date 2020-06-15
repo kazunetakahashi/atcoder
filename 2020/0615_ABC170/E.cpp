@@ -549,7 +549,7 @@ public:
   {
     for (auto i{0}; i < Q; ++i)
     {
-      cout << transfer(A[C[i]], B[C[i]], D[i]);
+      cout << transfer(A[C[i]], B[C[i]], D[i]) << endl;
       B[C[i]] = D[i];
     }
   }
