@@ -294,12 +294,15 @@ public:
       int x, y;
       tie(x, y) = p;
       Q.pop();
+#if DEBUG == 1
+      cerr << "visiting: (" << x << ", " << y << ")" << endl;
+#endif
       auto bfs = [&](auto b, auto e, bool const plus) {
         for (auto it{b}; it != e; (plus ? it++ : it--))
         {
           auto [nx, ny] = *it;
 #if DEBUG == 1
-          cerr << "visiting: (" << nx << ", " << ny << ")" << endl;
+          cerr << "considering: (" << nx << ", " << ny << ")" << endl;
 #endif
           if (V[nx][ny] == -1)
           {
