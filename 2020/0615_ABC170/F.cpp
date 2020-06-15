@@ -286,6 +286,10 @@ public:
             V[dst_x][dst_y] = V[src_x][src_y] + 1;
             Q.push(Point{dst_x, dst_y});
           }
+          else
+          {
+            break;
+          }
         }
       }
     }
