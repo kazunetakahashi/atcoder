@@ -345,8 +345,8 @@ int main()
   }
   cerr << endl;
 #endif
-  MP mp(AA);
-  for (auto k : mp.place(B))
+  MP mp(B);
+  for (auto k : mp.place(AA))
   {
     cout << k << " " << (b[0] ^ a[k]) << endl;
   }
