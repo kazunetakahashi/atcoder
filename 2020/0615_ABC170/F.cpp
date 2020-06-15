@@ -293,6 +293,16 @@ public:
         }
       }
     }
+#if DEBUG == 1
+    for (auto i{0}; i < H; ++i)
+    {
+      for (auto j{0}; j < W; ++j)
+      {
+        cerr << V[i][j];
+      }
+      cerr << endl;
+    }
+#endif
     cout << V[gx][gy] << endl;
   }
 
