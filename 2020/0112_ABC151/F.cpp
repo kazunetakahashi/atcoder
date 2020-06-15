@@ -246,9 +246,7 @@ public:
 
   void flush()
   {
-    ld x{h()};
-    ld y{g(x)};
-    cout << fixed << setprecision(15) << f(x, y) << endl;
+    cout << fixed << setprecision(18) << h() << endl;
   }
 
 private:
@@ -269,7 +267,7 @@ private:
         lb = l;
       }
     }
-    return lb;
+    return g(lb);
   }
 
   ld g(ld x)
@@ -289,7 +287,7 @@ private:
         lb = l;
       }
     }
-    return lb;
+    return f(x, lb);
   }
 
   ld f(ld x, ld y)
