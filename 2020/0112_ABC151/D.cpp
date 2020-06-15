@@ -287,6 +287,10 @@ public:
     {
       for (auto j{0}; j < W; ++j)
       {
+        if (toID[i][j] == -1)
+        {
+          continue;
+        }
         for (auto k{0}; k < 4; ++k)
         {
           int nx{i + dx[k]};
