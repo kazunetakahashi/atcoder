@@ -252,6 +252,8 @@ int main()
 }
 */
 
+constexpr int C{1'000'010};
+
 int main()
 {
   int N;
@@ -261,20 +263,20 @@ int main()
   {
     cin >> A[i];
   }
-  vector<bool> dp(1'000'010, false);
+  vector<int> dp(C, 0);
   for (auto i{0}; i < N; ++i)
   {
-    dp[A[i]] = true;
+    dp[A[i]]++;
   }
   int ans{0};
-  for (auto i{2}; i < 1'000'010; ++i)
+  for (auto i{2}; i < C; ++i)
   {
-    if (dp[i])
+    if (dp[i] == 1)
     {
       bool ok{true};
-      for (auto j{2}; i * j < 1'000'010; ++j)
+      for (auto j{2}; i * j < C; ++j)
       {
-        if (dp[i * j])
+        if (dp[i * j] >= 1)
         {
           ok = false;
           break;
