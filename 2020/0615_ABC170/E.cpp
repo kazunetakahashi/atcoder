@@ -515,7 +515,7 @@ class Solve
 {
   int N, Q;
   vector<int> A, B, C, D;
-  vector<multiset<int>> rate;
+  vector<multiset<int, greater<int>>> rate;
   SegTree<int, int> tree;
 
 public:
