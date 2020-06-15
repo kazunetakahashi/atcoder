@@ -295,14 +295,18 @@ public:
         {
           auto nx{x + dx[k] * i};
           auto ny{y + dy[k] * i};
-          if (valid(nx, ny) && V[nx][ny] > V[x][y])
+          if (!valid(nx, ny))
+          {
+            break;
+          }
+          else if (V[nx][ny] == Infty<int>())
           {
             V[nx][ny] = V[x][y] + 1;
             Q.push(Point{nx, ny});
           }
-          else
+          else if (V[nx][ny] == V[x][y])
           {
-            break;
+            continue;
           }
         }
       }
