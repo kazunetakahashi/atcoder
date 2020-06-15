@@ -271,7 +271,7 @@ int main()
   }
   for (auto i{1}; i < C; ++i)
   {
-    if (dp[i] == 1)
+    if (dp[i] >= 1)
     {
       for (auto j{2}; i * j < C; ++j)
       {
