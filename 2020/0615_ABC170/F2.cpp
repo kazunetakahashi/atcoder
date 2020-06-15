@@ -287,54 +287,52 @@ public:
     queue<Point> Q;
     Q.push(Point{sx, sy});
     ErasePoint(Point{sx, sy});
+    V[sx][sy] = 0;
     while (!Q.empty())
     {
       auto p{Q.front()};
       int x, y;
       tie(x, y) = p;
       Q.pop();
-      if (V[x][y] == Infty<int>())
-      {
-        auto bfs = [&](auto b, auto e, bool const plus) {
-          for (auto it{b}; it != e; (plus ? it++ : it--))
-          {
-            auto [nx, ny] = *it;
+      auto bfs = [&](auto b, auto e, bool const plus) {
+        for (auto it{b}; it != e; (plus ? it++ : it--))
+        {
+          auto [nx, ny] = *it;
 #if DEBUG == 1
-            cerr << "visiting: (" << nx << ", " << ny << ")" << endl;
+          cerr << "visiting: (" << nx << ", " << ny << ")" << endl;
 #endif
-            if (V[nx][ny] == -1)
-            {
-              e = b;
-              break;
-            }
-            V[nx][ny] = V[x][y] + 1;
-            Q.push(*it);
-          }
-          for (auto it{b}; it != e; ++it)
+          if (V[nx][ny] == -1)
           {
-            ErasePoint(*it);
+            e = b;
+            break;
           }
-        };
-        {
-          auto b{Sx[x].lower_bound(Point{x, y})};
-          auto e{Sx[x].upper_bound(Point{x + K + 1, y})};
-          bfs(b, e, true);
+          V[nx][ny] = V[x][y] + 1;
+          Q.push(*it);
         }
+        for (auto it{b}; it != e; ++it)
         {
-          auto b{Sx[x].lower_bound(Point{x - K, y})};
-          auto e{Sx[x].upper_bound(Point{x, y})};
-          bfs(b, e, false);
+          ErasePoint(*it);
         }
-        {
-          auto b{Sy[y].lower_bound(Point{x, y})};
-          auto e{Sy[y].upper_bound(Point{x, y + K + 1})};
-          bfs(b, e, true);
-        }
-        {
-          auto b{Sy[y].lower_bound(Point{x, y - K})};
-          auto e{Sy[y].upper_bound(Point{x, y})};
-          bfs(b, e, false);
-        }
+      };
+      {
+        auto b{Sx[x].lower_bound(Point{x, y})};
+        auto e{Sx[x].upper_bound(Point{x + K + 1, y})};
+        bfs(b, e, true);
+      }
+      {
+        auto b{Sx[x].lower_bound(Point{x - K, y})};
+        auto e{Sx[x].upper_bound(Point{x, y})};
+        bfs(b, e, false);
+      }
+      {
+        auto b{Sy[y].lower_bound(Point{x, y})};
+        auto e{Sy[y].upper_bound(Point{x, y + K + 1})};
+        bfs(b, e, true);
+      }
+      {
+        auto b{Sy[y].lower_bound(Point{x, y - K})};
+        auto e{Sy[y].upper_bound(Point{x, y})};
+        bfs(b, e, false);
       }
     }
     auto ans{V[gx][gy]};
