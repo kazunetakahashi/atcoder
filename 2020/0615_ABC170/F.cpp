@@ -298,7 +298,7 @@ public:
     {
       for (auto j{0}; j < W; ++j)
       {
-        cerr << V[i][j];
+        cerr << V[i][j] << " ";
       }
       cerr << endl;
     }
