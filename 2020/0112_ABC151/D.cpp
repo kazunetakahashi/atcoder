@@ -295,6 +295,9 @@ public:
           {
             int s{toID[i][j]};
             int t{toID[nx][ny]};
+#if DEBUG == 1
+            cerr << "s = " << s << ", t = " << t << endl;
+#endif
             D[s][t] = 1;
             D[t][s] = 1;
           }
