@@ -225,21 +225,43 @@ void No()
   exit(0);
 }
 
+// ----- 2D, 3D, 4D vectors -----
+// Referring to ymatsux-san's source code: https://atcoder.jp/contests/abc138/submissions/7018300
+
+template <typename T>
+vector<vector<T>> Make2DVector(size_t d0, size_t d1, T v = T{})
+{
+  return vector<vector<T>>(d0, vector<T>(d1, v));
+}
+
+template <typename T>
+vector<vector<vector<T>>> Make3DVector(size_t d0, size_t d1, size_t d2, T v = T{})
+{
+  return vector<vector<vector<T>>>(d0, Make2DVector(d1, d2, v));
+}
+
+template <typename T>
+vector<vector<vector<vector<T>>>> Make4DVector(size_t d0, size_t d1, size_t d2, size_t d3, T v = T{})
+{
+  return vector<vector<vector<vector<T>>>>(d0, Make3DVector(d1, d2, d3, v));
+}
+
 // ----- Solve -----
 
-struct Point
-{
-  int x, y;
-};
+using Info = tuple<int, int, int, int, int>; // score, mini_score, x, y, k
+using Score = tuple<int, int>;
+
+constexpr Score Invalid{-1, 0};
+constexpr Score Empty{Infty<int>(), 0};
 
 class Solve
 {
   int H, W, K;
-  vector<vector<int>> V;
+  vector<vector<vector<Score>>> V;
   int sx, sy, gx, gy;
 
 public:
-  Solve(int H, int W) : H{H}, W{W}, V(H, vector<int>(W))
+  Solve(int H, int W) : H{H}, W{W}, V{Make3DVector(H, W, 4, Invalid)}
   {
     cin >> K;
     cin >> sx >> sy >> gx >> gy;
@@ -253,13 +275,16 @@ public:
       {
         char c;
         cin >> c;
-        if (c == '.')
+        for (auto k{0}; k < 4; ++k)
         {
-          V[i][j] = -1;
-        }
-        else
-        {
-          V[i][j] = -2;
+          if (c == '.')
+          {
+            V[i][j][k] = Empty;
+          }
+          else
+          {
+            V[i][j][k] = Invalid;
+          }
         }
       }
     }
@@ -267,49 +292,68 @@ public:
 
   void flush()
   {
-    queue<Point> Q;
-    Q.push(Point{sx, sy});
-    V[sx][sy] = 0;
-    while (!Q.empty())
+    min_heap<Info> H;
+    for (auto k{0}; k < 4; ++k)
     {
-      auto src_x{Q.front().x};
-      auto src_y{Q.front().y};
-      Q.pop();
-      for (auto k{0}; k < 4; ++k)
+      H.push(Info{0, 0, sx, sy, k});
+    }
+    while (!H.empty())
+    {
+      auto [score, mini_score, src_x, src_y, src_k] = H.top();
+      H.pop();
+      if (V[src_x][src_y][src_k] != Empty)
       {
-        for (auto i{1}; i <= K; ++i)
+        continue;
+      }
+      V[src_x][src_y][src_k] = Score{score, mini_score};
+      for (auto dst_k{0}; dst_k < 4; ++dst_k)
+      {
+        auto dst_x{src_x + dx[dst_k]};
+        auto dst_y{src_y + dy[dst_k]};
+        if (valid(dst_x, dst_y) && V[dst_x][dst_y][dst_k] == Empty)
         {
-          auto dst_x{src_x + dx[k] * i};
-          auto dst_y{src_y + dy[k] * i};
-          if (valid(dst_x, dst_y) && V[dst_x][dst_y] == -1)
+          if (src_k == dst_k && mini_score < K - 1)
           {
-            V[dst_x][dst_y] = V[src_x][src_y] + 1;
-            Q.push(Point{dst_x, dst_y});
+            H.push(Info{score, mini_score + 1, dst_x, dst_y, dst_k});
           }
           else
           {
-            break;
+            H.push(Info{score + 1, 0, dst_x, dst_y, dst_k});
           }
         }
       }
     }
-#if DEBUG == 1
-    for (auto i{0}; i < H; ++i)
+    int ans{Infty<int>()};
+    for (auto k{0}; k < 4; ++k)
     {
-      for (auto j{0}; j < W; ++j)
+      auto [score, mini_score] = V[gx][gy][k];
+      if (score == Infty<int>())
       {
-        cerr << V[i][j] << " ";
+        continue;
       }
-      cerr << endl;
+      else if (mini_score > 0)
+      {
+        ch_min(ans, score + 1);
+      }
+      else
+      {
+        ch_min(ans, score);
+      }
     }
-#endif
-    cout << V[gx][gy] << endl;
+    if (ans == Infty<int>())
+    {
+      cout << -1 << endl;
+    }
+    else
+    {
+      cout << ans << endl;
+    }
   }
 
 private:
   bool valid(int x, int y)
   {
-    return 0 <= x && x < H && 0 <= y && y < W && V[x][y] != -2;
+    return 0 <= x && x < H && 0 <= y && y < W && V[x][y][0] != Invalid;
   }
 };
 
