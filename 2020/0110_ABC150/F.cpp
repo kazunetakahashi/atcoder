@@ -333,6 +333,16 @@ int main()
   copy(A.begin(), A.end(), back_inserter(AA));
   copy(A.begin(), A.end(), back_inserter(AA));
   AA.pop_back();
+#if DEBUG == 1
+  for (auto e : AA)
+  {
+    cerr << e << " ";
+  }
+  for (auto e : B)
+  {
+    cerr << e << " ";
+  }
+#endif
   MP mp(AA);
   for (auto k : mp.place(B))
   {
