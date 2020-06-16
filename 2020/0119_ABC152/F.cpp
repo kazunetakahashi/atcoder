@@ -245,9 +245,10 @@ struct Edge
   }
 };
 
-vector<vector<Edge>> ReadGraph(int N, int M, bool is_undirected = true, bool is_one_indexed = true)
+tuple<vector<vector<Edge>>, vector<Edge>> ReadGraphWithEdges(int N, int M, bool is_undirected = true, bool is_one_indexed = true)
 {
   vector<vector<Edge>> V(N);
+  vector<Edge> E(M);
   for (auto i = 0; i < M; ++i)
   {
     int v, w;
@@ -263,8 +264,19 @@ vector<vector<Edge>> ReadGraph(int N, int M, bool is_undirected = true, bool is_
     {
       edge.added_rev(V);
     }
+    E.push_back(edge);
   }
-  return V;
+  return make_tuple(V, E);
+}
+
+vector<vector<Edge>> ReadGraph(int N, int M, bool is_undirected = true, bool is_one_indexed = true)
+{
+  return get<0>(ReadGraphWithEdges(N, M, is_undirected, is_one_indexed));
+}
+
+tuple<vector<vector<Edge>>, vector<Edge>> ReadTreeWithEdges(int N)
+{
+  return ReadGraphWithEdges(N, N - 1);
 }
 
 vector<vector<Edge>> ReadTree(int N)
