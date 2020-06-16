@@ -262,9 +262,9 @@ int main()
       {
         continue;
       }
-      if (auto t{j + A[i]}; t <= H)
+      if (j + A[i] <= H)
       {
-        ch_min(dp[t], dp[j] + B[i]);
+        ch_min(dp[j + A[i]], dp[j] + B[i]);
       }
       else
       {
