@@ -254,7 +254,8 @@ int main()
   vector<Monster> X(N);
   for (auto i{0}; i < N; ++i)
   {
-    auto &[x, h] = X[i];
+    auto &x{get<0>(X[i])};
+    auto &h{get<1>(X[i])};
     cin >> x >> h;
     h = (h + A - 1) / A;
   }
@@ -262,14 +263,17 @@ int main()
   min_heap<Event> H;
   for (auto i{0}; i < N; ++i)
   {
-    auto const &[x, h] = X[i];
+    auto const &x{get<0>(X[i])};
+    auto const &h{get<1>(X[i])};
     H.push(Event{x, 1, h});
   }
   ll ans{0};
   ll now{0};
   while (!H.empty())
   {
-    auto [x, c, h] = H.top();
+    ll x, h;
+    int c;
+    tie(x, c, h) = H.top();
     H.pop();
     if (c == 0)
     {
