@@ -265,11 +265,11 @@ int main()
       ch_min(dp[i + 1][j], dp[i][j]);
       if (auto t{j + A[i]}; t <= H)
       {
-        ch_min(dp[i + 1][t], dp[i][j] + B[j]);
+        ch_min(dp[i + 1][t], dp[i][j] + B[i]);
       }
       else
       {
-        ch_min(dp[i + 1][H], dp[i][j] + B[j]);
+        ch_min(dp[i + 1][H], dp[i][j] + B[i]);
       }
     }
   }
