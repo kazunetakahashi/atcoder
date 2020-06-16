@@ -307,7 +307,7 @@ int main()
             {
               nl = 1;
             }
-            dp[ni][nj][nk][nl] += dp[ni][nj][nk][nl];
+            dp[ni][nj][nk][nl] += dp[i][j][k][l];
           }
         }
       }
