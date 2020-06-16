@@ -192,6 +192,7 @@ using combination = Combination<MOD, MAX_SIZE>;
 // ----- for C++17 -----
 template <typename T, typename enable_if<is_integral<T>::value>::type * = nullptr>
 size_t popcount(T x) { return bitset<64>(x).count(); }
+size_t popcount(string const &S) { return bitset<200010>{S}.count(); }
 // ----- Infty -----
 template <typename T>
 constexpr T Infty() { return numeric_limits<T>::max(); }
