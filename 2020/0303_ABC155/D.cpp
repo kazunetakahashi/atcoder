@@ -221,7 +221,7 @@ void No()
 class Solve
 {
   ll N, K;
-  ll P, M, Z;
+  ll P, M, SP, SM, SZ;
   vector<ll> plus, minus, zero;
 
 public:
@@ -248,19 +248,20 @@ public:
     sort(minus.begin(), minus.end());
     P = plus.size();
     M = minus.size();
-    Z = N * (N - 1) / 2 - P - M;
+    SP = P * P + M * M;
+    SM = P * M;
+    SZ = N * (N - 1) / 2 - SP - SM;
   }
 
   void flush()
   {
     ll ans{0};
-    if (K <= M)
+    if (K <= SM)
     {
       ans = answer_minus();
     }
-    else if (K > M + Z)
+    else if (K > SM + SZ)
     {
-      K -= (M + Z);
       ans = answer_plus();
     }
     cout << ans << endl;
@@ -269,6 +270,7 @@ public:
 private:
   ll answer_plus()
   {
+    K -= (SM + SZ);
     sort(minus.rbegin(), minus.rend());
     assert(false);
   }
