@@ -259,7 +259,7 @@ int main()
     sum += P[i];
     if (i >= K)
     {
-      sum -= P[i];
+      sum -= P[i - K];
     }
     ch_max(ans, sum);
   }
