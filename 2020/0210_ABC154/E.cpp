@@ -287,7 +287,7 @@ int main()
             int nj{j};
             int nk{k};
             int nl{l};
-            if (x == 0)
+            if (x != 0)
             {
               nj++;
             }
