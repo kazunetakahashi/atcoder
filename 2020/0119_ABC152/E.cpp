@@ -256,24 +256,22 @@ int main()
 {
   int N;
   cin >> N;
-  vector<ll> A(N);
-  vector<cpp_int> AA(N);
+  vector<cpp_int> A(N);
   for (auto i{0}; i < N; ++i)
   {
     cin >> A[i];
-    AA[i] = A[i];
   }
   cpp_int L{1};
   for (auto i{0}; i < N; ++i)
   {
-    L = lcm(L, AA[i]);
+    L = lcm(L, A[i]);
   }
   auto R{static_cast<ll>(L % MOD)};
   auto M{mint{R}};
   mint ans{0};
   for (auto i{0}; i < N; ++i)
   {
-    ans += M / A[i];
+    ans += M / static_cast<ll>(A[i]);
   }
   cout << ans << endl;
 }
