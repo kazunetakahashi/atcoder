@@ -37,9 +37,9 @@
 // ----- using directives and manipulations -----
 using namespace std;
 using boost::rational;
-using boost::math::gcd;
-using boost::math::lcm;
 using boost::multiprecision::cpp_int;
+using boost::multiprecision::gcd;
+using boost::multiprecision::lcm;
 using ll = long long;
 using ld = long double;
 template <typename T>
