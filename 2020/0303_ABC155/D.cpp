@@ -248,7 +248,7 @@ public:
     sort(minus.begin(), minus.end());
     P = plus.size();
     M = minus.size();
-    SP = P * P + M * M;
+    SP = P * (P - 1) / 2 + M * (M - 1) / 2;
     SM = P * M;
     SZ = N * (N - 1) / 2 - SP - SM;
   }
