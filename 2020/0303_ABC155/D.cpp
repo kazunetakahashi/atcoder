@@ -278,8 +278,8 @@ private:
   ll answer_minus()
   {
     sort(plus.rbegin(), plus.rend());
-    ll ng{mInfty<ll>()};
-    ll ok{0};
+    ll ok{mInfty<ll>()};
+    ll ng{0};
     while (abs(ng - ok) > 1)
     {
       ll t{(ng + ok) / 2};
