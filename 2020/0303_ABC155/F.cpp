@@ -256,7 +256,7 @@ class Solve
   vector<int> parents;
 
 public:
-  Solve(int N, int M) : N{N}, M{M}, bombs(N), B(N), V(N), table(M, false), parents(N, -1)
+  Solve(int N, int M) : N{N}, M{M}, bombs(N), B(N + 1), V(N + 1), table(M, false), parents(N + 1, -1)
   {
     // bombs
     for (auto i{0}; i < N; ++i)
@@ -272,6 +272,7 @@ public:
     {
       B[i] = get<1>(bombs[i]) ^ get<1>(bombs[i - 1]);
     }
+    B[N] = get<1>(bombs[N - 1]);
     // V
     for (auto i{0}; i < M; ++i)
     {
@@ -323,7 +324,7 @@ public:
 private:
   void make_table()
   {
-    for (auto i{0}; i < N; ++i)
+    for (auto i{0}; i < N + 1; ++i)
     {
       if (parents[i] == -1)
       {
@@ -333,7 +334,7 @@ private:
         }
       }
     }
-    for (auto i{0}; i < N; ++i)
+    for (auto i{0}; i < N + 1; ++i)
     {
       for (auto const &e : V[i])
       {
