@@ -317,8 +317,8 @@ public:
       if (table[i])
       {
         cout << i + 1;
+        --cnt;
       }
-      --cnt;
       if (cnt > 0)
       {
         cout << " ";
@@ -361,7 +361,7 @@ private:
     auto sum{B[src] ? 1 : 0};
     for (auto &e : V[src])
     {
-      if (visited[e.dst])
+      if (!visited[e.dst])
       {
         continue;
       }
