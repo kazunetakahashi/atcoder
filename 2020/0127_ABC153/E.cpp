@@ -252,26 +252,25 @@ int main()
   {
     cin >> A[i] >> B[i];
   }
-  vector<vector<int>> dp(N + 1, vector<int>(H + 1, Infty<int>()));
-  dp[0][0] = 0;
+  vector<int> dp(H + 1, Infty<int>());
+  dp[0] = 0;
   for (auto i{0}; i < N; ++i)
   {
     for (auto j{0}; j <= H; ++j)
     {
-      if (dp[i][j] == Infty<int>())
+      if (dp[j] == Infty<int>())
       {
         continue;
       }
-      ch_min(dp[i + 1][j], dp[i][j]);
       if (auto t{j + A[i]}; t <= H)
       {
-        ch_min(dp[i + 1][t], dp[i][j] + B[i]);
+        ch_min(dp[t], dp[j] + B[i]);
       }
       else
       {
-        ch_min(dp[i + 1][H], dp[i][j] + B[i]);
+        ch_min(dp[H], dp[j] + B[i]);
       }
     }
   }
-  cout << dp[N][H] << endl;
+  cout << dp[H] << endl;
 }
