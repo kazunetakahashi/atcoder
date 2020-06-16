@@ -253,10 +253,10 @@ class Solve
   vector<bool> B;
   vector<vector<Edge>> V;
   vector<bool> table;
-  vector<int> parents;
+  vector<bool> visited;
 
 public:
-  Solve(int N, int M) : N{N}, M{M}, bombs(N), B(N + 1), V(N + 1), table(M, false), parents(N + 1, -1)
+  Solve(int N, int M) : N{N}, M{M}, bombs(N), B(N + 1), V(N + 1), table(M, false), visited(N + 1, false)
   {
     // bombs
     for (auto i{0}; i < N; ++i)
@@ -335,7 +335,7 @@ private:
   {
     for (auto i{0}; i < N + 1; ++i)
     {
-      if (parents[i] == -1)
+      if (!visited[i])
       {
         if (dfs(i) == 1)
         {
@@ -357,15 +357,15 @@ private:
 
   int dfs(int src)
   {
-    int sum{B[src] ? 1 : 0};
+    visited[src] = true;
+    auto sum{B[src] ? 1 : 0};
     for (auto &e : V[src])
     {
-      if (parents[e.dst] != -1)
+      if (visited[e.dst])
       {
         continue;
       }
-      parents[e.dst] = e.src;
-      int tmp{dfs(e.dst)};
+      auto tmp{dfs(e.dst)};
       sum += tmp;
       e.on = (tmp == 1);
     }
