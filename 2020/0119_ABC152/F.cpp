@@ -299,6 +299,9 @@ public:
     for (auto i{0}; i < M; ++i)
     {
       P[i] = path(get<0>(W[i]), get<1>(W[i]));
+#if DEBUG == 1
+      cerr << "P[" << i << "] = " << P[i] << endl;
+#endif
     }
     ll ans{0};
     for (auto i{0}; i < (1 << M); ++i)
