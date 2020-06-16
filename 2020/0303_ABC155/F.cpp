@@ -266,6 +266,12 @@ public:
       bombs[i] = Bomb{a, b == 1};
     }
     sort(bombs.begin(), bombs.end());
+#if DEBUG == 1
+    for (auto i{0}; i < N; ++i)
+    {
+      cerr << "bombs[" << i << "] = (" << get<0>(bombs[i]) << ", " << get<1>(bombs[i]) << ")" << endl;
+    }
+#endif
     // B
     B[0] = get<1>(bombs[0]);
     for (auto i{1}; i < N; ++i)
