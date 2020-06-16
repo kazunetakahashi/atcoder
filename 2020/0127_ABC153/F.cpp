@@ -282,7 +282,7 @@ int main()
         continue;
       }
       auto nx{x + 2 * D + 1};
-      auto nh{now - h};
+      auto nh{h - now};
       H.push(Event{nx, 0, nh});
       ans += nh;
       now += nh;
