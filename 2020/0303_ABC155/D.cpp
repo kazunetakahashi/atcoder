@@ -277,6 +277,9 @@ private:
     while (abs(ng - ok) > 1)
     {
       ll t{(ng + ok) / 2};
+#if DEBUG == 1
+      cerr << "count_plus(" << t << ") = " << count_plus(t) << endl;
+#endif
       if (count_plus(t) < K)
       {
         ok = t;
