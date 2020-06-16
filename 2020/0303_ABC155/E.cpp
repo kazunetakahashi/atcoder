@@ -245,4 +245,44 @@ int main()
 
 int main()
 {
+  string S;
+  cin >> S;
+  reverse(S.begin(), S.end());
+  int N{static_cast<int>(S.size())};
+  vector<vector<ll>> dp(N + 1, vector<ll>(2, Infty<ll>()));
+  for (auto i{0}; i < N; ++i)
+  {
+    ll d{S[i] - '0'};
+    for (auto j{0}; j < 2; ++j)
+    {
+      if (dp[i][j] == Infty<ll>())
+      {
+        continue;
+      }
+      for (auto k{0}; k < 2; ++k)
+      {
+        int ni{i + 1};
+        int nj{k};
+        ll cost = 0;
+        if (j == 0 && k == 0)
+        {
+          cost = d;
+        }
+        else if (j == 0 && k == 1)
+        {
+          cost = 10 - d;
+        }
+        else if (j == 1 && k == 0)
+        {
+          cost = d + 1;
+        }
+        else
+        {
+          cost = 10 - d - 1;
+        }
+        ch_min(dp[ni][nj], dp[i][j] + cost);
+      }
+    }
+  }
+  cout << min(dp[N][0], dp[N][1] + 1) << endl;
 }
