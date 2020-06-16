@@ -281,6 +281,9 @@ public:
       // The following two lines are referring to https://atcoder.jp/contests/abc155/submissions/10163379
       auto v{static_cast<int>(distance(bombs.begin(), lower_bound(bombs.begin(), bombs.end(), Bomb{l, -1})))};
       auto w{static_cast<int>(distance(bombs.begin(), lower_bound(bombs.begin(), bombs.end(), Bomb{r, 2})))};
+#if DEBUG == 1
+      cerr << "l = " << l << ", r = " << r << ", v = " << v << ", w = " << w << endl;
+#endif
       if (v == w)
       {
         continue;
