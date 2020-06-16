@@ -272,7 +272,54 @@ private:
   {
     K -= (SM + SZ);
     sort(minus.rbegin(), minus.rend());
-    assert(false);
+    ll ok{0};
+    ll ng{Infty<ll>()};
+    while (abs(ng - ok) > 1)
+    {
+      ll t{(ng + ok) / 2};
+      if (count_plus(t) < K)
+      {
+        ok = t;
+      }
+      else
+      {
+        ng = t;
+      }
+    }
+    return ok;
+  }
+
+  ll count_plus(ll T)
+  {
+    ll ans{0};
+    for (auto i{0LL}; i < P; ++i)
+    {
+      ans += count_plus(T, i, plus);
+    }
+    for (auto i{0LL}; i < M; ++i)
+    {
+      ans += count_plus(T, i, minus);
+    }
+    return ans;
+  }
+
+  ll count_plus(ll T, ll ind, vector<ll> const &V)
+  {
+    ll ok{ind};
+    ll ng = V.size();
+    while (abs(ok - ng) > 1)
+    {
+      ll t{(ok + ng) / 2};
+      if (V[ind] * V[t] < T)
+      {
+        ok = t;
+      }
+      else
+      {
+        ng = t;
+      }
+    }
+    return ok - ind;
   }
 
   ll answer_minus()
@@ -283,9 +330,6 @@ private:
     while (abs(ng - ok) > 1)
     {
       ll t{(ng + ok) / 2};
-#if DEBUG == 1
-      cerr << "count_minus(" << t << ") = " << count_minus(t) << endl;
-#endif
       if (count_minus(t) < K)
       {
         ok = t;
