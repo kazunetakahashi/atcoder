@@ -314,7 +314,7 @@ private:
     while (abs(ok - ng) > 1)
     {
       ll t{(ok + ng) / 2};
-      if (A * minus[t] < T)
+      if (A * plus[t] < T)
       {
         ok = t;
       }
