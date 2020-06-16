@@ -548,7 +548,7 @@ int main()
   ll ans{0};
   for (auto i{0}; i < N; ++i)
   {
-    ans += tree.query(0, A[i]);
+    ans += tree.query(A[i], N);
     tree.update(A[i], 1);
   }
   cout << ans << endl;
