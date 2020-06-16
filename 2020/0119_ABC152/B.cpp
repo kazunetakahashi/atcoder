@@ -260,5 +260,9 @@ int main()
   {
     swap(a, b);
   }
-  cout << string{to_string(a), b} << endl;
+  for (auto i{0}; i < b; ++i)
+  {
+    cout << a;
+  }
+  cout << endl;
 }
