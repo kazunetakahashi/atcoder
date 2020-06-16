@@ -195,7 +195,7 @@ size_t popcount(T x) { return bitset<64>(x).count(); }
 size_t popcount(string const &S) { return bitset<200010>{S}.count(); }
 // ----- Infty -----
 template <typename T>
-constexpr T Infty() { return numeric_limits<T>::max() / 2; }
+constexpr T Infty() { return numeric_limits<T>::max(); }
 template <typename T>
 constexpr T mInfty() { return numeric_limits<T>::min(); }
 // ----- frequently used constexpr -----
@@ -250,6 +250,7 @@ int main()
   reverse(S.begin(), S.end());
   int N{static_cast<int>(S.size())};
   vector<vector<ll>> dp(N + 1, vector<ll>(2, Infty<ll>()));
+  dp[0][0] = 0;
   for (auto i{0}; i < N; ++i)
   {
     ll d{S[i] - '0'};
