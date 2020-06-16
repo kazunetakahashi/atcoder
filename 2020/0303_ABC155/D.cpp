@@ -273,6 +273,7 @@ private:
     K -= (SM + SZ);
 #if DEBUG == 1
     cerr << "K = " << K << endl;
+    cerr << "SP = " << SP << endl;
 #endif
     sort(minus.rbegin(), minus.rend());
     ll ok{0};
