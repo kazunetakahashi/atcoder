@@ -33,6 +33,7 @@
 // ----- boost -----
 #include <boost/rational.hpp>
 #include <boost/multiprecision/cpp_int.hpp>
+#include <boost/math/common_factor_rt.hpp>
 // ----- using directives and manipulations -----
 using namespace std;
 using boost::rational;
@@ -264,7 +265,7 @@ int main()
   cpp_int L{1};
   for (auto i{0}; i < N; ++i)
   {
-    L = lcm<cpp_int>(L, A[i]);
+    L = boost::math::lcm(L, A[i]);
   }
   mint R{static_cast<ll>(L % MOD)};
   mint ans{0};
