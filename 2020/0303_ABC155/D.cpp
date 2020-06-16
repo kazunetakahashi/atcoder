@@ -283,6 +283,9 @@ private:
     while (abs(ng - ok) > 1)
     {
       ll t{(ng + ok) / 2};
+#if DEBUG == 1
+      cerr << "count_minus(" << t << ") = " << count_minus(t) << endl;
+#endif
       if (count_minus(t) < K)
       {
         ok = t;
