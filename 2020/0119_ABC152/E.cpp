@@ -186,8 +186,14 @@ public:
 // ----- for C++14 -----
 using mint = Mint<MOD>;
 using combination = Combination<MOD, MAX_SIZE>;
-cpp_int gcd(cpp_int x, cpp_int y) { return y ? gcd(y, x % y) : x; }
-cpp_int lcm(cpp_int x, cpp_int y) { return x / gcd(x, y) * y; }
+template <typename T>
+T gcd(T x, T y) { return y ? gcd(y, x % y) : x; }
+template <typename T>
+T lcm(T x, T y) { return x / gcd(x, y) * y; }
+template <>
+cpp_int gcd<cpp_int>(cpp_int, cpp_int);
+template <>
+cpp_int lcm<cpp_int>(cpp_int, cpp_int);
 // ----- for C++17 -----
 template <typename T>
 int popcount(T x) // C++20
