@@ -263,7 +263,7 @@ int main()
   cpp_int L{1};
   for (auto i{0}; i < N; ++i)
   {
-    L = lcm(L, A[i]);
+    L = boost::integer::lcm(L, A[i]);
   }
   mint R{static_cast<ll>(L % MOD)};
   mint ans{0};
