@@ -254,5 +254,5 @@ int main()
 {
   ll R1, C1, R2, C2;
   cin >> R2 >> C2 >> R1 >> C1;
-  cout << f(R1, C1) - f(R2 - 1, C1) - f(R1, C1 - 1) + f(R2 - 1, C2 - 1) << endl;
+  cout << f(R1, C1) - f(R2 - 1, C1) - f(R1, C2 - 1) + f(R2 - 1, C2 - 1) << endl;
 }
