@@ -252,6 +252,11 @@ int main()
   {
     cin >> H[i];
   }
+  if (N <= K)
+  {
+    cout << 0 << endl;
+    return 0;
+  }
   sort(H.rbegin(), H.rend());
   for (auto i{0}; i < K; ++i)
   {
