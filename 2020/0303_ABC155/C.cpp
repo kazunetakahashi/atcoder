@@ -246,6 +246,7 @@ int main()
 int main()
 {
   int N;
+  cin >> N;
   map<string, int> M;
   for (auto i{0}; i < N; ++i)
   {
