@@ -545,10 +545,13 @@ int main()
     A[i]--;
   }
   auto tree{RangePlusQuery<int>(N)};
-  ll ans{0};
+  int ans{0};
   for (auto i{0}; i < N; ++i)
   {
-    ans += tree.query(A[i], N);
+    if (tree.query(0, A[i]) == 0)
+    {
+      ++ans;
+    }
     tree.update(A[i], 1);
   }
   cout << ans << endl;
