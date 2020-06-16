@@ -271,6 +271,9 @@ private:
   ll answer_plus()
   {
     K -= (SM + SZ);
+#if DEBUG == 1
+    cerr << "K = " << K << endl;
+#endif
     sort(minus.rbegin(), minus.rend());
     ll ok{0};
     ll ng{Infty<ll>()};
