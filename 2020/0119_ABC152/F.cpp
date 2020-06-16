@@ -367,14 +367,6 @@ private:
 
 // ----- main() -----
 
-/*
-int main()
-{
-  Solve solve;
-  solve.flush();
-}
-*/
-
 int main()
 {
   int N;
@@ -382,4 +374,6 @@ int main()
   auto V{ReadTree(N)};
   int M;
   cin >> M;
+  Solve solve(N, M, V);
+  solve.flush();
 }
