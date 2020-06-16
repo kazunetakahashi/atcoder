@@ -31,12 +31,14 @@
 #include <unordered_set>
 #include <vector>
 // ----- boost -----
-#include <boost/rational.hpp>
+#include <boost/integer/common_factor_rt.hpp>
 #include <boost/multiprecision/cpp_int.hpp>
-#include <boost/math/common_factor_rt.hpp>
+#include <boost/rational.hpp>
 // ----- using directives and manipulations -----
 using namespace std;
 using boost::rational;
+using boost::math::gcd;
+using boost::math::lcm;
 using boost::multiprecision::cpp_int;
 using ll = long long;
 using ld = long double;
@@ -187,10 +189,6 @@ public:
 // ----- for C++14 -----
 using mint = Mint<MOD>;
 using combination = Combination<MOD, MAX_SIZE>;
-template <typename T>
-T gcd(T x, T y) { return y ? gcd(y, x % y) : x; }
-template <typename T>
-T lcm(T x, T y) { return x / gcd(x, y) * y; }
 // ----- for C++17 -----
 template <typename T>
 int popcount(T x) // C++20
@@ -265,7 +263,7 @@ int main()
   cpp_int L{1};
   for (auto i{0}; i < N; ++i)
   {
-    L = boost::math::lcm(L, A[i]);
+    L = lcm(L, A[i]);
   }
   mint R{static_cast<ll>(L % MOD)};
   mint ans{0};
