@@ -218,7 +218,7 @@ void No()
 
 // ----- Solve -----
 
-using Bomb = tuple<int, bool>;
+using Bomb = tuple<int, int>;
 
 struct Edge
 {
@@ -263,7 +263,7 @@ public:
     {
       int a, b;
       cin >> a >> b;
-      bombs[i] = Bomb{a, b == 1};
+      bombs[i] = Bomb{a, b};
     }
     sort(bombs.begin(), bombs.end());
 #if DEBUG == 1
