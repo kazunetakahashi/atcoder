@@ -1,4 +1,4 @@
-#define DEBUG 1
+#define DEBUG 0
 /**
  * File    : F.cpp
  * Author  : Kazune Takahashi
@@ -318,14 +318,14 @@ public:
       {
         cout << i + 1;
         --cnt;
-      }
-      if (cnt > 0)
-      {
-        cout << " ";
-      }
-      else
-      {
-        cout << endl;
+        if (cnt > 0)
+        {
+          cout << " ";
+        }
+        else
+        {
+          cout << endl;
+        }
       }
     }
   }
@@ -361,7 +361,7 @@ private:
     auto sum{B[src] ? 1 : 0};
     for (auto &e : V[src])
     {
-      if (!visited[e.dst])
+      if (visited[e.dst])
       {
         continue;
       }
