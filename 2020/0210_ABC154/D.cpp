@@ -263,5 +263,5 @@ int main()
     }
     ch_max(ans, sum);
   }
-  cout << fixed << setprecision(12) << static_cast<ld>(sum + K) / 2 << endl;
+  cout << fixed << setprecision(12) << static_cast<ld>(ans + K) / 2 << endl;
 }
