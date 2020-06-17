@@ -467,6 +467,8 @@ vector<Point> IntersectionPoints(Circle const &a, Circle const &b)
   }
   auto l{(a.r * a.r - b.r * b.r + d * d) / (2 * d)};
 #if DEBUG == 1
+  cerr << "a.r = " << a.r << endl;
+  cerr << "b.r = " << b.r << endl;
   cerr << "d = " << d << endl;
   cerr << "l = " << l << endl;
 #endif
