@@ -559,7 +559,7 @@ int main()
           ++ans;
         }
       }
-      cerr << ans << endl;
+      cout << ans << endl;
     }
   }
 }
