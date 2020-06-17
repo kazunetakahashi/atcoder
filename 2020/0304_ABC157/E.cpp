@@ -252,10 +252,18 @@ class SegTree
 
     // constructor
     SegNode() {}
-    SegNode(Monoid value, Action lazy_value) : need_update{false}, left{nullptr}, right{nullptr}, value{value}, lazy_value{lazy_value} {}
+    SegNode(Monoid value, Action lazy_value)
+        : need_update{false},
+          left{nullptr},
+          right{nullptr},
+          value{value},
+          lazy_value{lazy_value} {}
 
     // copy constructor
-    SegNode(SegNode const &node) : need_update{node.need_update}, value{node.value}, lazy_value{node.lazy_value}
+    SegNode(SegNode const &node)
+        : need_update{node.need_update},
+          value{node.value},
+          lazy_value{node.lazy_value}
     {
       if (node.left)
       {
@@ -270,13 +278,18 @@ class SegTree
     // copy assignment
     SegNode &operator=(SegNode const &node)
     {
-      auto tmp{node};
+      SegNode tmp{node};
       swap(tmp, *this);
       return *this;
     }
 
     // move constructor
-    SegNode(SegNode &&node) : need_update{node.need_update}, left{move(node.left)}, right{move(node.right)}, value{node.value}, lazy_value{node.lazy_value} {}
+    SegNode(SegNode &&node)
+        : need_update{node.need_update},
+          left{move(node.left)},
+          right{move(node.right)},
+          value{node.value},
+          lazy_value{node.lazy_value} {}
 
     // move assignment
     SegNode &operator=(SegNode &&node)
@@ -317,11 +330,11 @@ public:
       FuncLazy func_lazy,
       FuncIndex func_accumulate)
       : N{1}, root{make_unique<SegNode>(unity_monoid, unity_action)},
-        unity_monoid(unity_monoid), unity_action(unity_action),
-        func_update(func_update),
-        func_combine(func_combine),
-        func_lazy(func_lazy),
-        func_accumulate(func_accumulate)
+        unity_monoid{unity_monoid}, unity_action{unity_action},
+        func_update{func_update},
+        func_combine{func_combine},
+        func_lazy{func_lazy},
+        func_accumulate{func_accumulate}
   {
     while (N < n)
     {
@@ -331,11 +344,11 @@ public:
 
   // copy constructor
   SegTree(SegTree const &tree)
-      : N{1}, unity_monoid(tree.unity_monoid), unity_action(tree.unity_action),
-        func_update(tree.func_update),
-        func_combine(tree.func_combine),
-        func_lazy(tree.func_lazy),
-        func_accumulate(tree.func_accumulate)
+      : N{tree.N}, unity_monoid{tree.unity_monoid}, unity_action{tree.unity_action},
+        func_update{tree.func_update},
+        func_combine{tree.func_combine},
+        func_lazy{tree.func_lazy},
+        func_accumulate{tree.func_accumulate}
   {
     if (tree.root)
     {
@@ -343,7 +356,36 @@ public:
     }
   }
 
-  //
+  // copy assignment
+  SegTree &operator=(SegTree const &tree)
+  {
+    SegTree tmp{tree};
+    swap(tmp, *this);
+    return *this;
+  }
+
+  // move constructor
+  SegTree(SegTree &&tree)
+      : N{tree.N}, root{move(tree.root)},
+        unity_monoid(tree.unity_monoid), unity_action(tree.unity_action),
+        func_update{tree.func_update},
+        func_combine{tree.func_combine},
+        func_lazy{tree.func_lazy},
+        func_accumulate{tree.func_accumulate} {}
+
+  // move assignment
+  SegTree &operator=(SegTree &&tree)
+  {
+    swap(N, tree.N);
+    swap(root, tree.root);
+    swap(unity_monoid, tree.unity_monoid);
+    swap(unity_action, tree.unity_action);
+    swap(func_update, tree.func_update);
+    swap(func_combine, tree.func_combine);
+    swap(func_lazy, tree.func_lazy);
+    swap(func_accumulate, tree.func_accumulate);
+    return *this;
+  }
 
   void update(int a, int b, Action const &x) { update(root.get(), a, b, x, 0, N); }
   void update(int a, Action const &x) { update(a, a + 1, x); }
