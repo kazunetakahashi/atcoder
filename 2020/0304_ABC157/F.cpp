@@ -597,9 +597,6 @@ private:
     X.clear();
     for (auto i{0}; i < N; ++i)
     {
-#if DEBUG == 1
-      cerr << "c[" << i << "] = " << c[i] << endl;
-#endif
       C.push_back(Circle{P[i], T / c[i]});
     }
     for (auto i{0}; i < N; ++i)
@@ -612,9 +609,6 @@ private:
     }
     for (auto const &p : X)
     {
-#if DEBUG == 1
-      cerr << p << endl;
-#endif
       int cnt{0};
       for (auto i{0}; i < N; ++i)
       {
@@ -635,7 +629,7 @@ private:
   {
     ld lb{0};
     ld ub{100000};
-    for (auto q{0}; q < 100; ++q)
+    for (auto q{0}; q < 1; ++q)
     {
       ld t{(lb + ub) / 2};
       if (burn(t))
