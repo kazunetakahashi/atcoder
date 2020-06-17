@@ -569,7 +569,7 @@ bool DoesContain(T const &a, U const &b)
 
 class Solve
 {
-  int N;
+  int N, K;
   vector<Point> P;
   vector<ld> c;
   vector<Circle> C;
@@ -578,6 +578,7 @@ class Solve
 public:
   Solve(int N) : N{N}, P(N), c(N)
   {
+    cin >> K;
     for (auto i{0}; i < N; ++i)
     {
       cin >> P[i] >> c[i];
@@ -614,16 +615,15 @@ private:
 #if DEBUG == 1
       cerr << p << endl;
 #endif
-      bool ok{true};
+      int cnt{0};
       for (auto i{0}; i < N; ++i)
       {
-        if (!DoesContain(C[i], p))
+        if (DoesContain(C[i], p))
         {
-          ok = false;
-          break;
+          ++cnt;
         }
       }
-      if (ok)
+      if (cnt >= K)
       {
         return true;
       }
