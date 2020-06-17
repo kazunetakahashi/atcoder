@@ -466,12 +466,6 @@ vector<Point> IntersectionPoints(Circle const &a, Circle const &b)
     return {};
   }
   auto l{(a.r * a.r - b.r * b.r + d * d) / (2 * d)};
-#if DEBUG == 1
-  cerr << "a.r = " << a.r << endl;
-  cerr << "b.r = " << b.r << endl;
-  cerr << "d = " << d << endl;
-  cerr << "l = " << l << endl;
-#endif
   auto tmp{a.r * a.r - l * l};
   if (tmp <= 0)
   {
@@ -481,13 +475,6 @@ vector<Point> IntersectionPoints(Circle const &a, Circle const &b)
   vector<Point> res;
   auto v{Normalize(b.p - a.p)};
   auto w{Rotate(v)};
-#if DEBUG == 1
-  cerr << "v = " << v << endl;
-  cerr << "w = " << w << endl;
-  cerr << "h = " << h << endl;
-  cerr << a.p + v * l + w * h << endl;
-  cerr << a.p + v * l - w * h << endl;
-#endif
   res.push_back(a.p + v * l + w * h);
   res.push_back(a.p + v * l - w * h);
   return res;
@@ -617,9 +604,6 @@ private:
           ++cnt;
         }
       }
-#if DEBUG == 1
-      cerr << "p = " << p << ", cnt = " << cnt << endl;
-#endif
       if (cnt >= K)
       {
         return true;
