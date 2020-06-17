@@ -632,16 +632,16 @@ private:
   {
     ld lb{0};
     ld ub{100000};
-    for (auto q{0}; q < 1; ++q)
+    for (auto q{0}; q < 100; ++q)
     {
       ld t{(lb + ub) / 2};
       if (burn(t))
       {
-        lb = t;
+        ub = t;
       }
       else
       {
-        ub = t;
+        lb = t;
       }
     }
     return lb;
