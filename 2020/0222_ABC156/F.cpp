@@ -252,7 +252,7 @@ private:
       S += d[i];
     }
     ll res{L * S};
-    for (auto i{0}; i < R; ++i)
+    for (auto i{0}; i <= R; ++i)
     {
       res += d[i];
     }
@@ -270,7 +270,7 @@ private:
       }
     }
     ll res{L * C};
-    for (auto i{0}; i < R; ++i)
+    for (auto i{0}; i <= R; ++i)
     {
       if (d[i] == 0)
       {
