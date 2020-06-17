@@ -250,8 +250,44 @@ class SegTree
     Monoid value;
     Action lazy_value;
 
+    // constructor
     SegNode() {}
     SegNode(Monoid value, Action lazy_value) : need_update{false}, left{nullptr}, right{nullptr}, value{value}, lazy_value{lazy_value} {}
+
+    // copy constructor
+    SegNode(SegNode const &node) : need_update{node.need_update}, value{node.value}, lazy_value{node.lazy_value}
+    {
+      if (node.left)
+      {
+        left = make_unique<SegNode>(*(node.left));
+      }
+      if (node.right)
+      {
+        left = make_unique<SegNode>(*(node.right));
+      }
+    }
+
+    // copy assignment
+    SegNode &operator=(SegNode const &node)
+    {
+      auto tmp{node};
+      swap(tmp, *this);
+      return *this;
+    }
+
+    // move constructor
+    SegNode(SegNode &&node) : need_update{node.need_update}, left{move(node.left)}, right{move(node.right)}, value{node.value}, lazy_value{node.lazy_value} {}
+
+    // move assignment
+    SegNode &operator=(SegNode &&node)
+    {
+      swap(need_update, node.need_update);
+      swap(left, node.left);
+      swap(right, node.right);
+      swap(value, node.value);
+      swap(lazy_value, node.lazy_value);
+      return *this;
+    }
   };
 
   using FuncAction = function<void(Monoid &, Action)>;
@@ -272,6 +308,7 @@ class SegTree
   FuncIndex func_accumulate;
 
 public:
+  // constructor
   SegTree() {}
   SegTree(
       int n, Monoid unity_monoid, Action unity_action,
@@ -291,6 +328,22 @@ public:
       N <<= 1;
     }
   }
+
+  // copy constructor
+  SegTree(SegTree const &tree)
+      : N{1}, unity_monoid(tree.unity_monoid), unity_action(tree.unity_action),
+        func_update(tree.func_update),
+        func_combine(tree.func_combine),
+        func_lazy(tree.func_lazy),
+        func_accumulate(tree.func_accumulate)
+  {
+    if (tree.root)
+    {
+      root = make_unique<SegNode>(*(tree.root));
+    }
+  }
+
+  //
 
   void update(int a, int b, Action const &x) { update(root.get(), a, b, x, 0, N); }
   void update(int a, Action const &x) { update(a, a + 1, x); }
@@ -523,11 +576,8 @@ int main()
   string S;
   int Q;
   cin >> N >> S >> Q;
-  vector<SegTree<int, int>> V(26);
-  for (auto i{0}; i < 26; ++i)
-  {
-    V[i] = RangePlusQuery<int>(N);
-  }
+  auto tree{RSQ_RUQ<int>(N)};
+  vector<SegTree<int, int>> V(26, tree);
   for (auto i{0}; i < N; ++i)
   {
     V[S[i] - 'a'].update(i, 1);
@@ -542,9 +592,9 @@ int main()
       char c;
       cin >> ind >> c;
       --ind;
-      V[S[ind] - 'a'].update(ind, -V[S[ind] - 'a'][ind]);
+      V[S[ind] - 'a'].update(ind, 0);
       S[ind] = c;
-      V[S[ind] - 'a'].update(ind, -V[S[ind] - 'a'][ind] + 1);
+      V[S[ind] - 'a'].update(ind, 1);
     }
     else
     {
