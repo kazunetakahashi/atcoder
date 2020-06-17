@@ -475,10 +475,6 @@ vector<Point> IntersectionPoints(Circle const &a, Circle const &b)
   vector<Point> res;
   auto v{Normalize(b.p - a.p)};
   auto w{Rotate(v)};
-#if DEBUG == 1
-  cerr << "v = " << v << endl;
-  cerr << "w = " << v << endl;
-#endif
   res.push_back(a.p + v * l + w * h);
   res.push_back(a.p + v * l - w * h);
   return res;
@@ -594,6 +590,12 @@ private:
       for (auto j{i + 1}; j < N; ++j)
       {
         auto tmp{IntersectionPoints(C[i], C[j])};
+#if DEBUG == 1
+        for (auto const &e : tmp)
+        {
+          cerr << e << endl;
+        }
+#endif
         copy(tmp.begin(), tmp.end(), back_inserter(X));
       }
     }
