@@ -542,9 +542,9 @@ int main()
       char c;
       cin >> ind >> c;
       --ind;
-      V[S[ind] - 'a'].update(ind, 0);
+      V[S[ind] - 'a'].update(ind, -V[S[ind] - 'a'][ind]);
       S[ind] = c;
-      V[S[ind] - 'a'].update(ind, 1);
+      V[S[ind] - 'a'].update(ind, -V[S[ind] - 'a'][ind] + 1);
     }
     else
     {
