@@ -258,5 +258,5 @@ int main()
 {
   ll N, A, B;
   cin >> N >> A >> B;
-  cout << mint{2}.power(N) - C(N, A) - C(N, B) << endl;
+  cout << mint{2}.power(N) - 1 - C(N, A) - C(N, B) << endl;
 }
