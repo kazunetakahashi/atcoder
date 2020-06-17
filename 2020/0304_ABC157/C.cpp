@@ -263,7 +263,7 @@ int main()
     bool ok{true};
     for (auto j{0}; j < M; ++j)
     {
-      if (S[j] != c[j] + '0')
+      if (S[s[j]] != c[j] + '0')
       {
         ok = false;
       }
