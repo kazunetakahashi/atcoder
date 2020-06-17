@@ -478,6 +478,8 @@ vector<Point> IntersectionPoints(Circle const &a, Circle const &b)
 #if DEBUG == 1
   cerr << "v = " << v << endl;
   cerr << "w = " << w << endl;
+  cerr << a.p + v * l + w * h << endl;
+  cerr << a.p + v * l - w * h << endl;
 #endif
   res.push_back(a.p + v * l + w * h);
   res.push_back(a.p + v * l - w * h);
