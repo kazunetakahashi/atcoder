@@ -596,6 +596,9 @@ private:
     X.clear();
     for (auto i{0}; i < N; ++i)
     {
+#if DEBUG == 1
+      cerr << "c[" << i << "] = " << c[i] << endl;
+#endif
       C.push_back(Circle{P[i], T / c[i]});
     }
     for (auto i{0}; i < N; ++i)
