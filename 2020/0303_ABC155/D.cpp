@@ -304,7 +304,7 @@ private:
 
   ll count_plus(ll T, ll ind, vector<ll> const &V)
   {
-    ll ok{-1};
+    ll ok{ind};
     ll ng = V.size();
     while (abs(ok - ng) > 1)
     {
@@ -318,7 +318,7 @@ private:
         ng = t;
       }
     }
-    return ok + 1;
+    return ok - ind;
   }
 
   ll answer_minus()
