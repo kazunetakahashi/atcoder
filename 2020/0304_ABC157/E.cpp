@@ -618,8 +618,7 @@ int main()
   string S;
   int Q;
   cin >> N >> S >> Q;
-  auto tree{RSQ_RUQ<int>(N)};
-  vector<SegTree<int, int>> V(26, tree);
+  vector<SegTree<int, int>> V(26, RSQ_RUQ<int>(N));
   for (auto i{0}; i < N; ++i)
   {
     V[S[i] - 'a'].update(i, 1);
