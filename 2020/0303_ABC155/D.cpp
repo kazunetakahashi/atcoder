@@ -258,6 +258,7 @@ public:
     }
     else if (K > SM + SZ)
     {
+      K -= (SM + SZ);
       sort(minus.rbegin(), minus.rend());
       sort(plus.begin(), plus.end());
       cout << answer_plus() << endl;
