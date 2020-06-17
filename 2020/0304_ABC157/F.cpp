@@ -471,13 +471,14 @@ vector<Point> IntersectionPoints(Circle const &a, Circle const &b)
   {
     return {};
   }
-#if DEBUG == 1
-  cerr << "here" << endl;
-#endif
   auto h{sqrt(tmp)};
   vector<Point> res;
   auto v{Normalize(b.p - a.p)};
   auto w{Rotate(v)};
+#if DEBUG == 1
+  cerr << "v = " << v << endl;
+  cerr << "w = " << v << endl;
+#endif
   res.push_back(a.p + v * l + w * h);
   res.push_back(a.p + v * l - w * h);
   return res;
