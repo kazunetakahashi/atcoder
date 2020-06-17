@@ -260,16 +260,19 @@ int main()
     {
       continue;
     }
+    bool ok{true};
     for (auto j{0}; j < M; ++j)
     {
       if (S[j] != c[j] + '0')
       {
-        continue;
+        ok = false;
       }
-
     }
-    cout << i << endl;
-    return 0;
+    if (ok)
+    {
+      cout << i << endl;
+      return 0;
+    }
   }
   cout << -1 << endl;
 }
