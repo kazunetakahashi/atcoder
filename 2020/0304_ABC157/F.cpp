@@ -595,6 +595,9 @@ private:
     }
     for (auto const &p : X)
     {
+#if DEBUG == 1
+      cerr << p << endl;
+#endif
       bool ok{true};
       for (auto i{0}; i < N; ++i)
       {
