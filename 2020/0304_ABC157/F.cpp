@@ -462,10 +462,7 @@ vector<Point> IntersectionPoints(Circle const &a, Circle const &b)
 {
   auto d{Dist(a.p, b.p)};
 #if DEBUG == 1
-  if (abs(a.p - Point{1, 0}) < EPSILON)
-  {
-    cerr << "d = " << d << endl;
-  }
+  cerr << "Dist(" << a.p << ", " << b.p << ") = " << d << endl;
 #endif
   if (a.r + b.r + EPSILON < d)
   {
