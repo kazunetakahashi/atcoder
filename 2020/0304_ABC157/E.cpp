@@ -547,6 +547,9 @@ int main()
       V[c - 'a'].update(ind, 0);
       V[nc - 'a'].update(ind, 1);
       S[ind] = nc;
+#if DEBUG == 1
+      cerr << "S = " << S << endl;
+#endif
     }
     else
     {
@@ -561,7 +564,7 @@ int main()
           ++ans;
         }
       }
-      cout << ans << endl;
+      cerr << ans << endl;
     }
   }
 }
