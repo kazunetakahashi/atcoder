@@ -271,7 +271,54 @@ public:
 private:
   ll answer_plus()
   {
-    assert(false);
+    ll ok{0};
+    ll ng{Infty<ll>()};
+    while (abs(ok - ng) > 1)
+    {
+      ll t{(ok + ng) / 2};
+      if (count_plus(t) < K)
+      {
+        ok = t;
+      }
+      else
+      {
+        ng = t;
+      }
+    }
+    return ok;
+  }
+
+  ll count_plus(ll T)
+  {
+    ll ans{0};
+    for (auto i{0}; i < P; ++i)
+    {
+      ans += count_plus(T, i, plus);
+    }
+    for (auto i{0}; i < M; ++i)
+    {
+      ans += count_plus(T, i, minus);
+    }
+    return ans;
+  }
+
+  ll count_plus(ll T, ll ind, vector<ll> const &V)
+  {
+    ll ok{-1};
+    ll ng = V.size();
+    while (abs(ok - ng) > 1)
+    {
+      ll t{(ok + ng) / 2};
+      if (V[ind] * V[t] < T)
+      {
+        ok = t;
+      }
+      else
+      {
+        ng = t;
+      }
+    }
+    return ok + 1;
   }
 
   ll answer_minus()
