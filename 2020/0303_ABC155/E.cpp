@@ -249,7 +249,7 @@ int main()
   cin >> S;
   int N(S.size());
   vector<vector<ll>> dp(N + 1, vector<ll>(2, Infty<ll>()));
-  dp[0][0] = 1;
+  dp[0][0] = 0;
   for (auto i{0}; i < N; ++i)
   {
     ll d{S[i] - '0'};
