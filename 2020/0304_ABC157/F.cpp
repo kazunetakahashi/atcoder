@@ -617,6 +617,9 @@ private:
           ++cnt;
         }
       }
+#if DEBUG == 1
+      cerr << "p = " << p << ", cnt = " << cnt << endl;
+#endif
       if (cnt >= K)
       {
         return true;
