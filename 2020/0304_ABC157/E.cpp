@@ -530,8 +530,7 @@ int main()
   }
   for (auto i{0}; i < N; ++i)
   {
-    auto c{S[i] - 'a'};
-    V[c].update(i, 1);
+    V[S[i] - 'a'].update(i, 1);
   }
   for (auto q{0}; q < Q; ++q)
   {
@@ -540,16 +539,12 @@ int main()
     if (t == 1)
     {
       int ind;
-      char nc;
-      cin >> ind >> nc;
+      char c;
+      cin >> ind >> c;
       --ind;
-      auto c{S[ind]};
-      V[c - 'a'].update(ind, 0);
-      V[nc - 'a'].update(ind, 1);
-      S[ind] = nc;
-#if DEBUG == 1
-      cerr << "S = " << S << endl;
-#endif
+      V[S[ind] - 'a'].update(ind, 0);
+      S[ind] = c;
+      V[S[ind] - 'a'].update(ind, 1);
     }
     else
     {
