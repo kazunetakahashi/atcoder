@@ -461,9 +461,6 @@ ld Dist(Segment const &s, Segment const &t)
 vector<Point> IntersectionPoints(Circle const &a, Circle const &b)
 {
   auto d{Dist(a.p, b.p)};
-#if DEBUG == 1
-  cerr << "Dist(" << a.p << ", " << b.p << ") = " << d << endl;
-#endif
   if (a.r + b.r + EPSILON < d)
   {
     return {};
@@ -478,6 +475,10 @@ vector<Point> IntersectionPoints(Circle const &a, Circle const &b)
   vector<Point> res;
   auto v{Normalize(b.p - a.p)};
   auto w{Rotate(v)};
+#if DEBUG == 1
+  cerr << "v = " << v << endl;
+  cerr << "w = " << w << endl;
+#endif
   res.push_back(a.p + v * l + w * h);
   res.push_back(a.p + v * l - w * h);
   return res;
