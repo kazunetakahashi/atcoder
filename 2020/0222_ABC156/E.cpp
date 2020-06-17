@@ -249,6 +249,11 @@ int main()
   cin >> N >> K;
   combination C;
   mint ans{0};
+  if (K >= N - 1)
+  {
+    cout << C(N + N - 1, N - 1) << endl;
+    return 0;
+  }
   for (auto x{0LL}; x <= K; ++x)
   {
     ans += C(N, x) * C(x + N - x - 1, N - x - 1);
