@@ -240,12 +240,12 @@ public:
       {
         plus.push_back(A);
       }
-      M = minus.size();
-      P = plus.size();
-      SM = M * P;
-      SP = M * (M - 1) / 2 + P * (P - 1) / 2;
-      SZ = N * (N - 1) / 2 - SM - SP;
     }
+    M = minus.size();
+    P = plus.size();
+    SM = M * P;
+    SP = M * (M - 1) / 2 + P * (P - 1) / 2;
+    SZ = N * (N - 1) / 2 - SM - SP;
   }
 
   void flush()
