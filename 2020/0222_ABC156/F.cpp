@@ -246,7 +246,7 @@ public:
 private:
   ll calc_Z()
   {
-    ll S{0};
+    ll S{x};
     for (auto i{0}; i < k; ++i)
     {
       S += d[i];
