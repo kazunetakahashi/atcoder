@@ -246,12 +246,12 @@ public:
 private:
   ll calc_Z()
   {
-    ll S{x};
+    ll S{0};
     for (auto i{0}; i < k; ++i)
     {
       S += d[i];
     }
-    ll res{L * S};
+    ll res{x + L * S};
     for (auto i{0}; i <= R; ++i)
     {
       res += d[i];
