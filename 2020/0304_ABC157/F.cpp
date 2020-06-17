@@ -615,7 +615,7 @@ private:
   ld binary_search()
   {
     ld lb{0};
-    ld ub{100000};
+    ld ub{1000000};
     for (auto q{0}; q < 100; ++q)
     {
       ld t{(lb + ub) / 2};
