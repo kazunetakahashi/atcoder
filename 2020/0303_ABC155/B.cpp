@@ -246,6 +246,7 @@ int main()
 int main()
 {
   int N;
+  cin >> N;
   vector<int> A(N);
   for (auto i{0}; i < N; ++i)
   {
