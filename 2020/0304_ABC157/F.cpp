@@ -461,6 +461,9 @@ ld Dist(Segment const &s, Segment const &t)
 vector<Point> IntersectionPoints(Circle const &a, Circle const &b)
 {
   auto d{Dist(a.p, b.p)};
+#if DEBUG == 1
+  cerr << "d = " << d << endl;
+#endif
   if (a.r + b.r + EPSILON < d)
   {
     return {};
@@ -590,12 +593,6 @@ private:
       for (auto j{i + 1}; j < N; ++j)
       {
         auto tmp{IntersectionPoints(C[i], C[j])};
-#if DEBUG == 1
-        for (auto const &e : tmp)
-        {
-          cerr << e << endl;
-        }
-#endif
         copy(tmp.begin(), tmp.end(), back_inserter(X));
       }
     }
