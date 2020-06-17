@@ -2,7 +2,7 @@
 /**
  * File    : A.cpp
  * Author  : Kazune Takahashi
- * Created : 6/17/2020, 5:57:00 PM
+ * Created : 6/17/2020, 1:00:47 AM
  * Powered by Visual Studio Code
  */
 #include <algorithm>
@@ -245,21 +245,19 @@ int main()
 
 int main()
 {
-  deque<int> D;
+  vector<int> A(3);
   for (auto i{0}; i < 3; ++i)
   {
-    int A;
-    cin >> A;
-    D.push_back(A);
+    cin >> A[i];
   }
-  for (auto i{0}; i < 3; ++i)
+  sort(A.begin(), A.end());
+  if (A[0] == A[1] && A[1] != A[2])
   {
-    if (D[0] == D[1] && D[1] != D[2])
-    {
-      Yes();
-    }
-    D.push_back(D[0]);
-    D.pop_front();
+    Yes();
+  }
+  if (A[0] != A[1] && A[1] == A[2])
+  {
+    Yes();
   }
   No();
 }
