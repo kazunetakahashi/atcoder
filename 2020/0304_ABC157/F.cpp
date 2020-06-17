@@ -581,7 +581,7 @@ private:
   bool burn(ld T)
   {
     C.clear();
-    X.clear();
+    X = P;
     for (auto i{0}; i < N; ++i)
     {
       C.push_back(Circle{P[i], T / c[i]});
