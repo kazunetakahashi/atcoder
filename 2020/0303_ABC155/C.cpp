@@ -245,4 +245,26 @@ int main()
 
 int main()
 {
+  int N;
+  cin >> N;
+  map<string, int> M;
+  for (auto i{0}; i < N; ++i)
+  {
+    string S;
+    cin >> S;
+    M[S];
+    M[S]++;
+  }
+  int maxi{0};
+  for (auto const &e : M)
+  {
+    ch_max(maxi, e.second);
+  }
+  for (auto const &e : M)
+  {
+    if (e.second == maxi)
+    {
+      cout << e.first << endl;
+    }
+  }
 }
