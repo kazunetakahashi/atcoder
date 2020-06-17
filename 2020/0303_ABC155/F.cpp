@@ -329,7 +329,7 @@ private:
   int dfs(int src)
   {
     visited[src] = true;
-    int res{0};
+    int res{flags[src] ? 1 : 0};
     for (auto const &e : V[src])
     {
       if (!visited[e.dst])
