@@ -232,7 +232,7 @@ public:
   void flush()
   {
     vector<ll> V(P, 0);
-    V[0] = 0;
+    V[0] = 1;
     ll base{1};
     ll ans{0};
     ll now{0};
