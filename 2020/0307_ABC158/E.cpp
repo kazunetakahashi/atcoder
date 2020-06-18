@@ -272,6 +272,7 @@ int main()
   }
   else
   {
+    assert(false);
     Solve solve(N, P, S);
     solve.flush();
   }
