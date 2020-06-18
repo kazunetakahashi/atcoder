@@ -618,7 +618,7 @@ public:
     auto tree{RangeMinQuery<int>(N)};
     for (auto i{0}; i < N; ++i)
     {
-      auto [x, d] = robots[i];
+      auto [x, d]{robots[i]};
       int ng{-1}, ok{i};
       while (abs(ok - ng) > 1)
       {
@@ -643,7 +643,7 @@ public:
     DP[0] = 1;
     for (auto i{0}; i < N; ++i)
     {
-      DP[i + 1] = DP[i] + DP[tree[i]];
+      DP[i + 1] = DP[i] + DP[tree[i] + 1];
     }
     cout << DP[N] << endl;
   }
