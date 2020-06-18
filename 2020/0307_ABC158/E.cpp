@@ -246,10 +246,13 @@ public:
       base %= P;
     }
 #if DEBUG == 1
+    ll tmp{0};
     for (auto i{0}; i < P; ++i)
     {
       cerr << "V[" << i << "] = " << V[i] << endl;
+      tmp += V[i] * (V[i] - 1) / 2;
     }
+    cerr << tmp << endl;
 #endif
     cout << ans << endl;
   }
