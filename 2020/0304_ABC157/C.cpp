@@ -268,12 +268,11 @@ int main()
         ok = false;
         break;
       }
-      if (ok)
-      {
-        cout << x << endl;
-        return 0;
-        ;
-      }
+    }
+    if (ok)
+    {
+      cout << x << endl;
+      return 0;
     }
   }
   cout << -1 << endl;
