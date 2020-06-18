@@ -623,7 +623,7 @@ public:
       while (abs(ok - ng) > 1)
       {
         int t{(ng + ok) / 2};
-        if (get<0>(robots[t]) <= x + d)
+        if (get<0>(robots[t]) < x + d)
         {
           ok = t;
         }
