@@ -632,7 +632,12 @@ public:
           ng = t;
         }
       }
-      tree.update(i, min(tree.query(ok, i), i));
+      int tmp{i};
+      if (ok < i)
+      {
+        ch_min(tmp, tree.query(ok, i));
+      }
+      tree.update(i, tmp);
     }
     vector<mint> DP(N + 1, 0);
     DP[0] = 1;
