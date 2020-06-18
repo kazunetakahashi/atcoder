@@ -643,7 +643,7 @@ public:
     DP[0] = 1;
     for (auto i{0}; i < N; ++i)
     {
-      DP[i + 1] = DP[i] + DP[tree[i] + 1];
+      DP[i + 1] = DP[i] + DP[tree[i] - 1];
     }
     cout << DP[N] << endl;
   }
