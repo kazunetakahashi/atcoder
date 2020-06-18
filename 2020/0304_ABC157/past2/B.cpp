@@ -2,7 +2,7 @@
 /**
  * File    : B.cpp
  * Author  : Kazune Takahashi
- * Created : 6/18/2020, 7:52:42 PM
+ * Created : 6/18/2020, 4:39:16 AM
  * Powered by Visual Studio Code
  */
 #include <algorithm>
@@ -247,7 +247,7 @@ constexpr int C{3};
 
 int main()
 {
-  vector<vector<int>> A(3, vector<int>(3));
+  vector<vector<int>> A(C, vector<int>(C));
   for (auto i{0}; i < C; ++i)
   {
     for (auto j{0}; j < C; ++j)
@@ -257,17 +257,21 @@ int main()
   }
   int N;
   cin >> N;
-  for (auto q{0}; q < N; ++q)
+  vector<int> B(N);
+  for (auto i{0}; i < N; ++i)
   {
-    int b;
-    cin >> b;
-    for (auto i{0}; i < C; ++i)
+    cin >> B[i];
+  }
+  vector<vector<bool>> V(C, vector<bool>(C, false));
+  for (auto i{0}; i < N; ++i)
+  {
+    for (auto j{0}; j < C; ++j)
     {
-      for (auto j{0}; j < C; ++j)
+      for (auto k{0}; k < C; ++k)
       {
-        if (b == A[i][j])
+        if (A[j][k] == B[i])
         {
-          A[i][j] = -1;
+          V[j][k] = true;
         }
       }
     }
@@ -277,10 +281,7 @@ int main()
     bool ok{true};
     for (auto j{0}; j < C; ++j)
     {
-      if (A[i][j] != -1)
-      {
-        ok = false;
-      }
+      ok &= V[i][j];
     }
     if (ok)
     {
@@ -292,10 +293,7 @@ int main()
     bool ok{true};
     for (auto j{0}; j < C; ++j)
     {
-      if (A[j][i] != -1)
-      {
-        ok = false;
-      }
+      ok &= V[j][i];
     }
     if (ok)
     {
@@ -304,12 +302,9 @@ int main()
   }
   {
     bool ok{true};
-    for (auto j{0}; j < C; ++j)
+    for (auto i{0}; i < C; ++i)
     {
-      if (A[j][j] != -1)
-      {
-        ok = false;
-      }
+      ok &= V[i][i];
     }
     if (ok)
     {
@@ -318,16 +313,14 @@ int main()
   }
   {
     bool ok{true};
-    for (auto j{0}; j < C; ++j)
+    for (auto i{0}; i < C; ++i)
     {
-      if (A[C - j - 1][j] != -1)
-      {
-        ok = false;
-      }
+      ok &= V[C - 1 - i][i];
     }
     if (ok)
     {
       Yes();
     }
   }
+  No();
 }
