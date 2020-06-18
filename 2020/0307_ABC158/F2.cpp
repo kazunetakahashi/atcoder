@@ -240,7 +240,7 @@ public:
 
   void flush()
   {
-    set<Info, greater<Info>> S;
+    set<Info> S;
     for (auto i{0}; i < N; ++i)
     {
       auto [x, d]{robots[i]};
