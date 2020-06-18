@@ -238,7 +238,7 @@ public:
     ll now{0};
     for (auto i{0}; i < N; ++i)
     {
-      now += base * (S[i] - '0');
+      now += (base * static_cast<ll>(S[i] - '0')) % P;
       now %= P;
       ans += V[now];
       V[now]++;
@@ -272,7 +272,6 @@ int main()
   }
   else
   {
-    assert(false);
     Solve solve(N, P, S);
     solve.flush();
   }
