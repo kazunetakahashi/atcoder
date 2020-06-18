@@ -395,6 +395,14 @@ int main()
         --ans;
       }
     }
-    cout << ans << endl;
+    cout << ans;
+    if (i < N - 1)
+    {
+      cout << " ";
+    }
+    else
+    {
+      cout << endl;
+    }
   }
 }
