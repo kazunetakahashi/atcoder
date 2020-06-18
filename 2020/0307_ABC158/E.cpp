@@ -240,14 +240,17 @@ public:
     {
       now += (base * static_cast<ll>(S[i] - '0')) % P;
       now %= P;
-#if DEBUG == 1
-      cerr << "now = " << now << endl;
-#endif
       ans += V[now];
       V[now]++;
       base *= 10;
       base %= P;
     }
+#if DEBUG == 1
+    for (auto i{0}; i < P; ++i)
+    {
+      cerr << "V[" << i << "] = " << V[i] << endl;
+    }
+#endif
     cout << ans << endl;
   }
 
