@@ -253,11 +253,11 @@ int main()
   auto make_str = [&]() {
     string ans{F.str()};
     reverse(ans.begin(), ans.end());
-    ans += S + B.str();
     if (reversed)
     {
-      reverse(ans.begin(), ans.end());
+      reverse(S.begin(), S.end());
     }
+    ans += S + B.str();
     return ans;
   };
   for (auto i{0}; i < Q; ++i)
