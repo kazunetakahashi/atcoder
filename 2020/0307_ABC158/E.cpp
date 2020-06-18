@@ -240,6 +240,9 @@ public:
     {
       now += (base * static_cast<ll>(S[i] - '0')) % P;
       now %= P;
+#if DEBUG == 1
+      cerr << "now = " << now << endl;
+#endif
       ans += V[now];
       V[now]++;
       base *= 10;
