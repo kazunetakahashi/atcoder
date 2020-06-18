@@ -255,7 +255,7 @@ int main()
   {
     I[S[i] - 'a'].insert(i);
   }
-  for (auto q{0}; q < N; ++q)
+  for (auto q{0}; q < Q; ++q)
   {
     int type;
     cin >> type;
