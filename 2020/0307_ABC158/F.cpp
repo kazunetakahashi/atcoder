@@ -623,7 +623,7 @@ public:
       while (abs(ok - ng) > 1)
       {
         int t{(ng + ok) / 2};
-        if (get<0>(robots[t]) < x + d)
+        if (get<0>(robots[t]) <= x + d)
         {
           ok = t;
         }
@@ -634,12 +634,6 @@ public:
       }
       tree.update(i, min(i, tree.query(ok, i)));
     }
-#if DEBUG == 1
-    for (auto i{0}; i < N; ++i)
-    {
-      cerr << "tree[" << i << "] = " << tree[i] << endl;
-    }
-#endif
     vector<mint> DP(N + 1);
     DP[0] = 1;
     for (auto i{0}; i < N; ++i)
