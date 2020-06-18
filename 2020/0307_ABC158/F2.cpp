@@ -258,6 +258,7 @@ public:
           break;
         }
       }
+      S.emplace(x, i);
     }
     mint ans{1};
     for (auto e : S)
