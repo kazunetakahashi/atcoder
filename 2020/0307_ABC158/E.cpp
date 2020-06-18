@@ -243,6 +243,7 @@ public:
       ans += V[now];
       V[now]++;
       base *= 10;
+      base %= P;
     }
     cout << ans << endl;
   }
