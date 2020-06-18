@@ -226,7 +226,7 @@ class Solve
 public:
   Solve(ll N, ll P, string S) : N{N}, P{P}, S{S}
   {
-    reverse(S.begin(), S.end());
+    reverse(Solve::S.begin(), Solve::S.end());
   }
 
   void flush()
