@@ -632,20 +632,21 @@ public:
           ng = t;
         }
       }
-      int tmp{i};
-      if (ok < i)
-      {
-        ch_min(tmp, tree.query(ok, i));
-      }
-      tree.update(i, tmp);
+      tree.update(i, min(i, tree.query(ok, i)));
     }
-    vector<mint> DP(N + 1, 0);
+#if DEBUG == 1
+    for (auto i{0}; i < N; ++i)
+    {
+      cerr << "tree[" << i << "] = " << tree[i] << endl;
+    }
+#endif
+    vector<mint> DP(N + 1);
     DP[0] = 1;
     for (auto i{0}; i < N; ++i)
     {
-      DP[i + 1] = DP[i] + DP[tree[i] - 1];
+      DP[i + 1] = DP[i] + DP[tree[i]];
     }
-    cout << DP[N] << endl;
+    cerr << DP[N] << endl;
   }
 
 private:
