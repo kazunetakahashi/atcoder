@@ -250,6 +250,16 @@ int main()
   cin >> S >> Q;
   stringstream F, B;
   bool reversed{false};
+  auto make_str = [&]() {
+    string ans{F.str()};
+    reverse(ans.begin(), ans.end());
+    ans += S + B.str();
+    if (reversed)
+    {
+      reverse(ans.begin(), ans.end());
+    }
+    return ans;
+  };
   for (auto i{0}; i < Q; ++i)
   {
     int type;
@@ -273,13 +283,9 @@ int main()
         B << c;
       }
     }
+#if DEBUG == 1
+    cerr << make_str() << endl;
+#endif
   }
-  string ans{F.str()};
-  reverse(ans.begin(), ans.end());
-  ans += S + B.str();
-  if (reversed)
-  {
-    reverse(ans.begin(), ans.end());
-  }
-  cout << ans << endl;
+  cout << make_str() << endl;
 }
