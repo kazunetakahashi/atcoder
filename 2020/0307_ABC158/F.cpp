@@ -640,7 +640,7 @@ public:
     {
       DP[i + 1] = DP[i] + DP[tree[i]];
     }
-    cerr << DP[N] << endl;
+    cout << DP[N] << endl;
   }
 
 private:
