@@ -267,6 +267,9 @@ int main()
     if (type == 1)
     {
       reversed = !reversed;
+#if DEBUG == 1
+      cerr << "reversed = " << reversed << endl;
+#endif
       swap(F, B);
     }
     else
