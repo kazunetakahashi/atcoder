@@ -270,7 +270,7 @@ private:
       cerr << "j = " << j << endl;
       for (auto i{0}; i < k; ++i)
       {
-        cerr << "sum[" << i << "] = " << sum[i] << endl;
+        cerr << "tmp[" << i << "] = " << tmp[i] << endl;
       }
 #endif
       if (any_of(tmp.begin(), tmp.end(), [&](auto x) { return x > K; }))
