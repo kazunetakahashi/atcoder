@@ -257,13 +257,6 @@ private:
       }
     }
     ++k;
-#if DEBUG == 1
-    cerr << "mask = " << mask << endl;
-    for (auto i{0}; i < H; ++i)
-    {
-      cerr << "ind[" << i << "] = " << ind[i] << endl;
-    }
-#endif
     vector<int> sum(k, 0);
     int ans{0};
     for (auto j{0}; j < W; ++j)
@@ -278,6 +271,10 @@ private:
         for (auto i{0}; i < k; ++i)
         {
           sum[i] = tmp[i] - sum[i];
+        }
+        if (any_of(sum.begin(), sum.end(), [&](auto x) { return x > K; }))
+        {
+          return H * W;
         }
         ++ans;
       }
