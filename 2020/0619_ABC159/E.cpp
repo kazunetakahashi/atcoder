@@ -261,10 +261,10 @@ private:
     int ans{0};
     for (auto j{0}; j < W; ++j)
     {
-      vector<int> tmp(k);
+      vector<int> tmp{sum};
       for (auto i{0}; i < H; ++i)
       {
-        tmp[ind[i]] = sum[ind[i]] + (S[i][j] - '0');
+        tmp[ind[i]] += (S[i][j] - '0');
       }
 #if DEBUG == 1
       cerr << "j = " << j << endl;
