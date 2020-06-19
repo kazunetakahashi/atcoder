@@ -273,7 +273,7 @@ int main()
   {
     cin >> A[i];
   }
-  auto dp{Make3DVector(N + 1, S + 1, 3, 0)};
+  auto dp{Make3DVector<mint>(N + 1, S + 1, 3, 0)};
   dp[0][0][0] = 1;
   for (auto i{0}; i < N; ++i)
   {
