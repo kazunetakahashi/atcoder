@@ -257,6 +257,7 @@ int main()
   if (any_of(A.begin(), A.end(), [](auto x) { return x == 0; }))
   {
     cout << 0 << endl;
+    return 0;
   }
   ll ans{1};
   for (auto i{0}; i < N; ++i)
@@ -264,6 +265,7 @@ int main()
     if (static_cast<ld>(ans) * static_cast<ld>(A[i]) - epsilon > M)
     {
       cout << -1 << endl;
+      return 0;
     }
     ans *= A[i];
   }
