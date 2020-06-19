@@ -243,35 +243,33 @@ public:
 
   void flush()
   {
-    min_heap<Info> H;
+    queue<Info> H;
     H.emplace(0, sx, sy);
     while (!H.empty())
     {
-      auto [d, src_x, src_y]{H.top()};
+      auto [d, src_x, src_y]{H.front()};
       H.pop();
-      if (D[src_x][src_y] == Infty<int>())
+      D[src_x][src_y] = d;
+      for (auto k{0}; k < 4; ++k)
       {
-        D[src_x][src_y] = d;
-        for (auto k{0}; k < 4; ++k)
+        for (auto l{1}; l <= K; ++l)
         {
-          for (auto l{1}; l <= K; ++l)
+          auto dst_x{src_x + dx[k] * l};
+          auto dst_y{src_y + dy[k] * l};
+          if (!valid(dst_x, dst_y))
           {
-            auto dst_x{src_x + dx[k] * l};
-            auto dst_y{src_y + dy[k] * l};
-            if (!valid(dst_x, dst_y))
-            {
-              break;
-            }
-            if (D[dst_x][dst_y] < d + 1)
-            {
-              break;
-            }
-            if (D[dst_x][dst_y] == d + 1)
-            {
-              continue;
-            }
-            H.emplace(d + 1, dst_x, dst_y);
+            break;
           }
+          if (D[dst_x][dst_y] < d + 1)
+          {
+            break;
+          }
+          if (D[dst_x][dst_y] == d + 1)
+          {
+            continue;
+          }
+          D[dst_x][dst_y] = d + 1;
+          H.emplace(d + 1, dst_x, dst_y);
         }
       }
     }
