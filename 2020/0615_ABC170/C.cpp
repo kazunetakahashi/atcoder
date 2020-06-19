@@ -260,7 +260,7 @@ int main()
     bool ok{true};
     for (auto e : p)
     {
-      if (e == X)
+      if (e == i)
       {
         ok = false;
       }
