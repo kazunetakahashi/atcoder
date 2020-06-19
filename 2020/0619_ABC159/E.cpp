@@ -266,6 +266,13 @@ private:
       {
         tmp[ind[i]] = sum[ind[i]] + (S[i][j] - '0');
       }
+#if DEBUG == 1
+      cerr << "j = " << j << endl;
+      for (auto i{0}; i < k; ++i)
+      {
+        cerr << "sum[" << i << "] = " << sum[i] << endl;
+      }
+#endif
       if (any_of(tmp.begin(), tmp.end(), [&](auto x) { return x > K; }))
       {
         for (auto i{0}; i < k; ++i)
