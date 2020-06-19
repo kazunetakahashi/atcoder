@@ -256,6 +256,7 @@ private:
         ++k;
       }
     }
+    ++k;
     vector<int> sum(k, 0);
     int ans{0};
     for (auto j{0}; j < W; ++j)
