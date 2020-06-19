@@ -266,6 +266,10 @@ public:
             {
               break;
             }
+            if (D[dst_x][dst_y] == d + 1)
+            {
+              continue;
+            }
             H.emplace(d + 1, dst_x, dst_y);
           }
         }
