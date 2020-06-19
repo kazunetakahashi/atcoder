@@ -239,6 +239,7 @@ public:
     for (auto i{0}; i < 1 << (H - 1); ++i)
     {
 #if DEBUG == 1
+      cerr << "popcount(" << i << ") = " << popcount(i) << endl;
       cerr << "calc(" << i << ") = " << calc(i) << endl;
 #endif
       ch_max(ans, static_cast<int>(popcount(i)) + calc(i));
