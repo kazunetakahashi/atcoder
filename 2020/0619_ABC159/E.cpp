@@ -239,6 +239,9 @@ public:
     for (auto i{0}; i < 1 << (H - 1); ++i)
     {
       ch_max(ans, static_cast<int>(popcount(i)) + calc(i));
+#if DEBUG == 1
+      cerr << "calc(" << i << ") = " << calc(i) << endl;
+#endif
     }
     cout << ans << endl;
   }
