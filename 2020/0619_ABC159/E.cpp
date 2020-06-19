@@ -257,6 +257,13 @@ private:
       }
     }
     ++k;
+#if DEBUG == 1
+    cerr << "mask = " << mask << endl;
+    for (auto i{0}; i < H; ++i)
+    {
+      cerr << "ind[" << i << "] = " << ind[i] << endl;
+    }
+#endif
     vector<int> sum(k, 0);
     int ans{0};
     for (auto j{0}; j < W; ++j)
