@@ -243,12 +243,17 @@ int main()
 }
 */
 
-ll median(vector<ll> const &V)
+ll median(vector<ll> &V)
 {
+  sort(V.begin(), V.end());
   int N(V.size());
   if (N % 2 == 1)
   {
     return V[N / 2];
+  }
+  for (auto &e : V)
+  {
+    e *= 2;
   }
   return (V[N / 2 - 1] + V[N / 2]) / 2;
 }
@@ -261,17 +266,6 @@ int main()
   for (auto i{0}; i < N; ++i)
   {
     cin >> A[i] >> B[i];
-  }
-  if (N % 2 == 0)
-  {
-    for (auto &e : A)
-    {
-      e *= 2;
-    }
-    for (auto &e : B)
-    {
-      e *= 2;
-    }
   }
   ll X{median(A)}, Y{median(B)};
   cout << Y - X + 1 << endl;
