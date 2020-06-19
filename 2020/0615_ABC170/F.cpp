@@ -254,7 +254,7 @@ public:
         D[src_x][src_y] = d;
         for (auto k{0}; k < 4; ++k)
         {
-          for (auto l{0};; ++l)
+          for (auto l{1};; ++l)
           {
             auto dst_x{src_x + dx[k] * l};
             auto dst_y{src_y + dy[k] * l};
