@@ -273,6 +273,8 @@ int main()
   {
     int id, n_garden;
     cin >> id >> n_garden;
+    --id;
+    --n_garden;
     maximums.erase(maximums.find(*infants[to_garden[id]].begin()));
     infants[to_garden[id]].erase(infants[to_garden[id]].find(to_rating[id]));
     if (!infants[to_garden[id]].empty())
