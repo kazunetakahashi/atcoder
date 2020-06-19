@@ -238,7 +238,7 @@ public:
     int ans{Infty<int>()};
     for (auto i{0}; i < 1 << (H - 1); ++i)
     {
-      ch_max(ans, static_cast<int>(popcount(i)) + calc(i));
+      ch_min(ans, static_cast<int>(popcount(i)) + calc(i));
     }
     cout << ans << endl;
   }
