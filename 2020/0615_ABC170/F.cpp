@@ -202,8 +202,8 @@ constexpr T mInfty() { return numeric_limits<T>::min(); }
 // constexpr double epsilon{1e-10};
 // constexpr ll infty{1'000'000'000'000'010LL}; // or
 // constexpr int infty{1'000'000'010};
-// constexpr int dx[4] = {1, 0, -1, 0};
-// constexpr int dy[4] = {0, 1, 0, -1};
+constexpr int dx[4] = {1, 0, -1, 0};
+constexpr int dy[4] = {0, 1, 0, -1};
 // ----- Yes() and No() -----
 void Yes()
 {
@@ -218,31 +218,80 @@ void No()
 
 // ----- Solve -----
 
+using Info = tuple<int, int, int>;
+
 class Solve
 {
+  int H, W, K;
+  int sx, sy, gx, gy;
+  vector<string> c;
+  vector<vector<int>> D;
 
 public:
-  Solve()
+  Solve(int H, int W) : H{H}, W{W}, c(H), D(H, vector<int>(W, Infty<int>()))
   {
+    cin >> K >> sx >> sy >> gx >> gy;
+    --sx;
+    --sy;
+    --gx;
+    --gy;
+    for (auto q{0}; q < H; ++q)
+    {
+      cin >> c[q];
+    }
   }
 
   void flush()
   {
+    min_heap<Info> H;
+    H.emplace(0, sx, sy);
+    while (!H.empty())
+    {
+      auto [d, src_x, src_y]{H.top()};
+      H.pop();
+      if (D[src_x][src_y] == Infty<int>())
+      {
+        D[src_x][src_y] = d;
+        for (auto k{0}; k < 4; ++k)
+        {
+          for (auto l{0};; ++l)
+          {
+            auto dst_x{src_x + dx[k] * l};
+            auto dst_y{src_y + dy[k] * l};
+            if (!valid(dst_x, dst_y))
+            {
+              break;
+            }
+            if (D[dst_x][dst_y] < d + 1)
+            {
+              break;
+            }
+            H.emplace(d + 1, dst_x, dst_y);
+          }
+        }
+      }
+    }
+    auto ans{D[gx][gy]};
+    if (ans == Infty<int>())
+    {
+      ans = -1;
+    }
+    cout << ans << endl;
   }
 
 private:
+  bool valid(int x, int y)
+  {
+    return 0 <= x && x < H && 0 <= y && y < W && c[x][y] != '@';
+  }
 };
 
 // ----- main() -----
 
-/*
 int main()
 {
-  Solve solve;
+  int H, W;
+  cin >> H >> W;
+  Solve solve(H, W);
   solve.flush();
-}
-*/
-
-int main()
-{
 }
