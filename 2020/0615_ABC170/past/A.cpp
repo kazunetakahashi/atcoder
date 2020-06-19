@@ -2,7 +2,7 @@
 /**
  * File    : A.cpp
  * Author  : Kazune Takahashi
- * Created : 6/20/2020, 5:31:29 AM
+ * Created : 6/15/2020, 4:47:03 PM
  * Powered by Visual Studio Code
  */
 #include <algorithm>
@@ -31,14 +31,11 @@
 #include <unordered_set>
 #include <vector>
 // ----- boost -----
-#include <boost/integer/common_factor_rt.hpp>
-#include <boost/multiprecision/cpp_int.hpp>
 #include <boost/rational.hpp>
+#include <boost/multiprecision/cpp_int.hpp>
 // ----- using directives and manipulations -----
 using namespace std;
 using boost::rational;
-using boost::integer::gcd; // for C++14 or for cpp_int
-using boost::integer::lcm; // for C++14 or for cpp_int
 using boost::multiprecision::cpp_int;
 using ll = long long;
 using ld = long double;
@@ -189,10 +186,22 @@ public:
 // ----- for C++14 -----
 using mint = Mint<MOD>;
 using combination = Combination<MOD, MAX_SIZE>;
+template <typename T>
+T gcd(T x, T y) { return y ? gcd(y, x % y) : x; }
+template <typename T>
+T lcm(T x, T y) { return x / gcd(x, y) * y; }
 // ----- for C++17 -----
-template <typename T, typename enable_if<is_integral<T>::value>::type * = nullptr>
-size_t popcount(T x) { return bitset<64>(x).count(); }
-size_t popcount(string const &S) { return bitset<200010>{S}.count(); }
+template <typename T>
+int popcount(T x) // C++20
+{
+  int ans{0};
+  while (x != 0)
+  {
+    ans += x & 1;
+    x >>= 1;
+  }
+  return ans;
+}
 // ----- Infty -----
 template <typename T>
 constexpr T Infty() { return numeric_limits<T>::max(); }
@@ -243,18 +252,16 @@ int main()
 }
 */
 
-constexpr int C{5};
-
 int main()
 {
-  vector<int> x(5);
+  vector<int> V(5);
   for (auto i{0}; i < 5; ++i)
   {
-    cin >> x[i];
+    cin >> V[i];
   }
-  for (auto i{0}; i < C; ++i)
+  for (auto i{0}; i < 5; ++i)
   {
-    if (x[i] == 0)
+    if (V[i] == 0)
     {
       cout << i + 1 << endl;
       return 0;
