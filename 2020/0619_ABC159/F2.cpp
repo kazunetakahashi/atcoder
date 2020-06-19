@@ -255,13 +255,13 @@ int main()
   vector<vector<mint>> dp(N + 1, vector<mint>(S + 1, mint{0}));
   for (auto i{0}; i < N; ++i)
   {
+    dp[i][0]++;
     dp[i + 1] = dp[i];
-    dp[i + 1][0] += 1;
-    dp[i + 1][A[i]] += 1;
     for (auto j{0}; j + A[i] <= S; ++j)
     {
       dp[i + 1][j + A[i]] += dp[i][j];
     }
+    dp[i][0]--;
   }
   mint ans{0};
   for (auto i{0}; i <= N; ++i)
