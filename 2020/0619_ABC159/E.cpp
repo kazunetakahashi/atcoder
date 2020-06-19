@@ -238,10 +238,6 @@ public:
     int ans{Infty<int>()};
     for (auto i{0}; i < 1 << (H - 1); ++i)
     {
-#if DEBUG == 1
-      cerr << "popcount(" << i << ") = " << popcount(i) << endl;
-      cerr << "calc(" << i << ") = " << calc(i) << endl;
-#endif
       ch_max(ans, static_cast<int>(popcount(i)) + calc(i));
     }
     cout << ans << endl;
@@ -267,7 +263,7 @@ private:
       vector<int> tmp(k);
       for (auto i{0}; i < H; ++i)
       {
-        tmp[ind[j]] = sum[ind[j]] + (S[i][j] - '0');
+        tmp[ind[i]] = sum[ind[i]] + (S[i][j] - '0');
       }
       if (any_of(tmp.begin(), tmp.end(), [&](auto x) { return x > K; }))
       {
