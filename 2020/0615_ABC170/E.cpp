@@ -279,7 +279,7 @@ int main()
     infants[to_garden[id]].erase(infants[to_garden[id]].find(to_rating[id]));
     if (!infants[to_garden[id]].empty())
     {
-      maximums.insert(*infants[id].begin());
+      maximums.insert(*infants[to_garden[id]].begin());
     }
     to_garden[id] = n_garden;
     if (!infants[to_garden[id]].empty())
