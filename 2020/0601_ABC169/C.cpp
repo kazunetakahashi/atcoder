@@ -248,5 +248,6 @@ int main()
   ll A;
   ld B;
   cin >> A >> B;
-  cout << static_cast<ll>(A * B + 0.5) << endl;
+  ll C{static_cast<ll>(B * 100 + 0.5)};
+  cout << fixed << setprecision(12) << A * C / static_cast<ld>(100) << endl;
 }
