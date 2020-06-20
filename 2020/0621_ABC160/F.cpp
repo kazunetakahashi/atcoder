@@ -248,7 +248,7 @@ struct Edge
 tuple<vector<vector<Edge>>, vector<Edge>> ReadGraphWithEdges(int N, int M, bool is_undirected = true, bool is_one_indexed = true)
 {
   vector<vector<Edge>> V(N);
-  vector<Edge> E(M);
+  vector<Edge> E(2 * M);
   int ind{0};
   for (auto i = 0; i < M; ++i)
   {
@@ -259,12 +259,12 @@ tuple<vector<vector<Edge>>, vector<Edge>> ReadGraphWithEdges(int N, int M, bool 
       --v;
       --w;
     }
-    Edge edge{v, w, ind++};
+    Edge edge{v, w, ind};
     edge.added_edge(V);
-    E.push_back(edge);
-    Edge edge_rev{w, v, ind++};
+    E[ind++] = edge;
+    Edge edge_rev{w, v, ind};
     edge_rev.added_edge(V);
-    E.push_back(edge_rev);
+    E[ind++] = edge_rev;
   }
   return make_tuple(V, E);
 }
