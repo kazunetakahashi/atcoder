@@ -254,7 +254,7 @@ int main()
   {
     for (auto j{i + 1}; j < N; ++j)
     {
-      ans[min({abs(i - j), abs(i - X) + abs(X - Y) + abs(Y - j), abs(i - Y) + abs(Y - X) + abs(X - j)})]++;
+      ans[min({abs(i - j), abs(i - X) + 1 + abs(Y - j), abs(i - Y) + 1 + abs(X - j)})]++;
     }
   }
   for (auto i{1}; i < N; ++i)
