@@ -221,11 +221,10 @@ void No()
 
 struct Edge
 {
-  int src, dst, id, rev_id;
+  int src, dst, id, rev;
   // ll cost;
   Edge() {}
-  Edge(int src, int dst, int id, int rev_id) : src{src}, dst{dst}, id{id}, rev_id{rev_id} {}
-  // Edge(int src, int dst, ll cost) : src{src}, dst{dst}, cost{cost} {}
+  Edge(int src, int dst, int id, int rev) : src{src}, dst{dst}, id{id}, rev{rev} {}
 
   void added_edge(vector<vector<Edge>> &V)
   {
@@ -234,22 +233,29 @@ struct Edge
 
   void added_rev(vector<vector<Edge>> &V)
   {
-    V[dst].push_back(rev());
+    V[dst].push_back(rev_edge());
   }
 
-  Edge rev()
+  Edge rev_edge()
   {
     Edge edge{*this};
     swap(edge.src, edge.dst);
+    swap(edge.id, edge.rev);
     return edge;
   }
 };
 
-tuple<vector<vector<Edge>>, vector<Edge>> ReadGraphWithEdges(int N, int M, bool is_undirected = true, bool is_one_indexed = true)
+enum class GraphType
+{
+  Undirected,
+  Directed,
+  RevEdge,
+};
+
+tuple<vector<vector<Edge>>, vector<Edge>> ReadGraphWithEdges(int N, int M, GraphType type = GraphType::Undirected, bool is_one_indexed = true)
 {
   vector<vector<Edge>> V(N);
-  vector<Edge> E(2 * M);
-  int ind{0};
+  vector<Edge> E;
   for (auto i = 0; i < M; ++i)
   {
     int v, w;
@@ -259,29 +265,52 @@ tuple<vector<vector<Edge>>, vector<Edge>> ReadGraphWithEdges(int N, int M, bool 
       --v;
       --w;
     }
-    Edge edge{v, w, ind, ind + 1};
-    edge.added_edge(V);
-    E[ind++] = edge;
-    Edge edge_rev{w, v, ind, ind - 1};
-    edge_rev.added_edge(V);
-    E[ind++] = edge_rev;
+    switch (type)
+    {
+    case GraphType::Undirected:
+    {
+      Edge edge{v, w, E.size(), E.size()};
+      edge.added_edge(V);
+      edge.added_rev(V);
+      E.push_back(edge);
+      break;
+    }
+    case GraphType::Directed:
+    {
+      Edge edge{v, w, E.size(), E.size()};
+      edge.added_edge(V);
+      E.push_back(edge);
+      break;
+    }
+    case GraphType::RevEdge:
+    {
+      Edge edge{v, w, E.size(), E.size() + 1};
+      edge.added_edge(V);
+      edge.added_rev(V);
+      E.push_back(edge);
+      E.push_back(edge.rev_edge());
+      break;
+    }
+    default:
+      break;
+    }
   }
   return make_tuple(V, E);
 }
 
-vector<vector<Edge>> ReadGraph(int N, int M, bool is_undirected = true, bool is_one_indexed = true)
+vector<vector<Edge>> ReadGraph(int N, int M, GraphType type = GraphType::Undirected, bool is_one_indexed = true)
 {
-  return get<0>(ReadGraphWithEdges(N, M, is_undirected, is_one_indexed));
+  return get<0>(ReadGraphWithEdges(N, M, type, is_one_indexed));
 }
 
-tuple<vector<vector<Edge>>, vector<Edge>> ReadTreeWithEdges(int N)
+tuple<vector<vector<Edge>>, vector<Edge>> ReadTreeWithEdges(int N, GraphType type = GraphType::Undirected, bool is_one_indexed = true)
 {
-  return ReadGraphWithEdges(N, N - 1);
+  return ReadGraphWithEdges(N, N - 1, type, is_one_indexed);
 }
 
-vector<vector<Edge>> ReadTree(int N)
+vector<vector<Edge>> ReadTree(int N, GraphType type = GraphType::Undirected, bool is_one_indexed = true)
 {
-  return ReadGraph(N, N - 1);
+  return ReadGraph(N, N - 1, type, is_one_indexed);
 }
 
 // ----- Solve -----
@@ -333,12 +362,12 @@ private:
       {
         continue;
       }
-      EdgeToS[e.rev_id] = VertexToS[src];
-      EdgeToS[e.rev_id] -= EdgeToS[e.id];
-      EdgeToDP[e.rev_id] = VertexToDP[src];
-      EdgeToDP[e.rev_id] /= C.fact[VertexToS[src] - 1];
-      EdgeToDP[e.rev_id] *= C.fact[EdgeToS[e.rev_id] - 1];
-      EdgeToDP[e.rev_id] /= EdgeToDP[e.id] * C.factinv[EdgeToS[e.id]];
+      EdgeToS[e.rev] = VertexToS[src];
+      EdgeToS[e.rev] -= EdgeToS[e.id];
+      EdgeToDP[e.rev] = VertexToDP[src];
+      EdgeToDP[e.rev] /= C.fact[VertexToS[src] - 1];
+      EdgeToDP[e.rev] *= C.fact[EdgeToS[e.rev] - 1];
+      EdgeToDP[e.rev] /= EdgeToDP[e.id] * C.factinv[EdgeToS[e.id]];
       dfs_2(e.dst, src);
     }
   }
