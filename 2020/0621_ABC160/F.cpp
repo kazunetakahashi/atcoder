@@ -322,6 +322,10 @@ private:
     }
     for (auto const &e : V[v])
     {
+      if (visited_S[e.rev_id])
+      {
+        continue;
+      }
       auto X{T};
       X -= calc_S(e.id);
       S[e.rev_id] = X;
@@ -340,6 +344,10 @@ private:
     }
     for (auto const &e : V[v])
     {
+      if (visited_dp[e.rev_id])
+      {
+        continue;
+      }
       auto X{ans};
       X /= C.fact[T - 1];
       X *= C.fact[calc_S(e.rev_id) - 1];
