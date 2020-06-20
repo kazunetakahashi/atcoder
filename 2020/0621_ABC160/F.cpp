@@ -332,6 +332,10 @@ private:
 #endif
     for (auto const &e : V[src])
     {
+      if (e.dst == parent)
+      {
+        continue;
+      }
       EdgeToS[e.rev_id] = VertexToS[src];
       EdgeToS[e.rev_id] -= EdgeToS[e.id];
       EdgeToDP[e.rev_id] = VertexToDP[src];
