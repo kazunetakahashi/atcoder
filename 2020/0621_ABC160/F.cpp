@@ -269,7 +269,7 @@ tuple<vector<vector<Edge>>, vector<Edge>> ReadGraphWithEdges(int N, int M, Graph
     {
     case GraphType::Undirected:
     {
-      Edge edge{v, w, E.size(), E.size()};
+      Edge edge{v, w, static_cast<int>(E.size()), static_cast<int>(E.size())};
       edge.added_edge(V);
       edge.added_rev(V);
       E.push_back(edge);
@@ -277,14 +277,14 @@ tuple<vector<vector<Edge>>, vector<Edge>> ReadGraphWithEdges(int N, int M, Graph
     }
     case GraphType::Directed:
     {
-      Edge edge{v, w, E.size(), E.size()};
+      Edge edge{v, w, static_cast<int>(E.size()), static_cast<int>(E.size())};
       edge.added_edge(V);
       E.push_back(edge);
       break;
     }
     case GraphType::RevEdge:
     {
-      Edge edge{v, w, E.size(), E.size() + 1};
+      Edge edge{v, w, static_cast<int>(E.size()), static_cast<int>(E.size()) + 1};
       edge.added_edge(V);
       edge.added_rev(V);
       E.push_back(edge);
@@ -328,7 +328,7 @@ class Solve
 public:
   Solve(int N) : N{N}, EdgeToS(2 * N - 2), VertexToS(N), EdgeToDP(2 * N - 2), VertexToDP(N)
   {
-    tie(V, E) = ReadTreeWithEdges(N);
+    tie(V, E) = ReadTreeWithEdges(N, GraphType::RevEdge);
   }
 
   void flush()
