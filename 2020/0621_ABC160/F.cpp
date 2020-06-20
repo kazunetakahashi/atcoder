@@ -327,6 +327,9 @@ private:
       VertexToDP[src] *= EdgeToDP[e.id] * C.factinv[EdgeToS[e.id]];
     }
     VertexToDP[src] *= C.fact[VertexToS[src] - 1];
+#if DEBUG == 1
+    cerr << "VertexToDP[" << src << "] = " << VertexToDP[src] << endl;
+#endif
     for (auto const &e : V[src])
     {
       EdgeToS[e.rev_id] = VertexToS[src];
