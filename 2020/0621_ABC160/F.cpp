@@ -325,6 +325,9 @@ private:
     {
       ans *= calc_dp(e.id) * C.factinv[calc_S(e.id)];
     }
+#if DEBUG == 1
+    cerr << "answer(" << v << "): T = " << T << ", dp = " << ans << endl;
+#endif
     return ans;
   }
 
