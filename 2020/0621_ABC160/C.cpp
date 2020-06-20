@@ -248,6 +248,10 @@ int main()
   int K, N;
   cin >> K >> N;
   vector<int> A(N);
+  for (auto i{0}; i < N; ++i)
+  {
+    cin >> A[i];
+  }
   int mini{A[0] + K - A[N - 1]};
   for (auto i{0}; i < N - 1; ++i)
   {
