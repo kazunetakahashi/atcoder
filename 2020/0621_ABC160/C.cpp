@@ -252,10 +252,10 @@ int main()
   {
     cin >> A[i];
   }
-  int mini{A[0] + K - A[N - 1]};
+  int maxi{A[0] + K - A[N - 1]};
   for (auto i{0}; i < N - 1; ++i)
   {
-    ch_min(mini, A[i + 1] - A[i]);
+    ch_max(maxi, A[i + 1] - A[i]);
   }
-  cout << K - mini << endl;
+  cout << K - maxi << endl;
 }
