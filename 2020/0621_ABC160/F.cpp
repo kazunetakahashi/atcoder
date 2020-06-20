@@ -333,6 +333,7 @@ private:
       EdgeToS[e.rev_id] -= EdgeToS[e.id];
       EdgeToDP[e.rev_id] = VertexToDP[src];
       EdgeToDP[e.rev_id] /= C.fact[VertexToS[src] - 1];
+      EdgeToDP[e.rev_id] *= C.fact[EdgeToS[e.rev_id] - 1];
       EdgeToDP[e.rev_id] /= EdgeToDP[e.id] * C.factinv[EdgeToS[e.id]];
       dfs_2(e.dst, src);
     }
