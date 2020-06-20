@@ -258,9 +258,12 @@ int main()
         continue;
       }
       dp[i][j] = dp[i - 1][j] * j + dp[i][j - 1] * i - dp[i - 1][j - 1] * (1 + (i - 1) * (j - 1));
-      #if DEBUG == 1
-      cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
-      #endif
+#if DEBUG == 1
+      if (A == 1)
+      {
+        cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
+      }
+#endif
     }
   }
   cout << dp[C][D] << endl;
