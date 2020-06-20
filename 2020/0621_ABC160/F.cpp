@@ -293,111 +293,68 @@ class Solve
   int N;
   vector<vector<Edge>> V;
   vector<Edge> E;
-  vector<ll> S;
-  vector<mint> dp;
-  vector<bool> visited_S;
-  vector<bool> visited_dp;
+  vector<ll> EdgeToS, VertexToS;
+  vector<mint> EdgeToDP, VertexToDP;
 
 public:
-  Solve(int N) : N{N}, S(2 * N - 2, 0), dp(2 * N - 2, 0), visited_S(2 * N - 2, false), visited_dp(2 * N - 2, false)
+  Solve(int N) : N{N}, EdgeToS(2 * N - 2), VertexToS(N), EdgeToDP(N), VertexToDP(N)
   {
     tie(V, E) = ReadTreeWithEdges(N);
   }
 
   void flush()
   {
+    int root{0};
+    for (auto const &e : V[root])
+    {
+      dfs_1(e.id);
+    }
+    dfs_2(root);
     for (auto i{0}; i < N; ++i)
     {
-      cout << answer(i) << endl;
+      cout << VertexToDP[i] << endl;
     }
   }
 
 private:
-  ll children_size(int v)
+  void dfs_2(int src, int parent = -1)
   {
-    ll T{1};
-    for (auto const &e : V[v])
+    VertexToS[src] = 1;
+    VertexToDP[src] = 1;
+    for (auto const &e : V[src])
     {
-      T += calc_S(e.id);
+      VertexToS[src] += EdgeToS[e.id];
+      VertexToDP[src] *= EdgeToDP[e.id] * C.factinv[EdgeToS[e.id]];
     }
-    for (auto const &e : V[v])
+    VertexToDP[src] *= C.fact[VertexToS[src] - 1];
+    for (auto const &e : V[src])
     {
-      if (visited_S[e.rev_id])
-      {
-        continue;
-      }
-      auto X{T};
-      X -= calc_S(e.id);
-      S[e.rev_id] = X;
-      visited_S[e.rev_id] = true;
+      EdgeToS[e.rev_id] = VertexToS[src];
+      EdgeToS[e.rev_id] -= EdgeToS[e.id];
+      EdgeToDP[e.rev_id] = VertexToDP[src];
+      EdgeToDP[e.rev_id] /= C.fact[VertexToS[src] - 1];
+      EdgeToDP[e.rev_id] /= EdgeToDP[e.id] * C.factinv[EdgeToS[e.id]];
+      dfs_2(e.dst, src);
     }
-    return T;
   }
 
-  mint answer(int v)
+  void dfs_1(int id)
   {
-    auto T{children_size(v)};
-    auto ans{C.fact[T - 1]};
-    for (auto const &e : V[v])
-    {
-      ans *= calc_dp(e.id) * C.factinv[calc_S(e.id)];
-    }
-    for (auto const &e : V[v])
-    {
-      if (visited_dp[e.rev_id])
-      {
-        continue;
-      }
-      auto X{ans};
-      X /= C.fact[T - 1];
-      X *= C.fact[calc_S(e.rev_id) - 1];
-      X /= calc_dp(e.id) * C.factinv[calc_S(e.id)];
-      dp[e.rev_id] = X;
-      visited_dp[e.rev_id] = true;
-    }
-    return ans;
-  }
-
-  ll calc_S(int id)
-  {
-    if (visited_S[id])
-    {
-      return S[id];
-    }
-    visited_S[id] = true;
     auto src{E[id].dst};
     auto parent{E[id].src};
-    S[id] = 1;
+    EdgeToS[id] = 1;
+    EdgeToDP[id] = 1;
     for (auto const &e : V[src])
     {
       if (e.dst == parent)
       {
         continue;
       }
-      S[id] += calc_S(e.id);
+      dfs_1(e.id);
+      EdgeToS[id] += EdgeToS[e.id];
+      EdgeToDP[id] *= EdgeToDP[e.id] * C.factinv[EdgeToS[e.id]];
     }
-    return S[id];
-  }
-
-  mint calc_dp(int id)
-  {
-    if (visited_dp[id])
-    {
-      return dp[id];
-    }
-    visited_dp[id] = true;
-    auto src{E[id].dst};
-    auto parent{E[id].src};
-    dp[id] = C.fact[calc_S(id) - 1];
-    for (auto const &e : V[src])
-    {
-      if (e.dst == parent)
-      {
-        continue;
-      }
-      dp[id] *= calc_dp(e.id) * C.factinv[calc_S(e.id)];
-    }
-    return dp[id];
+    EdgeToDP[id] *= C.fact[EdgeToS[id] - 1];
   }
 };
 
