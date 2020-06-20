@@ -304,7 +304,7 @@ public:
 
   void flush()
   {
-    int root{3 % N};
+    int root{2 % N};
     for (auto const &e : V[root])
     {
       dfs_1(e.id);
