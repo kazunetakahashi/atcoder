@@ -328,6 +328,7 @@ private:
     }
     VertexToDP[src] *= C.fact[VertexToS[src] - 1];
 #if DEBUG == 1
+    cerr << "VertexToS[" << src << "] = " << VertexToS[src] << endl;
     cerr << "VertexToDP[" << src << "] = " << VertexToDP[src] << endl;
 #endif
     for (auto const &e : V[src])
