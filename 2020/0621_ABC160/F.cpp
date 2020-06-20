@@ -328,6 +328,7 @@ private:
     }
     VertexToDP[src] *= C.fact[VertexToS[src] - 1];
 #if DEBUG == 1
+    cerr << "VertexToS[" << src << "] = " << VertexToS[src] << endl;
     cerr << "VertexToDP[" << src << "] = " << VertexToDP[src] << endl;
 #endif
     for (auto const &e : V[src])
@@ -342,6 +343,9 @@ private:
       EdgeToDP[e.rev_id] /= C.fact[VertexToS[src] - 1];
       EdgeToDP[e.rev_id] *= C.fact[EdgeToS[e.rev_id] - 1];
       EdgeToDP[e.rev_id] /= EdgeToDP[e.id] * C.factinv[EdgeToS[e.id]];
+#if DEBUG == 1
+      cerr << "EdgeToDP[" << e.rev_id << "] = " << EdgeToDP[e.rev_id] << endl;
+#endif
       dfs_2(e.dst, src);
     }
   }
