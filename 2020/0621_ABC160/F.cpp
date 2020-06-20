@@ -221,10 +221,10 @@ void No()
 
 struct Edge
 {
-  int src, dst, id;
+  int src, dst, id, rev_id;
   // ll cost;
   Edge() {}
-  Edge(int src, int dst, int id) : src{src}, dst{dst}, id{id} {}
+  Edge(int src, int dst, int id, int rev_id) : src{src}, dst{dst}, id{id}, rev_id{rev_id} {}
   // Edge(int src, int dst, ll cost) : src{src}, dst{dst}, cost{cost} {}
 
   void added_edge(vector<vector<Edge>> &V)
@@ -259,10 +259,10 @@ tuple<vector<vector<Edge>>, vector<Edge>> ReadGraphWithEdges(int N, int M, bool 
       --v;
       --w;
     }
-    Edge edge{v, w, ind};
+    Edge edge{v, w, ind, ind + 1};
     edge.added_edge(V);
     E[ind++] = edge;
-    Edge edge_rev{w, v, ind};
+    Edge edge_rev{w, v, ind, ind - 1};
     edge_rev.added_edge(V);
     E[ind++] = edge_rev;
   }
@@ -313,21 +313,40 @@ public:
   }
 
 private:
-  mint answer(int v)
+  ll children_size(int v)
   {
     ll T{1};
     for (auto const &e : V[v])
     {
       T += calc_S(e.id);
     }
+    for (auto const &e : V[v])
+    {
+      auto X{T};
+      X -= calc_S(e.id);
+      S[e.rev_id] = X;
+      visited_S[e.rev_id] = true;
+    }
+    return T;
+  }
+
+  mint answer(int v)
+  {
+    auto T{children_size(v)};
     auto ans{C.fact[T - 1]};
     for (auto const &e : V[v])
     {
       ans *= calc_dp(e.id) * C.factinv[calc_S(e.id)];
     }
-#if DEBUG == 1
-    cerr << "answer(" << v << "): T = " << T << ", dp = " << ans << endl;
-#endif
+    for (auto const &e : V[v])
+    {
+      auto X{ans};
+      X /= C.fact[T - 1];
+      X *= C.fact[calc_S(e.rev_id) - 1];
+      X /= calc_dp(e.id) * C.factinv[calc_S(e.id)];
+      dp[e.rev_id] = X;
+      visited_dp[e.rev_id] = true;
+    }
     return ans;
   }
 
