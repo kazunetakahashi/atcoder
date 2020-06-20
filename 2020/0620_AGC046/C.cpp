@@ -317,5 +317,10 @@ int main()
       }
     }
   }
-  cout << dp[N][N][0] << endl;
+  mint ans{0};
+  for (auto k{0}; k <= K; ++k)
+  {
+    ans += dp[N][N][k];
+  }
+  cout << ans << endl;
 }
