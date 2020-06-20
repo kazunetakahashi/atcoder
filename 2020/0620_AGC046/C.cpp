@@ -301,9 +301,9 @@ int main()
           }
           else if (sc == 1 && tc == 0)
           {
-            if (i + 1 <= N && k - 1 >= 0)
+            if (i + 1 <= N)
             {
-              dp[i + 1][j][k - 1] += pre;
+              dp[i + 1][j][k] += pre;
             }
           }
           else
