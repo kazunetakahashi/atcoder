@@ -255,7 +255,7 @@ int main()
   mint ans{0};
   for (auto k{0}; k <= K; ++k)
   {
-    ans += C(N - 1 + K - k, N - 1) * mint{25}.power(N + K - k) * mint{26}.power(k);
+    ans += C(N - 1 + K - k, N - 1) * mint{25}.power(K - k) * mint{26}.power(k);
   }
   cout << ans << endl;
 }
