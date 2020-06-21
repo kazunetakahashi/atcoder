@@ -236,21 +236,31 @@ public:
     reverse(S.begin(), S.end());
     Y = make_table(S);
     reverse(Y.begin(), Y.end());
-#if DEBUG == 1
-    for (auto e : X)
+    reverse(S.begin(), S.end());
+    for (auto e : make_ans())
     {
-      cerr << e << " ";
+      cout << e + 1 << endl;
     }
-    cerr << endl;
-    for (auto e : Y)
-    {
-      cerr << e << " ";
-    }
-    cerr << endl;
-#endif
   }
 
 private:
+  vector<int> make_ans()
+  {
+    vector<int> ans;
+    int ind{1};
+    for (auto i{0}; i < N; ++i)
+    {
+      if (S[i] == 'o')
+      {
+        if (X[ind - 1] + Y[ind + 1] < K)
+        {
+          ans.push_back(i);
+        }
+      }
+    }
+    return ans;
+  }
+
   vector<int> make_table(string const &S)
   {
     int cnt{0};
