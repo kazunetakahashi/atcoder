@@ -232,9 +232,9 @@ public:
 
   void flush()
   {
-    X = make_table(S);
+    X = make_table();
     reverse(S.begin(), S.end());
-    Y = make_table(S);
+    Y = make_table();
     reverse(Y.begin(), Y.end());
     reverse(S.begin(), S.end());
     for (auto e : make_ans())
@@ -256,12 +256,13 @@ private:
         {
           ans.push_back(i);
         }
+        ++ind;
       }
     }
     return ans;
   }
 
-  vector<int> make_table(string const &S)
+  vector<int> make_table()
   {
     int cnt{0};
     for (auto c : S)
