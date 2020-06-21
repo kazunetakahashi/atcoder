@@ -247,27 +247,21 @@ int main()
 {
   ll N;
   cin >> N;
-  string S;
-  ll base{1};
-  ll sum{0};
-  while (N > 0)
+  ll base{26};
+  ll K{0};
+  while (N > base)
   {
-    while (N > sum)
-    {
-      base *= 26;
-      sum += base;
-    }
-    sum -= base;
-    base /= 26;
-#if DEBUG == 1
-    cerr << "sum = " << sum << endl;
-    cerr << "base = " << base << endl;
-#endif
-    S += 'a' + ((N - 1 - sum) / base);
-    N -= ((N - 1 - sum) / base + 1) * base;
-#if DEBUG == 1
-    cerr << "N = " << N << endl;
-#endif
+    N -= base;
+    base *= 26;
+    ++K;
   }
-  cout << S << endl;
+  --N;
+  string ans;
+  for (auto i{0}; i < K; ++i)
+  {
+    ans += 'a' + N % 26;
+    N /= 26;
+  }
+  reverse(ans.begin(), ans.end());
+  cout << ans << endl;
 }
