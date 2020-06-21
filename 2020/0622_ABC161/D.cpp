@@ -296,6 +296,7 @@ int main()
       S.insert(stoll(s));
     }
   }
+  S.erase(S.begin());
   auto it{S.begin()};
   for (auto i{0}; i < K - 1; ++i)
   {
