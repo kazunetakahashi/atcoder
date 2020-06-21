@@ -235,6 +235,8 @@ public:
     X = make_table();
     reverse(S.begin(), S.end());
     Y = make_table();
+    reverse(Y.begin(), Y.end());
+    reverse(S.begin(), S.end());
 #if DEBUG == 1
     for (auto e : X)
     {
@@ -247,8 +249,6 @@ public:
     }
     cerr << endl;
 #endif
-    reverse(Y.begin(), Y.end());
-    reverse(S.begin(), S.end());
     for (auto e : make_ans())
     {
       cout << e + 1 << endl;
