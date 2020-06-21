@@ -244,8 +244,11 @@ public:
     {
       if (X % i == 0)
       {
-        auto y{X / i};
-        if (M < y && y <= N)
+        auto K{X / i};
+#if DEBUG == 1
+        cerr << "K = " << K << endl;
+#endif
+        if (M < K && K <= N)
         {
           ++ans;
         }
