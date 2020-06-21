@@ -235,6 +235,18 @@ public:
     X = make_table();
     reverse(S.begin(), S.end());
     Y = make_table();
+#if DEBUG == 1
+    for (auto e : X)
+    {
+      cerr << e << " ";
+    }
+    cerr << endl;
+    for (auto e : Y)
+    {
+      cerr << e << " ";
+    }
+    cerr << endl;
+#endif
     reverse(Y.begin(), Y.end());
     reverse(S.begin(), S.end());
     for (auto e : make_ans())
