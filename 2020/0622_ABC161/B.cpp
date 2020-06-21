@@ -254,12 +254,14 @@ int main()
   }
   int cnt{0};
   int S{accumulate(A.begin(), A.end(), 0)};
+  int B{(S + 4 * M - 1) / (4 * M)};
   for (auto i{0}; i < N; ++i)
   {
-    if (A[i] >= S / 4 / M)
+    if (A[i] < B)
     {
-      ++cnt;
+      continue;
     }
+    ++cnt;
   }
   if (cnt >= M)
   {
