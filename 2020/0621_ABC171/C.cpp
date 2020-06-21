@@ -252,7 +252,7 @@ int main()
   string ans{};
   while (N > 0)
   {
-    ans += char('a' + (N % C));
+    ans += char('a' + (N % C) - 1);
     N /= C;
   }
   reverse(ans.begin(), ans.end());
