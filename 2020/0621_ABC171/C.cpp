@@ -248,7 +248,7 @@ int main()
   ll N;
   cin >> N;
   ll base{26};
-  ll K{0};
+  ll K{1};
   while (N > base)
   {
     N -= base;
