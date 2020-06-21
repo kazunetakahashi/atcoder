@@ -227,10 +227,6 @@ class Solve
 public:
   Solve(ll N) : N{N}
   {
-    for (auto K{2}; K <= N; ++K)
-    {
-      g(N, K);
-    }
   }
 
   void flush()
