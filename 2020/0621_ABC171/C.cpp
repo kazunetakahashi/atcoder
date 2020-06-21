@@ -243,18 +243,31 @@ int main()
 }
 */
 
-constexpr int C{26};
-
 int main()
 {
   ll N;
   cin >> N;
-  string ans{};
+  string S;
+  ll base{1};
+  ll sum{0};
   while (N > 0)
   {
-    ans += char('a' + (N % C) - 1);
-    N /= C;
+    while (N > sum)
+    {
+      base *= 26;
+      sum += base;
+    }
+    sum -= base;
+    base /= 26;
+#if DEBUG == 1
+    cerr << "sum = " << sum << endl;
+    cerr << "base = " << base << endl;
+#endif
+    S += 'a' + ((N - 1 - sum) / base);
+    N -= ((N - 1 - sum) / base + 1) * base;
+#if DEBUG == 1
+    cerr << "N = " << N << endl;
+#endif
   }
-  reverse(ans.begin(), ans.end());
-  cout << ans << endl;
+  cout << S << endl;
 }
