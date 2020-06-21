@@ -292,7 +292,7 @@ private:
     {
       if (c == 'o')
       {
-        if (dist > C)
+        if (dist >= C)
         {
           ++now;
           dist = 0;
