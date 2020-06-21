@@ -247,26 +247,27 @@ int main()
 {
   int N;
   cin >> N;
-  vector<int> H(100010, 0);
+  vector<ll> H(100010, 0);
   for (auto i{0}; i < N; ++i)
   {
     int A;
     cin >> A;
     H[A]++;
   }
-  int Q;
-  cin >> Q;
-  for (auto q{0}; q < Q; ++q)
-  {
-    int B, C;
-    cin >> B >> C;
-    H[C] += H[B];
-    H[B] = 0;
-  }
   ll ans{0};
   for (auto i{0LL}; i < 100010LL; ++i)
   {
     ans += i * H[i];
   }
-  cout << ans << endl;
+  int Q;
+  cin >> Q;
+  for (auto q{0}; q < Q; ++q)
+  {
+    ll B, C;
+    cin >> B >> C;
+    H[C] += H[B];
+    ans += (C - B) * H[B];
+    H[B] = 0;
+    cout << ans << endl;
+  }
 }
