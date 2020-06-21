@@ -253,9 +253,9 @@ int main()
   cin >> S;
   ll N = S.size();
   mint ans{0};
-  for (auto k{0}; k <= K; ++k)
+  for (auto k{N}; k <= K + N; ++k)
   {
-    ans += C(N - 1 + K - k, N - 1) * mint{25}.power(K - k) * mint{26}.power(k);
+    ans += mint{25}.power(K + N - k) * C(N + K, k);
   }
   cout << ans << endl;
 }
