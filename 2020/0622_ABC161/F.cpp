@@ -249,7 +249,7 @@ public:
       if (X % i == 0)
       {
         auto y{X / i};
-        if (y <= N)
+        if (M < y && y <= N)
         {
           ++ans;
         }
