@@ -254,6 +254,10 @@ public:
         }
       }
     }
+    if (N > M)
+    {
+      ++ans;
+    }
     cout << ans << endl;
   }
 
