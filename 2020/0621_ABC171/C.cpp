@@ -243,7 +243,7 @@ int main()
 }
 */
 
-constexpr int C{27};
+constexpr int C{26};
 
 int main()
 {
@@ -252,7 +252,7 @@ int main()
   string ans{};
   while (N > 0)
   {
-    ans += char('a' + (N % C) - 1);
+    ans += char('a' + (N % C));
     N /= C;
   }
   reverse(ans.begin(), ans.end());
