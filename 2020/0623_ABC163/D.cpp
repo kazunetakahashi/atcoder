@@ -249,11 +249,12 @@ int main()
 {
   ll N, K;
   cin >> N >> K;
-  mint S{0};
+  mint ans{0};
   for (auto X{K}; X <= N + 1; ++X)
   {
-    S += C(N, X - 1);
+    auto lb{X * (X - 1) / 2};
+    auto ub{N * X - X * (X - 1) / 2};
+    ans += ub - lb + 1;
   }
-  mint T{mint{10}.power(100) * (N + 1) * N / 2};
-  cout << S * T << endl;
+  cout << ans << endl;
 }
