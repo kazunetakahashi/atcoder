@@ -317,7 +317,7 @@ vector<vector<Edge>> ReadTree(int N, GraphType type = GraphType::Undirected, boo
 
 struct SubTree
 {
-  int id, size;
+  ll id, size;
 };
 
 class Solve
