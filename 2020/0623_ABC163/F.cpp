@@ -335,6 +335,7 @@ public:
     for (auto i{0}; i < N; ++i)
     {
       cin >> C[i];
+      C[i] = 1;
       C[i]--;
       color_to_count[C[i]]++;
     }
@@ -344,9 +345,6 @@ public:
   void flush()
   {
     dfs();
-#if DEBUG == 1
-    cout << "Here" << endl;
-#endif
     for (auto i{0}; i < N; ++i)
     {
       auto sum{accumulate(S[i].begin(), S[i].end(), 0)};
@@ -371,6 +369,9 @@ public:
 private:
   ll dfs(ll src = 0, ll parent = -1)
   {
+#if DEBUG == 1
+    cout << "dfs(" << src << ")" << endl;
+#endif
     auto src_id{id++};
     auto &subtree_queue{Q[C[src]]};
     for (auto const &e : V[src])
