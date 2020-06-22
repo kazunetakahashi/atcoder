@@ -322,15 +322,15 @@ struct SubTree
 
 class Solve
 {
-  int N, id;
+  ll N, id;
   vector<queue<SubTree>> Q;
-  vector<int> C;
+  vector<ll> C;
   vector<vector<Edge>> V;
   vector<vector<ll>> S;
-  vector<int> color_to_count;
+  vector<ll> color_to_count;
 
 public:
-  Solve(int N) : N{N}, id{0}, Q(N), C(N), S(N), color_to_count(N, 0)
+  Solve(ll N) : N{N}, id{0}, Q(N), C(N), S(N), color_to_count(N, 0)
   {
     for (auto i{0}; i < N; ++i)
     {
@@ -366,7 +366,7 @@ public:
   }
 
 private:
-  int dfs(int src = 0, int parent = -1)
+  ll dfs(ll src = 0, ll parent = -1)
   {
     auto src_id{id++};
     auto &subtree_queue{Q[C[src]]};
@@ -397,7 +397,7 @@ private:
 
 int main()
 {
-  int N;
+  ll N;
   cin >> N;
   Solve solve(N);
   solve.flush();
