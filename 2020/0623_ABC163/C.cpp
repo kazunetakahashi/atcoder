@@ -275,37 +275,19 @@ tuple<vector<vector<Edge>>, vector<Edge>> ReadGraphWithEdges(int N, int M, Graph
   vector<Edge> E;
   for (auto i = 0; i < M; ++i)
   {
-    int v, w;
-    cin >> v >> w;
+    int v;
+    cin >> v;
     if (is_one_indexed)
     {
       --v;
-      --w;
     }
     switch (type)
     {
-    case GraphType::Undirected:
-    {
-      Edge edge{v, w, static_cast<int>(E.size()), static_cast<int>(E.size())};
-      edge.added_edge(V);
-      edge.added_rev(V);
-      E.push_back(edge);
-      break;
-    }
     case GraphType::Directed:
     {
-      Edge edge{v, w, static_cast<int>(E.size()), static_cast<int>(E.size())};
+      Edge edge{i, v, static_cast<int>(E.size()), static_cast<int>(E.size())};
       edge.added_edge(V);
       E.push_back(edge);
-      break;
-    }
-    case GraphType::RevEdge:
-    {
-      Edge edge{v, w, static_cast<int>(E.size()), static_cast<int>(E.size()) + 1};
-      edge.added_edge(V);
-      edge.added_rev(V);
-      E.push_back(edge);
-      E.push_back(edge.rev_edge());
       break;
     }
     default:
