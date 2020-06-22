@@ -264,10 +264,11 @@ int main()
   ll N;
   string S;
   cin >> N >> S;
-  vector<ll> H(3, 0);
-  for (auto e : S)
+  vector<vector<ll>> H(N + 1, vector<ll>(3, 0));
+  for (auto i{N - 1}; i >= 0; --i)
   {
-    H[color(e)]++;
+    H[i] = H[i + 1];
+    H[i][color(S[i])]++;
   }
   ll ans{0};
   for (auto i{0}; i < N; ++i)
@@ -279,7 +280,7 @@ int main()
         continue;
       }
       auto c{3 - color(S[i]) - color(S[j])};
-      ll tmp{H[c]};
+      ll tmp{H[j + 1][c]};
       auto k{2 * j - i};
       if (0 <= k && k < N && color(S[k]) == c)
       {
