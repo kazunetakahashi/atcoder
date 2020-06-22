@@ -235,7 +235,7 @@ int main()
       {
         ch_max(dp[i + 1][j + 1], dp[i][j]);
       }
-      ch_max(dp[i + 1][j], dp[i][j] + ((i + j) % 2 ? A[i] : 0LL));
+      ch_max(dp[i + 1][j], dp[i][j] + ((i + j) % 2 ? 0LL : A[i]));
     }
   }
   if (N % 2)
