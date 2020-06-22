@@ -389,7 +389,7 @@ private:
     }
     auto subtree_size{id - src_id};
 #if DEBUG == 1
-    cerr << "src_id = " << src_id << ", subtree_size = " << subtree_size << endl;
+    cout << "src_id = " << src_id << ", subtree_size = " << subtree_size << endl;
 #endif
     subtree_queue.push(SubTree{src_id, subtree_size});
     return subtree_size;
