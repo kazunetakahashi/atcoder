@@ -225,49 +225,25 @@ int main()
   {
     cin >> A[i];
   }
-  vector<vector<ll>> dp(N, vector<ll>(3, mInfty<ll>()));
-  dp[0][0] = A[0];
-  dp[1][1] = A[1];
-  if (N >= 3)
-  {
-    dp[2][2] = A[2];
-  }
+  vector<vector<ll>> dp(N + 1, vector<ll>(3, mInfty<ll>()));
+  dp[0][0] = 0;
   for (auto i{0}; i < N; ++i)
   {
     for (auto j{0}; j < 3; ++j)
     {
-      if (dp[i][j] == mInfty<ll>())
+      if (j + 1 < 3)
       {
-        continue;
+        ch_max(dp[i + 1][j + 1], dp[i][j]);
       }
-      for (auto k{0}; k < 3; ++k)
-      {
-        int ni{i + 2 + k};
-        int nj{j + k};
-        if (ni < N && nj < 3)
-        {
-          ch_max(dp[ni][nj], dp[i][j] + A[ni]);
-        }
-      }
+      ch_max(dp[i + 1][j], dp[i][j] + ((i + j) % 2 ? A[i] : 0LL));
     }
   }
-#if DEBUG == 1
-  for (auto i{0}; i < N; ++i)
+  if (N % 2)
   {
-    for (auto j{0}; j < 3; ++j)
-    {
-      cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
-    }
-  }
-#endif
-  ll ans{mInfty<ll>()};
-  if (N % 2 == 1)
-  {
-    ans = max({dp[N - 1][2], dp[N - 2][1], dp[N - 3][0]});
+    cout << dp[N][2] << endl;
   }
   else
   {
-    ans = max({dp[N - 1][1], dp[N - 2][0]});
+    cout << dp[N][1] << endl;
   }
-  cout << ans << endl;
 }
