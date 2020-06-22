@@ -238,6 +238,12 @@ public:
     for (auto i{1LL}; i <= K; ++i)
     {
       ans += V[i] * i;
+#if DEBUG == 1
+      if (K == 2)
+      {
+        cerr << "V[" << i << "] = " << V[i] << endl;
+      }
+#endif
     }
     cout << ans << endl;
   }
