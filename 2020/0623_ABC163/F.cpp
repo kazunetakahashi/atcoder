@@ -370,7 +370,7 @@ private:
   {
     auto src_id{id++};
 #if DEBUG == 1
-    cerr << "dfs(" << src << ")" << endl;
+    cout << "dfs(" << src << ")" << endl;
 #endif
     auto &subtree_queue{Q[C[src]]};
     for (auto const &e : V[src])
