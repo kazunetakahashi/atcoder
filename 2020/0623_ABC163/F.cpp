@@ -353,7 +353,7 @@ public:
       {
         ans += e * (e - 1) / 2;
       }
-      cout << ans << endl;
+      cout << N * (N - 1) / 2 - ans << endl;
     }
   }
 
