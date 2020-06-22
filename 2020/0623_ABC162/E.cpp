@@ -220,29 +220,65 @@ void No()
 
 class Solve
 {
+  ll N, K;
+  map<ll, mint> M;
 
 public:
-  Solve()
+  Solve(ll N, ll K) : N{N}, K{K}
   {
+#if DEBUG == 1
+    cerr << "N = " << N << ", K = " << K << endl;
+#endif
   }
 
   void flush()
   {
+    mint ans{0};
+    auto V{table()};
+    for (auto i{1LL}; i <= K; ++i)
+    {
+      ans += V[i] * i;
+#if DEBUG == 1
+      cerr << "V[" << i << "] = " << V[i] << endl;
+#endif
+    }
+    cout << ans << endl;
   }
 
 private:
+  vector<mint> table()
+  {
+    vector<mint> V(K + 1, 0);
+    for (auto X{K}; X >= 1; --X)
+    {
+      V[X] = count(K);
+      for (auto i{2LL};; ++i)
+      {
+        if (auto t{X * i}; t <= K)
+        {
+          V[X] -= V[t];
+        }
+        else
+        {
+          break;
+        }
+      }
+    }
+    return V;
+  }
+
+  mint count(ll X)
+  {
+    return mint{K / X}.power(N);
+  }
 };
 
 // ----- main() -----
 
-/*
 int main()
 {
-  Solve solve;
+  ll N, K;
+  cin >> N >> K;
+  Solve solve(N, K);
   solve.flush();
-}
-*/
-
-int main()
-{
 }
