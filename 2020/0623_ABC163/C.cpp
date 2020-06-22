@@ -285,7 +285,7 @@ tuple<vector<vector<Edge>>, vector<Edge>> ReadGraphWithEdges(int N, int M, Graph
     {
     case GraphType::Directed:
     {
-      Edge edge{i, v, static_cast<int>(E.size()), static_cast<int>(E.size())};
+      Edge edge{v, i, static_cast<int>(E.size()), static_cast<int>(E.size())};
       edge.added_edge(V);
       E.push_back(edge);
       break;
