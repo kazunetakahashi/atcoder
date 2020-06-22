@@ -281,7 +281,7 @@ int main()
       auto c{3 - color(S[i]) - color(S[j])};
       ll tmp{H[c]};
       auto k{2 * j - i};
-      if (color(S[k]) == c)
+      if (0 <= k && k < N && color(S[k]) == c)
       {
         --tmp;
       }
