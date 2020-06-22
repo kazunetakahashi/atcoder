@@ -335,7 +335,6 @@ public:
     for (auto i{0}; i < N; ++i)
     {
       cin >> C[i];
-      C[i] = 1;
       C[i]--;
       color_to_count[C[i]]++;
     }
@@ -369,9 +368,6 @@ public:
 private:
   ll dfs(ll src = 0, ll parent = -1)
   {
-#if DEBUG == 1
-    cout << "dfs(" << src << ")" << endl;
-#endif
     auto src_id{id++};
     auto &subtree_queue{Q[C[src]]};
     for (auto const &e : V[src])
@@ -381,7 +377,7 @@ private:
         continue;
       }
       auto colorless_tree_size{dfs(e.dst, src)};
-      while (!Q.empty() && subtree_queue.front().id > src_id)
+      while (!subtree_queue.empty() && subtree_queue.front().id > src_id)
       {
         colorless_tree_size -= subtree_queue.front().size;
         subtree_queue.pop();
