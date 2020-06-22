@@ -254,11 +254,11 @@ int main()
   ll ans{mInfty<ll>()};
   if (N % 2 == 1)
   {
-    ans = min({dp[N - 1][2], dp[N - 2][1], dp[N - 3][0]});
+    ans = max({dp[N - 1][2], dp[N - 2][1], dp[N - 3][0]});
   }
   else
   {
-    ans = min({dp[N - 1][1], dp[N - 2][0]});
+    ans = max({dp[N - 1][1], dp[N - 2][0]});
   }
   cout << ans << endl;
 }
