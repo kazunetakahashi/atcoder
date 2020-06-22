@@ -254,7 +254,7 @@ private:
     vector<mint> V(K + 1, 0);
     for (auto X{K}; X >= 1; --X)
     {
-      V[X] = count(K);
+      V[X] = count(X);
       for (auto i{2LL};; ++i)
       {
         if (auto t{X * i}; t <= K)
