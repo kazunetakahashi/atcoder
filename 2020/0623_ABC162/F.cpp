@@ -251,6 +251,15 @@ int main()
       }
     }
   }
+#if DEBUG == 1
+  for (auto i{0}; i < N; ++i)
+  {
+    for (auto j{0}; j < 3; ++j)
+    {
+      cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
+    }
+  }
+#endif
   ll ans{mInfty<ll>()};
   if (N % 2 == 1)
   {
