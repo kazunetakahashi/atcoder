@@ -231,6 +231,10 @@ int main()
   {
     for (auto j{0}; j < 3; ++j)
     {
+      if (dp[i][j] == mInfty<ll>())
+      {
+        continue;
+      }
       if (j + 1 < 3)
       {
         ch_max(dp[i + 1][j + 1], dp[i][j]);
@@ -238,6 +242,15 @@ int main()
       ch_max(dp[i + 1][j], dp[i][j] + ((i + j) % 2 ? 0LL : A[i]));
     }
   }
+#if DEBUG == 1
+  for (auto i{0}; i <= N; ++i)
+  {
+    for (auto j{0}; j < 3; ++j)
+    {
+      cerr << "dp[" << i << "][" << j << "] = " << dp[i][j] << endl;
+    }
+  }
+#endif
   if (N % 2)
   {
     cout << dp[N][2] << endl;
