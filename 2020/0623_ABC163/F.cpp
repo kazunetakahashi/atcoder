@@ -384,7 +384,7 @@ private:
       }
       S[C[src]].push_back(colorless_tree_size);
     }
-    auto subtree_size{id - src_id + 1};
+    auto subtree_size{id - src_id};
 #if DEBUG == 1
     cerr << "src_id = " << src_id << ", subtree_size = " << subtree_size << endl;
 #endif
