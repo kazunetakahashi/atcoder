@@ -351,9 +351,9 @@ public:
       ll ans{0};
       for (auto e : S[i])
       {
-        ans += e * (e - 1) / 2;
+        ans += e * (e + 1) / 2;
       }
-      cout << N * (N - 1) / 2 - ans << endl;
+      cout << N * (N + 1) / 2 - ans << endl;
     }
   }
 
