@@ -351,7 +351,7 @@ public:
 
   void flush()
   {
-    dfs(58229 % N);
+    dfs(N - 1);
     dfs();
     for (auto i{0}; i < N; ++i)
     {
