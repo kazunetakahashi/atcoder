@@ -361,14 +361,6 @@ public:
       {
         ans += e * (e + 1) / 2;
       }
-#if DEBUG == 1
-      cerr << "S[" << i << "] : ";
-      for (auto e : S[i])
-      {
-        cerr << e << ", ";
-      }
-      cerr << endl;
-#endif
       cout << N * (N + 1) / 2 - ans << endl;
     }
   }
@@ -376,9 +368,6 @@ public:
 private:
   ll dfs(ll src = 0, ll parent = -1)
   {
-#if DEBUG == 1
-    cout << "dfs(" << src << ")" << endl;
-#endif
     auto src_id{id++};
     auto &subtree_queue{Q[C[src]]};
     for (auto const &e : V[src])
