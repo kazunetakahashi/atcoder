@@ -377,7 +377,7 @@ private:
   ll dfs(ll src = 0, ll parent = -1)
   {
 #if DEBUG == 1
-    cerr << "dfs(" << src << ")" << endl;
+    cout << "dfs(" << src << ")" << endl;
 #endif
     auto src_id{id++};
     auto &subtree_queue{Q[C[src]]};
