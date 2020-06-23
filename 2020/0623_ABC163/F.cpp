@@ -330,7 +330,7 @@ struct SubTree
 class Solve
 {
   ll N, id;
-  vector<queue<SubTree>> Q;
+  vector<stack<SubTree>> Q;
   vector<ll> C;
   vector<vector<Edge>> V;
   vector<vector<ll>> S;
@@ -368,7 +368,7 @@ private:
   ll dfs(ll src = 0, ll parent = -1)
   {
     auto src_id{id++};
-    auto &subtree_queue{Q[C[src]]};
+    auto &subtree_stack{Q[C[src]]};
     for (auto const &e : V[src])
     {
       if (e.dst == parent)
@@ -376,15 +376,15 @@ private:
         continue;
       }
       auto colorless_tree_size{dfs(e.dst, src)};
-      while (!subtree_queue.empty() && subtree_queue.front().id > src_id)
+      while (!subtree_stack.empty() && subtree_stack.top().id > src_id)
       {
-        colorless_tree_size -= subtree_queue.front().size;
-        subtree_queue.pop();
+        colorless_tree_size -= subtree_stack.top().size;
+        subtree_stack.pop();
       }
       S[C[src]].push_back(colorless_tree_size);
     }
     auto subtree_size{id - src_id};
-    subtree_queue.push(SubTree{src_id, subtree_size});
+    subtree_stack.push(SubTree{src_id, subtree_size});
     return subtree_size;
   }
 };
