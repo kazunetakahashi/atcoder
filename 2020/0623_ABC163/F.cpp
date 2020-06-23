@@ -319,7 +319,7 @@ chrono::system_clock::time_point time_start = chrono::system_clock::now();
 
 void TimeStamp()
 {
-  cout << chrono::duration_cast<std::chrono::milliseconds>(chrono::system_clock::now() - time_start).count() << endl;
+  cout << "Time: " << chrono::duration_cast<std::chrono::milliseconds>(chrono::system_clock::now() - time_start).count() << endl;
 }
 
 struct SubTree
