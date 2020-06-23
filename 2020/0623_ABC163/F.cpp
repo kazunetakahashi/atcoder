@@ -344,6 +344,9 @@ public:
   void flush()
   {
     dfs();
+#if DEBUG == 1
+    cerr << "Here" << endl;
+#endif
     for (auto i{0}; i < N; ++i)
     {
       auto sum{accumulate(S[i].begin(), S[i].end(), 0)};
@@ -376,9 +379,6 @@ private:
       {
         continue;
       }
-#if DEBUG == 1
-      cerr << "e.dst = " << e.dst << endl;
-#endif
       auto colorless_tree_size{dfs(e.dst, src)};
       while (!subtree_queue.empty() && subtree_queue.front().id > src_id)
       {
