@@ -352,7 +352,6 @@ public:
   void flush()
   {
     dfs();
-    TimeStamp();
     for (auto i{0}; i < N; ++i)
     {
       auto sum{accumulate(S[i].begin(), S[i].end(), 0)};
@@ -377,6 +376,7 @@ public:
 private:
   ll dfs(ll src = 0, ll parent = -1)
   {
+    TimeStamp();
     auto src_id{id++};
     auto &subtree_queue{Q[C[src]]};
     for (auto const &e : V[src])
