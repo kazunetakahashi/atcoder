@@ -367,6 +367,9 @@ public:
 private:
   ll dfs(ll src = 0, ll parent = -1)
   {
+#if DEBUG == 1
+    cerr << "src = " << src << endl;
+#endif
     auto src_id{id++};
     auto &subtree_queue{Q[C[src]]};
     for (auto const &e : V[src])
