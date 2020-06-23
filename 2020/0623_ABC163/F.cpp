@@ -339,9 +339,6 @@ public:
       color_to_count[C[i]]++;
     }
     V = ReadTree(N);
-#if DEBUG == 1
-    cerr << V.size() << endl;
-#endif
   }
 
   void flush()
@@ -372,6 +369,9 @@ private:
   ll dfs(ll src = 0, ll parent = -1)
   {
     auto src_id{id++};
+#if DEBUG == 1
+    cerr << "C[" << src << "] = " << C[src] << endl;
+#endif
     auto &subtree_queue{Q[C[src]]};
     for (auto const &e : V[src])
     {
