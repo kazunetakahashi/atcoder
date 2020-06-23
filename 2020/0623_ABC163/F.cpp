@@ -385,6 +385,7 @@ private:
     cout << "src_id = " << src_id << endl;
 #endif
     auto &subtree_queue{Q[C[src]]};
+    int test[100000];
     for (auto const &e : V[src])
     {
 #if DEBUG == 1
