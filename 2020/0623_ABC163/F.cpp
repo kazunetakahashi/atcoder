@@ -350,6 +350,14 @@ public:
     {
       auto tmp{N - colorToCount[i] - accumulate(colorToComponents[i].begin(), colorToComponents[i].end(), 0LL)};
       colorToComponents[i].push_back(tmp);
+#if DEBUG == 1
+      cerr << "i = " << i << ": ";
+      for (auto e : colorToComponents[i])
+      {
+        cerr << e << ", ";
+      }
+      cerr << endl;
+#endif
       ll cnt{0};
       for (auto c : colorToComponents[i])
       {
