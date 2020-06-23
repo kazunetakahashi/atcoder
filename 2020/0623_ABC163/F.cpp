@@ -315,6 +315,13 @@ vector<vector<Edge>> ReadTree(int N, GraphType type = GraphType::Undirected, boo
 
 // ----- Solve -----
 
+chrono::system_clock::time_point time_start = chrono::system_clock::now();
+
+void TimeStamp()
+{
+  cout << chrono::duration_cast<std::chrono::milliseconds>(chrono::system_clock::now() - time_start).count() << endl;
+}
+
 struct SubTree
 {
   ll id, size;
@@ -368,10 +375,11 @@ public:
 private:
   ll dfs(ll src = 0, ll parent = -1)
   {
-    auto src_id{id++};
-#if DEBUG == 1
-    cerr << "C[" << src << "] = " << C[src] << endl;
+    #if DEBUG == 1
+    TimeStamp();
+    cerr << "dfs(" << src << ")" << endl;
 #endif
+    auto src_id{id++};
     auto &subtree_queue{Q[C[src]]};
     for (auto const &e : V[src])
     {
