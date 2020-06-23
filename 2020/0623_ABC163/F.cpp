@@ -339,6 +339,7 @@ class Solve
 public:
   Solve(ll N) : N{N}, id{0}, Q(N), C(N), S(N), color_to_count(N, 0)
   {
+    TimeStamp();
     for (auto i{0}; i < N; ++i)
     {
       cin >> C[i];
@@ -346,6 +347,7 @@ public:
       color_to_count[C[i]]++;
     }
     V = ReadTree(N);
+    TimeStamp();
   }
 
   void flush()
