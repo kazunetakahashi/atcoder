@@ -2,7 +2,7 @@
 /**
  * File    : A.cpp
  * Author  : Kazune Takahashi
- * Created : 6/24/2020, 1:30:08 AM
+ * Created : 2020/6/23 5:42:38
  * Powered by Visual Studio Code
  */
 #include <algorithm>
@@ -247,5 +247,5 @@ int main()
 {
   ld R;
   cin >> R;
-  cout << setprecision(18) << 2 * M_PI * R << endl;
+  cout << fixed << setprecision(15) << 2 * M_PI * R << endl;
 }
