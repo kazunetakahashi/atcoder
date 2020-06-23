@@ -351,8 +351,7 @@ public:
 
   void flush()
   {
-    dfs(N - 1);
-    dfs();
+    dfs(3000);
     for (auto i{0}; i < N; ++i)
     {
       auto sum{accumulate(S[i].begin(), S[i].end(), 0)};
@@ -378,30 +377,16 @@ private:
   ll dfs(ll src = 0, ll parent = -1)
   {
 #if DEBUG == 1
-    cout << "src = " << src << endl;
+    cerr << "dfs(" << src << ")" << endl;
 #endif
     auto src_id{id++};
-#if DEBUG == 1
-    cout << "src_id = " << src_id << endl;
-#endif
     auto &subtree_queue{Q[C[src]]};
-    int test[100000];
-    for (auto i{0}; i < 100000; ++i)
-    {
-      test[i] = i;
-    }
     for (auto const &e : V[src])
     {
-#if DEBUG == 1
-      cout << "e.dst = " << e.dst << endl;
-#endif
       if (e.dst == parent)
       {
         continue;
       }
-#if DEBUG == 1
-      cout << "e.dst = " << e.dst << endl;
-#endif
       auto colorless_tree_size{dfs(e.dst, src)};
       while (!subtree_queue.empty() && subtree_queue.front().id > src_id)
       {
