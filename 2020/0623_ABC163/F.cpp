@@ -376,7 +376,6 @@ public:
 private:
   ll dfs(ll src = 0, ll parent = -1)
   {
-    TimeStamp();
 #if DEBUG == 1
     cout << "src = " << src << endl;
 #endif
