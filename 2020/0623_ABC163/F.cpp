@@ -345,7 +345,13 @@ public:
       C[i]--;
       color_to_count[C[i]]++;
     }
+#if DEBUG == 1
+    cerr << "Here" << endl;
+#endif
     V = ReadTree(N);
+#if DEBUG == 1
+    cerr << "Here" << endl;
+#endif
   }
 
   void flush()
@@ -367,9 +373,6 @@ public:
 private:
   ll dfs(ll src = 0, ll parent = -1)
   {
-#if DEBUG == 1
-    cout << "src = " << src << endl;
-#endif
     auto src_id{id++};
     auto &subtree_queue{Q[C[src]]};
     for (auto const &e : V[src])
