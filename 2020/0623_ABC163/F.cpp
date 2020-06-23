@@ -386,6 +386,10 @@ private:
 #endif
     auto &subtree_queue{Q[C[src]]};
     int test[100000];
+    for (auto i{0}; i < 100000; ++i)
+    {
+      test[i] = i;
+    }
     for (auto const &e : V[src])
     {
 #if DEBUG == 1
