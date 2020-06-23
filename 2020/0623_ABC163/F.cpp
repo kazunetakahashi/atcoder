@@ -339,14 +339,14 @@ public:
       color_to_count[C[i]]++;
     }
     V = ReadTree(N);
+#if DEBUG == 1
+    cerr << V.size() << endl;
+#endif
   }
 
   void flush()
   {
     dfs();
-#if DEBUG == 1
-    cerr << "Here" << endl;
-#endif
     for (auto i{0}; i < N; ++i)
     {
       auto sum{accumulate(S[i].begin(), S[i].end(), 0)};
