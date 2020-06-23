@@ -378,7 +378,7 @@ private:
   {
     TimeStamp();
 #if DEBUG == 1
-    cerr << "src = " << src << endl;
+    cout << "src = " << src << endl;
 #endif
     auto src_id{id++};
     auto &subtree_queue{Q[C[src]]};
