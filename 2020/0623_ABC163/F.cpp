@@ -385,9 +385,10 @@ private:
         cutTreeSize -= stack.top().size;
         stack.pop();
       }
-      colorToComponents[toColor[src]].push_back(cutTreeSize);
+      colorToComponents[toColor[src]].push_back(subTreeSize[src]);
     }
     subTreeSize[src] = id - src_id;
+    stack.push(SubTree{subTreeSize[src], src_id});
   }
 };
 
