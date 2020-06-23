@@ -380,9 +380,15 @@ private:
     cout << "src = " << src << endl;
 #endif
     auto src_id{id++};
+#if DEBUG == 1
+    cout << "src_id = " << src_id << endl;
+#endif
     auto &subtree_queue{Q[C[src]]};
     for (auto const &e : V[src])
     {
+#if DEBUG == 1
+      cout << "e.dst = " << e.dst << endl;
+#endif
       if (e.dst == parent)
       {
         continue;
