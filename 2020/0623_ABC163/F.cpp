@@ -347,12 +347,12 @@ public:
       color_to_count[C[i]]++;
     }
     V = ReadTree(N);
-    TimeStamp();
   }
 
   void flush()
   {
     dfs();
+    TimeStamp();
     for (auto i{0}; i < N; ++i)
     {
       auto sum{accumulate(S[i].begin(), S[i].end(), 0)};
