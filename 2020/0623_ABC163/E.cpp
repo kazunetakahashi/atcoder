@@ -268,11 +268,11 @@ int main()
       {
         continue;
       }
-      ch_max(dp[i + 1][j], dp[i][j] + a * (ind - j));
       if (j + 1 <= N)
       {
-        ch_max(dp[i + 1][j + 1], dp[i][j] + a * (N - 1 - (i - j) - ind));
+        ch_max(dp[i + 1][j + 1], dp[i][j] + a * (ind - j));
       }
+      ch_max(dp[i + 1][j], dp[i][j] + a * (N - 1 - (i - j) - ind));
     }
   }
   ll ans{mInfty<ll>()};
