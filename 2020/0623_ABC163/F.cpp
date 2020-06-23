@@ -362,8 +362,6 @@ public:
         cerr << e << ", ";
       }
       cerr << endl;
-      cerr << cnt << endl;
-      cerr << (N + 1) * N / 2 - cnt << endl;
 #endif
       cout << (N + 1) * N / 2 - cnt << endl;
     }
@@ -390,7 +388,7 @@ private:
       colorToComponents[toColor[src]].push_back(cutTreeSize);
     }
     subTreeSize[src] = id - src_id;
-    stack.push(SubTree{subTreeSize[src], src_id});
+    stack.push(SubTree{src_id, subTreeSize[src]});
   }
 };
 
