@@ -350,7 +350,7 @@ public:
 
   void flush()
   {
-    dfs(3000);
+    dfs();
     for (auto i{0}; i < N; ++i)
     {
       auto sum{accumulate(S[i].begin(), S[i].end(), 0)};
