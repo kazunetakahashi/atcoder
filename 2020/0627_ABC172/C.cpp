@@ -247,46 +247,29 @@ int main()
 {
   ll N, M, K;
   cin >> N >> M >> K;
-  queue<ll> P, Q;
+  vector<ll> A(N), B(M);
   for (auto i{0}; i < N; ++i)
   {
-    int A;
-    cin >> A;
-    P.push(A);
+    cin >> A[i];
   }
-  P.push(Infty<ll>());
   for (auto i{0}; i < M; ++i)
   {
-    int A;
-    cin >> A;
-    Q.push(A);
+    cin >> B[i];
   }
-  Q.push(Infty<ll>());
-  int ans{0};
-  ll cur{0};
-  while (true)
+  vector<ll> sumA(N + 1, 0), sumB(M + 1, 0);
+  partial_sum(A.begin(), A.end(), sumA.begin() + 1);
+  partial_sum(B.begin(), B.end(), sumB.begin() + 1);
+  ll ans{0};
+  for (auto a{0}; a <= N; ++a)
   {
-    auto mini{min(P.front(), Q.front())};
-#if DEBUG == 1
-    cerr << "mini = " << mini << endl;
-#endif
-    if (mini + cur <= K)
+    auto L{K - A[a]};
+    if (L < 0)
     {
-      cur += mini;
-      ++ans;
-      if (P.front() == mini)
-      {
-        P.pop();
-      }
-      else
-      {
-        Q.pop();
-      }
+      continue;
     }
-    else
-    {
-      break;
-    }
+    auto b{lower_bound(B.begin(), B.end(), L) - B.begin()};
+    --b;
+    ch_max(ans, static_cast<ll>(a) + static_cast<ll>(b));
   }
   cout << ans << endl;
 }
