@@ -257,6 +257,9 @@ int main()
     C ^= x;
   }
   ll X{K + L};
+#if DEBUG == 1
+  cerr << "X = " << X << ", C = " << C << endl;
+#endif
   if ((X - C) & 1)
   {
     No();
