@@ -268,7 +268,7 @@ int main()
   ll A{0};
   for (auto i{0}; i < 60; ++i)
   {
-    if ((D >> i & 1) && (X >> i & 1))
+    if ((D >> i & 1) && ((X >> i & 1) == 0))
     {
       A |= 1LL << i;
     }
