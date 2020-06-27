@@ -266,7 +266,10 @@ int main()
   ll cur{0};
   while (true)
   {
-    int mini{min(P.front(), Q.front())};
+    auto mini{min(P.front(), Q.front())};
+#if DEBUG == 1
+    cerr << "mini = " << mini << endl;
+#endif
     if (mini + cur <= K)
     {
       cur += mini;
