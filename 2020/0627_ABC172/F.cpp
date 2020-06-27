@@ -316,18 +316,13 @@ int main()
       }
       else
       {
-        A |= 1LL << i;
+        A += 1LL << i;
       }
     }
   }
 #if DEBUG == 1
   cerr << "A = " << A << endl;
 #endif
-  auto B{X - A};
-  if ((A ^ B) != C)
-  {
-    sleep(10);
-  }
   if (0 < A && A <= K)
   {
     cout << K - A << endl;
