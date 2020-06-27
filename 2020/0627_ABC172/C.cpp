@@ -262,7 +262,7 @@ int main()
   ll ans{0};
   for (auto a{0}; a <= N; ++a)
   {
-    auto L{K - A[a]};
+    auto L{K - sumA[a]};
     if (L < 0)
     {
       continue;
