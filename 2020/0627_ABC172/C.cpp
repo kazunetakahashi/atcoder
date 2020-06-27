@@ -269,6 +269,11 @@ int main()
     }
     auto b{lower_bound(B.begin(), B.end(), L) - B.begin()};
     --b;
+#if DEBUG == 1
+    cerr << "a = " << a << ", b = " << b << endl;
+    cerr << "sumA[" << a << "] = " << sumA[a] << endl;
+    cerr << "sumB[" << b << "] = " << sumB[b] << endl;
+#endif
     ch_max(ans, static_cast<ll>(a) + static_cast<ll>(b));
   }
   cout << ans << endl;
