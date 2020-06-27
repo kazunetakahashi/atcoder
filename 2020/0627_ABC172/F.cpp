@@ -288,24 +288,13 @@ int main()
     {
       if (X >> i & 1)
       {
-        if (ok)
+        if ((K >> i & 1) || ok)
         {
           bit = true;
-        }
-        else
-        {
-          if (K >> i & 1 || ok)
-          {
-            bit = true;
-          }
         }
       }
       else
       {
-        if (K >> i & 1)
-        {
-          bit = true;
-        }
       }
     }
     if (bit)
