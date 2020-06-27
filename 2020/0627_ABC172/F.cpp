@@ -257,9 +257,6 @@ int main()
     C ^= x;
   }
   ll X{K + L};
-#if DEBUG == 1
-  cerr << "X = " << X << ", C = " << C << endl;
-#endif
   if (X - C < 0)
   {
     No();
@@ -269,9 +266,6 @@ int main()
     No();
   }
   ll D{(X - C) >> 1};
-#if DEBUG == 1
-  cerr << "D = " << D << endl;
-#endif
   ll A{0};
   ll T{0};
   for (auto i{60}; i >= 0; --i)
@@ -298,22 +292,10 @@ int main()
       }
     }
   }
-  if (K < A)
-  {
-    No();
-  }
-#if DEBUG == 1
-  cerr << "K = " << K << endl;
-  cerr << "A = " << A << endl;
-  cerr << "T = " << T << endl;
-#endif
   for (auto i{60}; i >= 0; --i)
   {
     if (T >> i & 1)
     {
-#if DEBUG == 1
-      cerr << "i = " << i << endl;
-#endif
       if (K < A + (1LL << i))
       {
         continue;
@@ -324,9 +306,6 @@ int main()
       }
     }
   }
-#if DEBUG == 1
-  cerr << "A = " << A << endl;
-#endif
   if (0 < A && A <= K)
   {
     cout << K - A << endl;
