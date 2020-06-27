@@ -273,6 +273,9 @@ int main()
       A |= 1LL << i;
     }
   }
+#if DEBUG == 1
+  cerr << "A = " << A << endl;
+#endif
   if (0 < A && A <= K)
   {
     cout << K - A << endl;
