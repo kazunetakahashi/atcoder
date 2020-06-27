@@ -260,6 +260,10 @@ int main()
 #if DEBUG == 1
   cerr << "X = " << X << ", C = " << C << endl;
 #endif
+  if (X - C < 0)
+  {
+    No();
+  }
   if ((X - C) & 1)
   {
     No();
