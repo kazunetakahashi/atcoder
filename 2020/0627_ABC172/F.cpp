@@ -262,6 +262,9 @@ int main()
     No();
   }
   ll D{(X - C) >> 1};
+#if DEBUG == 1
+  cerr << "D = " << D << endl;
+#endif
   ll A{0};
   for (auto i{0}; i < 60; ++i)
   {
