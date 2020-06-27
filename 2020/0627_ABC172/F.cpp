@@ -306,6 +306,9 @@ int main()
   {
     No();
   }
+#if DEBUG == 1
+  cerr << "A = " << A << endl;
+#endif
   for (auto i{60}; i >= 0; --i)
   {
     if (T >> i & 1)
