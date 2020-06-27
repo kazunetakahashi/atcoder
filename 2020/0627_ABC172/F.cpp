@@ -312,6 +312,7 @@ int main()
   }
   else
   {
+    sleep(100);
     No();
   }
 }
