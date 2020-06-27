@@ -269,11 +269,47 @@ int main()
   cerr << "D = " << D << endl;
 #endif
   ll A{0};
-  for (auto i{0}; i < 60; ++i)
+  bool ok{false};
+  for (auto i{60}; i >= 0; --i)
   {
-    if ((D >> i & 1) && ((X >> i & 1) == 0))
+    if (D >> i & 1)
     {
-      A |= 1LL << i;
+      if (X >> i & 1)
+      {
+        No();
+      }
+      else
+      {
+        A |= 1LL << i;
+        if (!ok && !(K >> i & 1))
+        {
+          No();
+        }
+      }
+    }
+    else
+    {
+      if (X >> i & 1)
+      {
+        if (ok)
+        {
+          A |= 1LL << i;
+        }
+        else
+        {
+          if (K >> i & 1)
+          {
+            A |= 1LL << i;
+          }
+        }
+      }
+      else
+      {
+        if (K >> i & 1)
+        {
+          ok = true;
+        }
+      }
     }
   }
 #if DEBUG == 1
