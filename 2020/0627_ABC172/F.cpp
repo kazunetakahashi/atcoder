@@ -266,35 +266,14 @@ int main()
     No();
   }
   ll D{(X - C) >> 1};
-  ll A{0};
-  ll T{0};
-  for (auto i{60}; i >= 0; --i)
+  if (D & X)
   {
-    if (D >> i & 1)
-    {
-      if (X >> i & 1)
-      {
-        No();
-      }
-      else
-      {
-        A |= 1LL << i;
-      }
-    }
-    else
-    {
-      if (X >> i & 1)
-      {
-        T |= 1LL << i;
-      }
-      else
-      {
-      }
-    }
+    No();
   }
+  ll A{D};
   for (auto i{60}; i >= 0; --i)
   {
-    if (T >> i & 1)
+    if (X >> i & 1)
     {
       if (K < A + (1LL << i))
       {
@@ -312,7 +291,6 @@ int main()
   }
   else
   {
-    sleep(100);
     No();
   }
 }
