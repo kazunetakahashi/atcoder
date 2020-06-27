@@ -269,7 +269,7 @@ int main()
   cerr << "D = " << D << endl;
 #endif
   ll A{0};
-  bool ok{false};
+  ll T{0};
   for (auto i{60}; i >= 0; --i)
   {
     bool bit{false};
@@ -288,10 +288,7 @@ int main()
     {
       if (X >> i & 1)
       {
-        if ((K >> i & 1) || ok)
-        {
-          bit = true;
-        }
+        T |= 1LL << 1;
       }
       else
       {
@@ -300,22 +297,37 @@ int main()
     if (bit)
     {
       A |= 1LL << i;
-      if (!ok && !(K >> i & 1))
-      {
-        No();
-      }
     }
     else
     {
-      if (K >> i & 1)
+    }
+  }
+  if (K < A)
+  {
+    No();
+  }
+  for (auto i{60}; i >= 0; --i)
+  {
+    if ((T >> i & 1) && !(A >> i & 1))
+    {
+      if (K < A + (1LL << i))
       {
-        ok = true;
+        continue;
+      }
+      else
+      {
+        A |= 1LL << i;
       }
     }
   }
 #if DEBUG == 1
   cerr << "A = " << A << endl;
 #endif
+  auto B{X - A};
+  if ((A ^ B) != C)
+  {
+    sleep(10);
+  }
   if (0 < A && A <= K)
   {
     cout << K - A << endl;
