@@ -302,11 +302,13 @@ int main()
     {
     }
   }
+
   if (K < A)
   {
     No();
   }
 #if DEBUG == 1
+  cerr << "K = " << K << endl;
   cerr << "A = " << A << endl;
 #endif
   for (auto i{60}; i >= 0; --i)
