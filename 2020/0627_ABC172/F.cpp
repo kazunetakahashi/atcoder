@@ -315,6 +315,9 @@ int main()
   {
     if (T >> i & 1)
     {
+#if DEBUG == 1
+      cerr << "i = " << i << endl;
+#endif
       if (K < A + (1LL << i))
       {
         continue;
