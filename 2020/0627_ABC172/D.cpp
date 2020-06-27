@@ -373,9 +373,17 @@ int main()
   ll N;
   cin >> N;
   ll ans{0};
+  vector<ll> cnt(N + 1, 0);
+  for (auto i{1}; i <= N; ++i)
+  {
+    for (auto j{1}; i * j < N + 1; ++j)
+    {
+      cnt[i * j]++;
+    }
+  }
   for (auto K{1}; K <= N; ++K)
   {
-    ans += f(K) * K;
+    ans += cnt[K] * K;
   }
   cout << ans << endl;
 }
