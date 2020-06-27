@@ -267,7 +267,7 @@ int main()
     {
       continue;
     }
-    auto b{lower_bound(B.begin(), B.end(), L) - B.begin()};
+    auto b{lower_bound(sumB.begin(), sumB.end(), L) - sumB.begin()};
     --b;
 #if DEBUG == 1
     cerr << "a = " << a << ", b = " << b << endl;
