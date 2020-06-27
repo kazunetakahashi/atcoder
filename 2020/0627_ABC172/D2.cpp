@@ -252,5 +252,5 @@ int main()
   {
     ans += ((N / i) * (N / i + 1)) / 2 * i;
   }
-  return ans;
+  cout << ans << endl;
 }
