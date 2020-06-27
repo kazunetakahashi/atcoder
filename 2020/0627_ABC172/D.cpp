@@ -375,7 +375,7 @@ int main()
   ll ans{0};
   for (auto K{1}; K <= N; ++K)
   {
-    ans += f(K);
+    ans += f(K) * K;
   }
   cout << ans << endl;
 }
