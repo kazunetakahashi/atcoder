@@ -272,6 +272,7 @@ int main()
   bool ok{false};
   for (auto i{60}; i >= 0; --i)
   {
+    bool bit{false};
     if (D >> i & 1)
     {
       if (X >> i & 1)
@@ -280,11 +281,7 @@ int main()
       }
       else
       {
-        A |= 1LL << i;
-        if (!ok && !(K >> i & 1))
-        {
-          No();
-        }
+        bit = true;
       }
     }
     else
@@ -293,13 +290,13 @@ int main()
       {
         if (ok)
         {
-          A |= 1LL << i;
+          bit = true;
         }
         else
         {
-          if (K >> i & 1)
+          if (K >> i & 1 || ok)
           {
-            A |= 1LL << i;
+            bit = true;
           }
         }
       }
@@ -307,8 +304,23 @@ int main()
       {
         if (K >> i & 1)
         {
-          ok = true;
+          bit = true;
         }
+      }
+    }
+    if (bit)
+    {
+      A |= 1LL << i;
+      if (!ok && !(K >> i & 1))
+      {
+        No();
+      }
+    }
+    else
+    {
+      if (K >> i & 1)
+      {
+        ok = true;
       }
     }
   }
