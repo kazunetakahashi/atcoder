@@ -288,10 +288,10 @@ int main()
     {
       if (X >> i & 1)
       {
-        T |= 1LL << 1;
       }
       else
       {
+        T |= 1LL << 1;
       }
     }
     if (bit)
