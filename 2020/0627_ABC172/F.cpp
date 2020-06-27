@@ -272,7 +272,6 @@ int main()
   ll T{0};
   for (auto i{60}; i >= 0; --i)
   {
-    bool bit{false};
     if (D >> i & 1)
     {
       if (X >> i & 1)
@@ -281,7 +280,7 @@ int main()
       }
       else
       {
-        bit = true;
+        A |= 1LL << i;
       }
     }
     else
@@ -293,13 +292,6 @@ int main()
       else
       {
       }
-    }
-    if (bit)
-    {
-      A |= 1LL << i;
-    }
-    else
-    {
     }
   }
   if (K < A)
