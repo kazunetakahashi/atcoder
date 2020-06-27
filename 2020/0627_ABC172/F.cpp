@@ -273,7 +273,7 @@ int main()
   ll A{D};
   for (auto i{60}; i >= 0; --i)
   {
-    if (X >> i & 1)
+    if (C >> i & 1)
     {
       if (K < A + (1LL << i))
       {
