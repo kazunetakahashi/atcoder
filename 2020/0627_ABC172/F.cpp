@@ -266,7 +266,7 @@ int main()
     No();
   }
   ll D{(X - C) >> 1};
-  if (D & X)
+  if (D & C)
   {
     No();
   }
