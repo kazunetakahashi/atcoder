@@ -308,7 +308,7 @@ int main()
   }
   for (auto i{60}; i >= 0; --i)
   {
-    if ((T >> i & 1) && !(A >> i & 1))
+    if (T >> i & 1)
     {
       if (K < A + (1LL << i))
       {
