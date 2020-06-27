@@ -288,10 +288,10 @@ int main()
     {
       if (X >> i & 1)
       {
+        T |= 1LL << 1;
       }
       else
       {
-        T |= 1LL << 1;
       }
     }
     if (bit)
@@ -302,7 +302,6 @@ int main()
     {
     }
   }
-
   if (K < A)
   {
     No();
@@ -310,6 +309,7 @@ int main()
 #if DEBUG == 1
   cerr << "K = " << K << endl;
   cerr << "A = " << A << endl;
+  cerr << "T = " << T << endl;
 #endif
   for (auto i{60}; i >= 0; --i)
   {
