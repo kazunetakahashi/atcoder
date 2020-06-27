@@ -288,7 +288,7 @@ int main()
     {
       if (X >> i & 1)
       {
-        T |= 1LL << 1;
+        T |= 1LL << i;
       }
       else
       {
