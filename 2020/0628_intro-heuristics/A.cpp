@@ -289,6 +289,9 @@ public:
 #endif
       auto pScore{totalScore};
       auto qScore{change_score(d, q)};
+#if DEBUG == 1
+      cerr << "pScore = " << pScore << ", qScore = " << qScore << endl;
+#endif
       if (pScore > qScore)
       {
         change_score(d, p);
