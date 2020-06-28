@@ -278,6 +278,9 @@ private:
   ll change_score(int d, int q)
   {
     int p{t[d - 1]};
+#if DEBUG == 1
+    cerr << "p = " << p << ", q = " << q << endl;
+#endif
     if (p == q)
     {
       return totalScore;
