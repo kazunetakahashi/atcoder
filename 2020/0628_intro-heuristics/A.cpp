@@ -275,9 +275,12 @@ public:
       t[i] = engine() % C;
     }
     calc_score();
-    int M{500000};
+    int M{5000};
     for (auto i{0}; i < M; ++i)
     {
+#if DEBUG == 1
+      cerr << "i = " << i << endl;
+#endif
       int d(engine() % D);
       int q(engine() % C);
       int p{t[d - 1]};
@@ -288,7 +291,10 @@ public:
         change_score(d, p);
       }
     }
-    cout << totalScore << endl;
+    for (auto e : t)
+    {
+      cout << e + 1 << endl;
+    }
   }
 
 private:
