@@ -285,12 +285,8 @@ public:
       {
         d[j] = engine() % D;
         q[j] = engine() % C;
-        p[j] = t[d[j] - 1];
+        p[j] = t[d[j]];
         change_score(d[j] + 1, q[j]);
-#if DEBUG == 1
-        cerr << "d = " << d[j] << ", q = " << q[j] << ", p = " << p[j] << endl;
-        cerr << t[d[j] - 1] << endl;
-#endif
       }
       auto qScore{totalScore};
 #if DEBUG == 1
@@ -320,18 +316,12 @@ private:
   ll change_score(int d, int q)
   {
     int p{t[d - 1]};
-#if DEBUG == 1
-    cerr << "p = " << t[d - 1] << endl;
-#endif
     if (p == q)
     {
       return totalScore;
     }
     ll newScore{totalScore};
     t[d - 1] = q;
-#if DEBUG == 1
-    cerr << "q = " << t[d - 1] << endl;
-#endif
     newScore -= s[d - 1][p];
     newScore += s[d - 1][q];
     {
