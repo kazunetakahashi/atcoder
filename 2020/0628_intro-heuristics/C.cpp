@@ -313,6 +313,9 @@ private:
       auto y{*it};
       auto dif{(y - d) * (d - x)};
       newScore -= c[q] * dif;
+#if DEBUG == 1
+      cerr << "x = " << x << ", d = " << d << ", y = " << y << endl;
+#endif
     }
     return newScore;
   }
