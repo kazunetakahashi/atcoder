@@ -287,8 +287,8 @@ private:
     }
     ll newScore{totalScore};
     t[d] = q;
-    newScore -= s[d][p];
-    newScore += s[d][q];
+    newScore -= s[d - 1][p];
+    newScore += s[d - 1][q];
     {
       auto it{contestDays[p].find(d)};
       --it;
