@@ -300,7 +300,7 @@ private:
       ++it;
       auto y{*it};
       auto dif{(y - d) * (d - x)};
-      newScore += c[p] * dif;
+      newScore -= c[p] * dif;
 #if DEBUG == 1
       cerr << "x = " << x << ", d = " << d << ", y = " << y << endl;
 #endif
@@ -315,7 +315,7 @@ private:
       ++it;
       auto y{*it};
       auto dif{(y - d) * (d - x)};
-      newScore -= c[q] * dif;
+      newScore += c[q] * dif;
 #if DEBUG == 1
       cerr << "x = " << x << ", d = " << d << ", y = " << y << endl;
 #endif
