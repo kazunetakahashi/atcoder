@@ -268,7 +268,6 @@ public:
     {
       int d, q;
       cin >> d >> q;
-      --d;
       --q;
       totalScore = change_score(d, q);
       cout << totalScore << endl;
