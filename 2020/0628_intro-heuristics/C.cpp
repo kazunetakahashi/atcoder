@@ -278,6 +278,7 @@ private:
   ll change_score(int d, int q)
   {
     int p{t[d - 1]};
+    t[d - 1] = q;
 #if DEBUG == 1
     cerr << "p = " << p << ", q = " << q << endl;
 #endif
