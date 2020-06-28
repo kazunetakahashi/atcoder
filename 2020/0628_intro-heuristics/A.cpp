@@ -300,7 +300,7 @@ public:
         for (auto j{K - 1}; j >= 0; --j)
         {
 #if DEBUG == 1
-          cerr << "q = " << t[d[j] - 1] << endl;
+          cerr << "d = " << d[j] << ", q = " << t[d[j] - 1] << ", p = " << p[j] << endl;
 #endif
           change_score(d[j] + 1, p[j]);
         }
