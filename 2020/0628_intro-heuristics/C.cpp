@@ -301,10 +301,11 @@ private:
 #if DEBUG == 1
       cerr << "x = " << x << ", d = " << d << ", y = " << y << endl;
 #endif
+      --it;
+      contestDays[p].erase(it);
     }
-    contestDays[p].erase(d);
-    contestDays[q].insert(d);
     {
+      contestDays[q].insert(d);
       auto it{contestDays[q].find(d)};
       --it;
       auto x{*it};
