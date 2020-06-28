@@ -1,5 +1,4 @@
 #define DEBUG 1
-
 /**
  * File    : A.cpp
  * Author  : Kazune Takahashi
@@ -274,9 +273,36 @@ public:
   {
     for (auto i{0}; i < D; ++i)
     {
-      t[i] = engine() % C;
+      totalScore = mInfty<ll>();
+      for (auto j{0}; j < C; ++j)
+      {
+        auto p{t[i]};
+        t[i] = j;
+        auto prev_score{totalScore};
+        calc_score(i + 1);
+        if (prev_score > totalScore)
+        {
+          t[i] = p;
+          calc_score(i + 1);
+        }
+      }
     }
-    calc_score();
+    calc_score(D);
+    module();
+    module(M, K / 2);
+    module(M, K / 4);
+    module(M, K / 10);
+    module(M, K / 20);
+    module(2 * M, K / 50);
+    for (auto e : t)
+    {
+      cout << e + 1 << endl;
+    }
+  }
+
+private:
+  void module(int M = ::M, int K = ::K)
+  {
     for (auto i{0}; i < M; ++i)
     {
       auto pScore{totalScore};
@@ -300,13 +326,8 @@ public:
         }
       }
     }
-    for (auto e : t)
-    {
-      cout << e + 1 << endl;
-    }
   }
 
-private:
   ll change_score(int d, int q)
   {
     int p{t[d - 1]};
@@ -344,7 +365,7 @@ private:
     return totalScore = newScore;
   }
 
-  vector<ll> calc_score()
+  vector<ll> calc_score(int D)
   {
     vector<ll> ans(D);
     vector<vector<int>> last(D + 1, vector<int>(C, 0));
