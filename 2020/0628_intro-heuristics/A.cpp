@@ -296,14 +296,8 @@ public:
       {
         for (auto j{K - 1}; j >= 0; --j)
         {
-#if DEBUG == 1
-          cerr << "d = " << d[j] << ", q = " << t[d[j] - 1] << ", p = " << p[j] << endl;
-#endif
           change_score(d[j] + 1, p[j]);
         }
-#if DEBUG == 1
-        cerr << "score = " << totalScore << endl;
-#endif
       }
     }
     for (auto e : t)
