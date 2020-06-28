@@ -307,12 +307,12 @@ public:
   }
 
 private:
-  void change_score(int d, int q)
+  ll change_score(int d, int q)
   {
     int p{t[d - 1]};
     if (p == q)
     {
-      return;
+      return totalScore;
     }
     ll newScore{totalScore};
     t[d - 1] = q;
@@ -341,7 +341,7 @@ private:
       auto dif{(y - d) * (d - x)};
       newScore += c[q] * dif;
     }
-    totalScore = newScore;
+    return totalScore = newScore;
   }
 
   vector<ll> calc_score()
