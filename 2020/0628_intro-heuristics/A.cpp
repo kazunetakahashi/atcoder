@@ -284,6 +284,9 @@ public:
       int d(engine() % D);
       int q(engine() % C);
       int p{t[d - 1]};
+#if DEBUG == 1
+      cerr << "d = " << d << ", p = " << p << ", q = " << q << endl;
+#endif
       auto pScore{totalScore};
       auto qScore{change_score(d, q)};
       if (pScore > qScore)
