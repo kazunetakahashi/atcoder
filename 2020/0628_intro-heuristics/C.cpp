@@ -218,7 +218,11 @@ void No()
 
 // ----- Solve -----
 
+#if DEBUG == 1
 constexpr int D = 5;
+#else
+constexpr int D = 365;
+#endif
 constexpr int C = 26;
 
 class Solve
@@ -292,6 +296,9 @@ private:
       auto y{*it};
       auto dif{(y - d) * (d - x)};
       newScore += c[p] * dif;
+#if DEBUG == 1
+      cerr << "x = " << x << ", d = " << d << ", y = " << y << endl;
+#endif
     }
     contestDays[p].erase(d);
     contestDays[q].insert(d);
