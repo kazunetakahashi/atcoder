@@ -289,6 +289,7 @@ public:
         change_score(d[j] + 1, q[j]);
 #if DEBUG == 1
         cerr << "d = " << d[j] << ", q = " << q[j] << ", p = " << p[j] << endl;
+        cerr << t[d[j] - 1] << endl;
 #endif
       }
       auto qScore{totalScore};
