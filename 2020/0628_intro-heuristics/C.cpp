@@ -291,7 +291,7 @@ private:
       ++it;
       auto y{*it};
       auto dif{(y - d) * (d - x)};
-      newScore -= c[p] * dif;
+      newScore += c[p] * dif;
     }
     contestDays[p].erase(d);
     contestDays[q].insert(d);
@@ -303,7 +303,7 @@ private:
       ++it;
       auto y{*it};
       auto dif{(y - d) * (d - x)};
-      newScore += c[q] * dif;
+      newScore -= c[q] * dif;
     }
     return newScore;
   }
