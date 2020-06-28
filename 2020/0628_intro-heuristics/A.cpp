@@ -320,12 +320,18 @@ private:
   ll change_score(int d, int q)
   {
     int p{t[d - 1]};
+#if DEBUG == 1
+    cerr << t[d - 1] << endl;
+#endif
     if (p == q)
     {
       return totalScore;
     }
     ll newScore{totalScore};
     t[d - 1] = q;
+#if DEBUG == 1
+    cerr << t[d - 1] << endl;
+#endif
     newScore -= s[d - 1][p];
     newScore += s[d - 1][q];
     {
