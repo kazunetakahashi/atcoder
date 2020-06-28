@@ -277,7 +277,7 @@ public:
 private:
   ll change_score(int d, int q)
   {
-    int p{t[d]};
+    int p{t[d - 1]};
     if (p == q)
     {
       return totalScore;
