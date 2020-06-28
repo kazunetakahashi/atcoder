@@ -238,7 +238,7 @@ constexpr int D = 5;
 constexpr int D = 365;
 #endif
 constexpr int C = 26;
-constexpr int K = 1;
+constexpr int K = 10;
 constexpr int M = 5000;
 
 class Solve
