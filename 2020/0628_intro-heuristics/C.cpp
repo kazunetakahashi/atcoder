@@ -289,6 +289,20 @@ private:
     t[d] = q;
     newScore -= s[d - 1][p];
     newScore += s[d - 1][q];
+#if DEBUG == 1
+    cerr << "contestDays[" << p << "] = {";
+    for (auto e : contestDays[p])
+    {
+      cerr << e << ", ";
+    }
+    cerr << "}";
+    cerr << "contestDays[" << q << "] = {";
+    for (auto e : contestDays[q])
+    {
+      cerr << e << ", ";
+    }
+    cerr << "}";
+#endif
     {
       auto it{contestDays[p].find(d)};
       --it;
@@ -318,6 +332,20 @@ private:
       cerr << "x = " << x << ", d = " << d << ", y = " << y << endl;
 #endif
     }
+#if DEBUG == 1
+    cerr << "contestDays[" << p << "] = {";
+    for (auto e : contestDays[p])
+    {
+      cerr << e << ", ";
+    }
+    cerr << "}";
+    cerr << "contestDays[" << q << "] = {";
+    for (auto e : contestDays[q])
+    {
+      cerr << e << ", ";
+    }
+    cerr << "}";
+#endif
     return newScore;
   }
 
