@@ -238,6 +238,8 @@ constexpr int D = 5;
 constexpr int D = 365;
 #endif
 constexpr int C = 26;
+constexpr int K = 1;
+constexpr int M = 5000;
 
 class Solve
 {
@@ -275,26 +277,27 @@ public:
       t[i] = engine() % C;
     }
     calc_score();
-    int M{5000};
     for (auto i{0}; i < M; ++i)
     {
-#if DEBUG == 1
-      cerr << "i = " << i << endl;
-#endif
-      int d(engine() % D);
-      int q(engine() % C);
-      int p{t[d - 1]};
-#if DEBUG == 1
-      cerr << "d = " << d << ", p = " << p << ", q = " << q << endl;
-#endif
       auto pScore{totalScore};
-      auto qScore{change_score(d + 1, q)};
+      vector<int> d(K), q(K), p(K);
+      for (auto j{0}; j < K; ++j)
+      {
+        d[j] = engine() % D;
+        q[j] = engine() % C;
+        p[j] = t[d[j] - 1];
+        change_score(d[j] + 1, q[j]);
+      }
+      auto qScore{totalScore};
 #if DEBUG == 1
       cerr << "pScore = " << pScore << ", qScore = " << qScore << endl;
 #endif
       if (pScore > qScore)
       {
-        change_score(d, p);
+        for (auto j{K - 1}; j >= 0; --j)
+        {
+          change_score(d[j] + 1, p[j]);
+        }
       }
     }
     for (auto e : t)
@@ -304,12 +307,12 @@ public:
   }
 
 private:
-  ll change_score(int d, int q)
+  void change_score(int d, int q)
   {
     int p{t[d - 1]};
     if (p == q)
     {
-      return totalScore;
+      return;
     }
     ll newScore{totalScore};
     t[d - 1] = q;
@@ -338,7 +341,7 @@ private:
       auto dif{(y - d) * (d - x)};
       newScore += c[q] * dif;
     }
-    return newScore;
+    totalScore = newScore;
   }
 
   vector<ll> calc_score()
