@@ -289,6 +289,9 @@ private:
     t[d] = q;
     newScore -= s[d - 1][p];
     newScore += s[d - 1][q];
+#if DEBUG == 1
+    cerr << "newScore = " << newScore << endl;
+#endif
     {
       auto it{contestDays[p].find(d)};
       --it;
