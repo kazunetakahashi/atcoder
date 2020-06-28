@@ -298,6 +298,9 @@ public:
         {
           change_score(d[j] + 1, p[j]);
         }
+#if DEBUG == 1
+        cerr << "score = " << totalScore << endl;
+#endif
       }
     }
     for (auto e : t)
