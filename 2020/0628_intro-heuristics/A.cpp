@@ -287,6 +287,9 @@ public:
         q[j] = engine() % C;
         p[j] = t[d[j] - 1];
         change_score(d[j] + 1, q[j]);
+#if DEBUG == 1
+        cerr << "d" << d[j] << ", q = " << q[j] << ", p = " << p[j] << endl;
+#endif
       }
       auto qScore{totalScore};
 #if DEBUG == 1
