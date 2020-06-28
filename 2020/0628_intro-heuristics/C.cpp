@@ -295,13 +295,13 @@ private:
     {
       cerr << e << ", ";
     }
-    cerr << "}";
+    cerr << "}" << endl;
     cerr << "contestDays[" << q << "] = {";
     for (auto e : contestDays[q])
     {
       cerr << e << ", ";
     }
-    cerr << "}";
+    cerr << "}" << endl;
 #endif
     {
       auto it{contestDays[p].find(d)};
@@ -338,13 +338,13 @@ private:
     {
       cerr << e << ", ";
     }
-    cerr << "}";
+    cerr << "}" << endl;
     cerr << "contestDays[" << q << "] = {";
     for (auto e : contestDays[q])
     {
       cerr << e << ", ";
     }
-    cerr << "}";
+    cerr << "}" << endl;
 #endif
     return newScore;
   }
