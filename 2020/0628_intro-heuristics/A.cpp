@@ -288,7 +288,7 @@ public:
       cerr << "d = " << d << ", p = " << p << ", q = " << q << endl;
 #endif
       auto pScore{totalScore};
-      auto qScore{change_score(d, q)};
+      auto qScore{change_score(d + 1, q)};
 #if DEBUG == 1
       cerr << "pScore = " << pScore << ", qScore = " << qScore << endl;
 #endif
