@@ -357,7 +357,7 @@ private:
       }
       for (auto j{0}; j < n; ++j)
       {
-        if (!(t[j] && !v[j]))
+        if (!(!t[j] && !v[j]))
         {
           continue;
         }
@@ -403,7 +403,7 @@ private:
       }
       for (auto i{0}; i < n; ++i)
       {
-        if (!(s[j] && !u[j]))
+        if (!(!s[j] && !u[j]))
         {
           continue;
         }
