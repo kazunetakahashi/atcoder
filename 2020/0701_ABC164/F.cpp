@@ -252,6 +252,7 @@ public:
   {
     prepare();
     fill_zero();
+    fixed_up();
 #if DEBUG == 1
     for (auto i{0}; i < n; ++i)
     {
