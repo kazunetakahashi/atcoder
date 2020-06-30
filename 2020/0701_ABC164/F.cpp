@@ -558,55 +558,55 @@ int main()
         ans[i][j] |= static_cast<ll>(res[i][j]) << k;
       }
     }
-  }
-  for (auto i{0}; i < n; ++i)
-  {
-    auto tmp{ans[i][0]};
-    if (!s[i])
+    for (auto i{0}; i < n; ++i)
     {
-      for (auto j{0}; j < n; ++j)
+      auto tmp{ans[i][0]};
+      if (!s[i])
       {
-        tmp &= ans[i][j];
+        for (auto j{0}; j < n; ++j)
+        {
+          tmp &= ans[i][j];
+        }
       }
-    }
-    else
-    {
-      for (auto j{0}; j < n; ++j)
+      else
       {
-        tmp |= ans[i][j];
+        for (auto j{0}; j < n; ++j)
+        {
+          tmp |= ans[i][j];
+        }
       }
-    }
-    if (tmp != us[i])
-    {
+      if (tmp != us[i])
+      {
 #if DEBUG == 1
-      cerr << "failed: i = " << i << endl;
+        cerr << "failed: k = " << k << ", i = " << i << endl;
 #endif
-      No();
-    }
-  }
-  for (auto j{0}; j < n; ++j)
-  {
-    auto tmp{ans[0][j]};
-    if (!t[j])
-    {
-      for (auto i{0}; i < n; ++i)
-      {
-        tmp &= ans[i][j];
+        No();
       }
     }
-    else
+    for (auto j{0}; j < n; ++j)
     {
-      for (auto i{0}; i < n; ++i)
+      auto tmp{ans[0][j]};
+      if (!t[j])
       {
-        tmp |= ans[i][j];
+        for (auto i{0}; i < n; ++i)
+        {
+          tmp &= ans[i][j];
+        }
       }
-    }
-    if (tmp != vs[j])
-    {
+      else
+      {
+        for (auto i{0}; i < n; ++i)
+        {
+          tmp |= ans[i][j];
+        }
+      }
+      if (tmp != vs[j])
+      {
 #if DEBUG == 1
-      cerr << "failed: j = " << j << endl;
+        cerr << "failed: k = " << k << ", j = " << j << endl;
 #endif
-      No();
+        No();
+      }
     }
   }
   for (auto i{0}; i < n; ++i)
