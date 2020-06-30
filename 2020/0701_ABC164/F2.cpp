@@ -280,6 +280,9 @@ public:
     ChangeAxis();
     CheckAll();
     ChangeAxis();
+#if DEBUG == 1
+    cerr << "here" << endl;
+#endif
     FillSame();
     FixUp();
     ChangeAxis();
