@@ -400,6 +400,9 @@ private:
       {
         continue;
       }
+#if DEBUG == 1
+      cerr << "j = " << j << endl;
+#endif
       bool ok{false};
       for (auto i{0}; i < n; ++i)
       {
