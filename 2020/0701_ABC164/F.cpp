@@ -369,6 +369,9 @@ private:
             ++cnt;
           }
         }
+#if DEBUG == 1
+        cerr << "cnt = " << cnt << endl;
+#endif
         if (cnt <= 1)
         {
           continue;
