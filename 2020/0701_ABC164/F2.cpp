@@ -343,25 +343,41 @@ private:
       switch (xAxis[i])
       {
       case State::AnyOne:
+      {
+        bool ok{false};
         for (auto j{0}; j < n; ++j)
         {
           if (res[i][j] == 1)
           {
+            ok = true;
             break;
           }
         }
+        if (ok)
+        {
+          continue;
+        }
         No();
-        break;
+      }
+      break;
       case State::AnyZero:
+      {
+        bool ok{false};
         for (auto j{0}; j < n; ++j)
         {
           if (res[i][j] == 0)
           {
+            ok = true;
             break;
           }
         }
+        if (ok)
+        {
+          continue;
+        }
         No();
-        break;
+      }
+      break;
       default:
         continue;
       }
@@ -400,9 +416,6 @@ private:
 
   void FixUp()
   {
-#if DEBUG == 1
-    cerr << res;
-#endif
     for (auto i{0}; i < n; ++i)
     {
       if (xAxis[i] != State::AnyOne)
