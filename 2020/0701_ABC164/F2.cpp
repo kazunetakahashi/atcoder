@@ -325,6 +325,11 @@ private:
     swap(xAxis, yAxis);
   }
 
+  bool CheckAny(int i, bool b)
+  {
+    return any_of(res[i].begin(), res[i].end(), [&b](auto v) { return v == b; });
+  }
+
   void CheckAny()
   {
     for (auto i{0}; i < n; ++i)
@@ -332,45 +337,26 @@ private:
       switch (xAxis[i])
       {
       case State::AnyOne:
-      {
-        bool ok{false};
-        for (auto j{0}; j < n; ++j)
+        if (!CheckAny(i, 1))
         {
-          if (res[i][j] == 1)
-          {
-            ok = true;
-            break;
-          }
+          No();
         }
-        if (ok)
-        {
-          continue;
-        }
-        No();
-      }
-      break;
+        break;
       case State::AnyZero:
-      {
-        bool ok{false};
-        for (auto j{0}; j < n; ++j)
+        if (!CheckAny(i, 0))
         {
-          if (res[i][j] == 0)
-          {
-            ok = true;
-            break;
-          }
+          No();
         }
-        if (ok)
-        {
-          continue;
-        }
-        No();
-      }
-      break;
+        break;
       default:
         continue;
       }
     }
+  }
+
+  bool CheckAll(int i, bool b)
+  {
+    return all_of(res[i].begin(), res[i].end(), [&b](auto v) { return v == b; });
   }
 
   void CheckAll()
@@ -380,21 +366,15 @@ private:
       switch (xAxis[i])
       {
       case State::AllOne:
-        for (auto j{0}; j < n; ++j)
+        if (!CheckAll(i, 1))
         {
-          if (res[i][j] == 0)
-          {
-            No();
-          }
+          No();
         }
         break;
       case State::AllZero:
-        for (auto j{0}; j < n; ++j)
+        if (!CheckAll(i, 0))
         {
-          if (res[i][j] == 1)
-          {
-            No();
-          }
+          No();
         }
         break;
       default:
@@ -411,19 +391,11 @@ private:
       {
         continue;
       }
-      bool ok{false};
-      for (auto j{0}; j < n; ++j)
-      {
-        if (res[i][j] == 1)
-        {
-          ok = true;
-          break;
-        }
-      }
-      if (ok)
+      if (CheckAny(i, 1))
       {
         continue;
       }
+      bool ok{false};
       for (auto j{0}; j < n; ++j)
       {
         if (yAxis[j] != State::AnyZero)
@@ -459,10 +431,7 @@ private:
     {
       if (xAxis[i] == State::AllOne)
       {
-        for (auto j{0}; j < n; ++j)
-        {
-          res[i][j] = 1;
-        }
+        fill(res[i].begin(), res[i].end(), 1);
       }
     }
   }
