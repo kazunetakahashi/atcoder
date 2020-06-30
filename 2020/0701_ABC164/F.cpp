@@ -492,14 +492,14 @@ int main()
     {
       for (auto j{0}; j < n; ++j)
       {
-        cout << res[i][j];
+        cerr << res[i][j];
         if (j < n - 1)
         {
-          cout << " ";
+          cerr << " ";
         }
         else
         {
-          cout << endl;
+          cerr << endl;
         }
       }
     }
