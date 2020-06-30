@@ -321,7 +321,8 @@ public:
   void flush()
   {
     min_heap<Info> h;
-    h.push(Info{0, 0, 0});
+    ch_min(s, n * C - 1);
+    h.push(Info{0, 0, s});
     while (!h.empty())
     {
       auto [src_time, src, src_coin]{h.top()};
