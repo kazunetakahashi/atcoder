@@ -297,6 +297,9 @@ private:
           tmp |= res[i][j];
         }
       }
+#if DEBUG == 1
+      cerr << "tmp = " << tmp << ", v[j] = " << v[j] << endl;
+#endif
       if (tmp != v[j])
       {
         No();
