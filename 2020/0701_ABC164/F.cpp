@@ -509,7 +509,7 @@ private:
 
 // ----- main() -----
 
-constexpr int C{60};
+constexpr int C{64};
 
 int main()
 {
@@ -575,7 +575,7 @@ int main()
           tmp |= ans[i][j];
         }
       }
-      if (tmp != us[i])
+      if (tmp != (us[i] & ((1ULL << k) - 1)))
       {
 #if DEBUG == 1
         cerr << "failed: k = " << k << ", i = " << i << endl;
