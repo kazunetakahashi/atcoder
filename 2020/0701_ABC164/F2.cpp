@@ -274,6 +274,7 @@ ostream &operator<<(ostream &os, State const &s)
   case State::AllOne:
     return os << "AllOne";
   }
+  return os;
 }
 
 class Solve
@@ -470,7 +471,7 @@ private:
     {
       for (auto j{0}; j < n; ++j)
       {
-        if (xAxis[i] == State::AnyOne && yAxis[i] == State::AnyOne)
+        if (xAxis[i] == State::AnyOne && yAxis[j] == State::AnyOne)
         {
           res[i][j] = 1;
         }
