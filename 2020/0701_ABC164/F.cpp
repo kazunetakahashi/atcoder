@@ -521,13 +521,13 @@ int main()
   {
     int x;
     cin >> x;
-    s[i] = (x == 1);
+    s[i] = x;
   }
   for (auto i{0}; i < n; ++i)
   {
     int x;
     cin >> x;
-    t[i] = (x == 1);
+    t[i] = x;
   }
   for (auto i{0}; i < n; ++i)
   {
@@ -537,7 +537,7 @@ int main()
   {
     cin >> vs[i];
   }
-  vector<vector<ll>> ans(C, vector<ll>(C, 0));
+  vector<vector<ll>> ans(n, vector<ll>(n, 0));
   for (auto k{0}; k < C; ++k)
   {
     vector<bool> u(n), v(n);
