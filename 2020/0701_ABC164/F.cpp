@@ -558,6 +558,23 @@ int main()
         ans[i][j] |= static_cast<ll>(res[i][j]) << k;
       }
     }
+#if DEBUG == 1
+    for (auto i{0}; i < n; ++i)
+    {
+      for (auto j{0}; j < n; ++j)
+      {
+        cerr << ans[i][j];
+        if (j < n - 1)
+        {
+          cerr << " ";
+        }
+        else
+        {
+          cerr << endl;
+        }
+      }
+    }
+#endif
     for (auto i{0}; i < n; ++i)
     {
       auto tmp{ans[i][0]};
