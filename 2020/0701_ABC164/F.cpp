@@ -242,13 +242,7 @@ public:
     {
       careful();
     }
-#if DEBUG == 1
-    cerr << "final_check()" << endl;
-#endif
     final_check();
-#if DEBUG == 1
-    cerr << "final_check()" << endl;
-#endif
     return res;
   }
 
@@ -482,9 +476,6 @@ int main()
   vector<vector<ll>> ans(C);
   for (auto k{0}; k < C; ++k)
   {
-#if DEBUG == 1
-    cerr << "k = " << k << endl;
-#endif
     vector<bool> u(n), v(n);
     for (auto i{0}; i < n; ++i)
     {
@@ -496,6 +487,23 @@ int main()
     }
     Solve solve(n, s, t, u, v);
     auto res{solve.answer()};
+#if DEBUG == 1
+    for (auto i{0}; i < n; ++i)
+    {
+      for (auto j{0}; j < n; ++j)
+      {
+        cout << res[i][j];
+        if (j < n - 1)
+        {
+          cout << " ";
+        }
+        else
+        {
+          cout << endl;
+        }
+      }
+    }
+#endif
     for (auto i{0}; i < n; ++i)
     {
       for (auto j{0}; j < n; ++j)
