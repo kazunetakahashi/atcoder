@@ -272,26 +272,34 @@ public:
 
   vector<vector<bool>> Answer()
   {
-    FillAll();
-    ChangeAxis();
-    FillAll();
-    ChangeAxis();
-    CheckAll();
-    ChangeAxis();
-    CheckAll();
-    ChangeAxis();
+    {
+      FillAll();
+      ChangeAxis();
+      FillAll();
+      ChangeAxis();
+    }
+    {
+      CheckAll();
+      ChangeAxis();
+      CheckAll();
+      ChangeAxis();
+    }
+    FillSame();
+    {
+      FixUp();
+      ChangeAxis();
+      FixUp();
+      ChangeAxis();
+    }
 #if DEBUG == 1
     cerr << "here" << endl;
 #endif
-    FillSame();
-    FixUp();
-    ChangeAxis();
-    FixUp();
-    ChangeAxis();
-    CheckAny();
-    ChangeAxis();
-    CheckAny();
-    ChangeAxis();
+    {
+      CheckAny();
+      ChangeAxis();
+      CheckAny();
+      ChangeAxis();
+    }
     return res;
   }
 
