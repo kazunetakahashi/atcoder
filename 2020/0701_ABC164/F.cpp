@@ -274,7 +274,7 @@ private:
 #if DEBUG == 1
       cerr << "i = " << i << endl;
 #endif
-      int tmp{0};
+      int tmp{res[i][0]};
       if (!s[i])
       {
         for (auto j{0}; j < n; ++j)
@@ -299,7 +299,7 @@ private:
 #if DEBUG == 1
       cerr << "j = " << j << endl;
 #endif
-      int tmp{0};
+      int tmp{res[0][j]};
       if (!t[j])
       {
         for (auto i{0}; i < n; ++i)
