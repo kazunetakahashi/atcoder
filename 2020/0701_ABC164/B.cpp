@@ -258,7 +258,7 @@ int main()
   }
   if (a <= 0)
   {
-    Yes();
+    No();
   }
-  No();
+  Yes();
 }
