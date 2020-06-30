@@ -255,7 +255,7 @@ private:
     for (auto i{0}; i < n; ++i)
     {
       int tmp{0};
-      if (s[i])
+      if (!s[i])
       {
         for (auto j{0}; j < n; ++j)
         {
@@ -277,7 +277,7 @@ private:
     for (auto j{0}; j < n; ++j)
     {
       int tmp{0};
-      if (t[j])
+      if (!t[j])
       {
         for (auto i{0}; i < n; ++i)
         {
