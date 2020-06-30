@@ -223,7 +223,6 @@ class Solve
   int n;
   vector<bool> s, t, u, v;
   vector<vector<int>> res;
-  vector<int> zero_row, zero_col, one_row, one_col;
 
 public:
   Solve(int n, vector<bool> s, vector<bool> t, vector<bool> u, vector<bool> v) : n{n}, s{s}, t{t}, u{u}, v{v}, res(n, vector<int>(n, -1))
@@ -233,15 +232,7 @@ public:
   vector<vector<int>> answer()
   {
     prepare();
-    make_vectors();
-    if (!one_row.empty() && !one_col.empty())
-    {
-      puts_ones();
-    }
-    else
-    {
-      careful();
-    }
+    fill_zero();
     final_check();
     return res;
   }
@@ -263,143 +254,156 @@ private:
   {
     for (auto i{0}; i < n; ++i)
     {
+      int tmp{0};
+      if (s[i])
+      {
+        for (auto j{0}; j < n; ++j)
+        {
+          tmp &= res[i][j];
+        }
+      }
+      else
+      {
+        for (auto j{0}; j < n; ++j)
+        {
+          tmp |= res[i][j];
+        }
+      }
+      if (tmp != u[i])
+      {
+        No();
+      }
+    }
+    for (auto j{0}; j < n; ++j)
+    {
+      int tmp{0};
+      if (t[j])
+      {
+        for (auto i{0}; i < n; ++i)
+        {
+          tmp &= res[i][j];
+        }
+      }
+      else
+      {
+        for (auto i{0}; i < n; ++i)
+        {
+          tmp |= res[i][j];
+        }
+      }
+      if (tmp != v[j])
+      {
+        No();
+      }
+    }
+  }
+
+  void fixed_up()
+  {
+    for (auto i{0}; i < n; ++i)
+    {
+      if (!(s[i] && u[i]))
+      {
+        continue;
+      }
+      bool ok{false};
+      for (auto j{0}; j < n; ++j)
+      {
+        if (res[i][j] == 1)
+        {
+          ok = true;
+          break;
+        }
+      }
+      if (ok)
+      {
+        continue;
+      }
+      for (auto j{0}; j < n; ++j)
+      {
+        if (!(t[j] && !v[j]))
+        {
+          continue;
+        }
+        int cnt{0};
+        for (auto k{0}; k < n; ++k)
+        {
+          if (res[k][j] == 0)
+          {
+            ++cnt;
+          }
+        }
+        if (cnt <= 1)
+        {
+          continue;
+        }
+        res[i][j] = 1;
+        ok = true;
+        break;
+      }
+      if (!ok)
+      {
+        No();
+      }
+    }
+    for (auto j{0}; j < n; ++j)
+    {
+      if (!(t[j] && v[j]))
+      {
+        continue;
+      }
+      bool ok{false};
+      for (auto i{0}; i < n; ++i)
+      {
+        if (res[i][j] == 1)
+        {
+          ok = true;
+          break;
+        }
+      }
+      if (ok)
+      {
+        continue;
+      }
+      for (auto i{0}; i < n; ++i)
+      {
+        if (!(s[j] && !u[j]))
+        {
+          continue;
+        }
+        int cnt{0};
+        for (auto k{0}; k < n; ++k)
+        {
+          if (res[i][k] == 0)
+          {
+            ++cnt;
+          }
+        }
+        if (cnt <= 1)
+        {
+          continue;
+        }
+        res[i][j] = 1;
+        ok = true;
+        break;
+      }
+      if (!ok)
+      {
+        No();
+      }
+    }
+  }
+
+  void fill_zero()
+  {
+    for (auto i{0}; i < n; ++i)
+    {
       for (auto j{0}; j < n; ++j)
       {
         if (res[i][j] == -1)
         {
           res[i][j] = 0;
         }
-      }
-    }
-    {
-      for (auto i : zero_row)
-      {
-        bool ok{false};
-        for (auto j{0}; j < n; ++j)
-        {
-          if (res[i][j] == 0)
-          {
-            ok = true;
-            break;
-          }
-        }
-        if (!ok)
-        {
-          No();
-        }
-      }
-    }
-    {
-      for (auto j : zero_col)
-      {
-        bool ok{false};
-        for (auto i{0}; i < n; ++i)
-        {
-          if (res[i][j] == 0)
-          {
-            ok = true;
-            break;
-          }
-        }
-        if (!ok)
-        {
-          No();
-        }
-      }
-    }
-  }
-
-  void careful()
-  {
-    {
-      int cnt{0};
-      for (auto i : one_row)
-      {
-        bool ok{false};
-        for (auto j{0}; j < n; ++j)
-        {
-          if (res[i][j] == 1)
-          {
-            ok = true;
-          }
-        }
-        if (ok)
-        {
-          continue;
-        }
-        if (static_cast<int>(zero_col.size()) == 0)
-        {
-          No();
-        }
-        auto j{cnt % zero_col.size()};
-        ch(i, zero_col[j], 1);
-      }
-    }
-    {
-      int cnt{0};
-      for (auto j : one_col)
-      {
-        bool ok{false};
-        for (auto i{0}; i < n; ++i)
-        {
-          if (res[i][j] == 1)
-          {
-            ok = true;
-          }
-        }
-        if (ok)
-        {
-          continue;
-        }
-        if (static_cast<int>(zero_row.size()) == 0)
-        {
-          No();
-        }
-        auto i{cnt % zero_row.size()};
-        ch(zero_row[i], j, 1);
-      }
-    }
-  }
-
-  void puts_ones()
-  {
-    for (auto i : one_row)
-    {
-      for (auto j : one_col)
-      {
-        ch(i, j, 1);
-      }
-    }
-  }
-
-  void make_vectors()
-  {
-    for (auto i{0}; i < n; ++i)
-    {
-      if (!s[i] && !u[i])
-      {
-        zero_row.push_back(i);
-      }
-    }
-    for (auto i{0}; i < n; ++i)
-    {
-      if (s[i] && u[i])
-      {
-        one_row.push_back(i);
-      }
-    }
-    for (auto i{0}; i < n; ++i)
-    {
-      if (!t[i] && !v[i])
-      {
-        zero_col.push_back(i);
-      }
-    }
-    for (auto i{0}; i < n; ++i)
-    {
-      if (t[i] && v[i])
-      {
-        one_col.push_back(i);
       }
     }
   }
@@ -437,6 +441,23 @@ private:
         for (auto j{0}; j < n; ++j)
         {
           ch(j, i, 0);
+        }
+      }
+    }
+    for (auto i{0}; i < n; ++i)
+    {
+      for (auto j{0}; j < n; ++j)
+      {
+        if (res[i][j] == -1)
+        {
+          if (u[i] && v[j])
+          {
+            res[i][j] = 1;
+          }
+          else if (!u[i] && !v[j])
+          {
+            res[i][j] = 0;
+          }
         }
       }
     }
