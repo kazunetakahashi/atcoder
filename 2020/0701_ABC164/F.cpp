@@ -350,7 +350,7 @@ private:
   {
     for (auto i{0}; i < n; ++i)
     {
-      if (!(s[i] && u[i]))
+      if (!(s[i] && (u[i] & 1)))
       {
         continue;
       }
@@ -369,7 +369,7 @@ private:
       }
       for (auto j{0}; j < n; ++j)
       {
-        if (!(!t[j] && !v[j]))
+        if (!(!t[j] && !(v[j] & 1)))
         {
           continue;
         }
@@ -396,7 +396,7 @@ private:
     }
     for (auto j{0}; j < n; ++j)
     {
-      if (!(t[j] && v[j]))
+      if (!(t[j] && (v[j] & 1)))
       {
         continue;
       }
@@ -421,7 +421,7 @@ private:
 #endif
       for (auto i{0}; i < n; ++i)
       {
-        if (!(!s[j] && !u[j]))
+        if (!(!s[j] && !(u[j] & 1)))
         {
           continue;
         }
