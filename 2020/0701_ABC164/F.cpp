@@ -592,7 +592,12 @@ int main()
           tmp |= ans[i][j];
         }
       }
-      if (tmp != (us[i] & ((1ULL << (k + 1)) - 1)))
+      auto cut{us[i]};
+      if (k < C - 1)
+      {
+        cut &= (1ULL << (k + 1)) - 1;
+      }
+      if (tmp != cut)
       {
 #if DEBUG == 1
         cerr << "failed: k = " << k << ", i = " << i << endl;
@@ -617,7 +622,12 @@ int main()
           tmp |= ans[i][j];
         }
       }
-      if (tmp != vs[j])
+      auto cut{vs[j]};
+      if (k < C - 1)
+      {
+        cut &= (1ULL << (k + 1)) - 1;
+      }
+      if (tmp != cut)
       {
 #if DEBUG == 1
         cerr << "failed: k = " << k << ", j = " << j << endl;
