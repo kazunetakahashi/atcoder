@@ -338,6 +338,9 @@ private:
   {
     for (auto i{0}; i < n; ++i)
     {
+#if DEBUG == 1
+      cerr << "i = " << i << endl;
+#endif
       if (!(s[i] && u[i]))
       {
         continue;
