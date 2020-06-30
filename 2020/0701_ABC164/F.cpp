@@ -578,6 +578,9 @@ int main()
     }
     if (tmp != us[i])
     {
+#if DEBUG == 1
+      cerr << "failed: i = " << i << endl;
+#endif
       No();
     }
   }
@@ -600,6 +603,9 @@ int main()
     }
     if (tmp != vs[j])
     {
+#if DEBUG == 1
+      cerr << "failed: j = " << j << endl;
+#endif
       No();
     }
   }
