@@ -218,6 +218,28 @@ void No()
 
 // ----- Solve -----
 
+template <typename T>
+ostream &operator<<(ostream &os, vector<vector<T>> const &v)
+{
+  int n = v.size();
+  for (auto i{0}; i < n; ++i)
+  {
+    for (auto j{0}; j < n; ++j)
+    {
+      os << v[i][j];
+      if (j < n - 1)
+      {
+        os << " ";
+      }
+      else
+      {
+        os << endl;
+      }
+    }
+  }
+  return os;
+}
+
 class Solve
 {
   int n;
@@ -252,23 +274,12 @@ public:
   {
     prepare();
     fill_zero();
+#if DEBUG == 1
+    cerr << res;
+#endif
     fixed_up();
 #if DEBUG == 1
-    for (auto i{0}; i < n; ++i)
-    {
-      for (auto j{0}; j < n; ++j)
-      {
-        cerr << res[i][j];
-        if (j < n - 1)
-        {
-          cerr << " ";
-        }
-        else
-        {
-          cerr << endl;
-        }
-      }
-    }
+    cerr << res;
 #endif
     final_check();
     return res;
@@ -553,21 +564,7 @@ int main()
       }
     }
 #if DEBUG == 1
-    for (auto i{0}; i < n; ++i)
-    {
-      for (auto j{0}; j < n; ++j)
-      {
-        cerr << ans[i][j];
-        if (j < n - 1)
-        {
-          cerr << " ";
-        }
-        else
-        {
-          cerr << endl;
-        }
-      }
-    }
+    cerr << ans;
 #endif
     for (auto i{0}; i < n; ++i)
     {
