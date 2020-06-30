@@ -561,6 +561,50 @@ int main()
   }
   for (auto i{0}; i < n; ++i)
   {
+    auto tmp{ans[i][0]};
+    if (!s[i])
+    {
+      for (auto j{0}; j < n; ++j)
+      {
+        tmp &= ans[i][j];
+      }
+    }
+    else
+    {
+      for (auto j{0}; j < n; ++j)
+      {
+        tmp |= ans[i][j];
+      }
+    }
+    if (tmp != us[i])
+    {
+      No();
+    }
+  }
+  for (auto j{0}; j < n; ++j)
+  {
+    auto tmp{ans[0][j]};
+    if (!t[j])
+    {
+      for (auto i{0}; i < n; ++i)
+      {
+        tmp &= ans[i][j];
+      }
+    }
+    else
+    {
+      for (auto i{0}; i < n; ++i)
+      {
+        tmp |= ans[i][j];
+      }
+    }
+    if (tmp != vs[j])
+    {
+      No();
+    }
+  }
+  for (auto i{0}; i < n; ++i)
+  {
     for (auto j{0}; j < n; ++j)
     {
       cout << ans[i][j];
