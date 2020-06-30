@@ -246,6 +246,9 @@ public:
     cerr << "final_check()" << endl;
 #endif
     final_check();
+#if DEBUG == 1
+    cerr << "final_check()" << endl;
+#endif
     return res;
   }
 
