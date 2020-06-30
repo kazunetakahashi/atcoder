@@ -261,6 +261,21 @@ enum class State
   AnyOne
 };
 
+ostream &operator<<(ostream &os, State const &s)
+{
+  switch (s)
+  {
+  case State::AnyZero:
+    return os << "AnyZero";
+  case State::AllZero:
+    return os << "AllZero";
+  case State::AnyOne:
+    return os << "AnyOne";
+  case State::AllOne:
+    return os << "AllOne";
+  }
+}
+
 class Solve
 {
   int n;
@@ -268,7 +283,20 @@ class Solve
   vector<vector<bool>> res;
 
 public:
-  Solve(int n, vector<State> xAxis, vector<State> yAxis) : n{n}, xAxis{xAxis}, yAxis{yAxis}, res(n, vector<bool>(n, 0)) {}
+  Solve(int n, vector<State> xAxis, vector<State> yAxis) : n{n}, xAxis{xAxis}, yAxis{yAxis}, res(n, vector<bool>(n, 0))
+  {
+#if DEBUG == 1
+    cerr << "problem: " << endl;
+    for (auto i{0}; i < n; ++i)
+    {
+      cerr << "xAxis[" << i << "] = " << xAxis[i] << endl;
+    }
+    for (auto i{0}; i < n; ++i)
+    {
+      cerr << "yAxis[" << i << "] = " << yAxis[i] << endl;
+    }
+#endif
+  }
 
   vector<vector<bool>> Answer()
   {
@@ -285,18 +313,12 @@ public:
       ChangeAxis();
     }
     FillSame();
-#if DEBUG == 1
-    cerr << "here" << endl;
-#endif
     {
       FixUp();
       ChangeAxis();
       FixUp();
       ChangeAxis();
     }
-#if DEBUG == 1
-    cerr << "here" << endl;
-#endif
     {
       CheckAny();
       ChangeAxis();
@@ -377,6 +399,9 @@ private:
 
   void FixUp()
   {
+#if DEBUG == 1
+    cerr << res;
+#endif
     for (auto i{0}; i < n; ++i)
     {
       if (xAxis[i] != State::AnyOne)
