@@ -279,6 +279,9 @@ private:
     }
     for (auto j{0}; j < n; ++j)
     {
+#if DEBUG == 1
+      cerr << "j = " << j << endl;
+#endif
       int tmp{0};
       if (!t[j])
       {
