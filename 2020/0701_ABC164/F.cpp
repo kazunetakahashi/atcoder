@@ -227,6 +227,25 @@ class Solve
 public:
   Solve(int n, vector<bool> s, vector<bool> t, vector<bool> u, vector<bool> v) : n{n}, s{s}, t{t}, u{u}, v{v}, res(n, vector<int>(n, -1))
   {
+#if DEBUG == 1
+    cerr << "problem: " << endl;
+    for (auto i{0}; i < n; ++i)
+    {
+      cerr << "s[" << i << "] = " << s[i] << endl;
+    }
+    for (auto i{0}; i < n; ++i)
+    {
+      cerr << "t[" << i << "] = " << t[i] << endl;
+    }
+    for (auto i{0}; i < n; ++i)
+    {
+      cerr << "u[" << i << "] = " << u[i] << endl;
+    }
+    for (auto i{0}; i < n; ++i)
+    {
+      cerr << "v[" << i << "] = " << v[i] << endl;
+    }
+#endif
   }
 
   vector<vector<int>> answer()
@@ -271,9 +290,6 @@ private:
   {
     for (auto i{0}; i < n; ++i)
     {
-#if DEBUG == 1
-      cerr << "i = " << i << endl;
-#endif
       int tmp{res[i][0]};
       if (!s[i])
       {
@@ -296,9 +312,6 @@ private:
     }
     for (auto j{0}; j < n; ++j)
     {
-#if DEBUG == 1
-      cerr << "j = " << j << endl;
-#endif
       int tmp{res[0][j]};
       if (!t[j])
       {
@@ -314,9 +327,6 @@ private:
           tmp |= res[i][j];
         }
       }
-#if DEBUG == 1
-      cerr << "tmp = " << tmp << ", v[j] = " << v[j] << endl;
-#endif
       if (tmp != v[j])
       {
         No();
