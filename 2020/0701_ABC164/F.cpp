@@ -339,9 +339,6 @@ private:
   {
     for (auto i{0}; i < n; ++i)
     {
-#if DEBUG == 1
-      cerr << "i = " << i << endl;
-#endif
       if (!(s[i] && u[i]))
       {
         continue;
@@ -373,9 +370,6 @@ private:
             ++cnt;
           }
         }
-#if DEBUG == 1
-        cerr << "cnt = " << cnt << endl;
-#endif
         if (cnt <= 1)
         {
           continue;
