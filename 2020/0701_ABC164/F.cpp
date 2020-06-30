@@ -254,6 +254,9 @@ private:
   {
     for (auto i{0}; i < n; ++i)
     {
+#if DEBUG == 1
+      cerr << "i = " << i << endl;
+#endif
       int tmp{0};
       if (!s[i])
       {
