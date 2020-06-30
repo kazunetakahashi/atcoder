@@ -234,6 +234,9 @@ public:
   {
     prepare();
     make_vectors();
+#if DEBUG == 1
+    cerr << "make_vectors()" << endl;
+#endif
     if (!one_row.empty() && !one_col.empty())
     {
       puts_ones();
