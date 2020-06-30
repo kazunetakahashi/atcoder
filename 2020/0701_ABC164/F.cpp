@@ -596,6 +596,7 @@ int main()
       {
 #if DEBUG == 1
         cerr << "failed: k = " << k << ", i = " << i << endl;
+        cerr << "tmp = " << tmp << ", " << (us[i] & ((1ULL << k) - 1)) << endl;
 #endif
         No();
       }
