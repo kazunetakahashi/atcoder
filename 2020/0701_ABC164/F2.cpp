@@ -285,6 +285,9 @@ public:
       ChangeAxis();
     }
     FillSame();
+#if DEBUG == 1
+    cerr << "here" << endl;
+#endif
     {
       FixUp();
       ChangeAxis();
