@@ -473,7 +473,7 @@ int main()
   {
     cin >> vs[i];
   }
-  vector<vector<ll>> ans(C);
+  vector<vector<ll>> ans(C, vector<ll>(C, 0));
   for (auto k{0}; k < C; ++k)
   {
     vector<bool> u(n), v(n);
