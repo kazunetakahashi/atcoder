@@ -445,7 +445,7 @@ private:
 
 // ----- main() -----
 
-constexpr ll C{60};
+constexpr int C{60};
 
 int main()
 {
@@ -476,6 +476,9 @@ int main()
   vector<vector<ll>> ans(C);
   for (auto k{0}; k < C; ++k)
   {
+#if DEBUG == 1
+    cerr << "k = " << k << endl;
+#endif
     vector<bool> u(n), v(n);
     for (auto i{0}; i < n; ++i)
     {
