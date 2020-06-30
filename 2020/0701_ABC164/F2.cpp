@@ -276,14 +276,18 @@ public:
     ChangeAxis();
     FillAll();
     ChangeAxis();
+    CheckAll();
+    ChangeAxis();
+    CheckAll();
+    ChangeAxis();
     FillSame();
     FixUp();
     ChangeAxis();
     FixUp();
     ChangeAxis();
-    Check();
+    CheckAny();
     ChangeAxis();
-    Check();
+    CheckAny();
     ChangeAxis();
     return res;
   }
@@ -295,7 +299,39 @@ private:
     swap(xAxis, yAxis);
   }
 
-  void Check()
+  void CheckAny()
+  {
+    for (auto i{0}; i < n; ++i)
+    {
+      switch (xAxis[i])
+      {
+      case State::AnyOne:
+        for (auto j{0}; j < n; ++j)
+        {
+          if (res[i][j] == 1)
+          {
+            break;
+          }
+        }
+        No();
+        break;
+      case State::AnyZero:
+        for (auto j{0}; j < n; ++j)
+        {
+          if (res[i][j] == 0)
+          {
+            break;
+          }
+        }
+        No();
+        break;
+      default:
+        continue;
+      }
+    }
+  }
+
+  void CheckAll()
   {
     for (auto i{0}; i < n; ++i)
     {
@@ -319,29 +355,8 @@ private:
           }
         }
         break;
-      case State::AnyOne:
-        for (auto j{0}; j < n; ++j)
-        {
-          if (res[i][j] == 1)
-          {
-            break;
-          }
-        }
-        No();
-        break;
-      case State::AnyZero:
-        for (auto j{0}; j < n; ++j)
-        {
-          if (res[i][j] == 0)
-          {
-            break;
-          }
-        }
-        No();
-        break;
       default:
-        assert(false);
-        break;
+        continue;
       }
     }
   }
