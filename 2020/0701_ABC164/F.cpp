@@ -233,6 +233,23 @@ public:
   {
     prepare();
     fill_zero();
+#if DEBUG == 1
+    for (auto i{0}; i < n; ++i)
+    {
+      for (auto j{0}; j < n; ++j)
+      {
+        cerr << res[i][j];
+        if (j < n - 1)
+        {
+          cerr << " ";
+        }
+        else
+        {
+          cerr << endl;
+        }
+      }
+    }
+#endif
     final_check();
     return res;
   }
@@ -517,23 +534,6 @@ int main()
     }
     Solve solve(n, s, t, u, v);
     auto res{solve.answer()};
-#if DEBUG == 1
-    for (auto i{0}; i < n; ++i)
-    {
-      for (auto j{0}; j < n; ++j)
-      {
-        cerr << res[i][j];
-        if (j < n - 1)
-        {
-          cerr << " ";
-        }
-        else
-        {
-          cerr << endl;
-        }
-      }
-    }
-#endif
     for (auto i{0}; i < n; ++i)
     {
       for (auto j{0}; j < n; ++j)
