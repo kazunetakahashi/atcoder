@@ -421,7 +421,7 @@ private:
 #endif
       for (auto i{0}; i < n; ++i)
       {
-        if (!(!s[j] && !(u[j] & 1)))
+        if (!(!s[i] && !(u[i] & 1)))
         {
           continue;
         }
