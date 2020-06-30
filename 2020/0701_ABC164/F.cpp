@@ -416,6 +416,9 @@ private:
       {
         continue;
       }
+#if DEBUG == 1
+      cerr << "j = " << j << endl;
+#endif
       for (auto i{0}; i < n; ++i)
       {
         if (!(!s[j] && !u[j]))
