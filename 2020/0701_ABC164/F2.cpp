@@ -212,7 +212,7 @@ void Yes()
 }
 void No()
 {
-  cout << "No" << endl;
+  cout << "-1" << endl;
   exit(0);
 }
 
@@ -286,17 +286,6 @@ class Solve
 public:
   Solve(int n, vector<State> xAxis, vector<State> yAxis) : n{n}, xAxis{xAxis}, yAxis{yAxis}, res(n, vector<bool>(n, 0))
   {
-#if DEBUG == 1
-    cerr << "problem: " << endl;
-    for (auto i{0}; i < n; ++i)
-    {
-      cerr << "xAxis[" << i << "] = " << xAxis[i] << endl;
-    }
-    for (auto i{0}; i < n; ++i)
-    {
-      cerr << "yAxis[" << i << "] = " << yAxis[i] << endl;
-    }
-#endif
   }
 
   vector<vector<bool>> Answer()
