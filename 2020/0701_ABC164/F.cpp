@@ -425,6 +425,9 @@ private:
         {
           continue;
         }
+#if DEBUG == 1
+        cerr << "i = " << i << endl;
+#endif
         int cnt{0};
         for (auto k{0}; k < n; ++k)
         {
