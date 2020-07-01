@@ -249,6 +249,6 @@ int main()
   cin >> N >> M;
   for (auto i{0}; i < M; ++i)
   {
-    cout << 1 + i << " " << M - i << endl;
+    cout << 1 + i << " " << N - i << endl;
   }
 }
