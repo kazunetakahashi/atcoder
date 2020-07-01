@@ -313,6 +313,49 @@ vector<vector<Edge>> ReadTree(int N, GraphType type = GraphType::Undirected, boo
   return ReadGraph(N, N - 1, type, is_one_indexed);
 }
 
+// ----- LIS -----
+
+template <typename T>
+class LIS
+{
+  struct Cache_LIS
+  {
+    typename vector<T>::iterator it;
+    T value;
+  };
+
+  int n; // fixed
+  T infty;
+  vector<T> dp;
+  stack<Cache_LIS> st;
+
+public:
+  LIS() {}
+  LIS(int n, T infty = numeric_limits<T>::max()) : n{n}, infty{infty}, dp(n, infty) {}
+
+  T query(T a)
+  {
+    auto it{lower_bound(dp.begin(), dp.end(), a)};
+    auto value{*it};
+    st.push(Cache_LIS{it, value});
+    *it = a;
+    return lower_bound(dp.begin(), dp.end(), infty) - dp.begin();
+  }
+
+  bool rollback()
+  {
+    if (st.empty())
+    {
+      return false;
+    }
+    auto c{st.top()};
+    *c.it = c.value;
+    return true;
+  }
+
+private:
+};
+
 // ----- Solve -----
 
 class Solve
@@ -320,11 +363,11 @@ class Solve
   int n;
   vector<int> a;
   vector<vector<Edge>> v;
-  vector<int> dp;
+  LIS<int> lis;
   vector<int> ans;
 
 public:
-  Solve(int n) : n{n}, a(n), dp(n, Infty<int>()), ans(n)
+  Solve(int n) : n{n}, a(n), lis(n), ans(n)
   {
     for (auto i{0}; i < n; ++i)
     {
@@ -345,13 +388,7 @@ public:
 private:
   void dfs(int src = 0, int parent = -1)
   {
-    auto it{lower_bound(dp.begin(), dp.end(), a[src])};
-    auto value{*it};
-    *it = a[src];
-    ans[src] = lower_bound(dp.begin(), dp.end(), Infty<int>()) - dp.begin();
-#if DEBUG == 1
-    cerr << "ans[" << src << "] = " << ans[src] << endl;
-#endif
+    ans[src] = lis.query(a[src]);
     for (auto const &e : v[src])
     {
       if (e.dst != parent)
@@ -359,7 +396,7 @@ private:
         dfs(e.dst, src);
       }
     }
-    *it = value;
+    lis.rollback();
   }
 };
 
