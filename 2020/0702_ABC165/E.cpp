@@ -247,8 +247,13 @@ int main()
 {
   int N, M;
   cin >> N >> M;
-  for (auto i{0}; i < M; ++i)
+  N = M * 2 + 1;
+  for (auto i{0}; i < M / 2; ++i)
   {
-    cout << 1 + i << " " << N - i << endl;
+    cout << 1 + i << " " << M - i << endl;
+  }
+  for (auto i{0}; i < M - M / 2; ++i)
+  {
+    cout << M + 1 + i << " " << N - i << endl;
   }
 }
