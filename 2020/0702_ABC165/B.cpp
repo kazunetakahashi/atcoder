@@ -251,7 +251,7 @@ int main()
   cin >> X;
   while (now < X)
   {
-    X *= 1.01;
+    now *= 1.01;
     ++ans;
   }
   cout << ans << endl;
