@@ -246,12 +246,13 @@ int main()
 int main()
 {
   ll ans{0};
-  ll now{100};
-  ll X;
+  cpp_int now{100};
+  cpp_int X;
   cin >> X;
   while (now < X)
   {
-    now *= 1.01;
+    now *= 101;
+    now /= 100;
     ++ans;
   }
   cout << ans << endl;
