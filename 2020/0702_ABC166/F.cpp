@@ -275,7 +275,7 @@ int main()
         {
           ans[i] = q;
         }
-        swap(a, b);
+        swap(x, y);
       };
       if (v[i] == "AB")
       {
