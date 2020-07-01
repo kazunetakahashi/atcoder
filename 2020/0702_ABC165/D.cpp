@@ -255,6 +255,6 @@ int main()
   cin >> A >> B;
   ll N;
   cin >> N;
-  ll x{max(N, B - 1)};
+  ll x{min(N, B - 1)};
   cout << func(x) << endl;
 }
