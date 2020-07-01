@@ -348,8 +348,9 @@ public:
     {
       return false;
     }
-    auto c{st.top()};
+    auto const &c{st.top()};
     *c.it = c.value;
+    st.pop();
     return true;
   }
 
