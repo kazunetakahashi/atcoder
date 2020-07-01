@@ -289,6 +289,9 @@ int main()
       {
         execute(c, a, "C", "A");
       }
+#if DEBUG == 1
+      cerr << "(" << a << ", " << b << ", " << c << ")" << endl;
+#endif
     }
   }
   else
