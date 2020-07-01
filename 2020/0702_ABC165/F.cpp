@@ -348,7 +348,7 @@ private:
     auto it{lower_bound(dp.begin(), dp.end(), a[src])};
     auto value{*it};
     *it = a[src];
-    ans[src] = lower_bound(dp.begin(), dp.end(), Infty<int>()) - dp;
+    ans[src] = lower_bound(dp.begin(), dp.end(), Infty<int>()) - dp.begin();
     for (auto const &e : v[src])
     {
       dfs(e.dst, src);
