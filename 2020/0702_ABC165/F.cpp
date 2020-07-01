@@ -349,6 +349,9 @@ private:
     auto value{*it};
     *it = a[src];
     ans[src] = lower_bound(dp.begin(), dp.end(), Infty<int>()) - dp.begin();
+#if DEBUG == 1
+    cerr << "ans[" << src << "] = " << ans[src] << endl;
+#endif
     for (auto const &e : v[src])
     {
       dfs(e.dst, src);
