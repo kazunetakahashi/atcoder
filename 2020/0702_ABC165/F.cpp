@@ -354,7 +354,10 @@ private:
 #endif
     for (auto const &e : v[src])
     {
-      dfs(e.dst, src);
+      if (e.dst != parent)
+      {
+        dfs(e.dst, src);
+      }
     }
     *it = value;
   }
