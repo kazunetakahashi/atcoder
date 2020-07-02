@@ -226,17 +226,17 @@ struct Bracket
   {
     if (sum >= 0 && left.sum < 0)
     {
-      return false;
+      return true;
     }
     if (sum < 0 && left.sum >= 0)
     {
-      return true;
+      return false;
     }
     if (sum >= 0 && left.sum >= 0)
     {
       return need < left.need;
     }
-    return sum + need < left.sum + left.need;
+    return sum + need > left.sum + left.need;
   }
 };
 
@@ -261,7 +261,7 @@ public:
     {
       v[i] = make_bracket(s[i]);
     }
-    sort(v.rbegin(), v.rend());
+    sort(v.begin(), v.end());
     int now{0};
     for (auto const &b : v)
     {
