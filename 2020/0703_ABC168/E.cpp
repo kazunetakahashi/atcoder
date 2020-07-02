@@ -263,7 +263,7 @@ void Normalize(Point &p)
     x = 1;
     return;
   }
-  auto g{lcm(x, y)};
+  auto g{gcd(x, y)};
   x /= g;
   y /= g;
   if (x < 0)
@@ -297,6 +297,7 @@ int main()
       continue;
     }
     Point p{x, y};
+    Normalize(p);
     m[p];
     m[p]++;
   }
