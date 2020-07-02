@@ -245,6 +245,11 @@ int main()
 
 using Point = tuple<ll, ll>;
 
+ostream &operator<<(ostream &os, Point const &p)
+{
+  return os << "(" << get<0>(p) << ", " << get<1>(p) << ")" << endl;
+}
+
 void Normalize(Point &p)
 {
   auto &[x, y]{p};
@@ -304,6 +309,7 @@ int main()
     m[q];
     auto w{m[q]};
 #if DEBUG == 1
+    cerr << "p = " << p << ", q = " << q << endl;
     cerr << "v = " << v << ", w = " << w << endl;
 #endif
     tmp *= 1 + (mint{2}.power(v) - 1) + (mint{2}.power(w) - 1);
