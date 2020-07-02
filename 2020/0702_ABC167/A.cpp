@@ -247,7 +247,7 @@ int main()
 {
   string s, t;
   cin >> s >> t;
-  s.pop_back();
+  t.pop_back();
   if (s == t)
   {
     Yes();
