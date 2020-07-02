@@ -226,11 +226,11 @@ struct Bracket
   {
     if (sum >= 0 && left.sum < 0)
     {
-      return true;
+      return false;
     }
     if (sum < 0 && left.sum >= 0)
     {
-      return false;
+      return true;
     }
     if (sum >= 0 && left.sum >= 0)
     {
