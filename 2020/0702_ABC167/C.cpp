@@ -275,6 +275,10 @@ int main()
     }
     if (all_of(b.begin(), b.end(), [&](auto t) { return t >= x; }))
     {
+#if DEBUG == 1
+      cerr << "i = " << i << endl;
+      cerr << "cost = " << cost << endl;
+#endif
       ch_min(ans, cost);
     }
   }
