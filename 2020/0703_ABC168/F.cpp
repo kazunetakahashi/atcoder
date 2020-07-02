@@ -394,7 +394,7 @@ private:
     int ia = x.to_index(xa);
     int ib = x.to_index(xb);
     int jc = y.to_index(yc);
-    for (auto i{ia}; i <= ib; ++i)
+    for (auto i{ia}; i < ib; ++i)
     {
       dir[i][jc - 1][1] = false;
       dir[i][jc][3] = false;
@@ -406,7 +406,7 @@ private:
     int id = x.to_index(xd);
     int je = y.to_index(ye);
     int jf = y.to_index(yf);
-    for (auto j{je}; j <= jf; ++j)
+    for (auto j{je}; j < jf; ++j)
     {
       dir[id - 1][j][0] = false;
       dir[id][j][2] = false;
