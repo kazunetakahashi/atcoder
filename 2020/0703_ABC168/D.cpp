@@ -332,7 +332,7 @@ public:
     cout << "Yes" << endl;
     for (auto i{1}; i < n; ++i)
     {
-      cout << parent[i] << endl;
+      cout << parent[i] + 1 << endl;
     }
   }
 
