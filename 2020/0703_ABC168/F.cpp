@@ -294,7 +294,7 @@ ostream &operator<<(ostream &os, vector<vector<bool>> v)
     }
     os << endl;
   }
-  return os << endl;
+  return os;
 }
 
 class Solve
@@ -339,7 +339,7 @@ public:
 #if DEBUG == 1
     cerr << visited;
 #endif
-    cout << answer() << endl;
+    cerr << answer() << endl;
   }
 
 private:
@@ -396,8 +396,8 @@ private:
     int jc = y.to_index(yc);
     for (auto i{ia}; i < ib; ++i)
     {
-      dir[i][jc - 1][1] = false;
-      dir[i][jc][3] = false;
+      dir.at(i).at(jc - 1).at(1) = false;
+      dir.at(i).at(jc).at(3) = false;
     }
   }
 
@@ -408,8 +408,8 @@ private:
     int jf = y.to_index(yf);
     for (auto j{je}; j < jf; ++j)
     {
-      dir[id - 1][j][0] = false;
-      dir[id][j][2] = false;
+      dir.at(id - 1).at(j).at(0) = false;
+      dir.at(id).at(j).at(2) = false;
     }
   }
 
@@ -442,9 +442,9 @@ private:
       }
     }
     ll ans{0};
-    for (auto i{0}; i < size_x; ++i)
+    for (auto i{1}; i < size_x - 1; ++i)
     {
-      for (auto j{0}; j < size_y; ++j)
+      for (auto j{1}; j < size_y - 1; ++j)
       {
         if (visited[i][j])
         {
