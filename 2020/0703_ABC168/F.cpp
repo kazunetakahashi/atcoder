@@ -284,6 +284,19 @@ struct Point
   int x, y;
 };
 
+ostream &operator<<(ostream &os, vector<vector<bool>> v)
+{
+  for (auto i{size_t{0}}; i < v.size(); ++i)
+  {
+    for (auto j{size_t{0}}; j < v[i].size(); ++j)
+    {
+      os << (v[i][j] ? '#' : '.');
+    }
+    os << endl;
+  }
+  return os << endl;
+}
+
 class Solve
 {
   int n, m;
@@ -323,6 +336,9 @@ public:
   void flush()
   {
     bfs();
+#if DEBUG == 1
+    cerr << visited;
+#endif
     cout << answer() << endl;
   }
 
