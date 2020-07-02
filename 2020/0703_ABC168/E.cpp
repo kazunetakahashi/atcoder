@@ -247,7 +247,7 @@ using Point = tuple<ll, ll>;
 
 ostream &operator<<(ostream &os, Point const &p)
 {
-  return os << "(" << get<0>(p) << ", " << get<1>(p) << ")" << endl;
+  return os << "(" << get<0>(p) << ", " << get<1>(p) << ")";
 }
 
 void Normalize(Point &p)
