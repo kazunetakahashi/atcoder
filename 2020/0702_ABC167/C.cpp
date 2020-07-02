@@ -264,13 +264,13 @@ int main()
     vector<int> b(m, 0);
     for (auto j{0}; j < n; ++j)
     {
-      if (i >> n & 1)
+      if (i >> j & 1)
       {
-        cost += c[i];
-      }
-      for (auto k{0}; k < m; ++k)
-      {
-        b[k] += a[j][k];
+        cost += c[j];
+        for (auto k{0}; k < m; ++k)
+        {
+          b[k] += a[j][k];
+        }
       }
     }
     if (all_of(b.begin(), b.end(), [&](auto t) { return t >= x; }))
