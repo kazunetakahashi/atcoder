@@ -220,11 +220,23 @@ void No()
 
 struct Bracket
 {
-  int up, need;
+  int sum, need;
 
   bool operator<(Bracket const &left)
   {
-    return up + need < left.up + left.need;
+    if (sum >= 0 && left.sum < 0)
+    {
+      return true;
+    }
+    if (sum < 0 && left.sum >= 0)
+    {
+      return false;
+    }
+    if (sum >= 0 && left.sum >= 0)
+    {
+      return need < left.need;
+    }
+    return sum + need < left.sum + left.need;
   }
 };
 
@@ -257,7 +269,7 @@ public:
       {
         No();
       }
-      now += b.up;
+      now += b.sum;
     }
     if (now == 0)
     {
