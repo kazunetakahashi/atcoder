@@ -307,7 +307,7 @@ class Solve
   int size_x, size_y;
 
 public:
-  Solve(int n, int m) : n{n}, m{m}, a(n), b(n), c(n), d(n), e(n), f(n)
+  Solve(int n, int m) : n{n}, m{m}, a(n), b(n), c(n), d(m), e(m), f(m)
   {
     for (auto i{0}; i < n; ++i)
     {
@@ -339,7 +339,7 @@ public:
 #if DEBUG == 1
     cerr << visited;
 #endif
-    cerr << answer() << endl;
+    cout << answer() << endl;
   }
 
 private:
