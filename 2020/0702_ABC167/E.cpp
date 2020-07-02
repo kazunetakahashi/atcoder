@@ -251,7 +251,7 @@ int main()
   mint ans{0};
   for (auto x{0}; x <= k; ++x)
   {
-    ans += C(n, x) * m * mint{m - 1}.power(n - x - 1);
+    ans += C(n - 1, x) * m * mint{m - 1}.power(n - x - 1);
   }
   cout << ans << endl;
 }
