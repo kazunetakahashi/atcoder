@@ -281,25 +281,32 @@ int main()
   int n;
   cin >> n;
   map<Point, ll> m;
+  mint ans{0};
   for (auto i{0}; i < n; ++i)
   {
     ll x, y;
     cin >> x >> y;
     if (x == 0 && y == 0)
     {
+      ++ans;
       continue;
     }
     Point p{x, y};
     m[p];
     m[p]++;
   }
-  ll ans{0};
-  for (auto [p, v] : m)
+  mint tmp{1};
+  while (!m.empty())
   {
+    auto it{m.begin()};
+    auto [p, v]{*it};
     auto q{Orth(p)};
     m[q];
     auto w{m[q]};
-    ans += max(v, w);
+    tmp *= 1 + (mint{2}.power(v) - 1) + (mint{2}.power(w) - 1);
+    m.erase(m.find(p));
+    m.erase(m.find(q));
   }
-  cout << ans / 2 << endl;
+  ans += tmp - 1;
+  cout << ans << endl;
 }
