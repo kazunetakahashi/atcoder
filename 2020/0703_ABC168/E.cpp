@@ -303,6 +303,9 @@ int main()
     auto q{Orth(p)};
     m[q];
     auto w{m[q]};
+#if DEBUG == 1
+    cerr << "v = " << v << ", w = " << w << endl;
+#endif
     tmp *= 1 + (mint{2}.power(v) - 1) + (mint{2}.power(w) - 1);
     m.erase(m.find(p));
     m.erase(m.find(q));
