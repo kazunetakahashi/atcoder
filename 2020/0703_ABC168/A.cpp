@@ -247,7 +247,7 @@ int main()
 {
   int n;
   cin >> n;
-  n %= 100;
+  n %= 10;
   vector<string> v = {"pon", "pon", "hon", "bon", "hon", "hon", "pon", "hon", "pon", "hon"};
   cout << v[n] << endl;
 }
