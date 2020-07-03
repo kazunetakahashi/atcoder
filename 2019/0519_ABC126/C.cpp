@@ -265,7 +265,7 @@ int main()
   ll base{1};
   for (auto j{0}; j < 30; ++j)
   {
-    ans += cnt[k] * ld{1} / base;
+    ans += cnt[j] * ld{1} / base;
     base *= 2;
   }
   ans /= n;
