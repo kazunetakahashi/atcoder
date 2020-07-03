@@ -252,7 +252,11 @@ int main()
   vector<ll> A(N), B(N);
   for (auto i{0}; i < N; ++i)
   {
-    cin >> A[i] >> B[i];
+    cin >> A[i];
+  }
+  for (auto i{0}; i < N; ++i)
+  {
+    cin >> B[i];
   }
   vector<vector<mint>> h(C + 1, vector<mint>(M, 0));
   for (auto i{0}; i <= C; ++i)
@@ -274,12 +278,6 @@ int main()
       for (auto l{0}; l <= j; ++l)
       {
         dp[i][j] += g(i - 1, l) * dp[i - 1][j - l];
-#if DEBUG == 1
-        if (C < 10)
-        {
-          cerr << "g(" << i - 1 << ", " << l << ") = " << g(i - 1, l) << endl;
-        }
-#endif
       }
     }
   }
