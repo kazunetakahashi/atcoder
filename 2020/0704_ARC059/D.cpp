@@ -259,7 +259,7 @@ int main()
   int n = s.size();
   for (auto k{2}; k <= 3; ++k)
   {
-    for (auto i{0}; i + k - 1 < n; ++i)
+    for (auto i{0}; i + k < n; ++i)
     {
       if (unbalanced(s.substr(i, k)))
       {
