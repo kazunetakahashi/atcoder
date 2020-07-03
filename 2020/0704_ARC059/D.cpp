@@ -263,7 +263,7 @@ int main()
     {
       if (unbalanced(s.substr(i, k)))
       {
-        cout << i << " " << i + k - 1 << endl;
+        cout << i + 1 << " " << i + 1 + k - 1 << endl;
         return 0;
       }
     }
