@@ -212,7 +212,7 @@ void Yes()
 }
 void No()
 {
-  cout << "No" << endl;
+  cout << "-1" << endl;
   exit(0);
 }
 
@@ -282,7 +282,7 @@ int main()
   for (auto i{0}; i < 1 << (m + 1); ++i)
   {
     cout << ans[i];
-    if (i < 1 << (m + 1) - 1)
+    if (i < (1 << (m + 1)) - 1)
     {
       cout << " ";
     }
