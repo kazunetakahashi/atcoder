@@ -274,6 +274,9 @@ int main()
       for (auto l{0}; l <= j; ++l)
       {
         dp[i][j] += g(i - 1, l) * dp[i - 1][j - l];
+#if DEBUG == 1
+        cerr << "g(" << i - 1 << ", " << l << ") = " << g(i - 1, l) << endl;
+#endif
       }
     }
   }
