@@ -249,15 +249,15 @@ int main()
   cin >> s;
   int a{stoi(s.substr(0, 2))};
   int b{stoi(s.substr(2, 2))};
-  if (a <= 12 && b<= 12)
+  if (1 <= a && a <= 12 && 1 <= b && b <= 12)
   {
     cout << "AMBIGUOUS" << endl;
   }
-  else if (a <= 12)
+  else if (1 <= a && a <= 12)
   {
     cout << "MMYY" << endl;
   }
-  else if (b <= 12)
+  else if (1 <= b && b <= 12)
   {
     cout << "YYMM" << endl;
   }
