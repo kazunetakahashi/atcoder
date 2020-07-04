@@ -243,7 +243,15 @@ public:
 
   int operator[](int i) const { return A[i]; }
 
-  int period(int i) const { return i - A[i]; }
+  int period(int i) const
+  { // The period of S[0, i).
+    auto tmp{i - A[i]};
+    if (i % tmp == 0)
+    {
+      return tmp;
+    }
+    return i;
+  }
 
   vector<int> place(Type const &T) const
   {
@@ -326,7 +334,7 @@ private:
   bool is_good(MP<string> const &mp, int s)
   {
     auto p{mp.period(s)};
-    return p == s || s % p != 0;
+    return p == s;
   }
 };
 
