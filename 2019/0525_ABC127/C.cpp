@@ -264,7 +264,7 @@ int main()
   int ans{0};
   for (auto i{0}; i < n; ++i)
   {
-    if (sum[i] == n)
+    if (sum[i] == m)
     {
       ++ans;
     }
