@@ -232,9 +232,12 @@ public:
   mint answer()
   {
     mint ans{0};
-    for (auto j{0LL}; j < m; ++j)
+    for (auto i{0LL}; i < n; ++i)
     {
-      ans += j * (j + 1) / 2;
+      for (auto j{i + 1}; j < m; ++j)
+      {
+        ans *= j - i;
+      }
     }
     ans *= mint{n} * n * C(n * m - 2, k - 2);
     return ans;
