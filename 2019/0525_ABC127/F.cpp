@@ -272,5 +272,6 @@ private:
 int main()
 {
   int q;
+  cin >> q;
   Solve solve(q);
 }
