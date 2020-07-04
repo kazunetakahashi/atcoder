@@ -427,7 +427,7 @@ public:
     {
       for (auto j{2}; i * j <= n; ++j)
       {
-        divisors[i * j].push_back(j);
+        divisors[i * j].push_back(i);
       }
     }
   }
