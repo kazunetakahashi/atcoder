@@ -232,7 +232,7 @@ public:
   mint answer()
   {
     mint ans{0};
-    for (auto i{0LL}; i < n; ++i)
+    for (auto i{0LL}; i < m; ++i)
     {
       for (auto j{i + 1}; j < m; ++j)
       {
