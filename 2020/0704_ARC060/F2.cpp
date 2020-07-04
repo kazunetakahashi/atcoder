@@ -325,7 +325,8 @@ public:
 private:
   bool is_good(MP<string> const &mp, int s)
   {
-    return s % mp.period(s) != 0;
+    auto p{mp.period(s)};
+    return p == s || s % p != 0;
   }
 };
 
