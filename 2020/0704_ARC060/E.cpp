@@ -254,21 +254,15 @@ public:
   int query(int a, int b)
   {
     int ans{0};
-    while (true)
+    for (auto j{30 - 1}; j >= 0; --j)
     {
-      if (v[a][0] >= b)
+      if (v[a][j] < b)
       {
-        return ans + 1;
-      }
-      for (auto j{30 - 1}; j >= 0; --j)
-      {
-        if (v[a][j] < b)
-        {
-          a = v[a][j];
-          ans += 1 << j;
-        }
+        a = v[a][j];
+        ans += 1 << j;
       }
     }
+    return ans + 1;
   }
 };
 
