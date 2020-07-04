@@ -229,7 +229,7 @@ public:
   {
   }
 
-  ll answer()
+  mint answer()
   {
     mint ans{0};
     for (auto j{0LL}; j < n; ++j)
@@ -237,7 +237,7 @@ public:
       ans += j * (j + 1) / 2;
     }
     ans *= mint{n} * n * C(n * m - 2, k - 2);
-    cout << ans << endl;
+    return ans;
   }
 
 private:
