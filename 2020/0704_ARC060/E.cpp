@@ -232,6 +232,7 @@ public:
     {
       cin >> x[i];
     }
+    cin >> l;
     int right{0};
     for (auto i{0}; i < n; ++i)
     {
