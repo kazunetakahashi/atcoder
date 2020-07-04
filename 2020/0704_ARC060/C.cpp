@@ -262,7 +262,7 @@ int main()
     for (auto j{0}; j < 2 * c; ++j)
     {
       dp[i + 1][j] += dp[i][j];
-      if (auto t{j + x[i]}; t < 2 * c)
+      if (auto t{j + x[i]}; 0 <= t && t < 2 * c)
       {
         dp[i + 1][t] += dp[i][j];
       }
