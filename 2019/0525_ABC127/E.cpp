@@ -236,7 +236,7 @@ public:
     {
       for (auto j{i + 1}; j < m; ++j)
       {
-        ans *= j - i;
+        ans += j - i;
       }
     }
     ans *= mint{n} * n * C(n * m - 2, k - 2);
