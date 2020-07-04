@@ -267,6 +267,7 @@ int main()
   {
     v.emplace_back(c[i], b[i]);
   }
+  sort(v.rbegin(), v.rend());
   ll rem{n};
   ll ans{0};
   for (auto [s, c] : v)
