@@ -268,5 +268,5 @@ int main()
       }
     }
   }
-  cout << dp[n][c] << endl;
+  cout << dp[n][c] - 1 << endl;
 }
