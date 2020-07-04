@@ -228,15 +228,18 @@ class Solve
 public:
   Solve(int q) : q{q}, c{0}
   {
-    int val;
-    cin >> val;
-    if (val == 1)
+    for (auto t{0}; t < q; ++t)
     {
-      update();
-    }
-    else
-    {
-      query();
+      int val;
+      cin >> val;
+      if (val == 1)
+      {
+        update();
+      }
+      else
+      {
+        query();
+      }
     }
   }
 
@@ -263,7 +266,7 @@ private:
 
   void query()
   {
-    cout << c << endl;
+    cout << l.top() << " " << c << endl;
   }
 };
 
