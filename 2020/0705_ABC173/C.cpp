@@ -264,7 +264,7 @@ int main()
       {
         for (auto k{0}; k < w; ++k)
         {
-          u[i][k] = 'R';
+          u[j][k] = 'R';
         }
       }
     }
