@@ -271,8 +271,7 @@ int main()
   {
     int p;
     cin >> p;
-    --p;
-    res |= 1 << p;
+    res |= p << i;
   }
 #if DEBUG == 1
   cerr << "res = " << res << endl;
