@@ -268,8 +268,9 @@ int main()
       }
       sort(w.rbegin(), w.rend());
       int rem{k - (i + j)};
-      while (rem > 0 && w.back() < 0)
+      while (rem > 0 && !w.empty() && w.back() < 0)
       {
+        --rem;
         w.pop_back();
       }
       ch_max(ans, accumulate(w.begin(), w.end(), 0));
