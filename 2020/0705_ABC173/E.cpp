@@ -252,6 +252,19 @@ int main()
   {
     cin >> a[i];
   }
+  int nonZCount{0};
+  for (auto i{0}; i < n; ++i)
+  {
+    if (a[i] != 0)
+    {
+      ++nonZCount;
+    }
+  }
+  if (nonZCount < k)
+  {
+    cout << 0 << endl;
+    return 0;
+  }
   if (all_of(a.begin(), a.end(), [](auto i) { return i < 0; }) && k % 2 == 1)
   {
     sort(a.rbegin(), a.rend());
@@ -289,6 +302,7 @@ int main()
     cout << ans << endl;
     return 0;
   }
+  sleep(10);
   ll minus_mult{0}, minus_yet{0}, plus_mult{0}, plus_yet{0};
   for (auto i{k - 1}; i >= 0; --i)
   {
