@@ -261,7 +261,7 @@ int main()
   ll ans{n * n * (n - 1) / 2};
   for (auto i{0}; i < n - 1; ++i)
   {
-    ans -= u[i] * (n - v[i]);
+    ans -= (u[i] + 1) * (n - v[i]);
   }
   cout << ans << endl;
 }
