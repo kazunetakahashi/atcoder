@@ -337,10 +337,9 @@ int main()
   }
   if (minus_mult * plus_yet == 0 && plus_mult * minus_yet == 0)
   {
-    cout << 0 << endl;
+    cout << ans << endl;
     return 0;
   }
-  sleep(100);
   if (minus_mult * plus_yet == 0)
   {
     ans /= abs(plus_mult);
