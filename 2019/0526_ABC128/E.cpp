@@ -283,7 +283,10 @@ int main()
     }
     else
     {
-      ans[id] = x[*st.begin()] - d[id];
+      if (!st.empty())
+      {
+        ans[id] = x[*st.begin()] - d[id];
+      }
     }
   }
   for (auto e : ans)
