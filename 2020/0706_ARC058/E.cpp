@@ -267,7 +267,7 @@ int main()
         {
           continue;
         }
-        dp[i + 1][nj] += dp[i][j];
+        dp[i + 1][nj & mask] += dp[i][j];
       }
     }
   }
