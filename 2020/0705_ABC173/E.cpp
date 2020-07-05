@@ -340,6 +340,7 @@ int main()
     cout << 0 << endl;
     return 0;
   }
+  sleep(100);
   if (minus_mult * plus_yet == 0)
   {
     ans /= abs(plus_mult);
