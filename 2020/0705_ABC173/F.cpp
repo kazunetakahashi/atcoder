@@ -248,7 +248,7 @@ int main()
   ll n;
   cin >> n;
   vector<ll> u(n), v(n);
-  for (auto i{0}; i < n; ++i)
+  for (auto i{0}; i < n - 1; ++i)
   {
     cin >> u[i] >> v[i];
     u[i]--;
@@ -259,7 +259,7 @@ int main()
     }
   }
   ll ans{n * n * (n - 1) / 2};
-  for (auto i{0}; i < n; ++i)
+  for (auto i{0}; i < n - 1; ++i)
   {
     ans -= u[i] * (n - v[i]);
   }
