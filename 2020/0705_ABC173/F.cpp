@@ -258,10 +258,13 @@ int main()
       swap(u[i], v[i]);
     }
   }
-  ll ans{n * n * (n - 1) / 2};
+  ll Ne{0}, Nv{0};
   for (auto i{0}; i < n - 1; ++i)
   {
-    ans -= (u[i] + 1) * (n - v[i]);
+    Nv += (u[i] + 1) * (n - v[i]);
   }
-  cout << ans << endl;
+#if DEBUG == 1
+  cerr << "Nv = " << Nv << endl;
+#endif
+  cout << Nv - Ne << endl;
 }
