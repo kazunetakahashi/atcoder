@@ -258,11 +258,11 @@ int main()
     for (auto j{0}; i + j <= min(n, k); ++j)
     {
       vector<int> w;
-      for (auto k{0}; k < i; ++k)
+      for (auto l{0}; l < i; ++l)
       {
         w.push_back(v[i]);
       }
-      for (auto k{0}; k < j; ++k)
+      for (auto l{0}; l < j; ++l)
       {
         w.push_back(v[n - 1 - k]);
       }
