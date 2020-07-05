@@ -261,6 +261,12 @@ int main()
       v[s] |= 1 << i;
     }
   }
+#if DEBUG == 1
+  for (auto i{0}; i < n; ++i)
+  {
+    cerr << "v[" << i << "] = " << v[i] << endl;
+  }
+#endif
   for (auto i{0}; i < m; ++i)
   {
     int p;
@@ -268,6 +274,9 @@ int main()
     --p;
     res |= 1 << p;
   }
+#if DEBUG == 1
+  cerr << "res = " << res << endl;
+#endif
   int ans{0};
   for (auto i{0}; i < 1 << n; ++i)
   {
