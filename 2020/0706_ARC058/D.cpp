@@ -257,7 +257,7 @@ int main()
   mint ans{0};
   for (auto j{w}; j < b; ++j)
   {
-    ans += f(h - a - 1, j) * (h - 1 - (h - a), w - 1 - j);
+    ans += f(h - a - 1, j) * f(h - 1 - (h - a), w - 1 - j);
   }
   cout << ans << endl;
 }
