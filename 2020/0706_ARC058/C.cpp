@@ -257,7 +257,6 @@ int main()
   for (auto m{n}; m < 100000; ++m)
   {
     string s{to_string(m)};
-    bool valid{true};
     if (all_of(s.begin(), s.end(), [&](char c) { return ok[c - '0']; }))
     {
       cout << m << endl;
