@@ -260,11 +260,11 @@ int main()
       vector<int> w;
       for (auto l{0}; l < i; ++l)
       {
-        w.push_back(v[i]);
+        w.push_back(v[l]);
       }
       for (auto l{0}; l < j; ++l)
       {
-        w.push_back(v[n - 1 - k]);
+        w.push_back(v[n - 1 - l]);
       }
       sort(w.rbegin(), w.rend());
       int rem{k - (i + j)};
