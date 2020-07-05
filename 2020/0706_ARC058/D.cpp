@@ -255,7 +255,7 @@ int main()
   ll h, w, a, b;
   cin >> h >> w >> a >> b;
   mint ans{0};
-  for (auto j{w}; j < b; ++j)
+  for (auto j{b}; j < w; ++j)
   {
     ans += f(h - a - 1, j) * f(h - 1 - (h - a), w - 1 - j);
   }
