@@ -262,11 +262,11 @@ int main()
   for (auto i{0}; i < n; ++i)
   {
     v.emplace_back(s[i] - x[i], 0, i);
-    v.emplace_back(t[i] - x[i], 2, i);
+    v.emplace_back(t[i] - x[i], 1, i);
   }
   for (auto i{0}; i < q; ++i)
   {
-    v.emplace_back(-d[i], 1, i);
+    v.emplace_back(d[i], 2, i);
   }
   sort(v.begin(), v.end());
   multiset<ll> st;
@@ -277,7 +277,7 @@ int main()
     {
       st.insert(x[id]);
     }
-    else if (t == 2)
+    else if (t == 1)
     {
       st.erase(st.find(x[id]));
     }
