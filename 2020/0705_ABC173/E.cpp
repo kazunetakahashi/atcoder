@@ -302,7 +302,7 @@ int main()
     cout << ans << endl;
     return 0;
   }
-  assert(false);
+  sleep(100000);
   ll minus_mult{0}, minus_yet{0}, plus_mult{0}, plus_yet{0};
   for (auto i{k - 1}; i >= 0; --i)
   {
