@@ -248,8 +248,8 @@ int main()
   constexpr int c{10};
   int n, x, y, z;
   cin >> n >> x >> y >> z;
-  int mask{(1 << (x + y + z - 2)) - 1};
-  int forbid{1 << (x - 1) | 1 << (x + y - 1) | 1 << (x + y + z - 1)};
+  int mask{(1 << (x + y + z - 1)) - 1};
+  int forbid{1 << (z - 1) | 1 << (z + y - 1) | 1 << (z + y + x - 1)};
   vector<vector<mint>> dp(n + 1, vector<mint>(mask + 1, 0));
   dp[0][0] = 1;
   for (auto i{0}; i < n; ++i)
