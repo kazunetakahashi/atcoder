@@ -270,7 +270,7 @@ int main()
   }
   sort(v.begin(), v.end());
   set<int> st;
-  vector<ll> ans(n, -1);
+  vector<ll> ans(q, -1);
   for (auto [l, t, id] : v)
   {
     if (t == 0)
