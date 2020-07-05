@@ -261,10 +261,11 @@ int main()
   ll Ne{0}, Nv{0};
   for (auto i{0}; i < n - 1; ++i)
   {
-    Nv += (u[i] + 1) * (n - v[i]);
+    Ne += (u[i] + 1) * (n - v[i]);
   }
-#if DEBUG == 1
-  cerr << "Nv = " << Nv << endl;
-#endif
+  for (auto i{0LL}; i < n; ++i)
+  {
+    Nv += (i + 1) * (n - i);
+  }
   cout << Nv - Ne << endl;
 }
