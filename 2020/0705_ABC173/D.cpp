@@ -255,7 +255,6 @@ int main()
   queue<ll> q;
   ll ans{0};
   q.push(a[0]);
-  q.push(a[0]);
   for (auto i{1}; i < n; ++i)
   {
     ans += q.front();
