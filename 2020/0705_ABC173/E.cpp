@@ -263,6 +263,11 @@ int main()
     cout << ans << endl;
     return 0;
   }
+  if (all_of(a.begin(), a.end(), [](auto i) { return i <= 0; }) && k % 2 == 1)
+  {
+    cout << 0 << endl;
+    return 0;
+  }
   sort(a.rbegin(), a.rend(), [](auto i, auto j) { return abs(i) < abs(j); });
   mint ans{1};
   bool minus{false};
