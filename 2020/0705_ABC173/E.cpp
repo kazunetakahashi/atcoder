@@ -281,6 +281,7 @@ int main()
     cout << 0 << endl;
     return 0;
   }
+  sleep(100000);
   sort(a.rbegin(), a.rend(), [](auto i, auto j) { return abs(i) < abs(j); });
   mint ans{1};
   bool minus{false};
@@ -302,7 +303,6 @@ int main()
     cout << ans << endl;
     return 0;
   }
-  sleep(100000);
   ll minus_mult{0}, minus_yet{0}, plus_mult{0}, plus_yet{0};
   for (auto i{k - 1}; i >= 0; --i)
   {
