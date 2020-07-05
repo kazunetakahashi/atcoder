@@ -269,23 +269,23 @@ int main()
     v.emplace_back(-d[i], 1, i);
   }
   sort(v.begin(), v.end());
-  set<int> st;
+  set<ll> st;
   vector<ll> ans(q, -1);
   for (auto [l, t, id] : v)
   {
     if (t == 0)
     {
-      st.insert(id);
+      st.insert(x[id]);
     }
     else if (t == 2)
     {
-      st.erase(st.find(id));
+      st.erase(st.find(x[id]));
     }
     else
     {
       if (!st.empty())
       {
-        ans[id] = x[*st.begin()] - d[id];
+        ans[id] = *st.begin() - d[id];
       }
     }
   }
