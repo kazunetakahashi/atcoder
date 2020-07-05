@@ -337,6 +337,11 @@ int main()
   }
   if (minus_mult * plus_yet == 0 && plus_mult * minus_yet == 0)
   {
+    mint ans{1};
+    for (auto i{0}; i < k; ++i)
+    {
+      ans *= a[i];
+    }
     cout << ans << endl;
     return 0;
   }
