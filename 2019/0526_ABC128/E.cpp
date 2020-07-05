@@ -285,7 +285,7 @@ int main()
     {
       if (!st.empty())
       {
-        ans[id] = *st.begin() - d[id];
+        ans[id] = *st.begin();
       }
     }
   }
