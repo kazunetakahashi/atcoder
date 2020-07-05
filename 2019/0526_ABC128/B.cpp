@@ -260,6 +260,6 @@ int main()
   sort(v.begin(), v.end());
   for (auto const &e : v)
   {
-    cout << get<2>(e) << endl;
+    cout << get<2>(e) + 1 << endl;
   }
 }
