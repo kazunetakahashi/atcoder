@@ -269,7 +269,7 @@ int main()
     v.emplace_back(-d[i], 1, i);
   }
   sort(v.begin(), v.end());
-  set<ll> st;
+  multiset<ll> st;
   vector<ll> ans(q, -1);
   for (auto [l, t, id] : v)
   {
