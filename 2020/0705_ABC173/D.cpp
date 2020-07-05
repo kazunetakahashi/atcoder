@@ -252,6 +252,7 @@ int main()
   {
     cin >> a[i];
   }
+  sort(a.rbegin(), a.rend());
   queue<ll> q;
   ll ans{0};
   q.push(a[0]);
