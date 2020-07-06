@@ -277,7 +277,7 @@ int main()
       r -= 2;
     }
   }
-  if (ans < 0)
+  if (ans == 0)
   {
     sleep(1000);
   }
