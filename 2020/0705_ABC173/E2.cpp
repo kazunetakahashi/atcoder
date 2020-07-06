@@ -260,7 +260,7 @@ int main()
   }
   auto l{0}, r{n - 1};
   mint ans{1};
-  if (k % 1)
+  if (k & 1)
   {
     ans *= a[l++];
   }
