@@ -277,5 +277,9 @@ int main()
       r -= 2;
     }
   }
+  if (ans < 0)
+  {
+    assert(false);
+  }
   cout << ans << endl;
 }
