@@ -255,7 +255,7 @@ int main()
   sort(a.rbegin(), a.rend());
   if (a[0] < 0)
   {
-    cout << accumulate(a.begin(), a.begin() + k, mint{1}, [](mint acc, auto x) { return acc * x; }) << endl;
+    cout << accumulate(a.begin(), a.begin() + k, mint{1}, multiplies()) << endl;
     return 0;
   }
   auto l{0}, r{n - 1};
