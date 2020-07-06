@@ -253,10 +253,9 @@ int main()
     cin >> a[i];
   }
   sort(a.rbegin(), a.rend());
-  if (a[0] < 0)
+  if (a[0] < 0 && k & 1)
   {
     cout << accumulate(a.begin(), a.begin() + k, mint{1}, multiplies()) << endl;
-    assert(false);
     return 0;
   }
   auto l{0}, r{n - 1};
