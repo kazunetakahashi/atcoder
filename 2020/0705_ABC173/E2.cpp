@@ -256,6 +256,7 @@ int main()
   if (a[0] < 0)
   {
     cout << accumulate(a.begin(), a.begin() + k, mint{1}, multiplies()) << endl;
+    assert(false);
     return 0;
   }
   auto l{0}, r{n - 1};
@@ -276,10 +277,6 @@ int main()
       ans *= right;
       r -= 2;
     }
-  }
-  if (ans == 0)
-  {
-    assert(false);
   }
   cout << ans << endl;
 }
