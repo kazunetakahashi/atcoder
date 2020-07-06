@@ -279,7 +279,7 @@ int main()
   }
   if (ans == 0)
   {
-    sleep(1000);
+    assert(false);
   }
   cout << ans << endl;
 }
