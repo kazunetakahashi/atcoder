@@ -254,8 +254,9 @@ int main()
     cin >> s;
     m[s]++;
   }
-  cout << "AC x " << m["AC"] << endl;
-  cout << "WA x " << m["WA"] << endl;
-  cout << "TLE x " << m["TLE"] << endl;
-  cout << "RE x " << m["RE"] << endl;
+  vector<string> v{"AC", "WA", "TLE", "RE"};
+  for (auto const &s : v)
+  {
+    cout << s << " x " << m[s] << endl;
+  }
 }
