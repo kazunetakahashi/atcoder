@@ -620,10 +620,7 @@ int main()
 }
 */
 
-struct Info
-{
-  int id, l;
-};
+using Info = tuple<int, int>;
 
 int main()
 {
@@ -650,35 +647,14 @@ int main()
   for (auto r{0}; r < n; ++r)
   {
     int color{c[r]};
-    if (memo[color] == -1)
-    {
-      memo[color] = r;
-      tree.update(memo[color], 1);
-    }
-    else
+    if (memo[color] != -1)
     {
       tree.update(memo[color], 0);
-      memo[color] = r;
-      tree.update(memo[color], 1);
     }
-#if DEBUG == 1
-    cerr << "memo: ";
-    for (auto i{0}; i < n; ++i)
+    memo[color] = r;
+    tree.update(memo[color], 1);
+    for (auto [id, l] : v[r])
     {
-      cerr << memo[i] << ", ";
-    }
-    cerr << endl;
-    cerr << "tree: ";
-    for (auto i{0}; i < n; ++i)
-    {
-      cerr << tree[i] << ", ";
-    }
-    cerr << endl;
-#endif
-    for (auto info : v[r])
-    {
-      int id{info.id};
-      int l{info.l};
       ans[id] = tree.query(l, r + 1);
     }
   }
