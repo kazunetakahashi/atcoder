@@ -260,7 +260,7 @@ int main()
     int cnt{0};
     for (auto i{0}; i < n; ++i)
     {
-      cnt += (a[i] + t - 1) / t;
+      cnt += (a[i] + t - 1) / t - 1;
     }
     if (cnt <= k)
     {
