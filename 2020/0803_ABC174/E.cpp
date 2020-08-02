@@ -247,19 +247,29 @@ int main()
 {
   int n, k;
   cin >> n >> k;
-  max_heap<int> h;
+  vector<int> a(n);
   for (auto i{0}; i < n; ++i)
   {
-    int a;
-    cin >> a;
-    h.push(a);
+    cin >> a[i];
   }
-  for (auto i{0}; i < k; ++i)
+  int ok{1'000'000'010};
+  int ng{0};
+  while (abs(ok - ng) > 1)
   {
-    int x{h.top()};
-    h.pop();
-    h.push(x / 2);
-    h.push(x - x / 2);
+    int t{(ok + ng) / 2};
+    int cnt{0};
+    for (auto i{0}; i < n; ++i)
+    {
+      cnt += (a[i] + t - 1) / t;
+    }
+    if (cnt <= k)
+    {
+      ok = t;
+    }
+    else
+    {
+      ng = t;
+    }
   }
-  cout << h.top() << endl;
+  cout << ok << endl;
 }
