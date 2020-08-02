@@ -662,10 +662,18 @@ int main()
       tree.update(memo[color], 1);
     }
 #if DEBUG == 1
+    cerr << "memo: ";
     for (auto i{0}; i < n; ++i)
     {
-      cerr << "tree[" << i << "] = " << tree[i] << endl;
+      cerr << memo[i] << ", ";
     }
+    cerr << endl;
+    cerr << "tree: ";
+    for (auto i{0}; i < n; ++i)
+    {
+      cerr << tree[i] << ", ";
+    }
+    cerr << endl;
 #endif
     for (auto info : v[r])
     {
