@@ -644,7 +644,7 @@ int main()
     --r;
     v[r].push_back(Info{i, l});
   }
-  vector<int> ans(n);
+  vector<int> ans(q);
   auto tree{RangePlusQuery<int>(n)};
   vector<int> memo(n, -1);
   for (auto r{0}; r < n; ++r)
