@@ -273,7 +273,7 @@ int main()
   int ans{n};
   for (auto i{0}; i <= n; ++i)
   {
-    ch_min(ans, min(w[i], r[i + 1]));
+    ch_min(ans, max(w[i], r[i + 1]));
   }
   cout << ans << endl;
 }
