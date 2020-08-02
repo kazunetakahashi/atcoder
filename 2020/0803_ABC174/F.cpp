@@ -661,6 +661,12 @@ int main()
       memo[color] = r;
       tree.update(memo[color], 1);
     }
+#if DEBUG == 1
+    for (auto i{0}; i < n; ++i)
+    {
+      cerr << "tree[" << i << "] = " << tree[i] << endl;
+    }
+#endif
     for (auto info : v[r])
     {
       int id{info.id};
