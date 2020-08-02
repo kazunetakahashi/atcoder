@@ -645,7 +645,7 @@ int main()
     v[r].push_back(Info{i, l});
   }
   vector<int> ans(q);
-  auto tree{RangePlusQuery<int>(n)};
+  auto tree{RSQ_RUQ<int>(n)};
   vector<int> memo(n, -1);
   for (auto r{0}; r < n; ++r)
   {
