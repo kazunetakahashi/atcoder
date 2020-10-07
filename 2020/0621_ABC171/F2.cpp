@@ -295,7 +295,7 @@ int main()
   cin >> k >> s;
   mint ans{0};
   ll y{static_cast<ll>(s.size())};
-  for (auto x{0}; x <= y; ++x)
+  for (auto x{0}; x <= k; ++x)
   {
     ans += C(y + k - x - 1, y - 1) * mint{26}.pow(x) * mint{25}.pow(k - x);
   }
