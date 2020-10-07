@@ -297,7 +297,7 @@ int main()
   ll y{static_cast<ll>(s.size())};
   for (auto x{0}; x <= y; ++x)
   {
-    ans += C(y + k - x - 1, k - 1) * mint{26}.pow(x) * mint{25}.pow(y - x);
+    ans += C(y + k - x - 1, k - 1) * mint{26}.pow(x) * mint{25}.pow(k - x);
   }
   cout << ans << endl;
 }
