@@ -1125,7 +1125,7 @@ void No()
 
 class Solve
 {
-  ll N, K, M, L;
+  ll N, K, M;
   Combination<mint> C;
 
 public:
@@ -1133,47 +1133,36 @@ public:
   {
     cin >> N >> K;
     M = 2 * N + 1;
-    L = M - K;
   }
 
   void flush()
   {
-    auto q{positive_point_prob()};
-    auto p{1 - q};
+    auto p{prob()};
     cout << 1 - p / 2 << endl;
   }
 
 private:
-  mint positive_point_prob()
-  {
-    mint n{positive_point_number()};
-    mint m{C.fact[K + L] * mint{2}.pow(L)};
-#if DEBUG == 1
-    cerr << "n = " << n << endl;
-    cerr << "m = " << m << endl;
-#endif
-    return n / m;
-  }
-
-  mint positive_point_number()
+  mint prob()
   {
     mint ans{0};
-    for (auto b{0LL}; b <= L && 2 * b <= K + L; ++b)
+    for (auto a{0}; M - 2 * a - 1 > 0; ++a)
     {
-      auto a{L - b};
-      for (auto v{0LL}; v <= min(b, K + a - 1); ++v)
+      for (auto b{0}; b <= M; ++b)
       {
-        auto zero_to_v{C.catalan(v, v)};
-        auto v_to_goal{C.catalan(K + a - v - 1, b - v)};
-        auto way{(K + a - v) * C.fact[K + a - 1] * C.fact[b] * C(L, a)};
-#if DEBUG == 1
-        if (N == 1)
+        if (b % 2 != 0)
         {
-          cerr << "(b, v) = (" << b << ", " << v << ")" << endl;
-          cerr << zero_to_v << " * " << v_to_goal << " * " << way << endl;
+          continue;
         }
-#endif
-        ans += zero_to_v * v_to_goal * way;
+        ll one{(M - 2 * a - 1 - b) / 2};
+        if (one <= 0)
+        {
+          break;
+        }
+        mint m_one{one};
+        auto p{m_one / (m_one + b) * 2 * a / (2 * a + 1 + b + 1)};
+        auto q{C(one + b, K)};
+        auto c{C(M, one + b) - C(M, one + b - 1)};
+        ans += p * q * c;
       }
     }
     return ans;
