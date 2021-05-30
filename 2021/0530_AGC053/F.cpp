@@ -1162,7 +1162,14 @@ private:
       auto a{L - b};
       for (auto v{0LL}; v <= min(b, K + a - 1); ++v)
       {
-        ans += v * (K + a - b) * C(2 * v, v) * C(K + a + b - 2 * v - 1, b - v) / (v + 1) / (K + a - v) * C.fact[K + a - 1] * C.fact[b];
+        auto zero_to_v{C.catalan(v, v)};
+        auto v_to_goal{C.catalan(K + a - (v + 1), b - v)};
+        auto way{C.fact[K + a - 1] * C.fact[b]};
+#if DEBUG == 1
+        cerr << "(b, v) = (" << b << ", " << v << ")" << endl;
+        cerr << zero_to_v << " * " << v_to_goal << " * " << way << endl;
+#endif
+        ans += zero_to_v * v_to_goal * way;
       }
     }
     return ans;
