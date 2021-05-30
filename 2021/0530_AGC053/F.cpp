@@ -1138,14 +1138,15 @@ public:
 
   void flush()
   {
-    auto p{same_point_prob()};
+    auto q{positive_point_prob()};
+    auto p{1 - q};
     cout << 1 - p / 2 << endl;
   }
 
 private:
-  mint same_point_prob()
+  mint positive_point_prob()
   {
-    mint n{same_point_number()};
+    mint n{positive_point_number()};
     mint m{C.fact[K + L] * mint{2}.pow(L)};
 #if DEBUG == 1
     cerr << "n = " << n << endl;
@@ -1154,7 +1155,7 @@ private:
     return n / m;
   }
 
-  mint same_point_number()
+  mint positive_point_number()
   {
     mint ans{0};
     for (auto b{0LL}; b <= L; ++b)
@@ -1164,7 +1165,7 @@ private:
       {
         auto zero_to_v{C.catalan(v, v)};
         auto v_to_goal{C.catalan(K + a - v - 1, b - v)};
-        auto way{v * C.fact[K + a - 1] * C.fact[b]};
+        auto way{(K + a - v) * C.fact[K + a - 1] * C.fact[b]};
 #if DEBUG == 1
         if (N == 1)
         {
