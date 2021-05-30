@@ -1199,7 +1199,7 @@ private:
         ans += p * q * c;
       }
     }
-    return ans;
+    return ans / C(M, K) / mint{2}.pow(M - K);
   }
 };
 
