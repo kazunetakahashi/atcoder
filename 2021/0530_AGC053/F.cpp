@@ -1151,12 +1151,12 @@ private:
   mint same_point_number()
   {
     mint ans{0};
-    for (auto b{0}; b <= L; ++b)
+    for (auto b{0LL}; b <= L; ++b)
     {
       auto a{L - b};
-      for (auto v{0}; v <= b; ++v)
+      for (auto v{0LL}; v <= min(b, K + a - 1); ++v)
       {
-        ans += v * (K + a - b) * C(2 * v, v) * C(K + a + b - 2 * v - 1, b - v) / (v + 1) / (K + a - v) * C.fact[K + 1 - 1] * C.fact[b];
+        ans += v * (K + a - b) * C(2 * v, v) * C(K + a + b - 2 * v - 1, b - v) / (v + 1) / (K + a - v) * C.fact[K + a - 1] * C.fact[b];
       }
     }
     return ans;
