@@ -1158,6 +1158,9 @@ private:
         {
           break;
         }
+#if DEBUG == 1
+        cerr << "a = " << a << ", b = " << b << endl;
+#endif
         mint m_one{one};
         auto p{m_one / (m_one + b) * 2 * a / (2 * a + 1 + b + 1)};
         auto q{C(one + b, K)};
