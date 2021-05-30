@@ -1160,7 +1160,7 @@ private:
     for (auto b{0LL}; b <= L; ++b)
     {
       auto a{L - b};
-      for (auto v{0LL}; v <= min(b, K + a - 1); ++v)
+      for (auto v{0LL}; v <= b; ++v)
       {
         auto zero_to_v{C.catalan(v, v)};
         auto v_to_goal{C.catalan(K + a - v - 1, b - v)};
