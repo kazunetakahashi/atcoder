@@ -1158,7 +1158,7 @@ private:
   mint positive_point_number()
   {
     mint ans{0};
-    for (auto b{0LL}; b <= L; ++b)
+    for (auto b{0LL}; b <= L && 2 * b <= K + L; ++b)
     {
       auto a{L - b};
       for (auto v{0LL}; v <= min(b, K + a - 1); ++v)
