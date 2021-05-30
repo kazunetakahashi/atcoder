@@ -1163,7 +1163,7 @@ private:
       for (auto v{0LL}; v <= min(b, K + a - 1); ++v)
       {
         auto zero_to_v{C.catalan(v, v)};
-        auto v_to_goal{C.catalan(K + a - (v + 1), b - v)};
+        auto v_to_goal{C.catalan(K + a - v, b - v)};
         auto way{C.fact[K + a - 1] * C.fact[b]};
 #if DEBUG == 1
         if (N == 1)
