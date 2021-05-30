@@ -1159,7 +1159,7 @@ private:
           break;
         }
         mint m_one{one};
-        auto p{m_one / (m_one + b) * 2 * a / (2 * a + 1 + b + 1)};
+        auto p{m_one / (m_one + b) * (2 * a + 1) / (2 * a + 1 + b + 1)};
         auto q{C(one + b, K)};
         auto c{C(M, one) - C(M, one - 1)};
 #if DEBUG == 1
