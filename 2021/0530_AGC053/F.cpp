@@ -1159,7 +1159,7 @@ private:
           break;
         }
 #if DEBUG == 1
-        if (N == 0)
+        if (N == 1)
         {
           cerr << "a = " << a << ", b = " << b << endl;
         }
