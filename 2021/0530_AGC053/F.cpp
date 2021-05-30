@@ -1165,6 +1165,26 @@ private:
         ans += p * q * c;
       }
     }
+    for (auto a{0}; M - 2 * a > 0; ++a)
+    {
+      for (auto b{0}; b <= M; ++b)
+      {
+        if (b % 2 != 1)
+        {
+          continue;
+        }
+        ll one{(M - 2 * a - b) / 2};
+        if (one <= 0)
+        {
+          break;
+        }
+        mint m_one{one};
+        auto p{m_one / (m_one + b) * 2 * a / (2 * a + b + 1)};
+        auto q{C(one + b, K)};
+        auto c{C(M, one + b) - C(M, one + b - 1)};
+        ans += p * q * c;
+      }
+    }
     return ans;
   }
 };
