@@ -1146,7 +1146,7 @@ private:
   mint same_point_prob()
   {
     mint n{same_point_number()};
-    mint m{C.fact[K + L] / mint{2}.pow(L)};
+    mint m{C.fact[K + L] * mint{2}.pow(L)};
 #if DEBUG == 1
     cerr << "n = " << n << endl;
     cerr << "m = " << m << endl;
