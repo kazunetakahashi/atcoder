@@ -125,11 +125,7 @@ public:
 
   Mint catalan(int x, int y)
   {
-    if (x >= 0 && y >= 0)
-    {
-      return (*this)(x + y, y) - (*this)(x + y, y - 1);
-    }
-    return 0;
+    return (*this)(x + y, y) - (*this)(x + y, y - 1);
   }
 };
 // ----- for C++14 -----
@@ -1165,7 +1161,7 @@ private:
     for (auto b{0LL}; b <= L; ++b)
     {
       auto a{L - b};
-      for (auto v{0LL}; v <= b; ++v)
+      for (auto v{0LL}; v <= min(b, K + a - 1); ++v)
       {
         auto zero_to_v{C.catalan(v, v)};
         auto v_to_goal{C.catalan(K + a - v - 1, b - v)};
