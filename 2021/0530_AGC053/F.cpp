@@ -1165,7 +1165,7 @@ private:
       {
         auto zero_to_v{C.catalan(v, v)};
         auto v_to_goal{C.catalan(K + a - v - 1, b - v)};
-        auto way{(K + a - v) * C.fact[K + a - 1] * C.fact[b]};
+        auto way{(K + a - v) * C.fact[K + a - 1] * C.fact[b] * C(L, a)};
 #if DEBUG == 1
         if (N == 1)
         {
