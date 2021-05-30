@@ -1145,7 +1145,11 @@ public:
 private:
   mint same_point_prob()
   {
-    return same_point_number() / C.fact[K + L] / mint{2}.pow(L);
+    mint n{same_point_number()};
+#if DEBUG == 1
+    cerr << "n = " << n << endl;
+#endif
+    return n / C.fact[K + L] / mint{2}.pow(L);
   }
 
   mint same_point_number()
