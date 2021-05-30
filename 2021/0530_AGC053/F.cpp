@@ -125,7 +125,11 @@ public:
 
   Mint catalan(int x, int y)
   {
-    return (*this)(x + y, y) - (*this)(x + y, y - 1);
+    if (x >= 0 && y >= 0)
+    {
+      return (*this)(x + y, y) - (*this)(x + y, y - 1);
+    }
+    return 0;
   }
 };
 // ----- for C++14 -----
