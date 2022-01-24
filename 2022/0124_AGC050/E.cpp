@@ -1125,14 +1125,20 @@ void No()
 
 class Solve
 {
+  static constexpr int T{3};
+
 private:
-  ll m[3], g[3];
+  ll m[T], g[T], m_prime[T];
+  ll a[T], q[T], r[T];
+  ll lcm_m, lcm_m_prime;
+  ll gcd_m_prime;
+  vector<tuple<ll, ll>> m_factor[T];
   Sieve sieve;
 
 public:
   Solve()
   {
-    for (auto i{0}; i < 3; ++i)
+    for (auto i{0}; i < T; ++i)
     {
       cin >> g[i];
       ll red;
@@ -1151,10 +1157,70 @@ public:
         cerr << "failed: " << i << endl;
       }
     }
+    for (auto i{0}; i < T; ++i)
+    {
+      cerr << "m[" << i << "] = " << m[i] << endl;
+    }
+    make_variables();
+    for (auto i{0}; i < T; ++i)
+    {
+      cerr << "m[" << i << "] = " << m[i] << ", m_prime[" << i << "] = " << m_prime[i] << ", g[" << i << "] = " << g[i] << endl;
+    }
 #endif
   }
 
 private:
+  void make_variables()
+  {
+    for (auto i{0}; i < T; ++i)
+    {
+      m_factor[i] = factor_all_primes(m[i]);
+    }
+    for (auto i{0u}; i < sieve.primes().size(); ++i)
+    {
+      vector<ll> alpha(T);
+      for (auto j{0}; j < T; ++j)
+      {
+        alpha[j] = get<1>(m_factor[j][i]);
+      }
+      sort(alpha.begin(), alpha.end());
+      for (auto j{0}; j < T; ++j)
+      {
+        if (get<1>(m_factor[j][i]) == alpha[2])
+        {
+          get<1>(m_factor[j][i]) = alpha[1];
+        }
+      }
+    }
+    for (auto i{0}; i < T; ++i)
+    {
+      m_prime[i] = factor_all_primes_multiply(m_factor[i]);
+    }
+    lcm_m = lcm(m[0], lcm(m[1], m[2]));
+    lcm_m_prime = lcm(m_prime[0], lcm(m_prime[1], m_prime[2]));
+    gcd_m_prime = gcd(m_prime[0], gcd(m_prime[1], m_prime[2]));
+    using info_for_sort = tuple<ll, ll, ll>; // m_prime, m, g;
+    vector<info_for_sort> V;
+    for (auto i{0}; i < T; ++i)
+    {
+      V.emplace_back(m_prime[i], m[i], g[i]);
+    }
+    sort(V.rbegin(), V.rend());
+    for (auto i{0}; i < T; ++i)
+    {
+      auto const &[x, y, z] = V[i];
+      m_prime[i] = x;
+      m[i] = y;
+      g[i] = z;
+    }
+    for (auto i{0}; i < T; ++i)
+    {
+      a[i] = lcm_m_prime / m_prime[i];
+      q[i] = g[i] / m_prime[i];
+      r[i] = g[i] % m_prime[i];
+    }
+  }
+
   ll factor_all_primes_multiply(vector<tuple<ll, ll>> const &f)
   {
     auto res{1LL};
