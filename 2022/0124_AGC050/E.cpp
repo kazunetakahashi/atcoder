@@ -71,6 +71,40 @@ bool ch_min(T &left, T right)
   }
   return false;
 }
+// ----- lcm and gcd for vector<T> -----
+template <typename Container, typename T = typename Container::value_type>
+T lcm(Container const &v)
+{
+  T res{*v.begin()};
+  for (auto const &e : v)
+  {
+    res = lcm(res, e);
+  }
+  return res;
+}
+template <typename Container, typename T = typename Container::value_type>
+T gcd(Container const &v)
+{
+  T res{*v.begin()};
+  for (auto const &e : v)
+  {
+    res = gcd(res, e);
+  }
+  return res;
+}
+// ----- map_value -----
+template <typename T, typename U>
+U map_value(map<T, U> const &m, T const &v)
+{
+  if (m.find(v) == m.end())
+  {
+    return U{};
+  }
+  else
+  {
+    return m.at(v);
+  }
+}
 // ----- mint -----
 // using mint = atcoder::modint1000000007;
 using mint = atcoder::modint998244353;
@@ -862,6 +896,17 @@ public:
     }
     return res;
   }
+
+  map<ll, ll> factor_map(ll x) const
+  {
+    map<ll, ll> res;
+    auto factors{factor(x)};
+    for (auto x : factors)
+    {
+      res[get<0>(x)] = get<1>(x);
+    }
+    return res;
+  }
 };
 // ----- EulerNums -----
 class EulerNums
@@ -1126,17 +1171,18 @@ void No()
 class Solve
 {
   static constexpr int T{3};
+  using Event = tuple<ll, bool, int>;
+  using Segment = tuple<ll, ll>;
 
 private:
-  ll m[T], g[T], m_prime[T];
-  ll a[T], q[T], r[T];
-  ll lcm_m, lcm_m_prime;
+  vector<ll> m, g, m_prime, a, q, R;
+  ll lcm_m_prime;
   ll gcd_m_prime;
-  vector<tuple<ll, ll>> m_factor[T];
+  vector<map<ll, ll>> m_factor;
   Sieve sieve;
 
 public:
-  Solve()
+  Solve() : m(T), g(T), m_prime(T), a(T), q(T), R(T), m_factor(T), sieve{}
   {
     for (auto i{0}; i < T; ++i)
     {
@@ -1149,56 +1195,100 @@ public:
 
   void flush()
   {
+    make_variables();
 #if DEBUG == 1
-    for (auto i{2LL}; i < 1000; ++i)
+    for (auto i{0}; i < T; ++i)
     {
-      if (factor_all_primes_multiply(factor_all_primes(i)) != i)
+      cerr << "m[" << i << "] = " << m[i] << ", ";
+      cerr << "g[" << i << "] = " << g[i] << ", ";
+      cerr << "m_prime[" << i << "] = " << m_prime[i] << ", ";
+      cerr << "a[" << i << "] = " << a[i] << ", ";
+      cerr << "q[" << i << "] = " << q[i] << ", ";
+      cerr << "R[" << i << "] = " << R[i] << endl;
+    }
+    cerr << "lcm_m_prime = " << lcm_m_prime << ", gcd_m_prime = " << gcd_m_prime << endl;
+#endif
+#if DEBUG == 1
+    for (auto i{0}; i < T; ++i)
+    {
+      cerr << "Events for i = " << i << endl;
+      for (auto [time, started, id] : make_event(R[i], i))
       {
-        cerr << "failed: " << i << endl;
+        cerr << "time = " << time << ", started = " << started << ", id = " << id << endl;
       }
     }
-    for (auto i{0}; i < T; ++i)
-    {
-      cerr << "m[" << i << "] = " << m[i] << endl;
-    }
-    make_variables();
-    for (auto i{0}; i < T; ++i)
-    {
-      cerr << "m[" << i << "] = " << m[i] << ", m_prime[" << i << "] = " << m_prime[i] << ", g[" << i << "] = " << g[i] << endl;
-    }
 #endif
+    mint ans{calc()};
+    cout << ans << endl;
   }
 
 private:
+  mint calc()
+  {
+    return 0;
+  }
+
+  mint count(vector<ll> const &r)
+  {
+    return 0;
+  }
+
+  vector<Segment> make_segment(vector<ll> const &r)
+  {
+    auto V{make_event(r[0], 0)};
+    auto W{make_event(r[1], 1)};
+    V.insert(V.end(), W.begin(), W.end());
+    sort(V.begin(), V.end());
+    vector<bool> is_started(2, false);
+    vector<Segment> res;
+    ll start_time{0};
+    for (auto const &[time, started, id] : V)
+    {
+      if (is_started[0] && is_started[1] && !started)
+      {
+        res.emplace_back(start_time, time);
+      }
+      else if ((!is_started[0] && is_started[1] && started && id == 0) || (is_started[0] && !is_started[1] && started && id == 1))
+      {
+        start_time = time;
+      }
+      is_started[id] = started;
+    }
+    return res;
+  }
+
+  vector<Event> make_event(ll r, int n)
+  {
+    if (r == 0)
+    {
+      return {};
+    }
+    vector<Event> res;
+    auto L{m_prime[n]};
+    for (auto i{0}; i < lcm_m_prime / L; ++i)
+    {
+      res.emplace_back(i * L, true, n);
+      res.emplace_back(i * L + r, false, n);
+    }
+    return res;
+  }
+
   void make_variables()
   {
     for (auto i{0}; i < T; ++i)
     {
-      m_factor[i] = factor_all_primes(m[i]);
-    }
-    for (auto i{0u}; i < sieve.primes().size(); ++i)
-    {
-      vector<ll> alpha(T);
-      for (auto j{0}; j < T; ++j)
-      {
-        alpha[j] = get<1>(m_factor[j][i]);
-      }
-      sort(alpha.begin(), alpha.end());
-      for (auto j{0}; j < T; ++j)
-      {
-        if (get<1>(m_factor[j][i]) == alpha[2])
-        {
-          get<1>(m_factor[j][i]) = alpha[1];
-        }
-      }
+      m_factor[i] = sieve.factor_map(m[i]);
     }
     for (auto i{0}; i < T; ++i)
     {
-      m_prime[i] = factor_all_primes_multiply(m_factor[i]);
+      factor_reduce(m_factor[i], m_factor[(i + 1) % T], m_factor[(i + 2) % T]);
     }
-    lcm_m = lcm(m[0], lcm(m[1], m[2]));
-    lcm_m_prime = lcm(m_prime[0], lcm(m_prime[1], m_prime[2]));
-    gcd_m_prime = gcd(m_prime[0], gcd(m_prime[1], m_prime[2]));
+    for (auto i{0}; i < T; ++i)
+    {
+      m_prime[i] = factor_multiply(m_factor[i]);
+    }
+    lcm_m_prime = lcm(m_prime);
+    gcd_m_prime = gcd(m_prime);
     using info_for_sort = tuple<ll, ll, ll>; // m_prime, m, g;
     vector<info_for_sort> V;
     for (auto i{0}; i < T; ++i)
@@ -1217,11 +1307,19 @@ private:
     {
       a[i] = lcm_m_prime / m_prime[i];
       q[i] = g[i] / m_prime[i];
-      r[i] = g[i] % m_prime[i];
+      R[i] = g[i] % m_prime[i];
     }
   }
 
-  ll factor_all_primes_multiply(vector<tuple<ll, ll>> const &f)
+  void factor_reduce(map<ll, ll> &x, map<ll, ll> const &y, map<ll, ll> const &z)
+  {
+    for (auto &[p, n] : x)
+    {
+      ch_min(n, max(map_value(y, p), map_value(z, p)));
+    }
+  }
+
+  ll factor_multiply(map<ll, ll> const &f)
   {
     auto res{1LL};
     for (auto [p, n] : f)
@@ -1231,32 +1329,6 @@ private:
         res *= p;
       }
     }
-    return res;
-  }
-
-  vector<tuple<ll, ll>> factor_all_primes(ll x) const
-  {
-    auto f{sieve.factor(x)};
-    auto it2{f.begin()};
-    vector<tuple<ll, ll>> res;
-    for (auto it{sieve.primes().begin()}; it != sieve.primes().end(); ++it)
-    {
-      if (it2 != f.end() && *it == get<0>(*it2))
-      {
-        res.push_back(*it2);
-        ++it2;
-      }
-      else
-      {
-        res.emplace_back(*it, 0);
-      }
-    }
-    if (it2 != f.end())
-    {
-      res.push_back(*it2);
-      ++it2;
-    }
-    assert(it2 == f.end());
     return res;
   }
 };
