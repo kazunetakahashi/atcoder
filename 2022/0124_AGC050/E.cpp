@@ -1,4 +1,4 @@
-#define DEBUG 1
+#define DEBUG 0
 /**
  * File    : E.cpp
  * Author  : Kazune Takahashi
@@ -1218,6 +1218,13 @@ public:
       }
     }
 #endif
+#if DEBUG == 1
+    for (auto [start, goal] : make_segment(R))
+    {
+      cerr << "[" << start << ", " << goal << ")" << endl;
+    }
+    cerr << "count_green = " << count_green(R) << endl;
+#endif
     mint ans{calc()};
     cout << ans << endl;
   }
@@ -1225,12 +1232,48 @@ public:
 private:
   mint calc()
   {
-    return 0;
+    mint ans{0};
+    ans += count_green({R[0], R[1], R[2]});
+    ans += count_green({R[0], R[1], m_prime[2]}) * q[2];
+    ans += count_green({R[0], m_prime[1], R[2]}) * q[1];
+    ans += count_green({R[0], m_prime[1], m_prime[2]}) * q[1] * q[2];
+    ans += count_green({m_prime[0], R[1], R[2]}) * q[0];
+    ans += count_green({m_prime[0], R[1], m_prime[2]}) * q[0] * q[2];
+    ans += count_green({m_prime[0], m_prime[1], R[2]}) * q[0] * q[1];
+    ans += count_green({m_prime[0], m_prime[1], m_prime[2]}) * q[0] * q[1] * q[2];
+    ans *= compensation();
+    return ans;
   }
 
-  mint count(vector<ll> const &r)
+  mint compensation()
   {
-    return 0;
+    vector<cpp_int> M(3);
+    for (auto i{0}; i < T; ++i)
+    {
+      M[i] = m[i];
+    }
+    cpp_int A{1};
+    for (auto i{0}; i < T; ++i)
+    {
+      A *= M[i];
+    }
+    auto B{lcm(M)};
+    cpp_int ans{(A / B) % 998244353};
+    return static_cast<mint>(static_cast<ll>(ans));
+  }
+
+  mint count_green(vector<ll> const &r)
+  {
+    auto V{make_segment(r)};
+    auto ans{0LL};
+    auto L{m_prime[2]};
+    auto K{r[2]};
+    for (auto [start, goal] : V)
+    {
+      auto q_start{start / L}, s_start{start % L}, q_goal{goal / L}, s_goal{goal % L};
+      ans += max(K - s_start, 0LL) + min(s_goal, K) + (q_goal - q_start - 1) * K;
+    }
+    return ans;
   }
 
   vector<Segment> make_segment(vector<ll> const &r)
@@ -1265,6 +1308,12 @@ private:
     }
     vector<Event> res;
     auto L{m_prime[n]};
+    if (r == L)
+    {
+      res.emplace_back(0, true, n);
+      res.emplace_back(lcm_m_prime, false, n);
+      return res;
+    }
     for (auto i{0}; i < lcm_m_prime / L; ++i)
     {
       res.emplace_back(i * L, true, n);
